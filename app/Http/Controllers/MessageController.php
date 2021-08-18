@@ -102,6 +102,19 @@ class MessageController extends Controller
         return view('message.show',[ 'messages'=> $messages,'users'=>$users,'friend_name'=>$friend_name->name,'friend_id'=>$friend->id ]);
     }
 
+    public static function friends()
+    {
+        $messages = Message::all();
+        $people = [];
+        foreach ($messages as $message){
+          if (Auth::User()->id == $message->user_id){
+             array_push($people,$message->user_id);
+             }
+            }
+       $people= array_unique($people);
+      return $people;
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
