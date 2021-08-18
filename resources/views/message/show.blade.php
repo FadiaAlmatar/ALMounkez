@@ -2,6 +2,12 @@
     <section class="section" style="height: 100%;width:50%;margin:auto;">
         <div class="container">
           <h5>Chat with {{$friend_name}}</h5>
+          <form action="{{ route('messages.store') }}" method="POST" >
+            @csrf
+            <input name="friend_id" value ={{$friend_id}} hidden>
+          <textarea style="width:50%"class=" @error('message_content')is-danger @enderror" name="message_content" placeholder="write message here...">{{ old('message_content') }}</textarea>
+          <button class="button is-dark" style="color: #eb640a;align:center" >send</button>
+        </form>
           <div>
               @foreach($messages as $message)
               <div class="card">
@@ -26,12 +32,7 @@
               </div>
               @endforeach
           </div>
-          <form action="{{ route('messages.store') }}" method="POST" >
-              @csrf
-              <input name="friend_id" value ={{$friend_id}} hidden>
-            <textarea style="width:50%"class=" @error('message_content')is-danger @enderror" name="message_content" placeholder="write message here...">{{ old('message_content') }}</textarea><br>
-            <button class="button is-dark" style="color: #eb640a;align:center" >send</button>
-          </form>
+
         </div>
     </section>
 </x-layouts.app>
