@@ -19,6 +19,7 @@
             {{-- // use App\Http\Controllers\MessageController;
             //    $arr = App\Http\Controllers\MessageController::friends(); }}
             // <a style="text-decoration:none"href="{{route('messages.chat', $message->friend_id)}}" >{{ var_dump($people)}}</a><br> --}}
+           {{Auth::user()->talkedTo()->pluck('id')}}
         </div>
         <div style="width:75%;float:right;">
           <h5>Chat with {{$friend_name}}</h5>

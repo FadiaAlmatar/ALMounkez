@@ -54,5 +54,15 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Conversation::class);
     }
+    public function talkedTo()
+    {
+        return $this->hasMany(Message::class,'user_id');
+    }
+    public function relatedTo()
+    {
+        return $this->hasMany(Message::class,'friend_id');
+    }
+
 }
+
 

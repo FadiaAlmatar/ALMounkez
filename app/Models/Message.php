@@ -13,4 +13,13 @@ class Message extends Model
     {
        return $this->belongsTo(User::class);
     }
+    public function sender()
+    {
+        return $this->belongsTo(User::class,'user_id');
+    }
+
+    public function receiver()
+    {
+        return $this->belongsTo(User::class,'friend_id');
+    }
 }
