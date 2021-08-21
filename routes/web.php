@@ -5,6 +5,8 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MessageController;
+use Illuminate\Support\Facades\DB;
+// use DB;
 
 
 /*
@@ -28,6 +30,9 @@ Route::resource('comments', CommentController::class);
 Route::resource('messages', MessageController::class);
 Route::get('/chat/{id}', [MessageController::class, 'chat'])->name('messages.chat');
 Route::post('/toggle-approve', [CommentController::class,'approval'])->name('approve');
+
+Route::get('/get-friends', [MessageController::class, 'getfriends'])->name('friends');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

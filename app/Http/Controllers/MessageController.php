@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Message;
 use App\Models\User;
+use Brick\Math\BigInteger;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+// use App\Http\Controllers\BigInteger;
 
 
 class MessageController extends Controller
@@ -46,10 +48,10 @@ class MessageController extends Controller
     public function store(Request $request)
     {
 
-        // $request->validate([
-        //     'message'         => 'required',
-        //     'user_id'         => 'required|numeric|exists:users,id',
-        // ]);
+        $request->validate([
+            // 'message'         => 'required',
+            'user_id'         => 'integer',
+        ]);
 
         $message = new Message();
         $message->message_content= $request->message_content;
@@ -99,11 +101,33 @@ class MessageController extends Controller
                   $message->save();
           }
         }
-        return view('message.show',[ 'messages'=> $messages,'users'=>$users,'friend_name'=>$friend_name->name,'friend_id'=>$friend->id ]);
+        // dd(Auth::User()->id );
+        // $id = Auth::User()->id;
+        $friends = DB::select("CALL pr_messages_friends( ".Auth::User()->id.")");
+
+        $unread_messages = DB::select("CALL pr_unread_messages( ".Auth::User()->id.")");
+       dd($unread_messages);
+        // $friendsname = DB::table('users')->SELECT name FROM users-> WHERE id = 1;
+        // dd(Auth::User()->id );
+        // dd($friends()->friend_id);
+        // DB::table('messages')->SELECT DISTINCT user_id FROM messages-> WHERE user_id = id
+        // UNION
+        //  SELECT DISTINCT friend_id FROM messages WHERE user_id = id;
+        //  $friends = DB::select('select DISTINCT user_id from messages where user_id = ?
+        //                         UNION
+        //                         select DISTINCT friend_id FROM messages where user_id = ?', [Auth::User()->id,Auth::User()->id]);
+        //   foreach($friends as $friend){
+        //       dd($friend->friend_id);}
+        return view('message.show',['unread_messages' => $unread_messages],['friends'=> $friends],[ 'messages'=> $messages,'users'=>$users,'friend_name'=>$friend_name->name,'friend_id'=>$friend->id ]);
     }
 
-    // public static function friends()
+
+    // public static function getfriends()
     // {
+
+    //     $friends = DB::select('CALL pr_messages_friends(" Auth::User()->id ")');
+    //     return view('message.show',['friends'=> $friends]);
+
     //     $messages = Message::all();
     //     $people = [];
     //     foreach ($messages as $message){

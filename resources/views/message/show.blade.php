@@ -2,7 +2,12 @@
     <section class="section" style="height: 100%;width:100%;margin:auto;">
         <div class="container">
         <div style="width:20%;border-color: red;border-style:solid;float:left;display:inline-block;height: 100%">
-            {{-- @foreach ($users as $user)
+             @foreach ($friends as $friend)
+                 {{$friend->user_id}}
+
+                 {{-- {{ App\Models\User::where(['id' => $friend->user_id])->get() }} --}}
+                 {{-- {{ DB::table('users')->SELECT name FROM users-> WHERE 'id' = $friend->user_id}} --}}
+             @endforeach
             {{-- friends --}}
                   {{-- @if(Auth::User()->id <> $user->id)
                        <a style="text-decoration:none"href="{{route('messages.chat', $user->id)}}" >{{$user->name}}</a><br>
@@ -19,7 +24,7 @@
             {{-- // use App\Http\Controllers\MessageController;
             //    $arr = App\Http\Controllers\MessageController::friends(); }}
             // <a style="text-decoration:none"href="{{route('messages.chat', $message->friend_id)}}" >{{ var_dump($people)}}</a><br> --}}
-           {{Auth::user()->talkedTo()->pluck('id')}}
+           {{-- {{Auth::user()->talkedTo()->pluck('id')}} --}}
         </div>
         <div style="width:75%;float:right;">
           <h5>Chat with {{$friend_name}}</h5>
