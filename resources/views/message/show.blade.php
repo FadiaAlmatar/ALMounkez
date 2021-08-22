@@ -3,9 +3,8 @@
         <div class="container">
         <div style="width:20%;border-color: red;border-style:solid;float:left;display:inline-block;height: 100%">
              @foreach ($friends as $friend)
-                 {{$friend->user_id}}
-
-                 {{-- {{ App\Models\User::where(['id' => $friend->user_id])->get() }} --}}
+                 {{-- {{$friend->user_id}}<br> --}}
+                 <a style="text-decoration: none" href="{{route('messages.chat', $friend->user_id)}}">{{ App\Models\User::where(['id' => $friend->user_id])->pluck('name')->first() }}</a><br>
                  {{-- {{ DB::table('users')->SELECT name FROM users-> WHERE 'id' = $friend->user_id}} --}}
              @endforeach
             {{-- friends --}}
@@ -13,14 +12,7 @@
                        <a style="text-decoration:none"href="{{route('messages.chat', $user->id)}}" >{{$user->name}}</a><br>
                   @endif
             @endforeach --}}
-            {{-- {{$people = []}}
-            @foreach ($messages as $message)
-              @if (Auth::User()->id == $message->user_id)
-                 {{array_push($people,$message->user_id)}}
-              @endif
-            @endforeach
-            {{$people= array_unique($people)}} --}}
-            {{-- {{ --}}
+
             {{-- // use App\Http\Controllers\MessageController;
             //    $arr = App\Http\Controllers\MessageController::friends(); }}
             // <a style="text-decoration:none"href="{{route('messages.chat', $message->friend_id)}}" >{{ var_dump($people)}}</a><br> --}}

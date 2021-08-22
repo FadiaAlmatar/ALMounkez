@@ -82,17 +82,13 @@ class MessageController extends Controller
     public function chat($id)
     {
         $friend = User::findOrFail($id);
-        // $messages = Message::all();
-        // $messages = DB::table('messages')->where('friend_id', $friend->id)->orWhere('friend_id', Auth::User()->id)->orderBy('created_at')->get();
         $messages = DB::table('messages')->where([
             ['friend_id', $friend->id],
             ['user_id', Auth::User()->id],
         ])->orwhere([
             ['friend_id', Auth::User()->id],
             ['user_id', $friend->id],])->orderBy('created_at','DESC')->get();
-        // orWhere('friend_id', Auth::User()->id
         $friend_name = User::find($friend->id);
-        // dd($friend_name->name);
         $users = User::all();
         foreach($messages as $message){
           if(($message->user_id <> Auth::User()->id) && (Carbon::now())){
@@ -101,43 +97,13 @@ class MessageController extends Controller
                   $message->save();
           }
         }
-        // dd(Auth::User()->id );
-        // $id = Auth::User()->id;
         $friends = DB::select("CALL pr_messages_friends( ".Auth::User()->id.")");
+    //    $friendsname = DB::table('users')-> SELECT name FROM users INNER JOIN friends ON id=friends->user_id;
+
 
         $unread_messages = DB::select("CALL pr_unread_messages( ".Auth::User()->id.")");
-       dd($unread_messages);
-        // $friendsname = DB::table('users')->SELECT name FROM users-> WHERE id = 1;
-        // dd(Auth::User()->id );
-        // dd($friends()->friend_id);
-        // DB::table('messages')->SELECT DISTINCT user_id FROM messages-> WHERE user_id = id
-        // UNION
-        //  SELECT DISTINCT friend_id FROM messages WHERE user_id = id;
-        //  $friends = DB::select('select DISTINCT user_id from messages where user_id = ?
-        //                         UNION
-        //                         select DISTINCT friend_id FROM messages where user_id = ?', [Auth::User()->id,Auth::User()->id]);
-        //   foreach($friends as $friend){
-        //       dd($friend->friend_id);}
-        return view('message.show',['unread_messages' => $unread_messages],['friends'=> $friends],[ 'messages'=> $messages,'users'=>$users,'friend_name'=>$friend_name->name,'friend_id'=>$friend->id ]);
+        return view('message.show',['unread_messages' => $unread_messages,'friends'=> $friends, 'messages'=> $messages,'users'=>$users,'friend_name'=>$friend_name->name,'friend_id'=>$friend->id ]);
     }
-
-
-    // public static function getfriends()
-    // {
-
-    //     $friends = DB::select('CALL pr_messages_friends(" Auth::User()->id ")');
-    //     return view('message.show',['friends'=> $friends]);
-
-    //     $messages = Message::all();
-    //     $people = [];
-    //     foreach ($messages as $message){
-    //       if (Auth::User()->id == $message->user_id){
-    //          array_push($people,$message->user_id);
-    //          }
-    //         }
-    //    $people= array_unique($people);
-    //   return $people;
-    // }
 
     /**
      * Show the form for editing the specified resource.
