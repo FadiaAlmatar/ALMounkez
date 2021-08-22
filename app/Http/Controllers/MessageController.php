@@ -99,9 +99,21 @@ class MessageController extends Controller
         }
         $friends = DB::select("CALL pr_messages_friends( ".Auth::User()->id.")");
     //    $friendsname = DB::table('users')-> SELECT name FROM users INNER JOIN friends ON id=friends->user_id;
-
-
         $unread_messages = DB::select("CALL pr_unread_messages( ".Auth::User()->id.")");
+        // dd($unread_messages);
+        // foreach($friends as $friend){
+        //   DB::table('messages_friends')->insert(['user_id' => $friend->user_id]);
+        // }
+        // foreach($unread_messages as $unread_message){
+        //   DB::table('unread_messages_friends')->insert(['user_id' => $unread_message->user_id]);
+        // }
+        // SELECT user_id FROM friends INNER JOIN nread_messages ON table1.user_id = table2.user_id;
+
+        // $unread_friends = DB::table('messages_friends')
+        //     ->join('unread_messages_friends', 'messages_friends.user_id', '=', 'unread_messages_friends.user_id')
+        //     ->select('messages_friends.user_id')
+        //     ->get();
+        //     dd($unread_friends );
         return view('message.show',['unread_messages' => $unread_messages,'friends'=> $friends, 'messages'=> $messages,'users'=>$users,'friend_name'=>$friend_name->name,'friend_id'=>$friend->id ]);
     }
 

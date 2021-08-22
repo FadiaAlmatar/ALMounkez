@@ -21,7 +21,7 @@ class CreateProcedureUnreadMessages extends Migration
         $procedure = "DROP PROCEDURE IF EXISTS `pr_unread_messages`;
         CREATE PROCEDURE `pr_unread_messages` (IN id bigint)
         BEGIN
-         SELECT id FROM messages WHERE user_id = id AND seen = false;
+         SELECT DISTINCT user_id FROM messages WHERE friend_id = id AND seen = false;
         END;";
 
         DB::unprepared($procedure);
