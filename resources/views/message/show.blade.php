@@ -2,50 +2,16 @@
     <section class="section" style="height: 100%;width:100%;margin:auto;">
         <div class="container">
         <div style="text-align:center;width:20%;border-color: red;border-style:solid;float:left;display:inline-block;height: 100%">
-             @foreach ($friends as $friend)
-             {{-- <a style="text-decoration: none;color:blue" href="{{route('messages.chat', $friend->user_id)}}">{{ App\Models\User::where(['id' => $friend->user_id])->pluck('name')->first() }}</a><br> --}}
-             @if($unread_messages <> null)
-             {{-- <br><span>UNREAD MESSAGES</span><BR> --}}
-              {{-- @foreach ($unread_messages as $unread_message) --}}
-               {{-- @if($unread_message->user_id == $friend->user_id) --}}
-               @if($friend->user_id if $unread_messages)
-                <a style="text-decoration: none;color:black;font-weight:bold" href="{{route('messages.chat', $unread_message->user_id)}}">{{ App\Models\User::where(['id' => $unread_message->user_id])->pluck('name')->first() }}</a><br>
-               @else
-                <a style="text-decoration: none;color:blue;font-weight:bold" href="{{route('messages.chat', $unread_message->user_id)}}">{{ App\Models\User::where(['id' => $unread_message->user_id])->pluck('name')->first() }}</a><br>
-               @endif
-              {{-- @endforeach --}}
-             @endif
-             @if($unread_messages == null)
-             <a style="text-decoration: none;color:blue;font-weight:bold" href="{{route('messages.chat', $friend->user_id)}}">{{ App\Models\User::where(['id' => $friend->user_id])->pluck('name')->first() }}</a><br>
-             @endif
+            <br><span>FRIENDS</span><BR>
+            @foreach ($friends as $friend)
+             <a style="text-decoration: none;color:blue" href="{{route('messages.chat', $friend->user_id)}}">{{ App\Models\User::where(['id' => $friend->user_id])->pluck('name')->first() }}</a><br><br>
+            @endforeach
+            @if($unread_messages <> null)
+             <br><span>UNREAD MESSAGES</span><BR>
+             @foreach ($unread_messages as $unread_message)
+             <a style="text-decoration: none;color:black;font-weight:bold" href="{{route('messages.chat', $unread_message->user_id)}}">{{ App\Models\User::where(['id' => $unread_message->user_id])->pluck('name')->first() }}</a><br>
              @endforeach
-                 {{-- @foreach ( $unread_messages as $unread_message) --}}
-                   {{-- @if($unread_message->user_id == $friend->user_id) --}}
-                     {{-- <a style="text-decoration: none;color:red" href="{{route('messages.chat', $friend->user_id)}}">{{ App\Models\User::where(['id' => $friend->user_id])->pluck('name')->first() }}</a><br> --}}
-                    {{-- @else --}}
-                    {{-- @foreach ($unread_friends as $unread_friend)
-                       @if($unread_friend->user_id == $friend->user_id)
-                         <a style="text-decoration: none;color:red" href="{{route('messages.chat', $friend->user_id)}}">{{ App\Models\User::where(['id' => $friend->user_id])->pluck('name')->first() }}</a><br>
-                       @else
-                       <a style="text-decoration: none;color:blue" href="{{route('messages.chat', $friend->user_id)}}">{{ App\Models\User::where(['id' => $friend->user_id])->pluck('name')->first() }}</a><br>
-
-                         @endif
-                    @endforeach --}}
-                    {{-- @endif
-                    @endforeach
-                    <a style="text-decoration: none;color:blue" href="{{route('messages.chat', $friend->user_id)}}">{{ App\Models\User::where(['id' => $friend->user_id])->pluck('name')->first() }}</a><br> --}}
-
-
-            {{-- friends --}}
-                  {{-- @if(Auth::User()->id <> $user->id)
-                       <a style="text-decoration:none"href="{{route('messages.chat', $user->id)}}" >{{$user->name}}</a><br>
-                  @endif
-            @endforeach --}}
-
-            {{-- // use App\Http\Controllers\MessageController;
-            //    $arr = App\Http\Controllers\MessageController::friends(); }}
-            // <a style="text-decoration:none"href="{{route('messages.chat', $message->friend_id)}}" >{{ var_dump($people)}}</a><br> --}}
-           {{-- {{Auth::user()->talkedTo()->pluck('id')}} --}}
+            @endif
         </div>
         <div style="width:75%;float:right;">
           <h5>Chat with {{$friend_name}}</h5>

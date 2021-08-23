@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
 // use App\Http\Controllers\BigInteger;
 
 
@@ -89,9 +91,33 @@ class MessageController extends Controller
                   $message->save();
           }
         }
+        $read_messages = [];
         $friends = DB::select("CALL pr_messages_friends( ".Auth::User()->id.")");
         $unread_messages = DB::select("CALL pr_unread_messages( ".Auth::User()->id.")");
         return view('message.show',['unread_messages' => $unread_messages,'friends'=> $friends, 'messages'=> $messages,'users'=>$users,'friend_name'=>$friend_name->name,'friend_id'=>$friend->id ]);
+
+        // print_r($friends);
+        // print_r($unread_messages);
+        // $result = array_diff($friends, $unread_messages);
+        // foreach($friends as $friend){
+        //      foreach($unread_messages as $unread_message){
+        //      if($friend->user_id  <> $unread_message->user_id){
+
+        //         $name = User::where(['id' => $friend->user_id])->pluck('name')->first();
+        //         array_push($read_messages,$name);
+        //      }
+        //     }
+        // }
+        // foreach ($read_messages as $key => $value ){
+            // print_r(array_values($read_messages));
+        // }
+        // print_r($read_messages);
+        // foreach($friends as $friend){
+        //   if(Arr::exists( $unread_messages,$friend->user_id) == false){
+
+        //        array_push($array,$friend->user_id);
+        // }
+        // }
 
         //  $friendsname = DB::table('users')-> SELECT name FROM users INNER JOIN friends ON id=friends->user_id;
         // dd($unread_messages);
