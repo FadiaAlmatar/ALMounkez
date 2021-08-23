@@ -5,13 +5,18 @@
             <br><span>FRIENDS</span><BR>
             @foreach ($friends as $friend)
             <a style="text-decoration: none;color:blue" href="{{route('messages.chat', $friend->user_id)}}">{{ App\Models\User::where(['id' => $friend->user_id])->pluck('name')->first() }}</a><br><br>
-             @foreach ($last_message as $last)
-             {{-- @foreach($row = 0; $row < 4; $row++) --}}
+           <span>message is:</span>
+           <?php
+            $last_message = [];
+            $last_message = DB::select("CALL pr_last_message( ".Auth::User()->id.",".$friend->user_id.")");
+           print_r($last_message[0]->message_content);
+            ?><br>
+            {{-- @foreach ($last_message as $last)
                 @if (($friend->user_id == $last[]['user_id']) or ($friend->user_id == $last[]['friend_id']))
                       <p>{{ $last->message_content}}</p>
                       @break
                 @endif
-             @endforeach
+             @endforeach --}}
             @endforeach
             @if($unread_messages <> null)
              <br><span>UNREAD MESSAGES</span><BR>
