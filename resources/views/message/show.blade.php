@@ -3,8 +3,8 @@
         <div class="container">
         <div style="text-align:center;width:20%;border-color: red;border-style:solid;float:left;display:inline-block;height: 100%">
             <br><span>FRIENDS</span><BR>
-             <?php $array = [];
-            foreach($friends as $friend) {
+             <?php $array = []; ?>
+           <?php foreach($friends as $friend) {
               if(($friend->seen == false)) {  ?>
                  <a style="text-decoration: none;color:red" href="{{route('messages.chat', $friend->user_id)}}">{{ App\Models\User::where(['id' => $friend->user_id])->pluck('name')->first() }}</a><br><br>;
                  <?php array_push($array,$friend->user_id);
