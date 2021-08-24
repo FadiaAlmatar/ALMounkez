@@ -4,14 +4,14 @@
         <div style="text-align:center;width:20%;border-color: red;border-style:solid;float:left;display:inline-block;height: 100%">
             <br><span>FRIENDS</span><BR>
              <?php $array = [];
-            foreach ($friends as $friend) {
-              if(($friend->seen == false)){  ?>
+            foreach($friends as $friend) {
+              if(($friend->seen == false)) {  ?>
                  <a style="text-decoration: none;color:red" href="{{route('messages.chat', $friend->user_id)}}">{{ App\Models\User::where(['id' => $friend->user_id])->pluck('name')->first() }}</a><br><br>;
-                 <? array_push($array,$friend->user_id);
+                 <?php array_push($array,$friend->user_id);
                 }
                   if(($friend->seen == true) and ( in_array($friend->user_id,$array)) { ?>
                  <a style="text-decoration: none;color:blue" href="{{route('messages.chat', $friend->user_id)}}">{{ App\Models\User::where(['id' => $friend->user_id])->pluck('name')->first() }}</a><br><br>;
-                 <? } ?>
+                 <?php } ?>
             {{-- @if(($friend->seen == false) && (Auth::User()->id <> $friend->user_id))
            <a style="text-decoration: none;color:red" href="{{route('messages.chat', $friend->user_id)}}">{{ App\Models\User::where(['id' => $friend->user_id])->pluck('name')->first() }}</a><br><br>
            @endif --}}
