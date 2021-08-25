@@ -19,7 +19,7 @@ class CreateProcedureCountOfUnreadMessages extends Migration
         CREATE PROCEDURE `pr_count_unread_messages` (IN id bigint)
         BEGIN
         SELECT count(seen),user_id FROM `messages` WHERE friend_id = id and seen = false
-        GROUP BY user_id
+        GROUP BY user_id;
         END;";
 
         DB::unprepared($procedure);
