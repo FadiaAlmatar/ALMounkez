@@ -2,15 +2,17 @@
     <section class="section" style="height: 100%;width:100%;margin:auto;">
         <div class="container">
         <div style="text-align:center;width:20%;border-color: red;border-style:solid;float:left;display:inline-block;height: 100%">
-            <br><span>FRIENDS</span><BR>
+            @if($friends <> null)
+            <br><span>FRIENDS</span><BR><br>
+
                 @foreach ($friends as $friend)
-                <a style="text-decoration: none;color:blue" href="{{route('messages.chat', $friend->user_id)}}">{{ App\Models\User::where(['id' => $friend->user_id])->pluck('name')->first() }}</a><br><br>
-                <span>message is:</span>
+                <a style="text-decoration: none;color:blue" href="{{route('messages.chat', $friend->user_id)}}">{{ App\Models\User::where(['id' => $friend->user_id])->pluck('name')->first() }}</a><br>
+                <span>last message is:</span>
               <?php
               $last_message = [];
               $last_message = DB::select("CALL pr_last_message( ".Auth::User()->id.",".$friend->user_id.")");
               print_r($last_message[0]->message_content);
-              ?><br>
+              ?><br><br>
             {{-- @foreach ($last_message as $last)
                 @if (($friend->user_id == $last[]['user_id']) or ($friend->user_id == $last[]['friend_id']))
                       <p>{{ $last->message_content}}</p>
@@ -18,8 +20,9 @@
                 @endif
              @endforeach --}}
             @endforeach
+            @endif
             @if($unread_messages <> null)
-             <br><span>UNREAD MESSAGES</span><BR>
+             <span>UNREAD MESSAGES</span><BR>
              @foreach ($unread_messages as $unread_message)
              <a style="text-decoration: none;color:black;font-weight:bold" href="{{route('messages.chat', $unread_message->user_id)}}">{{ App\Models\User::where(['id' => $unread_message->user_id])->pluck('name')->first() }}</a><br>
              @endforeach
