@@ -95,12 +95,14 @@ class MessageController extends Controller
         $friends = DB::select("CALL pr_messages_friends( ".Auth::User()->id.")");
         // dd($friends);
         $unread_messages = DB::select("CALL pr_unread_messages( ".Auth::User()->id.")");
+        $count_unread_messages = DB::select("CALL pr_count_unread_messages( ".Auth::User()->id.")");
+
         // foreach($friends as $friend){
         //   array_push($last_message ,DB::select("CALL pr_last_message( ".Auth::User()->id.",".$friend->user_id.")"));
         //   dd($last_message);
         // }
         //   dd($last_message);
-        return view('message.show',['unread_messages' => $unread_messages,'friends'=> $friends, 'messages'=> $messages,'users'=>$users,'friend_name'=>$friend_name->name,'friend_id'=>$friend->id ]);
+        return view('message.show',['count_unread_messages'=>$count_unread_messages,'unread_messages' => $unread_messages,'friends'=> $friends, 'messages'=> $messages,'users'=>$users,'friend_name'=>$friend_name->name,'friend_id'=>$friend->id ]);
 
         // print_r($friends);
         // print_r($unread_messages);

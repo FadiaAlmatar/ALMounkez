@@ -23,7 +23,14 @@
             @if($unread_messages <> null)
              <span>UNREAD MESSAGES</span><BR>
              @foreach ($unread_messages as $unread_message)
-             <a style="text-decoration: none;color:black;font-weight:bold" href="{{route('messages.chat', $unread_message->user_id)}}">{{ App\Models\User::where(['id' => $unread_message->user_id])->pluck('name')->first() }}</a><br>
+               @foreach ($count_unread_messages as $count_unread_message)
+               @if($unread_message->user_id == $count_unread_message->user_id)
+               <a style="text-decoration: none;color:black;font-weight:bold" href="{{route('messages.chat', $unread_message->user_id)}}">{{ App\Models\User::where(['id' => $unread_message->user_id])->pluck('name')->first() }}</a>
+               <span style="border-radius: 70%;;border-color: red;border-style:solid">{{$count_unread_message->number}}</span><br><br>
+               @else
+                @continue
+                @endif
+               @endforeach
              @endforeach
             @endif
 
