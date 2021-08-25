@@ -21,9 +21,9 @@ class CreateProcedureMessagesFriends extends Migration
         $procedure = "DROP PROCEDURE IF EXISTS `pr_messages_friends`;
         CREATE PROCEDURE `pr_messages_friends` (IN id bigint)
         BEGIN
-         SELECT DISTINCT seen,user_id FROM messages WHERE friend_id = id
+         SELECT DISTINCT user_id FROM messages WHERE friend_id = id
         UNION
-         SELECT DISTINCT seen,friend_id FROM messages WHERE user_id = id;
+         SELECT DISTINCT friend_id FROM messages WHERE user_id = id;
         END;";
 
 
