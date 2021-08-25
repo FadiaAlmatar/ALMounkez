@@ -3,15 +3,14 @@
         <div class="container">
         <div style="text-align:center;width:20%;border-color: red;border-style:solid;float:left;display:inline-block;height: 100%">
             @if($friends <> null)
-            <br><span>FRIENDS</span><BR><br>
-
+            <br><span>FRIENDS</span><br>
                 @foreach ($friends as $friend)
                 <a style="text-decoration: none;color:blue" href="{{route('messages.chat', $friend->user_id)}}">{{ App\Models\User::where(['id' => $friend->user_id])->pluck('name')->first() }}</a><br>
-                <span>last message is:</span>
-              <?php
+                {{-- <span>last message is:</span> --}}
+             <?php
               $last_message = [];
               $last_message = DB::select("CALL pr_last_message( ".Auth::User()->id.",".$friend->user_id.")");
-              print_r($last_message[0]->message_content);
+              print_r(substr($last_message[0]->message_content,0,10));
               ?><br><br>
             {{-- @foreach ($last_message as $last)
                 @if (($friend->user_id == $last[]['user_id']) or ($friend->user_id == $last[]['friend_id']))
