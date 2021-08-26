@@ -3,37 +3,34 @@
         <div class="container">
         <div style="text-align:center;width:20%;border-color: red;border-style:solid;float:left;display:inline-block;height: 100%">
             @if($friends <> null)
-            <br><span>FRIENDS</span><br>
-                @foreach ($friends as $friend)
-                <a style="text-decoration: none;color:blue" href="{{route('messages.chat', $friend->user_id)}}">{{ App\Models\User::where(['id' => $friend->user_id])->pluck('name')->first() }}</a><br>
-                {{-- <span>last message is:</span> --}}
+               <br><span>FRIENDS</span><br>
+               <?php $var = false ?>
+               @foreach ($friends as $friend)
+                  <?php $var = false ?>
+                  @foreach ($unread_messages as $unread_message)
+                     @if($friend->user_id == $unread_message->user_id)
+                      <a style="text-decoration: none;color:black;font-weight:bold" href="{{route('messages.chat', $unread_message->user_id)}}">{{ App\Models\User::where(['id' => $unread_message->user_id])->pluck('name')->first() }}</a>
+                      <?php $var = true ?>
+                      @foreach ($count_unread_messages as $count_unread_message)
+                        @if($unread_message->user_id == $count_unread_message->user_id)
+                           <span style="border-radius: 70%;;border-color: red;border-style:solid">{{$count_unread_message->number}}</span><br>
+                        @else
+                         @continue
+                        @endif
+                      @endforeach
+                     @continue
+                     @endif
+                  @endforeach
+             @if($var == false)
+             <a style="text-decoration: none;color:blue;font-weight:bold" href="{{route('messages.chat', $friend->user_id)}}">{{ App\Models\User::where(['id' => $friend->user_id])->pluck('name')->first() }}</a><br>
+             @endif
              <?php
               $last_message = [];
               $last_message = DB::select("CALL pr_last_message( ".Auth::User()->id.",".$friend->user_id.")");
               print_r(substr($last_message[0]->message_content,0,10));
-              ?><br><br>
-            {{-- @foreach ($last_message as $last)
-                @if (($friend->user_id == $last[]['user_id']) or ($friend->user_id == $last[]['friend_id']))
-                      <p>{{ $last->message_content}}</p>
-                      @break
-                @endif
-             @endforeach --}}
-            @endforeach
-            @endif
-            @if($unread_messages <> null)
-             <span>UNREAD MESSAGES</span><BR>
-             @foreach ($unread_messages as $unread_message)
-               @foreach ($count_unread_messages as $count_unread_message)
-               @if($unread_message->user_id == $count_unread_message->user_id)
-               <a style="text-decoration: none;color:black;font-weight:bold" href="{{route('messages.chat', $unread_message->user_id)}}">{{ App\Models\User::where(['id' => $unread_message->user_id])->pluck('name')->first() }}</a>
-               <span style="border-radius: 70%;;border-color: red;border-style:solid">{{$count_unread_message->number}}</span><br><br>
-               @else
-                @continue
-                @endif
-               @endforeach
-             @endforeach
-            @endif
-
+              ?><br>
+          @endforeach
+          @endif
         </div>
         <div style="width:75%;float:right;">
           <h5>Chat with {{$friend_name}}</h5>
