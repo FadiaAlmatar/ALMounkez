@@ -14,10 +14,7 @@ class CreateProcedureMessagesFriends extends Migration
      */
     public function up()
     {
-        // Schema::create('procedure_messages_friends', function (Blueprint $table) {
-        //     $table->id();
-        //     $table->timestamps();
-        // });
+
         $procedure = "DROP PROCEDURE IF EXISTS `pr_messages_friends`;
         CREATE PROCEDURE `pr_messages_friends` (IN id bigint)
         BEGIN
