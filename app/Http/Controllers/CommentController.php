@@ -55,12 +55,7 @@ class CommentController extends Controller
         $comment->user_id = Auth::User()->id;
         $comment->save();
         $post = Post::find($request->post_id);
-        // return view('post.show',['post' => $post]);
         $commentlist = DB::table('view_comment_list')->orderby('code')->orderby('id')->get();
-        // $commentlist = View_CommentList::all();
-        // foreach($commentlist as $comment){
-        //   dd($comment->content);
-        // }
         // return view('post.show',['post' => $post,'commentlist' => $commentlist]);
          return redirect()->route('posts.show',$post);
     }
