@@ -29,6 +29,7 @@ Route::resource('posts', PostController::class);
 Route::resource('comments', CommentController::class);
 Route::resource('messages', MessageController::class);
 Route::get('/chat/{id}', [MessageController::class, 'chat'])->name('messages.chat');
+// Route::get('/posts/{id}', [PostController::class, 'chat'])->name('messages.chat');
 Route::post('/toggle-approve', [CommentController::class,'approval'])->name('approve');
 
 Route::get('/get-friends', [MessageController::class, 'getfriends'])->name('friends');

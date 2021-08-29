@@ -61,8 +61,8 @@ class CommentController extends Controller
         // foreach($commentlist as $comment){
         //   dd($comment->content);
         // }
-        return view('post.show',['post' => $post,'commentlist' => $commentlist]);
-        // redirect()->route('posts.show',$post,$commentlist);
+        // return view('post.show',['post' => $post,'commentlist' => $commentlist]);
+         return redirect()->route('posts.show',$post);
     }
 
     public function approval(Request $request)

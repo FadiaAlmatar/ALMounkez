@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Models\View_CommentList;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
@@ -56,7 +57,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        $commentlist = View_CommentList::all();
+        $commentlist = DB::table('view_comment_list')->orderby('code')->orderby('id')->get();
         return view('post.show',['post' => $post,'commentlist' => $commentlist]);
     }
 

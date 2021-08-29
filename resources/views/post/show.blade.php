@@ -14,12 +14,15 @@
     <section class="section" style="height: 100%;width:50%;margin:auto;">
         <div class="container">
           <h5>Comments:</h5>
-          <hr>
+          {{-- <hr> --}}
                   @foreach ($commentlist as $comment)
                   <span hidden>{{$var = $comment->id}}</span>
+                  @if ($comment->replyto == 0)
+                     <hr>
+                   @endif
                   <p> {{$comment->content}}</p>
                   @if($comment->replyto == 0)
-                  <hr>
+                  {{-- <hr> --}}
                   <form class="card-content" action="{{ route('comments.store') }}" method="POST" >
                     @csrf
                     <input name="post_id" value ={{$post->id}} hidden>
@@ -27,9 +30,8 @@
                     <textarea class=" @error('content')is-danger @enderror" name="content" placeholder="Reply here...">{{ old('content') }}</textarea><br>
                     <button class="button is-dark" style="color: #eb640a;align:center" >Reply</button>
                 </form>
-                <hr>
+                {{-- <hr> --}}
                 @endif
-
                   @endforeach
              </div>
     </section>
@@ -38,10 +40,10 @@
             <div class="container">
                 <form action="{{ route('comments.store') }}" method="POST" >
                     @csrf
-                <input name="post_id" value ={{$post->id}} hidden>
-                <input name="replyto" value ={{0}} hidden>
-                <textarea style="width:50%"class=" @error('content')is-danger @enderror" name="content" placeholder="Comment here...">{{ old('content') }}</textarea><br>
-                <button class="button is-dark" style="color: #eb640a;align:center" >Comment</button>
+                    <input name="post_id" value ={{$post->id}} hidden>
+                    <input name="replyto" value ={{0}} hidden>
+                    <textarea style="width:50%"class=" @error('content')is-danger @enderror" name="content" placeholder="Comment here...">{{ old('content') }}</textarea><br>
+                    <button class="button is-dark" style="color: #eb640a;align:center" >Comment</button>
                 </form>
             </div>
             </section>
