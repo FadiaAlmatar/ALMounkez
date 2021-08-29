@@ -45,22 +45,14 @@ class CommentController extends Controller
             'post_id'         => 'required|numeric|exists:posts,id',
 
         ]);
-        // $post = Post::find($post_id);
         $comment = new Comment();
         $comment->content= $request->content;
         $comment->post_id = $request->post_id;
         $comment->approved = false;
         $comment->replyto = $request->replyto;
-        //  dd($request->replyto);
         $comment->user_id = Auth::User()->id;
-        //  dd($request->post_id);
-        // $comment->post()->associate($post);
-        // dd('hereeeeee');
         $comment->save();
-        // dd($request->replyto);
-        // dd('hereeeeee');
         $post = Post::find($request->post_id);
-        // dd($request->post_id);
         return view('post.show',['post' => $post]);
     }
 
