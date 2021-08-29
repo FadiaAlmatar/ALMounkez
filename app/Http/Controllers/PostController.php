@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use App\Models\View_CommentList;
 use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
@@ -55,7 +56,8 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return view('post.show',['post' => $post]);
+        $commentlist = View_CommentList::all();
+        return view('post.show',['post' => $post,'commentlist' => $commentlist]);
     }
 
     /**

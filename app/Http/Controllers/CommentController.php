@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Comment;
 use App\Models\Post;
+use App\Models\Comment;
 use Illuminate\Http\Request;
+use App\Models\View_CommentList;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
@@ -53,7 +55,14 @@ class CommentController extends Controller
         $comment->user_id = Auth::User()->id;
         $comment->save();
         $post = Post::find($request->post_id);
-        return view('post.show',['post' => $post]);
+        // return view('post.show',['post' => $post]);
+        $commentlist = DB::table('view_comment_list')->orderby('code')->orderby('id')->get();
+        // $commentlist = View_CommentList::all();
+        // foreach($commentlist as $comment){
+        //   dd($comment->content);
+        // }
+        return view('post.show',['post' => $post,'commentlist' => $commentlist]);
+        // redirect()->route('posts.show',$post,$commentlist);
     }
 
     public function approval(Request $request)
@@ -62,7 +71,6 @@ class CommentController extends Controller
       $comment->approved = 1;
       $comment->save();
       return redirect()->back();
-
     }
 
     /**
