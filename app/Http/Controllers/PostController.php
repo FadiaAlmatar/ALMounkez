@@ -57,7 +57,12 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        $commentlist = DB::table('view_comment_list')->orderby('code')->orderby('id')->get();
+        $commentlist = DB::table('view_comment_list')
+                ->where([['approved' , false],
+                        ['user_id', Auth::User()->id],
+                  ])
+                ->orwhere ('approved', true)
+                ->orderby('code')->orderby('id')->get();
         return view('post.show',['post' => $post,'commentlist' => $commentlist]);
     }
 
