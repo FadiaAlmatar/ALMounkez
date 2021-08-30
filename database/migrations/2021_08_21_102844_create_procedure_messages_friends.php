@@ -25,6 +25,8 @@ class CreateProcedureMessagesFriends extends Migration
 
 
         DB::unprepared($procedure);
+
+
     }
 
     /**

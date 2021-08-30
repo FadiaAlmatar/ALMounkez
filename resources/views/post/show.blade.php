@@ -20,6 +20,7 @@
                   @if ($comment->replyto == 0)
                      <hr>
                    @endif
+                  {{-- <h6><u style="text-transform: capitalize">{{$comment->user->name}}</u>&nbsp; {{$comment->created_at}}</h6> --}}
                   <p> {{$comment->content}}</p>
                   @if($comment->replyto == 0)
                   {{-- <hr> --}}
