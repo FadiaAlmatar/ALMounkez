@@ -22,9 +22,7 @@ class MessageController extends Controller
      */
     public function index()
     {
-        // $users = User::all();
-        // $messages = Message::all();
-        // return view('message.index',['users'=> $users, 'messages'=> $messages]);
+
     }
 
     /**
@@ -48,7 +46,6 @@ class MessageController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            // 'message'         => 'required',
             'user_id'         => 'integer',
         ]);
         $message = new Message();
@@ -92,54 +89,9 @@ class MessageController extends Controller
         }
         $last_message = [];
         $friends = DB::select("CALL pr_messages_friends( ".Auth::User()->id.")");
-        // dd($friends);
         $unread_messages = DB::select("CALL pr_unread_messages( ".Auth::User()->id.")");
         $count_unread_messages = DB::select("CALL pr_count_unread_messages( ".Auth::User()->id.")");
-
-        // foreach($friends as $friend){
-        //   array_push($last_message ,DB::select("CALL pr_last_message( ".Auth::User()->id.",".$friend->user_id.")"));
-        //   dd($last_message);
-        // }
-        //   dd($last_message);
         return view('message.show',['count_unread_messages'=>$count_unread_messages,'unread_messages' => $unread_messages,'friends'=> $friends, 'messages'=> $messages,'users'=>$users,'friend_name'=>$friend_name->name,'friend_id'=>$friend->id ]);
-
-        // print_r($friends);
-        // print_r($unread_messages);
-        // $result = array_diff($friends, $unread_messages);
-        // foreach($friends as $friend){
-        //      foreach($unread_messages as $unread_message){
-        //      if($friend->user_id  <> $unread_message->user_id){
-
-        //         $name = User::where(['id' => $friend->user_id])->pluck('name')->first();
-        //         array_push($read_messages,$name);
-        //      }
-        //     }
-        // }
-        // foreach ($read_messages as $key => $value ){
-            // print_r(array_values($read_messages));
-        // }
-        // print_r($read_messages);
-        // foreach($friends as $friend){
-        //   if(Arr::exists( $unread_messages,$friend->user_id) == false){
-
-        //        array_push($array,$friend->user_id);
-        // }
-        // }
-
-        //  $friendsname = DB::table('users')-> SELECT name FROM users INNER JOIN friends ON id=friends->user_id;
-        // dd($unread_messages);
-        // foreach($friends as $friend){
-        //   DB::table('messages_friends')->insert(['user_id' => $friend->user_id]);
-        // }
-        // foreach($unread_messages as $unread_message){
-        //   DB::table('unread_messages_friends')->insert(['user_id' => $unread_message->user_id]);
-        // }
-        // SELECT user_id FROM friends INNER JOIN nread_messages ON table1.user_id = table2.user_id;
-        // $unread_friends = DB::table('messages_friends')
-        //     ->join('unread_messages_friends', 'messages_friends.user_id', '=', 'unread_messages_friends.user_id')
-        //     ->select('messages_friends.user_id')
-        //     ->get();
-        //     dd($unread_friends );
     }
 
     /**
