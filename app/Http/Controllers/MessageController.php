@@ -54,7 +54,7 @@ class MessageController extends Controller
         $message->seen = false;
         $message->user_id = Auth::User()->id;//sender
         $message->save();
-         $user = User::find(Auth::User()->id);
+        $user = User::find(Auth::User()->id);
         return redirect()->back();
     }
 
