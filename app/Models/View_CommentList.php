@@ -9,4 +9,5 @@ class View_CommentList extends Model
 {
 
     public $table = "view_comment_list";
+
 }
