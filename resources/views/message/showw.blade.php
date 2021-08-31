@@ -6,7 +6,7 @@
     <div class="page-title">
         <div class="row gutters">
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                <h5 class="title">Chat App</h5>
+                <h5 class="title"></h5>
             </div>
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12"> </div>
         </div>
@@ -39,14 +39,13 @@
                                 </div>
                                 <ul class="users">
                                     @if($friends <> null)
-                                    <br><span>FRIENDS</span><br>
+                                    {{-- <br><span>FRIENDS</span><br> --}}
                                     <?php $var = false ?>
                                     @foreach ($friends as $friend)
                                     <li class="person" data-chat="person1">
-                                        <div class="user">
-                                            <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
+                                        {{-- <div class="user">
                                             <span class="status busy"></span>
-                                        </div>
+                                        </div> --}}
                                         <p class="name-time">
                                             <?php $var = false ?>
                                             @foreach ($unread_messages as $unread_message)
@@ -70,65 +69,74 @@
                                         $last_message = [];
                                         $last_message = DB::select("CALL pr_last_message( ".Auth::User()->id.",".$friend->user_id.")");
                                         print_r(substr($last_message[0]->message_content,0,10));
-                                        ?><br>
+                                        ?>
                                         </p>
                                     </li>
                                     @endforeach
                                     @endif
-                                    {{-- <li class="person" data-chat="person1">
-                                        <div class="user">
-                                            <img src="https://www.bootdey.com/img/Content/avatar/avatar1.png" alt="Retail Admin">
-                                            <span class="status offline"></span>
-                                        </div>
-                                        <p class="name-time">
-                                            <span class="name">Steve Bangalter</span>
-                                            <span class="time">15/02/2019</span>
-                                        </p>
-                                    </li> --}}
-
                                 </ul>
                             </div>
                         </div>
                         <div class="col-xl-8 col-lg-8 col-md-8 col-sm-9 col-9">
                             <div class="selected-user">
                                 <span>Chat with <span class="name">{{$friend_name}}</span></span>
-
                             </div>
                             <div class="chat-container">
                                 <ul class="chat-box chatContainerScroll">
-                                    <li class="chat-left">
+                                    <div class="form-group mt-3 mb-0" >
+                                        <form action="{{ route('messages.store') }}" method="POST" >
+                                            @csrf
+                                            <input name="friend_id" value ={{$friend_id}} hidden>
+                                            <textarea  rows="3" placeholder="Type your message here..." style="width:50%"class=" @error('message_content')is-danger @enderror" name="message_content" >{{ old('message_content') }}</textarea>
+                                            <button class="button is-dark" style="color: #eb640a;align:center" >send</button>
+                                          </form>
+                                    </div>
+                                    {{-- <li class="chat-left">
                                         <div class="chat-avatar">
-                                            <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
                                             <div class="chat-name">{{$sender->name}}</div>
                                         </div>
-                                        <div class="chat-text">Hello, I'm Russell.
-                                            <br>How can I help you today?</div>
-                                        <div class="chat-hour">08:55 <span class="fa fa-check-circle"></span></div>
-                                    </li>
-                                    <li class="chat-right">
-                                        <div class="chat-hour">08:56 <span class="fa fa-check-circle"></span></div>
-                                        <div class="chat-text">Hi, Russell
-                                            <br> I need more information about Developer Plan.</div>
-                                        <div class="chat-avatar">
-                                            <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
-                                            <div class="chat-name">Sam</div>
+                                        <div class="chat-text"> --}}
+                                     @foreach($messages as $message)
+                                     @if($message->user_id == Auth::User()->id)
+                                     <li class="chat-left" >
+                                    <div class="chat-text">
+                                            <input value={{$sender = $users->where('id',$message->user_id)->first()}} hidden/>
+                                            <div class="chat-name">{{$sender->name}}</div>
+                                            <span>{{$message->message_content}}</span>
+                                            @if(Auth::User()->id == $message->user_id)
+                                            @if($message->seen == 1)
+                                                <i class="fa fa-check-double fa-xs" aria-hidden="true"></i>
+                                                @else
+                                                <i class="fa fa-check fa-xs" aria-hidden="true" ></i>
+                                                @endif
+                                            @endif
+                                            {{-- <span style="color:blue;float: right;">was sent at: {{$message->created_at}}</span> --}}
+                                        {{-- </div> --}}
+                                    </div>
+                                     </li>
+                                    @else
+                                     <li class="chat-right">
+                                        <div class="chat-text">
+                                                <input value={{$sender = $users->where('id',$message->user_id)->first()}} hidden/>
+                                                <div class="chat-name">{{$sender->name}}</div>
+                                                <span>{{$message->message_content}}</span>
+                                                @if(Auth::User()->id == $message->user_id)
+                                                   @if($message->seen == 1)
+                                                    <i class="fa fa-check-double fa-xs" aria-hidden="true"></i>
+                                                    @else
+                                                    <i class="fa fa-check fa-xs" aria-hidden="true" ></i>
+                                                    @endif
+                                                @endif
+                                                {{-- <span style="color:blue;float: right;">was sent at: {{$message->created_at}}</span> --}}
+                                            {{-- </div> --}}
                                         </div>
-                                    </li>
-                                    <li class="chat-left">
-                                        <div class="chat-avatar">
-                                            <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
-                                            <div class="chat-name">Russell</div>
-                                        </div>
-                                        <div class="chat-text">Are we meeting today?
-                                            <br>Project has been already finished and I have results to show you.</div>
-                                        <div class="chat-hour">08:57 <span class="fa fa-check-circle"></span></div>
-                                    </li>
-
-
+                                      </li>
+                                    @endif
+                                    @endforeach
+                                        {{-- </div> --}}
+                                        {{-- <div class="chat-hour">08:55 <span class="fa fa-check-circle"></span></div> --}}
+                                    {{-- </li> --}}
                                 </ul>
-                                <div class="form-group mt-3 mb-0">
-                                    <textarea class="form-control" rows="3" placeholder="Type your message here..."></textarea>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -144,4 +152,4 @@
     <!-- Content wrapper end -->
 
 </div>
-<x-layouts.app>
+</x-layouts.app>
