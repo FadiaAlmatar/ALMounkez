@@ -68,9 +68,12 @@
                                         $last_message = [];
                                         $last_message = DB::select("CALL pr_last_message( ".Auth::User()->id.",".$friend->user_id.")");
                                         print_r(substr($last_message[0]->message_content,0,10));
+                                        // print_r($last_message[0]->created_at);
                                         ?>
                                         </p>
+                                       <span style="float:right">{{$last_message[0]->created_at}}</span>
                                     </li>
+
                                     @endforeach
                                     @endif
                                 </ul>
@@ -95,6 +98,7 @@
                                             <div class="chat-name">{{$sender->name}}</div>
                                         </div>
                                         <div class="chat-text"> --}}
+                                            <div style="overflow:auto;height:500px">
                                      @foreach($messages as $message)
                                      @if($message->user_id == Auth::User()->id)
                                      <li class="chat-left" >
@@ -135,6 +139,7 @@
                                         {{-- </div> --}}
                                         {{-- <div class="chat-hour">08:55 <span class="fa fa-check-circle"></span></div> --}}
                                     {{-- </li> --}}
+                                </div>
                                 </ul>
                             </div>
                         </div>
