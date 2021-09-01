@@ -87,7 +87,7 @@
                                             @csrf
                                             <input name="friend_id" value ={{$friend_id}} hidden>
                                             <textarea  rows="3" placeholder="Type your message here..." style="width:50%"class=" @error('message_content')is-danger @enderror" name="message_content" >{{ old('message_content') }}</textarea>
-                                            <button class="button is-dark" style="color: #eb640a;align:center" >send</button>
+                                            <button class="button is-dark" style="align:center" >send</button>
                                           </form>
                                     </div>
                                     {{-- <li class="chat-left">
@@ -98,7 +98,7 @@
                                      @foreach($messages as $message)
                                      @if($message->user_id == Auth::User()->id)
                                      <li class="chat-left" >
-                                    <div class="chat-text">
+                                    <div class="chat-text" style="overflow:hidden">
                                             <input value={{$sender = $users->where('id',$message->user_id)->first()}} hidden/>
                                             <div class="chat-name">{{$sender->name}}</div>
                                             <span>{{$message->message_content}}</span>
@@ -115,7 +115,7 @@
                                      </li>
                                     @else
                                      <li class="chat-right">
-                                        <div class="chat-text">
+                                        <div class="chat-text" style="overflow:hidden">
                                                 <input value={{$sender = $users->where('id',$message->user_id)->first()}} hidden/>
                                                 <div class="chat-name">{{$sender->name}}</div>
                                                 <span>{{$message->message_content}}</span>

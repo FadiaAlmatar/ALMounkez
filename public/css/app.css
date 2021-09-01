@@ -254,7 +254,8 @@ body{margin-top:20px;}
 
 .chat-container li .chat-name {
     font-size: .75rem;
-    color: #999999;
+    color: #3d0ee9;
+    /* color: #999999; */
     text-align: center;
 }
 
