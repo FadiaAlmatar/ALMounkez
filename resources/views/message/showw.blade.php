@@ -39,7 +39,6 @@
                                 </div>
                                 <ul class="users">
                                     @if($friends <> null)
-                                    {{-- <br><span>FRIENDS</span><br> --}}
                                     <?php $var = false ?>
                                     @foreach ($friends as $friend)
                                     <li class="person" data-chat="person1">
