@@ -1,7 +1,5 @@
-
 <x-layouts.app>
 <div class="container">
-
     <!-- Page header start -->
     <div class="page-title">
         <div class="row gutters">
@@ -12,17 +10,12 @@
         </div>
     </div>
     <!-- Page header end -->
-
     <!-- Content wrapper start -->
     <div class="content-wrapper">
-
         <!-- Row start -->
         <div class="row gutters">
-
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-
                 <div class="card m-0">
-
                     <!-- Row start -->
                     <div class="row no-gutters">
                         <div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-3">
@@ -42,9 +35,6 @@
                                     <?php $var = false ?>
                                     @foreach ($friends as $friend)
                                     <li class="person" data-chat="person1">
-                                        {{-- <div class="user">
-                                            <span class="status busy"></span>
-                                        </div> --}}
                                         <p class="name-time">
                                             <?php $var = false ?>
                                             @foreach ($unread_messages as $unread_message)
@@ -68,12 +58,10 @@
                                         $last_message = [];
                                         $last_message = DB::select("CALL pr_last_message( ".Auth::User()->id.",".$friend->user_id.")");
                                         print_r(substr($last_message[0]->message_content,0,10));
-                                        // print_r($last_message[0]->created_at);
                                         ?>
                                         </p>
-                                       <span style="float:right">{{$last_message[0]->created_at}}</span>
+                                           <span style="float:right">{{ date("Y-m-d H:i", strtotime($last_message[0]->created_at))}}</span>
                                     </li>
-
                                     @endforeach
                                     @endif
                                 </ul>
@@ -93,11 +81,6 @@
                                             <button class="button is-dark" style="align:center" >send</button>
                                           </form>
                                     </div>
-                                    {{-- <li class="chat-left">
-                                        <div class="chat-avatar">
-                                            <div class="chat-name">{{$sender->name}}</div>
-                                        </div>
-                                        <div class="chat-text"> --}}
                                             <div style="overflow:auto;height:500px">
                                      @foreach($messages as $message)
                                      @if($message->user_id == Auth::User()->id)
@@ -106,6 +89,7 @@
                                             <input value={{$sender = $users->where('id',$message->user_id)->first()}} hidden/>
                                             <div class="chat-name">{{$sender->name}}</div>
                                             <span>{{$message->message_content}}</span>
+                                            <span style="font-size: 10px">{{ date("H:i", strtotime($message->created_at))}}</span>
                                             @if(Auth::User()->id == $message->user_id)
                                                 @if($message->seen == 1)
                                                 <i class="fa fa-check-double fa-xs" aria-hidden="true"></i>
@@ -113,8 +97,6 @@
                                                 <i class="fa fa-check fa-xs" aria-hidden="true" ></i>
                                                 @endif
                                             @endif
-                                            {{-- <span style="color:blue;float: right;">was sent at: {{$message->created_at}}</span> --}}
-                                        {{-- </div> --}}
                                     </div>
                                      </li>
                                     @else
@@ -123,6 +105,7 @@
                                                 <input value={{$sender = $users->where('id',$message->user_id)->first()}} hidden/>
                                                 <div class="chat-name">{{$sender->name}}</div>
                                                 <span>{{$message->message_content}}</span>
+                                                <span style="font-size: 10px">{{ date("H:i", strtotime($message->created_at))}}</span>
                                                 @if(Auth::User()->id == $message->user_id)
                                                    @if($message->seen == 1)
                                                     <i class="fa fa-check-double fa-xs" aria-hidden="true"></i>
@@ -130,15 +113,10 @@
                                                     <i class="fa fa-check fa-xs" aria-hidden="true" ></i>
                                                     @endif
                                                 @endif
-                                                {{-- <span style="color:blue;float: right;">was sent at: {{$message->created_at}}</span> --}}
-                                            {{-- </div> --}}
                                         </div>
                                       </li>
                                     @endif
                                     @endforeach
-                                        {{-- </div> --}}
-                                        {{-- <div class="chat-hour">08:55 <span class="fa fa-check-circle"></span></div> --}}
-                                    {{-- </li> --}}
                                 </div>
                                 </ul>
                             </div>
@@ -146,14 +124,10 @@
                     </div>
                     <!-- Row end -->
                 </div>
-
             </div>
-
         </div>
         <!-- Row end -->
-
     </div>
     <!-- Content wrapper end -->
-
 </div>
 </x-layouts.app>
