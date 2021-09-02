@@ -88,7 +88,7 @@
                                     <div class="chat-text" style="overflow:hidden">
                                             <input value={{$sender = $users->where('id',$message->user_id)->first()}} hidden/>
                                             <div class="chat-name">{{$sender->name}}</div>
-                                            <span>{{$message->message_content}}</span>
+                                            <span style="color: #000">{{$message->message_content}}</span>&nbsp;
                                             <span style="font-size: 10px">{{ date("h:i A", strtotime($message->created_at))}}</span>
                                             @if(Auth::User()->id == $message->user_id)
                                                 @if($message->seen == 1)
@@ -104,7 +104,7 @@
                                         <div class="chat-text" style="overflow:hidden">
                                                 <input value={{$sender = $users->where('id',$message->user_id)->first()}} hidden/>
                                                 <div class="chat-name">{{$sender->name}}</div>
-                                                <span>{{$message->message_content}}</span>
+                                                <span style="color: #000">{{$message->message_content}}</span>&nbsp;
                                                 <span style="font-size: 10px">{{ date("h:i A", strtotime($message->created_at))}}</span>
                                                 @if(Auth::User()->id == $message->user_id)
                                                    @if($message->seen == 1)
