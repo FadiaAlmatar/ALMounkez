@@ -81,7 +81,7 @@
                                             <button class="button is-dark" style="align:center" >send</button>
                                           </form>
                                     </div>
-                                            <div style="overflow:auto;height:500px">
+                                    <div style="overflow:auto;height:500px">
                                      @foreach($messages as $message)
                                      @if($message->user_id == Auth::User()->id)
                                      <li class="chat-left" >
@@ -89,7 +89,7 @@
                                             <input value={{$sender = $users->where('id',$message->user_id)->first()}} hidden/>
                                             <div class="chat-name">{{$sender->name}}</div>
                                             <span>{{$message->message_content}}</span>
-                                            <span style="font-size: 10px">{{ date("H:i", strtotime($message->created_at))}}</span>
+                                            <span style="font-size: 10px">{{ date("H:i A", strtotime($message->created_at))}}</span>
                                             @if(Auth::User()->id == $message->user_id)
                                                 @if($message->seen == 1)
                                                 <i class="fa fa-check-double fa-xs" aria-hidden="true"></i>
@@ -105,7 +105,7 @@
                                                 <input value={{$sender = $users->where('id',$message->user_id)->first()}} hidden/>
                                                 <div class="chat-name">{{$sender->name}}</div>
                                                 <span>{{$message->message_content}}</span>
-                                                <span style="font-size: 10px">{{ date("H:i", strtotime($message->created_at))}}</span>
+                                                <span style="font-size: 10px">{{ date("H:i A", strtotime($message->created_at))}}</span>
                                                 @if(Auth::User()->id == $message->user_id)
                                                    @if($message->seen == 1)
                                                     <i class="fa fa-check-double fa-xs" aria-hidden="true"></i>
