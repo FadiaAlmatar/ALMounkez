@@ -1,15 +1,5 @@
 <x-layouts.app>
 <div class="container">
-    <!-- Page header start -->
-    <div class="page-title">
-        <div class="row gutters">
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                <h5 class="title"></h5>
-            </div>
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12"> </div>
-        </div>
-    </div>
-    <!-- Page header end -->
     <!-- Content wrapper start -->
     <div class="content-wrapper">
         <!-- Row start -->
@@ -17,10 +7,11 @@
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="card m-0">
                     <!-- Row start -->
+                    {{-- start friends list --}}
                     <div class="row no-gutters">
                         <div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-3">
                             <div class="users-container">
-                                <div class="chat-search-box">
+                                {{-- <div class="chat-search-box">
                                     <div class="input-group">
                                         <input class="form-control" placeholder="Search">
                                         <div class="input-group-btn">
@@ -29,7 +20,7 @@
                                             </button>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <ul class="users">
                                     @if($friends <> null)
                                     <?php $var = false ?>
@@ -67,6 +58,8 @@
                                 </ul>
                             </div>
                         </div>
+                        {{-- end friends list --}}
+                        {{-- start show messages --}}
                         <div class="col-xl-8 col-lg-8 col-md-8 col-sm-9 col-9">
                             <div class="selected-user">
                                 <span>Chat with <span class="name">{{$friend_name}}</span></span>
@@ -79,40 +72,40 @@
                                             <input name="friend_id" value ={{$friend_id}} hidden>
                                             <textarea  rows="3" placeholder="Type your message here..." style="width:50%"class=" @error('message_content')is-danger @enderror" name="message_content" >{{ old('message_content') }}</textarea>
                                             <button class="button is-dark" style="align:center" >send</button>
-                                          </form>
+                                        </form>
                                     </div>
                                     <div style="overflow:auto;height:500px">
-                                     @foreach($messages as $message)
-                                     @if($message->user_id == Auth::User()->id)
-                                     <li class="chat-left" >
+                                    @foreach($messages as $message)
+                                    @if($message->user_id == Auth::User()->id)
+                                    <li class="chat-left" >
                                     <div class="chat-text" style="overflow:hidden">
+                                        <input value={{$sender = $users->where('id',$message->user_id)->first()}} hidden/>
+                                        <div class="chat-name">{{$sender->name}}</div>
+                                        <span style="color: #000">{{$message->message_content}}</span>&nbsp;
+                                        <span style="font-size: 10px">{{ date("h:i A", strtotime($message->created_at))}}</span>
+                                        @if(Auth::User()->id == $message->user_id)
+                                            @if($message->seen == 1)
+                                                <i class="fa fa-check-double fa-xs" aria-hidden="true"></i>
+                                            @else
+                                                <i class="fa fa-check fa-xs" aria-hidden="true"></i>
+                                            @endif
+                                        @endif
+                                    </div>
+                                    </li>
+                                    @else
+                                     <li class="chat-right">
+                                        <div class="chat-text" style="overflow:hidden">
                                             <input value={{$sender = $users->where('id',$message->user_id)->first()}} hidden/>
                                             <div class="chat-name">{{$sender->name}}</div>
                                             <span style="color: #000">{{$message->message_content}}</span>&nbsp;
                                             <span style="font-size: 10px">{{ date("h:i A", strtotime($message->created_at))}}</span>
                                             @if(Auth::User()->id == $message->user_id)
                                                 @if($message->seen == 1)
-                                                <i class="fa fa-check-double fa-xs" aria-hidden="true"></i>
+                                                    <i class="fa fa-check-double fa-xs" aria-hidden="true"></i>
                                                 @else
-                                                <i class="fa fa-check fa-xs" aria-hidden="true" ></i>
+                                                    <i class="fa fa-check fa-xs" aria-hidden="true" ></i>
                                                 @endif
                                             @endif
-                                    </div>
-                                     </li>
-                                    @else
-                                     <li class="chat-right">
-                                        <div class="chat-text" style="overflow:hidden">
-                                                <input value={{$sender = $users->where('id',$message->user_id)->first()}} hidden/>
-                                                <div class="chat-name">{{$sender->name}}</div>
-                                                <span style="color: #000">{{$message->message_content}}</span>&nbsp;
-                                                <span style="font-size: 10px">{{ date("h:i A", strtotime($message->created_at))}}</span>
-                                                @if(Auth::User()->id == $message->user_id)
-                                                   @if($message->seen == 1)
-                                                    <i class="fa fa-check-double fa-xs" aria-hidden="true"></i>
-                                                    @else
-                                                    <i class="fa fa-check fa-xs" aria-hidden="true" ></i>
-                                                    @endif
-                                                @endif
                                         </div>
                                       </li>
                                     @endif
@@ -121,6 +114,7 @@
                                 </ul>
                             </div>
                         </div>
+                        {{-- end show messages --}}
                     </div>
                     <!-- Row end -->
                 </div>
