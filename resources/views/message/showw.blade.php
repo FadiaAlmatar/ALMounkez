@@ -11,16 +11,6 @@
                     <div class="row no-gutters">
                         <div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-3">
                             <div class="users-container">
-                                {{-- <div class="chat-search-box">
-                                    <div class="input-group">
-                                        <input class="form-control" placeholder="Search">
-                                        <div class="input-group-btn">
-                                            <button type="button" class="btn btn-info">
-                                                <i class="fa fa-search"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div> --}}
                                 <ul class="users">
                                     @if($friends <> null)
                                     <?php $var = false ?>
