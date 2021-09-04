@@ -6,6 +6,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MessageController;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\PDFController;
 // use DB;
 
 
@@ -40,3 +41,5 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+Route::get('create-pdf-file', [PDFController::class, 'index']);

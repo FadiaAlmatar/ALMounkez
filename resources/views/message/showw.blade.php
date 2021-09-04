@@ -49,6 +49,9 @@
                         </div>
                         {{-- end friends list --}}
                         {{-- start show messages --}}
+                        <form action="pdf.php" method="POST" >
+                            @csrf
+                        $html = '
                         <div class="col-xl-8 col-lg-8 col-md-8 col-sm-9 col-9">
                             <div class="selected-user">
                                 <span>Chat with <span class="name">{{$friend_name}}</span></span>
@@ -61,8 +64,9 @@
                                             <input name="friend_id" value ={{$friend_id}} hidden>
                                             <textarea  rows="3" placeholder="Type your message here..." style="width:50%"class=" @error('message_content')is-danger @enderror" name="message_content" >{{ old('message_content') }}</textarea>
                                             <button class="button is-dark" style="align:center" >send</button>
-                                            <button class="button is-dark" style="align:center" >print</button>
+
                                         </form>
+                                        <button class="button is-dark" style="align:center" >print</button>
                                     </div>
                                     <div style="overflow:auto;height:500px">
                                     @foreach($messages as $message)
@@ -104,6 +108,8 @@
                                 </ul>
                             </div>
                         </div>
+                        ';
+                    </form>
                         {{-- end show messages --}}
                     </div>
                     <!-- Row end -->
