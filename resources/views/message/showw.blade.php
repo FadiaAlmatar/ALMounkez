@@ -25,8 +25,7 @@
                                                 @foreach ($count_unread_messages as $count_unread_message)
                                                   @if($unread_message->user_id == $count_unread_message->user_id)
                                                      <span style="color:black;font-weight:bold">{{$count_unread_message->number}}</span><br>
-                                                  @else
-                                                   @continue
+                                                  @else   @continue
                                                   @endif
                                                 @endforeach
                                                @continue
