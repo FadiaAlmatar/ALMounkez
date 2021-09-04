@@ -78,6 +78,9 @@ class MessageController extends Controller
         ])->orwhere([
             ['friend_id', Auth::User()->id],
             ['user_id', $friend->id],])->orderBy('created_at','DESC')->get();
+        // $messages = $message->groupBy(function($date) {
+        //     return Carbon::parse($date->created_at)->format('Y-m-d'); });
+            // $messages = $message->groupBy('created_at');
             // ->groupBy(function($date) {
                 // return Carbon::parse($date->created_at)->format('Y-m-d'); });
         $friend_name = User::find($friend->id);
