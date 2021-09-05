@@ -2,15 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Message;
-use App\Models\User;
-use Brick\Math\BigInteger;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use App\Models\User;
+use App\Models\Message;
+use Barryvdh\DomPDF\PDF;
+use Brick\Math\BigInteger;
 use Illuminate\Support\Arr;
+use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
+// use Barryvdh\DomPDF\PDF;
+use Illuminate\Support\Facades\Auth;
+
+
 
 
 class MessageController extends Controller
@@ -22,8 +26,57 @@ class MessageController extends Controller
      */
     public function index()
     {
-
     }
+        public function print(Request $request,$id)
+        {
+
+            $message = Message::latest()->paginate(5);
+            $friends = DB::select("CALL pr_messages_friends( ".Auth::User()->id.")");
+            // dd($friends);
+            $unread_messages = DB::select("CALL pr_unread_messages( ".Auth::User()->id.")");
+            $friend = User::findOrFail($id);
+            $friend_name = User::find($friend->id);
+            $friend_id = Message::find($id);
+            $messages = DB::table('messages')->where([
+                ['friend_id', $friend->id],
+                ['user_id', Auth::User()->id],
+            ])->orwhere([
+                ['friend_id', Auth::User()->id],
+                ['user_id', $friend->id],])->orderBy('created_at','DESC')->get();
+                $users = User::all();
+            // dd($friends);
+            $data = [
+                'message' => $message,
+                'friends' => $friends,
+                'unread_messages' => $unread_messages,
+                'friend_name'  => $friend_name,
+                'friend_id'  => $friend_id,
+                'messages'  => $messages,
+                'users' => $users
+
+            ];
+            // dd($data);
+            // if($request->has('download'))
+            // {
+
+                $pdf = app('dompdf.wrapper');
+                // dd("here");
+                // dd($pdf);
+                // $pdf->loadView('message.showw',compact('message'));
+                // $pdf->loadView('message.showw',$data);
+
+                $pdf = PDF::loadView('message.showw',$data);
+                // $pdf->loadView('message.showw',$data);
+                // $pdf = PDF::loadView('frontend.pdf', $data);
+                // dd($pdf->download('pdfview.pdf'));
+                return $pdf->download('pdfview.pdf');
+                // return $pdf->stream('pdfview'.'.pdf');
+            // }
+            // return view('message.showw',compact('data'));
+        }
+    // }
+
+    // }
 
     /**
      * Show the form for creating a new resource.

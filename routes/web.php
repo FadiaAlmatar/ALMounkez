@@ -30,6 +30,7 @@ Route::resource('posts', PostController::class);
 Route::resource('comments', CommentController::class);
 Route::resource('messages', MessageController::class);
 Route::get('/chat/{id}', [MessageController::class, 'chat'])->name('messages.chat');
+Route::get('/print/{id}', [MessageController::class, 'print'])->name('messages.print');
 
 Route::post('/toggle-approve', [CommentController::class,'approval'])->name('approve');
 

@@ -49,9 +49,8 @@
                         </div>
                         {{-- end friends list --}}
                         {{-- start show messages --}}
-                        <form action="pdf.php" method="POST" >
-                            @csrf
-                        $html = '
+                        {{-- <form action="{{route('messages.index',['download'=>'pdf'])}}" method="POST" > --}}
+                            {{-- @csrf --}}
                         <div class="col-xl-8 col-lg-8 col-md-8 col-sm-9 col-9">
                             <div class="selected-user">
                                 <span>Chat with <span class="name">{{$friend_name}}</span></span>
@@ -66,7 +65,8 @@
                                             <button class="button is-dark" style="align:center" >send</button>
 
                                         </form>
-                                        <button class="button is-dark" style="align:center" >print</button>
+                                        {{-- <button class="button is-dark" style="align:center" >print</button> --}}
+                                        <a class="btn btn-primary" href="{{route('messages.print', $friend_id,['download'=>'pdf'])}}">Download PDF</a>
                                     </div>
                                     <div style="overflow:auto;height:500px">
                                     @foreach($messages as $message)
@@ -108,8 +108,9 @@
                                 </ul>
                             </div>
                         </div>
-                        ';
-                    </form>
+                        {{-- '; --}}
+
+                    {{-- </form> --}}
                         {{-- end show messages --}}
                     </div>
                     <!-- Row end -->
