@@ -121,7 +121,7 @@
     </div>
     <!-- Content wrapper end -->
 </div>
-<script>
+{{-- <script>
     window.print();
-</script>
+</script> --}}
 </x-layouts.app>
