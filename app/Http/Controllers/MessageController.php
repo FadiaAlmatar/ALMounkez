@@ -31,6 +31,7 @@ class MessageController extends Controller
         public function print(Request $request,$id)
         {
             // set_time_limit(0);
+            ini_set('max_execution_time', 3000);
 
             // $message = Message::latest()->paginate(5);
             $message = Message::all();
@@ -81,6 +82,7 @@ class MessageController extends Controller
                 $path= public_path($friend_name.'.pdf');
                 header( 'Content-type: application/pdf');
                 // set_time_limit(3000);
+                dd("here");
                 return response()->file($path);
                 // set_time_limit(300);
                 // return $pdf->download('pdfview.pdf');
