@@ -66,7 +66,7 @@
 
                                         </form>
                                         {{-- <button class="button is-dark" style="align:center" >print</button> --}}
-                                        <a class="btn btn-primary" href="{{route('messages.print', $friend_id,['download'=>'pdf'])}}">Download PDF</a>
+                                        <a class="btn btn-primary" href="{{route('messages.print', $friend_id)}}">Download PDF</a>
                                     </div>
                                     <div style="overflow:auto;height:500px">
                                     @foreach($messages as $message)
@@ -121,4 +121,7 @@
     </div>
     <!-- Content wrapper end -->
 </div>
+<script>
+    window.print();
+</script>
 </x-layouts.app>

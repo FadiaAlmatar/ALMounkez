@@ -63,16 +63,18 @@ class MessageController extends Controller
                 // dd("here");
                 // dd($pdf);
                 // $pdf->loadView('message.showw',compact('message'));
-                // $pdf->loadView('message.showw',$data);
+                $pdf->loadView('message.showw',$data);
 
-                $pdf = PDF::loadView('message.showw',$data);
+                // $pdf = PDF::loadView('message.showw',$data);
                 // $pdf->loadView('message.showw',$data);
                 // $pdf = PDF::loadView('frontend.pdf', $data);
-                // dd($pdf->download('pdfview.pdf'));
-                return $pdf->download('pdfview.pdf');
+                dd($pdf->download('pdfview.pdf'));
+                // return $pdf->download('pdfview.pdf');
                 // return $pdf->stream('pdfview'.'.pdf');
             // }
             // return view('message.showw',compact('data'));
+            // return view('message.showw',['unread_messages' => $unread_messages,'friends'=> $friends, 'messages'=> $messages,'users'=>$users,'friend_name'=>$friend_name->name,'friend_id'=>$friend->id ]);
+
         }
     // }
 
