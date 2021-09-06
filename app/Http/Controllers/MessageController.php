@@ -3,17 +3,21 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use Dompdf\Dompdf;
 use App\Models\User;
-use App\Models\Message;
 // use Barryvdh\DomPDF\PDF;
+// use Barryvdh\DomPDF\PDF;
+use App\Models\Message;
 use Barryvdh\DomPDF\PDF;
 use Brick\Math\BigInteger;
 use Illuminate\Support\Arr;
+// use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
-// use Barryvdh\DomPDF\PDF;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
+
 
 
 
@@ -62,7 +66,7 @@ class MessageController extends Controller
             // dd($data);
             // if($request->has('download'))
             // {
-                $pdf = app('dompdf.wrapper');
+                // $pdf = app('dompdf.wrapper');
                 // dd("here");
                 // dd($pdf);
                 // $pdf->loadView('message.showw',compact('message'));
@@ -77,15 +81,19 @@ class MessageController extends Controller
                 // return $pdf->stream('pdfview'.'.pdf');
                 // view()->share('message.showw',$data);
                 // $pdf = app('dompdf.wrapper');
-                $pdf->loadView('message.showw', ['data' => $data,'users' => $users,'friends' => $friends,'unread_messages' => $unread_messages,'friend_name'  => $friend_name,'friend_id'  => $friend_id,'messages'  => $messages]);
-                $pdf->save(public_path($friend_name.'.pdf'));
-                $path= public_path($friend_name.'.pdf');
-                header( 'Content-type: application/pdf');
+                $pdf = App::make('dompdf.wrapper');
+               $pdf->loadView('message.chatpdf', ['data' => $data,'users' => $users,'friends' => $friends,'unread_messages' => $unread_messages,'friend_name'  => $friend_name,'friend_id'  => $friend_id,'messages'  => $messages])->setOptions(['defaultFont' => 'sans-serif']);
+
+                // $pdf->loadView('message.showw', ['data' => $data,'users' => $users,'friends' => $friends,'unread_messages' => $unread_messages,'friend_name'  => $friend_name,'friend_id'  => $friend_id,'messages'  => $messages]);
+                // $pdf->save(public_path($friend_name.'.pdf'));
+                // dd("here");
+                // $path= public_path($friend_name.'.pdf');
+                // header( 'Content-type: application/pdf');
                 // set_time_limit(3000);
-                dd("here");
-                return response()->file($path);
+
+                // return response()->file($path);
                 // set_time_limit(300);
-                // return $pdf->download('pdfview.pdf');
+                return $pdf->download('pdfview.pdf');
             // }
             // return view('message.showw',compact('data'));
             // return view('message.showw',['unread_messages' => $unread_messages,'friends'=> $friends, 'messages'=> $messages,'users'=>$users,'friend_name'=>$friend_name->name,'friend_id'=>$friend->id ]);

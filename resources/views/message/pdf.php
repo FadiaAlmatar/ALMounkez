@@ -1,6 +1,6 @@
-<?php
+<!-- <?php
 
-use Mpdf\Mpdf;
+// use Mpdf\Mpdf;
 use Mpdf\HTMLParserMode;
 use phpDocumentor\Reflection\PseudoTypes\True_;
 
@@ -15,4 +15,4 @@ $mpdf->WriteHTML($stylesheet,\Mpdf\HTMLParserMode::HEADER_CSS);
 $mpdf->WriteHTML($html,\Mpdf\HTMLParserMode::HTML_BODY);
 // $mpdf->WriteHTML('<h1>Hello world!</h1>');
 $mpdf->Output("myPDF.pdf","D");
-?>
+?> -->
