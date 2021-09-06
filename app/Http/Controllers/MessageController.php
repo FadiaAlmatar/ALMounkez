@@ -54,19 +54,19 @@ class MessageController extends Controller
         // $this->load->library('mpdf60/mpdf');
         // require_once __DIR__ . '/vendor/autoload.php';
         $html = view('message.chat-pdf',['data' => $data,'users' => $users,'friends' => $friends,'unread_messages' => $unread_messages,'friend_name'  => $friend_name,'friend_id'  => $friend_id,'messages'  => $messages])->render();
-        $pdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => [290,100]]);
-        // $pdf->autoScriptToLang = True;
-        // $pdf->autoLangToFont = True;
+        $pdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => [290,200]]);
+        $pdf->AddPage("P");
+        // $stylesheet = file_get_contents( asset('css/style.css'));
+        // $pdf->WriteHTML($stylesheet,\Mpdf\HTMLParserMode::HEADER_CSS);
+        $pdf->WriteHTML($html);
         // $pdf->loadView('message.chat-pdf', ['data' => $data,'users' => $users,'friends' => $friends,'unread_messages' => $unread_messages,'friend_name'  => $friend_name,'friend_id'  => $friend_id,'messages'  => $messages]);
         // ->setOptions(['defaultFont' => 'sans-serif']);
-        // $html = $this->renderPartial('message.chat-pdf',['data' => $data,'users' => $users,'friends' => $friends,'unread_messages' => $unread_messages,'friend_name'  => $friend_name,'friend_id'  => $friend_id,'messages'  => $messages],true);
-        // dd("here");
-        $pdf->WriteHTML($html);
-
         // ,['data' => $data,'users' => $users,'friends' => $friends,'unread_messages' => $unread_messages,'friend_name'  => $friend_name,'friend_id'  => $friend_id,'messages'  => $messages]);
-            return  $pdf->Output("myPDF.pdf","D");
+        return  $pdf->Output("myPDF.pdf","D");
 
         // return $pdf->download('pdfview.pdf');
+        // {{-- <?php
+            // public_path() require_once __DIR__ . '/vendor/autoload.php';
 
 
         // require_once __DIR__ . '/vendor/autoload.php';
