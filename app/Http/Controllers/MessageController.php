@@ -3,17 +3,24 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
-use Dompdf\Dompdf;
+// use Dompdf\Dompdf;
 use App\Models\User;
 use App\Models\Message;
-use Barryvdh\DomPDF\PDF;
+// use Barryvdh\DomPDF\PDF as DomPDFPDF;
+// use Barryvdh\DomPDF\PDF;
+// use Barryvdh\DomPDF\PDF;
+use niklasravnsborg\LaravelPdf\PDF;
+// use Mpdf\HTMLParserMode;
 use Brick\Math\BigInteger;
+use Dompdf\Adapter\PDFLib;
 use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
+        // use phpDocumentor\Reflection\PseudoTypes\True_;
+        // require_once __DIR__ . '/vendor/autoload.php';
 class MessageController extends Controller
 {
     /**
@@ -26,7 +33,7 @@ class MessageController extends Controller
     }
     public function print(Request $request,$id)
     {
-        ini_set('max_execution_time', 3000);
+        // ini_set('max_execution_time', 3000);
         $message = Message::all();
         $friends = DB::select("CALL pr_messages_friends( ".Auth::User()->id.")");
         $unread_messages = DB::select("CALL pr_unread_messages( ".Auth::User()->id.")");
@@ -42,10 +49,36 @@ class MessageController extends Controller
         $users = User::all();
         $data = [
                 'message' => $message,
+
             ];
-        $pdf = App::make('dompdf.wrapper');
-        $pdf->loadView('message.chat-pdf', ['data' => $data,'users' => $users,'friends' => $friends,'unread_messages' => $unread_messages,'friend_name'  => $friend_name,'friend_id'  => $friend_id,'messages'  => $messages])->setOptions(['defaultFont' => 'sans-serif']);
+        $pdf = App::make('mpdf.wrapper');
+        // $this->load->library('mpdf60/mpdf');
+        // require_once __DIR__ . '/vendor/autoload.php';
+        // $pdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => [290,100]]);
+        // $pdf->autoScriptToLang = True;
+        // $pdf->autoLangToFont = True;
+        $pdf->loadView('message.chat-pdf', ['data' => $data,'users' => $users,'friends' => $friends,'unread_messages' => $unread_messages,'friend_name'  => $friend_name,'friend_id'  => $friend_id,'messages'  => $messages]);
+        // ->setOptions(['defaultFont' => 'sans-serif']);
+        // $html = $this->renderPartial('message.chat-pdf',['data' => $data,'users' => $users,'friends' => $friends,'unread_messages' => $unread_messages,'friend_name'  => $friend_name,'friend_id'  => $friend_id,'messages'  => $messages],true);
+
+        // $pdf->WriteHTML(view('message.chat-pdf')->render(),['data' => $data,'users' => $users,'friends' => $friends,'unread_messages' => $unread_messages,'friend_name'  => $friend_name,'friend_id'  => $friend_id,'messages'  => $messages]);
+            // return  $pdf->Output("myPDF.pdf","D");
+
         return $pdf->download('pdfview.pdf');
+
+
+        // require_once __DIR__ . '/vendor/autoload.php';
+
+        // $mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => [290,100]]);
+        // $mpdf->autoScriptToLang = True;
+        // $mpdf->autoLangToFont = True;
+        // $mpdf->AddPage("P");
+        // $stylesheet = file_get_contents('style.css');
+        // $mpdf->WriteHTML($stylesheet,\Mpdf\HTMLParserMode::HEADER_CSS);
+        // $html = ['data' => $data,'users' => $users,'friends' => $friends,'unread_messages' => $unread_messages,'friend_name'  => $friend_name,'friend_id'  => $friend_id,'messages'  => $messages];
+        // $mpdf->WriteHTML($html,\Mpdf\HTMLParserMode::HTML_BODY);
+        // $mpdf->Output("myPDF.pdf","D");
+
         // if($request->has('download'))
             // {
                 // $pdf = app('dompdf.wrapper');
