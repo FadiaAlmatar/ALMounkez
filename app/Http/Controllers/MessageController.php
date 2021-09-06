@@ -5,23 +5,15 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use Dompdf\Dompdf;
 use App\Models\User;
-// use Barryvdh\DomPDF\PDF;
-// use Barryvdh\DomPDF\PDF;
 use App\Models\Message;
 use Barryvdh\DomPDF\PDF;
 use Brick\Math\BigInteger;
 use Illuminate\Support\Arr;
-// use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
-
-
-
-
-
 class MessageController extends Controller
 {
     /**
@@ -32,76 +24,42 @@ class MessageController extends Controller
     public function index()
     {
     }
-        public function print(Request $request,$id)
-        {
-            // set_time_limit(0);
-            ini_set('max_execution_time', 3000);
-
-            // $message = Message::latest()->paginate(5);
-            $message = Message::all();
-            $friends = DB::select("CALL pr_messages_friends( ".Auth::User()->id.")");
-            // dd($friends);
-            $unread_messages = DB::select("CALL pr_unread_messages( ".Auth::User()->id.")");
-            $friend = User::findOrFail($id);
-            $friend_name = User::find($friend->id);
-            $friend_id = Message::find($id);
-            $messages = DB::table('messages')->where([
-                ['friend_id', $friend->id],
-                ['user_id', Auth::User()->id],
-            ])->orwhere([
-                ['friend_id', Auth::User()->id],
-                ['user_id', $friend->id],])->orderBy('created_at','DESC')->get();
-                $users = User::all();
-            // dd($friends);
-            $data = [
+    public function print(Request $request,$id)
+    {
+        ini_set('max_execution_time', 3000);
+        $message = Message::all();
+        $friends = DB::select("CALL pr_messages_friends( ".Auth::User()->id.")");
+        $unread_messages = DB::select("CALL pr_unread_messages( ".Auth::User()->id.")");
+        $friend = User::findOrFail($id);
+        $friend_name = User::find($friend->id);
+        $friend_id = Message::find($id);
+        $messages = DB::table('messages')->where([
+            ['friend_id', $friend->id],
+            ['user_id', Auth::User()->id],
+        ])->orwhere([
+            ['friend_id', Auth::User()->id],
+            ['user_id', $friend->id],])->orderBy('created_at','DESC')->get();
+        $users = User::all();
+        $data = [
                 'message' => $message,
-                // 'friends' => $friends,
-                // 'unread_messages' => $unread_messages,
-                // 'friend_name'  => $friend_name,
-                // 'friend_id'  => $friend_id,
-                // 'messages'  => $messages,
-                // 'users' => $users
-
             ];
-            // dd($data);
-            // if($request->has('download'))
+        $pdf = App::make('dompdf.wrapper');
+        $pdf->loadView('message.chat-pdf', ['data' => $data,'users' => $users,'friends' => $friends,'unread_messages' => $unread_messages,'friend_name'  => $friend_name,'friend_id'  => $friend_id,'messages'  => $messages])->setOptions(['defaultFont' => 'sans-serif']);
+        return $pdf->download('pdfview.pdf');
+        // if($request->has('download'))
             // {
                 // $pdf = app('dompdf.wrapper');
-                // dd("here");
-                // dd($pdf);
-                // $pdf->loadView('message.showw',compact('message'));
-                // $pdf->loadView('message.showw',$data);
-
                 // $pdf = PDF::loadView('message.showw',$data);
                 // $pdf->loadView('message.showw',$data);
-                // $pdf = PDF::LoadView('frontend.pdf', $data);
-                // $pdf->save(public_path(path:$message->message_number,'.pdf'));
-                // dd($pdf->download('pdfview.pdf'));
-                // return $pdf->download('pdfview.pdf');
                 // return $pdf->stream('pdfview'.'.pdf');
                 // view()->share('message.showw',$data);
                 // $pdf = app('dompdf.wrapper');
-                $pdf = App::make('dompdf.wrapper');
-               $pdf->loadView('message.chatpdf', ['data' => $data,'users' => $users,'friends' => $friends,'unread_messages' => $unread_messages,'friend_name'  => $friend_name,'friend_id'  => $friend_id,'messages'  => $messages])->setOptions(['defaultFont' => 'sans-serif']);
-
-                // $pdf->loadView('message.showw', ['data' => $data,'users' => $users,'friends' => $friends,'unread_messages' => $unread_messages,'friend_name'  => $friend_name,'friend_id'  => $friend_id,'messages'  => $messages]);
                 // $pdf->save(public_path($friend_name.'.pdf'));
-                // dd("here");
                 // $path= public_path($friend_name.'.pdf');
                 // header( 'Content-type: application/pdf');
-                // set_time_limit(3000);
-
                 // return response()->file($path);
-                // set_time_limit(300);
-                return $pdf->download('pdfview.pdf');
             // }
-            // return view('message.showw',compact('data'));
-            // return view('message.showw',['unread_messages' => $unread_messages,'friends'=> $friends, 'messages'=> $messages,'users'=>$users,'friend_name'=>$friend_name->name,'friend_id'=>$friend->id ]);
-
         }
-    // }
-
-    // }
 
     /**
      * Show the form for creating a new resource.
