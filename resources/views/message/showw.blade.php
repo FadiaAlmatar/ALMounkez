@@ -63,7 +63,6 @@
                                             <input name="friend_id" value ={{$friend_id}} hidden>
                                             <textarea  rows="3" placeholder="Type your message here..." style="width:50%"class=" @error('message_content')is-danger @enderror" name="message_content" >{{ old('message_content') }}</textarea>
                                             <button class="button is-dark" style="align:center" >send</button>
-
                                         </form>
                                         {{-- <button class="button is-dark" style="align:center" >print</button> --}}
                                         <a class="btn btn-primary" href="{{route('messages.print', $friend_id)}}">Download PDF</a>

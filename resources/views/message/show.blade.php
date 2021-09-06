@@ -36,13 +36,13 @@
         {{-- end section friends list with unread messages --}}
         {{-- start section chat --}}
         <div style="width:75%;float:right;">
-          <h5>Chat with {{$friend_name}}</h5>
+          <h5 style="text-align: center">Chat with {{$friend_name}}</h5>
           {{-- start form send message --}}
           <form action="{{ route('messages.store') }}" method="POST" >
             @csrf
             <input name="friend_id" value ={{$friend_id}} hidden>
-            <textarea style="width:50%"class=" @error('message_content')is-danger @enderror" name="message_content" placeholder="write message here...">{{ old('message_content') }}</textarea>
-            <button class="button is-dark" style="color: #eb640a;align:center" >send</button>
+            <textarea style="width:100%"class=" @error('message_content')is-danger @enderror" name="message_content" placeholder="write message here...">{{ old('message_content') }}</textarea>
+            <button class="button is-dark" style="color: blue;align:center;margin-bottom:13px" >send</button>
           </form>
           {{--end form send message   --}}
           {{-- start show messages --}}
