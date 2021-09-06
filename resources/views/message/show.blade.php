@@ -51,8 +51,10 @@
               <div class="card">
                   <div class="card-content">
                     <input value={{$sender = $users->where('id',$message->user_id)->first()}} hidden/>
-                     <h5 style="font-weight: bold">{{$sender->name}} </h5><br>
-                     <span>{{$message->message_content}}</span><br>
+                     <span style="font-weight: bold">{{$sender->name}} </span>
+                     {{-- <span style="color:blue;float: right;">was sent at: {{$message->created_at}}</span><br> --}}
+                     <span style="font-size: 10px;float: right;">{{ date("Y-m-d h:i A", strtotime($message->created_at))}}</span><br>
+                     <span>{{$message->message_content}}</span>
                      @if(Auth::User()->id == $message->user_id)
                        @if($message->seen == 1)
                          <i class="fa fa-check-double fa-xs" aria-hidden="true"></i>
@@ -60,7 +62,7 @@
                         <i class="fa fa-check fa-xs" aria-hidden="true" ></i>
                         @endif
                      @endif
-                     <span style="color:blue;float: right;">was sent at: {{$message->created_at}}</span>
+
                   </div>
               </div>
               @endforeach

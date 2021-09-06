@@ -167,7 +167,7 @@ class MessageController extends Controller
         $friends = DB::select("CALL pr_messages_friends( ".Auth::User()->id.")");
         $unread_messages = DB::select("CALL pr_unread_messages( ".Auth::User()->id.")");
         $count_unread_messages = DB::select("CALL pr_count_unread_messages( ".Auth::User()->id.")");
-        return view('message.showw',['count_unread_messages'=>$count_unread_messages,'unread_messages' => $unread_messages,'friends'=> $friends, 'messages'=> $messages,'users'=>$users,'friend_name'=>$friend_name->name,'friend_id'=>$friend->id ]);
+        return view('message.show',['count_unread_messages'=>$count_unread_messages,'unread_messages' => $unread_messages,'friends'=> $friends, 'messages'=> $messages,'users'=>$users,'friend_name'=>$friend_name->name,'friend_id'=>$friend->id ]);
     }
 
     /**
