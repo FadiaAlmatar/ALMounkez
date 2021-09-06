@@ -49,6 +49,7 @@ class MessageController extends Controller
                 'message' => $message,
 
             ];
+
         // $pdf = App::make('mpdf.wrapper');
         // $this->load->library('mpdf60/mpdf');
         // require_once __DIR__ . '/vendor/autoload.php';
@@ -63,9 +64,9 @@ class MessageController extends Controller
         $pdf->WriteHTML($html);
 
         // ,['data' => $data,'users' => $users,'friends' => $friends,'unread_messages' => $unread_messages,'friend_name'  => $friend_name,'friend_id'  => $friend_id,'messages'  => $messages]);
-            // return  $pdf->Output("myPDF.pdf","D");
+            return  $pdf->Output("myPDF.pdf","D");
 
-        return $pdf->download('pdfview.pdf');
+        // return $pdf->download('pdfview.pdf');
 
 
         // require_once __DIR__ . '/vendor/autoload.php';

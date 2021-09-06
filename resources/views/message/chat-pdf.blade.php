@@ -1,12 +1,11 @@
+<?public_path() require_once __DIR__ . '/vendor/autoload.php';
+?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-
-
     </head>
     <body style="font-family: XB Riyaz;">
-
 <div class="col-xl-8 col-lg-8 col-md-8 col-sm-9 col-9">
     <div class="selected-user">
         <span>Chat with <span class="name">{{$friend_name->name}}</span></span>
