@@ -56,6 +56,7 @@ class MessageController extends Controller
         $html = view('message.chat-pdf',['data' => $data,'users' => $users,'friends' => $friends,'unread_messages' => $unread_messages,'friend_name'  => $friend_name,'friend_id'  => $friend_id,'messages'  => $messages])->render();
         $pdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => [290,200]]);
         $pdf->AddPage("P");
+        $pdf->setFooter('{PAGENO}');
         // $stylesheet = file_get_contents( asset('css/style.css'));
         // $pdf->WriteHTML($stylesheet,\Mpdf\HTMLParserMode::HEADER_CSS);
         $pdf->WriteHTML($html);

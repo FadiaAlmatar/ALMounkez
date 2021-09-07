@@ -2,54 +2,96 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        {{-- <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/><link rel="stylesheet" href="{{ asset('css/app.css') }}"> --}}
+        <style>
+         h5 {
+            /* border:1px solid #220044; */
+            text-align: center;
+            text-decoration: underline;
+            font-size: 25px;
+            }
+            body {
+            font-family: 'XBRiyaz', sans-serif;
+           }
+            .right,.left{
+                /* font-weight: bold; */
+                font-size: 10px;
+                width:30%;
+                display: inline-block;
+                /* float:right; */
+                /* border:1px solid #220044; */
+            }
+            div{
+                border:1px solid #220044;
+                width:60%;
+                margin:auto;
+                margin-bottom: 2px;
+                padding:5px;
+            }
+            .content{
+                font-weight: bold;
+                font-size: 15px;
+            }
+            .right{
+                float:right;
+                color: red;
+                margin-right: 1px;
+            }
+            .left{
+                float:left;
+                color: blue;
+            }
+        </style>
     </head>
-    <body style="font-family: XB Riyaz;">
-<div class="col-xl-8 col-lg-8 col-md-8 col-sm-9 col-9">
-    <div class="selected-user">
-        <span>Chat with <span class="name">{{$friend_name->name}}</span></span>
-    </div>
-    <div class="chat-container">
-        <ul class="chat-box chatContainerScroll">
-            <div style="overflow:auto;height:500px">
-            @foreach($messages as $message)
-            @if($message->user_id == Auth::User()->id)
-            <li class="chat-left" >
-            <div class="chat-text" style="overflow:hidden">
-                {{-- <input value={{$sender = $users->where('id',$message->user_id)->first()}} hidden/> --}}
-                <div style="color: red; text-decoration:underline; " class="chat-name">{{$users->where('id',$message->user_id)->first()->name}}</div>
-                <span style="color: #000">{{$message->message_content}}</span>&nbsp;
-                <span style="font-size: 10px">{{ date("h:i A", strtotime($message->created_at))}}</span>
-                @if(Auth::User()->id == $message->user_id)
-                    @if($message->seen == 1)
-                        <i class="fa fa-check-double fa-xs" aria-hidden="true"></i>
-                    @else
-                        <i class="fa fa-check fa-xs" aria-hidden="true"></i>
-                    @endif
-                @endif
+    <body>
+    {{-- <div style="float:right;"> --}}
+    <h5>Chat with {{$friend_name->name}}</h5>
+    {{-- start show messages --}}
+    {{-- <div style="overflow:auto;height:500px;"> --}}
+        {{-- <table cellpadding="0" cellspacing="0"> --}}
+        @foreach($messages as $message)
+         @if($message->user_id == Auth::User()->id)
+        {{-- <div class="card" style="margin-bottom:3px"> --}}
+            <div class="card-content">
+              {{-- <input value={{$sender = $users->where('id',$message->user_id)->first()}} hidden/> --}}
+              {{-- <tr> --}}
+               <p class="left">{{$users->where('id',$message->user_id)->first()->name}} </p>
+               <p class="right">{{ date("Y-m-d h:i A", strtotime($message->created_at))}}</p>
+            {{-- </tr> --}}
+            {{-- <tr> --}}
+               <p class="content"style="background: white;margin:auto">{{$message->message_content}}
+               @if(Auth::User()->id == $message->user_id)
+                 @if($message->seen == 1)
+                   <i class="fa fa-check-double fa-xs" aria-hidden="true"></i>
+                  @else
+                  <i class="fa fa-check fa-xs" aria-hidden="true" ></i>
+                  @endif
+               @endif
+               </p>
+            {{-- </tr> --}}
             </div>
-            </li>
-            @else
-             <li class="chat-right">
-                <div class="chat-text" style="overflow:hidden">
-                    {{-- <input value={{$sender = $users->where('id',$message->user_id)->first()}} hidden/> --}}
-                    <div style="color: blue;text-decoration:underline; "class="chat-name">{{$users->where('id',$message->user_id)->first()->name}}</div>
-                    <span style="color: #000">{{$message->message_content}}</span>&nbsp;
-                    <span style="font-size: 10px">{{ date("h:i A", strtotime($message->created_at))}}</span>
-                    @if(Auth::User()->id == $message->user_id)
-                        @if($message->seen == 1)
-                            <i class="fa fa-check-double fa-xs" aria-hidden="true"></i>
-                        @else
-                            <i class="fa fa-check fa-xs" aria-hidden="true" ></i>
-                        @endif
-                    @endif
-                </div>
-              </li>
-            @endif
-            @endforeach
-        </div>
-        </ul>
-    </div>
-</div>
-</body>
+        {{-- </div> --}}
+        @else
+        {{-- <div class="card" style="margin-bottom: 3px"> --}}
+          <div class="card-content">
+             <p class="left">{{ date("Y-m-d h:i A", strtotime($message->created_at))}}</p>
+             <p class="right">{{$users->where('id',$message->user_id)->first()->name}} </p>
+             <p class="content"style="background: white;margin:auto">{{$message->message_content}}
+             @if(Auth::User()->id == $message->user_id)
+               @if($message->seen == 1)
+                 <i class="fa fa-check-double fa-xs" aria-hidden="true"></i>
+                @else
+                <i class="fa fa-check fa-xs" aria-hidden="true" ></i>
+                @endif
+             @endif
+             </p>
+          </div>
+      {{-- </div> --}}
+        @endif
+
+        @endforeach
+    {{-- </table> --}}
+    {{-- </div> --}}
+    {{-- end show messages --}}
+  {{-- </div> --}}
+    </body>
 </html>
