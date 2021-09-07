@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"> --}}
         <style>
          h5 {
             /* border:1px solid #220044; */
@@ -49,6 +50,7 @@
     <body>
     {{-- <div style="float:right;"> --}}
     <h5>Chat with {{$friend_name->name}}</h5>
+    {{-- <span style="font-family: fontawesome;">&#xf095;</span> --}}
     {{-- start show messages --}}
     {{-- <div style="overflow:auto;height:500px;"> --}}
         {{-- <table cellpadding="0" cellspacing="0"> --}}
@@ -65,9 +67,13 @@
                <span class="content"style="background: white;margin:auto">{{$message->message_content}}
                @if(Auth::User()->id == $message->user_id)
                  @if($message->seen == 1)
-                   <i class="fa fa-check-double fa-xs" aria-hidden="true"></i>
+                   {{-- <i style="font-family:fontawesome;"class="fa fa-check-double fa-xs" aria-hidden="true">&#xf560;</i> --}}
+                   <i style="font-family:fontawesome;" class="fa">&#xf560;</i>
+                   <i style="font-family:fontawesome;" class="fa">&#xf118;</i>
                   @else
-                  <i class="fa fa-check fa-xs" aria-hidden="true" ></i>
+                  <i style="font-family:fontawesome;" class="fa fa-check fa-xs" aria-hidden="true" ></i>
+                  <i style="font-family:fontawesome;" class="fa" >&#f00c;</i>
+
                   @endif
                @endif
                </span>
@@ -82,9 +88,9 @@
              <span class="content"style="background: white;margin:auto">{{$message->message_content}}
              @if(Auth::User()->id == $message->user_id)
                @if($message->seen == 1)
-                 <i class="fa fa-check-double fa-xs" aria-hidden="true"></i>
+                 <i style="font-family:fontawesome;"class="fa">&#xf560;</i>
                 @else
-                <i class="fa fa-check fa-xs" aria-hidden="true" ></i>
+                <i style="font-family:fontawesome;"class="fa" >&#f00c;</i>
                 @endif
              @endif
              </span>

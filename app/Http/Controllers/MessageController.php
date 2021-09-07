@@ -54,9 +54,22 @@ class MessageController extends Controller
         // $this->load->library('mpdf60/mpdf');
         // require_once __DIR__ . '/vendor/autoload.php';
         $html = view('message.chat-pdf',['data' => $data,'users' => $users,'friends' => $friends,'unread_messages' => $unread_messages,'friend_name'  => $friend_name,'friend_id'  => $friend_id,'messages'  => $messages])->render();
-        $pdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => [290,200]]);
+        // $pdf = new \Mpdf\Mpdf( ['mode' => 'utf-8', 'format' => [290,200]]);
+        $pdf = new \Mpdf\Mpdf([
+            'mode' => 'utf-8',
+            'format' => 'A4',
+            'default_font' => 'fontawesome',
+            'margin_left' => 15,
+            'margin_right' => 10,
+            'margin_top' => 16,
+            'margin_bottom' => 15,
+            'margin_header' => 10,
+            'margin_footer' => 10
+    ]);
+        // $pdf = new \Mpdf\Mpdf('', 'A4');
         $pdf->AddPage("P");
-        $pdf->setFooter('{PAGENO}');
+        // $pdf->setFooter('{PAGENO}');
+        $pdf->SetHTMLFooter('<p style="text-align: center">{PAGENO} of {nbpg}</p>');
         // $stylesheet = file_get_contents( asset('css/style.css'));
         // $pdf->WriteHTML($stylesheet,\Mpdf\HTMLParserMode::HEADER_CSS);
         $pdf->WriteHTML($html);
