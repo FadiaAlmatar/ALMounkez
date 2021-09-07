@@ -63,7 +63,7 @@ class MessageController extends Controller
         // $pdf->loadView('message.chat-pdf', ['data' => $data,'users' => $users,'friends' => $friends,'unread_messages' => $unread_messages,'friend_name'  => $friend_name,'friend_id'  => $friend_id,'messages'  => $messages]);
         // ->setOptions(['defaultFont' => 'sans-serif']);
         // ,['data' => $data,'users' => $users,'friends' => $friends,'unread_messages' => $unread_messages,'friend_name'  => $friend_name,'friend_id'  => $friend_id,'messages'  => $messages]);
-        return  $pdf->Output("myPDF.pdf","D");
+        return  $pdf->Output("chat-PDF.pdf","D");
 
         // return $pdf->download('pdfview.pdf');
         // {{-- <?php
