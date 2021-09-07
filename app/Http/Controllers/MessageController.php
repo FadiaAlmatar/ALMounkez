@@ -70,6 +70,7 @@ class MessageController extends Controller
         $pdf->AddPage("P");
         // $pdf->setFooter('{PAGENO}');
         $pdf->SetHTMLFooter('<p style="text-align: center">{PAGENO} of {nbpg}</p>');
+        $pdf->WriteHTML('.fa { font-family: fontawesome;}',1);
         // $stylesheet = file_get_contents( asset('css/style.css'));
         // $pdf->WriteHTML($stylesheet,\Mpdf\HTMLParserMode::HEADER_CSS);
         $pdf->WriteHTML($html);

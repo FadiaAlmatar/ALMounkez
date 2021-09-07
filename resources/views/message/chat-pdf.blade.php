@@ -3,6 +3,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"> --}}
+        <link
+  href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"
+  rel="stylesheet"  type='text/css'>
         <style>
          h5 {
             /* border:1px solid #220044; */
