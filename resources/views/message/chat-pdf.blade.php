@@ -49,6 +49,9 @@
                 color: blue;
                 margin-left: 3px;
             }
+            i{
+                font-size: 2px;
+            }
         </style>
     </head>
     <body>
@@ -73,11 +76,10 @@
                @if(Auth::User()->id == $message->user_id)
                  @if($message->seen == 1)
                    {{-- <i style="font-family:fontawesome;"class="fa fa-check-double fa-xs" aria-hidden="true">&#xf560;</i> --}}
-                   <i style="font-family:fontawesome;" class="fa">&#xf560;</i>
+                   <i style="font-family:fontawesome;" class="fa">&#xf00c;<i style="font-family:fontawesome;"class="fa" >&#xf00c;</i></i>
                   @else
-                  <i style="font-family:fontawesome;" class="fa fa-check fa-xs" aria-hidden="true" ></i>
-                  <i style="font-family:fontawesome;" class="fa" >&#f00c;</i>
-
+                  {{-- <i style="font-family:fontawesome;" class="fa fa-check fa-xs" aria-hidden="true" ></i> --}}
+                  <i style="font-family:fontawesome;" class="fa" >&#xf00c;</i>
                   @endif
                @endif
                </span>
@@ -92,9 +94,9 @@
              <span class="content"style="background: white;margin:auto">{{$message->message_content}}
              @if(Auth::User()->id == $message->user_id)
                @if($message->seen == 1)
-                 <i style="font-family:fontawesome;"class="fa">&#xf560;</i>
+                 <i style="font-family:fontawesome;"class="fa">&#xf00c;<i style="font-family:fontawesome;"class="fa" >&#xf00c;</i></i>
                 @else
-                <i style="font-family:fontawesome;"class="fa" >&#f00c;</i>
+                <i style="font-family:fontawesome;"class="fa" >&#xf00c;</i>
                 @endif
              @endif
              </span>
