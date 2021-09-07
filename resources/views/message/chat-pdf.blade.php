@@ -36,6 +36,7 @@
             span{
                 font-weight: bold;
                 font-size: 15px;
+                background:rgb(229, 234, 235);
                 /* border:1px solid #220044; */
             }
             .right{
@@ -52,7 +53,8 @@
     </head>
     <body>
     {{-- <div style="float:right;"> --}}
-    <h5>Chat with {{$friend_name->name}}</h5>
+    <h5>Chat with {{$friend_name->name}} <i style="font-family:fontawesome;" class="fa">&#xf118;</i>
+    </h5>
     {{-- <span style="font-family: fontawesome;">&#xf095;</span> --}}
     {{-- start show messages --}}
     {{-- <div style="overflow:auto;height:500px;"> --}}
@@ -72,7 +74,6 @@
                  @if($message->seen == 1)
                    {{-- <i style="font-family:fontawesome;"class="fa fa-check-double fa-xs" aria-hidden="true">&#xf560;</i> --}}
                    <i style="font-family:fontawesome;" class="fa">&#xf560;</i>
-                   <i style="font-family:fontawesome;" class="fa">&#xf118;</i>
                   @else
                   <i style="font-family:fontawesome;" class="fa fa-check fa-xs" aria-hidden="true" ></i>
                   <i style="font-family:fontawesome;" class="fa" >&#f00c;</i>
