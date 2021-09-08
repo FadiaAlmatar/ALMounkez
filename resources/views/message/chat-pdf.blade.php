@@ -45,36 +45,25 @@
     </h5>
         @foreach($messages as $message)
          @if($message->user_id == Auth::User()->id)
-            <div class="card-content">
+            <div>
                <p class="left">{{$users->where('id',$message->user_id)->first()->name}} </p>
                <p class="right">{{ date("Y-m-d h:i A", strtotime($message->created_at))}}</p>
                <span class="content"style="background: white;margin:auto">{{$message->message_content}}
-               @if(Auth::User()->id == $message->user_id)
                  @if($message->seen == 1)
-                   <i style="font-family:fontawesome;" class="fa">&#xf00c;<i style="font-family:fontawesome;" class="fa" >&#xf00c;</i></i>
-                    {{-- {{"✓✓"}}</i> --}}
+                   <i style="font-family:fontawesome;" class="fa">&#xf00c;<i style="font-family:fontawesome;" class="fa" >&#xf00c;</i></i> {{-- {{"✓✓"}}</i> --}}
                   @else
                   <i style="font-family:fontawesome;" class="fa" >&#xf00c;</i>
                   @endif
-               @endif
                </span>
             </div>
         @else
-          <div class="card-content">
+          <div>
              <p class="left">{{ date("Y-m-d h:i A", strtotime($message->created_at))}}</p>
              <p class="right">{{$users->where('id',$message->user_id)->first()->name}} </p>
              <span class="content"style="background: white;margin:auto">{{$message->message_content}}
-             @if(Auth::User()->id == $message->user_id)
-               @if($message->seen == 1)
-                 <i style="font-family:fontawesome;"class="fa">&#xf00c;<i style="font-family:fontawesome;"class="fa fa-xs" >&#xf00c;</i></i>
-                @else
-                <i style="font-family:fontawesome;"class="fa" >&#xf00c;</i>
-                @endif
-             @endif
              </span>
           </div>
         @endif
         @endforeach
-    {{-- end show messages --}}
     </body>
 </html>
