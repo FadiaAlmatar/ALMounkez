@@ -11,29 +11,29 @@
           </div>
     </section>
     {{-- end show post --}}
-    <section class="section" style="height: 100%;width:50%;margin:auto;">
-        <div class="container">
-          <h5>Comments:</h5>
-                  @foreach ($commentlist as $comment)
-                  <span hidden>{{$var = $comment->id}}</span>
-                  @if ($comment->replyto == 0)
-                     <hr>
-                   @endif
-                   <a style="text-decoration: none;color:blue;font-weight:bold" >{{ App\Models\User::where(['id' => $comment->user_id])->pluck('name')->first() }}</a>
-                    &nbsp; {{$comment->created_at}}</h6>
-                  <p> {{$comment->content}}</p>
-                  @if($comment->replyto == 0)
-                  <form class="card-content" action="{{ route('comments.store') }}" method="POST" >
-                    @csrf
-                    <input name="post_id" value ={{$post->id}} hidden>
-                    <input name="replyto" value ={{$var}} hidden>
-                    <textarea class=" @error('content')is-danger @enderror" name="content" placeholder="Reply here...">{{ old('content') }}</textarea><br>
-                    <button class="button is-dark" style="color: #eb640a;align:center" >Reply</button>
-                </form>
+    {{-- <section class="section" style="height: 100%;width:50%;margin:auto;"> --}}
+        <div class="container" style="height: 100%;width:50%;margin:auto;">
+            <h5>Comments:</h5>
+            @foreach ($commentlist as $comment)
+                <span hidden>{{$var = $comment->id}}</span>
+                @if ($comment->replyto == 0)
+                 <hr>
+                @endif
+                <a style="text-decoration: none;color:blue;font-weight:bold">{{ App\Models\User::where(['id' => $comment->user_id])->pluck('name')->first() }}</a>
+                &nbsp; {{$comment->created_at}}</h6>
+                 <p> {{$comment->content}}</p>
+                @if($comment->replyto == 0)
+                    <form class="card-content" action="{{ route('comments.store') }}" method="POST" >
+                        @csrf
+                        <input name="post_id" value ={{$post->id}} hidden>
+                        <input name="replyto" value ={{$var}} hidden>
+                        <textarea class=" @error('content')is-danger @enderror" name="content" placeholder="Reply here...">{{ old('content') }}</textarea><br>
+                        <button class="button is-dark" style="color: #eb640a;align:center">Reply</button>
+                    </form>
                 @endif
                   @endforeach
-             </div>
-    </section>
+        </div>
+    {{-- </section> --}}
             @auth
             <section class="section" style="height: 100%;width:50%;margin:auto;">
             <div class="container">
