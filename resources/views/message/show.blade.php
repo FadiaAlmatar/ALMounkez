@@ -1,13 +1,12 @@
 <x-layouts.app>
-    <section class="section" style="height: 100%;width:100%;margin:auto;">
-        <div class="container">
+    {{-- <section class="section" style="height: 100%;width:100%;margin:auto;"> --}}
+        <div class="container" style="margin-top: 5px">
             {{-- start section friends list with unread messages --}}
-        <div style="text-align:center;width:28%;background: #e6e9ec;float:left;display:inline-block;height: 100%;margin-top:30px">
+        <div style="text-align:center;width:28%;background: #e6e9ec;float:left;display:inline-block;margin-top:30px;overflow:auto">
             @if($friends <> null)
-               {{-- <br><span>FRIENDS</span><br> --}}
                <?php $var = false ?>
                @foreach ($friends as $friend)
-               <div style="margin-top: 5px;{background:#e6e9ec;} :hover{ background:white; };" >
+               <div style="margin-top: 5px;" >
                   <?php $var = false ?>
                   @foreach ($unread_messages as $unread_message)
                      @if($friend->user_id == $unread_message->user_id)
@@ -23,17 +22,17 @@
                      @continue
                      @endif
                   @endforeach
-             @if($var == false)
-             <a style="text-decoration: none;color:blue;font-weight:bold" href="{{route('messages.chat', $friend->user_id)}}">{{ App\Models\User::where(['id' => $friend->user_id])->pluck('name')->first() }}</a><br>
-             @endif
-             <?php
-              $last_message = [];
-              $last_message = DB::select("CALL pr_last_message( ".Auth::User()->id.",".$friend->user_id.")");
-              print_r(substr($last_message[0]->message_content,0,10));
-              ?><br>
-              </div>
-          @endforeach
-          @endif
+                    @if($var == false)
+                    <a style="text-decoration: none;color:blue;font-weight:bold" href="{{route('messages.chat', $friend->user_id)}}">{{ App\Models\User::where(['id' => $friend->user_id])->pluck('name')->first() }}</a><br>
+                    @endif
+                    <?php
+                    $last_message = [];
+                    $last_message = DB::select("CALL pr_last_message( ".Auth::User()->id.",".$friend->user_id.")");
+                    print_r(substr($last_message[0]->message_content,0,10));
+                    ?><br>
+                </div>
+                @endforeach
+            @endif
         </div>
         {{-- end section friends list with unread messages --}}
         {{-- start section chat --}}
@@ -92,5 +91,5 @@
         </div>
         {{-- end section chat --}}
         </div>
-    </section>
+    {{-- </section> --}}
 </x-layouts.app>
