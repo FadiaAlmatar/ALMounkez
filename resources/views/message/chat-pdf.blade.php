@@ -2,10 +2,6 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"> --}}
-        <link
-  href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"
-  rel="stylesheet"  type='text/css'>
         <style>
          h5 {
             /* border:1px solid #220044; */
@@ -17,18 +13,12 @@
             font-family: 'XBRiyaz', sans-serif;
            }
             .right,.left{
-                /* font-weight: bold; */
                 font-size: 10px;
                 width:30%;
-                /* float:right; */
-                /* border:1px solid #220044; */
             }
-            /* .right{
-                display: inline-block;
-            } */
             div{
                 border:1px solid #220044;
-                width:60%;
+                width:70%;
                 margin:auto;
                 margin-bottom: 2px;
                 padding:5px;
@@ -37,7 +27,6 @@
                 font-weight: bold;
                 font-size: 15px;
                 background:rgb(229, 234, 235);
-                /* border:1px solid #220044; */
             }
             .right{
                 float:right;
@@ -48,9 +37,6 @@
                 float:left;
                 color: blue;
                 margin-left: 3px;
-            }
-            i{
-                font-size: 2px;
             }
         </style>
     </head>
@@ -76,7 +62,8 @@
                @if(Auth::User()->id == $message->user_id)
                  @if($message->seen == 1)
                    {{-- <i style="font-family:fontawesome;"class="fa fa-check-double fa-xs" aria-hidden="true">&#xf560;</i> --}}
-                   <i style="font-family:fontawesome;" class="fa">&#xf00c;<i style="font-family:fontawesome;"class="fa" >&#xf00c;</i></i>
+                   <i style="font-family:fontawesome;" class="fa">&#xf00c;<i style="font-family:fontawesome;" class="fa" >&#xf00c;</i></i>
+                    {{-- {{"✓✓"}}</i> --}}
                   @else
                   {{-- <i style="font-family:fontawesome;" class="fa fa-check fa-xs" aria-hidden="true" ></i> --}}
                   <i style="font-family:fontawesome;" class="fa" >&#xf00c;</i>
@@ -94,7 +81,7 @@
              <span class="content"style="background: white;margin:auto">{{$message->message_content}}
              @if(Auth::User()->id == $message->user_id)
                @if($message->seen == 1)
-                 <i style="font-family:fontawesome;"class="fa">&#xf00c;<i style="font-family:fontawesome;"class="fa" >&#xf00c;</i></i>
+                 <i style="font-family:fontawesome;"class="fa">&#xf00c;<i style="font-family:fontawesome;"class="fa fa-xs" >&#xf00c;</i></i>
                 @else
                 <i style="font-family:fontawesome;"class="fa" >&#xf00c;</i>
                 @endif
