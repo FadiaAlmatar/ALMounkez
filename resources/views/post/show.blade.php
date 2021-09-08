@@ -19,9 +19,11 @@
                 @if ($comment->replyto == 0)
                  <hr>
                 @endif
+                <div style="background: rgb(202, 202, 202);border-radius:10px;padding-left:5px">
                 <a style="text-decoration: none;color:blue;font-weight:bold">{{ App\Models\User::where(['id' => $comment->user_id])->pluck('name')->first() }}</a>
-                &nbsp; {{$comment->created_at}}</h6>
+                {{-- &nbsp; {{$comment->created_at}}</h6> --}}
                  <p> {{$comment->content}}</p>
+                </div>
                 @if($comment->replyto == 0)
                     <form class="card-content" action="{{ route('comments.store') }}" method="POST" >
                         @csrf
