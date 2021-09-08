@@ -14,7 +14,7 @@
            }
             .right,.left{
                 font-size: 10px;
-                width:30%;
+                width:20%;
             }
             div{
                 border:1px solid #220044;
@@ -31,12 +31,16 @@
             .right{
                 float:right;
                 color: red;
-                margin-right: 3px;
+                padding-right: 10px;
+                /* border:1px solid #220044; */
+                text-align: right;
             }
             .left{
                 float:left;
                 color: blue;
-                margin-left: 3px;
+                padding-left: 10px;
+                /* border:1px solid #220044; */
+                text-align: left;
             }
         </style>
     </head>
