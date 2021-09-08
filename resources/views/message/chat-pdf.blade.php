@@ -41,29 +41,27 @@
         </style>
     </head>
     <body>
-    <h5>chat with {{$friend_name->name}} <i style="font-family:fontawesome;" class="fa">&#xf118;</i>
-    </h5>
+        <h5>chat with {{$friend_name->name}} <i style="font-family:fontawesome;">&#xf118;</i> </h5>
         @foreach($messages as $message)
-         @if($message->user_id == Auth::User()->id)
-            <div>
-               <p class="left">{{$users->where('id',$message->user_id)->first()->name}} </p>
-               <p class="right">{{ date("Y-m-d h:i A", strtotime($message->created_at))}}</p>
-               <span class="content"style="background: white;margin:auto">{{$message->message_content}}
-                 @if($message->seen == 1)
-                   <i style="font-family:fontawesome;" class="fa">&#xf00c;<i style="font-family:fontawesome;" class="fa" >&#xf00c;</i></i> {{-- {{"✓✓"}}</i> --}}
-                  @else
-                  <i style="font-family:fontawesome;" class="fa" >&#xf00c;</i>
-                  @endif
-               </span>
-            </div>
-        @else
-          <div>
-             <p class="left">{{ date("Y-m-d h:i A", strtotime($message->created_at))}}</p>
-             <p class="right">{{$users->where('id',$message->user_id)->first()->name}} </p>
-             <span class="content"style="background: white;margin:auto">{{$message->message_content}}
-             </span>
-          </div>
-        @endif
+            @if($message->user_id == Auth::User()->id)
+                <div>
+                    <p class="left">{{$users->where('id',$message->user_id)->first()->name}} </p>
+                    <p class="right">{{ date("Y-m-d h:i A", strtotime($message->created_at))}}</p>
+                    <span>{{$message->message_content}}
+                        @if($message->seen == 1)
+                                <i style="font-family:fontawesome;">&#xf00c;<i style="font-family:fontawesome;" >&#xf00c;</i></i> {{-- {{"✓✓"}}</i> --}}
+                        @else
+                                <i style="font-family:fontawesome;" >&#xf00c;</i>
+                        @endif
+                    </span>
+                </div>
+            @else
+                <div>
+                    <p class="left">{{ date("Y-m-d h:i A", strtotime($message->created_at))}}</p>
+                    <p class="right">{{$users->where('id',$message->user_id)->first()->name}}</p>
+                    <span>{{$message->message_content}}</span>
+                </div>
+            @endif
         @endforeach
     </body>
 </html>
