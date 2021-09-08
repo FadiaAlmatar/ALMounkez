@@ -22,9 +22,9 @@
                      @continue
                      @endif
                   @endforeach
-                    @if($var == false)
+                  @if($var == false)
                     <a style="text-decoration: none;color:blue;font-weight:bold" href="{{route('messages.chat', $friend->user_id)}}">{{ App\Models\User::where(['id' => $friend->user_id])->pluck('name')->first() }}</a><br>
-                    @endif
+                @endif
                     <?php
                     $last_message = [];
                     $last_message = DB::select("CALL pr_last_message( ".Auth::User()->id.",".$friend->user_id.")");
@@ -43,8 +43,9 @@
             @csrf
             <input name="friend_id" value ={{$friend_id}} hidden>
             <textarea style="width:100%"class=" @error('message_content')is-danger @enderror" name="message_content" placeholder="write message here...">{{ old('message_content') }}</textarea>
-            <button class="button is-dark" style="color: blue;align:center;margin-bottom:13px" >send</button>
-            <a class="btn btn-primary" href="{{route('messages.print', $friend_id)}}">Download PDF</a>
+            <button class="btn btn-light" style="color: white;align:center;margin-bottom:13px" ><i class="fa fa-paper-plane fa-lg" aria-hidden="true" style="color:blue"></i></button>
+            <a href="{{route('messages.print', $friend_id)}}"><i class="fas fa-file-pdf fa-2x" style="color:red"></i></a>
+            {{-- <a class="btn btn-primary" style="margin-bottom:13px" href="{{route('messages.print', $friend_id)}}">Download PDF</a> --}}
           </form>
           {{--end form send message   --}}
           {{-- start show messages --}}
