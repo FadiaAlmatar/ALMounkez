@@ -58,13 +58,11 @@
                      <span style="font-weight: bold">{{$sender->name}} </span>
                      <span style="font-size: 10px;float: right;">{{ date("Y-m-d h:i A", strtotime($message->created_at))}}</span><br><br>
                      <div style="background: white;margin:auto">{{$message->message_content}}
-                     @if(Auth::User()->id == $message->user_id)
                        @if($message->seen == 1)
                          <i class="fa fa-check-double fa-xs" aria-hidden="true"></i>
                         @else
                         <i class="fa fa-check fa-xs" aria-hidden="true" ></i>
                         @endif
-                     @endif
                     </div>
                   </div>
               </div>
@@ -75,13 +73,6 @@
                    <span style="font-size: 10px;float: left;">{{ date("Y-m-d h:i A", strtotime($message->created_at))}}</span>
                    <span style="font-weight: bold;float: right;">{{$sender->name}} </span><br><br>
                    <div style="background: white;margin:auto">{{$message->message_content}}
-                   @if(Auth::User()->id == $message->user_id)
-                     @if($message->seen == 1)
-                       <i class="fa fa-check-double fa-xs" aria-hidden="true"></i>
-                      @else
-                      <i class="fa fa-check fa-xs" aria-hidden="true" ></i>
-                      @endif
-                   @endif
                 </div>
                 </div>
             </div>
