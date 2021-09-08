@@ -31,7 +31,6 @@ class MessageController extends Controller
     }
     public function print(Request $request,$id)
     {
-        // ini_set('max_execution_time', 3000);
         $message = Message::all();
         $friends = DB::select("CALL pr_messages_friends( ".Auth::User()->id.")");
         $unread_messages = DB::select("CALL pr_unread_messages( ".Auth::User()->id.")");
@@ -47,14 +46,8 @@ class MessageController extends Controller
         $users = User::all();
         $data = [
                 'message' => $message,
-
             ];
-
-        // $pdf = App::make('mpdf.wrapper');
-        // $this->load->library('mpdf60/mpdf');
-        // require_once __DIR__ . '/vendor/autoload.php';
         $html = view('message.chat-pdf',['data' => $data,'users' => $users,'friends' => $friends,'unread_messages' => $unread_messages,'friend_name'  => $friend_name,'friend_id'  => $friend_id,'messages'  => $messages])->render();
-        // $pdf = new \Mpdf\Mpdf( ['mode' => 'utf-8', 'format' => [290,200]]);
         $pdf = new \Mpdf\Mpdf([
             'mode' => 'utf-8',
             'format' => 'A4',
@@ -66,49 +59,11 @@ class MessageController extends Controller
             'margin_header' => 10,
             'margin_footer' => 10
     ]);
-        // $pdf = new \Mpdf\Mpdf('', 'A4');
         $pdf->AddPage("P");
-        // $pdf->setFooter('{PAGENO}');
         $pdf->SetHTMLFooter('<p style="text-align: center">{PAGENO} of {nbpg}</p>');
         $pdf->WriteHTML('.fa { font-family: fontawesome;}',1);
-        // $stylesheet = file_get_contents( asset('css/style.css'));
-        // $pdf->WriteHTML($stylesheet,\Mpdf\HTMLParserMode::HEADER_CSS);
         $pdf->WriteHTML($html);
-        // $pdf->loadView('message.chat-pdf', ['data' => $data,'users' => $users,'friends' => $friends,'unread_messages' => $unread_messages,'friend_name'  => $friend_name,'friend_id'  => $friend_id,'messages'  => $messages]);
-        // ->setOptions(['defaultFont' => 'sans-serif']);
-        // ,['data' => $data,'users' => $users,'friends' => $friends,'unread_messages' => $unread_messages,'friend_name'  => $friend_name,'friend_id'  => $friend_id,'messages'  => $messages]);
         return  $pdf->Output("chat-PDF.pdf","D");
-
-        // return $pdf->download('pdfview.pdf');
-        // {{-- <?php
-            // public_path() require_once __DIR__ . '/vendor/autoload.php';
-
-
-        // require_once __DIR__ . '/vendor/autoload.php';
-
-        // $mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => [290,100]]);
-        // $mpdf->autoScriptToLang = True;
-        // $mpdf->autoLangToFont = True;
-        // $mpdf->AddPage("P");
-        // $stylesheet = file_get_contents('style.css');
-        // $mpdf->WriteHTML($stylesheet,\Mpdf\HTMLParserMode::HEADER_CSS);
-        // $html = ['data' => $data,'users' => $users,'friends' => $friends,'unread_messages' => $unread_messages,'friend_name'  => $friend_name,'friend_id'  => $friend_id,'messages'  => $messages];
-        // $mpdf->WriteHTML($html,\Mpdf\HTMLParserMode::HTML_BODY);
-        // $mpdf->Output("myPDF.pdf","D");
-
-        // if($request->has('download'))
-            // {
-                // $pdf = app('dompdf.wrapper');
-                // $pdf = PDF::loadView('message.showw',$data);
-                // $pdf->loadView('message.showw',$data);
-                // return $pdf->stream('pdfview'.'.pdf');
-                // view()->share('message.showw',$data);
-                // $pdf = app('dompdf.wrapper');
-                // $pdf->save(public_path($friend_name.'.pdf'));
-                // $path= public_path($friend_name.'.pdf');
-                // header( 'Content-type: application/pdf');
-                // return response()->file($path);
-            // }
         }
 
     /**
