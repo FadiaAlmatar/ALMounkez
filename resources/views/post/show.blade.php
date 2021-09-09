@@ -19,18 +19,26 @@
                 @if ($comment->replyto == 0)
                  <hr>
                 @endif
+                <div>
                 <div style="background: rgb(236, 235, 235);border-radius:13px;padding:7px;width:fit-content">
                      <span style="color:black;font-weight:bold;font-size:15px">{{ App\Models\User::where(['id' => $comment->user_id])->pluck('name')->first() }}</span><br>
                 {{-- &nbsp; {{$comment->created_at}}</h6> --}}
                      <span style="font-size:13px"> {{$comment->content}}</span>
                 </div>
+                <span style="color:grey;font-weight:bold;font-size:10px;margin-left:4px" class="btn reply" id="replyb">reply</span>
+                    {{-- <div id="replybutton" class="btn4 like"><span class="btn reply" id="replyb">Reply</span> </div> --}}
+                {{-- <input type="text"  id="reply" class="form-control pull-right"  placeholder="Write a reply..." style="display:none;"/> --}}
+            </div>
                 @if($comment->replyto == 0)
                     <form class="card-content" action="{{ route('comments.store') }}" method="POST" >
                         @csrf
                         <input name="post_id" value ={{$post->id}} hidden>
                         <input name="replyto" value ={{$var}} hidden>
-                        <textarea class=" @error('content')is-danger @enderror" name="content" placeholder="Reply here...">{{ old('content') }}</textarea><br>
-                        <button class="button is-dark" style="color: #eb640a;align:center">Reply</button>
+                        {{-- <textarea style="border-radius:15px;background: rgb(236, 235, 235)"class=" @error('content')is-danger @enderror" name="content" placeholder="Reply here...">{{ old('content') }}</textarea> --}}
+                        {{-- <button class="button is-dark" style="color: #eb640a;align:center">Reply</button> --}}
+                        <button class="replybtn"style="display:none;padding: 10px;min-width: 40px;position: absolute;display:none;background: rgb(236, 235, 235);border-radius:15px;"><i class="fa fa-paper-plane fa-lg" aria-hidden="true" style="color:blue;"></i></button>
+                        <input type="text" name="content" id="reply" class="form-control pull-right"  placeholder="Write a reply..." style="display:none;background: rgb(236, 235, 235);border-radius:15px;padding: 10px;width:50%"/>
+                        
                     </form>
                 @endif
                   @endforeach
