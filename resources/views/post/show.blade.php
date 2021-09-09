@@ -27,20 +27,20 @@
                 </div>
                 <span style="color:grey;font-weight:bold;font-size:10px;margin-left:4px" class="btn reply" id="replyb">reply</span>
                 <span style="color:grey;font-weight:bold;font-size:10px;">
-                    <span style="color:grey;font-weight:bold;font-size:10px;">since</span>
+                    {{-- <span style="color:grey;font-weight:bold;font-size:10px;">since</span> --}}
                     @if(\Carbon\Carbon::now()->diffInSeconds($comment->created_at) <= 60)
-                      {{\Carbon\Carbon::now()->diffInSeconds($comment->created_at)}}<span style="color:grey;font-weight:bold;font-size:10px;"> seconds</span>
+                      {{\Carbon\Carbon::now()->diffInSeconds($comment->created_at)}}<span style="color:grey;font-weight:bold;font-size:10px;">s</span>
                     @else
                       @if(\Carbon\Carbon::now()->diffInMonths($comment->created_at) > 12)
-                      {{\Carbon\Carbon::now()->diffInYears($comment->created_at)}}<span style="color:grey;font-weight:bold;font-size:10px;"> years</span>
+                      {{\Carbon\Carbon::now()->diffInYears($comment->created_at)}}<span style="color:grey;font-weight:bold;font-size:10px;">y</span>
                       @elseif(\Carbon\Carbon::now()->diffInDays($comment->created_at) > 30)
-                      {{\Carbon\Carbon::now()->diffInMonths($comment->created_at)}}<span style="color:grey;font-weight:bold;font-size:10px;"> days</span>
+                      {{\Carbon\Carbon::now()->diffInMonths($comment->created_at)}}<span style="color:grey;font-weight:bold;font-size:10px;">mo</span>
                       @elseif(\Carbon\Carbon::now()->diffInHours($comment->created_at) > 24)
-                      {{\Carbon\Carbon::now()->diffInDays($comment->created_at)}}<span style="color:grey;font-weight:bold;font-size:10px;"> days</span>
+                      {{\Carbon\Carbon::now()->diffInDays($comment->created_at)}}<span style="color:grey;font-weight:bold;font-size:10px;"> d</span>
                       @elseif(\Carbon\Carbon::now()->diffInMinutes($comment->created_at) > 60)
-                      {{\Carbon\Carbon::now()->diffInHours($comment->created_at)}}<span style="color:grey;font-weight:bold;font-size:10px;"> hours</span>
+                      {{\Carbon\Carbon::now()->diffInHours($comment->created_at)}}<span style="color:grey;font-weight:bold;font-size:10px;"> h</span>
                       @elseif(\Carbon\Carbon::now()->diffInSeconds($comment->created_at) > 60)
-                      {{\Carbon\Carbon::now()->diffInMinutes($comment->created_at)}}<span style="color:grey;font-weight:bold;font-size:10px;"> minutes</span>
+                      {{\Carbon\Carbon::now()->diffInMinutes($comment->created_at)}}<span style="color:grey;font-weight:bold;font-size:10px;">m</span>
                      @endif
                      @endif
                 </span>
@@ -56,7 +56,6 @@
                         {{-- <button class="button is-dark" style="color: #eb640a;align:center">Reply</button> --}}
                         <button class="replybtn"style="display:none;padding: 10px;min-width: 40px;position: absolute;display:none;background: rgb(236, 235, 235);border-radius:15px;"><i class="fa fa-paper-plane fa-lg" aria-hidden="true" style="color:blue;"></i></button>
                         <input type="text" name="content" id="reply" class="form-control pull-right"  placeholder="Write a reply..." style="display:none;background: rgb(236, 235, 235);border-radius:15px;padding: 10px;width:50%"/>
-
                     </form>
                 @endif
                   @endforeach
