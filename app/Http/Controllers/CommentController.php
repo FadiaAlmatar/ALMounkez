@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\View_CommentList;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-
+use Carbon\Carbon;
 class CommentController extends Controller
 {
     /**
@@ -57,6 +57,7 @@ class CommentController extends Controller
         $post = Post::find($request->post_id);
         $commentlist = DB::table('view_comment_list')->orderby('code')->orderby('id')->get();
         // return view('post.show',['post' => $post,'commentlist' => $commentlist]);
+        // $date_diff= Carbon::now()->diffInDays($comment->created_at);
          return redirect()->route('posts.show',$post);
     }
 
