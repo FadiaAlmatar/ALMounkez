@@ -34,11 +34,12 @@
                 @if ($comment->replyto == 0)
                  <hr>
                 @endif
-                <div>
+
                 <div style="background: rgb(236, 235, 235);border-radius:13px;padding:7px;padding-bottom:0px;margin-bottom:0px;width:fit-content">
                      <span style="color:black;font-weight:bold;font-size:15px">{{ App\Models\User::where(['id' => $comment->user_id])->pluck('name')->first() }}</span><br>
                      <span style="font-size:13px"> {{$comment->content}}</span>
                 </div>
+                <div>
                 @if ($comment->replyto == 0)
                   <span style="color:grey;font-weight:bold;font-size:9px;margin-left:0;padding-left:0;" class="btn" id="replyb" onclick="myFunction({{$var}})">reply</span>
                 @endif
