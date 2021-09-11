@@ -22,12 +22,12 @@
           <li class="nav-item ">
             <a class="nav-link active" aria-current="page" href="{{route('posts.create')}}" style="color: #eb640a">Create post</a>
           </li>
-          @endauth
+
           <li class="nav-item">
             <a class="nav-link active" aria-current="page"   href="{{route('messages.create')}}"  style="color: #eb640a">
               chat
             </a>
-            </li>
+            </li> @endauth
             <li class="nav-item">
                 <a class="nav-link active" href="{{ route('locale.toggle', App::getLocale() == 'ar' ? 'en': 'ar') }}" style="color:#eb640a">{{ App::getLocale() == 'ar' ? 'EN' : 'AR' }}</a>
             </li>
