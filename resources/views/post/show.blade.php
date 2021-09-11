@@ -12,6 +12,21 @@
     </section>
     {{-- end show post --}}
     {{-- <section class="section" style="height: 100%;width:50%;margin:auto;"> --}}
+        @auth
+        <section class="section" style="height: 100%;width:50%;margin:auto;">
+        <div class="container">
+            <form action="{{ route('comments.store') }}" method="POST" >
+                @csrf
+                <input name="post_id" value ={{$post->id}} hidden>
+                <input name="replyto" value ={{0}} hidden>
+                {{-- <textarea style="width:50%"class=" @error('content')is-danger @enderror" name="content" placeholder="Comment here...">{{ old('content') }}</textarea><br> --}}
+                {{-- <button class="button is-dark" style="color: #eb640a;align:center" >Comment</button> --}}
+                <button style="padding: 10px;min-width: 40px;position: absolute;background: rgb(236, 235, 235);border-radius:15px;"><i class="fa fa-paper-plane fa-lg" aria-hidden="true" style="color:blue;"></i></button>
+                <input type="text" name="content" class="form-control pull-right"  placeholder="Write a comment..." style="text-indent:40px;background: rgb(236, 235, 235);border-radius:15px;padding: 10px;width:50%"/>
+            </form>
+        </div>
+        </section>
+        @endauth
         <div class="container" style="height: 100%;width:50%;margin:auto;">
             <h5>Comments:</h5>
             @foreach ($commentlist as $comment)
@@ -20,7 +35,7 @@
                  <hr>
                 @endif
                 <div>
-                <div style="background: rgb(236, 235, 235);border-radius:13px;padding:7px;width:fit-content">
+                <div style="background: rgb(236, 235, 235);border-radius:13px;padding:7px;padding-bottom:0px;margin-bottom:0px;width:fit-content">
                      <span style="color:black;font-weight:bold;font-size:15px">{{ App\Models\User::where(['id' => $comment->user_id])->pluck('name')->first() }}</span><br>
                      <span style="font-size:13px"> {{$comment->content}}</span>
                 </div>
@@ -61,22 +76,6 @@
                   @endforeach
         </div>
     {{-- </section> --}}
-            @auth
-            <section class="section" style="height: 100%;width:50%;margin:auto;">
-            <div class="container">
-                <form action="{{ route('comments.store') }}" method="POST" >
-                    @csrf
-                    <input name="post_id" value ={{$post->id}} hidden>
-                    <input name="replyto" value ={{0}} hidden>
-                    {{-- <textarea style="width:50%"class=" @error('content')is-danger @enderror" name="content" placeholder="Comment here...">{{ old('content') }}</textarea><br> --}}
-                    {{-- <button class="button is-dark" style="color: #eb640a;align:center" >Comment</button> --}}
 
-                    <button style="padding: 10px;min-width: 40px;position: absolute;background: rgb(236, 235, 235);border-radius:15px;"><i class="fa fa-paper-plane fa-lg" aria-hidden="true" style="color:blue;"></i></button>
-                    <input type="text" name="content" class="form-control pull-right"  placeholder="Write a comment..." style="text-indent:40px;background: rgb(236, 235, 235);border-radius:15px;padding: 10px;width:50%"/>
-
-                </form>
-            </div>
-            </section>
-            @endauth
 </x-layouts>
 
