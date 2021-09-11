@@ -1,12 +1,14 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PDFController;
+use Illuminate\Support\Facades\Session;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MessageController;
-use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\PDFController;
 // use DB;
 
 
@@ -26,6 +28,14 @@ use App\Http\Controllers\PDFController;
 // });
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
+Route::get('locale/{locale}', function ($locale){
+    if (! in_array($locale, ['en', 'ar'])) {
+        abort(400);
+    }
+    Session::put('locale', $locale);
+    App::setLocale($locale);
+    return redirect()->back();
+});
 Route::resource('posts', PostController::class);
 Route::resource('comments', CommentController::class);
 Route::resource('messages', MessageController::class);
