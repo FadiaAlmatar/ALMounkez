@@ -4,7 +4,7 @@
         <div class="card"  >
             <div class="card-content">
               <div class="content">
-                <p style="color: black">{{$post->content_post}}</p><br>
+                <p style="color: black">{{$post->content_post}} </p><br>
                 <h6><u style="text-transform: capitalize">{{$post->user->name}}</u>&nbsp; {{$post->created_at}}</h6>
               </div>
             </div>
@@ -22,13 +22,13 @@
                 {{-- <textarea style="width:50%"class=" @error('content')is-danger @enderror" name="content" placeholder="Comment here...">{{ old('content') }}</textarea><br> --}}
                 {{-- <button class="button is-dark" style="color: #eb640a;align:center" >Comment</button> --}}
                 <button style="padding: 10px;min-width: 40px;position: absolute;background: rgb(236, 235, 235);border-radius:15px;"><i class="fa fa-paper-plane fa-lg" aria-hidden="true" style="color:blue;"></i></button>
-                <input type="text" name="content" class="form-control pull-right"  placeholder="Write a comment..." style="text-indent:40px;background: rgb(236, 235, 235);border-radius:15px;padding: 10px;width:50%"/>
+                <input type="text" name="content" class="form-control pull-right"  placeholder="{{__('Write a comment...')}}" style="text-indent:40px;background: rgb(236, 235, 235);border-radius:15px;padding: 10px;width:50%"/>
             </form>
         </div>
         </section>
         @endauth
         <div class="container" style="height: 100%;width:50%;margin:auto;">
-            <h5>Comments:</h5>
+            <h5>{{__('Comments')}}:</h5>
             @foreach ($commentlist as $comment)
                 <span hidden>{{$var = $comment->id}}</span>
                 @if ($comment->replyto == 0)
@@ -41,22 +41,22 @@
                 </div>
                 <div>
                 @if ($comment->replyto == 0)
-                  <span style="color:grey;font-weight:bold;font-size:9px;margin-left:0;padding-left:0;" class="btn" id="replyb" onclick="myFunction({{$var}})">reply</span>
+                  <span style="color:grey;font-weight:bold;font-size:9px;margin-left:0;padding-left:0;" class="btn" id="replyb" onclick="myFunction({{$var}})">{{__('reply')}}</span>
                 @endif
                   <span style="color:grey;font-weight:bold;font-size:9px;margin-left:0;">
                     @if(\Carbon\Carbon::now()->diffInSeconds($comment->created_at) <= 60)
-                      {{\Carbon\Carbon::now()->diffInSeconds($comment->created_at)}}<span style="color:grey;font-weight:bold;font-size:9px;margin-left:0;">s</span>
+                      {{\Carbon\Carbon::now()->diffInSeconds($comment->created_at)}}<span style="color:grey;font-weight:bold;font-size:9px;margin-left:0;">{{__('s')}}</span>
                     @else
                       @if(\Carbon\Carbon::now()->diffInMonths($comment->created_at) > 12)
-                      {{\Carbon\Carbon::now()->diffInYears($comment->created_at)}}<span style="color:grey;font-weight:bold;font-size:9px;margin-left:0;">y</span>
+                      {{\Carbon\Carbon::now()->diffInYears($comment->created_at)}}<span style="color:grey;font-weight:bold;font-size:9px;margin-left:0;">{{__('y')}}</span>
                       @elseif(\Carbon\Carbon::now()->diffInDays($comment->created_at) > 30)
-                      {{\Carbon\Carbon::now()->diffInMonths($comment->created_at)}}<span style="color:grey;font-weight:bold;font-size:9px;margin-left:0;">mo</span>
+                      {{\Carbon\Carbon::now()->diffInMonths($comment->created_at)}}<span style="color:grey;font-weight:bold;font-size:9px;margin-left:0;">{{__('mo')}}</span>
                       @elseif(\Carbon\Carbon::now()->diffInHours($comment->created_at) > 24)
-                      {{\Carbon\Carbon::now()->diffInDays($comment->created_at)}}<span style="color:grey;font-weight:bold;font-size:9px;margin-left:0;"> d</span>
+                      {{\Carbon\Carbon::now()->diffInDays($comment->created_at)}}<span style="color:grey;font-weight:bold;font-size:9px;margin-left:0;"> {{__('d')}}</span>
                       @elseif(\Carbon\Carbon::now()->diffInMinutes($comment->created_at) > 60)
-                      {{\Carbon\Carbon::now()->diffInHours($comment->created_at)}}<span style="color:grey;font-weight:bold;font-size:9px;margin-left:0;"> h</span>
+                      {{\Carbon\Carbon::now()->diffInHours($comment->created_at)}}<span style="color:grey;font-weight:bold;font-size:9px;margin-left:0;"> {{__('h')}}</span>
                       @elseif(\Carbon\Carbon::now()->diffInSeconds($comment->created_at) > 60)
-                      {{\Carbon\Carbon::now()->diffInMinutes($comment->created_at)}}<span style="color:grey;font-weight:bold;font-size:9px;margin-left:0;">m</span>
+                      {{\Carbon\Carbon::now()->diffInMinutes($comment->created_at)}}<span style="color:grey;font-weight:bold;font-size:9px;margin-left:0;">{{__('m')}}</span>
                      @endif
                      @endif
                 </span>
@@ -71,7 +71,7 @@
                         {{-- <textarea style="border-radius:15px;background: rgb(236, 235, 235)"class=" @error('content')is-danger @enderror" name="content" placeholder="Reply here...">{{ old('content') }}</textarea> --}}
                         {{-- <button class="button is-dark" style="color: #eb640a;align:center">Reply</button> --}}
                         <button class="replybtn-{{ $var }}" style="display:none;padding: 10px;min-width: 40px;position: absolute;display:none;background: rgb(236, 235, 235);border-radius:15px;"><i class="fa fa-paper-plane fa-lg" aria-hidden="true" style="color:blue;"></i></button>
-                        <input type="text" name="content" class="reply-{{ $var }}" class="form-control pull-right"  placeholder="Write a reply..." style="text-indent:40px;display:none;background: rgb(236, 235, 235);border-radius:15px;padding: 10px;width:50%"/>
+                        <input type="text" name="content" class="reply-{{ $var }}" class="form-control pull-right"  placeholder="{{__('Write a reply...')}}" style="text-indent:40px;display:none;background: rgb(236, 235, 235);border-radius:15px;padding: 10px;width:50%"/>
                     </form>
                 @endif
                   @endforeach
