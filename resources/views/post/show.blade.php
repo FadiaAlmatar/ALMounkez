@@ -25,8 +25,10 @@
                 {{-- &nbsp; {{$comment->created_at}}</h6> --}}
                      <span style="font-size:13px"> {{$comment->content}}</span>
                 </div>
-                <span style="color:grey;font-weight:bold;font-size:10px;margin-left:4px" class="btn reply" id="replyb">reply</span>
-                <span style="color:grey;font-weight:bold;font-size:10px;">
+                @if ($comment->replyto == 0)
+                  <span style="color:grey;font-weight:bold;font-size:10px;margin-left:4px" class="btn" id="replyb" onclick="myFunction({{$var}})">reply</span>
+                @endif
+                  <span style="color:grey;font-weight:bold;font-size:10px;">
                     {{-- <span style="color:grey;font-weight:bold;font-size:10px;">since</span> --}}
                     @if(\Carbon\Carbon::now()->diffInSeconds($comment->created_at) <= 60)
                       {{\Carbon\Carbon::now()->diffInSeconds($comment->created_at)}}<span style="color:grey;font-weight:bold;font-size:10px;">s</span>
@@ -54,8 +56,8 @@
                         <input name="replyto" value ={{$var}} hidden>
                         {{-- <textarea style="border-radius:15px;background: rgb(236, 235, 235)"class=" @error('content')is-danger @enderror" name="content" placeholder="Reply here...">{{ old('content') }}</textarea> --}}
                         {{-- <button class="button is-dark" style="color: #eb640a;align:center">Reply</button> --}}
-                        <button class="replybtn"style="display:none;padding: 10px;min-width: 40px;position: absolute;display:none;background: rgb(236, 235, 235);border-radius:15px;"><i class="fa fa-paper-plane fa-lg" aria-hidden="true" style="color:blue;"></i></button>
-                        <input type="text" name="content" id="reply" class="form-control pull-right"  placeholder="Write a reply..." style="display:none;background: rgb(236, 235, 235);border-radius:15px;padding: 10px;width:50%"/>
+                        <button class="replybtn-{{ $var }}" style="display:none;padding: 10px;min-width: 40px;position: absolute;display:none;background: rgb(236, 235, 235);border-radius:15px;"><i class="fa fa-paper-plane fa-lg" aria-hidden="true" style="color:blue;"></i></button>
+                        <input type="text" name="content" class="reply-{{ $var }}" class="form-control pull-right"  placeholder="Write a reply..." style="display:none;background: rgb(236, 235, 235);border-radius:15px;padding: 10px;width:50%"/>
                     </form>
                 @endif
                   @endforeach
