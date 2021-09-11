@@ -21,35 +21,10 @@
    <script src="/js/app.js"></script>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
    <script>
-    // $(document).ready(function(){
-    // $('#replyb').click(function(){
-    //     $('#reply').toggle();
-    //     $('.replybtn').toggle();
-    // });
-    // });
-
-    function myFunction(value) {
-
-        $(".reply-"+value).toggle();
-        $(".replybtn-"+value).toggle();
-
-    }
-
-    // function myFunction() {
-    //     var x = document.getElementById("#reply");
-    //     var y = document.getElementById("#replybtn");
-    //     if (x.style.display === "none") {
-    //         x.style.display = "inline";
-    //     } else {
-    //         x.style.display = "none";
-    //     }
-    //     if (y.style.display === "none") {
-    //         y.style.display = "inline-block";
-    //     } else {
-    //         y.style.display = "none";
-    //     }
-    //     }
+        function myFunction(value) {
+            $(".reply-"+value).toggle();
+            $(".replybtn-"+value).toggle();
+        }
     </script>
-
   </body>
 </html>

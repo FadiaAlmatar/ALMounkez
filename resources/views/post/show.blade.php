@@ -22,27 +22,25 @@
                 <div>
                 <div style="background: rgb(236, 235, 235);border-radius:13px;padding:7px;width:fit-content">
                      <span style="color:black;font-weight:bold;font-size:15px">{{ App\Models\User::where(['id' => $comment->user_id])->pluck('name')->first() }}</span><br>
-                {{-- &nbsp; {{$comment->created_at}}</h6> --}}
                      <span style="font-size:13px"> {{$comment->content}}</span>
                 </div>
                 @if ($comment->replyto == 0)
-                  <span style="color:grey;font-weight:bold;font-size:10px;margin-left:4px" class="btn" id="replyb" onclick="myFunction({{$var}})">reply</span>
+                  <span style="color:grey;font-weight:bold;font-size:9px;margin-left:0;padding-left:0;" class="btn" id="replyb" onclick="myFunction({{$var}})">reply</span>
                 @endif
-                  <span style="color:grey;font-weight:bold;font-size:10px;">
-                    {{-- <span style="color:grey;font-weight:bold;font-size:10px;">since</span> --}}
+                  <span style="color:grey;font-weight:bold;font-size:9px;margin-left:0;">
                     @if(\Carbon\Carbon::now()->diffInSeconds($comment->created_at) <= 60)
-                      {{\Carbon\Carbon::now()->diffInSeconds($comment->created_at)}}<span style="color:grey;font-weight:bold;font-size:10px;">s</span>
+                      {{\Carbon\Carbon::now()->diffInSeconds($comment->created_at)}}<span style="color:grey;font-weight:bold;font-size:9px;margin-left:0;">s</span>
                     @else
                       @if(\Carbon\Carbon::now()->diffInMonths($comment->created_at) > 12)
-                      {{\Carbon\Carbon::now()->diffInYears($comment->created_at)}}<span style="color:grey;font-weight:bold;font-size:10px;">y</span>
+                      {{\Carbon\Carbon::now()->diffInYears($comment->created_at)}}<span style="color:grey;font-weight:bold;font-size:9px;margin-left:0;">y</span>
                       @elseif(\Carbon\Carbon::now()->diffInDays($comment->created_at) > 30)
-                      {{\Carbon\Carbon::now()->diffInMonths($comment->created_at)}}<span style="color:grey;font-weight:bold;font-size:10px;">mo</span>
+                      {{\Carbon\Carbon::now()->diffInMonths($comment->created_at)}}<span style="color:grey;font-weight:bold;font-size:9px;margin-left:0;">mo</span>
                       @elseif(\Carbon\Carbon::now()->diffInHours($comment->created_at) > 24)
-                      {{\Carbon\Carbon::now()->diffInDays($comment->created_at)}}<span style="color:grey;font-weight:bold;font-size:10px;"> d</span>
+                      {{\Carbon\Carbon::now()->diffInDays($comment->created_at)}}<span style="color:grey;font-weight:bold;font-size:9px;margin-left:0;"> d</span>
                       @elseif(\Carbon\Carbon::now()->diffInMinutes($comment->created_at) > 60)
-                      {{\Carbon\Carbon::now()->diffInHours($comment->created_at)}}<span style="color:grey;font-weight:bold;font-size:10px;"> h</span>
+                      {{\Carbon\Carbon::now()->diffInHours($comment->created_at)}}<span style="color:grey;font-weight:bold;font-size:9px;margin-left:0;"> h</span>
                       @elseif(\Carbon\Carbon::now()->diffInSeconds($comment->created_at) > 60)
-                      {{\Carbon\Carbon::now()->diffInMinutes($comment->created_at)}}<span style="color:grey;font-weight:bold;font-size:10px;">m</span>
+                      {{\Carbon\Carbon::now()->diffInMinutes($comment->created_at)}}<span style="color:grey;font-weight:bold;font-size:9px;margin-left:0;">m</span>
                      @endif
                      @endif
                 </span>
@@ -57,7 +55,8 @@
                         {{-- <textarea style="border-radius:15px;background: rgb(236, 235, 235)"class=" @error('content')is-danger @enderror" name="content" placeholder="Reply here...">{{ old('content') }}</textarea> --}}
                         {{-- <button class="button is-dark" style="color: #eb640a;align:center">Reply</button> --}}
                         <button class="replybtn-{{ $var }}" style="display:none;padding: 10px;min-width: 40px;position: absolute;display:none;background: rgb(236, 235, 235);border-radius:15px;"><i class="fa fa-paper-plane fa-lg" aria-hidden="true" style="color:blue;"></i></button>
-                        <input type="text" name="content" class="reply-{{ $var }}" class="form-control pull-right"  placeholder="Write a reply..." style="display:none;background: rgb(236, 235, 235);border-radius:15px;padding: 10px;width:50%"/>
+                        <input type="text" name="content" class="reply-{{ $var }}" class="form-control pull-right"  placeholder="Write a reply..." style="text-indent:20px;display:none;background: rgb(236, 235, 235);border-radius:15px;padding: 10px;width:50%"/>
+
                     </form>
                 @endif
                   @endforeach
