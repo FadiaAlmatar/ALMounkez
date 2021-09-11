@@ -38,7 +38,6 @@ Route::get('locale/{locale}', function ($locale){
     return redirect()->back();
 })->name('locale.toggle');
 
-
 Route::resource('posts', PostController::class);
 Route::resource('comments', CommentController::class);
 Route::resource('messages', MessageController::class);
@@ -51,7 +50,7 @@ Route::get('/get-friends', [MessageController::class, 'getfriends'])->name('frie
 
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('pages.home');
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';

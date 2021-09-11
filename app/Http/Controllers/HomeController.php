@@ -13,6 +13,6 @@ class HomeController extends Controller
     {
         $posts = Post::all();
 
-        return view('welcome', ['posts' => $posts]);
+        return view('pages.home', ['posts' => $posts]);
     }
 }

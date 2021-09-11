@@ -15,9 +15,9 @@
           <li class="nav-item ">
             <a class="nav-link active" aria-current="page" href="{{route('posts.index')}}" style="color: #eb640a">posts</a>
           </li>
-          <li class="nav-item ">
+          {{-- <li class="nav-item ">
             <a class="nav-link active" aria-current="page" href="{{route('comments.index')}}" style="color: #eb640a">comments</a>
-          </li>
+          </li> --}}
           @auth
           <li class="nav-item ">
             <a class="nav-link active" aria-current="page" href="{{route('posts.create')}}" style="color: #eb640a">Create post</a>
@@ -27,11 +27,6 @@
             <a class="nav-link active" aria-current="page"   href="{{route('messages.create')}}"  style="color: #eb640a">
               chat
             </a>
-            {{-- <ul class="dropdown-menu" aria-labelledby="navbarDropdown"> --}}
-                {{-- @foreach ($users as $friend)
-                <li><a class="dropdown-item" href="{{route('login')}}"style="color: #eb640a">{{$friend->name}}</a></li>
-                @endforeach --}}
-            {{-- </ul> --}}
             </li>
             <li class="nav-item">
                 <a class="nav-link active" href="{{ route('locale.toggle', App::getLocale() == 'ar' ? 'en': 'ar') }}" style="color:#eb640a">{{ App::getLocale() == 'ar' ? 'EN' : 'AR' }}</a>
@@ -40,7 +35,7 @@
           {{-- <li class="nav-item"> --}}
             {{-- <a class="nav-link active" href="{{route('home')}}" style="color: #eb640a">Posts</a> --}}
           {{-- </li> --}}
-          @guest
+          {{-- @guest
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #eb640a">
               Account
@@ -48,7 +43,7 @@
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 
               <li><a class="dropdown-item" href="{{route('login')}}"style="color: #eb640a">Log in</a></li>
-              <li><a class="dropdown-item" href="{{route('register')}}" style="color: #eb640a">Sign in</a></li>
+              <li><a class="dropdown-item" href="{{route('register')}}" style="color: #eb640a">Sign in</a></li> --}}
               {{-- @endguest
               @auth --}}
               {{-- <li><a class="dropdown-item" href="{{route('logout')}}" style="color: #eb640a">Log out</a></li> --}}
@@ -56,16 +51,31 @@
               {{-- <div class="navbar-item">
                 Hi {{ Auth::user()->name }}!!
               </div> --}}
-            </ul>
-            </li>
-            @endguest
+            {{-- </ul> --}}
+            {{-- </li> --}}
+
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: orange">
+              {{ __('account') }}
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              @guest<li><a class="dropdown-item" href="{{ asset('login') }}" style="color: orange">{{ __('Login') }}</a></li>
+              <li><a class="dropdown-item" href="{{ asset('register') }}" style="color: orange">{{ __('register') }}</a></li>@endguest
+              <li><hr class="dropdown-divider"></li>
               @auth
+              <li><form action="logout" method="post">
+                @csrf
+                <input type="submit" class="button is-light" value="{{ __('Logout') }}">
+              </form></li>@endauth
+            </ul>
+          </li>
+            {{-- @endguest --}}
+              {{-- @auth
               <li><form action="{{ route('logout') }}" method="post">
                 @csrf
                 <input type="submit" class="button is-dark" style="color: #eb640a;background:none;align:center" value="Logout">
               </form></li>
-              @endauth
-
+              @endauth --}}
         </ul>
         <form class="d-flex">
           <input id="search"class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="border-color:#eb640a">
