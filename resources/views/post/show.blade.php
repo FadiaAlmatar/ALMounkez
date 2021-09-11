@@ -55,8 +55,7 @@
                         {{-- <textarea style="border-radius:15px;background: rgb(236, 235, 235)"class=" @error('content')is-danger @enderror" name="content" placeholder="Reply here...">{{ old('content') }}</textarea> --}}
                         {{-- <button class="button is-dark" style="color: #eb640a;align:center">Reply</button> --}}
                         <button class="replybtn-{{ $var }}" style="display:none;padding: 10px;min-width: 40px;position: absolute;display:none;background: rgb(236, 235, 235);border-radius:15px;"><i class="fa fa-paper-plane fa-lg" aria-hidden="true" style="color:blue;"></i></button>
-                        <input type="text" name="content" class="reply-{{ $var }}" class="form-control pull-right"  placeholder="Write a reply..." style="text-indent:20px;display:none;background: rgb(236, 235, 235);border-radius:15px;padding: 10px;width:50%"/>
-
+                        <input type="text" name="content" class="reply-{{ $var }}" class="form-control pull-right"  placeholder="Write a reply..." style="text-indent:40px;display:none;background: rgb(236, 235, 235);border-radius:15px;padding: 10px;width:50%"/>
                     </form>
                 @endif
                   @endforeach
@@ -69,8 +68,12 @@
                     @csrf
                     <input name="post_id" value ={{$post->id}} hidden>
                     <input name="replyto" value ={{0}} hidden>
-                    <textarea style="width:50%"class=" @error('content')is-danger @enderror" name="content" placeholder="Comment here...">{{ old('content') }}</textarea><br>
-                    <button class="button is-dark" style="color: #eb640a;align:center" >Comment</button>
+                    {{-- <textarea style="width:50%"class=" @error('content')is-danger @enderror" name="content" placeholder="Comment here...">{{ old('content') }}</textarea><br> --}}
+                    {{-- <button class="button is-dark" style="color: #eb640a;align:center" >Comment</button> --}}
+
+                    <button style="padding: 10px;min-width: 40px;position: absolute;background: rgb(236, 235, 235);border-radius:15px;"><i class="fa fa-paper-plane fa-lg" aria-hidden="true" style="color:blue;"></i></button>
+                    <input type="text" name="content" class="form-control pull-right"  placeholder="Write a comment..." style="text-indent:40px;background: rgb(236, 235, 235);border-radius:15px;padding: 10px;width:50%"/>
+
                 </form>
             </div>
             </section>
