@@ -33,9 +33,13 @@
                 @endforeach --}}
             {{-- </ul> --}}
             </li>
-          <li class="nav-item">
+            <li class="nav-item">
+                <a class="nav-link active" href="{{ route('locale.toggle', App::getLocale() == 'ar' ? 'en': 'ar') }}" style="color:#eb640a">{{ App::getLocale() == 'ar' ? 'EN' : 'AR' }}</a>
+            </li>
+
+          {{-- <li class="nav-item"> --}}
             {{-- <a class="nav-link active" href="{{route('home')}}" style="color: #eb640a">Posts</a> --}}
-          </li>
+          {{-- </li> --}}
           @guest
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #eb640a">

@@ -9,6 +9,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\MessageController;
+
 // use DB;
 
 
@@ -35,7 +36,9 @@ Route::get('locale/{locale}', function ($locale){
     Session::put('locale', $locale);
     App::setLocale($locale);
     return redirect()->back();
-});
+})->name('locale.toggle');
+
+
 Route::resource('posts', PostController::class);
 Route::resource('comments', CommentController::class);
 Route::resource('messages', MessageController::class);
