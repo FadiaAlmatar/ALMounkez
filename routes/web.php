@@ -29,14 +29,16 @@ use App\Http\Controllers\MessageController;
 // });
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
-Route::get('locale/{locale}', function ($locale){
-    if (! in_array($locale, ['en', 'ar'])) {
-        abort(400);
-    }
-    Session::put('locale', $locale);
-    App::setLocale($locale);
+Route::get('/locale/ar', function (){
+    Session::put('locale', 'ar');
+    App::setLocale('ar');
     return redirect()->back();
-})->name('locale.toggle');
+});
+Route::get('/locale/en', function (){
+    Session::put('locale', 'en');
+    App::setLocale('en');
+    return redirect()->back();
+});
 
 Route::resource('posts', PostController::class);
 Route::resource('comments', CommentController::class);

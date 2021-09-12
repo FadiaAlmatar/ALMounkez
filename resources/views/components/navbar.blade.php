@@ -28,9 +28,19 @@
               chat
             </a>
             </li> @endauth
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link active" href="{{ route('locale.toggle', App::getLocale() == 'ar' ? 'en': 'ar') }}" style="color:#eb640a">{{ App::getLocale() == 'ar' ? 'EN' : 'AR' }}</a>
-            </li>
+            </li> --}}
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: orange">
+                  {{ __('lang') }}
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="/locale/ar" style="color: orange">{{ __('Ar') }}</a></li>
+                  <li><a class="dropdown-item" href="/locale/en" style="color: orange">{{ __('En') }}</a></li>
+                </ul>
+              </li>
 
           {{-- <li class="nav-item"> --}}
             {{-- <a class="nav-link active" href="{{route('home')}}" style="color: #eb640a">Posts</a> --}}
