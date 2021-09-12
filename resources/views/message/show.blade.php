@@ -86,4 +86,5 @@
         </div>
 {{-- </section> --}}
 </x-layouts.app>
-            {{-- <a class="btn btn-primary" style="margin-bottom:13px" href="{{route('messages.print', $friend_id)}}">Download PDF</a> --}}
+
+{{-- <a class="btn btn-primary" style="margin-bottom:13px" href="{{route('messages.print', $friend_id)}}">Download PDF</a> --}}
