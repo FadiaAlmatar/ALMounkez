@@ -376,3 +376,57 @@ ul {
     margin-bottom: 2rem;
     box-shadow: none;
 }
+.sender-name{
+    font-weight: bold;float:left;
+}
+.receiver-name{
+    font-weight: bold;float: right;
+}
+.post-show{
+    background: rgb(236, 235, 235);border-radius:13px;height: 100%;width:50%;margin:auto;margin-top:20px;
+}
+.post-show u{
+    text-transform: capitalize;
+}
+.post-show p{
+    color: black;
+}
+.date-post{
+    font-size:10px;
+}
+.send-comment-btn,.send-reply-btn{
+    padding: 10px; min-width: 40px;position: absolute;background: rgb(236, 235, 235);border-radius:15px;
+
+}
+.send-reply-btn{
+    display:none;
+}
+.send-comment-btn i{
+    color:blue;
+}
+.comment-form,.reply-form{
+    text-indent:40px;background: rgb(236, 235, 235);border-radius:15px;padding: 10px;width:50%;
+
+}
+.reply-form{
+    display:none;
+}
+.container-comment{
+    height: 100%;width:50%;margin:auto;
+}
+.comment{
+    background: rgb(236, 235, 235);border-radius:13px;padding:7px;padding-bottom:0px;margin-bottom:0px;width:fit-content;
+}
+.comment-name-user{
+    color:black;font-weight:bold;font-size:15px;
+}
+.comment-content{
+    font-size:13px;
+}
+.comment-reply-word{
+    color:grey;font-weight:bold;font-size:9px;margin-left:0;padding-left:0;
+}
+.comment-date{
+    color:grey;font-weight:bold;font-size:9px;margin-left:0;
+}
+

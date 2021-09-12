@@ -58,7 +58,7 @@
               <div class="card" style="margin-bottom:3px">
                   <div class="card-content">
                     <input value={{$sender = $users->where('id',$message->user_id)->first()}} hidden/>
-                     <span style="font-weight: bold">{{$sender->name}} </span>
+                     <span class="sender-name">{{$sender->name}} </span>
                      <span style="font-size: 10px;float: right;">{{ date("Y-m-d h:i A", strtotime($message->created_at))}}</span><br><br>
                      <div style="background: white;margin:auto">{{$message->message_content}}
                        @if($message->seen == 1)
@@ -74,7 +74,7 @@
                 <div class="card-content">
                   <input value={{$sender = $users->where('id',$message->user_id)->first()}} hidden/>
                    <span style="font-size: 10px;float: left;">{{ date("Y-m-d h:i A", strtotime($message->created_at))}}</span>
-                   <span style="font-weight: bold;float: right;">{{$sender->name}} </span><br><br>
+                   <span class="receiver-name">{{$sender->name}} </span><br><br>
                    <div style="background: white;margin:auto">{{$message->message_content}}
                 </div>
                 </div>
