@@ -25,7 +25,7 @@
 {{-- end enter comment --}}
 {{-- start show comments with replies --}}
         <div class="container container-comment">
-            <h5>{{__('Comments')}}:</h5>
+              <h5>{{__('Comments')}}:</h5>
             @foreach ($commentlist as $comment)
                 <span hidden>{{$var = $comment->id}}</span>
                 @if ($comment->replyto == 0)
