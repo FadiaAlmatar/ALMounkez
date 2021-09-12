@@ -118,7 +118,7 @@ class MessageController extends Controller
             ['user_id', Auth::User()->id],
         ])->orwhere([
             ['friend_id', Auth::User()->id],
-            ['user_id', $friend->id],])->orderBy('created_at','DESC')->get();
+            ['user_id', $friend->id],])->orderBy('created_at','DESC')->simplePaginate(20);
         // $messages = $message->groupBy(function($date) {
         //     return Carbon::parse($date->created_at)->format('Y-m-d'); });
             // $messages = $message->groupBy('created_at');

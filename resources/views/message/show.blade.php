@@ -45,6 +45,9 @@
             <textarea style="width:100%"class=" @error('message_content')is-danger @enderror" name="message_content" placeholder="{{__('write message here...')}}">{{ old('message_content') }}</textarea>
             <button class="btn btn-light" style="color: white;align:center;margin-bottom:13px" ><i class="fa fa-paper-plane fa-lg" aria-hidden="true" style="color:blue"></i></button>
             <a href="{{route('messages.print', $friend_id)}}"><i class="fas fa-file-pdf fa-2x" style="color:red"></i></a>
+            <div class="justify-content-center">
+                {!! $messages->links() !!}
+            </div>
             {{-- <a class="btn btn-primary" style="margin-bottom:13px" href="{{route('messages.print', $friend_id)}}">Download PDF</a> --}}
           </form>
           {{--end form send message   --}}
@@ -82,6 +85,9 @@
           {{-- end show messages --}}
         </div>
         {{-- end section chat --}}
+         {{-- Pagination --}}
+
         </div>
     {{-- </section> --}}
+
 </x-layouts.app>

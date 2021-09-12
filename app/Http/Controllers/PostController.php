@@ -63,6 +63,7 @@ class PostController extends Controller
                   ])
                 ->orwhere ('approved', true)
                 ->orderby('code')->orderby('id')->get();
+                // dd("here");
         return view('post.show',['post' => $post,'commentlist' => $commentlist]);
     }
 
