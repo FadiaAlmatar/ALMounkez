@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Middleware;
-use App;
 
 use Closure;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class Localization
 {
@@ -14,10 +15,12 @@ class Localization
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle(Request $request, Closure $next)
     {
+
+
         if (session()->has('locale')) {
-            \App::setLocale(session()->get('locale'));
+            App::setLocale(session()->get('locale'));
         }
         return $next($request);
     }
