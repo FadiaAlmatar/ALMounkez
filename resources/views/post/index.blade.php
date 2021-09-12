@@ -1,8 +1,8 @@
 <x-layouts.app>
-    <section style="height: 100%;width:50%;margin:auto;margin-top:20px" class="form">
+    <div class="container" style="height: 100%;margin:auto;margin-top:20px" >
         @foreach ($posts as $post )
         <a href="{{route('posts.show',$post)}}" style="text-decoration: none">
-        <div class="card" style="width: 200px">
+        <div class="card" style="display:inline-block">
             <div class="card-content">
               <div class="media">
                 <div class="media-content">
@@ -18,5 +18,5 @@
         </div>
         </a>
         @endforeach
-    </section>
+    </div>
 </x-layouts.app>
