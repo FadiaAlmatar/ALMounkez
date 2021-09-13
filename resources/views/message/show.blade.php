@@ -5,6 +5,8 @@
             @if($friends <> null)
                <?php $var = false ?>
                <button style="float:left"class="btn btn-primary"onclick="group()"><i class="fas fa-plus" aria-hidden="true"></i> New Group</button>
+               <form action="{{ route('groups.store') }}" method="POST" >
+                @csrf
                <input class="group"style="display:none;width:40%;float:right"type="text" name="group_name"  class="form-control pull-right"  placeholder="{{__('enter group name')}}" /><br><br>
                <div class="dropdown group" style="display:none;width:30%;margin:auto" >
                 <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"aria-haspopup="true" aria-expanded="false">
@@ -18,8 +20,11 @@
                     @endforeach
                 </div>
               </div><br>
+              <button type="submit"style="float:left;display:none;" class="btn btn-primary group">ok</button>
+
+            </form>
                @foreach ($friends as $friend)
-               <div style="margin-top: 5px;" >
+               <div style="margin-top: 5px;">
                   <?php $var = false ?>
                   @foreach ($unread_messages as $unread_message)
                      @if($friend->user_id == $unread_message->user_id)

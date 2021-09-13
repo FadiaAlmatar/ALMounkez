@@ -9,6 +9,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\GroupController;
 
 // use DB;
 
@@ -43,6 +44,7 @@ Route::get('/locale/en', function (){
 Route::resource('posts', PostController::class);
 Route::resource('comments', CommentController::class);
 Route::resource('messages', MessageController::class);
+Route::resource('groups', GroupController::class);
 Route::get('/chat/{id}', [MessageController::class, 'chat'])->name('messages.chat');
 Route::get('/print/{id}', [MessageController::class, 'print'])->name('messages.print');
 
