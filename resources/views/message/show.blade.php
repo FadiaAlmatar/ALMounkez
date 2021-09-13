@@ -8,7 +8,7 @@
                <form action="{{ route('groups.store') }}" method="POST" >
                 @csrf
                <input class="group"style="display:none;width:40%;float:right"type="text" name="group_name"  class="form-control pull-right"  placeholder="{{__('enter group name')}}" /><br><br>
-               <div class="dropdown group" style="display:none;width:30%;margin:auto" >
+               {{-- <div class="dropdown group" style="display:none;width:30%;margin:auto" >
                 <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"aria-haspopup="true" aria-expanded="false">
                     <i class="fa fa-users" aria-hidden="true"></i> {{_('Add friends')}}
                 </button>
@@ -19,6 +19,21 @@
                        @endif
                     @endforeach
                 </div>
+              </div> --}}
+              <div class="field">
+                <label class="label">Add friends</label>
+                <div class="control" id="tag">
+                  <div class="select is-multiple @error('users')is-danger @enderror">
+                    <select name="tags[]"  multiple>
+                        @foreach ($users as $user)
+                        <option value="{{ $user->id }}">{{$user->name}}</option>
+                      @endforeach
+                    </select>
+                  </div>
+                </div>
+                @error('users')
+                  <p class="help is-danger">{{ $message }}</p>
+                @enderror
               </div>
               <button type="submit"style="float:left;display:none;" class="btn btn-primary group">ok</button>
 
