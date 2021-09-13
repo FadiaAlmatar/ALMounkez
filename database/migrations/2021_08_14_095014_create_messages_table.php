@@ -19,6 +19,7 @@ class CreateMessagesTable extends Migration
             $table->boolean('seen')->default(false);
             $table->foreignId('user_id');//sender
             $table->integer('friend_id');//receiver
+            $table->foreignId('group_id');
             $table->timestamps();
         });
     }
