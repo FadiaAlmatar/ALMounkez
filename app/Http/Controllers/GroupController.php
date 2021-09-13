@@ -45,7 +45,7 @@ class GroupController extends Controller
         // $group->user_id = Auth::User()->id;
         // dd($group->group_name);
         $group->save();
-        // return redirect()->route('posts.show',$post);
+        return redirect()->back();
     }
 
     /**

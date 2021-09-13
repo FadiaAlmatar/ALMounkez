@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 // use Dompdf\Dompdf;
 use App\Models\User;
-use App\Models\Message;
+use App\Models\Group;
 // use Barryvdh\DomPDF\PDF as DomPDFPDF;
-use niklasravnsborg\LaravelPdf\PDF;
+use App\Models\Message;
 use Mpdf\HTMLParserMode;
 use Brick\Math\BigInteger;
 use Dompdf\Adapter\PDFLib;
@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\App;
+use niklasravnsborg\LaravelPdf\PDF;
 use Illuminate\Support\Facades\Auth;
         // use phpDocumentor\Reflection\PseudoTypes\True_;
         // require_once __DIR__ . '/vendor/autoload.php';
@@ -109,7 +110,8 @@ class MessageController extends Controller
     {
         $messages = Message::all();
         $users = User::all();
-        return view('message.show',[ 'messages'=> $messages,'users'=> $users]);
+        $groups = Group::all();
+        return view('message.show',[ 'messages'=> $messages,'users'=> $users,'groups'=>$groups]);
     }
     public function chat($id)
     {
@@ -138,7 +140,8 @@ class MessageController extends Controller
         $friends = DB::select("CALL pr_messages_friends( ".Auth::User()->id.")");
         $unread_messages = DB::select("CALL pr_unread_messages( ".Auth::User()->id.")");
         $count_unread_messages = DB::select("CALL pr_count_unread_messages( ".Auth::User()->id.")");
-        return view('message.show',['count_unread_messages'=>$count_unread_messages,'unread_messages' => $unread_messages,'friends'=> $friends, 'messages'=> $messages,'users'=>$users,'friend_name'=>$friend_name->name,'friend_id'=>$friend->id ]);
+        $groups = Group::all();
+        return view('message.show',['groups'=>$groups,'count_unread_messages'=>$count_unread_messages,'unread_messages' => $unread_messages,'friends'=> $friends, 'messages'=> $messages,'users'=>$users,'friend_name'=>$friend_name->name,'friend_id'=>$friend->id ]);
     }
 
     /**

@@ -19,7 +19,7 @@
                        @endif
                     @endforeach
                 </div>
-              </div><br>
+              </div>
               <button type="submit"style="float:left;display:none;" class="btn btn-primary group">ok</button>
 
             </form>
@@ -51,6 +51,11 @@
                 </div>
                 @endforeach
             @endif
+{{-- groups --}}
+            @foreach ( $groups as  $group)
+            <p>{{$group->group_name}}</p>
+
+            @endforeach
         </div>
 {{-- end section friends list with unread messages --}}
 {{-- start section chat --}}
