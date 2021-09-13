@@ -31,6 +31,9 @@
             $(".reply-"+value).toggle();
             $(".replybtn-"+value).toggle();
         }
+        function group() {
+            $(".group").toggle();
+        }
     </script>
   </body>
 </html>

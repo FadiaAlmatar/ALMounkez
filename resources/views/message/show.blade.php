@@ -4,6 +4,20 @@
         <div class="friends-section">
             @if($friends <> null)
                <?php $var = false ?>
+               <button style="float:left"class="btn btn-primary"onclick="group()"><i class="fas fa-plus" aria-hidden="true"></i> New Group</button>
+               <input class="group"style="display:none;width:40%;float:right"type="text" name="group_name"  class="form-control pull-right"  placeholder="{{__('enter group name')}}" /><br><br>
+               <div class="dropdown group" style="display:none;width:30%;margin:auto" >
+                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-users" aria-hidden="true"></i> {{_('Add friends')}}
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    @foreach ($users as $user)
+                       @if(Auth::User()->id <> $user->id)
+                          <a class="dropdown-item" href="#">{{$user->name}}</a>
+                       @endif
+                    @endforeach
+                </div>
+              </div><br>
                @foreach ($friends as $friend)
                <div style="margin-top: 5px;" >
                   <?php $var = false ?>
@@ -44,7 +58,7 @@
             <textarea style="width:100%"class=" @error('message_content')is-danger @enderror" name="message_content" placeholder="{{__('write message here...')}}">{{ old('message_content') }}</textarea>
             <button class="btn btn-light chat-send-btn"><i class="fa fa-paper-plane fa-lg" aria-hidden="true"></i></button>
             <a href="{{route('messages.print', $friend_id)}}"><i class="fas fa-file-pdf fa-2x" style="color:red"></i></a>
-            <div class="justify-content-center">
+            <div class="d-flex justify-content-center">
                 {!! $messages->links() !!}
             </div>
           </form>

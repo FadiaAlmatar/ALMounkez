@@ -108,7 +108,8 @@ class MessageController extends Controller
     public function show(Message $message)
     {
         $messages = Message::all();
-        return view('message.show',[ 'messages'=> $messages]);
+        $users = User::all();
+        return view('message.show',[ 'messages'=> $messages,'users'=> $users]);
     }
     public function chat($id)
     {
