@@ -52,6 +52,8 @@
                 @endforeach
             @endif
 {{-- groups --}}
+<hr>
+           <p class="mygroup">My Groups</p>
             @foreach ( $groups as  $group)
             <p>{{$group->group_name}}</p>
 

@@ -71,8 +71,11 @@ body{margin-top:20px;}
 .unread-friend-name{
     text-decoration: none;color:black;font-weight:bold;
 }
-.friend-name{
+.friend-name,.mygroup{
     text-decoration: none;color:blue;font-weight:bold;
+}
+.mygroup{
+    text-decoration: underline;
 }
 .chat-section{
     width:70%;float:right;
