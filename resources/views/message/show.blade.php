@@ -8,34 +8,13 @@
                <form action="{{ route('groups.store') }}" method="POST" >
                 @csrf
                <input class="group"style="display:none;width:40%;float:right"type="text" name="group_name"  class="form-control pull-right"  placeholder="{{__('enter group name')}}" /><br><br>
-               {{-- <div class="dropdown group" style="display:none;width:30%;margin:auto" >
-                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"aria-haspopup="true" aria-expanded="false">
-                    <i class="fa fa-users" aria-hidden="true"></i> {{_('Add friends')}}
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    @foreach ($users as $user)
-                       @if(Auth::User()->id <> $user->id)
-                          <a class="dropdown-item" href="#">{{$user->name}}</a>
-                       @endif
-                    @endforeach
-                </div>
-              </div> --}}
               <div class="field">
                 <label style="display:none;"class="label group">Add friends</label>
-                {{-- <div class="control" id="user"> --}}
-                  {{-- <div class="select is-multiple @error('users')is-danger @enderror">
-                    <select name="usrs[]"  multiple>
-                        @foreach ($users as $user)
-                        <option value="{{ $user->id }}">{{$user->name}}</option>
-                      @endforeach
-                    </select> --}}
-                    <select style="display:none;" name="users[]" class="form-select group" aria-label="Default select example" multiple>
+                    <select style="display:none;" name="users[]" class="form-select group  @error('users')is-danger @enderror" aria-label="Default select example" multiple>
                         @foreach ($users as $user)
                            <option value="{{ $user->id }}">{{$user->name}}</option>
                         @endforeach
                       </select>
-                  {{-- </div> --}}
-                {{-- </div> --}}
                 @error('users')
                   <p class="help is-danger">{{ $message }}</p>
                 @enderror
@@ -72,18 +51,16 @@
                 @endforeach
             @endif
 {{-- groups --}}
-<hr>
+           <hr>
            <p class="mygroup">My Groups</p>
              @foreach($groups as  $group)
-              <p>{{$group->group_name}}</p>
+             <p style="border-style: solid;border-color:black">
+              <span>{{$group->group_name}}</span><br>
               @foreach ($group->users as $user)
-              <p>{{$user->name}}</p>
+              <span>{{$user->name}}</span>
               @endforeach
+            </p>
             @endforeach
-            {{-- @foreach ($groups->users as $user)
-            {{$user->name}}
-
-            @endforeach --}}
         </div>
 {{-- end section friends list with unread messages --}}
 {{-- start section chat --}}
