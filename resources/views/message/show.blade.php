@@ -21,21 +21,26 @@
                 </div>
               </div> --}}
               <div class="field">
-                <label class="label">Add friends</label>
-                <div class="control" id="tag">
-                  <div class="select is-multiple @error('users')is-danger @enderror">
-                    <select name="tags[]"  multiple>
+                <label style="display:none;"class="label group">Add friends</label>
+                {{-- <div class="control" id="user"> --}}
+                  {{-- <div class="select is-multiple @error('users')is-danger @enderror">
+                    <select name="usrs[]"  multiple>
                         @foreach ($users as $user)
                         <option value="{{ $user->id }}">{{$user->name}}</option>
                       @endforeach
-                    </select>
-                  </div>
-                </div>
+                    </select> --}}
+                    <select style="display:none;" name="users[]" class="form-select group" aria-label="Default select example" multiple>
+                        @foreach ($users as $user)
+                           <option value="{{ $user->id }}">{{$user->name}}</option>
+                        @endforeach
+                      </select>
+                  {{-- </div> --}}
+                {{-- </div> --}}
                 @error('users')
                   <p class="help is-danger">{{ $message }}</p>
                 @enderror
               </div>
-              <button type="submit"style="float:left;display:none;" class="btn btn-primary group">ok</button>
+              <button type="submit"style="float:left;display:none;" class="btn btn-primary group">ok</button><br><br>
 
             </form>
                @foreach ($friends as $friend)
@@ -69,10 +74,16 @@
 {{-- groups --}}
 <hr>
            <p class="mygroup">My Groups</p>
-            @foreach ( $groups as  $group)
-            <p>{{$group->group_name}}</p>
-
+             @foreach($groups as  $group)
+              <p>{{$group->group_name}}</p>
+              @foreach ($group->users as $user)
+              <p>{{$user->name}}</p>
+              @endforeach
             @endforeach
+            {{-- @foreach ($groups->users as $user)
+            {{$user->name}}
+
+            @endforeach --}}
         </div>
 {{-- end section friends list with unread messages --}}
 {{-- start section chat --}}

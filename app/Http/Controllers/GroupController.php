@@ -38,13 +38,15 @@ class GroupController extends Controller
     {
 
         $request->validate([
-            'group_name'  => 'required'
+            'group_name'  => 'required',
+            'users'        => 'array',
         ] );
         $group = new Group();
         $group->group_name = $request->group_name;
         // $group->user_id = Auth::User()->id;
         // dd($group->group_name);
         $group->save();
+        $group->users()->sync($request->users);
         return redirect()->back();
     }
 
