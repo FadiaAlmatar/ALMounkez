@@ -91,8 +91,8 @@ class MessageController extends Controller
         $message->friend_id= $request->friend_id;
         $message->seen = false;
         $message->user_id = Auth::User()->id;//sender
-        $message->group_id = $request->group_id;
-        dd($request->group_id);
+        // $message->group_id = $request->group_id;
+        // dd($request->group_id);
         $message->save();
         $user = User::find(Auth::User()->id);
         return redirect()->back();
