@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
-// use Dompdf\Dompdf;
 use App\Models\User;
 use App\Models\Group;
-// use Barryvdh\DomPDF\PDF as DomPDFPDF;
 use App\Models\Message;
 use Mpdf\HTMLParserMode;
 use Brick\Math\BigInteger;
@@ -18,8 +16,6 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\App;
 use niklasravnsborg\LaravelPdf\PDF;
 use Illuminate\Support\Facades\Auth;
-        // use phpDocumentor\Reflection\PseudoTypes\True_;
-        // require_once __DIR__ . '/vendor/autoload.php';
 class MessageController extends Controller
 {
     /**
@@ -122,11 +118,6 @@ class MessageController extends Controller
         ])->orwhere([
             ['friend_id', Auth::User()->id],
             ['user_id', $friend->id],])->orderBy('created_at','DESC')->simplePaginate(20);
-        // $messages = $message->groupBy(function($date) {
-        //     return Carbon::parse($date->created_at)->format('Y-m-d'); });
-            // $messages = $message->groupBy('created_at');
-            // ->groupBy(function($date) {
-                // return Carbon::parse($date->created_at)->format('Y-m-d'); });
         $friend_name = User::find($friend->id);
         $users = User::all();
         foreach($messages as $message){

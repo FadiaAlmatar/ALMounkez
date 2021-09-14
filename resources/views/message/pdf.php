@@ -396,3 +396,9 @@ ul {
     margin-bottom: 2rem;
     box-shadow: none;
 }
+
+// $messages = $message->groupBy(function($date) {
+        //     return Carbon::parse($date->created_at)->format('Y-m-d'); });
+            // $messages = $message->groupBy('created_at');
+            // ->groupBy(function($date) {
+                // return Carbon::parse($date->created_at)->format('Y-m-d'); });
