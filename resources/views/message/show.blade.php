@@ -2,7 +2,7 @@
         <div class="container" style="margin-top: 5px">
 {{-- start section friends list with unread messages --}}
         <div class="friends-section">
-            @if($friends <> null)
+            {{-- @if($friends <> null) --}}
                <?php $var = false ?>
                <button style="float:left"class="btn btn-primary"onclick="group()"><i class="fas fa-plus" aria-hidden="true"></i> New Group</button>
                <form action="{{ route('groups.store') }}" method="POST" >
@@ -49,7 +49,7 @@
                     ?><br>
                 </div>
                 @endforeach
-            @endif
+            {{-- @endif --}}
 {{-- show my groups --}}
            <hr>
            <p class="mygroup">My Groups</p>
@@ -70,6 +70,7 @@
           <form action="{{ route('messages.store') }}" method="POST" >
             @csrf
             <input name="friend_id" value ={{$friend_id}} hidden>
+            {{-- <input name="group_id" value ={{$group_id}} hidden> --}}
             <textarea style="width:100%"class=" @error('message_content')is-danger @enderror" name="message_content" placeholder="{{__('write message here...')}}">{{ old('message_content') }}</textarea>
             <button class="btn btn-light chat-send-btn"><i class="fa fa-paper-plane fa-lg" aria-hidden="true"></i></button>
             <a href="{{route('messages.print', $friend_id)}}"><i class="fas fa-file-pdf fa-2x" style="color:red"></i></a>
