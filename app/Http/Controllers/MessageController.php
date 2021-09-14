@@ -137,9 +137,14 @@ class MessageController extends Controller
    public function chatgroup($id)//group_id
    {
     //    dd($id);
-       $messages = DB::table('messages')->where(['group_id', $id])->orderBy('created_at','DESC')->simplePaginate(20);;
-    //    dd($messages);
-       return view('message.show',['messages'=>$messages]);
+       $messages = DB::table('messages')->where(['group_id', $id])->orderBy('created_at','DESC')->get();
+       dd($messages);
+    $friends = DB::select("CALL pr_messages_friends( ".Auth::User()->id.")");
+    $unread_messages = DB::select("CALL pr_unread_messages( ".Auth::User()->id.")");
+    $count_unread_messages = DB::select("CALL pr_count_unread_messages( ".Auth::User()->id.")");
+    $groups = Group::all();
+    $users = User::all();
+       return view('message.show',['user_id'=> Auth::User()->id,'friend_id'=> 0,'messages'=>$messages,'groups'=>$groups,'count_unread_messages'=>$count_unread_messages,'unread_messages' => $unread_messages,'friends'=> $friends,'users'=>$users]);
    }
     /**
      * Show the form for editing the specified resource.
