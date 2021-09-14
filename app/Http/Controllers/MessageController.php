@@ -109,7 +109,7 @@ class MessageController extends Controller
         $groups = Group::all();
         return view('message.show',[ 'messages'=> $messages,'users'=> $users,'groups'=>$groups]);
     }
-    public function chat($id)
+    public function chat($id)//friend_id
     {
         $friend = User::findOrFail($id);
         $messages = DB::table('messages')->where([
@@ -134,7 +134,13 @@ class MessageController extends Controller
         $groups = Group::all();
         return view('message.show',['groups'=>$groups,'count_unread_messages'=>$count_unread_messages,'unread_messages' => $unread_messages,'friends'=> $friends, 'messages'=> $messages,'users'=>$users,'friend_name'=>$friend_name->name,'friend_id'=>$friend->id ]);
     }
-
+   public function chatgroup($id)//group_id
+   {
+    //    dd($id);
+       $messages = DB::table('messages')->where(['group_id', $id])->orderBy('created_at','DESC')->simplePaginate(20);;
+    //    dd($messages);
+       return view('message.show',['messages'=>$messages]);
+   }
     /**
      * Show the form for editing the specified resource.
      *

@@ -55,7 +55,7 @@
            <p class="mygroup">My Groups</p>
              @foreach($groups as  $group)
              <p style="border-style: solid;border-color:black">
-              <a style="text-decoration:none;"href="{{route('messages.chat', 0)}}">{{$group->group_name}}</a><br>
+              <a style="text-decoration:none;"href="{{route('messages.chatgroup', $group->id)}}">{{$group->group_name}}</a><br>
               @foreach ($group->users as $user)
               <span>{{$user->name}}</span>
               @endforeach
