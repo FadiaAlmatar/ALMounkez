@@ -88,11 +88,18 @@ class MessageController extends Controller
         ]);
         $message = new Message();
         $message->message_content= $request->message_content;
-        $message->friend_id= $request->friend_id;
-        $message->seen = false;
         $message->user_id = Auth::User()->id;//sender
-        // $message->group_id = $request->group_id;
-        // dd($request->group_id);
+        if($request->group_id == 0){
+            $message->friend_id= $request->friend_id;
+            $message->seen = false;
+            $message->group_id = 0;
+            // dd($request->group_id);
+            }
+        else{
+            $message->friend_id= 0;
+            $message->seen = false;
+            $message->group_id = $request->group_id;
+            }
         $message->save();
         $user = User::find(Auth::User()->id);
         return redirect()->back();
