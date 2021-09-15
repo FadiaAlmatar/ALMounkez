@@ -158,7 +158,7 @@ class MessageController extends Controller
     $groups = Group::all();
     $users = User::all();
     $group = Group::findOrFail($id);
-    return view('message.show',['group_id'=> $group->id ,'user_id'=> Auth::User()->id,'friend_id'=> 0,'messages'=>$messages,'groups'=>$groups,'count_unread_messages'=>$count_unread_messages,'unread_messages' => $unread_messages,'friends'=> $friends,'users'=>$users]);
+    return view('message.show',['friend_name'=>"",'group_id'=> $group->id ,'user_id'=> Auth::User()->id,'friend_id'=> 0,'messages'=>$messages,'groups'=>$groups,'count_unread_messages'=>$count_unread_messages,'unread_messages' => $unread_messages,'friends'=> $friends,'users'=>$users]);
    }
     /**
      * Show the form for editing the specified resource.

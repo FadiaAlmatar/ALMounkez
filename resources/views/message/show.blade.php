@@ -65,7 +65,7 @@
 {{-- end section friends list with unread messages --}}
 {{-- start section chat --}}
         <div class="chat-section">
-          {{-- <h5>{{__('Chat with')}} {{$friend_name}}</h5> --}}
+          <h5>{{__('Chat with')}} {{$friend_name}}</h5>
 {{-- start form send message --}}
           <form action="{{ route('messages.store') }}" method="POST" >
             @csrf
