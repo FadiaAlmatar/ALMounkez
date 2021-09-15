@@ -23,6 +23,7 @@
 
             </form>
                @foreach ($friends as $friend)
+               @if ($friend->user_id <> 0)
                <div style="margin-top: 5px;">
                   <?php $var = false ?>
                   @foreach ($unread_messages as $unread_message)
@@ -48,6 +49,7 @@
                     print_r(substr($last_message[0]->message_content,0,10));
                     ?><br>
                 </div>
+                @endif
                 @endforeach
             {{-- @endif --}}
 {{-- start show my groups --}}

@@ -18,7 +18,7 @@ class CreateProcedureLastMessage extends Migration
         $procedure = "DROP PROCEDURE IF EXISTS `pr_last_message`;
         CREATE PROCEDURE `pr_last_message` (IN id bigint,IN fid int)
         BEGIN
-        SELECT user_id,friend_id,message_content,created_at FROM `messages` WHERE user_id = id AND friend_id= fid OR user_id = fid AND friend_id= id
+        SELECT user_id,friend_id,message_content,created_at,group_id FROM `messages` WHERE  user_id = id AND friend_id= fid OR user_id = fid AND friend_id= id
         ORDER BY created_at DESC LIMIT 1;
         END;";
 
