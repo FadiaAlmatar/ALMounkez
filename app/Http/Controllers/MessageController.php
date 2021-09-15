@@ -71,8 +71,11 @@ class MessageController extends Controller
     public function create()
     {
         $users = User::all();
-        $messages = Message::all();
-        return view('message.create',['users'=> $users, 'messages'=> $messages]);
+        $friends = DB::select("CALL pr_messages_friends( ".Auth::User()->id.")");
+        $groups = Group::all();
+        $unread_messages = DB::select("CALL pr_unread_messages( ".Auth::User()->id.")");
+        $count_unread_messages = DB::select("CALL pr_count_unread_messages( ".Auth::User()->id.")");
+        return view('message.create',['users'=>$users,'count_unread_messages'=>$count_unread_messages,'unread_messages' => $unread_messages,'groups'=>$groups,'friends'=>$friends]);
     }
 
     /**
@@ -116,6 +119,7 @@ class MessageController extends Controller
         $messages = Message::all();
         $users = User::all();
         $groups = Group::all();
+        // $friends = DB::select("CALL pr_messages_friends( ".Auth::User()->id.")");
         return view('message.show',[ 'messages'=> $messages,'users'=> $users,'groups'=>$groups]);
     }
     public function chat($id)//friend_id
@@ -141,7 +145,7 @@ class MessageController extends Controller
         $unread_messages = DB::select("CALL pr_unread_messages( ".Auth::User()->id.")");
         $count_unread_messages = DB::select("CALL pr_count_unread_messages( ".Auth::User()->id.")");
         $groups = Group::all();
-        return view('message.show',['groups'=>$groups,'count_unread_messages'=>$count_unread_messages,'unread_messages' => $unread_messages,'friends'=> $friends, 'messages'=> $messages,'users'=>$users,'friend_name'=>$friend_name->name,'friend_id'=>$friend->id ]);
+        return view('message.show',['group_id'=>0,'groups'=>$groups,'count_unread_messages'=>$count_unread_messages,'unread_messages' => $unread_messages,'friends'=> $friends, 'messages'=> $messages,'users'=>$users,'friend_name'=>$friend_name->name,'friend_id'=>$friend->id ]);
     }
    public function chatgroup($id)//group_id
    {
@@ -153,7 +157,8 @@ class MessageController extends Controller
     $count_unread_messages = DB::select("CALL pr_count_unread_messages( ".Auth::User()->id.")");
     $groups = Group::all();
     $users = User::all();
-       return view('message.show',['user_id'=> Auth::User()->id,'friend_id'=> 0,'messages'=>$messages,'groups'=>$groups,'count_unread_messages'=>$count_unread_messages,'unread_messages' => $unread_messages,'friends'=> $friends,'users'=>$users]);
+    $group = Group::findOrFail($id);
+    return view('message.show',['group_id'=> $group->id ,'user_id'=> Auth::User()->id,'friend_id'=> 0,'messages'=>$messages,'groups'=>$groups,'count_unread_messages'=>$count_unread_messages,'unread_messages' => $unread_messages,'friends'=> $friends,'users'=>$users]);
    }
     /**
      * Show the form for editing the specified resource.
