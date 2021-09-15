@@ -12,7 +12,9 @@
                 <label style="display:none;"class="label group">Add friends</label>
                     <select style="display:none;" name="users[]" class="form-select group  @error('users')is-danger @enderror" aria-label="Default select example" multiple>
                         @foreach ($users as $user)
+                              @if(Auth::User()->id <> $user->id)
                            <option value="{{ $user->id }}">{{$user->name}}</option>
+                              @endif
                         @endforeach
                       </select>
                 @error('users')

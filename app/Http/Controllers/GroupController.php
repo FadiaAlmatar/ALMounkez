@@ -46,7 +46,10 @@ class GroupController extends Controller
         // $group->user_id = Auth::User()->id;
         // dd($group->group_name);
         $group->save();
-        $group->users()->sync($request->users);
+        $group->users()->attach(Auth::User()->id);
+
+        $group->users()->attach($request->users);
+        // dd(Auth::User()->id);
         return redirect()->back();
     }
 
