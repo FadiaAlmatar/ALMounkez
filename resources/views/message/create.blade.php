@@ -38,25 +38,39 @@
         </div>
         @endforeach
     {{-- @endif --}}
-{{-- show my groups --}}
-   <hr>
-   <p class="mygroup">My Groups</p>
-     @foreach($groups as  $group)
-     <p style="border-style: solid;border-color:black">
-      <a style="text-decoration:none;"href="{{route('messages.chatgroup', $group->id)}}">{{$group->group_name}}</a><br>
-      @foreach ($group->users as $user)
-       <span>{{$user->name}}</span>
-      @endforeach
-    </p>
-    @endforeach
-    <div>
-    @foreach ($users as $user)
-    {{-- other users --}}
-        @if(Auth::User()->id <> $user->id)
-                <a href="{{route('messages.chat', $user->id)}}" >{{$user->name}}</a><br>
-        @endif
-    @endforeach
-    </div>
+  {{-- start show my groups --}}
+  <hr>
+  <?php $mygroup = false;?>
+  <p class="mygroup">My Groups</p>
+    @foreach($groups as  $group)
+    <?php $mygroup = false;?>
+       <p>
+       @foreach ($group->users as $user)
+              @if($user->id == Auth::User()->id)
+                 <?php $mygroup = true; ?>
+                 @break
+               @endif
+       @endforeach
+       @if ($mygroup == true)
+       <a style="text-decoration:none;"href="{{route('messages.chatgroup', $group->id)}}">{{$group->group_name}}</a><br>
+       @foreach ($group->users as $user)
+                 <span>{{$user->name}}</span>
+       @endforeach
+     @endif
+      </p>
+   @endforeach
+   <div>
+    <p class="mygroup">other friends</p>
+@foreach ($users as $user)
+{{-- other users --}}
+    @if(Auth::User()->id <> $user->id)
+            <a href="{{route('messages.chat', $user->id)}}" >{{$user->name}}</a><br>
+    @endif
+@endforeach
+</div>
+</div>
+{{-- end show my groups --}}
+
     </div>
     </div>
 </x-layouts.app>

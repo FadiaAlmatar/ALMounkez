@@ -50,18 +50,29 @@
                 </div>
                 @endforeach
             {{-- @endif --}}
-{{-- show my groups --}}
+{{-- start show my groups --}}
            <hr>
+           <?php $mygroup = false;?>
            <p class="mygroup">My Groups</p>
              @foreach($groups as  $group)
-             <p style="border-style: solid;border-color:black">
-              <a style="text-decoration:none;"href="{{route('messages.chatgroup', $group->id)}}">{{$group->group_name}}</a><br>
-              @foreach ($group->users as $user)
-               <span>{{$user->name}}</span>
-              @endforeach
-            </p>
+             <?php $mygroup = false;?>
+                <p>
+                @foreach ($group->users as $user)
+                       @if($user->id == Auth::User()->id)
+                          <?php $mygroup = true; ?>
+                          @break
+                        @endif
+                @endforeach
+                @if ($mygroup == true)
+                <a style="text-decoration:none;"href="{{route('messages.chatgroup', $group->id)}}">{{$group->group_name}}</a><br>
+                @foreach ($group->users as $user)
+                          <span>{{$user->name}}</span>
+                @endforeach
+              @endif
+               </p>
             @endforeach
         </div>
+{{-- end show my groups --}}
 {{-- end section friends list with unread messages --}}
 {{-- start section chat --}}
         <div class="chat-section">
