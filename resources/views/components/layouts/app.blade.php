@@ -42,6 +42,9 @@
 
             // }
         // }
+        function addsubscribe(){
+           $(".subscribe").toggle();
+        }
     </script>
   </body>
 </html>

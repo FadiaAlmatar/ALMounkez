@@ -89,19 +89,26 @@
           @if($group_id == 0)<h5>{{__('Chat with')}} {{$friend_name}}</h5>@endif
           @if($group_id <> 0)<h5>{{__('Chat with')}} {{$group_name}} {{__('group')}}</h5>@endif
 {{-- start form send message --}}
-          <form action="{{ route('messages.store') }}" method="POST">
+          <form action="{{ route('messages.store') }}" method="POST" style="display:inline">
             @csrf
             <input name="friend_id" value ={{$friend_id}} hidden>
             <input name="group_id" value ={{$group_id}} hidden>
             <textarea style="width:100%"class=" @error('message_content')is-danger @enderror" name="message_content" placeholder="{{__('write message here...')}}">{{ old('message_content') }}</textarea>
             <button class="btn btn-light chat-send-btn"><i class="fa fa-paper-plane fa-lg" aria-hidden="true"></i></button>
-            <a href="{{route('messages.print', $friend_id)}}"><i class="fas fa-file-pdf fa-2x" style="color:red"></i>
-            @if($group_id <> 0)<button class="btn btn-light chat-send-btn"><i class="fas fa-plus" aria-hidden="true"></i></button>@endif</a>
+            <a href="{{route('messages.print', $friend_id)}}"><i class="fas fa-file-pdf fa-2x" style="color:red"></i></a>
 {{-- pagination --}}
             {{-- <div class="d-flex justify-content-center">
                 {!! $messages->links() !!}
             </div> --}}
           </form>
+          @if($group_id <> 0)<button class="btn btn-light chat-send-btn"onclick="addsubscribe()"><i class="fas fa-plus" aria-hidden="true"></i></button>@endif
+          <select style="display:none;" name="users[]" class="form-select subscribe  @error('users')is-danger @enderror" aria-label="Default select example" multiple>
+              @foreach ($users as $user)
+                    @if(Auth::User()->id <> $user->id)
+                       <option value="{{ $user->id }}">{{$user->name}}</option>
+                    @endif
+              @endforeach
+          </select>
 {{--end form send message   --}}
 {{-- start show messages --}}
           <div style="overflow:auto;height:500px;">
