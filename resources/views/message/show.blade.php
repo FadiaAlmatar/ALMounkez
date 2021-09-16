@@ -1,28 +1,27 @@
 <x-layouts.app>
-        <div class="container" style="margin-top: 5px">
+    <div class="container" style="margin-top: 5px">
 {{-- start section friends list with unread messages --}}
         <div class="friends-section" style="overflow:auto;height:600px;">
             {{-- @if($friends <> null) --}}
                 <?php $var = false ?>
-                <button style="float:left"class="btn btn-primary"onclick="group()"><i class="fas fa-plus" aria-hidden="true"></i> New Group</button>
+{{-- start create group --}}
+                <button style="float:left"class="btn btn-primary"onclick="group()"><i class="fas fa-plus" aria-hidden="true"></i> {{__('New Group')}}</button>
                 <form action="{{ route('groups.store') }}" method="POST" >
                     @csrf
-                <input class="group"style="display:none;width:40%;float:right"type="text" name="group_name"  class="form-control pull-right"  placeholder="{{__('enter group name')}}" /><br><br>
-                <div class="field">
-                <label style="display:none;"class="label group">Add friends</label>
+                    <input class="group"style="display:none;width:40%;float:right"type="text" name="group_name"  class="form-control pull-right"  placeholder="{{__('enter group name')}}" /><br><br>
+                    <div class="field">
+                    <label style="display:none;"class="label group">{{__('Add friends')}}</label>
                     <select style="display:none;" name="users[]" class="form-select group  @error('users')is-danger @enderror" aria-label="Default select example" multiple>
                         @foreach ($users as $user)
                               @if(Auth::User()->id <> $user->id)
                                  <option value="{{ $user->id }}">{{$user->name}}</option>
                               @endif
                         @endforeach
-                      </select>
-                @error('users')
-                  <p class="help is-danger">{{ $message }}</p>
-                @enderror
-              </div>
-              <button type="submit"style="float:left;display:none;" class="btn btn-primary group">ok</button><br><br>
-            </form>
+                    </select>
+                    </div>
+                    <button type="submit"style="float:left;display:none;" class="btn btn-primary group">{{__('ok')}}</button><br><br>
+                </form>
+{{-- end create group --}}
                @foreach ($friends as $friend)
                @if ($friend->user_id <> 0)
                <div style="margin-top: 5px;">
@@ -74,13 +73,12 @@
               @endif
                </p>
             @endforeach
-
 {{-- end show my groups --}}
         <p class="mygroup">other friends</p>
         @foreach ($users as $user)
         {{-- other users --}}
             @if(Auth::User()->id <> $user->id)
-                    <a href="{{route('messages.chat', $user->id)}}" >{{$user->name}}</a><br>
+                    <a style="text-decoration:none;"href="{{route('messages.chat', $user->id)}}" >{{$user->name}}</a><br>
             @endif
         @endforeach
     </div>
