@@ -96,7 +96,6 @@
             <textarea style="width:100%"class=" @error('message_content')is-danger @enderror" name="message_content" placeholder="{{__('write message here...')}}">{{ old('message_content') }}</textarea>
             <button class="btn btn-light chat-send-btn"><i class="fa fa-paper-plane fa-lg" aria-hidden="true"></i></button>
             <a href="{{route('messages.print', $friend_id)}}"><i class="fas fa-file-pdf fa-2x" style="color:red"></i></a>
-
 {{-- pagination --}}
             {{-- <div class="d-flex justify-content-center">
                 {!! $messages->links() !!}
