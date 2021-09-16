@@ -66,7 +66,7 @@
                 @endif
                 @endforeach
                 @if ($mygroup == true)
-                <a style="text-decoration:none;"href="{{route('messages.chatgroup', $group->id)}}">{{$group->group_name}}</a><br>
+                <a href="{{route('messages.chatgroup', $group->id)}}">{{$group->group_name}}</a><br>
                 @foreach ($group->users as $user)
                     <span>{{$user->name}}</span>
                 @endforeach
@@ -78,7 +78,7 @@
        <hr><p class="mygroup">{{__('Suggested friends')}}</p>
         @foreach ($users as $user)
             @if(Auth::User()->id <> $user->id)
-                <a style="text-decoration:none;"href="{{route('messages.chat', $user->id)}}" >{{$user->name}}</a><br>
+                <a href="{{route('messages.chat', $user->id)}}" >{{$user->name}}</a><br>
             @endif
         @endforeach
 {{-- end show suggested friends --}}
@@ -87,9 +87,10 @@
 {{-- end section friends list with unread messages --}}
 {{-- start section chat --}}
         <div class="chat-section">
-          <h5>{{__('Chat with')}} {{$friend_name}}</h5>
+          @if($group_id == 0)<h5>{{__('Chat with')}} {{$friend_name}}</h5>@endif
+          @if($group_id <> 0)<h5>{{__('Chat with')}} {{$group_name}} {{__('group')}}</h5>@endif
 {{-- start form send message --}}
-          <form action="{{ route('messages.store') }}" method="POST" >
+          <form action="{{ route('messages.store') }}" method="POST">
             @csrf
             <input name="friend_id" value ={{$friend_id}} hidden>
             <input name="group_id" value ={{$group_id}} hidden>
