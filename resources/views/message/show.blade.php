@@ -10,7 +10,7 @@
                     @csrf
                     <input class="group"style="display:none;width:40%;float:right"type="text" name="group_name"  class="form-control pull-right"  placeholder="{{__('enter group name')}}" /><br><br>
                     <div class="field">
-                    <label style="display:none;"class="label group">{{__('Add friends')}}</label>
+                    <label style="display:none;font-size:15px"class="label group">{{__('Add friends')}}</label>
                     <select style="display:none;" name="users[]" class="form-select group  @error('users')is-danger @enderror" aria-label="Default select example" multiple>
                         @foreach ($users as $user)
                               @if(Auth::User()->id <> $user->id)
@@ -18,10 +18,12 @@
                               @endif
                         @endforeach
                     </select>
+                    <button type="submit"style="float:left;display:none;" class="btn btn-primary group">{{__('ok')}}</button><br>
                     </div>
-                    <button type="submit"style="float:left;display:none;" class="btn btn-primary group">{{__('ok')}}</button><br><br>
-                </form>
+                </form><br>
 {{-- end create group --}}
+{{-- start show friends --}}
+            <div>
                @foreach ($friends as $friend)
                @if ($friend->user_id <> 0)
                <div style="margin-top: 5px;">
@@ -51,19 +53,18 @@
                 </div>
                 @endif
                 @endforeach
-            {{-- @endif --}}
+                </div>
+{{-- end show friends --}}
 {{-- start show my groups --}}
-           <hr>
-           <?php $mygroup = false;?>
-           <p class="mygroup">My Groups</p>
-             @foreach($groups as  $group)
-             <?php $mygroup = false;?>
-                <p>
-                @foreach ($group->users as $user)
-                       @if($user->id == Auth::User()->id)
-                          <?php $mygroup = true; ?>
-                          @break
-                        @endif
+        <?php $mygroup = false;?>
+        <hr><p class="mygroup">{{__('My Groups')}}</p>
+        @foreach($groups as  $group)
+            <?php $mygroup = false;?>
+            <p>@foreach ($group->users as $user)
+                @if($user->id == Auth::User()->id)
+                  <?php $mygroup = true; ?>
+                  @break
+                @endif
                 @endforeach
                 @if ($mygroup == true)
                 <a style="text-decoration:none;"href="{{route('messages.chatgroup', $group->id)}}">{{$group->group_name}}</a><br>
@@ -74,13 +75,14 @@
                </p>
             @endforeach
 {{-- end show my groups --}}
-        <p class="mygroup">other friends</p>
+{{-- start show suggested friends --}}
+       <hr><p class="mygroup">{{__('Suggested friends')}}</p>
         @foreach ($users as $user)
-        {{-- other users --}}
             @if(Auth::User()->id <> $user->id)
-                    <a style="text-decoration:none;"href="{{route('messages.chat', $user->id)}}" >{{$user->name}}</a><br>
+                <a style="text-decoration:none;"href="{{route('messages.chat', $user->id)}}" >{{$user->name}}</a><br>
             @endif
         @endforeach
+{{-- end show suggested friends --}}
     </div>
 {{-- end show my groups --}}
 {{-- end section friends list with unread messages --}}
