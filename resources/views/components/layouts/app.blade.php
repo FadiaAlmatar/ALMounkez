@@ -34,6 +34,14 @@
         function group() {
             $(".group").toggle();
         }
+        function mychat() {
+            $(".chat-section").show("fast");
+            // var x = document.getElementById("chat-section");
+            // if (x.style.display === "none") {
+            //     x.style.display = "block";
+
+            // }
+        }
     </script>
   </body>
 </html>

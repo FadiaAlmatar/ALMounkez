@@ -1,19 +1,19 @@
 <x-layouts.app>
         <div class="container" style="margin-top: 5px">
 {{-- start section friends list with unread messages --}}
-        <div class="friends-section">
+        <div class="friends-section" style="overflow:auto;height:600px;">
             {{-- @if($friends <> null) --}}
-               <?php $var = false ?>
-               <button style="float:left"class="btn btn-primary"onclick="group()"><i class="fas fa-plus" aria-hidden="true"></i> New Group</button>
-               <form action="{{ route('groups.store') }}" method="POST" >
-                @csrf
-               <input class="group"style="display:none;width:40%;float:right"type="text" name="group_name"  class="form-control pull-right"  placeholder="{{__('enter group name')}}" /><br><br>
-              <div class="field">
+                <?php $var = false ?>
+                <button style="float:left"class="btn btn-primary"onclick="group()"><i class="fas fa-plus" aria-hidden="true"></i> New Group</button>
+                <form action="{{ route('groups.store') }}" method="POST" >
+                    @csrf
+                <input class="group"style="display:none;width:40%;float:right"type="text" name="group_name"  class="form-control pull-right"  placeholder="{{__('enter group name')}}" /><br><br>
+                <div class="field">
                 <label style="display:none;"class="label group">Add friends</label>
                     <select style="display:none;" name="users[]" class="form-select group  @error('users')is-danger @enderror" aria-label="Default select example" multiple>
                         @foreach ($users as $user)
                               @if(Auth::User()->id <> $user->id)
-                           <option value="{{ $user->id }}">{{$user->name}}</option>
+                                 <option value="{{ $user->id }}">{{$user->name}}</option>
                               @endif
                         @endforeach
                       </select>
@@ -22,7 +22,6 @@
                 @enderror
               </div>
               <button type="submit"style="float:left;display:none;" class="btn btn-primary group">ok</button><br><br>
-
             </form>
                @foreach ($friends as $friend)
                @if ($friend->user_id <> 0)
@@ -30,7 +29,7 @@
                   <?php $var = false ?>
                   @foreach ($unread_messages as $unread_message)
                      @if($friend->user_id == $unread_message->user_id)
-                      <a class="unread-friend-name" href="{{route('messages.chat', $unread_message->user_id)}}">{{ App\Models\User::where(['id' => $unread_message->user_id])->pluck('name')->first() }}</a>
+                      <a onclick="mychat()"class="unread-friend-name" href="{{route('messages.chat', $unread_message->user_id)}}">{{ App\Models\User::where(['id' => $unread_message->user_id])->pluck('name')->first() }}</a>
                       <?php $var = true ?>
                       @foreach ($count_unread_messages as $count_unread_message)
                         @if($unread_message->user_id == $count_unread_message->user_id)
@@ -43,7 +42,7 @@
                      @endif
                   @endforeach
                   @if($var == false)
-                    <a class="friend-name" href="{{route('messages.chat', $friend->user_id)}}">{{ App\Models\User::where(['id' => $friend->user_id])->pluck('name')->first() }}</a><br>
+                    <a onclick="mychat()"class="friend-name" href="{{route('messages.chat', $friend->user_id)}}">{{ App\Models\User::where(['id' => $friend->user_id])->pluck('name')->first() }}</a><br>
                 @endif
                     <?php
                     $last_message = [];
@@ -75,11 +74,20 @@
               @endif
                </p>
             @endforeach
-        </div>
+
+{{-- end show my groups --}}
+        <p class="mygroup">other friends</p>
+        @foreach ($users as $user)
+        {{-- other users --}}
+            @if(Auth::User()->id <> $user->id)
+                    <a href="{{route('messages.chat', $user->id)}}" >{{$user->name}}</a><br>
+            @endif
+        @endforeach
+    </div>
 {{-- end show my groups --}}
 {{-- end section friends list with unread messages --}}
 {{-- start section chat --}}
-        <div class="chat-section">
+        <div class="chat-section" style="display: none;">
           <h5>{{__('Chat with')}} {{$friend_name}}</h5>
 {{-- start form send message --}}
           <form action="{{ route('messages.store') }}" method="POST" >
@@ -129,10 +137,16 @@
               @endforeach
           </div>
 {{-- end show messages --}}
+
         </div>
 {{-- end section chat --}}
         </div>
 {{-- </section> --}}
 </x-layouts.app>
+
+
+
+
+
 
 {{-- <a class="btn btn-primary" style="margin-bottom:13px" href="{{route('messages.print', $friend_id)}}">Download PDF</a> --}}
