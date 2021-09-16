@@ -2,7 +2,6 @@
     <div class="container" style="margin-top: 5px">
 {{-- start section friends list with unread messages --}}
         <div class="friends-section" style="overflow:auto;height:600px;">
-            {{-- @if($friends <> null) --}}
                 <?php $var = false ?>
 {{-- start create group --}}
                 <button style="float:left"class="btn btn-primary"onclick="group()"><i class="fas fa-plus" aria-hidden="true"></i> {{__('New Group')}}</button>
@@ -30,7 +29,7 @@
                   <?php $var = false ?>
                   @foreach ($unread_messages as $unread_message)
                      @if($friend->user_id == $unread_message->user_id)
-                      <a onclick="mychat()"class="unread-friend-name" href="{{route('messages.chat', $unread_message->user_id)}}">{{ App\Models\User::where(['id' => $unread_message->user_id])->pluck('name')->first() }}</a>
+                      <a class="unread-friend-name" href="{{route('messages.chat', $unread_message->user_id)}}">{{ App\Models\User::where(['id' => $unread_message->user_id])->pluck('name')->first() }}</a>
                       <?php $var = true ?>
                       @foreach ($count_unread_messages as $count_unread_message)
                         @if($unread_message->user_id == $count_unread_message->user_id)
@@ -43,7 +42,7 @@
                      @endif
                   @endforeach
                   @if($var == false)
-                    <a onclick="mychat()"class="friend-name" href="{{route('messages.chat', $friend->user_id)}}">{{ App\Models\User::where(['id' => $friend->user_id])->pluck('name')->first() }}</a><br>
+                    <a class="friend-name" href="{{route('messages.chat', $friend->user_id)}}">{{ App\Models\User::where(['id' => $friend->user_id])->pluck('name')->first() }}</a><br>
                 @endif
                     <?php
                     $last_message = [];
@@ -69,7 +68,7 @@
                 @if ($mygroup == true)
                 <a style="text-decoration:none;"href="{{route('messages.chatgroup', $group->id)}}">{{$group->group_name}}</a><br>
                 @foreach ($group->users as $user)
-                          <span>{{$user->name}}</span>
+                    <span>{{$user->name}}</span>
                 @endforeach
               @endif
                </p>
@@ -87,7 +86,7 @@
 {{-- end show my groups --}}
 {{-- end section friends list with unread messages --}}
 {{-- start section chat --}}
-        <div class="chat-section" style="display: none;">
+        <div class="chat-section">
           <h5>{{__('Chat with')}} {{$friend_name}}</h5>
 {{-- start form send message --}}
           <form action="{{ route('messages.store') }}" method="POST" >
@@ -113,10 +112,12 @@
                      <span class="sender-name">{{$sender->name}} </span>
                      <span class="message-date-sender">{{ date("Y-m-d h:i A", strtotime($message->created_at))}}</span><br><br>
                      <div class="message-content">{{$message->message_content}}
-                       @if($message->seen == 1)
+                      @if ($message->group_id == 0)
+                        @if($message->seen == 1)
                          <i class="fa fa-check-double fa-xs" aria-hidden="true"></i>
                         @else
                         <i class="fa fa-check fa-xs" aria-hidden="true" ></i>
+                        @endif
                         @endif
                     </div>
                   </div>
