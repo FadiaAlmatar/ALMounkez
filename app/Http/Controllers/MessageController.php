@@ -28,12 +28,8 @@ class MessageController extends Controller
     }
     public function print(Request $request,$id)
     {
-        $message = Message::all();
-        $friends = DB::select("CALL pr_messages_friends( ".Auth::User()->id.")");
-        $unread_messages = DB::select("CALL pr_unread_messages( ".Auth::User()->id.")");
         $friend = User::findOrFail($id);
         $friend_name = User::find($friend->id);
-        $friend_id = Message::find($id);
         $messages = DB::table('messages')->where([
             ['friend_id', $friend->id],
             ['user_id', Auth::User()->id],
@@ -41,10 +37,7 @@ class MessageController extends Controller
             ['friend_id', Auth::User()->id],
             ['user_id', $friend->id],])->orderBy('created_at','DESC')->get();
         $users = User::all();
-        $data = [
-                'message' => $message,
-            ];
-        $html = view('message.chat-pdf',['data' => $data,'users' => $users,'friends' => $friends,'unread_messages' => $unread_messages,'friend_name'  => $friend_name,'friend_id'  => $friend_id,'messages'  => $messages])->render();
+        $html = view('message.chat-pdf',['users' => $users,'friend_name'  => $friend_name,'messages'  => $messages])->render();
         $pdf = new \Mpdf\Mpdf([
             'mode' => 'utf-8',
             'format' => 'A4',
