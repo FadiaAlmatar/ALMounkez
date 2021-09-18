@@ -97,6 +97,7 @@
             <button class="btn btn-light chat-send-btn"><i class="fa fa-paper-plane fa-lg" aria-hidden="true"></i></button>
             <a href="{{route('messages.print', $friend_id)}}"><i class="fas fa-file-pdf fa-2x" style="color:red"></i></a>
           </form>
+{{-- start add new subscribes --}}
           @if($group_id <> 0)<button class="btn btn-light chat-send-btn"onclick="addsubscribe()"><i class="fas fa-plus" aria-hidden="true"></i></button>@endif
           <form action="{{ route('addsubscribes',$group_id) }}" method="GET" >
             @csrf
@@ -109,6 +110,7 @@
           </select>
           <button type="submit"style="float:left;display:none;" class="btn btn-primary subscribe">{{__('ok')}}</button>
         </form>
+{{-- end add new subscribes --}}
           {{-- pagination --}}
           <br><span class="d-flex justify-content-center">
             {!! $messages->links() !!}
