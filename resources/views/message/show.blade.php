@@ -88,11 +88,6 @@
                 <a href="{{route('messages.chat', $user->id)}}" >{{$user->name}}</a><br>
             @endif
          @endforeach
-         {{-- @foreach ($suggestedfriends  as $suggestedfriend )
-             <a href="{{route('messages.chat', $user->id)}}" >{{$user->name}}</a><br>
-             <a class="friend-name" href="{{route('messages.chat', $friend->user_id)}}">{{ App\Models\User::where(['id' => $friend->user_id])->pluck('name')->first() }}</a><br>
-
-         @endforeach --}}
 {{-- end show suggested friends --}}
     </div>
 {{-- end show my groups --}}
@@ -126,7 +121,6 @@
                         @endif
                     @endforeach
                     @if (($myfriend == false) && (Auth::User()->id <> $user->id))
-                    {{-- <a class="friend-name" href="{{route('messages.chat', $friend->user_id)}}">{{ App\Models\User::where(['id' => $friend->user_id])->pluck('name')->first() }}</a><br> --}}
                     <option value="{{ $user->id }}">{{$user->name}}</option>
                     @endif
                     @endforeach
@@ -184,3 +178,8 @@
 
 
 {{-- <a class="btn btn-primary" style="margin-bottom:13px" href="{{route('messages.print', $friend_id)}}">Download PDF</a> --}}
+
+ {{-- @foreach ($suggestedfriends  as $suggestedfriend )
+             <a href="{{route('messages.chat', $user->id)}}" >{{$user->name}}</a><br>
+             <a class="friend-name" href="{{route('messages.chat', $friend->user_id)}}">{{ App\Models\User::where(['id' => $friend->user_id])->pluck('name')->first() }}</a><br>
+         @endforeach --}}
