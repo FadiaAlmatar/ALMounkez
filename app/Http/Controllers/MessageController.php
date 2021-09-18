@@ -96,7 +96,6 @@ class MessageController extends Controller
             $message->friend_id= $request->friend_id;
             $message->seen = false;
             $message->group_id = 0;
-            // dd($request->group_id);
             }
         else{
             $message->friend_id= 0;
@@ -119,7 +118,6 @@ class MessageController extends Controller
         $messages = Message::all();
         $users = User::all();
         $groups = Group::all();
-        // $friends = DB::select("CALL pr_messages_friends( ".Auth::User()->id.")");
         return view('message.show',[ 'messages'=> $messages,'users'=> $users,'groups'=>$groups]);
     }
     public function chat($id)//friend_id
@@ -130,7 +128,7 @@ class MessageController extends Controller
             ['user_id', Auth::User()->id],
         ])->orwhere([
             ['friend_id', Auth::User()->id],
-            ['user_id', $friend->id],])->orderBy('created_at','DESC')->simplePaginate(20);
+            ['user_id', $friend->id],])->orderBy('created_at','DESC')->simplePaginate(3);
         $friend_name = User::find($friend->id);
         $users = User::all();
         foreach($messages as $message){
@@ -149,7 +147,7 @@ class MessageController extends Controller
     }
    public function chatgroup($id)//group_id
    {
-        $messages = DB::table('messages')->where('group_id', $id)->orderBy('created_at','DESC')->get();
+        $messages = DB::table('messages')->where('group_id', $id)->orderBy('created_at','DESC')->simplePaginate(3);
         $friends = DB::select("CALL pr_messages_friends( ".Auth::User()->id.")");
         $unread_messages = DB::select("CALL pr_unread_messages( ".Auth::User()->id.")");
         $count_unread_messages = DB::select("CALL pr_count_unread_messages( ".Auth::User()->id.")");

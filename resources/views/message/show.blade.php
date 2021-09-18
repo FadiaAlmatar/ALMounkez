@@ -96,10 +96,6 @@
             <textarea style="width:100%"class=" @error('message_content')is-danger @enderror" name="message_content" placeholder="{{__('write message here...')}}">{{ old('message_content') }}</textarea>
             <button class="btn btn-light chat-send-btn"><i class="fa fa-paper-plane fa-lg" aria-hidden="true"></i></button>
             <a href="{{route('messages.print', $friend_id)}}"><i class="fas fa-file-pdf fa-2x" style="color:red"></i></a>
-{{-- pagination --}}
-            {{-- <div class="d-flex justify-content-center">
-                {!! $messages->links() !!}
-            </div> --}}
           </form>
           @if($group_id <> 0)<button class="btn btn-light chat-send-btn"onclick="addsubscribe()"><i class="fas fa-plus" aria-hidden="true"></i></button>@endif
           <select style="display:none;" name="users[]" class="form-select subscribe  @error('users')is-danger @enderror" aria-label="Default select example" multiple>
@@ -109,6 +105,10 @@
                     @endif
               @endforeach
           </select>
+          {{-- pagination --}}
+          <br><span class="d-flex justify-content-center">
+            {!! $messages->links() !!}
+        </span>
 {{--end form send message   --}}
 {{-- start show messages --}}
           <div style="overflow:auto;height:500px;">
