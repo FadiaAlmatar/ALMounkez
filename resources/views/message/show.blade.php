@@ -111,20 +111,8 @@
           <form action="{{ route('addsubscribes',$group_id) }}" method="GET" >
             @csrf
             <select style="display:none;" name="users[]" class="form-select subscribe  @error('users')is-danger @enderror" aria-label="Default select example" multiple>
-                <?php $myfriend = false; ?>
-                @foreach ($users as $user)
-                    <?php $myfriend = false; ?>
-                    @foreach ($friends as $friend)
-                        @if($user->id == $friend->user_id)
-                            <?php $myfriend = true; ?>
-                            @break
-                        @endif
-                    @endforeach
-                    @if (($myfriend == false) && (Auth::User()->id <> $user->id))
-                    <option value="{{ $user->id }}">{{$user->name}}</option>
-                    @endif
-                    @endforeach
-          </select>
+
+            </select>
           <button type="submit"style="float:left;display:none;" class="btn btn-primary subscribe">{{__('ok')}}</button><br>
         </form>
 {{-- end add new subscribes --}}
@@ -183,3 +171,20 @@
              <a href="{{route('messages.chat', $user->id)}}" >{{$user->name}}</a><br>
              <a class="friend-name" href="{{route('messages.chat', $friend->user_id)}}">{{ App\Models\User::where(['id' => $friend->user_id])->pluck('name')->first() }}</a><br>
          @endforeach --}}
+
+
+        {{-- / <?php $myfriend = false; ?> --}}
+         {{-- @foreach ($users as $user)
+             <?php $myfriend = false; ?>
+             @foreach ($groups as $group)
+                 @if($group_id == $group->id)
+                   @foreach ($group->users as $user)
+                      @if($user->id == $group->users->id)
+                      <?php $myfriend = true; ?>
+                     @break
+                      @endif
+             @endforeach @endif @endforeach --}}
+             {{-- @if (($myfriend == false) && (Auth::User()->id <> $user->id))
+             <option value="{{ $user->id }}">{{$user->name}}</option>
+             @endif --}}
+             {{-- @endforeach --}}
