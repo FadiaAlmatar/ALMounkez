@@ -46,8 +46,8 @@ class MessageController extends Controller
         $pdf->WriteHTML($html);
         return  $pdf->Output("chat-PDF.pdf","D");
         }
-        public function printgroup(Request $request,$id)
-        {
+    public function printgroup(Request $request,$id)
+     {
             $group = Group::findOrFail($id);
             $group_name = $group->group_name;
             $messages = DB::table('messages')->where('group_id', $id)->orderBy('created_at','DESC')->get();
@@ -60,7 +60,7 @@ class MessageController extends Controller
             $pdf->WriteHTML('.fa { font-family: fontawesome;}',1);
             $pdf->WriteHTML($html);
             return  $pdf->Output("chat-PDF.pdf","D");
-            }
+     }
 
 
     /**
@@ -145,8 +145,8 @@ class MessageController extends Controller
         $groups = Group::all();
         return view('message.show',['group_name'=>"",'group_id'=>0,'groups'=>$groups,'count_unread_messages'=>$count_unread_messages,'unread_messages' => $unread_messages,'friends'=> $friends, 'messages'=> $messages,'users'=>$users,'friend_name'=>$friend_name->name,'friend_id'=>$friend->id ]);
     }
-   public function chatgroup($id)//group_id
-   {
+    public function chatgroup($id)//group_id
+    {
         $messages = DB::table('messages')->where('group_id', $id)->orderBy('created_at','DESC')->simplePaginate(3);
         $friends = DB::select("CALL pr_messages_friends( ".Auth::User()->id.")");
         $unread_messages = DB::select("CALL pr_unread_messages( ".Auth::User()->id.")");
@@ -155,8 +155,8 @@ class MessageController extends Controller
         $users = User::all();
         $group = Group::findOrFail($id);
         $group_name = Group::find($group->id);
-        return view('message.show',['group_name'=>$group_name->group_name,'friend_name'=>"",'group_id'=> $group->id ,'user_id'=> Auth::User()->id,'friend_id'=> 0,'messages'=>$messages,'groups'=>$groups,'count_unread_messages'=>$count_unread_messages,'unread_messages' => $unread_messages,'friends'=> $friends,'users'=>$users]);
-   }
+        return view('message.show',['group_owner'=>$group->group_owner,'group_name'=>$group_name->group_name,'friend_name'=>"",'group_id'=> $group->id ,'user_id'=> Auth::User()->id,'friend_id'=> 0,'messages'=>$messages,'groups'=>$groups,'count_unread_messages'=>$count_unread_messages,'unread_messages' => $unread_messages,'friends'=> $friends,'users'=>$users]);
+    }
     /**
      * Show the form for editing the specified resource.
      *

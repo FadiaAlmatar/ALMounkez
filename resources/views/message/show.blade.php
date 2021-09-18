@@ -99,7 +99,7 @@
             @if($group_id <> 0)<a href="{{route('messages.printgroup', $group_id)}}"><i class="fas fa-file-pdf fa-2x" style="color:red"></i></a>@endif
         </form>
 {{-- start add new subscribes --}}
-          @if($group_id <> 0)<button class="btn btn-light chat-send-btn"onclick="addsubscribe()"><i class="fas fa-plus" aria-hidden="true"></i></button>@endif
+          @if(($group_id <> 0) && ($group_owner == Auth::User()->id))<button class="btn btn-light chat-send-btn"onclick="addsubscribe()"><i class="fas fa-plus" aria-hidden="true"></i></button>@endif
           <form action="{{ route('addsubscribes',$group_id) }}" method="GET" >
             @csrf
             <select style="display:none;" name="users[]" class="form-select subscribe  @error('users')is-danger @enderror" aria-label="Default select example" multiple>
