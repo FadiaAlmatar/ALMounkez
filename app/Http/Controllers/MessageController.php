@@ -55,6 +55,31 @@ class MessageController extends Controller
         $pdf->WriteHTML($html);
         return  $pdf->Output("chat-PDF.pdf","D");
         }
+        public function printgroup(Request $request,$id)
+        {
+            $group = Group::findOrFail($id);
+            $group_name = $group->group_name;
+            $messages = DB::table('messages')->where('group_id', $id)->orderBy('created_at','DESC')->get();
+            $users = User::all();
+            $html = view('message.chatgroup-pdf',['group_name'=>$group_name ,'users' => $users,'messages'  => $messages])->render();
+            $pdf = new \Mpdf\Mpdf([
+                'mode' => 'utf-8',
+                'format' => 'A4',
+                'default_font' => 'fontawesome',
+                'margin_left' => 15,
+                'margin_right' => 10,
+                'margin_top' => 16,
+                'margin_bottom' => 15,
+                'margin_header' => 10,
+                'margin_footer' => 10
+        ]);
+            $pdf->AddPage("P");
+            $pdf->SetHTMLFooter('<p style="text-align: center">{PAGENO} of {nbpg}</p>');
+            $pdf->WriteHTML('.fa { font-family: fontawesome;}',1);
+            $pdf->WriteHTML($html);
+            return  $pdf->Output("chat-PDF.pdf","D");
+            }
+
 
     /**
      * Show the form for creating a new resource.
