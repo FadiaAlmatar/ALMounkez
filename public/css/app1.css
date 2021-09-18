@@ -1,5 +1,6 @@
 body{margin-top:20px;}
-a{text-decoration: none;}
+a{text-decoration: none;
+color: blue;}
 /* start post with comment style */
 .sender-name{
     font-weight: bold;float:left;
