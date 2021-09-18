@@ -75,11 +75,24 @@
 {{-- end show my groups --}}
 {{-- start show suggested friends --}}
        <hr><p class="mygroup">{{__('Suggested friends')}}</p>
+         <?php $myfriend = false; ?>
         @foreach ($users as $user)
-            @if(Auth::User()->id <> $user->id)
+            <?php $myfriend = false; ?>
+            @foreach ($friends as $friend)
+                @if($user->id == $friend->user_id)
+                    <?php $myfriend = true; ?>
+                     @break
+                 @endif
+            @endforeach
+            @if (($myfriend == false) && (Auth::User()->id <> $user->id))
                 <a href="{{route('messages.chat', $user->id)}}" >{{$user->name}}</a><br>
             @endif
-        @endforeach
+         @endforeach
+         {{-- @foreach ($suggestedfriends  as $suggestedfriend )
+             <a href="{{route('messages.chat', $user->id)}}" >{{$user->name}}</a><br>
+             <a class="friend-name" href="{{route('messages.chat', $friend->user_id)}}">{{ App\Models\User::where(['id' => $friend->user_id])->pluck('name')->first() }}</a><br>
+
+         @endforeach --}}
 {{-- end show suggested friends --}}
     </div>
 {{-- end show my groups --}}
@@ -103,11 +116,20 @@
           <form action="{{ route('addsubscribes',$group_id) }}" method="GET" >
             @csrf
             <select style="display:none;" name="users[]" class="form-select subscribe  @error('users')is-danger @enderror" aria-label="Default select example" multiple>
-              @foreach ($users as $user)
-                    @if(Auth::User()->id <> $user->id)
-                       <option value="{{ $user->id }}">{{$user->name}}</option>
+                <?php $myfriend = false; ?>
+                @foreach ($users as $user)
+                    <?php $myfriend = false; ?>
+                    @foreach ($friends as $friend)
+                        @if($user->id == $friend->user_id)
+                            <?php $myfriend = true; ?>
+                            @break
+                        @endif
+                    @endforeach
+                    @if (($myfriend == false) && (Auth::User()->id <> $user->id))
+                    {{-- <a class="friend-name" href="{{route('messages.chat', $friend->user_id)}}">{{ App\Models\User::where(['id' => $friend->user_id])->pluck('name')->first() }}</a><br> --}}
+                    <option value="{{ $user->id }}">{{$user->name}}</option>
                     @endif
-              @endforeach
+                    @endforeach
           </select>
           <button type="submit"style="float:left;display:none;" class="btn btn-primary subscribe">{{__('ok')}}</button><br>
         </form>
