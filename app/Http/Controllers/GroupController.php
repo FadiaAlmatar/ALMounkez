@@ -43,16 +43,17 @@ class GroupController extends Controller
         ] );
         $group = new Group();
         $group->group_name = $request->group_name;
-        // $group->user_id = Auth::User()->id;
-        // dd($group->group_name);
         $group->save();
         $group->users()->attach(Auth::User()->id);
-
         $group->users()->attach($request->users);
-        // dd(Auth::User()->id);
         return redirect()->back();
     }
-
+    public function addsubscribes(Request $request,$id)
+    {
+        $group = Group::find($id);
+        $group->users()->attach($request->users);
+        return redirect()->back();
+    }
     /**
      * Display the specified resource.
      *

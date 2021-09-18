@@ -50,6 +50,9 @@ Route::get('/chatgroup/{id}', [MessageController::class, 'chatgroup'])->name('me
 Route::get('/print/{id}', [MessageController::class, 'print'])->name('messages.print');
 Route::post('/toggle-approve', [CommentController::class,'approval'])->name('approve');
 Route::get('/get-friends', [MessageController::class, 'getfriends'])->name('friends');
+// storenewsubscribe
+Route::get('/new-subscribes/{id}', [GroupController::class, 'addsubscribes'])->name('addsubscribes');
+
 
 
 Route::get('/dashboard', function () {

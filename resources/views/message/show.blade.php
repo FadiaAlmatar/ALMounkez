@@ -98,13 +98,17 @@
             <a href="{{route('messages.print', $friend_id)}}"><i class="fas fa-file-pdf fa-2x" style="color:red"></i></a>
           </form>
           @if($group_id <> 0)<button class="btn btn-light chat-send-btn"onclick="addsubscribe()"><i class="fas fa-plus" aria-hidden="true"></i></button>@endif
-          <select style="display:none;" name="users[]" class="form-select subscribe  @error('users')is-danger @enderror" aria-label="Default select example" multiple>
+          <form action="{{ route('addsubscribes',$group_id) }}" method="GET" >
+            @csrf
+            <select style="display:none;" name="users[]" class="form-select subscribe  @error('users')is-danger @enderror" aria-label="Default select example" multiple>
               @foreach ($users as $user)
                     @if(Auth::User()->id <> $user->id)
                        <option value="{{ $user->id }}">{{$user->name}}</option>
                     @endif
               @endforeach
           </select>
+          <button type="submit"style="float:left;display:none;" class="btn btn-primary subscribe">{{__('ok')}}</button>
+        </form>
           {{-- pagination --}}
           <br><span class="d-flex justify-content-center">
             {!! $messages->links() !!}
