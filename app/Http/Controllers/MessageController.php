@@ -169,7 +169,7 @@ class MessageController extends Controller
         //       array_push($suggestedfriends,$user->id);
         //     }
         // }
-        return view('message.show',['group_owner'=>$group->group_owner,'group_name'=>$group_name->group_name,'friend_name'=>"",'group_id'=> $group->id ,'user_id'=> Auth::User()->id,'friend_id'=> 0,'messages'=>$messages,'groups'=>$groups,'count_unread_messages'=>$count_unread_messages,'unread_messages' => $unread_messages,'friends'=> $friends,'users'=>$users]);
+        return view('message.show',['group'=>$group,'group_owner'=>$group->group_owner,'group_name'=>$group_name->group_name,'friend_name'=>"",'group_id'=> $group->id ,'user_id'=> Auth::User()->id,'friend_id'=> 0,'messages'=>$messages,'groups'=>$groups,'count_unread_messages'=>$count_unread_messages,'unread_messages' => $unread_messages,'friends'=> $friends,'users'=>$users]);
     }
     /**
      * Show the form for editing the specified resource.

@@ -111,7 +111,19 @@
           <form action="{{ route('addsubscribes',$group_id) }}" method="GET" >
             @csrf
             <select style="display:none;" name="users[]" class="form-select subscribe  @error('users')is-danger @enderror" aria-label="Default select example" multiple>
-
+                <?php $sub = false; ?>
+                @foreach ($users as $user)
+                   <?php $sub = false; ?>
+                         @foreach ($group->users as $usergroup)
+                            @if($user->id == $usergroup->id)
+                            <?php $sub = true; ?>
+                           @break
+                            @endif
+                            @endforeach
+                            @if ($sub == false)
+                            <option value="{{ $user->id }}">{{$user->name}}</option>
+                           @endif </p>
+                   @endforeach
             </select>
           <button type="submit"style="float:left;display:none;" class="btn btn-primary subscribe">{{__('ok')}}</button><br>
         </form>
@@ -173,17 +185,9 @@
          @endforeach --}}
 
 
-        {{-- / <?php $myfriend = false; ?> --}}
-         {{-- @foreach ($users as $user)
-             <?php $myfriend = false; ?>
-             @foreach ($groups as $group)
-                 @if($group_id == $group->id)
-                   @foreach ($group->users as $user)
-                      @if($user->id == $group->users->id)
-                      <?php $myfriend = true; ?>
-                     @break
-                      @endif
-             @endforeach @endif @endforeach --}}
+             {{-- @foreach ($groups as $group)
+                 @if($group_id == $group->id) --}}
+             {{-- @endif @endforeach --}}
              {{-- @if (($myfriend == false) && (Auth::User()->id <> $user->id))
              <option value="{{ $user->id }}">{{$user->name}}</option>
              @endif --}}
