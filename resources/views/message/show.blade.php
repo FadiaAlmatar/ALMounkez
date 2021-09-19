@@ -114,16 +114,17 @@
                 <?php $sub = false; ?>
                 @foreach ($users as $user)
                    <?php $sub = false; ?>
-                         @foreach ($group->users as $usergroup)
-                            @if($user->id == $usergroup->id)
-                            <?php $sub = true; ?>
-                           @break
+                   <?php $group = $groups->where('id', $group_id)->first();?>
+                        @foreach ($group->users as $member)
+                            @if($member->id == $user->id)
+                              <?php $sub = true; ?>
+                              @break
                             @endif
-                            @endforeach
-                            @if ($sub == false)
-                            <option value="{{ $user->id }}">{{$user->name}}</option>
-                           @endif </p>
-                   @endforeach
+                        @endforeach
+                        @if($sub == false)
+                            <option value="{{ $user->id }}">{{$group_id}}{{$user->name}}</option>
+                        @endif
+                @endforeach
             </select>
           <button type="submit"style="float:left;display:none;" class="btn btn-primary subscribe">{{__('ok')}}</button><br>
         </form>
