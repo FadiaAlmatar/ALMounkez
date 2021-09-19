@@ -34,9 +34,9 @@
         function group() {
             $(".group").toggle();
         }
-        function mychat() {
-            $(".chat-section").show("fast");
-        }
+        // function mychat() {
+        //     $(".chat-section").show("fast");
+        // }
         function addsubscribe(){
            $(".subscribe").toggle();
         }
