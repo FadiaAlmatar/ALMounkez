@@ -116,7 +116,15 @@
              <button class="btn btn-light chat-send-btn" ><i style="color:red"class="fa fa-trash" aria-hidden="true"></i></button>
           </form>
           {{-- end delete group --}}
-          @
+          {{-- start delete conversation --}}
+          @else
+          <form action="{{route('messages.destroy',$friend_id)}}" method="POST" style="display:inline">
+            @csrf
+            @method('DELETE')
+            <button class="btn btn-light chat-send-btn" ><i style="color:red"class="fa fa-trash" aria-hidden="true"></i></button>
+         </form>
+          @endif
+          {{-- end delete conversation --}}
           @if($group_id <> 0)
           <form action="{{ route('addsubscribes',$group_id) }}" method="POST" >
             @csrf
