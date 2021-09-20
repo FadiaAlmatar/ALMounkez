@@ -45,7 +45,7 @@ class CreateOrdersTable extends Migration
             $table->string('email');//بريد الكتورني
             $table->string('fax');//فاكس
             $table->string('site');//موقع الكتروني
-            $table->string('work');//العمل في الدولة
+            $table->boolean('work_in_government');//العمل في الدولة
             $table->string('side_work');//جهة العمل
             $table->string('insurance_number');//الرقم التأميني
             $table->string('qualification');//المؤهل

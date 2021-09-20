@@ -54,6 +54,17 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Group::class);
     }
+    public function order()
+    {
+        return $this->hasOne(Order::class);
+    }
+
+
+
+
+
+
+
 
 
     public function conversations()
