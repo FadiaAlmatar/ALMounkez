@@ -275,6 +275,24 @@
 ,"Suggested friends":"أصدقاء مقترحون"
 ,"My Groups":"مجموعاتي"
 ,"group":"مجموعة"
+,"Username":"اسم المستخدم"
+,"username":"اسم المستخدم"
+,"Password":"كلمة المرور"
+,"password":"كلمة المرور"
+,"Confirm Password":"تأكيد كلمة المرور"
+,"confirm password":"تأكيد كلمة المرور"
+,"Name":"الاسم"
+,"name":"الاسم"
+,"Nickname":"النسبة"
+,"nickname":"النسبة"
+,"E-mail":"البريد الالكتروني"
+,"e-mail":"البريد الالكتروني"
+,"Username is the name used to enter the site to submit the affiliation request,It must not contain spaces":"اسم المستخدم هو الاسم المستخدم للدخول إلى الموقع لتقديم طلب الانتساب,ويجب أن لايحتوي فراغات"
+,"Username must be in English If the number of letters is between 3 and 20 letters":" يجب أن يكون اسم المستخدم باللغة الإنكليزية وأن يكون عدد الحروف بين 3و20 حرف"
+,"password must be at least 8 characters (and a maximum of 20 characters), and contain at least one number and one character.":"يجب أن تتألف كلمة المرور من 8 أحرف على الأقل(وبحد أقصى لغاية 20 حرف),وأن تحتوي على رقم واحد وحرف واحد على الأقل"
+,"name is what appears on the site after logging in":"الاسم هو الذي يظهر على الموقع بعد تسجيل الدخول"
+,"nickname must be at least 3 characters":"يجب أن تتألف النسبة من 3 حروف على الأقل"
+
 
 
 }
