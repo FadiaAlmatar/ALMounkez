@@ -18,6 +18,11 @@
                        {{__('chat')}}
                      </a>
                  </li> @endauth
+                 <li class="nav-item">
+                    <a class="nav-link active" aria-current="page"   href="{{route('orders.create')}}"  style="color: #eb640a">
+                      {{__('create order')}}
+                    </a>
+                </li>
                  <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: orange">
                       {{ __('lang') }}
