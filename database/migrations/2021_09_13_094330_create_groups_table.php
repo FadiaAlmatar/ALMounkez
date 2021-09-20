@@ -17,6 +17,7 @@ class CreateGroupsTable extends Migration
             $table->id();
             $table->string('group_name');
             $table->integer('group_owner');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

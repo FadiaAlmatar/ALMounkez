@@ -20,6 +20,7 @@ class CreateMessagesTable extends Migration
             $table->foreignId('user_id');//sender
             $table->integer('friend_id');//receiver
             $table->foreignId('group_id');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
