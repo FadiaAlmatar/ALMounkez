@@ -108,9 +108,17 @@
         </form>
 {{-- start add new subscribes --}}
           @if(($group_id <> 0) && ($group_owner == Auth::User()->id))<button class="btn btn-light chat-send-btn"onclick="addsubscribe()"><i class="fas fa-plus" aria-hidden="true"></i></button>@endif
-          <button class="btn btn-light chat-send-btn"><i style="color:red"class="fa fa-trash" aria-hidden="true"></i></button>
+         {{-- start delete group --}}
           @if($group_id <> 0)
-          <form action="{{ route('addsubscribes',$group_id) }}" method="GET" >
+          <form action="{{route('groups.destroy',$group_id)}}" method="POST" style="display:inline">
+             @csrf
+             @method('DELETE')
+             <button class="btn btn-light chat-send-btn" ><i style="color:red"class="fa fa-trash" aria-hidden="true"></i></button>
+          </form>
+          {{-- end delete group --}}
+          @
+          @if($group_id <> 0)
+          <form action="{{ route('addsubscribes',$group_id) }}" method="POST" >
             @csrf
             <select style="display:none;" name="users[]" class="form-select subscribe  @error('users')is-danger @enderror" aria-label="Default select example" multiple>
                 <?php $sub = false; ?>
@@ -178,7 +186,7 @@
 
 
 
-
+{{-- onclick="return confirm('Are you sure?')" --}}
 
 
 {{-- <a class="btn btn-primary" style="margin-bottom:13px" href="{{route('messages.print', $friend_id)}}">Download PDF</a> --}}
