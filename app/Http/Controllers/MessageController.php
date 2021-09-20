@@ -204,18 +204,20 @@ class MessageController extends Controller
     {
         // dd($id);
         $friend = User::findOrFail($id);
-        $friend->messages()->delete();
+        // $friend->messages()->delete();
+        // dd("here");
         // $friend->delete();
-        // $messages = DB::table('messages')->where([
-        //     ['friend_id', $friend->id],
-        //     ['user_id', Auth::User()->id],
-        // ])->orwhere([
-        //     ['friend_id', Auth::User()->id],
-        //     ['user_id', $friend->id],])->orderBy('created_at','DESC')->get();
+        $messages = DB::table('messages')->where([
+            ['friend_id', $friend->id],
+            ['user_id', Auth::User()->id],
+        ])->orwhere([
+            ['friend_id', Auth::User()->id],
+            ['user_id', $friend->id],])->orderBy('created_at','DESC')->get();
         // // $message = Message::find($id);
         // foreach($messages as $message){
         //   $message->delete();
         // }
+        $messages->delete();
         // return redirect()->route('tags.index');
     }
 
