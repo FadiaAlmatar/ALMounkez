@@ -40,6 +40,13 @@
         function addsubscribe(){
            $(".subscribe").toggle();
         }
+        // function Personaldata(){
+        //     $("#Personal data").hide();
+        // }
+        function Qualifications(){
+            // $("#Personal data").hide();
+            $("#Qualifications").show();
+        }
     </script>
   </body>
 </html>

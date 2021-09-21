@@ -37,20 +37,20 @@
 
       <ul class="nav nav-tabs"style="width:70%;margin:auto">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#Personal data" data-bs-target="#Personal">{{__('Personal data')}}</a>
+          <a class="nav-link active" aria-current="page" href="#Personal data"  data-form="#Personal data">{{__('Personal data')}}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#contact information">{{__('contact information')}}</a>
+          <a class="nav-link" href="#contact information"  data-form="#contact information">{{__('contact information')}}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#Qualifications">{{__('Qualifications')}}</a>
+          <a class="nav-link" href="#Qualifications"  onclick="Qualifications()">{{__('Qualifications')}}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#How to pay the affiliation fee" tabindex="-1" aria-disabled="true">{{__('How to pay the affiliation fee')}}</a>
+          <a class="nav-link" href="#How to pay the affiliation fee" tabindex="-1" aria-disabled="true" >{{__('How to pay the affiliation fee')}}</a>
         </li>
       </ul>
       {{-- البيانات الشخصية --}}
-      <form id="Personal data"style="width:70%;margin:auto">
+      <form id="Personal data"style="width:70%;margin:auto;">
         {{-- <div class="form-group">
           <label for="exampleInputEmail1">{{__('name')}}</label>
           <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
@@ -219,7 +219,7 @@
       </div>
       </form>
       {{-- معلومات الاتصال --}}
-      <form id="contact information"style="width:70%;margin:auto">
+      <form id="contact information"style="width:70%;margin:auto;display:none;">
         <div class="row mb-4">
             <div class="col">
               <div class="form-outline">
@@ -332,7 +332,7 @@
           <button type="submit" class="btn btn-primary">{{__('Send')}}</button>
       </form>
       {{-- المؤهلات العلمية --}}
-      <form style="width:70%;margin:auto;"id="Qualifications">
+      <form style="width:70%;margin:auto;display:none;"id="Qualifications">
         <p>{{__('Add a new qualification')}}</p>
            <div class="form-group">
             <label for="Qualification">{{__('Qualification')}}</label>
@@ -367,7 +367,7 @@
           <button type="submit" class="btn btn-primary">{{__('Add')}}</button>
           <button type="submit" class="btn btn-light">{{__('Close')}}</button>
       </form>
-      <form style="width:70%;margin:auto;"id="How to pay the affiliation fee">
+      <form style="width:70%;margin:auto;display:none;"id="How to pay the affiliation fee">
         <div class="row mb-4">
             <div class="col">
               <div class="form-outline">
@@ -383,7 +383,7 @@
       </form>
 
 
-      <ul style="width:70%;margin:auto;list-style-type:disc;">
+      <ul style="width:70%;margin:auto;list-style-type:disc;display:none;">
           <li>{{__('Name field is required')}}</li>
           <li>{{__('Nickname field is required')}}</li>
           <li>{{__('Name/English field is required-Please write the name as it is in the passport, if any')}}</li>
