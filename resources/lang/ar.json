@@ -292,6 +292,8 @@
 ,"password must be at least 8 characters (and a maximum of 20 characters), and contain at least one number and one character.":"يجب أن تتألف كلمة المرور من 8 أحرف على الأقل(وبحد أقصى لغاية 20 حرف),وأن تحتوي على رقم واحد وحرف واحد على الأقل"
 ,"name is what appears on the site after logging in":"الاسم هو الذي يظهر على الموقع بعد تسجيل الدخول"
 ,"nickname must be at least 3 characters":"يجب أن تتألف النسبة من 3 حروف على الأقل"
+,"":"الرجاء وضع بريد الكتروني فعال لتتمكن من استخدامه لاحقا في عملية تفعيل الحساب"
+,"":"لإكمال عملية التسجيل يجب عليك إدخال بريدك الإلكتروني"
 
 
 
