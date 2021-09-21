@@ -333,9 +333,16 @@
       </form>
       {{-- المؤهلات العلمية --}}
       <form style="width:70%;margin:auto;"id="Qualifications">
+        <p>{{__('Add a new qualification')}}</p>
            <div class="form-group">
             <label for="Qualification">{{__('Qualification')}}</label>
-            <input type="text" class="form-control" id="Qualification" aria-describedby="emailHelp" placeholder="">
+            <select id="Qualification"class="form-select form-select-sm" aria-label=".form-select-sm example">
+                <option selected>{{__('Doctorate')}}</option>
+                <option value="1">{{__('Master')}}</option>
+                <option value="2">{{__('Diploma')}}</option>
+                <option value="2">{{__('Certificate')}}</option>
+                <option value="2">{{__('Other')}}</option>
+            </select>
           </div>
         <br><div class="form-group">
           <label for="University">{{__('University')}}</label>
@@ -357,6 +364,8 @@
             <label for="Specialization">{{__('Specialization')}}</label>
             <input type="text" class="form-control" id="Specialization" placeholder="">
           </div>
+          <button type="submit" class="btn btn-primary">{{__('Add')}}</button>
+          <button type="submit" class="btn btn-light">{{__('Close')}}</button>
       </form>
       <form style="width:70%;margin:auto;"id="How to pay the affiliation fee">
         <div class="row mb-4">
