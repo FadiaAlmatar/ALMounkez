@@ -289,24 +289,57 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="Site">{{__('Site')}}</label>
-                <input type="email" id="Site" class="form-control" />
+                <input type="text" id="Site" class="form-control" />
               </div>
             </div>
           </div>
           <div class="row mb-4">
             <div class="col">
               <div class="form-outline">
-                <label class="form-label" for="">{{__('')}}</label>
-                <input type="text" id="" class="form-control" />
+                <label class="form-label" for="work at government">{{__('work at government')}}</label>
+                <select id="work at government"class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    <option selected>{{__('Worker at government')}}</option>
+                    <option value="1">{{__('not Worker at government')}}</option>
+                 </select>
               </div>
             </div>
             <div class="col">
               <div class="form-outline">
-                <label class="form-label" for="">{{__('')}}</label>
-                <input type="email" id="" class="form-control" />
+                <label class="form-label" for="work side">{{__('work side')}}</label>
+                <input type="text" id="work side" class="form-control" />
               </div>
             </div>
           </div>
+          <div class="row mb-4">
+            <div class="col">
+              <div class="form-outline">
+                <label class="form-label" for="Insurance number">{{__('Insurance number')}}</label>
+                <input type="text" id="Insurance number" class="form-control" />
+              </div>
+            </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col">
+              <div class="form-outline">
+                <label class="form-label" for="display your data">{{__('Do you want to display your data on the site (contact information only) after approving the affiliation request?')}}</label>
+                <select id="display your data"class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    <option selected>{{__('Yes')}}</option>
+                    <option value="1">{{__('No')}}</option>
+                 </select>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">{{__('Send')}}</button>
       </form>
+      <ul>
+          <li>{{__('Name field is required')}}</li>
+          <li>{{__('Nickname field is required')}}</li>
+          <li>{{__('Name/English field is required-Please write the name as it is in the passport, if any')}}</li>
+          <li>{{__('Nickname/English field is required-Please write the name as it is in the passport, if any')}}</li>
+          <li>{{__('Fathername field is required')}}</li>
+          <li>{{__('FatherName/English field is required-Please write the name as it is in the passport, if any')}}</li>
+          <li>{{__('MotherName/English field is required-Please write the name as it is in the passport, if any')}}</li>
+          <li>{{__('GrandFathername/Father field is required')}}</li>
+      </ul>
 
 </x-layouts.app>
