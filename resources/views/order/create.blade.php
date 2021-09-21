@@ -46,7 +46,7 @@
           <a class="nav-link" href="#Qualifications">{{__('Qualifications')}}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" href="#How to pay the affiliation fee" tabindex="-1" aria-disabled="true">{{__('How to pay the affiliation fee')}}</a>
+          <a class="nav-link" href="#How to pay the affiliation fee" tabindex="-1" aria-disabled="true">{{__('How to pay the affiliation fee')}}</a>
         </li>
       </ul>
       {{-- البيانات الشخصية --}}
@@ -330,6 +330,20 @@
             </div>
           </div>
           <button type="submit" class="btn btn-primary">{{__('Send')}}</button>
+      </form>
+      <form style="width:70%;margin:auto;"id="How to pay the affiliation fee">
+        <div class="row mb-4">
+            <div class="col">
+              <div class="form-outline">
+                <label class="form-label" for="Payment method">{{__('Payment method')}}</label>
+                <select id="Payment method"class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    <option selected>{{__('Cash to the Central Syndicate Fund in Damascus')}}</option>
+                    <option value="1">{{__('Syndicate account with the real estate bank number 11011418 in all countries')}}</option>
+                    <option value="1">{{__('Syndicate account with Francbank Bank number 0004204801 in Damascus,Aleppo,Tartous and Latakia')}}</option>
+                 </select>
+              </div>
+            </div>
+          </div>
       </form>
       <ul style="width:70%;margin:auto;list-style-type:disc;">
           <li>{{__('Name field is required')}}</li>
