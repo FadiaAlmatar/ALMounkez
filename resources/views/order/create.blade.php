@@ -331,6 +331,33 @@
           </div>
           <button type="submit" class="btn btn-primary">{{__('Send')}}</button>
       </form>
+      {{-- المؤهلات العلمية --}}
+      <form style="width:70%;margin:auto;"id="Qualifications">
+           <div class="form-group">
+            <label for="Qualification">{{__('Qualification')}}</label>
+            <input type="text" class="form-control" id="Qualification" aria-describedby="emailHelp" placeholder="">
+          </div>
+        <br><div class="form-group">
+          <label for="University">{{__('University')}}</label>
+          <input type="text" class="form-control" id="University" placeholder="">
+        </div>
+          <br><div class="form-group">
+            <label for="Country">{{__('Country')}}</label>
+            <input type="text" class="form-control" id="Country" placeholder="">
+          </div>
+          <br><div class="form-group">
+            <label for="Graduation Year">{{__('Graduation Year')}}</label>
+            <input type="text" class="form-control" id="Graduation Year" placeholder="">
+          </div>
+          <br><div class="form-group">
+            <label for="Graduation Rate">{{__('Graduation Rate')}}</label>
+            <input type="text" class="form-control" id="Graduation Rate" placeholder="">
+          </div>
+          <br><div class="form-group">
+            <label for="Specialization">{{__('Specialization')}}</label>
+            <input type="text" class="form-control" id="Specialization" placeholder="">
+          </div>
+      </form>
       <form style="width:70%;margin:auto;"id="How to pay the affiliation fee">
         <div class="row mb-4">
             <div class="col">
@@ -345,6 +372,8 @@
             </div>
           </div>
       </form>
+
+
       <ul style="width:70%;margin:auto;list-style-type:disc;">
           <li>{{__('Name field is required')}}</li>
           <li>{{__('Nickname field is required')}}</li>
