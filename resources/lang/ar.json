@@ -299,7 +299,7 @@
 ,"father name":"اسم الأب"
 ,"grandfather name":"اسم الجد/الاب"
 ,"mother name":"اسم الأم"
-,"gender":"الجنس"
+,"Gender":"الجنس"
 ,"fathername/english":"اسم الأب/انكليزي"
 ,"mothername/english":"اسم الأم/انكليزي"
 ,"Nationality":"الجنسية"
@@ -314,6 +314,19 @@
 ,"Military":"خدمة العلم"
 ,"Public Record Number":"رقم السجل العام(لغير السوريين)"
 ,"Health Status":"الوضع الصحي"
+,"Syrian":"سوري"
+,"Palestinian":"فلسطيني"
+,"Male":"ذكر"
+,"Female":"أنثى"
+,"Finished":"منتهية"
+,"Delayed":"مؤجل"
+,"Exempt":"معفى"
+,"Unmarried":"أعزب"
+,"Married":"متزوج"
+,"Divorced":"مطلق"
+,"Widower":"أرمل"
+,"Good":"جيد"
+,"Sick":"مريض"
 
 
 }

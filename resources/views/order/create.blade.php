@@ -24,7 +24,7 @@
           <br><div class="form-group">
             <label for="exampleInputPassword1">{{__('Nickname')}}</label>
             <input type="password" class="form-control" id="exampleInputPassword1" placeholder="{{__('nickname')}}">
-            <small id="emailHelp" class="form-text text-muted">{{__('nickname must be at least 3 characters ')}}</small>
+            <small id="emailHelp" class="form-text text-muted">{{__('nickname must be at least 3 characters')}}</small>
           </div>
           <p>{{__('To complete the registration process, you must enter your email')}}</p>
           <div class="form-group">
@@ -57,10 +57,13 @@
             <label for="exampleInputPassword1">{{__('mother name')}}</label>
             <input type="password" class="form-control" id="exampleInputPassword1" placeholder="">
           </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">{{__('gender')}}</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="">
-          </div>
+          <br> <div class="form-group">
+            <label for="exampleInputPassword1">{{__('Gender')}}</label>
+         <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+           <option selected>{{__('Male')}}</option>
+           <option value="1">{{__('Female')}}</option>
+         </select>
+       </div>
           <div class="form-group">
             <label for="exampleInputPassword1">{{__('fathername/english')}}</label>
             <input type="password" class="form-control" id="exampleInputPassword1" placeholder="">
@@ -69,14 +72,24 @@
             <label for="exampleInputPassword1">{{__('mothername/english')}}</label>
             <input type="password" class="form-control" id="exampleInputPassword1" placeholder="">
           </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">{{__('Nationality')}}</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">{{__('Marital status')}}</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="">
-          </div>
+         <br> <div class="form-group">
+             <label for="exampleInputPassword1">{{__('Nationality')}}</label>
+            {{-- <input type="password" class="form-control" id="exampleInputPassword1" placeholder=""> --}}
+          {{-- </div> --}}
+          <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+            <option selected>{{__('Syrian')}}</option>
+            <option value="1">{{__('Palestinian')}}</option>
+          </select>
+        </div>
+        <br><div class="form-group">
+            <label for="exampleInputPassword1">{{__('Martial status')}}</label>
+            <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+               <option selected>{{__('Unmarried')}}</option>
+               <option value="1">{{__('Married')}}</option>
+               <option value="2">{{__('Divorced')}}</option>
+               <option value="2">{{__('Widower')}}</option>
+            </select>
+       </div>
           <div class="form-group">
             <label for="exampleInputPassword1">{{__('Place of birth')}}</label>
             <input type="password" class="form-control" id="exampleInputPassword1" placeholder="">
@@ -105,18 +118,26 @@
             <label for="exampleInputPassword1">{{__('Constraint')}}</label>
             <input type="password" class="form-control" id="exampleInputPassword1" placeholder="">
           </div>
-          <div class="form-group">
+        </div>
+        <br><div class="form-group">
             <label for="exampleInputPassword1">{{__('Military')}}</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="">
-          </div>
+            <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+               <option selected>{{__('Finished')}}</option>
+               <option value="1">{{__('Delayed')}}</option>
+               <option value="2">{{__('Exempt')}}</option>
+            </select>
+       </div>
           <div class="form-group">
             <label for="exampleInputPassword1">{{__('Public Record Number')}}</label>
             <input type="password" class="form-control" id="exampleInputPassword1" placeholder="">
           </div>
-          <div class="form-group">
+          <br><div class="form-group">
             <label for="exampleInputPassword1">{{__('Health Status')}}</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="">
-          </div>
+            <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+               <option selected>{{__('Good')}}</option>
+               <option value="1">{{__('Sick')}}</option>
+            </select>
+       </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
