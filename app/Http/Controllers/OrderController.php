@@ -49,7 +49,12 @@ class OrderController extends Controller
         'dateBirth'         => 'required',
         'nationalID'        => 'required',
         'civilRegistry'     => 'required',
-        personalIdentificationNumber
+        'personalIdentificationNumber'   => 'required',
+        'identityGrantDate'            => 'required',
+        'constraint'        => 'required',
+        'countryJoin'       => 'required',
+        'address'           => 'required',
+        'displayData'       => 'required'
         ] );
         $order = new Order();
         $order->firstname = $request->fname;
