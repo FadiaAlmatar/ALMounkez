@@ -160,7 +160,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="Date of birth">{{__('Date of birth')}}</label>
-                <input type="text" name="dateBirth"id="Date of birth" class="form-control" />
+                <input type="date" name="dateBirth"id="Date of birth" class="form-control" />
               </div>
             </div>
           </div>
@@ -188,7 +188,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="Identity Grant Date">{{__('Identity Grant Date')}}</label>
-                <input type="text" name="identityGrantDate"id="Identity Grant Date" class="form-control" />
+                <input type="date" name="identityGrantDate"id="Identity Grant Date" class="form-control" />
               </div>
             </div>
           </div>
@@ -389,7 +389,7 @@
           </div>
           <br><div class="form-group">
             <label for="Graduation Year">{{__('Graduation Year')}}</label>
-            <input name="graduationYear"type="text" class="form-control" id="Graduation Year" placeholder="">
+            <input name="graduationYear"type="date" class="form-control" id="Graduation Year" placeholder="">
           </div>
           <br><div class="form-group">
             <label for="Graduation Rate">{{__('Graduation Rate')}}</label>
