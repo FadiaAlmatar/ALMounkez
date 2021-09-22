@@ -325,7 +325,29 @@
             </div>
           </div>
           <button type="submit" class="btn btn-primary">{{__('Send')}}</button>
-      </form></div>
+      </form>
+       <ul style="list-style-type:disc;">
+          <li>{{__('Name field is required')}}</li>
+          <li>{{__('Nickname field is required')}}</li>
+          <li>{{__('Name/English field is required-Please write the name as it is in the passport, if any')}}</li>
+          <li>{{__('Nickname/English field is required-Please write the name as it is in the passport, if any')}}</li>
+          <li>{{__('Fathername field is required')}}</li>
+          <li>{{__('FatherName/English field is required-Please write the name as it is in the passport, if any')}}</li>
+          <li>{{__('MotherName/English field is required-Please write the name as it is in the passport, if any')}}</li>
+          <li>{{__('GrandFathername/Father field is required')}}</li>
+          <li>{{__('Mothername field is required')}}</li>
+          <li>{{__('Place of birth field is required')}}</li>
+          <li>{{__('Date of birth is required')}}</li>
+          <li>{{__('National ID field is required')}}</li>
+          <li>{{__('Civil Registry field is required')}}</li>
+          <li>{{__('Personal Identification Number field is required')}}</li>
+          <li>{{__('Identity Grant Date field is required')}}</li>
+          <li>{{__('Constraint field is required')}}</li>
+          <li>{{__('country you wish to join field is required')}}</li>
+          <li>{{__('Address field is required')}}</li>
+          <li>{{__('Desire to display data on the site field is required')}}</li>
+      </ul>
+    </div>
       {{-- المؤهلات العلمية --}}
       <div class="tab-pane fade" style="width:70%;margin:auto;"id="Qualifications" role="tabpanel" aria-labelledby="Qualifications-tab">
       <form>
@@ -377,11 +399,8 @@
               </div>
             </div>
           </div>
-      </form></div>
-    </div>
-
-
-      {{-- <ul style="width:70%;margin:auto;list-style-type:disc;display:none;">
+      </form>
+       <ul style="list-style-type:disc;">
           <li>{{__('Name field is required')}}</li>
           <li>{{__('Nickname field is required')}}</li>
           <li>{{__('Name/English field is required-Please write the name as it is in the passport, if any')}}</li>
@@ -401,6 +420,7 @@
           <li>{{__('country you wish to join field is required')}}</li>
           <li>{{__('Address field is required')}}</li>
           <li>{{__('Desire to display data on the site field is required')}}</li>
-      </ul> --}}
-
+      </ul>
+    </div>
+    </div>
 </x-layouts.app>
