@@ -54,7 +54,7 @@
       <div class="tab-content" id="myTabContent" style="margin-bottom: 5px;">
       {{-- البيانات الشخصية --}}
       <div id="Personal" style="width:70%;margin:auto;margin-top:5px;" class="tab-pane fade show active" role="tabpanel" aria-labelledby="Personal-tab">
-      <form>
+      {{-- <form> --}}
         <div class="row mb-4">
             <div class="col">
               <div class="form-outline">
@@ -227,15 +227,16 @@
           </div>
         </div>
       </div>
-      </form></div>
+      {{-- </form> --}}
+    </div>
       {{-- معلومات الاتصال --}}
       <div style="width:70%;margin:auto;margin-top:5px" class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-      <form >
+      {{-- <form > --}}
         <div class="row mb-4">
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="country you wish to join">{{__('country you wish to join')}}</label>
-                <select name="countryJoin"id="country you wish to join"class="form-select form-select-sm" aria-label=".form-select-sm example">
+                <select name="countryJoin" id="country you wish to join"class="form-select form-select-sm" aria-label=".form-select-sm example">
                     <option selected value="Damascus">               {{__('Damascus')}}</option>
                     <option value="Damascus Rural"> {{__('Damascus Rural')}}</option>
                     <option value="Suwayda">        {{__('Suwayda')}}</option>
@@ -341,7 +342,7 @@
             </div>
           </div>
           {{-- <button type="submit" class="btn btn-primary">{{__('Send')}}</button> --}}
-      </form>
+      {{-- </form> --}}
       <div style="background:#e0c2c2;margin-top:5px">
        <ul style="list-style-type:disc;list-style-position: inside;padding-left:15px">
           <li>{{__('Name field is required')}}</li>
@@ -367,7 +368,7 @@
     </div>
       {{-- المؤهلات العلمية --}}
       <div class="tab-pane fade" style="width:70%;margin:auto;margin-top:5px"id="Qualifications" role="tabpanel" aria-labelledby="Qualifications-tab">
-      <form>
+      {{-- <form> --}}
         <p>{{__('Add a new qualification')}}</p>
            <div class="form-group">
             <label for="Qualification">{{__('Qualification')}}</label>
@@ -401,9 +402,10 @@
           </div><br>
           {{-- <button type="submit" class="btn btn-primary">{{__('Add')}}</button> --}}
           {{-- <button type="submit" class="btn btn-light">{{__('Close')}}</button> --}}
-      </form></div>
+      {{-- </form> --}}
+    </div>
       <div style="width:70%;margin:auto;" id="pay" class="tab-pane fade"  role="tabpanel" aria-labelledby="pay-tab">
-      <form>
+      {{-- <form> --}}
         <div class="row mb-4">
             <div class="col">
               <div class="form-outline">
@@ -416,7 +418,7 @@
               </div>
             </div>
           </div>
-      </form>
+      {{-- </form> --}}
     <button type="submit" class="btn btn-primary">{{__('Send')}}</button>
       <div style="background:#e0c2c2;">
         <ul style="list-style-type:disc;list-style-position: inside;padding-left:15px">
