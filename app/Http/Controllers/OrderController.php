@@ -45,7 +45,11 @@ class OrderController extends Controller
         'mothername'        => 'required',
         'fathernameenglish' => 'required',
         'mothernameenglish' => 'required',
-
+        'placeBirth'        => 'required',
+        'dateBirth'         => 'required',
+        'nationalID'        => 'required',
+        'civilRegistry'     => 'required',
+        personalIdentificationNumber
         ] );
         $order = new Order();
         $order->firstname = $request->fname;
