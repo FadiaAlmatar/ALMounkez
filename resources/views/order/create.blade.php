@@ -49,10 +49,10 @@
             <button class="nav-link" id="pay-tab" data-bs-toggle="tab" data-bs-target="#pay" type="button" role="tab" aria-controls="pay" aria-selected="false">{{__('How to pay the affiliation fee')}}</button>
           </li>
       </ul>
-      <div class="tab-content" id="myTabContent">
+      <div class="tab-content" id="myTabContent" style="margin-bottom: 5px;">
       {{-- البيانات الشخصية --}}
-      <div id="Personal"style="width:70%;margin:auto;"class="tab-pane fade show active" role="tabpanel" aria-labelledby="Personal-tab">
-      <form >
+      <div id="Personal" style="width:70%;margin:auto;margin-top:5px;" class="tab-pane fade show active" role="tabpanel" aria-labelledby="Personal-tab">
+      <form>
         <div class="row mb-4">
             <div class="col">
               <div class="form-outline">
@@ -213,7 +213,7 @@
       </div>
       </form></div>
       {{-- معلومات الاتصال --}}
-      <div style="width:70%;margin:auto;" class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+      <div style="width:70%;margin:auto;margin-top:5px" class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
       <form >
         <div class="row mb-4">
             <div class="col">
@@ -326,7 +326,8 @@
           </div>
           <button type="submit" class="btn btn-primary">{{__('Send')}}</button>
       </form>
-       <ul style="list-style-type:disc;">
+      <div style="background:#e0c2c2;margin-top:5px">
+       <ul style="list-style-type:disc;list-style-position: inside;padding-left:15px">
           <li>{{__('Name field is required')}}</li>
           <li>{{__('Nickname field is required')}}</li>
           <li>{{__('Name/English field is required-Please write the name as it is in the passport, if any')}}</li>
@@ -346,10 +347,10 @@
           <li>{{__('country you wish to join field is required')}}</li>
           <li>{{__('Address field is required')}}</li>
           <li>{{__('Desire to display data on the site field is required')}}</li>
-      </ul>
+      </ul></div>
     </div>
       {{-- المؤهلات العلمية --}}
-      <div class="tab-pane fade" style="width:70%;margin:auto;"id="Qualifications" role="tabpanel" aria-labelledby="Qualifications-tab">
+      <div class="tab-pane fade" style="width:70%;margin:auto;margin-top:5px"id="Qualifications" role="tabpanel" aria-labelledby="Qualifications-tab">
       <form>
         <p>{{__('Add a new qualification')}}</p>
            <div class="form-group">
@@ -381,7 +382,7 @@
           <br><div class="form-group">
             <label for="Specialization">{{__('Specialization')}}</label>
             <input type="text" class="form-control" id="Specialization" placeholder="">
-          </div>
+          </div><br>
           <button type="submit" class="btn btn-primary">{{__('Add')}}</button>
           <button type="submit" class="btn btn-light">{{__('Close')}}</button>
       </form></div>
@@ -400,7 +401,8 @@
             </div>
           </div>
       </form>
-       <ul style="list-style-type:disc;">
+      <div style="background:#e0c2c2;">
+        <ul style="list-style-type:disc;list-style-position: inside;padding-left:15px">
           <li>{{__('Name field is required')}}</li>
           <li>{{__('Nickname field is required')}}</li>
           <li>{{__('Name/English field is required-Please write the name as it is in the passport, if any')}}</li>
