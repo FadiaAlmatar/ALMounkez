@@ -49,6 +49,8 @@
             <button class="nav-link" id="pay-tab" data-bs-toggle="tab" data-bs-target="#pay" type="button" role="tab" aria-controls="pay" aria-selected="false">{{__('How to pay the affiliation fee')}}</button>
           </li>
       </ul>
+      <form action="{{ route('orders.store') }}" method="POST">
+        @csrf
       <div class="tab-content" id="myTabContent" style="margin-bottom: 5px;">
       {{-- البيانات الشخصية --}}
       <div id="Personal" style="width:70%;margin:auto;margin-top:5px;" class="tab-pane fade show active" role="tabpanel" aria-labelledby="Personal-tab">
@@ -57,13 +59,13 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="name">{{__('name')}}</label>
-                <input type="text" id="name" class="form-control" />
+                <input type="text" id="name" name="fname"class="form-control" />
               </div>
             </div>
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="nickname">{{__('nickname')}}</label>
-                <input type="text" id="nickname" class="form-control" />
+                <input type="text" id="nickname" name="lname"class="form-control" />
               </div>
             </div>
           </div>
@@ -71,13 +73,13 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="father name">{{__('father name')}}</label>
-                <input type="text" id="father name" class="form-control" />
+                <input type="text" id="father name" name="fathername"class="form-control" />
               </div>
             </div>
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="grandfather name">{{__('grandfather name')}}</label>
-                <input type="text" id="grandfather name" class="form-control" />
+                <input type="text" id="grandfather name" name="grandfathername"class="form-control" />
               </div>
             </div>
           </div>
@@ -85,15 +87,15 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="mother name">{{__('mother name')}}</label>
-                <input type="text" id="mother name" class="form-control" />
+                <input type="text" id="mother name" name="mothername"class="form-control" />
               </div>
             </div>
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="Gender">{{__('Gender')}}</label>
-                <select id="Gender"class="form-select form-select-sm" aria-label=".form-select-sm example">
-                <option selected>{{__('Male')}}</option>
-                <option value="1">{{__('Female')}}</option>
+                <select name="gender"id="Gender"class="form-select form-select-sm" aria-label=".form-select-sm example">
+                <option selected value="male">{{__('Male')}}</option>
+                <option value="female">{{__('Female')}}</option>
               </select>
               </div>
             </div>
@@ -101,14 +103,28 @@
           <div class="row mb-4">
             <div class="col">
               <div class="form-outline">
+                <label class="form-label" for="fathername/english">{{__('fname/english')}}</label>
+                <input type="text" id="fathername/english" name="fnameenglish"class="form-control" />
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-outline">
+                <label class="form-label" for="mothername/english">{{__('lname/english')}}</label>
+                <input type="text" id="mothername/english" name="lnameenglish"class="form-control" />
+              </div>
+            </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col">
+              <div class="form-outline">
                 <label class="form-label" for="fathername/english">{{__('fathername/english')}}</label>
-                <input type="text" id="fathername/english" class="form-control" />
+                <input type="text" id="fathername/english" name="fathernameenglish"class="form-control" />
               </div>
             </div>
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="mothername/english">{{__('mothername/english')}}</label>
-                <input type="text" id="mothername/english" class="form-control" />
+                <input type="text" id="mothername/english" name="mothernameenglish"class="form-control" />
               </div>
             </div>
           </div>
@@ -116,20 +132,20 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="Nationality">{{__('Nationality')}}</label>
-                <select id="Nationality"class="form-select form-select-sm" aria-label=".form-select-sm example">
-                    <option selected>{{__('Syrian')}}</option>
-                    <option value="1">{{__('Palestinian')}}</option>
+                <select name="Nationality"id="Nationality"class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    <option selected value="Syrian">{{__('Syrian')}}</option>
+                    <option value="Palestinian">{{__('Palestinian')}}</option>
                   </select>
               </div>
             </div>
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="Martial status">{{__('Martial status')}}</label>
-                <select id="Martial status"class="form-select form-select-sm" aria-label=".form-select-sm example">
-                    <option selected>{{__('Unmarried')}}</option>
-                    <option value="1">{{__('Married')}}</option>
-                    <option value="2">{{__('Divorced')}}</option>
-                    <option value="2">{{__('Widower')}}</option>
+                <select name="martialStatus"id="Martial status"class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    <option selected value="Unmarried">{{__('Unmarried')}}</option>
+                    <option value="Married">{{__('Married')}}</option>
+                    <option value="Divorced">{{__('Divorced')}}</option>
+                    <option value="Widower">{{__('Widower')}}</option>
                  </select>
               </div>
             </div>
@@ -138,13 +154,13 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="Place of birth">{{__('Place of birth')}}</label>
-                <input type="text" id="Place of birth" class="form-control" />
+                <input type="text" name="placeBirth"id="Place of birth" class="form-control" />
               </div>
             </div>
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="Date of birth">{{__('Date of birth')}}</label>
-                <input type="text" id="Date of birth" class="form-control" />
+                <input type="text" name="dateBirth"id="Date of birth" class="form-control" />
               </div>
             </div>
           </div>
@@ -152,13 +168,13 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="National ID">{{__('National ID')}}</label>
-                <input type="text" id="National ID" class="form-control" />
+                <input type="text" name="nationalID"id="National ID" class="form-control" />
               </div>
             </div>
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="Civil Registry">{{__('Civil Registry')}}</label>
-                <input type="text" id="Civil Registry" class="form-control" />
+                <input type="text" name="civilRegistry"id="Civil Registry" class="form-control" />
               </div>
             </div>
           </div>
@@ -166,13 +182,13 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="Personal Identification Number">{{__('Personal Identification Number')}}</label>
-                <input type="text" id="Personal Identification Number" class="form-control" />
+                <input type="text" name="personalIdentificationNumber"id="Personal Identification Number" class="form-control" />
               </div>
             </div>
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="Identity Grant Date">{{__('Identity Grant Date')}}</label>
-                <input type="text" id="Identity Grant Date" class="form-control" />
+                <input type="text" name="identityGrantDate"id="Identity Grant Date" class="form-control" />
               </div>
             </div>
           </div>
@@ -180,16 +196,16 @@
         <div class="col">
           <div class="form-outline">
             <label class="form-label" for="Constraint">{{__('Constraint')}}</label>
-            <input type="text" id="Constraint" class="form-control" />
+            <input type="text" name="constraint"id="Constraint" class="form-control" />
           </div>
         </div>
         <div class="col">
           <div class="form-outline">
             <label class="form-label" for="Military">{{__('Military')}}</label>
-            <select id="Military"class="form-select form-select-sm" aria-label=".form-select-sm example">
-                <option selected>{{__('Finished')}}</option>
-                <option value="1">{{__('Delayed')}}</option>
-                <option value="2">{{__('Exempt')}}</option>
+            <select name="military"id="Military"class="form-select form-select-sm" aria-label=".form-select-sm example">
+                <option selected value="Finished">{{__('Finished')}}</option>
+                <option value="Delayed">{{__('Delayed')}}</option>
+                <option value="Exempt">{{__('Exempt')}}</option>
              </select>
           </div>
         </div>
@@ -198,15 +214,15 @@
         <div class="col">
           <div class="form-outline">
             <label class="form-label" for="Public Record Number">{{__('Public Record Number')}}</label>
-            <input type="text" id="Public Record Number" class="form-control" />
+            <input type="text" name="publicRecordNumber"id="Public Record Number" class="form-control" />
           </div>
         </div>
         <div class="col">
           <div class="form-outline">
             <label class="form-label" for="Health Status">{{__('Health Status')}}</label>
-            <select id="Health Status"class="form-select form-select-sm" aria-label=".form-select-sm example">
-                <option selected>{{__('Good')}}</option>
-                <option value="1">{{__('Sick')}}</option>
+            <select name="healthStatus"id="Health Status"class="form-select form-select-sm" aria-label=".form-select-sm example">
+                <option selected value="Good">{{__('Good')}}</option>
+                <option value="Sick">{{__('Sick')}}</option>
              </select>
           </div>
         </div>
@@ -219,21 +235,21 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="country you wish to join">{{__('country you wish to join')}}</label>
-                <select id="country you wish to join"class="form-select form-select-sm" aria-label=".form-select-sm example">
-                    <option selected>{{__('Damascus')}}</option>
-                    <option value="1">{{__('Damascus Rural')}}</option>
-                    <option value="1">{{__('Suwayda')}}</option>
-                    <option value="1">{{__('Daraa')}}</option>
-                    <option value="1">{{__('Quneitra')}}</option>
-                    <option value="1">{{__('Homs')}}</option>
-                    <option value="1">{{__('Hama')}}</option>
-                    <option value="1">{{__('Latakia')}}</option>
-                    <option value="1">{{__('Tartous')}}</option>
-                    <option value="1">{{__('Idlib')}}</option>
-                    <option value="1">{{__('Aleppo')}}</option>
-                    <option value="1">{{__('Al-Rakka')}}</option>
-                    <option value="1">{{__('Deer Al Zour')}}</option>
-                    <option value="1">{{__('Al-Hasakah')}}</option>
+                <select name="countryJoin"id="country you wish to join"class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    <option selected value="Damascus">               {{__('Damascus')}}</option>
+                    <option value="Damascus Rural"> {{__('Damascus Rural')}}</option>
+                    <option value="Suwayda">        {{__('Suwayda')}}</option>
+                    <option value="Daraa">          {{__('Daraa')}}</option>
+                    <option value="Quneitra">       {{__('Quneitra')}}</option>
+                    <option value="Homs">           {{__('Homs')}}</option>
+                    <option value="Hama">           {{__('Hama')}}</option>
+                    <option value="Latakia">        {{__('Latakia')}}</option>
+                    <option value="Tartous">        {{__('Tartous')}}</option>
+                    <option value="Idlib">          {{__('Idlib')}}</option>
+                    <option value="Aleppo">         {{__('Aleppo')}}</option>
+                    <option value="Al-Rakka">       {{__('Al-Rakka')}}</option>
+                    <option value="Deer Al Zour">   {{__('Deer Al Zour')}}</option>
+                    <option value="Al-Hasakah">     {{__('Al-Hasakah')}}</option>
                  </select>
               </div>
             </div>
@@ -242,7 +258,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="Address">{{__('Address')}}</label>
-                <input type="text" id="Address" class="form-control" />
+                <input type="text" name="address"id="Address" class="form-control" />
               </div>
             </div>
         </div>
@@ -250,13 +266,13 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="House Phone">{{__('House Phone')}}</label>
-                <input type="text" id="House Phone" class="form-control" />
+                <input type="text" name="housePhone"id="House Phone" class="form-control" />
               </div>
             </div>
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="Work Phone">{{__('Work Phone')}}</label>
-                <input type="text" id="Work Phone" class="form-control" />
+                <input type="text" name="workPhone"id="Work Phone" class="form-control" />
               </div>
             </div>
           </div>
@@ -264,13 +280,13 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="Mobile">{{__('Mobile')}}</label>
-                <input type="text" id="Mobile" class="form-control" />
+                <input type="text" name="mobile"id="Mobile" class="form-control" />
               </div>
             </div>
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="E-mail">{{__('E-mail')}}</label>
-                <input type="email" id="E-mail" class="form-control" />
+                <input type="email" name="email"id="E-mail" class="form-control" />
               </div>
             </div>
           </div>
@@ -278,13 +294,13 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="Fax">{{__('Fax')}}</label>
-                <input type="text" id="Fax" class="form-control" />
+                <input type="text" name="fax"id="Fax" class="form-control" />
               </div>
             </div>
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="Site">{{__('Site')}}</label>
-                <input type="text" id="Site" class="form-control" />
+                <input type="text" name="site"id="Site" class="form-control" />
               </div>
             </div>
           </div>
@@ -292,16 +308,16 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="work at government">{{__('work at government')}}</label>
-                <select id="work at government"class="form-select form-select-sm" aria-label=".form-select-sm example">
-                    <option selected>{{__('Worker at government')}}</option>
-                    <option value="1">{{__('not Worker at government')}}</option>
+                <select name="workGovernment"id="work at government"class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    <option selected value="1">{{__('Worker at government')}}</option>
+                    <option value="0">{{__('not Worker at government')}}</option>
                  </select>
               </div>
             </div>
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="work side">{{__('work side')}}</label>
-                <input type="text" id="work side" class="form-control" />
+                <input type="text" name="workSide"id="work side" class="form-control" />
               </div>
             </div>
           </div>
@@ -309,7 +325,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="Insurance number">{{__('Insurance number')}}</label>
-                <input type="text" id="Insurance number" class="form-control" />
+                <input type="text" name="insurance"id="Insurance number" class="form-control" />
               </div>
             </div>
           </div>
@@ -317,14 +333,14 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="display your data">{{__('Do you want to display your data on the site (contact information only) after approving the affiliation request?')}}</label>
-                <select id="display your data"class="form-select form-select-sm" aria-label=".form-select-sm example">
-                    <option selected>{{__('Yes')}}</option>
-                    <option value="1">{{__('No')}}</option>
+                <select name="displayData"id="display your data"class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    <option selected value="1">{{__('Yes')}}</option>
+                    <option value="0">{{__('No')}}</option>
                  </select>
               </div>
             </div>
           </div>
-          <button type="submit" class="btn btn-primary">{{__('Send')}}</button>
+          {{-- <button type="submit" class="btn btn-primary">{{__('Send')}}</button> --}}
       </form>
       <div style="background:#e0c2c2;margin-top:5px">
        <ul style="list-style-type:disc;list-style-position: inside;padding-left:15px">
@@ -355,36 +371,36 @@
         <p>{{__('Add a new qualification')}}</p>
            <div class="form-group">
             <label for="Qualification">{{__('Qualification')}}</label>
-            <select id="Qualification"class="form-select form-select-sm" aria-label=".form-select-sm example">
-                <option selected>{{__('Doctorate')}}</option>
-                <option value="1">{{__('Master')}}</option>
-                <option value="2">{{__('Diploma')}}</option>
-                <option value="2">{{__('Certificate')}}</option>
-                <option value="2">{{__('Other')}}</option>
+            <select name="qualification"id="Qualification"class="form-select form-select-sm" aria-label=".form-select-sm example">
+                <option selected value="Doctorate">{{__('Doctorate')}}</option>
+                <option value="Master">{{__('Master')}}</option>
+                <option value="Diploma">{{__('Diploma')}}</option>
+                <option value="Certificate">{{__('Certificate')}}</option>
+                <option value="Other">{{__('Other')}}</option>
             </select>
           </div>
         <br><div class="form-group">
           <label for="University">{{__('University')}}</label>
-          <input type="text" class="form-control" id="University" placeholder="">
+          <input type="text" name="university"class="form-control" id="University" placeholder="">
         </div>
           <br><div class="form-group">
             <label for="Country">{{__('Country')}}</label>
-            <input type="text" class="form-control" id="Country" placeholder="">
+            <input type="text" name="country"class="form-control" id="Country" placeholder="">
           </div>
           <br><div class="form-group">
             <label for="Graduation Year">{{__('Graduation Year')}}</label>
-            <input type="text" class="form-control" id="Graduation Year" placeholder="">
+            <input name="graduationYear"type="text" class="form-control" id="Graduation Year" placeholder="">
           </div>
           <br><div class="form-group">
             <label for="Graduation Rate">{{__('Graduation Rate')}}</label>
-            <input type="text" class="form-control" id="Graduation Rate" placeholder="">
+            <input name="graduationRate"type="text" class="form-control" id="Graduation Rate" placeholder="">
           </div>
           <br><div class="form-group">
             <label for="Specialization">{{__('Specialization')}}</label>
-            <input type="text" class="form-control" id="Specialization" placeholder="">
+            <input type="text" name="specialization"class="form-control" id="Specialization" placeholder="">
           </div><br>
-          <button type="submit" class="btn btn-primary">{{__('Add')}}</button>
-          <button type="submit" class="btn btn-light">{{__('Close')}}</button>
+          {{-- <button type="submit" class="btn btn-primary">{{__('Add')}}</button> --}}
+          {{-- <button type="submit" class="btn btn-light">{{__('Close')}}</button> --}}
       </form></div>
       <div style="width:70%;margin:auto;" id="pay" class="tab-pane fade"  role="tabpanel" aria-labelledby="pay-tab">
       <form>
@@ -392,15 +408,16 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="Payment method">{{__('Payment method')}}</label>
-                <select id="Payment method"class="form-select form-select-sm" aria-label=".form-select-sm example">
-                    <option selected>{{__('Cash to the Central Syndicate Fund in Damascus')}}</option>
-                    <option value="1">{{__('Syndicate account with the real estate bank number 11011418 in all countries')}}</option>
-                    <option value="1">{{__('Syndicate account with Francbank Bank number 0004204801 in Damascus,Aleppo,Tartous and Latakia')}}</option>
+                <select name="payment"id="Payment method"class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    <option selected value="cash">{{__('Cash to the Central Syndicate Fund in Damascus')}}</option>
+                    <option value="real estate bank">{{__('Syndicate account with the real estate bank number 11011418 in all countries')}}</option>
+                    <option value="Francbank">{{__('Syndicate account with Francbank Bank number 0004204801 in Damascus,Aleppo,Tartous and Latakia')}}</option>
                  </select>
               </div>
             </div>
           </div>
       </form>
+    <button type="submit" class="btn btn-primary">{{__('Send')}}</button>
       <div style="background:#e0c2c2;">
         <ul style="list-style-type:disc;list-style-position: inside;padding-left:15px">
           <li>{{__('Name field is required')}}</li>
@@ -425,4 +442,5 @@
       </ul>
     </div>
     </div>
+</form>
 </x-layouts.app>

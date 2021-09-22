@@ -48,11 +48,12 @@ class CreateOrdersTable extends Migration
             $table->boolean('work_in_government');//العمل في الدولة
             $table->string('side_work');//جهة العمل
             $table->string('insurance_number');//الرقم التأميني
+            $table->boolean('displayData');//إظهار معلومات الاتصال ع الموقع
             $table->string('qualification');//المؤهل
             $table->string('university');//الجامعه
             $table->string('country');//البلد
             $table->date('graduation_year');//سنة التخرج
-            $table->string('graduation_rate');//معدل التخرج
+            $table->float('graduation_rate');//معدل التخرج
             $table->string('Specialization');//التخصص
             $table->string('pay_affiliation_fee');//طريقة سداد رسم الانتساب
             $table->timestamps();

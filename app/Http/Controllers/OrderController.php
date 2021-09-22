@@ -35,7 +35,53 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    //    $request->validate([
+    //     // 'group_name'  => 'required',
+    //     // 'users'        => 'array',
+    //     ] );
+        $order = new Order();
+        $order->firstname = $request->fname;
+        $order->lastname = $request->lname;
+        $order->father_name = $request->fathername;
+        $order->grandfather_name = $request->grandfathername;
+        $order->mother_name = $request->mothername;
+        $order->gender = $request->gender;
+        $order->english_firstname = $request->fnameenglish;
+        $order->english_lastname = $request->lnameenglish;
+        $order->english_father_name = $request->fathernameenglish;
+        $order->english_mother_name = $request->mothernameenglish;
+        $order->Nationality = $request->Nationality;
+        $order->Marital_status = $request->martialStatus;
+        $order->place_of_birth = $request->placeBirth;
+        $order->date_of_birth = $request->dateBirth;
+        $order->national_id = $request->nationalID;
+        $order->civil_registry_secretariat = $request->civilRegistry;
+        $order->personal_identification_number = $request->personalIdentificationNumber;
+        $order->Identity_grant_date = $request->identityGrantDate;
+        $order->constraint = $request->constraint;
+        $order->military = $request->military;
+        $order->public_record_number = $request->publicRecordNumber;
+        $order->Health_status = $request->healthStatus;
+        $order->Affiliation_country = $request->countryJoin;
+        $order->address = $request->address;
+        $order->house_phone = $request->housePhone;
+        $order->work_phone = $request->workPhone;
+        $order->mobile = $request->mobile;
+        $order->email = $request->email;
+        $order->fax = $request->fax;
+        $order->site = $request->site;
+        $order->work_in_government = $request->workGovernment;
+        $order->side_work = $request->workSide;
+        $order->insurance_number = $request->insurance;
+        $order->displayData = $request->displayData;
+        $order->qualification = $request->qualification;
+        $order->university = $request->university;
+        $order->country = $request->country;
+        $order->graduation_year = $request->graduationYear;
+        $order->graduation_rate = $request->graduationRate;
+        $order->Specialization = $request->specialization;
+        $order->pay_affiliation_fee = $request->payment;
+        $order->save();
     }
 
     /**
