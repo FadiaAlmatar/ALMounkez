@@ -35,10 +35,18 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-    //    $request->validate([
-    //     // 'group_name'  => 'required',
-    //     // 'users'        => 'array',
-    //     ] );
+       $request->validate([
+        'fname'             => 'required',
+        'lname'             => 'required',
+        'fnameenglish'      => 'required',
+        'lnameenglish'      => 'required',
+        'fathername'        => 'required',
+        'grandfathername'   => 'required',
+        'mothername'        => 'required',
+        'fathernameenglish' => 'required',
+        'mothernameenglish' => 'required',
+
+        ] );
         $order = new Order();
         $order->firstname = $request->fname;
         $order->lastname = $request->lname;
