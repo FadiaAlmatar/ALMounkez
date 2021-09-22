@@ -35,30 +35,24 @@
         <button type="submit" class="btn btn-primary">Submit</button>
       </form> --}}
 
-      <ul class="nav nav-tabs"style="width:70%;margin:auto">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#Personal data"  data-form="#Personal data">{{__('Personal data')}}</a>
+      <ul class="nav nav-tabs" id="myTab" role="tablist" style="width:70%;margin:auto;">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="Personal-tab" data-bs-toggle="tab" data-bs-target="#Personal" type="button" role="tab" aria-controls="Personal" aria-selected="true">{{__('Personal data')}}</button>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#contact information"  data-form="#contact information">{{__('contact information')}}</a>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">{{__('contact information')}}</button>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#Qualifications"  onclick="Qualifications()">{{__('Qualifications')}}</a>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="Qualifications-tab" data-bs-toggle="tab" data-bs-target="#Qualifications" type="button" role="tab" aria-controls="Qualifications" aria-selected="false">{{__('Qualifications')}}</button>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#How to pay the affiliation fee" tabindex="-1" aria-disabled="true" >{{__('How to pay the affiliation fee')}}</a>
-        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pay-tab" data-bs-toggle="tab" data-bs-target="#pay" type="button" role="tab" aria-controls="pay" aria-selected="false">{{__('How to pay the affiliation fee')}}</button>
+          </li>
       </ul>
+      <div class="tab-content" id="myTabContent">
       {{-- البيانات الشخصية --}}
-      <form id="Personal data"style="width:70%;margin:auto;">
-        {{-- <div class="form-group">
-          <label for="exampleInputEmail1">{{__('name')}}</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
-        </div>
-        <br><div class="form-group">
-          <label for="exampleInputPassword1">{{__('nickname')}}</label>
-          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="">
-        </div> --}}
+      <div id="Personal"style="width:70%;margin:auto;"class="tab-pane fade show active" role="tabpanel" aria-labelledby="Personal-tab">
+      <form >
         <div class="row mb-4">
             <div class="col">
               <div class="form-outline">
@@ -217,9 +211,10 @@
           </div>
         </div>
       </div>
-      </form>
+      </form></div>
       {{-- معلومات الاتصال --}}
-      <form id="contact information"style="width:70%;margin:auto;display:none;">
+      <div style="width:70%;margin:auto;" class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+      <form >
         <div class="row mb-4">
             <div class="col">
               <div class="form-outline">
@@ -330,9 +325,10 @@
             </div>
           </div>
           <button type="submit" class="btn btn-primary">{{__('Send')}}</button>
-      </form>
+      </form></div>
       {{-- المؤهلات العلمية --}}
-      <form style="width:70%;margin:auto;display:none;"id="Qualifications">
+      <div class="tab-pane fade" style="width:70%;margin:auto;"id="Qualifications" role="tabpanel" aria-labelledby="Qualifications-tab">
+      <form>
         <p>{{__('Add a new qualification')}}</p>
            <div class="form-group">
             <label for="Qualification">{{__('Qualification')}}</label>
@@ -366,8 +362,9 @@
           </div>
           <button type="submit" class="btn btn-primary">{{__('Add')}}</button>
           <button type="submit" class="btn btn-light">{{__('Close')}}</button>
-      </form>
-      <form style="width:70%;margin:auto;display:none;"id="How to pay the affiliation fee">
+      </form></div>
+      <div style="width:70%;margin:auto;" id="pay" class="tab-pane fade"  role="tabpanel" aria-labelledby="pay-tab">
+      <form>
         <div class="row mb-4">
             <div class="col">
               <div class="form-outline">
@@ -380,10 +377,11 @@
               </div>
             </div>
           </div>
-      </form>
+      </form></div>
+    </div>
 
 
-      <ul style="width:70%;margin:auto;list-style-type:disc;display:none;">
+      {{-- <ul style="width:70%;margin:auto;list-style-type:disc;display:none;">
           <li>{{__('Name field is required')}}</li>
           <li>{{__('Nickname field is required')}}</li>
           <li>{{__('Name/English field is required-Please write the name as it is in the passport, if any')}}</li>
@@ -403,6 +401,6 @@
           <li>{{__('country you wish to join field is required')}}</li>
           <li>{{__('Address field is required')}}</li>
           <li>{{__('Desire to display data on the site field is required')}}</li>
-      </ul>
+      </ul> --}}
 
 </x-layouts.app>
