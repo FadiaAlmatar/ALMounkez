@@ -47,14 +47,16 @@ class OrderController extends Controller
         'mothernameenglish' => 'required',
         'placeBirth'        => 'required',
         'dateBirth'         => 'required',
-        'nationalID'        => 'required',
+        'nationalID'        => 'required','numeric',
         'civilRegistry'     => 'required',
-        'personalIdentificationNumber'   => 'required',
+        'personalIdentificationNumber'   => 'required','numeric',
         'identityGrantDate'            => 'required',
         'constraint'        => 'required',
         'countryJoin'       => 'required',
         'address'           => 'required',
-        'displayData'       => 'required'
+        'displayData'       => 'required',
+        'site'              =>'url',
+        'insurance'        => 'numeric',
         ] );
         $order = new Order();
         $order->firstname = $request->fname;
