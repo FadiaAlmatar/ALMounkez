@@ -58,37 +58,52 @@
         <div class="row mb-4">
             <div class="col">
               <div class="form-outline">
-                <label class="form-label" for="name">{{__('name')}}</label>
-                <input type="text" id="name" name="fname"class="form-control" />
+                <label class="form-label" for="name">{{__('name*')}}</label>
+                <input type="text" class="input @error('fname')is-danger @enderror" id="name" name="fname"class="form-control" />
+                @error('fname')
+                  <p class="help is-danger">{{ $message }}</p>
+                @enderror
               </div>
             </div>
             <div class="col">
               <div class="form-outline">
-                <label class="form-label" for="nickname">{{__('nickname')}}</label>
-                <input type="text" id="nickname" name="lname"class="form-control" />
-              </div>
-            </div>
-          </div>
-          <div class="row mb-4">
-            <div class="col">
-              <div class="form-outline">
-                <label class="form-label" for="father name">{{__('father name')}}</label>
-                <input type="text" id="father name" name="fathername"class="form-control" />
-              </div>
-            </div>
-            <div class="col">
-              <div class="form-outline">
-                <label class="form-label" for="grandfather name">{{__('grandfather name')}}</label>
-                <input type="text" id="grandfather name" name="grandfathername"class="form-control" />
+                <label class="form-label" for="nickname">{{__('nickname*')}}</label>
+                <input type="text" class="input @error('lname')is-danger @enderror" id="nickname" name="lname"class="form-control" />
+                @error('lname')
+                  <p class="help is-danger">{{ $message }}</p>
+                @enderror
               </div>
             </div>
           </div>
           <div class="row mb-4">
             <div class="col">
               <div class="form-outline">
-                <label class="form-label" for="mother name">{{__('mother name')}}</label>
-                <input type="text" id="mother name" name="mothername"class="form-control" />
-              </div>
+                <label class="form-label" for="father name">{{__('father name*')}}</label>
+                <input type="text" class="input @error('fathername')is-danger @enderror" id="father name" name="fathername"class="form-control" />
+                @error('fathername')
+                <p class="help is-danger">{{ $message }}</p>
+              @enderror
+            </div>
+            </div>
+            <div class="col">
+              <div class="form-outline">
+                <label class="form-label" for="grandfather name">{{__('grandfather name*')}}</label>
+                <input type="text" class="input @error('grandfathername')is-danger @enderror" id="grandfather name" name="grandfathername"class="form-control" />
+                @error('grandfathername')
+                <p class="help is-danger">{{ $message }}</p>
+              @enderror
+            </div>
+            </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col">
+              <div class="form-outline">
+                <label class="form-label" for="mother name">{{__('mother name*')}}</label>
+                <input type="text" class="input @error('mothername')is-danger @enderror" id="mother name" name="mothername"class="form-control" />
+                @error('mothername')
+                <p class="help is-danger">{{ $message }}</p>
+              @enderror
+            </div>
             </div>
             <div class="col">
               <div class="form-outline">
@@ -103,29 +118,41 @@
           <div class="row mb-4">
             <div class="col">
               <div class="form-outline">
-                <label class="form-label" for="fathername/english">{{__('fname/english')}}</label>
-                <input type="text" id="fathername/english" name="fnameenglish"class="form-control" />
-              </div>
+                <label class="form-label" for="fathername/english">{{__('fname/english*')}}</label>
+                <input type="text" class="input @error('fnameenglish')is-danger @enderror"id="fathername/english" name="fnameenglish"class="form-control" />
+                @error('fnameenglish')
+                <p class="help is-danger">{{ $message }}</p>
+               @enderror
+            </div>
             </div>
             <div class="col">
               <div class="form-outline">
-                <label class="form-label" for="mothername/english">{{__('lname/english')}}</label>
-                <input type="text" id="mothername/english" name="lnameenglish"class="form-control" />
-              </div>
+                <label class="form-label" for="mothername/english">{{__('lname/english*')}}</label>
+                <input type="text" class="input @error('lnameenglish')is-danger @enderror" id="mothername/english" name="lnameenglish"class="form-control" />
+                @error('lnameenglish')
+                <p class="help is-danger">{{ $message }}</p>
+               @enderror
+            </div>
             </div>
           </div>
           <div class="row mb-4">
             <div class="col">
               <div class="form-outline">
-                <label class="form-label" for="fathername/english">{{__('fathername/english')}}</label>
-                <input type="text" id="fathername/english" name="fathernameenglish"class="form-control" />
-              </div>
+                <label class="form-label" for="fathername/english">{{__('fathername/english*')}}</label>
+                <input type="text" class="input @error('fathernameenglish')is-danger @enderror"id="fathername/english" name="fathernameenglish"class="form-control" />
+                @error('fathernameenglish')
+                <p class="help is-danger">{{ $message }}</p>
+               @enderror
+            </div>
             </div>
             <div class="col">
               <div class="form-outline">
-                <label class="form-label" for="mothername/english">{{__('mothername/english')}}</label>
-                <input type="text" id="mothername/english" name="mothernameenglish"class="form-control" />
-              </div>
+                <label class="form-label" for="mothername/english">{{__('mothername/english*')}}</label>
+                <input type="text" class="input @error('mothernameenglish')is-danger @enderror"id="mothername/english" name="mothernameenglish"class="form-control" />
+                @error('mothernameenglish')
+                <p class="help is-danger">{{ $message }}</p>
+               @enderror
+            </div>
             </div>
           </div>
           <div class="row mb-4">

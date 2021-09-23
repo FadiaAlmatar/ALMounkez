@@ -294,14 +294,14 @@
 ,"nickname must be at least 3 characters":"يجب أن تتألف النسبة من 3 حروف على الأقل"
 ,"Please put an effective email so that you can use it later in the account activation process":"الرجاء وضع بريد الكتروني فعال لتتمكن من استخدامه لاحقا في عملية تفعيل الحساب"
 ,"To complete the registration process, you must enter your email":"لإكمال عملية التسجيل يجب عليك إدخال بريدك الإلكتروني"
-,"name":"الاسم"
-,"nickname":"النسبة"
-,"father name":"اسم الأب"
-,"grandfather name":"اسم الجد/الاب"
-,"mother name":"اسم الأم"
+,"name*":"الاسم*"
+,"nickname*":"النسبة*"
+,"father name*":"اسم الأب*"
+,"grandfather name*":"اسم الجد/الاب*"
+,"mother name*":"اسم الأم*"
 ,"Gender":"الجنس"
-,"fathername/english":"اسم الأب/انكليزي"
-,"mothername/english":"اسم الأم/انكليزي"
+,"fathername/english*":"اسم الأب/انكليزي*"
+,"mothername/english*":"اسم الأم/انكليزي*"
 ,"Nationality":"الجنسية"
 ,"Martial status":"الوضع العائلي"
 ,"Place of birth":"مكان الولادة"
@@ -398,8 +398,9 @@
 ,"Add a new qualification":"إضافة مؤهل جديد"
 ,"Add":"إضافة"
 ,"Close":"إغلاق"
-,"fname/english":"الاسم/انكليزي"
-,"lname/english":"النسبة/انكليزي"
+,"fname/english*":"الاسم/انكليزي*"
+,"lname/english*":"النسبة/انكليزي*"
+
 
 
 
