@@ -49,23 +49,23 @@ class OrderController extends Controller
         'mothernameenglish' => 'required',
         'Nationality'       => 'nullable',
         'placeBirth'        => 'required',
-        'dateBirth'         => 'required',
+        'dateBirth'         => 'required|date',
         'nationalID'        => 'required|numeric',
         'civilRegistry'     => 'required',
         'martialStatus'     =>'nullable',
         'personalIdentificationNumber'   => 'required|numeric',
-        'identityGrantDate'            => 'required',
+        'identityGrantDate'            => 'required|date',
         'constraint'        => 'required',
         'countryJoin'       => 'required',
         'address'           => 'required',
         'displayData'       => 'required',
         'site'              =>'url|nullable',
         'insurance'        => 'numeric|nullable',
-        'military'        => 'nullable',
+        'military'           => 'nullable',
         'publicRecordNumber' => 'nullable',
-        'healthStatus' => 'nullable',
-        'housePhone' => 'nullable',
-        'workPhone' => 'nullable',
+        'healthStatus'       => 'nullable',
+        'housePhone'         => 'nullable',
+        'workPhone'          => 'nullable',
         'mobile' => 'nullable',
         'email' => 'nullable',
         'fax' => 'nullable',
@@ -74,7 +74,7 @@ class OrderController extends Controller
         'qualification'  => 'nullable',
         'university'  => 'nullable',
         'country'     => 'nullable',
-        'graduationYear'      => 'nullable',
+        'graduationYear'      => 'nullable|date',
         'graduationRate'        => 'nullable',
         'specialization'         => 'nullable',
         'payment'          => 'nullable',
@@ -101,6 +101,7 @@ class OrderController extends Controller
         $order->Identity_grant_date = $request->identityGrantDate;
         $order->constraint = $request->constraint;
         $order->military = $request->military;
+        dd("here");
         $order->public_record_number = $request->publicRecordNumber;
         $order->Health_status = $request->healthStatus;
         $order->Affiliation_country = $request->countryJoin;
