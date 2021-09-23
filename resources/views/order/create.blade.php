@@ -390,7 +390,7 @@
                 <label class="form-label" for="display your data">{{__('Do you want to display your data on the site (contact information only) after approving the affiliation request?*')}}</label>
                 <select class="input @error('displayData')is-danger @enderror"name="displayData"id="display your data"class="form-select form-select-sm" aria-label=".form-select-sm example">
                     <option selected value="1">{{__('Yes')}}</option>
-                    <option value="0">{{__('No')}}</option>
+                    <option value="0">         {{__('No')}}</option>
                  </select>
                  @error('displayData')
                    <p class="help is-danger">{{ $message }}</p>
@@ -426,7 +426,6 @@
       {{-- المؤهلات العلمية --}}
       <div class="tab-pane fade" style="width:70%;margin:auto;margin-top:5px"id="Qualifications" role="tabpanel" aria-labelledby="Qualifications-tab">
       {{-- <form> --}}
-        <p>{{__('Add a new qualification')}}</p>
            <div class="form-group">
             <label for="Qualification">{{__('Qualification')}}</label>
             <select name="qualification"id="Qualification"class="form-select form-select-sm" aria-label=".form-select-sm example">
@@ -457,6 +456,8 @@
             <label for="Specialization">{{__('Specialization')}}</label>
             <input type="text" name="specialization"value="{{ old('specialization') }}"class="form-control" id="Specialization" placeholder="">
           </div><br>
+          {{-- <p>{{__('Add a new qualification')}}</p> --}}
+          <button style="float:left"class="btn btn-primary"onclick=""><i class="fas fa-plus" aria-hidden="true"></i> {{__('New qualification')}}</button>
           {{-- <button type="submit" class="btn btn-primary">{{__('Add')}}</button> --}}
           {{-- <button type="submit" class="btn btn-light">{{__('Close')}}</button> --}}
       {{-- </form> --}}
