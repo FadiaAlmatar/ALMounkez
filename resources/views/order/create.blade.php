@@ -457,7 +457,7 @@
             <input type="text" name="specialization"value="{{ old('specialization') }}"class="form-control" id="Specialization" placeholder="">
           </div><br>
           {{-- <p>{{__('Add a new qualification')}}</p> --}}
-          <button style="float:left"class="btn btn-primary"onclick=""><i class="fas fa-plus" aria-hidden="true"></i> {{__('New qualification')}}</button>
+          <button style="float:left"class="btn btn-primary"onclick="newqualification()"><i class="fas fa-plus" aria-hidden="true"></i> {{__('New qualification')}}</button>
           {{-- <button type="submit" class="btn btn-primary">{{__('Add')}}</button> --}}
           {{-- <button type="submit" class="btn btn-light">{{__('Close')}}</button> --}}
       {{-- </form> --}}

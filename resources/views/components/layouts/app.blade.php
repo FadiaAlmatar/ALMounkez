@@ -40,6 +40,17 @@
         function addsubscribe(){
            $(".subscribe").toggle();
         }
+        function newqualification(){
+            $("#Qualifications").fadeOut(200);
+        }
+    //     $(document).ready(function(){
+    // $("#but1").click(function(){
+    //         $("#popdiv").fadeTo(200,1);
+    //     });
+    // $("#but2").click(function(){
+    //         $("#popdiv").fadeOut(200);
+    //     });
+});
     </script>
   </body>
 </html>
