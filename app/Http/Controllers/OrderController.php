@@ -36,8 +36,8 @@ class OrderController extends Controller
     public function store(Request $request)
     {
        $request->validate([
-        'fname'             => 'required',
-        'lname'             => 'required',
+        'name'             => 'required',
+        'nickname'         => 'required',
         'fnameenglish'      => 'required',
         'lnameenglish'      => 'required',
         'fathername'        => 'required',
@@ -45,22 +45,22 @@ class OrderController extends Controller
         'mothername'        => 'required',
         'fathernameenglish' => 'required',
         'mothernameenglish' => 'required',
-        // 'placeBirth'        => 'required',
-        // 'dateBirth'         => 'required',
-        // 'nationalID'        => 'required','numeric',
-        // 'civilRegistry'     => 'required',
-        // 'personalIdentificationNumber'   => 'required','numeric',
-        // 'identityGrantDate'            => 'required',
-        // 'constraint'        => 'required',
-        // 'countryJoin'       => 'required',
-        // 'address'           => 'required',
-        // 'displayData'       => 'required',
-        // 'site'              =>'url',
-        // 'insurance'        => 'numeric',
+        'placeBirth'        => 'required',
+        'dateBirth'         => 'required',
+        'nationalID'        => 'required|numeric',
+        'civilRegistry'     => 'required',
+        'personalIdentificationNumber'   => 'required|numeric',
+        'identityGrantDate'            => 'required',
+        'constraint'        => 'required',
+        'countryJoin'       => 'required',
+        'address'           => 'required',
+        'displayData'       => 'required',
+        'site'              =>'url',
+        'insurance'        => 'numeric',
         ] );
         $order = new Order();
-        $order->firstname = $request->fname;
-        $order->lastname = $request->lname;
+        $order->firstname = $request->name;
+        $order->lastname = $request->nickname;
         $order->father_name = $request->fathername;
         $order->grandfather_name = $request->grandfathername;
         $order->mother_name = $request->mothername;

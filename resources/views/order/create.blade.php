@@ -59,8 +59,8 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="name">{{__('name*')}}</label>
-                <input type="text" class="input @error('fname')is-danger @enderror" id="name" name="fname"class="form-control" />
-                @error('fname')
+                <input type="text" class="input @error('name')is-danger @enderror" id="name" name="name"class="form-control" />
+                @error('name')
                   <p class="help is-danger">{{ $message }}</p>
                 @enderror
               </div>
@@ -68,8 +68,8 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="nickname">{{__('nickname*')}}</label>
-                <input type="text" class="input @error('lname')is-danger @enderror" id="nickname" name="lname"class="form-control" />
-                @error('lname')
+                <input type="text" class="input @error('nickname')is-danger @enderror" id="nickname" name="nickname"class="form-control" />
+                @error('nickname')
                   <p class="help is-danger">{{ $message }}</p>
                 @enderror
               </div>
@@ -79,7 +79,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="father name">{{__('father name*')}}</label>
-                <input type="text" class="input @error('fathername')is-danger @enderror" id="father name" name="fathername"class="form-control" />
+                <input type="text" class="input @error('fathername')is-danger @enderror" id="fathername" name="fathername"class="form-control" />
                 @error('fathername')
                 <p class="help is-danger">{{ $message }}</p>
               @enderror
@@ -180,51 +180,72 @@
           <div class="row mb-4">
             <div class="col">
               <div class="form-outline">
-                <label class="form-label" for="Place of birth">{{__('Place of birth')}}</label>
-                <input type="text" name="placeBirth"id="Place of birth" class="form-control" />
-              </div>
+                <label class="form-label" for="Place of birth">{{__('Place of birth*')}}</label>
+                <input type="text" class="input @error('placeBirth')is-danger @enderror"name="placeBirth"id="Place of birth" class="form-control" />
+                @error('placeBirth')
+                <p class="help is-danger">{{ $message }}</p>
+               @enderror
+            </div>
             </div>
             <div class="col">
               <div class="form-outline">
-                <label class="form-label" for="Date of birth">{{__('Date of birth')}}</label>
-                <input type="date" name="dateBirth"id="Date of birth" class="form-control" />
-              </div>
+                <label class="form-label" for="Date of birth">{{__('Date of birth*')}}</label>
+                <input type="date" class="input @error('dateBirth')is-danger @enderror"name="dateBirth"id="Date of birth" class="form-control" />
+                @error('dateBirth')
+                <p class="help is-danger">{{ $message }}</p>
+               @enderror
             </div>
-          </div>
-          <div class="row mb-4">
-            <div class="col">
-              <div class="form-outline">
-                <label class="form-label" for="National ID">{{__('National ID')}}</label>
-                <input type="text" name="nationalID"id="National ID" class="form-control" />
-              </div>
-            </div>
-            <div class="col">
-              <div class="form-outline">
-                <label class="form-label" for="Civil Registry">{{__('Civil Registry')}}</label>
-                <input type="text" name="civilRegistry"id="Civil Registry" class="form-control" />
-              </div>
             </div>
           </div>
           <div class="row mb-4">
             <div class="col">
               <div class="form-outline">
-                <label class="form-label" for="Personal Identification Number">{{__('Personal Identification Number')}}</label>
-                <input type="text" name="personalIdentificationNumber"id="Personal Identification Number" class="form-control" />
-              </div>
+                <label class="form-label" for="National ID">{{__('National ID*')}}</label>
+                <input type="text" class="input @error('nationalID')is-danger @enderror"name="nationalID"id="National ID" class="form-control" />
+                @error('nationalID')
+                  <p class="help is-danger">{{ $message }}</p>
+                @enderror
+            </div>
             </div>
             <div class="col">
               <div class="form-outline">
-                <label class="form-label" for="Identity Grant Date">{{__('Identity Grant Date')}}</label>
-                <input type="date" name="identityGrantDate"id="Identity Grant Date" class="form-control" />
-              </div>
+                <label class="form-label" for="Civil Registry">{{__('Civil Registry*')}}</label>
+                <input type="text" class="input @error('civilRegistry')is-danger @enderror"name="civilRegistry"id="Civil Registry" class="form-control" />
+                @error('civilRegistry')
+                <p class="help is-danger">{{ $message }}</p>
+               @enderror
+            </div>
+            </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col">
+              <div class="form-outline">
+                <label class="form-label" for="Personal Identification Number">{{__('Personal Identification Number*')}}</label>
+                <input type="text" class="input @error('personalIdentificationNumber')is-danger @enderror"name="personalIdentificationNumber"id="Personal Identification Number" class="form-control" />
+                @error('personalIdentificationNumber')
+                <p class="help is-danger">{{ $message }}</p>
+               @enderror
+            </div>
+            </div>
+            <div class="col">
+              <div class="form-outline">
+                <label class="form-label" for="Identity Grant Date">{{__('Identity Grant Date*')}}</label>
+                <input type="date" class="input @error('identityGrantDate')is-danger @enderror"name="identityGrantDate"id="Identity Grant Date" class="form-control" />
+                @error('identityGrantDate')
+                <p class="help is-danger">{{ $message }}</p>
+               @enderror
+            </div>
             </div>
           </div>
        <div class="row mb-4">
         <div class="col">
           <div class="form-outline">
-            <label class="form-label" for="Constraint">{{__('Constraint')}}</label>
-            <input type="text" name="constraint"id="Constraint" class="form-control" />
-          </div>
+            <label class="form-label" for="Constraint">{{__('Constraint*')}}</label>
+            <input type="text" class="input @error('constraint')is-danger @enderror"name="constraint"id="Constraint" class="form-control" />
+            @error('constraint')
+            <p class="help is-danger">{{ $message }}</p>
+           @enderror
+        </div>
         </div>
         <div class="col">
           <div class="form-outline">
@@ -262,8 +283,8 @@
         <div class="row mb-4">
             <div class="col">
               <div class="form-outline">
-                <label class="form-label" for="country you wish to join">{{__('country you wish to join')}}</label>
-                <select name="countryJoin" id="country you wish to join"class="form-select form-select-sm" aria-label=".form-select-sm example">
+                <label class="form-label" for="country you wish to join">{{__('country you wish to join*')}}</label>
+                <select class="input @error('countryJoin')is-danger @enderror"name="countryJoin" id="country you wish to join"class="form-select form-select-sm" aria-label=".form-select-sm example">
                     <option selected value="Damascus">               {{__('Damascus')}}</option>
                     <option value="Damascus Rural"> {{__('Damascus Rural')}}</option>
                     <option value="Suwayda">        {{__('Suwayda')}}</option>
@@ -279,15 +300,21 @@
                     <option value="Deer Al Zour">   {{__('Deer Al Zour')}}</option>
                     <option value="Al-Hasakah">     {{__('Al-Hasakah')}}</option>
                  </select>
+                @error('countryJoin')
+                    <p class="help is-danger">{{ $message }}</p>
+                @enderror
               </div>
             </div>
         </div>
         <div class="row mb-4">
             <div class="col">
               <div class="form-outline">
-                <label class="form-label" for="Address">{{__('Address')}}</label>
-                <input type="text" name="address"id="Address" class="form-control" />
-              </div>
+                <label class="form-label" for="Address">{{__('Address*')}}</label>
+                <input class="input @error('address')is-danger @enderror"type="text" name="address"id="Address" class="form-control" />
+                @error('address')
+                   <p class="help is-danger">{{ $message }}</p>
+                @enderror
+            </div>
             </div>
         </div>
         <div class="row mb-4">
@@ -360,11 +387,14 @@
           <div class="row mb-4">
             <div class="col">
               <div class="form-outline">
-                <label class="form-label" for="display your data">{{__('Do you want to display your data on the site (contact information only) after approving the affiliation request?')}}</label>
-                <select name="displayData"id="display your data"class="form-select form-select-sm" aria-label=".form-select-sm example">
+                <label class="form-label" for="display your data">{{__('Do you want to display your data on the site (contact information only) after approving the affiliation request?*')}}</label>
+                <select class="input @error('displayData')is-danger @enderror"name="displayData"id="display your data"class="form-select form-select-sm" aria-label=".form-select-sm example">
                     <option selected value="1">{{__('Yes')}}</option>
                     <option value="0">{{__('No')}}</option>
                  </select>
+                 @error('displayData')
+                   <p class="help is-danger">{{ $message }}</p>
+                 @enderror
               </div>
             </div>
           </div>
