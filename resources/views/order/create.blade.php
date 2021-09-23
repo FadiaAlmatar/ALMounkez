@@ -398,7 +398,7 @@
               </div>
             </div>
           </div>
-          {{-- <button type="submit" class="btn btn-primary">{{__('Send')}}</button> --}}
+          <button type="submit" class="btn btn-primary">{{__('Send')}}</button>
       {{-- </form> --}}
       <div style="background:#e0c2c2;margin-top:5px">
        <ul style="list-style-type:disc;list-style-position: inside;padding-left:15px">
