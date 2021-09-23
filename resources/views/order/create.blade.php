@@ -462,6 +462,7 @@
           {{-- <button type="submit" class="btn btn-light">{{__('Close')}}</button> --}}
       {{-- </form> --}}
     </div>
+
       <div style="width:70%;margin:auto;" id="pay" class="tab-pane fade"  role="tabpanel" aria-labelledby="pay-tab">
       {{-- <form> --}}
         <div class="row mb-4">

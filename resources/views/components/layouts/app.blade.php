@@ -42,6 +42,7 @@
         }
         function newqualification(){
             $("#Qualifications").fadeOut(200);
+            $("#q").fadeTo(200, 1);
         }
     //     $(document).ready(function(){
     // $("#but1").click(function(){
