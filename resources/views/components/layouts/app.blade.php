@@ -41,8 +41,8 @@
            $(".subscribe").toggle();
         }
         function newqualification(){
-            $("#Qualifications").fadeOut(200);
-            $("#q").fadeTo(200, 1);
+            $("#Qualifications").fadeTo(200, 1);
+            $("#q").fadeOut(200);
         }
     //     $(document).ready(function(){
     // $("#but1").click(function(){
