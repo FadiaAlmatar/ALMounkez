@@ -35,6 +35,7 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+
        $request->validate([
         'name'             => 'required',
         'nickname'         => 'required',
@@ -43,21 +44,42 @@ class OrderController extends Controller
         'fathername'        => 'required',
         'grandfathername'   => 'required',
         'mothername'        => 'required',
+        'gender'           =>'nullable',
         'fathernameenglish' => 'required',
         'mothernameenglish' => 'required',
+        'Nationality'       => 'nullable',
         'placeBirth'        => 'required',
         'dateBirth'         => 'required',
         'nationalID'        => 'required|numeric',
         'civilRegistry'     => 'required',
+        'martialStatus'     =>'nullable',
         'personalIdentificationNumber'   => 'required|numeric',
         'identityGrantDate'            => 'required',
         'constraint'        => 'required',
         'countryJoin'       => 'required',
         'address'           => 'required',
         'displayData'       => 'required',
-        'site'              =>'url',
-        'insurance'        => 'numeric',
+        'site'              =>'url|nullable',
+        'insurance'        => 'numeric|nullable',
+        'military'        => 'nullable',
+        'publicRecordNumber' => 'nullable',
+        'healthStatus' => 'nullable',
+        'housePhone' => 'nullable',
+        'workPhone' => 'nullable',
+        'mobile' => 'nullable',
+        'email' => 'nullable',
+        'fax' => 'nullable',
+        'workGovernment'     => 'nullable',
+        'workSide'         => 'nullable',
+        'qualification'  => 'nullable',
+        'university'  => 'nullable',
+        'country'     => 'nullable',
+        'graduationYear'      => 'nullable',
+        'graduationRate'        => 'nullable',
+        'specialization'         => 'nullable',
+        'payment'          => 'nullable',
         ] );
+
         $order = new Order();
         $order->firstname = $request->name;
         $order->lastname = $request->nickname;
@@ -100,6 +122,7 @@ class OrderController extends Controller
         $order->graduation_rate = $request->graduationRate;
         $order->Specialization = $request->specialization;
         $order->pay_affiliation_fee = $request->payment;
+
         $order->save();
     }
 
