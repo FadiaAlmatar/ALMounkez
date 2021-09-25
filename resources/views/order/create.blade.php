@@ -109,8 +109,9 @@
               <div class="form-outline">
                 <label class="form-label" for="Gender">{{__('Gender')}}</label>
                 <select name="gender"id="Gender"class="form-select form-select-sm" aria-label=".form-select-sm example">
-                <option selected value="male">{{__('Male')}}</option>
-                <option value="female">{{__('Female')}}</option>
+                    {{-- value="{{ old('category_id') }}" --}}
+                    <option selected value="male">{{__('Male')}}</option>
+                    <option value="female">{{__('Female')}}</option>
               </select>
               </div>
             </div>
@@ -459,7 +460,7 @@
     </div>
 
     {{-- two --}}
-    <div class="tab-pane fade" style="width:70%;margin:auto;margin-top:5px;display:none;position: fixed;"id="q" role="tabpanel" aria-labelledby="Qualifications-tab">
+    {{-- <div class="tab-pane fade" style="width:70%;margin:auto;margin-top:5px;display:none;position: fixed;"id="q" role="tabpanel" aria-labelledby="Qualifications-tab">
          <p>{{__('Add a new qualification')}}</p>
              <div class="form-group">
               <label for="Qualification">{{__('Qualification')}}</label>
@@ -493,7 +494,7 @@
             </div><br>
             <button type="submit" class="btn btn-primary">{{__('Add')}}</button>
             <button type="submit" class="btn btn-light">{{__('Close')}}</button>
-      </div>
+      </div> --}}
 
   {{--end two  --}}
 
