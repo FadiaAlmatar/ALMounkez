@@ -177,4 +177,12 @@ return [
         'available'             => 'مُتاح',
         'size'                  => 'الحجم',
     ],
+
+
+    // 'custom' => [
+    //     'attribute-name' => [
+    //         'rule-name' => 'custom-message',
+    //     ],
+    // ],
+    // 'attributes' => [],
 ];
