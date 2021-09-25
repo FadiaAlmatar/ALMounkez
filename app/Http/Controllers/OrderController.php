@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Qualification;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -115,14 +116,17 @@ class OrderController extends Controller
         $order->side_work = $request->workSide;
         $order->insurance_number = $request->insurance;
         $order->displayData = $request->displayData;
-        // $order->qualification = $request->qualification;
-        // $order->university = $request->university;
-        // $order->country = $request->country;
-        // $order->graduation_year = $request->graduationYear;
-        // $order->graduation_rate = $request->graduationRate;
-        // $order->Specialization = $request->specialization;
         $order->pay_affiliation_fee = $request->payment;
         $order->save();
+        $qualification = new Qualification();
+        $qualification->order_id = $order->id;
+        $qualification->qualification = $request->qualification;
+        $qualification->university = $request->university;
+        $qualification->country = $request->country;
+        $qualification->graduation_year = $request->graduationYear;
+        $qualification->graduation_rate = $request->graduationRate;
+        $qualification->Specialization = $request->specialization;
+        $qualification->save();
     }
 
     /**

@@ -21,6 +21,7 @@ class CreateQualificationsTable extends Migration
             $table->date('graduation_year')->nullable();//سنة التخرج
             $table->float('graduation_rate')->nullable();//معدل التخرج
             $table->string('Specialization')->nullable();//التخصص
+            $table->foreignId('order_id');
             $table->timestamps();
         });
     }
