@@ -115,12 +115,12 @@ class OrderController extends Controller
         $order->side_work = $request->workSide;
         $order->insurance_number = $request->insurance;
         $order->displayData = $request->displayData;
-        $order->qualification = $request->qualification;
-        $order->university = $request->university;
-        $order->country = $request->country;
-        $order->graduation_year = $request->graduationYear;
-        $order->graduation_rate = $request->graduationRate;
-        $order->Specialization = $request->specialization;
+        // $order->qualification = $request->qualification;
+        // $order->university = $request->university;
+        // $order->country = $request->country;
+        // $order->graduation_year = $request->graduationYear;
+        // $order->graduation_rate = $request->graduationRate;
+        // $order->Specialization = $request->specialization;
         $order->pay_affiliation_fee = $request->payment;
         $order->save();
     }

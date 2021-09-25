@@ -13,4 +13,8 @@ class Order extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function qualifications()
+    {
+        return $this->hasMany(Qualification::class);
+    }
 }
