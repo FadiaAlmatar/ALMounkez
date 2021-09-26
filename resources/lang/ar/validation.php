@@ -176,6 +176,22 @@ return [
         'time'                  => 'الوقت',
         'available'             => 'مُتاح',
         'size'                  => 'الحجم',
+        'nickname'              =>'النسبة',
+        'fathername'            =>'اسم الأب',
+        'grandfathername'       =>'اسم الجد/الأب',
+        'mothername'            =>'اسم الأم',
+        'fnameenglish'          =>'الاسم/انكليزي',
+        'lnnameenglish'         =>'النسبة/انكليزي',
+        'fathernameenglish'     =>'اسم الأب/انكليزي',
+        'placeBirth'           =>'مكان الولادة',
+        'dateBirth'            =>'تاريخ الولادة',
+        'civilRegistry'        =>'السجل المدني',
+        'personalIdentificationNumber'   =>'رقم الهوية الشخصية',
+        'nationalID'           =>'الرقم الوطني',
+        'lnameenglish'        =>'النسبة/انكليزي',
+        'mothernameenglish'    =>'اسم الأم/انكليزي',
+        'constraint'           =>'القيد',
+        'identityGrantDate'    =>'تاريخ منح الهوية'
     ],
 
 
