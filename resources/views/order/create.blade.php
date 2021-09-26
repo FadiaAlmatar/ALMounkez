@@ -426,39 +426,20 @@
     </div>
       {{-- المؤهلات العلمية --}}
       <div class="tab-pane fade" style="width:70%;margin:auto;margin-top:5px;"id="Qualifications" role="tabpanel" aria-labelledby="Qualifications-tab">
-           <div class="form-group">
-            <label for="Qualification">{{__('Qualification')}}</label>
-            <select name="qualification"id="Qualification"class="form-select form-select-sm" aria-label=".form-select-sm example">
-                <option selected value="Doctorate">{{__('Doctorate')}}</option>
-                <option value="Master">{{__('Master')}}</option>
-                <option value="Diploma">{{__('Diploma')}}</option>
-                <option value="Certificate">{{__('Certificate')}}</option>
-                <option value="Other">{{__('Other')}}</option>
-            </select>
-          </div>
-        <br><div class="form-group">
-          <label for="University">{{__('University')}}</label>
-          <input type="text" name="university"value="{{ old('university') }}"class="form-control" id="University" placeholder="">
-        </div>
-          <br><div class="form-group">
-            <label for="Country">{{__('Country')}}</label>
-            <input type="text" name="country"value="{{ old('country') }}"class="form-control" id="Country" placeholder="">
-          </div>
-          <br><div class="form-group">
-            <label for="Graduation Year">{{__('Graduation Year')}}</label>
-            <input name="graduationYear"value="{{ old('graduationYear') }}"type="date" class="form-control" id="Graduation Year" placeholder="">
-          </div>
-          <br><div class="form-group">
-            <label for="Graduation Rate">{{__('Graduation Rate')}}</label>
-            <input name="graduationRate"value="{{ old('graduationRate') }}"type="text" class="form-control" id="Graduation Rate" placeholder="">
-          </div>
-          <br><div class="form-group">
-            <label for="Specialization">{{__('Specialization')}}</label>
-            <input type="text" name="specialization"value="{{ old('specialization') }}"class="form-control" id="Specialization" placeholder="">
-          </div><br>
-          <button style="float:left"class="btn btn-primary"onclick="newqualification()"><i class="fas fa-plus" aria-hidden="true"></i> {{__('New qualification')}}</button>
+         <br>
+          <button style="float:left"class="btn btn-primary"onclick="newqualification()"><i class="fas fa-plus" aria-hidden="true"></i> {{__('Add qualification')}}</button>
+          <br><br><hr>
+          <table style="width:70%;">
+              <tr>
+                  <td>{{__('Qualification')}}</td>
+                  <td>{{__('University')}}</td>
+                  <td>{{__('Country')}}</td>
+                  <td>{{__('Graduation Year')}}</td>
+                  <td>{{__('Graduation Rate')}}</td>
+                  <td>{{__('Specialization')}}</td>
+              </tr>
+          </table>
     </div>
-
     {{-- two --}}
     {{-- <div class="tab-pane fade" style="width:70%;margin:auto;margin-top:5px;display:none;position: fixed;"id="q" role="tabpanel" aria-labelledby="Qualifications-tab">
          <p>{{__('Add a new qualification')}}</p>
@@ -540,3 +521,39 @@
     </div>
 </form>
 </x-layouts.app>
+
+
+
+
+
+
+   {{-- <div class="form-group">
+            <label for="Qualification">{{__('Qualification')}}</label>
+            <select name="qualification"id="Qualification"class="form-select form-select-sm" aria-label=".form-select-sm example">
+                <option selected value="Doctorate">{{__('Doctorate')}}</option>
+                <option value="Master">{{__('Master')}}</option>
+                <option value="Diploma">{{__('Diploma')}}</option>
+                <option value="Certificate">{{__('Certificate')}}</option>
+                <option value="Other">{{__('Other')}}</option>
+            </select>
+          </div> --}}
+        {{-- <br><div class="form-group">
+          <label for="University">{{__('University')}}</label>
+          <input type="text" name="university"value="{{ old('university') }}"class="form-control" id="University" placeholder="">
+        </div> --}}
+          {{-- <br><div class="form-group">
+            <label for="Country">{{__('Country')}}</label>
+            <input type="text" name="country"value="{{ old('country') }}"class="form-control" id="Country" placeholder="">
+          </div>
+          <br><div class="form-group">
+            <label for="Graduation Year">{{__('Graduation Year')}}</label>
+            <input name="graduationYear"value="{{ old('graduationYear') }}"type="date" class="form-control" id="Graduation Year" placeholder="">
+          </div>
+          <br><div class="form-group">
+            <label for="Graduation Rate">{{__('Graduation Rate')}}</label>
+            <input name="graduationRate"value="{{ old('graduationRate') }}"type="text" class="form-control" id="Graduation Rate" placeholder="">
+          </div>
+          <br><div class="form-group">
+            <label for="Specialization">{{__('Specialization')}}</label>
+            <input type="text" name="specialization"value="{{ old('specialization') }}"class="form-control" id="Specialization" placeholder="">
+          </div><br> --}}
