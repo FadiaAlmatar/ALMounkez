@@ -427,7 +427,7 @@
       {{-- المؤهلات العلمية --}}
       <div class="tab-pane fade" style="width:70%;margin:auto;margin-top:5px;"id="Qualifications" role="tabpanel" aria-labelledby="Qualifications-tab">
          <br>
-          <button style="float:left"class="btn btn-primary"onclick="newqualification()"><i class="fas fa-plus" aria-hidden="true"></i> {{__('Add qualification')}}</button>
+          <button id="btnShow"class="btn btn-primary" onclick="newqualification()"><i class="fas fa-plus" aria-hidden="true"></i> {{__('Add qualification')}}</button>
           <br><br><hr>
           <table style="width:70%;">
               <tr>
@@ -441,7 +441,7 @@
           </table>
     </div>
     {{-- two --}}
-    {{-- <div class="tab-pane fade" style="width:70%;margin:auto;margin-top:5px;display:none;position: fixed;"id="q" role="tabpanel" aria-labelledby="Qualifications-tab">
+    <div id="dialog"class="tab-pane fade" style="width:70%;margin:auto;margin-top:5px;position:fixed;display:none;"role="tabpanel" aria-labelledby="Qualifications-tab">
          <p>{{__('Add a new qualification')}}</p>
              <div class="form-group">
               <label for="Qualification">{{__('Qualification')}}</label>
@@ -475,12 +475,10 @@
             </div><br>
             <button type="submit" class="btn btn-primary">{{__('Add')}}</button>
             <button type="submit" class="btn btn-light">{{__('Close')}}</button>
-      </div> --}}
-
+      </div>
   {{--end two  --}}
 
       <div style="width:70%;margin:auto;" id="pay" class="tab-pane fade"  role="tabpanel" aria-labelledby="pay-tab">
-      {{-- <form> --}}
         <div class="row mb-4">
             <div class="col">
               <div class="form-outline">
@@ -493,7 +491,6 @@
               </div>
             </div>
           </div>
-      {{-- </form> --}}
     <button type="submit" class="btn btn-primary">{{__('Send')}}</button>
       <div style="background:#e0c2c2;">
         <ul style="list-style-type:disc;list-style-position: inside;padding-left:15px">
@@ -524,6 +521,7 @@
 
 
 
+    {{-- onclick="newqualification()" --}}
 
 
 
