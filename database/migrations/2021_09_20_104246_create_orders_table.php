@@ -29,19 +29,19 @@ class CreateOrdersTable extends Migration
             $table->string('Marital_status')->nullable();//الوضع العائلي
             $table->string('place_of_birth');//مكان الولادة
             $table->date('date_of_birth');//تاريخ الولادة
-            $table->integer('national_id');// الرقم الوطني
+            $table->bigInteger('national_id');// الرقم الوطني
             $table->string('civil_registry_secretariat');//أمانة السجل المدني
-            $table->integer('personal_identification_number');//رقم الهوية الشخصية
+            $table->bigInteger('personal_identification_number');//رقم الهوية الشخصية
             $table->date('Identity_grant_date');//تاريخ منح الهوية
             $table->string('constraint');//محل ورقم القيد
             $table->string('military')->nullable();//خدمة العلم
-            $table->integer('public_record_number')->nullable();//رقم السجل العام
+            $table->bigInteger('public_record_number')->nullable();//رقم السجل العام
             $table->string('Health_status')->nullable();//الوضع الصحي
             $table->string('Affiliation_country');//المحافظة التي يرغب النتساب بها
             $table->string('address');//العنوان
             $table->string('house_phone')->nullable();//هاتف منزل
             $table->string('work_phone')->nullable();//هاتف مكتب
-            $table->integer('mobile')->nullable();//موبايل
+            $table->string('mobile')->nullable();//موبايل
             $table->string('email')->nullable();//بريد الكتورني
             $table->string('fax')->nullable();//فاكس
             $table->string('site')->nullable();//موقع الكتروني
