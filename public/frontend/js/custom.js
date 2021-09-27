@@ -15,7 +15,7 @@ $(document).ready(function(){
         $('#Qualification').find('tbody').append($('' +
             '<tr class="cloning_row" id="' + numberIncr + '">' +
             '<td><button type="button" class="btn btn-danger btn-sm delegated-btn"><i class="fa fa-minus"></i></button></td>' +
-            '<td><input type="text" name="qualification" class="form-control"></td>' +
+            '<td><select name="qualification" class="form-control"><option value="Doctorate">Doctorate</option><option value="Master">Master</option><option value="Diploma">Diploma</option><option value="Certificate">Certificate</option><option value="Other">Other</option></select></td>' +
             '<td><input type="text" name="university"  class="form-control"></td>' +
             '<td><input type="text" name="country" class="form-control"></td>' +
             '<td><input type="date" name="graduationYear" class=" form-control"></td>' +
@@ -31,7 +31,7 @@ $(document).ready(function(){
     });
 
     $('form').on('submit', function (e) {
-        $('input.qualification').each(function () { $(this).rules("add", { required: true }); });
+        $('select.qualification').each(function () { $(this).rules("add", { required: true }); });
         $('input.university').each(function () { $(this).rules("add", { required: true }); });
         $('input.country').each(function () { $(this).rules("add", { required: true }); });
         $('input.graduationYear').each(function () { $(this).rules("add", { required: true }); });

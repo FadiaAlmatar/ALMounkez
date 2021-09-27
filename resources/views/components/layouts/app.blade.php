@@ -11,8 +11,6 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app1.css') }}">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-    {{-- <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
-   rel = "stylesheet"> --}}
     @if (app()->getLocale() == 'ar')
     <style>
     /* span{
@@ -29,9 +27,6 @@
    <script src="/js/app.js"></script>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-{{-- <script src = "https://code.jquery.com/jquery-1.10.2.js"></script> --}}
-{{-- <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script> --}}
-{{-- @section('script') --}}
     <script src="{{ asset('frontend/js/form_validation/jquery.form.js') }}"></script>
     <script src="{{ asset('frontend/js/form_validation/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('frontend/js/form_validation/additional-methods.min.js') }}"></script>
@@ -42,8 +37,6 @@
         <script src="{{ asset('frontend/js/pickadate/ar.js') }}"></script>
     @endif
     <script src="{{ asset('frontend/js/custom.js') }}"></script>
-{{-- @endsection --}}
-
    <script>
         function myFunction(value) {
             $(".reply-"+value).toggle();
@@ -55,48 +48,6 @@
         function addsubscribe(){
            $(".subscribe").toggle();
         }
-        function newqualification(){
-            // $("#Qualifications").fadeTo(200, 1);
-            // $("#q").fadeOut(200);
-            $("#dialog").toggle();
-        }
-
-    //  $(function() {
-    //     // alert("hello new");
-    //         // $( "#dialog" ).dialog({
-    //         // autoOpen: false
-    //         // });
-
-
-    //         $( "#opener" ).click(function() {
-    //         $( "#dialog" ).dialog( "open" );
-    //         });
-    //     });
-
-    // function dialogopen() {
-    // // alert("hello new");
-    // $( "#dialog" ).toggle();$(function () {
-        // $(function() {
-  // this initializes the dialog (and uses some common options that I do)
-//   $(document).ready(function () {
-//             $('#dialog').dialog({
-//                 autoOpen: false,
-//                 title: 'Basic Dialog'
-//             });
-//             $('#btnShow').click(function () {
-//                 $('#dialog').dialog('open');
-//             });
-//         });
-
-// };
-    //     $(document).ready(function(){
-    // $("#but1").click(function(){
-    //         $("#popdiv").fadeTo(200,1);
-    //     });
-    // $("#but2").click(function(){
-    //         $("#popdiv").fadeOut(200);
-    //     });
-// });
     </script>
   </body>
 </html>
