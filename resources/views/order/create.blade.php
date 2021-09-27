@@ -428,17 +428,6 @@
       <div class="tab-pane fade" style="width:70%;margin:auto;margin-top:5px;"id="Qualifications" role="tabpanel" aria-labelledby="Qualifications-tab">
          {{-- <br>
           <button id="btnShow"class="btn btn-primary" onclick="newqualification()"><i class="fas fa-plus" aria-hidden="true"></i> {{__('Add qualification')}}</button>
-          <br><br><hr>
-          <table style="width:70%;">
-              <tr>
-                  <td>{{__('Qualification')}}</td>
-                  <td>{{__('University')}}</td>
-                  <td>{{__('Country')}}</td>
-                  <td>{{__('Graduation Year')}}</td>
-                  <td>{{__('Graduation Rate')}}</td>
-                  <td>{{__('Specialization')}}</td>
-              </tr>
-          </table> --}}
           {{-- <div class="card-body"> --}}
             <form action="" method="post" class="form">
                 @csrf
@@ -446,94 +435,69 @@
                     <table class="table" id="invoice_details">
                         <thead>
                         <tr>
-                            {{-- <th></th>
-                            <th>{{ __('Frontend/frontend.product_name') }}</th>
-                            <th>{{ __('Frontend/frontend.unit') }}</th>
-                            <th>{{ __('Frontend/frontend.quantity') }}</th>
-                            <th>{{ __('Frontend/frontend.unit_price') }}</th>
-                            <th>{{ __('Frontend/frontend.product_subtotal') }}</th> --}}
+                            <th>{{__('Qualification')}}</th>
+                            <th>{{__('University')}}</th>
+                            <th>{{__('Country')}}</th>
+                            <th>{{__('Graduation Year')}}</th>
+                            <td>{{__('Graduation Rate')}}</td>
+                            <th>{{__('Specialization')}}</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr class="cloning_row" id="0">
-                            <td>#</td>
                             <td>
-                                <input type="text" name="qualification" id="product_name" class="product_name form-control">
-                                @error('qualification')<span class="help-block text-danger">{{ $message }}</span>@enderror
+                                <div class="form-group">
+                                  <label for="University">{{__('Qualification')}}</label>
+                                  <input type="text" name="qualification"value="{{ old('qualification') }}"class="form-control" id="Qualification" placeholder="">
+                                </div>
                             </td>
                             <td>
-                                <input type="number" name="university" step="0.01" id="quantity" class="quantity form-control">
-                                @error('university')<span class="help-block text-danger">{{ $message }}</span>@enderror
+                              <div class="form-group">
+                              <label for="University">{{__('University')}}</label>
+                              <input type="text" name="university"value="{{ old('university') }}"class="form-control" id="University" placeholder="">
+                            </div>
                             </td>
                             <td>
-                                <input type="number" name="country" step="0.01" id="unit_price" class="unit_price form-control">
-                                @error('country')<span class="help-block text-danger">{{ $message }}</span>@enderror
+                              <div class="form-group">
+                                <label for="Country">{{__('Country')}}</label>
+                                <input type="text" name="country"value="{{ old('country') }}"class="form-control" id="Country" placeholder="">
+                              </div>
                             </td>
                             <td>
-                                <input type="number" step="0.01" name="graduationYear" id="row_sub_total" class="row_sub_total form-control" readonly="readonly">
-                                @error('graduationYear')<span class="help-block text-danger">{{ $message }}</span>@enderror
+                              <div class="form-group">
+                                <label for="Graduation Year">{{__('Graduation Year')}}</label>
+                                <input name="graduationYear"value="{{ old('graduationYear') }}"type="date" class="form-control" id="Graduation Year" placeholder="">
+                              </div>
                             </td>
                             <td>
-                              <input type="number" step="0.01" name="graduationRate" id="row_sub_total" class="row_sub_total form-control" readonly="readonly">
-                              @error('graduationRate')<span class="help-block text-danger">{{ $message }}</span>@enderror
+                              <div class="form-group">
+                                <label for="Graduation Rate">{{__('Graduation Rate')}}</label>
+                                <input name="graduationRate"value="{{ old('graduationRate') }}"type="text" class="form-control" id="Graduation Rate" placeholder="">
+                              </div>
                           </td>
                           <td>
-                            <input type="number" step="0.01" name="specialization" id="row_sub_total" class="row_sub_total form-control" readonly="readonly">
-                            @error('specialization')<span class="help-block text-danger">{{ $message }}</span>@enderror
+                            <div class="form-group">
+                              <label for="Specialization">{{__('Specialization')}}</label>
+                              <input type="text" name="specialization"value="{{ old('specialization') }}"class="form-control" id="Specialization" placeholder="">
+                            </div>
                         </td>
                         </tr>
                         </tbody>
-{{--
                         <tfoot>
                         <tr>
                             <td colspan="6">
-                                <button type="button" class="btn_add btn btn-primary">{{ __('Frontend/frontend.add_another_product') }}</button>
+                                {{-- <button type="button" class="btn_add btn btn-primary">{{ __('add_another_product') }}</button> --}}
+                                <button id="btnShow"class="btn btn-primary" onclick="newqualification()"><i class="fas fa-plus" aria-hidden="true"></i> {{__('Add qualification')}}</button>
+
                             </td>
-                        </tr>
-                        <tr>
-                            <td colspan="3"></td>
-                            <td colspan="2">{{ __('Frontend/frontend.sub_total') }}</td>
-                            <td><input type="number" step="0.01" name="sub_total" id="sub_total" class="sub_total form-control" readonly="readonly"></td>
-                        </tr> --}}
-                        {{-- <tr>
-                            <td colspan="3"></td>
-                            <td colspan="2">{{ __('Frontend/frontend.discount') }}</td>
-                            <td>
-                                <div class="input-group mb-3">
-                                    <select name="discount_type" id="discount_type" class="discount_type custom-select">
-                                        <option value="fixed">{{ __('Frontend/frontend.sr') }}</option>
-                                        <option value="percentage">{{ __('Frontend/frontend.percentage') }}</option>
-                                    </select>
-                                    <div class="input-group-append">
-                                        <input type="number" step="0.01" name="discount_value" id="discount_value" class="discount_value form-control" value="0.00">
-                                    </div>
-                                </div>
-                            </td>
-                        </tr> --}}
-                        {{-- <tr>
-                            <td colspan="3"></td>
-                            <td colspan="2">{{ __('Frontend/frontend.vat') }}</td>
-                            <td><input type="number" step="0.01" name="vat_value" id="vat_value" class="vat_value form-control" readonly="readonly"></td>
-                        </tr>
-                        <tr>
-                            <td colspan="3"></td>
-                            <td colspan="2">{{ __('Frontend/frontend.shipping') }}</td>
-                            <td><input type="number" step="0.01" name="shipping" id="shipping" class="shipping form-control"></td>
-                        </tr>
-                        <tr>
-                            <td colspan="3"></td>
-                            <td colspan="2">{{ __('Frontend/frontend.total_due') }}</td>
-                            <td><input type="number" step="0.01" name="total_due" id="total_due" class="total_due form-control" readonly="readonly"></td>
                         </tr>
                         </tfoot>
                     </table>
                 </div>
-
                 <div class="text-right pt-3">
-                    <button type="submit" name="save" class="btn btn-primary">{{ __('Frontend/frontend.save') }}</button>
-                </div> --}}
+                    <button type="submit" name="save" class="btn btn-primary">{{ __('save') }}</button>
+                </div>
             </form>
-        {{-- </div> --}}
     </div>
     {{-- two --}}
     <div id="dialog"class="tab-pane fade" style="width:70%;margin:auto;margin-top:5px;position:fixed;display:none;"role="tabpanel" aria-labelledby="Qualifications-tab">
