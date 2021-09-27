@@ -49,6 +49,10 @@ class CreateOrdersTable extends Migration
             $table->string('side_work')->nullable();//جهة العمل
             $table->string('insurance_number')->nullable();//الرقم التأميني
             $table->boolean('displayData');//إظهار معلومات الاتصال ع الموقع
+            $table->string('identity_image');//صورة الهوية
+            $table->string('personal_image');//الصورة الشخصية
+            $table->string('certification_image');//صورة الشهادة
+            $table->string('no_conviction_image');//صورة لاحكم عليه
             $table->string('pay_affiliation_fee')->nullable();//طريقة سداد رسم الانتساب
             $table->timestamps();
         });

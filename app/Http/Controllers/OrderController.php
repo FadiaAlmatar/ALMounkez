@@ -73,6 +73,10 @@ class OrderController extends Controller
         'fax'                            => 'nullable',
         'workGovernment'                 => 'nullable',
         'workSide'                       => 'nullable',
+        'identity_image'                 => 'required|file|image',
+        'personal_image'                 => 'required|file|image',
+        'certification_image'            => 'required|file|image',
+        'no_conviction_image'           => 'required|file|image',
         // 'qualification'                  => 'nullable',
         // 'university'                     => 'nullable',
         // 'country'                        => 'nullable',
@@ -117,6 +121,30 @@ class OrderController extends Controller
         $order->side_work = $request->workSide;
         $order->insurance_number = $request->insurance;
         $order->displayData = $request->displayData;
+        $order->identity_image = $request->identity_image;
+        if ($request->has('identity_image')) {
+            $image = $request->identity_image;
+            $path = $image->store('identity-images', 'public');
+            $order->identity_image = $path;
+        }
+        $order->personal_image = $request->personal_image;
+        if ($request->has('personal_image')) {
+            $image = $request->personal_image;
+            $path = $image->store('personal-images', 'public');
+            $order->personal_image = $path;
+        }
+        $order->certification_image = $request->certification_image;
+        if ($request->has('certification_image')) {
+            $image = $request->certification_imagee;
+            $path = $image->store('certification-images', 'public');
+            $order->certification_image = $path;
+        }
+        $order->no_conviction_image= $request->no_conviction_image;
+        if ($request->has('identity_image')) {
+            $image = $request->no_conviction_image;
+            $path = $image->store('no_conviction-images', 'public');
+            $order->no_conviction_image = $path;
+        }
         $order->pay_affiliation_fee = $request->payment;
         $order->save();
         // $qualification = new Qualification();

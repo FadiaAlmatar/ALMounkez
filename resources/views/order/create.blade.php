@@ -359,6 +359,53 @@
               </div>
             </div>
           </div>
+          {{-- <div class="field">
+            <label class="label">Featured Image (upload)</label>
+            <div class="file">
+              <label class="file-label">
+                <input class="file-input" type="file" name="featured_image_upload" accept="image/*">
+                <span class="file-cta">
+                  <span class="file-icon">
+                    <i class="fas fa-upload"></i>
+                  </span>
+                  <span class="file-label">
+                    Choose an image…
+                  </span>
+                </span>
+              </label>
+            </div>
+            @error('featured_image_upload')
+            <p class="help is-danger">{{ $message }}</p>
+            @enderror
+          </div> --}}
+          <div class="mb-3">
+            <label for="formFile" class="form-label">{{__('identity image')}}</label>
+            <input class="form-control" type="file" id="identity_image" name="identity_image">
+            @error('identity_image')
+            <p class="help is-danger">{{ $message }}</p>
+            @enderror
+          </div>
+          <div class="mb-3">
+            <label for="formFile" class="form-label">{{__('personal image')}}</label>
+            <input class="form-control" type="file" id="personal_image" name="personal_image">
+            @error('personal_image')
+            <p class="help is-danger">{{ $message }}</p>
+            @enderror
+          </div>
+          <div class="mb-3">
+            <label for="formFile" class="form-label">{{__('certification image')}}</label>
+            <input class="form-control" type="file" id="certification_image"name="certification_image">
+            @error('certification_image')
+            <p class="help is-danger">{{ $message }}</p>
+            @enderror
+          </div>
+          <div class="mb-3">
+            <label for="formFile" class="form-label">{{__('no conviction image')}}</label>
+            <input class="form-control" type="file" id="formFile" name="no_conviction_image">
+            @error('no_conviction_image')
+            <p class="help is-danger">{{ $message }}</p>
+            @enderror
+          </div>
           <button type="submit" class="btn btn-primary">{{__('Send')}}</button>
       <div style="background:#e0c2c2;margin-top:5px">
        <ul style="list-style-type:disc;list-style-position: inside;padding-left:15px">
