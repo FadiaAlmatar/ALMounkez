@@ -449,7 +449,7 @@
                             <td>#</td>
                             <td>
                                 <div class="form-group">
-                                    <select name="qualification" id="Qualification" value="{{ old('qualification') }}"class="form-select form-select-sm form-control">
+                                    <select name="qualification[0]" id="Qualification" value="{{ old('qualification') }}"class="form-select form-select-sm form-control">
                                         <option selected value="Doctorate">{{__('Doctorate')}}</option>
                                         <option value="Master">{{__('Master')}}</option>
                                         <option value="Diploma">{{__('Diploma')}}</option>
@@ -460,27 +460,27 @@
                             </td>
                             <td>
                               <div class="form-group">
-                              <input type="text" name="university"value="{{ old('university') }}"class="form-control" id="University" placeholder="">
+                              <input type="text" name="university[0]"value="{{ old('university') }}"class="form-control" id="University" placeholder="">
                             </div>
                             </td>
                             <td>
                               <div class="form-group">
-                                <input type="text" name="country"value="{{ old('country') }}"class="form-control" id="Country" placeholder="">
+                                <input type="text" name="country[0]"value="{{ old('country') }}"class="form-control" id="Country" placeholder="">
                               </div>
                             </td>
                             <td>
                               <div class="form-group">
-                                <input name="graduationYear"value="{{ old('graduationYear') }}"type="date" class="form-control" id="Graduation Year" placeholder="">
+                                <input name="graduationYear[0]"value="{{ old('graduationYear') }}"type="date" class="form-control" id="Graduation Year" placeholder="">
                               </div>
                             </td>
                             <td>
                               <div class="form-group">
-                                <input name="graduationRate"value="{{ old('graduationRate') }}"type="text" class="form-control" id="Graduation Rate" placeholder="">
+                                <input name="graduationRate[0]"value="{{ old('graduationRate') }}"type="text" class="form-control" id="Graduation Rate" placeholder="">
                               </div>
                           </td>
                           <td>
                             <div class="form-group">
-                              <input type="text" name="specialization"value="{{ old('specialization') }}"class="form-control" id="Specialization" placeholder="">
+                              <input type="text" name="specialization[0]"value="{{ old('specialization') }}"class="form-control" id="Specialization" placeholder="">
                             </div>
                         </td>
                         </tr>

@@ -118,15 +118,25 @@ class OrderController extends Controller
         $order->displayData = $request->displayData;
         $order->pay_affiliation_fee = $request->payment;
         $order->save();
-        $qualification = new Qualification();
-        $qualification->order_id = $order->id;
-        $qualification->qualification = $request->qualification;
-        $qualification->university = $request->university;
-        $qualification->country = $request->country;
-        $qualification->graduation_year = $request->graduationYear;
-        $qualification->graduation_rate = $request->graduationRate;
-        $qualification->Specialization = $request->specialization;
-        $qualification->save();
+        // $qualification = new Qualification();
+        // $qualification->order_id = $order->id;
+        // $qualification->qualification = $request->qualification;
+        // $qualification->university = $request->university;
+        // $qualification->country = $request->country;
+        // $qualification->graduation_year = $request->graduationYear;
+        // $qualification->graduation_rate = $request->graduationRate;
+        // $qualification->Specialization = $request->specialization;
+        // $qualification->save();
+        $qualification_list = [];
+        for ($i = 0; $i < count($request->qualification); $i++) {
+            $qualification_list[$i]['qualification'] = $request->qualification[$i];
+            $qualification_list[$i]['university'] = $request->university[$i];
+            $qualification_list[$i]['country'] = $request->country[$i];
+            $qualification_list[$i]['graduationYear'] = $request->graduationYear[$i];
+            $qualification_list[$i]['graduationRate'] = $request->graduationRate[$i];
+        }
+
+        $qualification = $order->qualifications()->createMany($qualification_list);
     }
 
     /**
