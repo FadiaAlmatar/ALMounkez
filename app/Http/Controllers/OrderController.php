@@ -135,12 +135,12 @@ class OrderController extends Controller
         }
         $order->certification_image = $request->certification_image;
         if ($request->has('certification_image')) {
-            $image = $request->certification_imagee;
+            $image = $request->certification_image;
             $path = $image->store('certification-images', 'public');
             $order->certification_image = $path;
         }
         $order->no_conviction_image= $request->no_conviction_image;
-        if ($request->has('identity_image')) {
+        if ($request->has('no_conviction_image')) {
             $image = $request->no_conviction_image;
             $path = $image->store('no_conviction-images', 'public');
             $order->no_conviction_image = $path;

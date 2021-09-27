@@ -13,7 +13,7 @@
             <button class="nav-link" id="pay-tab" data-bs-toggle="tab" data-bs-target="#pay" type="button" role="tab" aria-controls="pay" aria-selected="false">{{__('How to pay the affiliation fee')}}</button>
           </li>
       </ul>
-      <form action="{{ route('orders.store') }}" method="POST">
+      <form action="{{ route('orders.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
       <div class="tab-content" id="myTabContent" style="margin-bottom: 5px;">
       {{-- البيانات الشخصية --}}
@@ -380,28 +380,28 @@
           </div> --}}
           <div class="mb-3">
             <label for="formFile" class="form-label">{{__('identity image')}}</label>
-            <input class="form-control" type="file" id="identity_image" name="identity_image">
+            <input class="form-control" type="file" accept="image/*" id="identity_image" name="identity_image">
             @error('identity_image')
             <p class="help is-danger">{{ $message }}</p>
             @enderror
           </div>
           <div class="mb-3">
             <label for="formFile" class="form-label">{{__('personal image')}}</label>
-            <input class="form-control" type="file" id="personal_image" name="personal_image">
+            <input class="form-control" type="file" accept="image/*"id="personal_image" name="personal_image">
             @error('personal_image')
             <p class="help is-danger">{{ $message }}</p>
             @enderror
           </div>
           <div class="mb-3">
             <label for="formFile" class="form-label">{{__('certification image')}}</label>
-            <input class="form-control" type="file" id="certification_image"name="certification_image">
+            <input class="form-control" type="file" accept="image/*"id="certification_image" name="certification_image">
             @error('certification_image')
             <p class="help is-danger">{{ $message }}</p>
             @enderror
           </div>
           <div class="mb-3">
             <label for="formFile" class="form-label">{{__('no conviction image')}}</label>
-            <input class="form-control" type="file" id="formFile" name="no_conviction_image">
+            <input class="form-control" type="file" accept="image/*"id="formFile" name="no_conviction_image">
             @error('no_conviction_image')
             <p class="help is-danger">{{ $message }}</p>
             @enderror
