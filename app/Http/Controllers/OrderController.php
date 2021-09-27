@@ -73,12 +73,12 @@ class OrderController extends Controller
         'fax'                            => 'nullable',
         'workGovernment'                 => 'nullable',
         'workSide'                       => 'nullable',
-        'qualification'                  => 'nullable',
-        'university'                     => 'nullable',
-        'country'                        => 'nullable',
-        'graduationYear'                 => 'nullable|date',
-        'graduationRate'                 => 'nullable',
-        'specialization'                 => 'nullable',
+        // 'qualification'                  => 'nullable',
+        // 'university'                     => 'nullable',
+        // 'country'                        => 'nullable',
+        // 'graduationYear'                 => 'nullable|date',
+        // 'graduationRate'                 => 'nullable',
+        // 'specialization'                 => 'nullable',
         'payment'                        => 'nullable',
         ] );
 
@@ -118,9 +118,7 @@ class OrderController extends Controller
         $order->insurance_number = $request->insurance;
         $order->displayData = $request->displayData;
         $order->pay_affiliation_fee = $request->payment;
-        dd("here");
         $order->save();
-
         // $qualification = new Qualification();
         // $qualification->order_id = $order->id;
         // $qualification->qualification = $request->qualification;
@@ -131,15 +129,18 @@ class OrderController extends Controller
         // $qualification->Specialization = $request->specialization;
         // $qualification->save();
         $qualification_list = [];
+
         for ($i = 0; $i < count($request->qualification); $i++) {
             $qualification_list[$i]['qualification'] = $request->qualification[$i];
             $qualification_list[$i]['university'] = $request->university[$i];
             $qualification_list[$i]['country'] = $request->country[$i];
-            $qualification_list[$i]['graduationYear'] = $request->graduationYear[$i];
-            $qualification_list[$i]['graduationRate'] = $request->graduationRate[$i];
+            $qualification_list[$i]['graduation_year'] = $request->graduationYear[$i];
+            $qualification_list[$i]['graduation_rate'] = $request->graduationRate[$i];
+            $qualification_list[$i]['Specialization'] = $request->specialization[$i];
         }
-
-        $qualification = $order->qualifications()->createMany($qualification_list);
+        // dd($qualification_list);
+         $order->qualifications()->createMany($qualification_list);
+        dd("here");
     }
 
     /**

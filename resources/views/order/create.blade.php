@@ -495,6 +495,7 @@
       </ul>
     </div>
     </div>
+      </div>
 </form>
 </x-layouts.app>
 
