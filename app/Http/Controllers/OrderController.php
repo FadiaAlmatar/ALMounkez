@@ -37,6 +37,7 @@ class OrderController extends Controller
     public function store(Request $request)
     {
 
+
        $request->validate([
         'name'                           => 'required',
         'nickname'                       => 'required',
@@ -117,7 +118,9 @@ class OrderController extends Controller
         $order->insurance_number = $request->insurance;
         $order->displayData = $request->displayData;
         $order->pay_affiliation_fee = $request->payment;
+        dd("here");
         $order->save();
+
         // $qualification = new Qualification();
         // $qualification->order_id = $order->id;
         // $qualification->qualification = $request->qualification;

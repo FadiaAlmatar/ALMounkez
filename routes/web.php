@@ -47,7 +47,6 @@ Route::resource('comments', CommentController::class);
 Route::resource('messages', MessageController::class);
 Route::resource('groups', GroupController::class);
 
-// Route::resource('orders', OrderController::class);
 Route::get('/chat/{id}', [MessageController::class, 'chat'])->name('messages.chat');
 Route::get('/chatgroup/{id}', [MessageController::class, 'chatgroup'])->name('messages.chatgroup');
 Route::get('/print/{id}', [MessageController::class, 'print'])->name('messages.print');

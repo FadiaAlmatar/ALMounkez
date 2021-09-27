@@ -30,21 +30,21 @@ $(document).ready(function(){
 
     });
 
-    $('form').on('submit', function (e) {
-        $('select.qualification').each(function () { $(this).rules("add", { required: true }); });
-        $('input.university').each(function () { $(this).rules("add", { required: true }); });
-        $('input.country').each(function () { $(this).rules("add", { required: true }); });
-        $('input.graduationYear').each(function () { $(this).rules("add", { required: true }); });
-        $('input.graduationRate').each(function () { $(this).rules("add", { required: true }); });
-        $('input.specialization').each(function () { $(this).rules("add", { required: true }); });
-        e.preventDefault();
-    });
+    // $('form').on('submit', function (e) {
+    //     $('select.qualification').each(function () { $(this).rules("add", { required: true }); });
+    //     $('input.university').each(function () { $(this).rules("add", { required: true }); });
+    //     $('input.country').each(function () { $(this).rules("add", { required: true }); });
+    //     $('input.graduationYear').each(function () { $(this).rules("add", { required: true }); });
+    //     $('input.graduationRate').each(function () { $(this).rules("add", { required: true }); });
+    //     $('input.specialization').each(function () { $(this).rules("add", { required: true }); });
+    //     e.preventDefault();
+    // });
 
-    $('form').validate({
+    // $('form').validate({
 
-        submitHandler: function (form) {
-            form.submit();
-        }
-    });
+    //     submitHandler: function (form) {
+    //         form.submit();
+    //     }
+    // });
 
 });
