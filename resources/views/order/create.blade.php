@@ -432,9 +432,10 @@
             <form action="" method="post" class="form">
                 @csrf
                 <div class="table-responsive">
-                    <table class="table" id="invoice_details">
+                    <table class="table" id="Qualification">
                         <thead>
                         <tr>
+                            <th></th>
                             <th>{{__('Qualification')}}</th>
                             <th>{{__('University')}}</th>
                             <th>{{__('Country')}}</th>
@@ -445,39 +446,34 @@
                         </thead>
                         <tbody>
                         <tr class="cloning_row" id="0">
+                            <td>#</td>
                             <td>
                                 <div class="form-group">
-                                  <label for="University">{{__('Qualification')}}</label>
                                   <input type="text" name="qualification"value="{{ old('qualification') }}"class="form-control" id="Qualification" placeholder="">
                                 </div>
                             </td>
                             <td>
                               <div class="form-group">
-                              <label for="University">{{__('University')}}</label>
                               <input type="text" name="university"value="{{ old('university') }}"class="form-control" id="University" placeholder="">
                             </div>
                             </td>
                             <td>
                               <div class="form-group">
-                                <label for="Country">{{__('Country')}}</label>
                                 <input type="text" name="country"value="{{ old('country') }}"class="form-control" id="Country" placeholder="">
                               </div>
                             </td>
                             <td>
                               <div class="form-group">
-                                <label for="Graduation Year">{{__('Graduation Year')}}</label>
                                 <input name="graduationYear"value="{{ old('graduationYear') }}"type="date" class="form-control" id="Graduation Year" placeholder="">
                               </div>
                             </td>
                             <td>
                               <div class="form-group">
-                                <label for="Graduation Rate">{{__('Graduation Rate')}}</label>
                                 <input name="graduationRate"value="{{ old('graduationRate') }}"type="text" class="form-control" id="Graduation Rate" placeholder="">
                               </div>
                           </td>
                           <td>
                             <div class="form-group">
-                              <label for="Specialization">{{__('Specialization')}}</label>
                               <input type="text" name="specialization"value="{{ old('specialization') }}"class="form-control" id="Specialization" placeholder="">
                             </div>
                         </td>
@@ -486,8 +482,8 @@
                         <tfoot>
                         <tr>
                             <td colspan="6">
-                                {{-- <button type="button" class="btn_add btn btn-primary">{{ __('add_another_product') }}</button> --}}
-                                <button id="btnShow"class="btn btn-primary" onclick="newqualification()"><i class="fas fa-plus" aria-hidden="true"></i> {{__('Add qualification')}}</button>
+                                <button type="button" class="btn_add btn btn-primary">{{ __('Add qualification') }}</button>
+                                {{-- <button id="btnShow" class="btn_add btn btn-primary"><i class="fas fa-plus" aria-hidden="true"></i> {{__('Add qualification')}}</button> --}}
 
                             </td>
                         </tr>
@@ -576,18 +572,7 @@
     </div>
     </div>
 </form>
-@section('script')
-    <script src="{{ asset('frontend/js/form_validation/jquery.form.js') }}"></script>
-    <script src="{{ asset('frontend/js/form_validation/jquery.validate.min.js') }}"></script>
-    <script src="{{ asset('frontend/js/form_validation/additional-methods.min.js') }}"></script>
-    <script src="{{ asset('frontend/js/pickadate/picker.js') }}"></script>
-    <script src="{{ asset('frontend/js/pickadate/picker.date.js') }}"></script>
-    @if(config('app.locale') == 'ar')
-        <script src="{{ asset('frontend/js/form_validation/messages_ar.js') }}"></script>
-        <script src="{{ asset('frontend/js/pickadate/ar.js') }}"></script>
-    @endif
-    <script src="{{ asset('frontend/js/custom.js') }}"></script>
-@endsection
+
 </x-layouts.app>
 
 

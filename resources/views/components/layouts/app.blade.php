@@ -31,6 +31,18 @@
 
 {{-- <script src = "https://code.jquery.com/jquery-1.10.2.js"></script> --}}
 {{-- <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script> --}}
+{{-- @section('script') --}}
+    <script src="{{ asset('frontend/js/form_validation/jquery.form.js') }}"></script>
+    <script src="{{ asset('frontend/js/form_validation/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/form_validation/additional-methods.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/pickadate/picker.js') }}"></script>
+    <script src="{{ asset('frontend/js/pickadate/picker.date.js') }}"></script>
+    @if(config('app.locale') == 'ar')
+        <script src="{{ asset('frontend/js/form_validation/messages_ar.js') }}"></script>
+        <script src="{{ asset('frontend/js/pickadate/ar.js') }}"></script>
+    @endif
+    <script src="{{ asset('frontend/js/custom.js') }}"></script>
+{{-- @endsection --}}
 
    <script>
         function myFunction(value) {
