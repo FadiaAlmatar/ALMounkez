@@ -188,10 +188,14 @@ return [
         'civilRegistry'        =>'السجل المدني',
         'personalIdentificationNumber'   =>'رقم الهوية الشخصية',
         'nationalID'           =>'الرقم الوطني',
-        'lnameenglish'        =>'النسبة/انكليزي',
+        'lnameenglish'         =>'النسبة/انكليزي',
         'mothernameenglish'    =>'اسم الأم/انكليزي',
         'constraint'           =>'القيد',
-        'identityGrantDate'    =>'تاريخ منح الهوية'
+        'identityGrantDate'    =>'تاريخ منح الهوية',
+        'identity_image'       =>'صورة الهوية',
+        'personal_image'       =>'الصورة الشخصية',
+        'certification_image'  =>'صورة الشهادة المصدقة',
+        'no_conviction_image'  =>'صورة لاحكم عليه',
     ],
 
 
