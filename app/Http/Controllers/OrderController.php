@@ -52,7 +52,7 @@ class OrderController extends Controller
         'Nationality'                    => 'nullable',
         'placeBirth'                     => 'required',
         'dateBirth'                      => 'required|date|before:identityGrantDate',
-        'nationalID'                     => 'required|numeric|unique',
+        'nationalID'                     => 'required|numeric|unique:orders',
         'civilRegistry'                  => 'required|alpha',
         'martialStatus'                  => 'nullable',
         'personalIdentificationNumber'   => 'required|numeric',

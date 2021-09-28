@@ -1,23 +1,26 @@
 <x-layouts.app>
-      <ul class="nav nav-tabs" id="myTab" role="tablist" style="width:70%;margin:auto;">
-        <li class="nav-item" role="presentation">
-          <button class="nav-link active" id="Personal-tab" data-bs-toggle="tab" data-bs-target="#Personal" type="button" role="tab" aria-controls="Personal" aria-selected="true">{{__('Personal data')}}</button>
+{{-- start tabs --}}
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" >
+            <a class="nav-link active" id="Personal-tab" data-bs-toggle="tab" data-bs-target="#Personal" type="button" role="tab" aria-controls="Personal" aria-selected="true">{{__('Personal data')}}</a>
         </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">{{__('contact information')}}</button>
+        <li class="nav-item" >
+            <a class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">{{__('contact information')}}</a>
         </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link" id="Qualifications-tab" data-bs-toggle="tab" data-bs-target="#Qualifications" type="button" role="tab" aria-controls="Qualifications" aria-selected="false">{{__('Qualifications')}}</button>
+        <li class="nav-item">
+            <a class="nav-link" id="Qualifications-tab" data-bs-toggle="tab" data-bs-target="#Qualifications" type="button" role="tab" aria-controls="Qualifications" aria-selected="false">{{__('Qualifications')}}</a>
         </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pay-tab" data-bs-toggle="tab" data-bs-target="#pay" type="button" role="tab" aria-controls="pay" aria-selected="false">{{__('How to pay the affiliation fee')}}</button>
-          </li>
-      </ul>
-      <form action="{{ route('orders.store') }}" method="POST" enctype="multipart/form-data">
+        <li class="nav-item">
+            <a class="nav-link" id="pay-tab" data-bs-toggle="tab" data-bs-target="#pay" type="button" role="tab" aria-controls="pay" aria-selected="false">{{__('How to pay the affiliation fee')}}</a>
+        </li>
+    </ul>
+{{-- end tabs --}}
+{{-- start big form --}}
+    <form action="{{ route('orders.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
-      <div class="tab-content" id="myTabContent" style="margin-bottom: 5px;">
-      {{-- البيانات الشخصية --}}
-      <div id="Personal" style="width:70%;margin:auto;margin-top:5px;" class="tab-pane fade show active" role="tabpanel" aria-labelledby="Personal-tab">
+        <div class="tab-content" id="nav-tabContent" style="margin-bottom:5px;">
+{{-- البيانات الشخصية --}}
+      <div id="Personal"  class="tab-pane fade show active" role="tabpanel" aria-labelledby="Personal-tab">
         <div class="row mb-4">
             <div class="col">
               <div class="form-outline">
@@ -244,8 +247,9 @@
         </div>
       </div>
     </div>
-      {{-- معلومات الاتصال --}}
-      <div style="width:70%;margin:auto;margin-top:5px" class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+{{-- نهاية البيانات الشخصية --}}
+{{-- معلومات الاتصال --}}
+      <div  class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
         <div class="row mb-4">
             <div class="col">
               <div class="form-outline">
@@ -381,7 +385,7 @@
               </div>
             </div>
           </div>
-          <div class="mb-3">
+          <div class="mb-3" >
             <label for="formFile" class="form-label">{{__('Identity image*')}}</label>
             <input class="form-control" type="file" accept="image/*" id="identity_image" name="identity_image">
             @error('identity_image')
@@ -409,7 +413,6 @@
             <p class="help is-danger">{{ $message }}</p>
             @enderror
           </div>
-
           <button type="submit" class="btn btn-primary">{{__('Send')}}</button>
       <div style="background:#e0c2c2;margin-top:5px">
        <ul style="list-style-type:disc;list-style-position: inside;padding-left:15px">
@@ -434,8 +437,9 @@
           <li>{{__('Desire to display data on the site field is required')}}</li>
       </ul></div>
     </div>
-      {{-- المؤهلات العلمية --}}
-      <div class="tab-pane fade" style="width:70%;margin:auto;margin-top:5px;"id="Qualifications" role="tabpanel" aria-labelledby="Qualifications-tab">
+{{-- نهاية معلومات الاتصال --}}
+{{-- المؤهلات العلمية --}}
+      <div class="tab-pane fade" id="Qualifications" role="tabpanel" aria-labelledby="Qualifications-tab">
           {{-- <button id="btnShow"class="btn btn-primary" onclick="newqualification()"><i class="fas fa-plus" aria-hidden="true"></i> {{__('Add qualification')}}</button> --}}
                 <div class="table-responsive">
                     <table class="table" id="Qualification">
@@ -496,18 +500,15 @@
                         <tr>
                             <td colspan="6">
                                 <button type="button" class="btn_add btn btn-primary"><i class="fas fa-plus" aria-hidden="true"></i> {{ __('Add qualification') }}</button>
-                                {{-- <button id="btnShow" class="btn_add btn btn-primary"><i class="fas fa-plus" aria-hidden="true"></i> {{__('Add qualification')}}</button> --}}
                             </td>
                         </tr>
                         </tfoot>
                     </table>
                 </div>
-                {{-- <div class="text-right pt-3"> --}}
-                    {{-- <button type="submit" name="save" class="btn btn-primary">{{ __('save') }}</button> --}}
-                {{-- </div> --}}
-            {{-- </form> --}}
     </div>
-      <div style="width:70%;margin:auto;" id="pay" class="tab-pane fade"  role="tabpanel" aria-labelledby="pay-tab">
+{{-- نهاية المؤهلات العلمية --}}
+{{-- طريقة الدفع --}}
+      <div id="pay" class="tab-pane fade"  role="tabpanel" aria-labelledby="pay-tab">
         <div class="row mb-4">
             <div class="col">
               <div class="form-outline">
@@ -545,7 +546,8 @@
       </ul>
     </div>
     </div>
-      </div>
+    {{-- نهايةطريقة الدفع --}}
+</div>
 </form>
 </x-layouts.app>
 
