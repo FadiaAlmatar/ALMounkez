@@ -197,7 +197,9 @@ return [
         'certification_image'  =>'صورة الشهادة المصدقة',
         'no_conviction_image'  =>'صورة لاحكم عليه',
         'countryJoin'          =>'المحافظة التي ترغب الانتساب بها',
-        'displayData'          =>'عرض البيانات على الموقع'
+        'displayData'          =>'عرض البيانات على الموقع',
+        'housePhone'           =>'هاتف المنزل',
+        'workPhone'            =>'هاتف المكتب'
     ],
 
 

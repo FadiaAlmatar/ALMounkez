@@ -289,12 +289,18 @@
               <div class="form-outline">
                 <label class="form-label" for="House Phone">{{__('House Phone')}}</label>
                 <input type="text" name="housePhone"value="{{ old('housePhone') }}"id="House Phone" class="form-control" />
+                @error('housePhone')
+                 <p class="help is-danger">{{ $message }}</p>
+                @enderror
               </div>
             </div>
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="Work Phone">{{__('Work Phone')}}</label>
                 <input type="text" name="workPhone"value="{{ old('workPhone') }}"id="Work Phone" class="form-control" />
+                @error('workPhone')
+                 <p class="help is-danger">{{ $message }}</p>
+                @enderror
               </div>
             </div>
           </div>
@@ -312,6 +318,9 @@
               <div class="form-outline">
                 <label class="form-label" for="E-mail">{{__('E-mail')}}</label>
                 <input type="email" name="email"value="{{ old('email') }}"id="E-mail" class="form-control" />
+                @error('email')
+                 <p class="help is-danger">{{ $message }}</p>
+                @enderror
               </div>
             </div>
           </div>
