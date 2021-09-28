@@ -402,3 +402,114 @@ ul {
             // $messages = $message->groupBy('created_at');
             // ->groupBy(function($date) {
                 // return Carbon::parse($date->created_at)->format('Y-m-d'); });
+
+
+
+
+    {{-- onclick="newqualification()" --}}
+
+{{-- two --}}
+{{-- <div id="dialog"class="tab-pane fade" style="width:70%;margin:auto;margin-top:5px;position:fixed;display:none;"role="tabpanel" aria-labelledby="Qualifications-tab">
+   <p>{{__('Add a new qualification')}}</p>
+       <div class="form-group">
+        <label for="Qualification">{{__('Qualification')}}</label>
+        <select name="qualification"id="Qualification"class="form-select form-select-sm" aria-label=".form-select-sm example">
+            <option selected value="Doctorate">{{__('Doctorate')}}</option>
+            <option value="Master">{{__('Master')}}</option>
+            <option value="Diploma">{{__('Diploma')}}</option>
+            <option value="Certificate">{{__('Certificate')}}</option>
+            <option value="Other">{{__('Other')}}</option>
+        </select>
+      </div>
+    <br><div class="form-group">
+      <label for="University">{{__('University')}}</label>
+      <input type="text" name="university"value="{{ old('university') }}"class="form-control" id="University" placeholder="">
+    </div>
+      <br><div class="form-group">
+        <label for="Country">{{__('Country')}}</label>
+        <input type="text" name="country"value="{{ old('country') }}"class="form-control" id="Country" placeholder="">
+      </div>
+      <br><div class="form-group">
+        <label for="Graduation Year">{{__('Graduation Year')}}</label>
+        <input name="graduationYear"value="{{ old('graduationYear') }}"type="date" class="form-control" id="Graduation Year" placeholder="">
+      </div>
+      <br><div class="form-group">
+        <label for="Graduation Rate">{{__('Graduation Rate')}}</label>
+        <input name="graduationRate"value="{{ old('graduationRate') }}"type="text" class="form-control" id="Graduation Rate" placeholder="">
+      </div>
+      <br><div class="form-group">
+        <label for="Specialization">{{__('Specialization')}}</label>
+        <input type="text" name="specialization"value="{{ old('specialization') }}"class="form-control" id="Specialization" placeholder="">
+      </div><br>
+      <button type="submit" class="btn btn-primary">{{__('Add')}}</button>
+      <button type="submit" class="btn btn-light">{{__('Close')}}</button>
+</div> --}}
+{{--end two  --}}
+
+  {{-- <div class="form-group">
+           <label for="Qualification">{{__('Qualification')}}</label>
+           <select name="qualification"id="Qualification"class="form-select form-select-sm" aria-label=".form-select-sm example">
+               <option selected value="Doctorate">{{__('Doctorate')}}</option>
+               <option value="Master">{{__('Master')}}</option>
+               <option value="Diploma">{{__('Diploma')}}</option>
+               <option value="Certificate">{{__('Certificate')}}</option>
+               <option value="Other">{{__('Other')}}</option>
+           </select>
+         </div> --}}
+       {{-- <br><div class="form-group">
+         <label for="University">{{__('University')}}</label>
+         <input type="text" name="university"value="{{ old('university') }}"class="form-control" id="University" placeholder="">
+       </div> --}}
+         {{-- <br><div class="form-group">
+           <label for="Country">{{__('Country')}}</label>
+           <input type="text" name="country"value="{{ old('country') }}"class="form-control" id="Country" placeholder="">
+         </div>
+         <br><div class="form-group">
+           <label for="Graduation Year">{{__('Graduation Year')}}</label>
+           <input name="graduationYear"value="{{ old('graduationYear') }}"type="date" class="form-control" id="Graduation Year" placeholder="">
+         </div>
+         <br><div class="form-group">
+           <label for="Graduation Rate">{{__('Graduation Rate')}}</label>
+           <input name="graduationRate"value="{{ old('graduationRate') }}"type="text" class="form-control" id="Graduation Rate" placeholder="">
+         </div>
+         <br><div class="form-group">
+           <label for="Specialization">{{__('Specialization')}}</label>
+           <input type="text" name="specialization"value="{{ old('specialization') }}"class="form-control" id="Specialization" placeholder="">
+         </div><br> --}}
+
+
+         {{-- <form style="width:50%;margin:auto">
+       <div class="form-group">
+         <label for="exampleInputEmail1">{{__('Username')}}</label>
+         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="{{__('username')}}">
+         <small id="emailHelp" class="form-text text-muted">{{__('Username is the name used to enter the site to submit the affiliation request,It must not contain spaces')}}<br>
+           {{__('Username must be in English If the number of letters is between 3 and 20 letters')}}</small>
+       </div>
+       <br><div class="form-group">
+         <label for="exampleInputPassword1">{{__('Password')}}</label>
+         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="{{__('password')}}">
+         <small id="emailHelp" class="form-text text-muted">{{__('password must be at least 8 characters (and a maximum of 20 characters), and contain at least one number and one character.')}}</small>
+       </div>
+      <br> <div class="form-group">
+           <label for="exampleInputPassword1">{{__('Confirm Password')}}</label>
+           <input type="password" class="form-control" id="exampleInputPassword1" placeholder="{{__('confirm password')}}">
+           <small id="emailHelp" class="form-text text-muted">{{__('password must be at least 8 characters (and a maximum of 20 characters), and contain at least one number and one character.')}}</small>
+         </div>
+         <br><div class="form-group">
+           <label for="exampleInputPassword1">{{__('Name')}}</label>
+           <input type="password" class="form-control" id="exampleInputPassword1" placeholder="{{__('name')}}">
+           <small id="emailHelp" class="form-text text-muted">{{__('name is what appears on the site after logging in')}}</small>
+         </div>
+         <br><div class="form-group">
+           <label for="exampleInputPassword1">{{__('Nickname')}}</label>
+           <input type="password" class="form-control" id="exampleInputPassword1" placeholder="{{__('nickname')}}">
+           <small id="emailHelp" class="form-text text-muted">{{__('nickname must be at least 3 characters')}}</small>
+         </div>
+         <p>{{__('To complete the registration process, you must enter your email')}}</p>
+         <div class="form-group">
+           <label for="exampleInputPassword1">{{__('E-mail')}}</label>
+           <input type="password" class="form-control" id="exampleInputPassword1" placeholder="{{__('e-mail')}}">
+           <small id="emailHelp" class="form-text text-muted">{{__('Please put an effective email so that you can use it later in the account activation process')}}</small>
+         </div>
+       <button type="submit" class="btn btn-primary">Submit</button>
+     </form> --}}
