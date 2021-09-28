@@ -229,7 +229,7 @@
         <div class="col">
           <div class="form-outline">
             <label class="form-label" for="Public Record Number">{{__('Public Record Number')}}</label>
-            <input type="text" name="publicRecordNumber"value="{{ old('publicRecordNumber') }}"id="Public Record Number" class="form-control" />
+            <input type="text" class="input"name="publicRecordNumber"value="{{ old('publicRecordNumber') }}"id="Public Record Number" class="form-control" />
           </div>
         </div>
         <div class="col">
@@ -288,7 +288,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="House Phone">{{__('House Phone')}}</label>
-                <input type="text" name="housePhone"value="{{ old('housePhone') }}"id="House Phone" class="form-control" />
+                <input type="text" class="input"name="housePhone"value="{{ old('housePhone') }}"id="House Phone" class="form-control" />
                 @error('housePhone')
                  <p class="help is-danger">{{ $message }}</p>
                 @enderror
@@ -297,7 +297,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="Work Phone">{{__('Work Phone')}}</label>
-                <input type="text" name="workPhone"value="{{ old('workPhone') }}"id="Work Phone" class="form-control" />
+                <input type="text" class="input"name="workPhone"value="{{ old('workPhone') }}"id="Work Phone" class="form-control" />
                 @error('workPhone')
                  <p class="help is-danger">{{ $message }}</p>
                 @enderror
@@ -308,7 +308,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="Mobile">{{__('Mobile')}}</label>
-                <input type="text" name="mobile"value="{{ old('mobile') }}"id="Mobile" class="form-control" />
+                <input type="text" class="input"name="mobile"value="{{ old('mobile') }}"id="Mobile" class="form-control" />
                 @error('mobile')
                  <p class="help is-danger">{{ $message }}</p>
                 @enderror
@@ -317,7 +317,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="E-mail">{{__('E-mail')}}</label>
-                <input type="email" name="email"value="{{ old('email') }}"id="E-mail" class="form-control" />
+                <input type="email" class="input"name="email"value="{{ old('email') }}"id="E-mail" class="form-control" />
                 @error('email')
                  <p class="help is-danger">{{ $message }}</p>
                 @enderror
@@ -328,13 +328,13 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="Fax">{{__('Fax')}}</label>
-                <input type="text" name="fax"value="{{ old('fax') }}"id="Fax" class="form-control" />
+                <input type="text" class="input"name="fax"value="{{ old('fax') }}"id="Fax" class="form-control" />
               </div>
             </div>
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="Site">{{__('Site')}}</label>
-                <input type="text" name="site"value="{{ old('site') }}"id="Site" class="form-control" />
+                <input type="text" class="input"name="site"value="{{ old('site') }}"id="Site" class="form-control" />
                 @error('site')
                 <p class="help is-danger">{{ $message }}</p>
                @enderror
@@ -354,7 +354,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="work side">{{__('work side')}}</label>
-                <input type="text" name="workSide"value="{{ old('workSide') }}"id="work side" class="form-control" />
+                <input type="text"class="input" name="workSide"value="{{ old('workSide') }}"id="work side" class="form-control" />
               </div>
             </div>
           </div>
@@ -362,7 +362,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="Insurance number">{{__('Insurance number')}}</label>
-                <input type="text" name="insurance"value="{{ old('insurance') }}"id="Insurance number" class="form-control" />
+                <input type="text" class="input"name="insurance"value="{{ old('insurance') }}"id="Insurance number" class="form-control" />
               </div>
             </div>
           </div>
@@ -467,27 +467,27 @@
                             </td>
                             <td>
                               <div class="form-group">
-                              <input type="text" name="university[0]"value="{{ old('university[0]') }}"class="form-control" id="University" placeholder="">
+                              <input class="input"type="text" name="university[0]"value="{{ old('university[0]') }}"class="form-control" id="University" placeholder="">
                             </div>
                             </td>
                             <td>
                               <div class="form-group">
-                                <input type="text" name="country[0]"value="{{ old('country[0]') }}"class="form-control" id="Country" placeholder="">
+                                <input class="input"type="text" name="country[0]"value="{{ old('country[0]') }}"class="form-control" id="Country" placeholder="">
                               </div>
                             </td>
                             <td>
                               <div class="form-group">
-                                <input name="graduationYear[0]"value="{{ old('graduationYear[0]') }}"type="date" class="form-control" id="Graduation Year" placeholder="">
+                                <input class="input"name="graduationYear[0]"value="{{ old('graduationYear[0]') }}"type="date" class="form-control" id="Graduation Year" placeholder="">
                               </div>
                             </td>
                             <td>
                               <div class="form-group">
-                                <input name="graduationRate[0]"value="{{ old('graduationRate[0]') }}"type="text" class="form-control" id="Graduation Rate" placeholder="">
+                                <input class="input"name="graduationRate[0]"value="{{ old('graduationRate[0]') }}"type="text" class="form-control" id="Graduation Rate" placeholder="">
                               </div>
                           </td>
                           <td>
                             <div class="form-group">
-                              <input type="text" name="specialization[0]"value="{{ old('specialization[0]') }}"class="form-control" id="Specialization" placeholder="">
+                              <input class="input"type="text" name="specialization[0]"value="{{ old('specialization[0]') }}"class="form-control" id="Specialization" placeholder="">
                             </div>
                         </td>
                         </tr>

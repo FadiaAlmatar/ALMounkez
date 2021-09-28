@@ -101,6 +101,10 @@ color: blue;}
     font-size: 10px;float: right;
  }
 /* end chat style */
+/* start order style */
+form .input,form .form-select{
+    border-color: blue;
+}
 
 
 
