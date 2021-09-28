@@ -335,6 +335,9 @@
               <div class="form-outline">
                 <label class="form-label" for="Site">{{__('Site')}}</label>
                 <input type="text" name="site"value="{{ old('site') }}"id="Site" class="form-control" />
+                @error('site')
+                <p class="help is-danger">{{ $message }}</p>
+               @enderror
               </div>
             </div>
           </div>

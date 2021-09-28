@@ -52,8 +52,8 @@ class OrderController extends Controller
         'Nationality'                    => 'nullable',
         'placeBirth'                     => 'required',
         'dateBirth'                      => 'required|date',
-        'nationalID'                     => 'required|numeric',
-        'civilRegistry'                  => 'required',
+        'nationalID'                     => 'required|numeric|unique',
+        'civilRegistry'                  => 'required|alpha',
         'martialStatus'                  => 'nullable',
         'personalIdentificationNumber'   => 'required|numeric',
         'identityGrantDate'              => 'required|date',
@@ -147,15 +147,6 @@ class OrderController extends Controller
         }
         $order->pay_affiliation_fee = $request->payment;
         $order->save();
-        // $qualification = new Qualification();
-        // $qualification->order_id = $order->id;
-        // $qualification->qualification = $request->qualification;
-        // $qualification->university = $request->university;
-        // $qualification->country = $request->country;
-        // $qualification->graduation_year = $request->graduationYear;
-        // $qualification->graduation_rate = $request->graduationRate;
-        // $qualification->Specialization = $request->specialization;
-        // $qualification->save();
         $qualification_list = [];
 
         for ($i = 0; $i < count($request->qualification); $i++) {
@@ -216,3 +207,14 @@ class OrderController extends Controller
         //
     }
 }
+
+
+   // $qualification = new Qualification();
+        // $qualification->order_id = $order->id;
+        // $qualification->qualification = $request->qualification;
+        // $qualification->university = $request->university;
+        // $qualification->country = $request->country;
+        // $qualification->graduation_year = $request->graduationYear;
+        // $qualification->graduation_rate = $request->graduationRate;
+        // $qualification->Specialization = $request->specialization;
+        // $qualification->save();
