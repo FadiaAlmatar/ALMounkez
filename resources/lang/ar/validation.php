@@ -196,6 +196,8 @@ return [
         'personal_image'       =>'الصورة الشخصية',
         'certification_image'  =>'صورة الشهادة المصدقة',
         'no_conviction_image'  =>'صورة لاحكم عليه',
+        'countryJoin'          =>'المحافظة التي ترغب الانتساب بها',
+        'displayData'          =>'عرض البيانات على الموقع'
     ],
 
 

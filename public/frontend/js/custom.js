@@ -15,7 +15,7 @@ $(document).ready(function(){
         $('#Qualification').find('tbody').append($('' +
             '<tr class="cloning_row" id="' + numberIncr + '">' +
             '<td><button type="button" class="btn btn-danger btn-sm delegated-btn"><i class="fa fa-minus"></i></button></td>' +
-            '<td><select name="qualification[' + numberIncr + ']" class="form-control"><option value="Doctorate">Doctorate</option><option value="Master">Master</option><option value="Diploma">Diploma</option><option value="Certificate">Certificate</option><option value="Other">Other</option></select></td>' +
+            '<td><select name="qualification[' + numberIncr + ']" class="form-control"><option></option><option value="Doctorate">Doctorate</option><option value="Master">Master</option><option value="Diploma">Diploma</option><option value="Certificate">Certificate</option><option value="Other">Other</option></select></td>' +
             '<td><input type="text" name="university[' + numberIncr + ']" class="form-control"></td>' +
             '<td><input type="text" name="country[' + numberIncr + ']" class="form-control"></td>' +
             '<td><input type="date" name="graduationYear[' + numberIncr + ']" class=" form-control"></td>' +

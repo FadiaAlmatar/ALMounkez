@@ -68,7 +68,7 @@ class OrderController extends Controller
         'healthStatus'                   => 'nullable',
         'housePhone'                     => 'nullable',
         'workPhone'                      => 'nullable',
-        'mobile'                         => 'nullable',
+        'mobile'                         => 'nullable|regex:/(0)[0-9]/|not_regex:/[a-z]/|digits:10',//a leading 0 is required | not_regex: only numbers, not alphabet | min: minimum 9
         'email'                          => 'nullable',
         'fax'                            => 'nullable',
         'workGovernment'                 => 'nullable',
@@ -76,7 +76,7 @@ class OrderController extends Controller
         'identity_image'                 => 'required|file|image',
         'personal_image'                 => 'required|file|image',
         'certification_image'            => 'required|file|image',
-        'no_conviction_image'           => 'required|file|image',
+        'no_conviction_image'            => 'required|file|image',
         // 'qualification'                  => 'nullable',
         // 'university'                     => 'nullable',
         // 'country'                        => 'nullable',

@@ -72,7 +72,8 @@
               <div class="form-outline">
                 <label class="form-label" for="Gender">{{__('Gender')}}</label>
                 <select name="gender"id="Gender"class="form-select form-select-sm" aria-label=".form-select-sm example">
-                    <option selected value="male">{{__('Male')}}</option>
+                    <option></option>
+                    <option value="male">  {{__('Male')}}  </option>
                     <option value="female">{{__('Female')}}</option>
               </select>
               </div>
@@ -123,7 +124,8 @@
               <div class="form-outline">
                 <label class="form-label" for="Nationality">{{__('Nationality')}}</label>
                 <select name="Nationality"id="Nationality"class="form-select form-select-sm" aria-label=".form-select-sm example">
-                    <option selected value="Syrian">{{__('Syrian')}}</option>
+                    <option></option>
+                    <option value="Syrian">{{__('Syrian')}}</option>
                     <option value="Palestinian">{{__('Palestinian')}}</option>
                   </select>
               </div>
@@ -132,7 +134,8 @@
               <div class="form-outline">
                 <label class="form-label" for="Martial status">{{__('Martial status')}}</label>
                 <select name="martialStatus"id="Martial status"class="form-select form-select-sm" aria-label=".form-select-sm example">
-                    <option selected value="Unmarried">{{__('Unmarried')}}</option>
+                    <option></option>
+                    <option value="Unmarried">{{__('Unmarried')}}</option>
                     <option value="Married">{{__('Married')}}</option>
                     <option value="Divorced">{{__('Divorced')}}</option>
                     <option value="Widower">{{__('Widower')}}</option>
@@ -214,7 +217,8 @@
           <div class="form-outline">
             <label class="form-label" for="Military">{{__('Military')}}</label>
             <select name="military"id="Military"class="form-select form-select-sm" aria-label=".form-select-sm example">
-                <option selected value="Finished">{{__('Finished')}}</option>
+                <option></option>
+                <option value="Finished">{{__('Finished')}}</option>
                 <option value="Delayed">{{__('Delayed')}}</option>
                 <option value="Exempt">{{__('Exempt')}}</option>
              </select>
@@ -232,7 +236,8 @@
           <div class="form-outline">
             <label class="form-label" for="Health Status">{{__('Health Status')}}</label>
             <select name="healthStatus"id="Health Status"class="form-select form-select-sm" aria-label=".form-select-sm example">
-                <option selected value="Good">{{__('Good')}}</option>
+                <option></option>
+                <option value="Good">{{__('Good')}}</option>
                 <option value="Sick">{{__('Sick')}}</option>
              </select>
           </div>
@@ -246,20 +251,21 @@
               <div class="form-outline">
                 <label class="form-label" for="country you wish to join">{{__('country you wish to join*')}}</label>
                 <select class="input @error('countryJoin')is-danger @enderror"name="countryJoin" id="country you wish to join"class="form-select form-select-sm" aria-label=".form-select-sm example">
-                    <option selected value="Damascus">               {{__('Damascus')}}</option>
-                    <option value="Damascus Rural"> {{__('Damascus Rural')}}</option>
-                    <option value="Suwayda">        {{__('Suwayda')}}</option>
-                    <option value="Daraa">          {{__('Daraa')}}</option>
-                    <option value="Quneitra">       {{__('Quneitra')}}</option>
-                    <option value="Homs">           {{__('Homs')}}</option>
-                    <option value="Hama">           {{__('Hama')}}</option>
-                    <option value="Latakia">        {{__('Latakia')}}</option>
-                    <option value="Tartous">        {{__('Tartous')}}</option>
-                    <option value="Idlib">          {{__('Idlib')}}</option>
-                    <option value="Aleppo">         {{__('Aleppo')}}</option>
-                    <option value="Al-Rakka">       {{__('Al-Rakka')}}</option>
-                    <option value="Deer Al Zour">   {{__('Deer Al Zour')}}</option>
-                    <option value="Al-Hasakah">     {{__('Al-Hasakah')}}</option>
+                    <option></option>
+                    <option  value="Damascus">        {{__('Damascus')}}      </option>
+                    <option value="Damascus Rural">   {{__('Damascus Rural')}}</option>
+                    <option value="Suwayda">          {{__('Suwayda')}}       </option>
+                    <option value="Daraa">            {{__('Daraa')}}         </option>
+                    <option value="Quneitra">         {{__('Quneitra')}}      </option>
+                    <option value="Homs">             {{__('Homs')}}          </option>
+                    <option value="Hama">             {{__('Hama')}}          </option>
+                    <option value="Latakia">          {{__('Latakia')}}       </option>
+                    <option value="Tartous">          {{__('Tartous')}}       </option>
+                    <option value="Idlib">            {{__('Idlib')}}         </option>
+                    <option value="Aleppo">           {{__('Aleppo')}}        </option>
+                    <option value="Al-Rakka">         {{__('Al-Rakka')}}      </option>
+                    <option value="Deer Al Zour">     {{__('Deer Al Zour')}}  </option>
+                    <option value="Al-Hasakah">       {{__('Al-Hasakah')}}    </option>
                  </select>
                 @error('countryJoin')
                     <p class="help is-danger">{{ $message }}</p>
@@ -297,6 +303,9 @@
               <div class="form-outline">
                 <label class="form-label" for="Mobile">{{__('Mobile')}}</label>
                 <input type="text" name="mobile"value="{{ old('mobile') }}"id="Mobile" class="form-control" />
+                @error('mobile')
+                 <p class="help is-danger">{{ $message }}</p>
+                @enderror
               </div>
             </div>
             <div class="col">
@@ -325,7 +334,7 @@
               <div class="form-outline">
                 <label class="form-label" for="work at government">{{__('work at government')}}</label>
                 <select name="workGovernment"id="work at government"class="form-select form-select-sm" aria-label=".form-select-sm example">
-                    <option selected value="1">{{__('Worker at government')}}</option>
+                    <option value="1">{{__('Worker at government')}}    </option>
                     <option value="0">{{__('not Worker at government')}}</option>
                  </select>
               </div>
@@ -348,10 +357,11 @@
           <div class="row mb-4">
             <div class="col">
               <div class="form-outline">
-                <label class="form-label" for="display your data">{{__('Do you want to display your data on the site (contact information only) after approving the affiliation request?*')}}</label>
-                <select class="input @error('displayData')is-danger @enderror"name="displayData"id="display your data"class="form-select form-select-sm" aria-label=".form-select-sm example">
-                    <option selected value="1">{{__('Yes')}}</option>
-                    <option value="0">         {{__('No')}}</option>
+                <label style="display:inline;width:70%;"class="form-label" for="display your data">{{__('Do you want to display your data on the site (contact information only) after approving the affiliation request?*')}}</label>
+                <select style="width:10%"class="input @error('displayData')is-danger @enderror"name="displayData"id="display your data"class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    <option></option>
+                    <option value="1">{{__('Yes')}}</option>
+                    <option value="0">{{__('No')}} </option>
                  </select>
                  @error('displayData')
                    <p class="help is-danger">{{ $message }}</p>
@@ -414,9 +424,7 @@
     </div>
       {{-- المؤهلات العلمية --}}
       <div class="tab-pane fade" style="width:70%;margin:auto;margin-top:5px;"id="Qualifications" role="tabpanel" aria-labelledby="Qualifications-tab">
-          <button id="btnShow"class="btn btn-primary" onclick="newqualification()"><i class="fas fa-plus" aria-hidden="true"></i> {{__('Add qualification')}}</button>
-            {{-- <form action="{{ route('orders.store') }}" method="POST" class="form"> --}}
-                {{-- @csrf --}}
+          {{-- <button id="btnShow"class="btn btn-primary" onclick="newqualification()"><i class="fas fa-plus" aria-hidden="true"></i> {{__('Add qualification')}}</button> --}}
                 <div class="table-responsive">
                     <table class="table" id="Qualification">
                         <thead>
@@ -432,15 +440,16 @@
                         </thead>
                         <tbody>
                         <tr class="cloning_row" id="0">
-                            <td>#</td>
+                            <td> </td>
                             <td>
                                 <div class="form-group">
                                     <select name="qualification[0]" id="Qualification" value="{{ old('qualification[0]') }}"class="form-select form-select-sm form-control">
-                                        <option selected value="Doctorate">{{__('Doctorate')}}</option>
-                                        <option value="Master">{{__('Master')}}</option>
-                                        <option value="Diploma">{{__('Diploma')}}</option>
+                                        <option></option>
+                                        <option value="Doctorate">  {{__('Doctorate')}}  </option>
+                                        <option value="Master">     {{__('Master')}}     </option>
+                                        <option value="Diploma">    {{__('Diploma')}}    </option>
                                         <option value="Certificate">{{__('Certificate')}}</option>
-                                        <option value="Other">{{__('Other')}}</option>
+                                        <option value="Other">      {{__('Other')}}      </option>
                                     </select>
                                 </div>
                             </td>
@@ -474,7 +483,7 @@
                         <tfoot>
                         <tr>
                             <td colspan="6">
-                                <button type="button" class="btn_add btn btn-primary">{{ __('Add qualification') }}</button>
+                                <button type="button" class="btn_add btn btn-primary"><i class="fas fa-plus" aria-hidden="true"></i> {{ __('Add qualification') }}</button>
                                 {{-- <button id="btnShow" class="btn_add btn btn-primary"><i class="fas fa-plus" aria-hidden="true"></i> {{__('Add qualification')}}</button> --}}
                             </td>
                         </tr>
@@ -492,7 +501,7 @@
               <div class="form-outline">
                 <label class="form-label" for="Payment method">{{__('Payment method')}}</label>
                 <select name="payment"id="Payment method"class="form-select form-select-sm" aria-label=".form-select-sm example">
-                    <option selected value="cash">{{__('Cash to the Central Syndicate Fund in Damascus')}}</option>
+                    <option value="cash">{{__('Cash to the Central Syndicate Fund in Damascus')}}</option>
                     <option value="real estate bank">{{__('Syndicate account with the real estate bank number 11011418 in all countries')}}</option>
                     <option value="Francbank">{{__('Syndicate account with Francbank Bank number 0004204801 in Damascus,Aleppo,Tartous and Latakia')}}</option>
                  </select>
