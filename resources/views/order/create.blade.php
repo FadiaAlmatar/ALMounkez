@@ -76,8 +76,8 @@
                 <label class="form-label" for="Gender">{{__('Gender')}}</label>
                 <select name="gender"id="Gender"class="form-select form-select-sm" aria-label=".form-select-sm example">
                     <option></option>
-                    <option value="male">  {{__('Male')}}  </option>
-                    <option value="female">{{__('Female')}}</option>
+                    <option value="male" @if (old('gender') == "male") {{ 'selected' }} @endif>  {{__('Male')}}  </option>
+                    <option value="female" @if (old('gender') == "female") {{ 'selected' }} @endif>{{__('Female')}}</option>
               </select>
               </div>
             </div>
@@ -128,8 +128,8 @@
                 <label class="form-label" for="Nationality">{{__('Nationality')}}</label>
                 <select name="Nationality"id="Nationality"class="form-select form-select-sm" aria-label=".form-select-sm example">
                     <option></option>
-                    <option value="Syrian">{{__('Syrian')}}</option>
-                    <option value="Palestinian">{{__('Palestinian')}}</option>
+                    <option value="Syrian" @if (old('Nationality') == "Syrian") {{ 'selected' }} @endif>{{__('Syrian')}}</option>
+                    <option value="Palestinian" @if (old('Nationality') == "Palestinian") {{ 'selected' }} @endif>{{__('Palestinian')}}</option>
                   </select>
               </div>
             </div>
@@ -138,10 +138,10 @@
                 <label class="form-label" for="Martial status">{{__('Martial status')}}</label>
                 <select name="martialStatus"id="Martial status"class="form-select form-select-sm" aria-label=".form-select-sm example">
                     <option></option>
-                    <option value="Unmarried">{{__('Unmarried')}}</option>
-                    <option value="Married">{{__('Married')}}</option>
-                    <option value="Divorced">{{__('Divorced')}}</option>
-                    <option value="Widower">{{__('Widower')}}</option>
+                    <option value="Unmarried" @if (old('martialStatus') == "Unmarried") {{ 'selected' }} @endif>{{__('Unmarried')}}</option>
+                    <option value="Married" @if (old('martialStatus') == "Married") {{ 'selected' }} @endif>{{__('Married')}}</option>
+                    <option value="Divorced" @if (old('martialStatus') == "Divorced") {{ 'selected' }} @endif>{{__('Divorced')}}</option>
+                    <option value="Widower" @if (old('martialStatus') == "Widower") {{ 'selected' }} @endif>{{__('Widower')}}</option>
                  </select>
               </div>
             </div>
@@ -221,9 +221,9 @@
             <label class="form-label" for="Military">{{__('Military')}}</label>
             <select name="military"id="Military"class="form-select form-select-sm" aria-label=".form-select-sm example">
                 <option></option>
-                <option value="Finished">{{__('Finished')}}</option>
-                <option value="Delayed">{{__('Delayed')}}</option>
-                <option value="Exempt">{{__('Exempt')}}</option>
+                <option value="Finished" @if (old('military') == "Finished") {{ 'selected' }} @endif>{{__('Finished')}}</option>
+                <option value="Delayed" @if (old('military') == "Delayed") {{ 'selected' }} @endif>{{__('Delayed')}}</option>
+                <option value="Exempt" @if (old('military') == "Exempt") {{ 'selected' }} @endif>{{__('Exempt')}}</option>
              </select>
           </div>
         </div>
@@ -240,8 +240,8 @@
             <label class="form-label" for="Health Status">{{__('Health Status')}}</label>
             <select name="healthStatus"id="Health Status"class="form-select form-select-sm" aria-label=".form-select-sm example">
                 <option></option>
-                <option value="Good">{{__('Good')}}</option>
-                <option value="Sick">{{__('Sick')}}</option>
+                <option value="Good" @if (old('healthStatus') == "Good") {{ 'selected' }} @endif>{{__('Good')}}</option>
+                <option value="Sick" @if (old('healthStatus') == "Sick") {{ 'selected' }} @endif>{{__('Sick')}}</option>
              </select>
           </div>
         </div>
@@ -256,20 +256,20 @@
                 <label class="form-label" for="country you wish to join">{{__('country you wish to join*')}}</label>
                 <select class="input @error('countryJoin')is-danger @enderror"name="countryJoin" id="country you wish to join"class="form-select form-select-sm" aria-label=".form-select-sm example">
                     <option></option>
-                    <option  value="Damascus">        {{__('Damascus')}}      </option>
-                    <option value="Damascus Rural">   {{__('Damascus Rural')}}</option>
-                    <option value="Suwayda">          {{__('Suwayda')}}       </option>
-                    <option value="Daraa">            {{__('Daraa')}}         </option>
-                    <option value="Quneitra">         {{__('Quneitra')}}      </option>
-                    <option value="Homs">             {{__('Homs')}}          </option>
-                    <option value="Hama">             {{__('Hama')}}          </option>
-                    <option value="Latakia">          {{__('Latakia')}}       </option>
-                    <option value="Tartous">          {{__('Tartous')}}       </option>
-                    <option value="Idlib">            {{__('Idlib')}}         </option>
-                    <option value="Aleppo">           {{__('Aleppo')}}        </option>
-                    <option value="Al-Rakka">         {{__('Al-Rakka')}}      </option>
-                    <option value="Deer Al Zour">     {{__('Deer Al Zour')}}  </option>
-                    <option value="Al-Hasakah">       {{__('Al-Hasakah')}}    </option>
+                    <option  value="Damascus"      @if (old('countryJoin') == "Damascus") {{ 'selected' }} @endif>       {{__('Damascus')}}      </option>
+                    <option value="Damascus Rural" @if (old('countryJoin') == "Damascus Rural") {{ 'selected' }} @endif> {{__('Damascus Rural')}}</option>
+                    <option value="Suwayda"        @if (old('countryJoin') == "Suwayda") {{ 'selected' }} @endif>        {{__('Suwayda')}}       </option>
+                    <option value="Daraa"          @if (old('countryJoin') == "Daraa") {{ 'selected' }} @endif>          {{__('Daraa')}}         </option>
+                    <option value="Quneitra"       @if (old('countryJoin') == "Quneitra") {{ 'selected' }} @endif>       {{__('Quneitra')}}      </option>
+                    <option value="Homs"           @if (old('countryJoin') == "Homs") {{ 'selected' }} @endif>           {{__('Homs')}}          </option>
+                    <option value="Hama"           @if (old('countryJoin') == "Hama") {{ 'selected' }} @endif>           {{__('Hama')}}          </option>
+                    <option value="Latakia"        @if (old('countryJoin') == "Latakia") {{ 'selected' }} @endif>        {{__('Latakia')}}       </option>
+                    <option value="Tartous"        @if (old('countryJoin') == "Tartous") {{ 'selected' }} @endif>        {{__('Tartous')}}       </option>
+                    <option value="Idlib"          @if (old('countryJoin') == "Idlib") {{ 'selected' }} @endif>          {{__('Idlib')}}         </option>
+                    <option value="Aleppo"         @if (old('countryJoin') == "Aleppo") {{ 'selected' }} @endif>         {{__('Aleppo')}}        </option>
+                    <option value="Al-Rakka"       @if (old('countryJoin') == "Al-Rakka") {{ 'selected' }} @endif>       {{__('Al-Rakka')}}      </option>
+                    <option value="Deer Al Zour"   @if (old('countryJoin') == "Deer Al Zour") {{ 'selected' }} @endif>   {{__('Deer Al Zour')}}  </option>
+                    <option value="Al-Hasakah"     @if (old('countryJoin') == "Al-Hasakah") {{ 'selected' }} @endif>     {{__('Al-Hasakah')}}    </option>
                  </select>
                 @error('countryJoin')
                     <p class="help is-danger">{{ $message }}</p>
@@ -350,8 +350,8 @@
               <div class="form-outline">
                 <label class="form-label" for="work at government">{{__('work at government')}}</label>
                 <select name="workGovernment"id="work at government"class="form-select form-select-sm" aria-label=".form-select-sm example">
-                    <option value="1">{{__('Worker at government')}}    </option>
-                    <option value="0">{{__('not Worker at government')}}</option>
+                    <option value="1"@if (old('workGovernment') == "1") {{ 'selected' }} @endif>{{__('Worker at government')}}    </option>
+                    <option value="0"@if (old('workGovernment') == "0") {{ 'selected' }} @endif>{{__('not Worker at government')}}</option>
                  </select>
               </div>
             </div>
@@ -376,8 +376,8 @@
                 <label style="display:inline;width:70%;"class="form-label" for="display your data">{{__('Do you want to display your data on the site (contact information only) after approving the affiliation request?*')}}</label>
                 <select style="width:10%"class="input @error('displayData')is-danger @enderror"name="displayData"id="display your data"class="form-select form-select-sm" aria-label=".form-select-sm example">
                     <option></option>
-                    <option value="1">{{__('Yes')}}</option>
-                    <option value="0">{{__('No')}} </option>
+                    <option value="1" @if (old('displayData') == "1") {{ 'selected' }} @endif>{{__('Yes')}}</option>
+                    <option value="0" @if (old('displayData') == "0") {{ 'selected' }} @endif>{{__('No')}} </option>
                  </select>
                  @error('displayData')
                    <p class="help is-danger">{{ $message }}</p>
@@ -460,7 +460,7 @@
                             <td> </td>
                             <td>
                                 <div class="form-group">
-                                    <select name="qualification[0]" id="Qualification" value="{{ old('qualification[0]') }}"class="form-select  form-control">
+                                    <select name="qualification[0]" id="Qualification" class="form-select  form-control">
                                         <option></option>
                                         <option value="Doctorate">  {{__('Doctorate')}}  </option>
                                         <option value="Master">     {{__('Master')}}     </option>
@@ -487,10 +487,8 @@
                                 <input class="input"type="text" name="country[0]"value="{{ old('country')[0] ?? "" }}"class="form-control" id="Country" placeholder="">
                                 @if ($errors->has('country.0'))
                                     @foreach($errors->get('country.0') as $error)
-                                    {{-- @foreach($errors as $error) --}}
                                     <p class="help is-danger">{{ $error }}</p>
                                     @endforeach
-                                     {{-- @endforeach --}}
                                 @endif
                             </div>
                             </td>
@@ -499,9 +497,7 @@
                                 <input class="input"name="graduationYear[0]"value="{{ old('graduationYear')[0] ?? "" }}" type="text" class="form-control" id="Graduation Year" placeholder="">
                                 @if ($errors->has('graduationYear.0'))
                                     @foreach($errors->get('graduationYear.0') as $error)
-                                    {{-- @foreach($errors as $error) --}}
                                     <p class="help is-danger">{{ $error }}</p>
-                                    {{-- @endforeach  --}}
                                     @endforeach
                                 @endif
                             </div>
@@ -511,9 +507,7 @@
                                 <input class="input"name="graduationRate[0]"value="{{ old('graduationRate')[0] ?? "" }}"type="text" class="form-control" id="Graduation Rate" placeholder="">
                                 @if ($errors->has('graduationRate.0'))
                                     @foreach($errors->get('graduationRate.0') as $error)
-                                    {{-- @foreach($errors as $error) --}}
                                     <p class="help is-danger">{{ $error }}</p>
-                                    {{--  @endforeach  --}}
                                     @endforeach
                                 @endif
                             </div>
@@ -523,10 +517,8 @@
                               <input class="input"type="text" name="specialization[0]"value="{{ old('specialization')[0] ?? "" }}"class="form-control" id="Specialization" placeholder="">
                                 @if ($errors->has('specialization.0'))
                                     @foreach($errors->get('specialization.0') as $error)
-                                    {{-- @foreach($errors as $error) --}}
                                     <p class="help is-danger">{{ $error }}</p>
                                     @endforeach
-                                    {{-- @endforeach --}}
                                 @endif
                             </div>
                         </td>
@@ -550,9 +542,9 @@
               <div class="form-outline">
                 <label class="form-label" for="Payment method">{{__('Payment method')}}</label>
                 <select name="payment"id="Payment method"class="form-select form-select-sm" aria-label=".form-select-sm example">
-                    <option value="cash">{{__('Cash to the Central Syndicate Fund in Damascus')}}</option>
-                    <option value="real estate bank">{{__('Syndicate account with the real estate bank number 11011418 in all countries')}}</option>
-                    <option value="Francbank">{{__('Syndicate account with Francbank Bank number 0004204801 in Damascus,Aleppo,Tartous and Latakia')}}</option>
+                    <option value="cash" @if (old('payment') == "cash") {{ 'selected' }} @endif>{{__('Cash to the Central Syndicate Fund in Damascus')}}</option>
+                    <option value="real estate bank" @if (old('payment') == "real estate bank") {{ 'selected' }} @endif>{{__('Syndicate account with the real estate bank number 11011418 in all countries')}}</option>
+                    <option value="Francbank" @if (old('payment') == "Francbank") {{ 'selected' }} @endif>{{__('Syndicate account with Francbank Bank number 0004204801 in Damascus,Aleppo,Tartous and Latakia')}}</option>
                  </select>
               </div>
             </div>
