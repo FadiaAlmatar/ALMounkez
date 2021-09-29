@@ -483,9 +483,15 @@
                             <td>
                               <div class="form-group">
                                 <input class="input"name="graduationYear[0]"value="{{ old('graduationYear')[0] ?? "" }}" type="text" class="form-control" id="Graduation Year" placeholder="">
-                                @error('graduationYear[0]')
-                                  <p class="help is-danger">{{ $message }}</p>
-                                @enderror
+                                @if ($errors->has('graduationYear.*'))
+                                <span class="invalid-feedback" style="display: block;" role="alert">
+                                    @foreach($errors->get('graduationYear.*') as $errors)
+                                    @foreach($errors as $error)
+                                    <p class="help is-danger">{{ $error }}</p>
+                                    @endforeach
+                                    @endforeach
+                                </span>
+                                @endif
                             </div>
                             </td>
                             <td>

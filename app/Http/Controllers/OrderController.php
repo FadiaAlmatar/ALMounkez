@@ -36,8 +36,6 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-
-
        $request->validate([
         'name'                           => 'required|min:3|not_regex:/[0-9]/',
         'nickname'                       => 'required|min:3|not_regex:/[0-9]/',
@@ -77,86 +75,76 @@ class OrderController extends Controller
         'personal_image'                 => 'required|file|image',
         'certification_image'            => 'required|file|image',
         'no_conviction_image'            => 'required|file|image',
-        // 'qualification'                  => 'nullable',
-        // 'university'                     => 'nullable',
-        // 'country'                        => 'nullable',
-        // 'graduationYear'                 => 'nullable|date',
-        // 'graduationRate'                 => 'nullable',
-        // 'specialization'                 => 'nullable',
+        'qualification.*'                => 'nullable',
+        'university.*'                   => 'nullable',
+        'country.*'                      => 'nullable',
+        'graduationYear.*'               => 'nullable|digits:4',
+        'graduationRate.*'               => 'nullable',
+        'specialization.*'               => 'nullable',
         'payment'                        => 'nullable',
         ] );
-
         $order = new Order();
-        $order->firstname = $request->name;
-        $order->lastname = $request->nickname;
-        $order->father_name = $request->fathername;
-        $order->grandfather_name = $request->grandfathername;
-        $order->mother_name = $request->mothername;
-        $order->gender = $request->gender;
-        $order->english_firstname = $request->fnameenglish;
-        $order->english_lastname = $request->lnameenglish;
-        $order->english_father_name = $request->fathernameenglish;
-        $order->english_mother_name = $request->mothernameenglish;
-        $order->Nationality = $request->Nationality;
-        $order->Marital_status = $request->martialStatus;
-        $order->place_of_birth = $request->placeBirth;
-        $order->date_of_birth = $request->dateBirth;
-        $order->national_id = $request->nationalID;
-        $order->civil_registry_secretariat = $request->civilRegistry;
-        $order->personal_identification_number = $request->personalIdentificationNumber;
-        $order->Identity_grant_date = $request->identityGrantDate;
-        $order->constraint = $request->constraint;
-        $order->military = $request->military;
-        $order->public_record_number = $request->publicRecordNumber;
-        $order->Health_status = $request->healthStatus;
-        $order->Affiliation_country = $request->countryJoin;
-        $order->address = $request->address;
-        $order->house_phone = $request->housePhone;
-        $order->work_phone = $request->workPhone;
-        $order->mobile = $request->mobile;
-        $order->email = $request->email;
-        $order->fax = $request->fax;
-        $order->site = $request->site;
-        $order->work_in_government = $request->workGovernment;
-        $order->side_work = $request->workSide;
-        $order->insurance_number = $request->insurance;
-        $order->displayData = $request->displayData;
-        $order->identity_image = $request->identity_image;
-        if ($request->has('identity_image')) {
+        $order->firstname                =            $request->name;
+        $order->lastname                 =            $request->nickname;
+        $order->father_name              =            $request->fathername;
+        $order->grandfather_name         =            $request->grandfathername;
+        $order->mother_name              =            $request->mothername;
+        $order->gender                   =            $request->gender;
+        $order->english_firstname        =            $request->fnameenglish;
+        $order->english_lastname         =            $request->lnameenglish;
+        $order->english_father_name      =            $request->fathernameenglish;
+        $order->english_mother_name      =            $request->mothernameenglish;
+        $order->Nationality              =            $request->Nationality;
+        $order->Marital_status           =            $request->martialStatus;
+        $order->place_of_birth           =            $request->placeBirth;
+        $order->date_of_birth            =            $request->dateBirth;
+        $order->national_id              =            $request->nationalID;
+        $order->civil_registry_secretariat      =     $request->civilRegistry;
+        $order->personal_identification_number  =     $request->personalIdentificationNumber;
+        $order->Identity_grant_date      =            $request->identityGrantDate;
+        $order->constraint               =            $request->constraint;
+        $order->military                 =            $request->military;
+        $order->public_record_number     =            $request->publicRecordNumber;
+        $order->Health_status            =            $request->healthStatus;
+        $order->Affiliation_country      =            $request->countryJoin;
+        $order->address                  =            $request->address;
+        $order->house_phone              =            $request->housePhone;
+        $order->work_phone               =            $request->workPhone;
+        $order->mobile                   =            $request->mobile;
+        $order->email                    =            $request->email;
+        $order->fax                      =            $request->fax;
+        $order->site                     =            $request->site;
+        $order->work_in_government       =            $request->workGovernment;
+        $order->side_work                =            $request->workSide;
+        $order->insurance_number         =            $request->insurance;
+        $order->displayData              =            $request->displayData;
+        $order->identity_image           =            $request->identity_image;
+        if ($request->has('identity_image')) {         //image
             $image = $request->identity_image;
             $path = $image->store('identity-images', 'public');
             $order->identity_image = $path;
         }
         $order->personal_image = $request->personal_image;
-        if ($request->has('personal_image')) {
+        if ($request->has('personal_image')) {          //image
             $image = $request->personal_image;
             $path = $image->store('personal-images', 'public');
             $order->personal_image = $path;
         }
         $order->certification_image = $request->certification_image;
-        if ($request->has('certification_image')) {
+        if ($request->has('certification_image')) {     //image
             $image = $request->certification_image;
             $path = $image->store('certification-images', 'public');
             $order->certification_image = $path;
         }
         $order->no_conviction_image= $request->no_conviction_image;
-        if ($request->has('no_conviction_image')) {
+        if ($request->has('no_conviction_image')) {      //image
             $image = $request->no_conviction_image;
             $path = $image->store('no_conviction-images', 'public');
             $order->no_conviction_image = $path;
         }
         $order->pay_affiliation_fee = $request->payment;
         $order->save();
-        $request->validate([
-        'qualification'                  => 'nullable',
-        'university'                     => 'nullable',
-        'country'                        => 'nullable',
-        'graduationYear'                 => 'nullable|digits:4',
-        'graduationRate'                 => 'nullable',
-        'specialization'                 => 'nullable',
-        ] );
         $qualification_list = [];
-
         for ($i = 0; $i < count($request->qualification); $i++) {
             $qualification_list[$i]['qualification'] = $request->qualification[$i];
             $qualification_list[$i]['university'] = $request->university[$i];
@@ -165,9 +153,7 @@ class OrderController extends Controller
             $qualification_list[$i]['graduation_rate'] = $request->graduationRate[$i];
             $qualification_list[$i]['Specialization'] = $request->specialization[$i];
         }
-        // dd($qualification_list);
          $order->qualifications()->createMany($qualification_list);
-        dd("here");
     }
 
     /**
