@@ -147,6 +147,14 @@ class OrderController extends Controller
         }
         $order->pay_affiliation_fee = $request->payment;
         $order->save();
+        $request->validate([
+        'qualification'                  => 'nullable',
+        'university'                     => 'nullable',
+        'country'                        => 'nullable',
+        'graduationYear'                 => 'nullable|digits:4',
+        'graduationRate'                 => 'nullable',
+        'specialization'                 => 'nullable',
+        ] );
         $qualification_list = [];
 
         for ($i = 0; $i < count($request->qualification); $i++) {
