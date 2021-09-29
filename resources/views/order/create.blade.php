@@ -462,11 +462,11 @@
                                 <div class="form-group">
                                     <select name="qualification[0]" id="Qualification" class="form-select  form-control">
                                         <option></option>
-                                        <option value="Doctorate">  {{__('Doctorate')}}  </option>
-                                        <option value="Master">     {{__('Master')}}     </option>
-                                        <option value="Diploma">    {{__('Diploma')}}    </option>
-                                        <option value="Certificate">{{__('Certificate')}}</option>
-                                        <option value="Other">      {{__('Other')}}      </option>
+                                        <option value="Doctorate"{{ (collect(old('qualification'))->contains("Doctorate")) ? 'selected':'' }}>    {{__('Doctorate')}}  </option>
+                                        <option value="Master"{{ (collect(old('qualification'))->contains("Master")) ? 'selected':'' }}>          {{__('Master')}}     </option>
+                                        <option value="Diploma"{{ (collect(old('qualification'))->contains("Diploma")) ? 'selected':'' }}>        {{__('Diploma')}}    </option>
+                                        <option value="Certificate"{{ (collect(old('qualification'))->contains("Certificate")) ? 'selected':'' }}>{{__('Certificate')}}</option>
+                                        <option value="Other"{{ (collect(old('qualification'))->contains("Other")) ? 'selected':'' }}>            {{__('Other')}}      </option>
                                     </select>
                                 </div>
                             </td>
