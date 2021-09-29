@@ -201,7 +201,11 @@ return [
         'housePhone'           =>'هاتف المنزل',
         'workPhone'            =>'هاتف المكتب',
         'site'                 =>'الموقع الالكتروني',
-        'graduationYear.*'     =>'عام التخرج'
+        'graduationYear.0'     =>'عام التخرج',
+        'university.0'         =>'اسم الجامعة',
+        'country.0'            =>'اسم البلد',
+        'specialization.0'     =>'الاختصاص',
+        'graduationRate.0'     =>'معدل التخرج'
     ],
 
 

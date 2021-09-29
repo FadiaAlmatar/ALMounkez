@@ -152,6 +152,12 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'university.0'       => 'university',
+        'graduationYear.0'   =>'graduationYear',
+        'country.0'          =>'country',
+        'specialization.0'   =>'specialization',
+        'graduationRate.0'   =>'graduationRate'
+    ],
 
 ];

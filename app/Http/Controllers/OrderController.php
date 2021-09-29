@@ -76,11 +76,11 @@ class OrderController extends Controller
         'certification_image'            => 'required|file|image',
         'no_conviction_image'            => 'required|file|image',
         'qualification.*'                => 'nullable',
-        'university.*'                   => 'nullable',
-        'country.*'                      => 'nullable',
+        'university.0'                   => 'nullable|min:3|not_regex:/[0-9]/',
+        'country.*'                      => 'nullable|min:3',
         'graduationYear.*'               => 'nullable|digits:4',
-        'graduationRate.*'               => 'nullable',
-        'specialization.*'               => 'nullable',
+        'graduationRate.*'               => 'nullable|regex:/^[0-9.]/',
+        'specialization.*'               => 'nullable|min:3|not_regex:/[0-9]/',
         'payment'                        => 'nullable',
         ] );
         $order = new Order();

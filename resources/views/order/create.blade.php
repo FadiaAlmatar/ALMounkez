@@ -473,35 +473,61 @@
                             <td>
                               <div class="form-group">
                               <input class="input"type="text" name="university[0]"value="{{ old('university')[0] ?? "" }}"class="form-control" id="University" placeholder="">
+                                @if ($errors->has('university.0'))
+                                    @foreach($errors->get('university.0') as $error)
+                                    {{-- @foreach($errors as $error) --}}
+                                    <p class="help is-danger">{{ $error }}</p>
+                                    {{-- @endforeach  --}}
+                                    @endforeach
+                                @endif
                             </div>
                             </td>
                             <td>
                               <div class="form-group">
                                 <input class="input"type="text" name="country[0]"value="{{ old('country')[0] ?? "" }}"class="form-control" id="Country" placeholder="">
-                              </div>
+                                @if ($errors->has('country.0'))
+                                    @foreach($errors->get('country.0') as $error)
+                                    {{-- @foreach($errors as $error) --}}
+                                    <p class="help is-danger">{{ $error }}</p>
+                                    @endforeach
+                                     {{-- @endforeach --}}
+                                @endif
+                            </div>
                             </td>
                             <td>
                               <div class="form-group">
                                 <input class="input"name="graduationYear[0]"value="{{ old('graduationYear')[0] ?? "" }}" type="text" class="form-control" id="Graduation Year" placeholder="">
-                                @if ($errors->has('graduationYear.*'))
-                                <span class="invalid-feedback" style="display: block;" role="alert">
-                                    @foreach($errors->get('graduationYear.*') as $errors)
-                                    @foreach($errors as $error)
+                                @if ($errors->has('graduationYear.0'))
+                                    @foreach($errors->get('graduationYear.0') as $error)
+                                    {{-- @foreach($errors as $error) --}}
                                     <p class="help is-danger">{{ $error }}</p>
+                                    {{-- @endforeach  --}}
                                     @endforeach
-                                    @endforeach
-                                </span>
                                 @endif
                             </div>
                             </td>
                             <td>
                               <div class="form-group">
                                 <input class="input"name="graduationRate[0]"value="{{ old('graduationRate')[0] ?? "" }}"type="text" class="form-control" id="Graduation Rate" placeholder="">
-                              </div>
+                                @if ($errors->has('graduationRate.0'))
+                                    @foreach($errors->get('graduationRate.0') as $error)
+                                    {{-- @foreach($errors as $error) --}}
+                                    <p class="help is-danger">{{ $error }}</p>
+                                    {{--  @endforeach  --}}
+                                    @endforeach
+                                @endif
+                            </div>
                           </td>
                           <td>
                             <div class="form-group">
                               <input class="input"type="text" name="specialization[0]"value="{{ old('specialization')[0] ?? "" }}"class="form-control" id="Specialization" placeholder="">
+                                @if ($errors->has('specialization.0'))
+                                    @foreach($errors->get('specialization.0') as $error)
+                                    {{-- @foreach($errors as $error) --}}
+                                    <p class="help is-danger">{{ $error }}</p>
+                                    @endforeach
+                                    {{-- @endforeach --}}
+                                @endif
                             </div>
                         </td>
                         </tr>
