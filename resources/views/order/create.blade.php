@@ -413,10 +413,11 @@
             <p class="help is-danger">{{ $message }}</p>
             @enderror
           </div>
+          {{-- e0c2c2; --}}
           <button type="submit" class="btn btn-primary">{{__('Send')}}</button>
-      <div style="background:#e0c2c2;margin-top:5px">
+      <div style="background:#ccc9da;margin-top:5px">
        <ul style="list-style-type:disc;list-style-position: inside;padding-left:15px">
-          <li>{{__('Name field is required')}}</li>
+          <br><li>{{__('Name field is required')}}</li>
           <li>{{__('Nickname field is required')}}</li>
           <li>{{__('Name/English field is required-Please write the name as it is in the passport, if any')}}</li>
           <li>{{__('Nickname/English field is required-Please write the name as it is in the passport, if any')}}</li>
@@ -434,7 +435,7 @@
           <li>{{__('Constraint field is required')}}</li>
           <li>{{__('country you wish to join field is required')}}</li>
           <li>{{__('Address field is required')}}</li>
-          <li>{{__('Desire to display data on the site field is required')}}</li>
+          <li>{{__('Desire to display data on the site field is required')}}</li><br>
       </ul></div>
     </div>
 {{-- نهاية معلومات الاتصال --}}
@@ -521,10 +522,10 @@
               </div>
             </div>
           </div>
-    <button type="submit" class="btn btn-primary">{{__('Send')}}</button>
-      <div style="background:#e0c2c2;">
+    <button type="submit" class="btn btn-primary">{{__('Send')}}</button><br><br>
+      <div style="background:#ccc9da;">
         <ul style="list-style-type:disc;list-style-position: inside;padding-left:15px">
-          <li>{{__('Name field is required')}}</li>
+          <br><li>{{__('Name field is required')}}</li>
           <li>{{__('Nickname field is required')}}</li>
           <li>{{__('Name/English field is required-Please write the name as it is in the passport, if any')}}</li>
           <li>{{__('Nickname/English field is required-Please write the name as it is in the passport, if any')}}</li>
@@ -542,7 +543,7 @@
           <li>{{__('Constraint field is required')}}</li>
           <li>{{__('country you wish to join field is required')}}</li>
           <li>{{__('Address field is required')}}</li>
-          <li>{{__('Desire to display data on the site field is required')}}</li>
+          <li>{{__('Desire to display data on the site field is required')}}</li><br>
       </ul>
     </div>
     </div>
