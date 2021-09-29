@@ -460,7 +460,7 @@
                             <td> </td>
                             <td>
                                 <div class="form-group">
-                                    <select name="qualification[0]" id="Qualification" value="{{ old('qualification[0]') }}"class="form-select form-select-sm form-control">
+                                    <select name="qualification[0]" id="Qualification" value="{{ old('qualification[0]') }}"class="form-select  form-control">
                                         <option></option>
                                         <option value="Doctorate">  {{__('Doctorate')}}  </option>
                                         <option value="Master">     {{__('Master')}}     </option>

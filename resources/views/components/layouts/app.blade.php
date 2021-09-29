@@ -27,7 +27,7 @@
    <script src="/js/app.js"></script>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-    <script src="{{ asset('frontend/js/form_validation/jquery.form.js') }}"></script>
+    {{-- <script src="{{ asset('frontend/js/form_validation/jquery.form.js') }}"></script>
     <script src="{{ asset('frontend/js/form_validation/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('frontend/js/form_validation/additional-methods.min.js') }}"></script>
     <script src="{{ asset('frontend/js/pickadate/picker.js') }}"></script>
@@ -36,7 +36,7 @@
         <script src="{{ asset('frontend/js/form_validation/messages_ar.js') }}"></script>
         <script src="{{ asset('frontend/js/pickadate/ar.js') }}"></script>
     @endif
-    <script src="{{ asset('frontend/js/custom.js') }}"></script>
+    <script src="{{ asset('frontend/js/custom.js') }}"></script> --}}
    <script>
         function myFunction(value) {
             $(".reply-"+value).toggle();
@@ -48,6 +48,29 @@
         function addsubscribe(){
            $(".subscribe").toggle();
         }
+
+        $(document).ready(function(){
+        $(document).on('click', '.btn_add', function () {
+        let trCount = $('#Qualification').find('tr.cloning_row:last').length;
+        let numberIncr = trCount > 0 ? parseInt($('#Qualification').find('tr.cloning_row:last').attr('id')) + 1 : 0;
+
+        $('#Qualification').find('tbody').append($('' +
+            '<tr class="cloning_row" id="' + numberIncr + '">' +
+            '<td><button type="button" class="btn btn-danger btn-sm delegated-btn"><i class="fa fa-minus"></i></button></td>' +
+            '<td><select name="qualification[' + numberIncr + ']" class="form-select form-control"><option></option><option value="Doctorate">{{__('Doctorate')}}</option><option value="Master">{{__('Master')}}</option><option value="Diploma">{{__('Diploma')}}</option><option value="Certificate">{{__('Certificate')}}</option><option value="Other">{{__('Other')}}</option></select></td>' +
+            '<td><input class="input"type="text" name="university[' + numberIncr + ']" class="form-control"></td>' +
+            '<td><input class="input"type="text" name="country[' + numberIncr + ']" class="form-control"></td>' +
+            '<td><input class="input"type="text" name="graduationYear[' + numberIncr + ']" class=" form-control"></td>' +
+            '<td><input class="input"type="text" name="graduationRate['+ numberIncr + ']" class=" form-control"></td>' +
+            '<td><input class="input"type="text" name="specialization['+ numberIncr + ']" class=" form-control"></td>' +
+            '</tr>'));
+    });
+    $(document).on('click', '.delegated-btn', function (e) {
+        e.preventDefault();
+        $(this).parent().parent().remove();
+
+    });
+});
     </script>
   </body>
 </html>
