@@ -18,7 +18,7 @@ class CreateQualificationsTable extends Migration
             $table->string('qualification')->nullable();//المؤهل
             $table->string('university')->nullable();//الجامعه
             $table->string('country')->nullable();//البلد
-            $table->date('graduation_year')->nullable();//سنة التخرج
+            $table->integer('graduation_year')->nullable();//سنة التخرج
             $table->float('graduation_rate')->nullable();//معدل التخرج
             $table->string('Specialization')->nullable();//التخصص
             $table->foreignId('order_id');

@@ -481,7 +481,7 @@
                             </td>
                             <td>
                               <div class="form-group">
-                                <input class="input"name="graduationYear[0]"value="{{ old('graduationYear[0]') }}"type="date" class="form-control" id="Graduation Year" placeholder="">
+                                <input class="input"name="graduationYear[0]"value="{{ old('graduationYear[0]') }}"type="text" class="form-control" id="Graduation Year" placeholder="">
                               </div>
                             </td>
                             <td>
