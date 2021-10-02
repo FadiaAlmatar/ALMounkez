@@ -27,7 +27,7 @@ class CreateFullOrdersTable extends Migration
             $table->boolean('receipt');//تم الاستلام
             $table->date('Published_at');//تاريخ الصدور
             $table->date('received_date');//تاريخ الاستلام
-            $table->srting('transportation_reasons');//أسباب النقل
+            $table->string('transportation_reasons');//أسباب النقل
             $table->string('home_change');//صورة ثبوتية لتغيير مكان السكن
             $table->string('work_change');//صورة ثبوتية لتغيير مكان العمل
             $table->boolean('registered_branch_decision');//قرار الفرع المسجل به
