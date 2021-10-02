@@ -23,6 +23,17 @@
                       {{__('create order')}}
                     </a>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: orange">
+                     {{ __('Orders') }}
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                     <li><a class="dropdown-item" href="" style="color: orange">{{ __('Request a local membership document') }}</a></li>
+                     <li><a class="dropdown-item" href="" style="color: orange">{{ __('Request an external membership document') }}</a></li>
+                     <li><a class="dropdown-item" href="" style="color: orange">{{ __('Membership transfer form from one branch to another') }}</a></li>
+                     <li><a class="dropdown-item" href="" style="color: orange">{{ __('Request for a replacement membership card') }}</a></li>
+                   </ul>
+                 </li>
                  <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: orange">
                       {{ __('lang') }}

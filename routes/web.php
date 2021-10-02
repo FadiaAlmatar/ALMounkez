@@ -11,6 +11,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\FullOrderController;
 
 // use DB;
 
@@ -46,6 +47,8 @@ Route::resource('posts', PostController::class);
 Route::resource('comments', CommentController::class);
 Route::resource('messages', MessageController::class);
 Route::resource('groups', GroupController::class);
+Route::resource('groups', GroupController::class);
+Route::resource('fullorders', FullOrderController::class);
 
 Route::get('/chat/{id}', [MessageController::class, 'chat'])->name('messages.chat');
 Route::get('/chatgroup/{id}', [MessageController::class, 'chatgroup'])->name('messages.chatgroup');
