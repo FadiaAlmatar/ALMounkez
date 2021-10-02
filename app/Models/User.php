@@ -58,6 +58,10 @@ class User extends Authenticatable
     {
         return $this->hasOne(Order::class);
     }
+    public function fullorders()
+    {
+        return $this->hasMany(FullOrder::class);
+    }
 
 
 
