@@ -31,7 +31,7 @@
                 @enderror
             </div>
             <br><hr><br>
-            <p>{{__('hope transfer my branch from')}}
+            <p>{{__('I kindly request you to transfer my membership from your branch of the Syndicate branch in the country: ')}}
                 <select style="width:150px"class="input @error('country')is-danger @enderror"name="country" id="country"class="form-select form-select-sm" aria-label=".form-select-sm example">
                     <option></option>
                     <option  value="Damascus"      @if (old('country') == "Damascus") {{ 'selected' }} @endif>       {{__('Damascus')}}      </option>
@@ -52,7 +52,7 @@
                 @error('country')
                     <p class="help is-danger">{{ $message }}</p>
                 @enderror
-                {{__('to branch')}}
+                <br>{{__('To the syndicate branch in the country: ')}}
                 <select style="width:150px"class="input @error('country')is-danger @enderror"name="country" id="country"class="form-select form-select-sm" aria-label=".form-select-sm example">
                     <option></option>
                     <option  value="Damascus"      @if (old('country') == "Damascus") {{ 'selected' }} @endif>       {{__('Damascus')}}      </option>
@@ -72,8 +72,79 @@
                 </select>
             </p>
             <br><hr>
-            <p>{{__('For below reasons: ')}}</p>
-            <textarea></textarea>
+            <div class="form-group">
+                <label for="reasons">{{__('That is for the following reasons :')}}</label>
+                <textarea class="form-control" id="reasons" rows="3"></textarea>
+            </div>
+            <p>{{__('Evidences attached')}}</p>
+            <div class="mb-3" >
+                <label for="formFile" class="form-label">{{__('change home image')}}</label>
+                <input class="form-control" type="file" accept="image/*" id="change_home" name="change_home">
+                @error('change_home')
+                <p class="help is-danger">{{ $message }}</p>
+                @enderror
+            </div>
+            <div class="mb-3">
+                <label for="formFile" class="form-label">{{__('change work image')}}</label>
+                <input class="form-control" type="file" accept="image/*"id="change_work" name="change_work">
+                @error('change_work')
+                <p class="help is-danger">{{ $message }}</p>
+                @enderror
+            </div>
+            <p>{{__('Request date: ')}}</p><hr><br>
+{{-- بيان الدارة المالية --}}
+            <p style="font-weight: bold;">{{__('Financial Management Statement:')}}</p><hr>
+            <p style="display:inline">{{__('The fellow')}} <span style="font-weight: bold">.......</span>{{__(' is affiliated with the Syndicate with a membership number ')}}/......./<br>
+                {{__('And registered in the Syndicate in year')}}........</p><br>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="debt" id="financially_innocent" value="option1">
+                <label for="financially_innocent" class="form-check-label" value="financially_innocent" @if (old('debt') == "financially_innocent") {{ 'selected' }} @endif>{{__('Financially innocent')}}</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="debt" id="financial_liability" value="option2">
+                <label for="financial_liability" class="form-check-label" value="financial_liability" @if (old('debt') == "financial_liability") {{ 'selected' }} @endif>{{__('It has a previous financial liability')}}</label>
+            </div><br><br>
+{{-- قرار مجلس إدارة الفرع المسجل به --}}
+            <hr><br>
+            <p style="font-weight: bold;">{{__('Decision of the board of directors of the branch in which it is registered')}}</p><hr><br>
+            <div>
+                <label style="display:inline;width:70%;"class="form-label" for="approval">{{__('Approval')}}</label>
+                <select style="width:10%"class="input @error('approval')is-danger @enderror"name="approval"id="approval"class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    <option></option>
+                    <option value="1" @if (old('approval') == "1") {{ 'selected' }} @endif>{{__('Yes')}}</option>
+                    <option value="0" @if (old('approval') == "0") {{ 'selected' }} @endif>{{__('No')}} </option>
+                 </select>
+                 @error('displayData')
+                   <p class="help is-danger">{{ $message }}</p>
+                 @enderror
+                 <div class="form-group">
+                    <label for="reasons">{{__('reasons :(If not approved)')}}</label>
+                    <textarea class="form-control" id="reasons" rows="3"></textarea>
+                </div>
+            </div>
+{{--قرار مجلس إدارة الفرع الراغب بالانتقال إليه --}}
+            <hr><br>
+            <p style="font-weight: bold;">{{__('The decision of the board of directors of the branch wishing to move to it: ')}}</p><hr><br>
+            <div>
+                <label style="display:inline;width:70%;"class="form-label" for="approval">{{__('Approval')}}</label>
+                <select style="width:10%"class="input @error('approval')is-danger @enderror"name="approval"id="approval"class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    <option></option>
+                    <option value="1" @if (old('approval') == "1") {{ 'selected' }} @endif>{{__('Yes')}}</option>
+                    <option value="0" @if (old('approval') == "0") {{ 'selected' }} @endif>{{__('No')}} </option>
+                 </select>
+                 @error('displayData')
+                   <p class="help is-danger">{{ $message }}</p>
+                 @enderror
+                 <div class="form-group">
+                    <label for="reasons">{{__('reasons :(If not approved)')}}</label>
+                    <textarea class="form-control" id="reasons" rows="3"></textarea>
+                </div>
+            </div>
+{{--  بيان أمين الصندوق--}}
+        <hr><br>
+        <p style="font-weight: bold;">{{__('Treasurer statement: ')}}</p><hr>
+        <p>{{__('Amount has been received')}}/......../{{__('SYP')}} {{__('For a membership card fee')}}</p><br><br>
+        <hr><p style="font-weight: bold;">{{__('The new membership number in the event that both parties agree to transfer the affiliate')}}</p><br>
     </div>
 
 </x-layouts.app>

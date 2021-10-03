@@ -22,7 +22,7 @@
 {{-- manager only --}}
 {{-- بيان الدارة المالية --}}
         <p style="font-weight: bold;">{{__('Financial Management Statement:')}}</p><hr>
-        <p style="display:inline">{{__('Mr.')}} <span style="font-weight: bold">.......</span>{{__(' is affiliated with the union with a membership number ')}}/......./<br>
+        <p style="display:inline">{{__('Mr.')}} <span style="font-weight: bold">.......</span>{{__(' is affiliated with the Syndicate with a membership number ')}}/......./<br>
             {{__('We inform you that he is registered in the Syndicate in year ...... and : ')}}</p>&nbsp;
         <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="debt" id="financially_innocent" value="option1">
