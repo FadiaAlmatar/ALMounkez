@@ -57,8 +57,11 @@ Route::get('/printgroup/{id}', [MessageController::class, 'printgroup'])->name('
 Route::post('/toggle-approve', [CommentController::class,'approval'])->name('approve');
 Route::get('/get-friends', [MessageController::class, 'getfriends'])->name('friends');
 Route::get('/new-subscribes/{id}', [GroupController::class, 'addsubscribes'])->name('addsubscribes');
-
-
+//fullorders
+Route::get('/fullorder/create_local', [FullOrderController::class, 'create_local'])->name('fullorders.create_local');
+Route::get('/fullorder/create_external', [FullOrderController::class, 'create_external'])->name('fullorders.create_external');
+Route::get('/fullorder/create_transfer', [FullOrderController::class, 'create_transfer'])->name('fullorders.create_transfer');
+Route::get('/fullorder/create_replacement', [FullOrderController::class, 'create_replacement'])->name('fullorders.create_replacement');
 
 Route::get('/dashboard', function () {
     return view('pages.home');

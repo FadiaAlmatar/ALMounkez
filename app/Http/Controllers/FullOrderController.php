@@ -23,9 +23,22 @@ class FullOrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(){}
+    public function create_local()
     {
-        return view('fullorder.create');
+        return view('fullorder.create_local');
+    }
+    public function create_external()
+    {
+        return view('fullorder.create_external');
+    }
+    public function create_transfer()
+    {
+        return view('fullorder.create_transfer');
+    }
+    public function create_replacement()
+    {
+        return view('fullorder.create_replacement');
     }
 
     /**
