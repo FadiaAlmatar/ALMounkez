@@ -1,11 +1,9 @@
 <x-layouts.app>
     <h1 style="text-align: center;font-weight:bold;text-decoration:underline;margin-top:5px;">{{__('Request a local membership document')}}</h1><br>
     <div class="container"style="margin-top:7px;">
-        <form action="{{ route('fullorders.store') }}" method="POST" >
-            @csrf
         <strong style="font-size:13px;">{{__('(Implementation of the decision of the Board of Directors in its session No. 41 held on the date 17/07/2016 containing the determination of the amount 200 SYP of the value of a membership document)')}}</strong><br><br>
         <p>{{__('Gentlemen of the Financial and Accounting Professions Syndicate, please give me a membership document stating that I am a registered member of the Syndicate')}}<br><br>{{__('to submit it to')}}
-        <input style="width:150px;"type="text" class="input @error('side')is-danger @enderror"id="side" name="side"value="{{ old('side') }}"class="form-control" placeholder="Enter side name" /></p><br>
+        <input style="width:150px;"type="text" class="input @error('side')is-danger @enderror"id="side" name="side"value="{{ $fullorder->side }}"class="form-control" placeholder="enter side name" /></p><br>
        {{-- membership only --}}
         <table class="table table-bordered">
         <thead>
@@ -13,21 +11,16 @@
                 <th scope="col">{{__('User ID')}}</th>
                 <th scope="col" >{{__('Membership ID')}}</th>
                 <th scope="col">{{__('Request Date')}}</th>
-                {{-- <th scope="col">{{__('User Signature')}}</th> --}}
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td style="width:24%"><input type="text" class="input"id="" name=""value=""class="form-control" placeholder="" readonly/></p></td>
-                <td style="width:24%"><input type="text" class="input"id="" name=""value=""class="form-control" placeholder="" readonly/></td>
-                <td style="width:24%"><input type="text" class="input"id="" name=""value=""class="form-control" placeholder="" readonly /></td>
-                {{-- <td style="width:24%">{{__('')}}</td> --}}
+                <td style="width:24%"><input type="text" class="input"id="" name=""value="{{ Auth::User()->id}}"class="form-control" placeholder="" readonly/></p></td>
+                <td style="width:24%"><input type="text" class="input"id="" name=""value="{{$fullorder->membership_id}}"class="form-control" placeholder="" readonly/></td>
+                <td style="width:24%"><input type="text" class="input"id="" name=""value="{{$fullorder->created_at}}"class="form-control" placeholder="" readonly /></td>
             </tr>
         </tbody>
-        </table> <button type="submit" class="btn btn-primary">{{__('Send')}}</button><br><br>
-        </form>
-        {{-- style="width:100%;border: 1px solid black;border-collapse: collapse;border-spacing: 0;" --}}
-        {{-- style=" border-left: 1px solid #000; border-right: 1px solid #000;" --}}
+        </table>
         <p style="text-align:center;">{{__('Your request will be considered within a maximum period of two days. Please contact us')}}</p>
         <hr><br>
         {{-- manager only --}}

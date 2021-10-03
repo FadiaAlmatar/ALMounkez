@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\FullOrder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FullOrderController extends Controller
 {
@@ -35,7 +36,17 @@ class FullOrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'side'                           => 'required|min:3|not_regex:/[0-9]/',
+
+            ] );
+            $fullorder = new FullOrder();
+            $fullorder->side          =   $request->side;
+            $fullorder->user_id       =   Auth::User()->id;
+            $fullorder->branch_id     =   1;//Auth::User()->branch_id
+            $fullorder->membership_id =   2222;//Auth::User()->membership_id
+            $fullorder->save();
+            return redirect()->route('fullorders.show',$fullorder);
     }
 
     /**
@@ -44,9 +55,9 @@ class FullOrderController extends Controller
      * @param  \App\Models\FullOrder  $fullOrder
      * @return \Illuminate\Http\Response
      */
-    public function show(FullOrder $fullOrder)
+    public function show(FullOrder $fullorder)
     {
-        //
+        return view('fullorder.show',['fullorder'=>$fullorder]);
     }
 
     /**
