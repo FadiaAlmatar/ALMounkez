@@ -418,10 +418,10 @@
 ,"Your request will be considered within a maximum period of two days. Please contact us":"سيتم دراسة طلبكم خلال مدة أقصاها يومين يرجى الإتصال بنا"
 ,"Financial Management Statement:":"بيان الإدارة المالية:"
 ,"Mr.":"إن السيد"
-,"We inform you that he is registered in the union in year and : ":" ونعلمكم بأنه مسجل في النقابة بعام و:"
+,"We inform you that he is registered in the Syndicate in year ...... and : ":" ونعلمكم بأنه مسجل في النقابة بعام..... و:"
 ,"Financially innocent":"بريء الذمة المالية"
 ,"It has a previous financial liability":"يترتب عليه ذمة مالية سابقة"
-,"Mr.: The cashier in the branch, please receive an amount and its amount":"السيد:أمين الصندوق بالفرع يرجى قبض مبلغ وقدره"
+,"Mr.: The cashier in the branch, please receive an amount and its amount ":"السيد:أمين الصندوق بالفرع يرجى قبض مبلغ وقدره"
 ,"SYP":"ل.س"
 ,"User ID":"مقدم الطلب"
 ,"Membership ID":"رقم العضوية"
@@ -432,8 +432,12 @@
 ,"Amount has been received":"تم قبض مبلغ وقدره"
 ,"Chairman's decision":"قرار رئيس مجلس الإدارة"
 ,"Enter side name":"ادخل اسم الجهة"
-
-
+,"Branch financial management statement:":"بيان الإدارة المالية للفرع:"
+,"Branch Treasurer Statement: ":"بيان أمين صندوق الفرع:"
+,"Your request will be studied and notified when it is completed":"سيتم دراسة طلبكم وإعلامكم حال انتهائه"
+,"(Note: Only the unpaid subscription fee is received, but the document fee is paid to the central administration)":"(ملاحظة: يتم قبض مبلغ رسوم الاشتراك غير المسددة فقط أما رسم الوثيقة يسدد في الإدارة المركزية)"
+,"Only the document amount is received":"يتم قبض مبلغ الوثيقة فقط"
+,"Treasurer Statement/central: ":"بيان أمين الصندوق/ المركزية: "
 
 
 
