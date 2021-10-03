@@ -13,10 +13,10 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     @if (app()->getLocale() == 'ar')
     <style>
-    /* span{
-        text-align: left;
-        float:left;
-    } */
+    li {
+        text-align: right;
+        float:right;
+    }
     </style>
     @endif
   </head>

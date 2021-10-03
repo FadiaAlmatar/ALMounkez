@@ -5,7 +5,7 @@
             @csrf
         <strong style="font-size:13px;">{{__('(Implementation of the decision of the Board of Directors in its session No. 41 held on the date 17/07/2016 containing the determination of the amount 200 SYP of the value of a membership document)')}}</strong><br><br>
         <p>{{__('Gentlemen of the Financial and Accounting Professions Syndicate, please give me a membership document stating that I am a registered member of the Syndicate')}}<br><br>{{__('to submit it to')}}
-        <input style="width:150px;"type="text" class="input @error('side')is-danger @enderror"id="side" name="side"value="{{ old('side') }}"class="form-control" placeholder="Enter side name" /></p><br>
+        <input style="width:150px;"type="text" class="input @error('side')is-danger @enderror"id="side" name="side"value="{{ old('side') }}"class="form-control" placeholder="{{__('Enter side name')}}" /></p><br>
        {{-- membership only --}}
         <table class="table table-bordered">
         <thead>
@@ -16,14 +16,14 @@
                 {{-- <th scope="col">{{__('User Signature')}}</th> --}}
             </tr>
         </thead>
-        <tbody>
+        {{-- <tbody>
             <tr>
                 <td style="width:24%"><input type="text" class="input"id="" name=""value=""class="form-control" placeholder="" readonly/></p></td>
                 <td style="width:24%"><input type="text" class="input"id="" name=""value=""class="form-control" placeholder="" readonly/></td>
                 <td style="width:24%"><input type="text" class="input"id="" name=""value=""class="form-control" placeholder="" readonly /></td>
                 {{-- <td style="width:24%">{{__('')}}</td> --}}
-            </tr>
-        </tbody>
+            {{-- </tr>
+        </tbody>  --}}
         </table> <button type="submit" class="btn btn-primary">{{__('Send')}}</button><br><br>
         </form>
         {{-- style="width:100%;border: 1px solid black;border-collapse: collapse;border-spacing: 0;" --}}

@@ -411,7 +411,8 @@
 ,"Request an external membership document":"طلب وثيقة عضوية خارجية"
 ,"Membership transfer form from one branch to another":"استمارة نقل العضوية من فرع إلى اخر"
 ,"Request for a replacement membership card":"طلب بدل بطاقة عضوية"
-,"(Implementation of the decision of the Board of Directors in its session No. 41 held on the date 17/07/2016 containing the determination of the amount 200 SYP of the value of a membership document)":"(تطبيقا لقرار مجلس الإدارة بجلسته رقم 41 المنعقدة بتاريخ 17/07/2016 المتضمن تحديد مبلغ /200/ل.س قيمة وثيقة عضوية)"
+,"(Implementation of the decision of the Board of Directors in its session No. 41 held on the date 17/07/2016 containing the determination of the amount 200 SYP of the value of a membership document)":"(تطبيقا لقرار مجلس الإدارة بجلسته رقم /41/ المنعقدة بتاريخ 17/07/2016 المتضمن تحديد مبلغ /200/ل.س قيمة وثيقة عضوية)"
+,"(Implementation of the decision of the Board of Directors in its session No. /4/ held on the date 28/01/2016 containing the determination of the amount 1000 SYP of the value of a membership document)":"(تطبيقا لقرار مجلس الإدارة بجلسته رقم /4/ المنعقدة بتاريخ 28/01/2016 المتضمن تحديد مبلغ /1000/ ل.س قيمة وثيقة العضوية)"
 ,"Gentlemen of the Financial and Accounting Professions Syndicate, please give me a membership document stating that I am a registered member of the Syndicate":"السادة نقابة المهن المالية والمحاسبية يرجى منحي وثيقة عضوية تفيد بأني عضو مسجل في النقابة"
 ,"to submit it to": "لتقديمها ل"
 ,"Your request will be considered within a maximum period of two days. Please contact us":"سيتم دراسة طلبكم خلال مدة أقصاها يومين يرجى الإتصال بنا"
@@ -422,7 +423,7 @@
 ,"It has a previous financial liability":"يترتب عليه ذمة مالية سابقة"
 ,"Mr.: The cashier in the branch, please receive an amount and its amount":"السيد:أمين الصندوق بالفرع يرجى قبض مبلغ وقدره"
 ,"SYP":"ل.س"
-,"User Name":"مقدم الطلب"
+,"User ID":"مقدم الطلب"
 ,"Membership ID":"رقم العضوية"
 ,"Request Date":"تاريخ تقديم الطلب"
 ,"User Signature":"توقيع مقدم الطلب"
@@ -430,6 +431,8 @@
 ,"Treasurer statement: ":"بيان أمين الصندوق: "
 ,"Amount has been received":"تم قبض مبلغ وقدره"
 ,"Chairman's decision":"قرار رئيس مجلس الإدارة"
+,"Enter side name":"ادخل اسم الجهة"
+
 
 
 
