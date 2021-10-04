@@ -342,33 +342,33 @@
                                 <td>
                                     <div class="form-group">
                                         <select name="qualification[0]" id="Qualification" class="form-select  form-control">
-                                            <option value="{{$order->qualification}}">{{$order->qualification}}</option>
+                                            <option value="{{$order->qualifications[0]->qualification}}">{{$order->qualifications[0]->qualification}}</option>
                                         </select>
                                     </div>
                                 </td>
                                 <td>
                                   <div class="form-group">
-                                  <input class="input"type="text" name="university[0]"value="{{ $order->university }}"class="form-control" id="University" placeholder="" readonly>
+                                  <input class="input"type="text" name="university[0]"value="{{ $order->qualifications[0]->university }}"class="form-control" id="University" placeholder="" readonly>
                                 </div>
                                 </td>
                                 <td>
                                   <div class="form-group">
-                                    <input class="input"type="text" name="country[0]"value="{{ $order->country}}"class="form-control" id="Country" placeholder="" readonly>
+                                    <input class="input"type="text" name="country[0]"value="{{ $order->qualifications[0]->country}}"class="form-control" id="Country" placeholder="" readonly>
                                 </div>
                                 </td>
                                 <td>
                                   <div class="form-group">
-                                    <input class="input"name="graduationYear[0]"value="{{ $order->graduation_year }}" type="text" class="form-control" id="Graduation Year" placeholder="" readonly>
+                                    <input class="input"name="graduationYear[0]"value="{{ $order->qualifications[0]->graduation_year }}" type="text" class="form-control" id="Graduation Year" placeholder="" readonly>
                                 </div>
                                 </td>
                                 <td>
                                   <div class="form-group">
-                                    <input class="input"name="graduationRate[0]"value="{{ $order->graduation_rate }}"type="text" class="form-control" id="Graduation Rate" placeholder="" readonly>
+                                    <input class="input"name="graduationRate[0]"value="{{ $order->qualifications[0]->graduation_rate }}"type="text" class="form-control" id="Graduation Rate" placeholder="" readonly>
                                 </div>
                               </td>
                               <td>
                                 <div class="form-group">
-                                  <input class="input"type="text" name="specialization[0]"value="{{ $order->Specialization }}"class="form-control" id="Specialization" placeholder="" readonly>
+                                  <input class="input"type="text" name="specialization[0]"value="{{ $order->qualifications[0]->Specialization }}"class="form-control" id="Specialization" placeholder="" readonly>
                                 </div>
                             </td>
                             </tr>
@@ -389,7 +389,7 @@
                   </div>
                 </div>
               </div>
-        <a href="{{route('orders.printorder')}}"><i class="fas fa-file-pdf fa-2x" style="color:red"></i></a><br><br>
+        <a href="{{route('orders.printorder',$order->id)}}"><i class="fas fa-file-pdf fa-2x" style="color:red"></i></a><br><br>
           <div style="background:#ccc9da;">
             <ul style="list-style-type:disc;list-style-position: inside;padding-left:15px">
               <br><li>{{__('Name field is required')}}</li>

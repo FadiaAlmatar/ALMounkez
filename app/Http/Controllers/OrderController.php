@@ -157,9 +157,9 @@ class OrderController extends Controller
          return redirect()->route('orders.show',$order);
     }
 
-    public function printorder(Request $request)
-    {
-        // $order = Order::findOrFail($id);
+    public function printorder(Request $request,$id)
+    {  dd($id);
+        $order = Order::findOrFail($id);
         $html = view('order.order-pdf')->render();
 
         $pdf = new \Mpdf\Mpdf([

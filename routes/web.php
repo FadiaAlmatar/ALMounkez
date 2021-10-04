@@ -57,7 +57,7 @@ Route::get('/printgroup/{id}', [MessageController::class, 'printgroup'])->name('
 Route::post('/toggle-approve', [CommentController::class,'approval'])->name('approve');
 Route::get('/get-friends', [MessageController::class, 'getfriends'])->name('friends');
 Route::get('/new-subscribes/{id}', [GroupController::class, 'addsubscribes'])->name('addsubscribes');
-Route::get('/print', [OrderController::class, 'printorder'])->name('orders.printorder');
+Route::get('/print/{id}', [OrderController::class, 'printorder'])->name('orders.printorder');
 //fullorders
 Route::get('/fullorder/create_local', [FullOrderController::class, 'create_local'])->name('fullorders.create_local');
 Route::get('/fullorder/create_external', [FullOrderController::class, 'create_external'])->name('fullorders.create_external');
