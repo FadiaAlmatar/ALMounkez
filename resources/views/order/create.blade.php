@@ -549,7 +549,8 @@
               </div>
             </div>
           </div>
-    <button type="submit" class="btn btn-primary">{{__('Send')}}</button><br><br>
+    <button type="submit" class="btn btn-primary">{{__('Send')}}</button>
+    <a href="{{route('orders.printorder')}}"><i class="fas fa-file-pdf fa-2x" style="color:red"></i></a><br><br>
       <div style="background:#ccc9da;">
         <ul style="list-style-type:disc;list-style-position: inside;padding-left:15px">
           <br><li>{{__('Name field is required')}}</li>
