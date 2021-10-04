@@ -17,6 +17,11 @@
         text-align: right;
         float:right;
     }
+    .form-check-input{
+        text-align: right;
+        float:right;
+        right: 0;
+    }
     </style>
     @endif
   </head>
