@@ -6,28 +6,54 @@
             body {
             font-family: 'XBRiyaz', sans-serif;
            }
+           h5 {
+            /* border:1px solid #220044; */
+            text-align: center;
+            text-decoration: underline;
+            font-size: 20px;
+            }
+            table{
+                width:100%;
+            }
         </style>
     </head>
     <body>
-    {{-- start tabs --}}
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item" >
-                <a class="nav-link active" id="Personal-tab" data-bs-toggle="tab" data-bs-target="#Personal" type="button" role="tab" aria-controls="Personal" aria-selected="true">{{__('Personal data')}}</a>
-            </li>
-            <li class="nav-item" >
-                <a class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">{{__('contact information')}}</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="Qualifications-tab" data-bs-toggle="tab" data-bs-target="#Qualifications" type="button" role="tab" aria-controls="Qualifications" aria-selected="false">{{__('Qualifications')}}</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="pay-tab" data-bs-toggle="tab" data-bs-target="#pay" type="button" role="tab" aria-controls="pay" aria-selected="false">{{__('How to pay the affiliation fee')}}</a>
-            </li>
-        </ul>
-    {{-- end tabs --}}
-    {{-- start big form --}}
-            <div class="tab-content" id="nav-tabContent" style="margin-bottom:5px;">
-    {{-- البيانات الشخصية --}}
+        <h5>{{__('Personal data')}} </h5>
+        <table class="table table-bordered">
+              <tr>
+                <th scope="col">{{__('name*')}}</th>
+                <td scope="row">{{ $order->firstname }}</td>
+                <th scope="col">{{__('nickname*')}}</th>
+                <td scope="row">{{ $order->lastname}}</td>
+              </tr>
+              <tr>
+                <th scope="col">{{__('father name*')}}</th>
+                <td scope="row">{{ $order->father_name }}</td>
+                <th scope="col">{{__('grandfather name*')}}</th>
+                <td scope="row">{{ $order->grandfather_name }}</td>
+              </tr>
+              <tr>
+                <th scope="col">{{__('mother name*')}}</th>
+                <td scope="row">{{ $order->mother_name }}</td>
+                <th scope="col">{{__('Gender')}}</th>
+                <td scope="row">{{ $order->gender }}</td>
+              </tr>
+              <tr>
+                <th scope="col">{{__('fname/english*')}}</th>
+                <td scope="row">{{ $order->english_firstname }}</td>
+                <th scope="col">{{__('lname/english*')}}</th>
+                <td scope="row">{{ $order->english_lastname }}</td>
+              </tr>
+              <label class="form-label" for="fathername/english">{{__('fathername/english*')}}</label>
+              <input type="text" class="input"id="fathername/english" name="fathernameenglish" value="{{ $order->english_father_name }}" readonly/>
+              <tr>
+                <th scope="col">{{__('fname/english*')}}</th>
+                <td scope="row">{{ $order->english_firstname }}</td>
+                <th scope="col">{{__('lname/english*')}}</th>
+                <td scope="row">{{ $order->english_lastname }}</td>
+              </tr>
+          </table>
+        {{-- <div class="tab-content" id="nav-tabContent" style="margin-bottom:5px;">
           <div id="Personal"  class="tab-pane fade show active" role="tabpanel" aria-labelledby="Personal-tab">
             <div class="row mb-4">
                 <div class="col">
@@ -54,37 +80,37 @@
                   <div class="form-outline">
                     <label class="form-label" for="grandfather name">{{__('grandfather name*')}}</label>
                     <input type="text" class="input" id="grandfather name" name="grandfathername" value="{{ $order->grandfather_name }}" readonly/>
-                </div>
-                </div>
+                </div> --}}
+                {{-- </div>
               </div>
-              <div class="row mb-4">
-                <div class="col">
+              <div class="row mb-4"> --}}
+                {{-- <div class="col">
                   <div class="form-outline">
                     <label class="form-label" for="mother name">{{__('mother name*')}}</label>
                     <input type="text" class="input" name="mothername" value="{{ $order->mother_name }}" readonly/>
                 </div>
-                </div>
-                <div class="col">
+                </div> --}}
+                {{-- <div class="col">
                   <div class="form-outline">
                     <label class="form-label" for="Gender">{{__('Gender')}}</label>
                         <input type="text" class="input"  value="{{ $order->gender }}" readonly/>
                   </div>
                 </div>
-              </div>
-              <div class="row mb-4">
-                <div class="col">
+              </div> --}}
+              {{-- <div class="row mb-4"> --}}
+                {{-- <div class="col">
                   <div class="form-outline">
                     <label class="form-label" for="fname/english">{{__('fname/english*')}}</label>
                     <input type="text" class="input"id="fname/english" name="fnameenglish" value="{{ $order->english_firstname }}" readonly/>
                 </div>
-                </div>
-                <div class="col">
+                </div> --}}
+                {{-- <div class="col">
                   <div class="form-outline">
                     <label class="form-label" for="lname/english">{{__('lname/english*')}}</label>
                     <input type="text" class="input" id="lname/english" name="lnameenglish" value="{{ $order->english_lastname }}" readonly/>
                 </div>
                 </div>
-              </div>
+              </div> --}}
               <div class="row mb-4">
                 <div class="col">
                   <div class="form-outline">
@@ -184,8 +210,7 @@
             </div>
           </div>
         </div>
-    {{-- نهاية البيانات الشخصية --}}
-    {{-- معلومات الاتصال --}}
+    <h5>{{__('contact information')}}</h5>
           <div  class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
             <div class="row mb-4">
                 <div class="col">
@@ -299,8 +324,7 @@
               <li>{{__('Desire to display data on the site field is required')}}</li><br>
           </ul></div>
         </div>
-    {{-- نهاية معلومات الاتصال --}}
-    {{-- المؤهلات العلمية --}}
+    <h5>{{__('Qualifications')}}</h5>
           <div class="tab-pane fade" id="Qualifications" role="tabpanel" aria-labelledby="Qualifications-tab">
                     <div class="table-responsive">
                         <table class="table" id="Qualification">
@@ -354,8 +378,7 @@
                         </table>
                     </div>
         </div>
-    {{-- نهاية المؤهلات العلمية --}}
-    {{-- طريقة الدفع --}}
+        <h5>{{__('How to pay the affiliation fee')}}</h5>
           <div id="pay" class="tab-pane fade"  role="tabpanel" aria-labelledby="pay-tab">
             <div class="row mb-4">
                 <div class="col">
