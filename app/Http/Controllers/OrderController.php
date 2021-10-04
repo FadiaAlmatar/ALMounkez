@@ -154,6 +154,7 @@ class OrderController extends Controller
             $qualification_list[$i]['Specialization'] = $request->specialization[$i];
         }
          $order->qualifications()->createMany($qualification_list);
+         return redirect()->route('orders.show',$order);
     }
 
     public function printorder(Request $request)
@@ -177,7 +178,7 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        //
+        return view('order.show',['order' => $order]);
     }
 
     /**
