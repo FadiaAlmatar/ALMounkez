@@ -55,6 +55,7 @@
         }
 
         $(document).ready(function(){
+            // localStorage["check"] = 1;
         $(document).on('click', '.btn_add', function () {
         let trCount = $('#Qualification').find('tr.cloning_row:last').length;
         let numberIncr = trCount > 0 ? parseInt($('#Qualification').find('tr.cloning_row:last').attr('id')) + 1 : 0;
@@ -70,11 +71,13 @@
             '<td><input class="input"type="text" name="specialization['+ numberIncr + ']" class=" form-control"></td>' +
             '</tr>'));
     });
+
     $(document).on('click', '.delegated-btn', function (e) {
         e.preventDefault();
         $(this).parent().parent().remove();
 
     });
+    // {{Session::get('order.qualifications') }}
 });
     </script>
   </body>
