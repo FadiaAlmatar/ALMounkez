@@ -127,7 +127,8 @@
             </tr>
             <tr>
                 <th scope="col">{{__('work at government')}}</th>
-                <td scope="row">{{$order->work_in_government}}</td>
+                <td scope="row">@if ($order->work_in_government == 1){{__('Worker at government')}}
+                                @else {{__('not Worker at government')}}@endif</td>
                 <th scope="col">{{__('work side')}}</th>
                 <td scope="row">{{ $order->side_work}}</td>
             </tr>
@@ -135,7 +136,8 @@
                 <th scope="col">{{__('Insurance number')}}</th>
                 <td scope="row">{{ $order->insurance_number }}</td>
                 <th scope="col">{{__('Do you want to display your data on the site (contact information only) after approving the affiliation request?*')}}</th>
-                <td scope="row">{{$order->displayData}}</td>
+                <td scope="row"> @if($order->displayData == 1){{__('Yes')}}
+                                 @else {{__('No')}}@endif</td>
             </tr>
         </table>
 

@@ -252,7 +252,11 @@
                   <div class="form-outline">
                     <label class="form-label" for="work at government">{{__('work at government')}}</label>
                     <select name="workGovernment"id="work at government"class="form-select form-select-sm" aria-label=".form-select-sm example">
-                        <option value="{{$order->work_in_government}}" selected readonly>{{$order->work_in_government}}</option>
+                        @if ($order->work_in_government == 1)
+                        <option value="{{$order->work_in_government}}" selected readonly>{{__('Worker at government')}} </option>
+                        @else
+                        <option value="{{$order->work_in_government}}" selected readonly>{{__('not Worker at government')}}</option>
+                        @endif
                      </select>
                   </div>
                 </div>
@@ -276,7 +280,11 @@
                   <div class="form-outline">
                     <label style="display:inline;width:70%;"class="form-label" for="display your data">{{__('Do you want to display your data on the site (contact information only) after approving the affiliation request?*')}}</label>
                     <select style="width:10%"class="input"name="displayData"id="display your data"class="form-select form-select-sm" aria-label=".form-select-sm example">
-                        <option value="{{$order->displayData}}" selected readonly>{{$order->displayData}}</option>
+                        @if($order->displayData == 1)
+                        <option value="{{$order->displayData}}" selected readonly>{{__('Yes')}}</option>
+                        @else
+                        <option value="{{$order->displayData}}" selected readonly>{{__('No')}}</option>
+                        @endif
                      </select>
                   </div>
                 </div>
