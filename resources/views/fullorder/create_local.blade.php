@@ -39,7 +39,8 @@
         <p>{{__('Amount has been received')}}/......../{{__('SYP')}}</p><br><br>
 {{-- قرار رئيس مجلس الإدارة --}}
         <hr><br>
-        <p style="font-weight: bold;">{{__("Chairman's decision")}}</p><hr><br><br>
+        <p style="font-weight: bold;">{{__("Chairman's decision: ")}}</p><br>
+        <textarea class="form-control" id="reasons" rows="3"></textarea><hr><br><br>
 
     </div>
 </x-layouts.app>
