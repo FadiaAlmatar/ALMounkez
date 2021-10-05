@@ -337,41 +337,17 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr class="cloning_row" id="0">
-                                <td> </td>
-                                <td>
-                                    <div class="form-group">
-                                        <select name="qualification[0]" id="Qualification" class="form-select  form-control">
-                                            <option value="{{$order->qualifications[0]->qualification}}">{{$order->qualifications[0]->qualification}}</option>
-                                        </select>
-                                    </div>
-                                </td>
-                                <td>
-                                  <div class="form-group">
-                                  <input class="input"type="text" name="university[0]"value="{{ $order->qualifications[0]->university }}"class="form-control" id="University" placeholder="" readonly>
-                                </div>
-                                </td>
-                                <td>
-                                  <div class="form-group">
-                                    <input class="input"type="text" name="country[0]"value="{{ $order->qualifications[0]->country}}"class="form-control" id="Country" placeholder="" readonly>
-                                </div>
-                                </td>
-                                <td>
-                                  <div class="form-group">
-                                    <input class="input"name="graduationYear[0]"value="{{ $order->qualifications[0]->graduation_year }}" type="text" class="form-control" id="Graduation Year" placeholder="" readonly>
-                                </div>
-                                </td>
-                                <td>
-                                  <div class="form-group">
-                                    <input class="input"name="graduationRate[0]"value="{{ $order->qualifications[0]->graduation_rate }}"type="text" class="form-control" id="Graduation Rate" placeholder="" readonly>
-                                </div>
-                              </td>
-                              <td>
-                                <div class="form-group">
-                                  <input class="input"type="text" name="specialization[0]"value="{{ $order->qualifications[0]->Specialization }}"class="form-control" id="Specialization" placeholder="" readonly>
-                                </div>
-                            </td>
-                            </tr>
+                            @for ($i = 0; $i < sizeof($order->qualifications); $i++)
+                                <tr class="cloning_row" id="0">
+                                    <td></td>
+                                    <td><input class="input"type="text" name="qualification[0]"value="{{ $order->qualifications[$i]->qualification}}"class="form-control" id="Qualification" placeholder="" readonly></td>
+                                    <td><input class="input"type="text" name="university[0]"value="{{ $order->qualifications[$i]->university }}"class="form-control" id="University" placeholder="" readonly></td>
+                                    <td><input class="input"type="text" name="country[0]"value="{{ $order->qualifications[$i]->country}}"class="form-control" id="Country" placeholder="" readonly></td>
+                                    <td><input class="input"name="graduationYear[0]"value="{{ $order->qualifications[$i]->graduation_year }}" type="text" class="form-control" id="Graduation Year" placeholder="" readonly></td>
+                                    <td><input class="input"name="graduationRate[0]"value="{{ $order->qualifications[$i]->graduation_rate }}"type="text" class="form-control" id="Graduation Rate" placeholder="" readonly></td>
+                                    <td><input class="input"type="text" name="specialization[0]"value="{{ $order->qualifications[$i]->Specialization }}"class="form-control" id="Specialization" placeholder="" readonly></td>
+                                </tr>
+                            @endfor
                             </tbody>
                         </table>
                     </div>

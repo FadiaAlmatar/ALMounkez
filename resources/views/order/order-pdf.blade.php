@@ -155,14 +155,16 @@
                             </tr>
                             </thead>
                             <tbody>
+                            @for ($i = 0; $i < sizeof($order->qualifications); $i++)
                             <tr class="cloning_row" id="0">
-                                <td  scope="row">{{$order->qualifications[0]->qualification}}</td>
-                                <td  scope="row">{{ $order->qualifications[0]->university }}</td>
-                                <td  scope="row">{{ $order->qualifications[0]->country}}</td>
-                                <td  scope="row">{{ $order->qualifications[0]->graduation_year }}</td>
-                                <td  scope="row">{{ $order->qualifications[0]->graduation_rate }} </td>
-                                <td  scope="row">{{ $order->qualifications[0]->Specialization }}</td>
+                                <td scope="row">{{ $order->qualifications[$i]->qualification}}</td>
+                                <td scope="row">{{ $order->qualifications[$i]->university }}</td>
+                                <td scope="row">{{ $order->qualifications[$i]->country}}</td>
+                                <td scope="row">{{ $order->qualifications[$i]->graduation_year }}</td>
+                                <td scope="row">{{ $order->qualifications[$i]->graduation_rate }}</td>
+                                <td scope="row">{{ $order->qualifications[$i]->Specialization }}</td>
                             </tr>
+                            @endfor
                             </tbody>
                         </table>
                     </div>
