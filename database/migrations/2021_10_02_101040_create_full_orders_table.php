@@ -39,6 +39,7 @@ class CreateFullOrdersTable extends Migration
             $table->string('fullname_arabic')->nullable();//الاسم الثلاثي عربي
             $table->string('fullname_english')->nullable();//الاسم الثلاثي انكليزي
             $table->string('personal_image')->nullable();//الصورة الشخصية
+            $table->string('status')->nullable();//حالة الطلب
             $table->timestamps();
         });
     }

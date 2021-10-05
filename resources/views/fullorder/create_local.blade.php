@@ -19,9 +19,9 @@
         </form>
         <p style="text-align:center;">{{__('Your request will be considered within a maximum period of two days. Please contact us')}}</p>
         <hr><br>
-{{-- manager only --}}
+{{-- admin only --}}
 {{-- بيان الدارة المالية --}}
-    @if(Auth::User()->role == "admin")
+    @if(Auth::User()->role == "user")
         <p style="font-weight: bold;">{{__('Financial Management Statement:')}}</p><hr>
         <p style="display:inline">{{__('Mr.')}} <span style="font-weight: bold">{{Auth::User()->name}}</span>{{__(' is affiliated with the Syndicate with a membership number ')}}{{Auth::User()->id}}<br>
             {{__('We inform you that he is registered in the Syndicate in year ...... and : ')}}</p>&nbsp;
@@ -43,7 +43,6 @@
         <p style="font-weight: bold;">{{__("Chairman's decision: ")}}</p><br>
         <textarea class="form-control" id="reasons" rows="3" disabled></textarea><hr><br><br>
         @endif
-
     </div>
 </x-layouts.app>
 

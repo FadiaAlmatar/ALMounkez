@@ -50,7 +50,7 @@ class FullOrderController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'side'                           => 'required|min:3|not_regex:/[0-9]/',
+            'side'                           => 'required|min:3',
 
             ] );
             $fullorder = new FullOrder();
@@ -58,6 +58,7 @@ class FullOrderController extends Controller
             $fullorder->user_id       =   Auth::User()->id;
             $fullorder->branch_id     =   1;//Auth::User()->branch_id
             $fullorder->membership_id =   2222;//Auth::User()->membership_id
+            $fullorder->status        =  "under consideration";
             $fullorder->save();
             return redirect()->route('fullorders.show',$fullorder);
     }
