@@ -22,7 +22,8 @@ class CreateFullOrdersTable extends Migration
             $table->integer('membership_id');//رقم عضوية مقدم الطلب
             $table->boolean('not_debtor')->nullable();//بريئ الذمة
             $table->float('money_debt')->nullable();//مبلغ الذمة
-            $table->float('money_order')->nullable();//مبلغ الطلب
+            $table->float('money_order')->nullable();// مبلغ الطلب أو مبلغ امين الصندوق
+            $table->date('date_order')->nullable();//تاريخ قبض امين الصندوق
             $table->boolean('capture')->nullable();//تم القبض
             $table->boolean('receipt')->nullable();//تم الاستلام
             $table->date('Published_at')->nullable();//تاريخ الصدور
