@@ -131,7 +131,22 @@
     {{-- قرار رئيس مجلس الإدارة --}}
             <hr><br>
         <p style="font-weight: bold;">{{__("Chairman's decision: ")}}</p><hr><br>
-        <textarea class="form-control" id="reasons" rows="3" disabled></textarea><hr><br><br>
+        {{-- <textarea class="form-control" id="reasons" rows="3" disabled></textarea><hr><br><br> --}}
+        <div>
+            <label style="display:inline;width:70%;"class="form-label" for="approval">{{__('Approval')}}</label>
+            <select style="width:10%"class="input @error('approval')is-danger @enderror"name="approval"id="approval"class="form-select form-select-sm" aria-label=".form-select-sm example" disabled>
+                <option></option>
+                <option value="1" @if (old('approval') == "1") {{ 'selected' }} @endif>{{__('Yes')}}</option>
+                <option value="0" @if (old('approval') == "0") {{ 'selected' }} @endif>{{__('No')}} </option>
+             </select>
+             @error('displayData')
+               <p class="help is-danger">{{ $message }}</p>
+             @enderror
+             <div class="form-group">
+                <label for="reasons">{{__('reasons :(If not approved)')}}</label>
+                <textarea class="form-control" id="reasons" rows="2" disabled></textarea><br>
+            </div>
+        </div>
 @endif
     </div>
 </x-layouts.app>
