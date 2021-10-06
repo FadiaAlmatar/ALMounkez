@@ -50,7 +50,6 @@
 <hr><br>
 <p style="font-weight: bold;">{{__("Chairman's decision: ")}}</p><hr><br>
 <textarea class="form-control" id="reasons" rows="3" disabled></textarea><hr><br><br>
-
 @endif
     </div>
 </x-layouts.app>
