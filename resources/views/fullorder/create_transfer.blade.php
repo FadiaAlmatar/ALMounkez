@@ -81,18 +81,20 @@
             </div>
             <p>{{__('Evidences attached')}}</p>
             <div class="mb-3" >
-                <label for="formFile" class="form-label" style="font-size: 13px;">{{__('change home image')}}</label>
+                <label for="formFile" class="form-label" style="font-size: 13px;">{{__('change home image')}}
                 <input class="form-control" type="file" accept="image/*" id="change_home" name="change_home" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
                 @error('change_home')
                 <p class="help is-danger">{{ $message }}</p>
                 @enderror
+            </label>
             </div>
             <div class="mb-3">
-                <label for="formFile" class="form-label" style="font-size: 13px;">{{__('change work image')}}</label>
+                <label for="formFile" class="form-label" style="font-size: 13px;">{{__('change work image')}}
                 <input class="form-control" type="file" accept="image/*"id="change_work" name="change_work" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
                 @error('change_work')
                 <p class="help is-danger">{{ $message }}</p>
                 @enderror
+            </label>
             </div>
             <p>{{__('Request date: ')}}</p><hr><br>
             </table> @if(Auth::User()->role == "user")<button type="submit" class="btn btn-primary">{{__('Send')}}</button><br><br>@endif
