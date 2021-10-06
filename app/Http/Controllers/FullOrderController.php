@@ -53,11 +53,22 @@ class FullOrderController extends Controller
             'side'                           => 'required|min:3',
             ] );
             $fullorder = new FullOrder();
+            if(($request->type == "local") || ($request->type == "external")){
             $fullorder->side          =   $request->side;
             $fullorder->user_id       =   Auth::User()->id;
             $fullorder->branch_id     =   1;//Auth::User()->branch_id
             $fullorder->membership_id =   2222;//Auth::User()->membership_id
             $fullorder->status        =  "under consideration";
+            }
+            elseif($request->type == "transfer"){
+                $fullorder->country_before  = $request->countryfrom;
+                $fullorder->country_after = $request->tocountry;
+                // $fullorder->transportation_reasons = $request->;
+
+            }
+            else{
+
+            }
             $fullorder->type          =   $request->type;
             $fullorder->save();
             return redirect()->route('fullorders.show',$fullorder);

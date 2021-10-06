@@ -5,24 +5,24 @@
             @csrf
         <input name="type" value="transfer" hidden>
         <p>{{__('Mr. Chairman of the Syndicate Branch Council in the province')}}
-            <select style="width:150px"class="input @error('country')is-danger @enderror"name="country" id="country"class="form-select form-select-sm" aria-label=".form-select-sm example" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
+            <select style="width:150px"class="input @error('countryfrom')is-danger @enderror"name="countryfrom" id="countryfrom"class="form-select form-select-sm" aria-label=".form-select-sm example" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
                 <option></option>
-                <option  value="Damascus"      @if (old('country') == "Damascus") {{ 'selected' }} @endif>       {{__('Damascus')}}      </option>
-                <option value="Damascus Rural" @if (old('country') == "Damascus Rural") {{ 'selected' }} @endif> {{__('Damascus Rural')}}</option>
-                <option value="Suwayda"        @if (old('country') == "Suwayda") {{ 'selected' }} @endif>        {{__('Suwayda')}}       </option>
-                <option value="Daraa"          @if (old('country') == "Daraa") {{ 'selected' }} @endif>          {{__('Daraa')}}         </option>
-                <option value="Quneitra"       @if (old('country') == "Quneitra") {{ 'selected' }} @endif>       {{__('Quneitra')}}      </option>
-                <option value="Homs"           @if (old('country') == "Homs") {{ 'selected' }} @endif>           {{__('Homs')}}          </option>
-                <option value="Hama"           @if (old('country') == "Hama") {{ 'selected' }} @endif>           {{__('Hama')}}          </option>
-                <option value="Latakia"        @if (old('country') == "Latakia") {{ 'selected' }} @endif>        {{__('Latakia')}}       </option>
-                <option value="Tartous"        @if (old('country') == "Tartous") {{ 'selected' }} @endif>        {{__('Tartous')}}       </option>
-                <option value="Idlib"          @if (old('country') == "Idlib") {{ 'selected' }} @endif>          {{__('Idlib')}}         </option>
-                <option value="Aleppo"         @if (old('country') == "Aleppo") {{ 'selected' }} @endif>         {{__('Aleppo')}}        </option>
-                <option value="Al-Rakka"       @if (old('country') == "Al-Rakka") {{ 'selected' }} @endif>       {{__('Al-Rakka')}}      </option>
-                <option value="Deer Al Zour"   @if (old('country') == "Deer Al Zour") {{ 'selected' }} @endif>   {{__('Deer Al Zour')}}  </option>
-                <option value="Al-Hasakah"     @if (old('country') == "Al-Hasakah") {{ 'selected' }} @endif>     {{__('Al-Hasakah')}}    </option>
+                <option  value="Damascus"      @if (old('countryfrom') == "Damascus") {{ 'selected' }} @endif>       {{__('Damascus')}}      </option>
+                <option value="Damascus Rural" @if (old('countryfrom') == "Damascus Rural") {{ 'selected' }} @endif> {{__('Damascus Rural')}}</option>
+                <option value="Suwayda"        @if (old('countryfrom') == "Suwayda") {{ 'selected' }} @endif>        {{__('Suwayda')}}       </option>
+                <option value="Daraa"          @if (old('countryfrom') == "Daraa") {{ 'selected' }} @endif>          {{__('Daraa')}}         </option>
+                <option value="Quneitra"       @if (old('countryfrom') == "Quneitra") {{ 'selected' }} @endif>       {{__('Quneitra')}}      </option>
+                <option value="Homs"           @if (old('countryfrom') == "Homs") {{ 'selected' }} @endif>           {{__('Homs')}}          </option>
+                <option value="Hama"           @if (old('countryfrom') == "Hama") {{ 'selected' }} @endif>           {{__('Hama')}}          </option>
+                <option value="Latakia"        @if (old('countryfrom') == "Latakia") {{ 'selected' }} @endif>        {{__('Latakia')}}       </option>
+                <option value="Tartous"        @if (old('countryfrom') == "Tartous") {{ 'selected' }} @endif>        {{__('Tartous')}}       </option>
+                <option value="Idlib"          @if (old('countryfrom') == "Idlib") {{ 'selected' }} @endif>          {{__('Idlib')}}         </option>
+                <option value="Aleppo"         @if (old('countryfrom') == "Aleppo") {{ 'selected' }} @endif>         {{__('Aleppo')}}        </option>
+                <option value="Al-Rakka"       @if (old('countryfrom') == "Al-Rakka") {{ 'selected' }} @endif>       {{__('Al-Rakka')}}      </option>
+                <option value="Deer Al Zour"   @if (old('countryfrom') == "Deer Al Zour") {{ 'selected' }} @endif>   {{__('Deer Al Zour')}}  </option>
+                <option value="Al-Hasakah"     @if (old('countryfrom') == "Al-Hasakah") {{ 'selected' }} @endif>     {{__('Al-Hasakah')}}    </option>
              </select>
-            @error('country')
+            @error('countryfrom')
                 <p class="help is-danger">{{ $message }}</p>
             @enderror</p>
             <br><hr><br>
@@ -35,43 +35,43 @@
             </div>
             <br><hr><br>
             <p>{{__('I kindly request you to transfer my membership from your branch of the Syndicate branch in the country: ')}}
-                <select style="width:150px"class="input @error('country')is-danger @enderror"name="country" id="country"class="form-select form-select-sm" aria-label=".form-select-sm example" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
+                <select style="width:150px"class="input @error('countryfrom')is-danger @enderror"name="countryfrom" id="countryfrom"class="form-select form-select-sm" aria-label=".form-select-sm example" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
                     <option></option>
-                    <option  value="Damascus"      @if (old('country') == "Damascus") {{ 'selected' }} @endif>       {{__('Damascus')}}      </option>
-                    <option value="Damascus Rural" @if (old('country') == "Damascus Rural") {{ 'selected' }} @endif> {{__('Damascus Rural')}}</option>
-                    <option value="Suwayda"        @if (old('country') == "Suwayda") {{ 'selected' }} @endif>        {{__('Suwayda')}}       </option>
-                    <option value="Daraa"          @if (old('country') == "Daraa") {{ 'selected' }} @endif>          {{__('Daraa')}}         </option>
-                    <option value="Quneitra"       @if (old('country') == "Quneitra") {{ 'selected' }} @endif>       {{__('Quneitra')}}      </option>
-                    <option value="Homs"           @if (old('country') == "Homs") {{ 'selected' }} @endif>           {{__('Homs')}}          </option>
-                    <option value="Hama"           @if (old('country') == "Hama") {{ 'selected' }} @endif>           {{__('Hama')}}          </option>
-                    <option value="Latakia"        @if (old('country') == "Latakia") {{ 'selected' }} @endif>        {{__('Latakia')}}       </option>
-                    <option value="Tartous"        @if (old('country') == "Tartous") {{ 'selected' }} @endif>        {{__('Tartous')}}       </option>
-                    <option value="Idlib"          @if (old('country') == "Idlib") {{ 'selected' }} @endif>          {{__('Idlib')}}         </option>
-                    <option value="Aleppo"         @if (old('country') == "Aleppo") {{ 'selected' }} @endif>         {{__('Aleppo')}}        </option>
-                    <option value="Al-Rakka"       @if (old('country') == "Al-Rakka") {{ 'selected' }} @endif>       {{__('Al-Rakka')}}      </option>
-                    <option value="Deer Al Zour"   @if (old('country') == "Deer Al Zour") {{ 'selected' }} @endif>   {{__('Deer Al Zour')}}  </option>
-                    <option value="Al-Hasakah"     @if (old('country') == "Al-Hasakah") {{ 'selected' }} @endif>     {{__('Al-Hasakah')}}    </option>
+                    <option  value="Damascus"      @if (old('countryfrom') == "Damascus") {{ 'selected' }} @endif>       {{__('Damascus')}}      </option>
+                    <option value="Damascus Rural" @if (old('countryfrom') == "Damascus Rural") {{ 'selected' }} @endif> {{__('Damascus Rural')}}</option>
+                    <option value="Suwayda"        @if (old('countryfrom') == "Suwayda") {{ 'selected' }} @endif>        {{__('Suwayda')}}       </option>
+                    <option value="Daraa"          @if (old('countryfrom') == "Daraa") {{ 'selected' }} @endif>          {{__('Daraa')}}         </option>
+                    <option value="Quneitra"       @if (old('countryfrom') == "Quneitra") {{ 'selected' }} @endif>       {{__('Quneitra')}}      </option>
+                    <option value="Homs"           @if (old('countryfrom') == "Homs") {{ 'selected' }} @endif>           {{__('Homs')}}          </option>
+                    <option value="Hama"           @if (old('countryfrom') == "Hama") {{ 'selected' }} @endif>           {{__('Hama')}}          </option>
+                    <option value="Latakia"        @if (old('countryfrom') == "Latakia") {{ 'selected' }} @endif>        {{__('Latakia')}}       </option>
+                    <option value="Tartous"        @if (old('countryfrom') == "Tartous") {{ 'selected' }} @endif>        {{__('Tartous')}}       </option>
+                    <option value="Idlib"          @if (old('countryfrom') == "Idlib") {{ 'selected' }} @endif>          {{__('Idlib')}}         </option>
+                    <option value="Aleppo"         @if (old('countryfrom') == "Aleppo") {{ 'selected' }} @endif>         {{__('Aleppo')}}        </option>
+                    <option value="Al-Rakka"       @if (old('countryfrom') == "Al-Rakka") {{ 'selected' }} @endif>       {{__('Al-Rakka')}}      </option>
+                    <option value="Deer Al Zour"   @if (old('countryfrom') == "Deer Al Zour") {{ 'selected' }} @endif>   {{__('Deer Al Zour')}}  </option>
+                    <option value="Al-Hasakah"     @if (old('countryfrom') == "Al-Hasakah") {{ 'selected' }} @endif>     {{__('Al-Hasakah')}}    </option>
                 </select>
-                @error('country')
+                @error('countryfrom')
                     <p class="help is-danger">{{ $message }}</p>
                 @enderror
                 <br>{{__('To the syndicate branch in the country: ')}}
-                <select style="width:150px"class="input @error('country')is-danger @enderror"name="country" id="country"class="form-select form-select-sm" aria-label=".form-select-sm example" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
+                <select style="width:150px"class="input @error('tocountry')is-danger @enderror"name="tocountry" id="tocountry"class="form-select form-select-sm" aria-label=".form-select-sm example" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
                     <option></option>
-                    <option  value="Damascus"      @if (old('country') == "Damascus") {{ 'selected' }} @endif>       {{__('Damascus')}}      </option>
-                    <option value="Damascus Rural" @if (old('country') == "Damascus Rural") {{ 'selected' }} @endif> {{__('Damascus Rural')}}</option>
-                    <option value="Suwayda"        @if (old('country') == "Suwayda") {{ 'selected' }} @endif>        {{__('Suwayda')}}       </option>
-                    <option value="Daraa"          @if (old('country') == "Daraa") {{ 'selected' }} @endif>          {{__('Daraa')}}         </option>
-                    <option value="Quneitra"       @if (old('country') == "Quneitra") {{ 'selected' }} @endif>       {{__('Quneitra')}}      </option>
-                    <option value="Homs"           @if (old('country') == "Homs") {{ 'selected' }} @endif>           {{__('Homs')}}          </option>
-                    <option value="Hama"           @if (old('country') == "Hama") {{ 'selected' }} @endif>           {{__('Hama')}}          </option>
-                    <option value="Latakia"        @if (old('country') == "Latakia") {{ 'selected' }} @endif>        {{__('Latakia')}}       </option>
-                    <option value="Tartous"        @if (old('country') == "Tartous") {{ 'selected' }} @endif>        {{__('Tartous')}}       </option>
-                    <option value="Idlib"          @if (old('country') == "Idlib") {{ 'selected' }} @endif>          {{__('Idlib')}}         </option>
-                    <option value="Aleppo"         @if (old('country') == "Aleppo") {{ 'selected' }} @endif>         {{__('Aleppo')}}        </option>
-                    <option value="Al-Rakka"       @if (old('country') == "Al-Rakka") {{ 'selected' }} @endif>       {{__('Al-Rakka')}}      </option>
-                    <option value="Deer Al Zour"   @if (old('country') == "Deer Al Zour") {{ 'selected' }} @endif>   {{__('Deer Al Zour')}}  </option>
-                    <option value="Al-Hasakah"     @if (old('country') == "Al-Hasakah") {{ 'selected' }} @endif>     {{__('Al-Hasakah')}}    </option>
+                    <option  value="Damascus"      @if (old('tocountry') == "Damascus") {{ 'selected' }} @endif>       {{__('Damascus')}}      </option>
+                    <option value="Damascus Rural" @if (old('tocountry') == "Damascus Rural") {{ 'selected' }} @endif> {{__('Damascus Rural')}}</option>
+                    <option value="Suwayda"        @if (old('tocountry') == "Suwayda") {{ 'selected' }} @endif>        {{__('Suwayda')}}       </option>
+                    <option value="Daraa"          @if (old('tocountry') == "Daraa") {{ 'selected' }} @endif>          {{__('Daraa')}}         </option>
+                    <option value="Quneitra"       @if (old('tocountry') == "Quneitra") {{ 'selected' }} @endif>       {{__('Quneitra')}}      </option>
+                    <option value="Homs"           @if (old('tocountry') == "Homs") {{ 'selected' }} @endif>           {{__('Homs')}}          </option>
+                    <option value="Hama"           @if (old('tocountry') == "Hama") {{ 'selected' }} @endif>           {{__('Hama')}}          </option>
+                    <option value="Latakia"        @if (old('tocountry') == "Latakia") {{ 'selected' }} @endif>        {{__('Latakia')}}       </option>
+                    <option value="Tartous"        @if (old('tocountry') == "Tartous") {{ 'selected' }} @endif>        {{__('Tartous')}}       </option>
+                    <option value="Idlib"          @if (old('tocountry') == "Idlib") {{ 'selected' }} @endif>          {{__('Idlib')}}         </option>
+                    <option value="Aleppo"         @if (old('tocountry') == "Aleppo") {{ 'selected' }} @endif>         {{__('Aleppo')}}        </option>
+                    <option value="Al-Rakka"       @if (old('tocountry') == "Al-Rakka") {{ 'selected' }} @endif>       {{__('Al-Rakka')}}      </option>
+                    <option value="Deer Al Zour"   @if (old('tocountry') == "Deer Al Zour") {{ 'selected' }} @endif>   {{__('Deer Al Zour')}}  </option>
+                    <option value="Al-Hasakah"     @if (old('tocountry') == "Al-Hasakah") {{ 'selected' }} @endif>     {{__('Al-Hasakah')}}    </option>
                 </select>
             </p>
             <br><hr>
