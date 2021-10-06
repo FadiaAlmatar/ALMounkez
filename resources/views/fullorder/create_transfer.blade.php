@@ -1,6 +1,9 @@
 <x-layouts.app>
     <h1 style="text-align: center;font-weight:bold;text-decoration:underline;margin-top:5px;">{{__('Membership transfer form from one branch to another')}}</h1><br>
     <div class="container"style="margin-top:7px;">
+        <form action="{{ route('fullorders.store') }}" method="POST" >
+            @csrf
+        <input name="type" value="transfer" hidden>
         <p>{{__('Mr. Chairman of the Syndicate Branch Council in the province')}}
             <select style="width:150px"class="input @error('country')is-danger @enderror"name="country" id="country"class="form-select form-select-sm" aria-label=".form-select-sm example">
                 <option></option>
@@ -93,6 +96,7 @@
             </div>
             <p>{{__('Request date: ')}}</p><hr><br>
             </table> <button type="submit" class="btn btn-primary">{{__('Send')}}</button><br><br>
+        </form>
 
 {{-- بيان الدارة المالية --}}
 @if(Auth::User()->role == "user")

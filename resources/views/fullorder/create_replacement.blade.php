@@ -5,6 +5,7 @@
         <hr><h1 style="text-align: center;font-weight:bold;">{{__('Filled out by the affiliate')}}</h1><hr>
         <form action="{{ route('fullorders.store') }}" method="POST" >
             @csrf
+            <input name="type" value="replacement" hidden>
         <p>{{__('Gentlemen of the Financial and Accounting Professions Syndicate, please give me a membership card instead: ')}}
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="" id="Lost" name="replace_reason">
