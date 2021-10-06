@@ -51,7 +51,6 @@ class FullOrderController extends Controller
     {
         $request->validate([
             'side'                           => 'required|min:3',
-
             ] );
             $fullorder = new FullOrder();
             $fullorder->side          =   $request->side;

@@ -24,19 +24,24 @@ class CreateFullOrdersTable extends Migration
             $table->float('money_debt')->nullable();//مبلغ الذمة
             $table->float('money_order')->nullable();// مبلغ الطلب أو مبلغ امين الصندوق
             $table->date('date_order')->nullable();//تاريخ قبض امين الصندوق
-            $table->boolean('capture')->nullable();//تم القبض
-            $table->boolean('receipt')->nullable();//تم الاستلام
-            $table->date('Published_at')->nullable();//تاريخ الصدور
-            $table->date('received_date')->nullable();//تاريخ الاستلام
-            $table->string('transportation_reasons')->nullable();//أسباب النقل
+            $table->float('money_central')->nullable();//مبلغ امين الصندوق المركزية
+            $table->date('date_central')->nullable();//تاريخ قبض امين الصندوق المركزية
+            // $table->boolean('capture')->nullable();//تم القبض
+            // $table->boolean('receipt')->nullable();//تم الاستلام
+            // $table->date('Published_at')->nullable();//تاريخ الصدور
+            // $table->date('received_date')->nullable();//تاريخ الاستلام
+            $table->string('country_before')->nullable();//المحافظة المنتقل منها
+            $table->string('country_after')->nullable();//المحافظة المنتقل اليها
+            $table->text('transportation_reasons')->nullable();//أسباب النقل
             $table->string('home_change')->nullable();//صورة ثبوتية لتغيير مكان السكن
             $table->string('work_change')->nullable();//صورة ثبوتية لتغيير مكان العمل
             $table->boolean('registered_branch_decision')->nullable();//قرار الفرع المسجل به
-            $table->string('registered_branch_disapproval_reasons')->nullable();//اسباب عدم موافقة الفرع المسجل به
+            $table->text('registered_branch_disapproval_reasons')->nullable();//اسباب عدم موافقة الفرع المسجل به
             $table->boolean('transferred_branch_decision')->nullable();//قرار الفرع المنتقل اليه
-            $table->string('transferred_branch_disapproval_reasons')->nullable();//أسباب عدم موافقة الفرع المنتقل اليه
+            $table->text('transferred_branch_disapproval_reasons')->nullable();//أسباب عدم موافقة الفرع المنتقل اليه
+            $table->text('Chairman_decision')->nullable();//قرار رئيس مجلس الادارة
             $table->biginteger('newmembership_number')->nullable();//رقم العضوية الجديد
-            $table->string('replace_reasons')->nullable();//اسباب استبدال
+            $table->text('replace_reasons')->nullable();//اسباب استبدال
             $table->string('fullname_arabic')->nullable();//الاسم الثلاثي عربي
             $table->string('fullname_english')->nullable();//الاسم الثلاثي انكليزي
             $table->string('personal_image')->nullable();//الصورة الشخصية
