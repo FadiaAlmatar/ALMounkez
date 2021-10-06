@@ -10,24 +10,47 @@
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="" id="Lost" name="replace_reason">
                 <label class="form-check-label" for="Lost">
-                  {{__('Lost')}}
+                  {{__('Lost (police decision attached)')}}
                 </label>
+                <input class="form-control" type="file" accept="image/*"id="police_image" name="police_image">
+                    @error('police_image')
+                    <p class="help is-danger">{{ $message }}</p>
+                    @enderror
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="" id="Consists" name="replace_reason">
                 <label class="form-check-label" for="Consists">
-                  {{__('Consists')}}
+                  {{__('Consists (damaged card attached) reason: ')}}
+                  <input class="form-control" type="file" accept="image/*"id="damaged_card_image" name="damaged_card_image">
+                  @error('damaged_card_image')
+                  <p class="help is-danger">{{ $message }}</p>
+                  @enderror
                 </label>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="Modification" name="Consists">
                     <label id="labelmodification"class="form-check-label" for="Lost">
-                      {{__('Modification of personal data')}}
+                      {{__('Modification of personal data')}}<br>
+                       <label for="formFile" class="form-label" style="font-size: 13px;">{{__('Judgment decision attached')}}</label>
+                       <input class="form-control" type="file" accept="image/*"id="judgment_decision_image" name="judgment_decision_image">
+                       @error('judgment_decision_image')
+                            <p class="help is-danger">{{ $message }}</p>
+                        @enderror
+                        <label for="formFile" class="form-label"style="font-size: 13px;" >{{__('Passport image')}}</label>
+                        <input class="form-control" type="file" accept="image/*"id="passport_image" name="passport_image">
+                        @error('passport_image')
+                            <p class="help is-danger">{{ $message }}</p>
+                        @enderror
+                        <label for="formFile" class="form-label"style="font-size: 13px;" >{{__('Personal identification image')}}</label>
+                        <input class="form-control" type="file" accept="image/*"id="personal_identification_image" name="personal_identification_image">
+                        @error('personal_identification_image')
+                            <p class="help is-danger">{{ $message }}</p>
+                        @enderror
                     </label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="personal" name="Consists">
                     <label id="labelpersonal"class="form-check-label" for="Consists">
-                      {{__('personal image')}}
+                      {{__('personal image')}}<br>
                     </label>
                 </div>
             </div>
@@ -49,13 +72,10 @@
         <p style="font-weight: bold;text-align: center;">{{__('Required modifications to be made on the new membership card')}}</p>
         <hr>
         <table class="table table-bordered">
-            {{-- <thead> --}}
               <tr>
                 <th scope="col" style="width:30%">{{__('FullName/Arabic')}}</th>
                 <td ><input type="text" class="input @error('FullName/Arabic')is-danger @enderror"id="FullName/Arabic" name="FullName/Arabic"value="{{ old('FullName/Arabic') }}"class="form-control" placeholder="{{__('Enter FullName/Arabic')}}" /></td>
               </tr>
-            {{-- </thead> --}}
-            {{-- <tbody> --}}
               <tr>
                 <th scope="col">{{__('FullName/English to be placed on the new card')}}</th>
                 <td ><input type="text" class="input @error('FullName/English')is-danger @enderror"id="FullName/English" name="FullName/English"value="{{ old('FullName/English') }}"class="form-control" placeholder="{{__('Enter FullName/English')}}" /></td>
@@ -63,18 +83,16 @@
               <tr>
                 <th scope="col">{{__('Change personal image')}}</th>
                 <td> <div class="mb-3">
-                    {{-- <label for="formFile" class="form-label">{{__('Personal image*')}}</label> --}}
-                    <input class="form-control" type="file" accept="image/*"id="personal_image" name="personal_image">
-                    @error('personal_image')
-                    <p class="help is-danger">{{ $message }}</p>
-                    @enderror
+                      <input class="form-control" type="file" accept="image/*"id="personal_image" name="personal_image">
+                      @error('personal_image')
+                          <p class="help is-danger">{{ $message }}</p>
+                      @enderror
                   </div></td>
               </tr>
               <tr>
                 <th scope="col">{{__('The new membership number')}} <br>{{__('when transferring from one branch to another')}}</th>
                 <td ><input type="text" class="input @error('newMembershipNumber')is-danger @enderror"id="newMembershipNumber" name="newMembershipNumber"value="{{ old('newMembershipNumber') }}"class="form-control" placeholder="{{__('Enter new Membership Number')}}" /></td>
               </tr>
-            {{-- </tbody> --}}
           </table>
 
 {{-- membership only --}}
