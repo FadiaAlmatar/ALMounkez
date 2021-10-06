@@ -58,6 +58,7 @@ class FullOrderController extends Controller
             $fullorder->branch_id     =   1;//Auth::User()->branch_id
             $fullorder->membership_id =   2222;//Auth::User()->membership_id
             $fullorder->status        =  "under consideration";
+            $fullorder->type          =   $request->type;
             $fullorder->save();
             return redirect()->route('fullorders.show',$fullorder);
     }
@@ -70,8 +71,12 @@ class FullOrderController extends Controller
      */
     public function show(FullOrder $fullorder)
     {
-        return view('fullorder.show',['fullorder'=>$fullorder]);
+        if($fullorder->type == "local")
+              return view('fullorder.show_local',['fullorder'=>$fullorder]);
+        else
+              return view('fullorder.show_external',['fullorder'=>$fullorder]);
     }
+
 
     /**
      * Show the form for editing the specified resource.
