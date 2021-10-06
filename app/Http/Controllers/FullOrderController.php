@@ -63,7 +63,15 @@ class FullOrderController extends Controller
             elseif($request->type == "transfer"){
                 $fullorder->country_before  = $request->countryfrom;
                 $fullorder->country_after = $request->tocountry;
-                // $fullorder->transportation_reasons = $request->;
+                $fullorder->transportation_reasons = $request->transportation_reasons;
+                // $fullorder->home_change =;
+                // $fullorder->work_change =;
+                $fullorder->not_debtor = $request->debt;
+                $fullorder->registered_branch_decision = $request->registered_branch_decision;
+                $fullorder->registered_branch_disapproval_reasons = $request->registered_branch_disapproval_reasons;
+                $fullorder->transferred_branch_decision = $request->transferred_branch_decision;
+                $fullorder->transferred_branch_disapproval_reasons = $request->transferred_branch_disapproval_reasons;
+                $fullorder->newmembership_number = $request->newmembership_number;
 
             }
             else{

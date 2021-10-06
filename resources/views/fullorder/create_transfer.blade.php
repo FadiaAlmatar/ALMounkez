@@ -77,7 +77,7 @@
             <br><hr>
             <div class="form-group">
                 <label for="reasons">{{__('That is for the following reasons :')}}</label>
-                <textarea class="form-control" id="reasons" rows="3" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif></textarea>
+                <textarea name="transportation_reasons"class="form-control" id="reasons" rows="3" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif></textarea>
             </div>
             <p>{{__('Evidences attached')}}</p>
             <div class="mb-3" >
@@ -116,17 +116,17 @@
             <p style="font-weight: bold;">{{__('Decision of the board of directors of the branch in which it is registered')}}</p><hr><br>
             <div>
                 <label style="display:inline;width:70%;"class="form-label" for="approval">{{__('Approval')}}</label>
-                <select style="width:10%"class="input @error('approval')is-danger @enderror"name="approval"id="approval"class="form-select form-select-sm" aria-label=".form-select-sm example" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif>
+                <select style="width:10%"class="input @error('registered_branch_decision')is-danger @enderror"name="registered_branch_decision"id="registered_branch_decision"class="form-select form-select-sm" aria-label=".form-select-sm example" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif>
                     <option></option>
-                    <option value="1" @if (old('approval') == "1") {{ 'selected' }} @endif>{{__('Approval')}}</option>
-                    <option value="0" @if (old('approval') == "0") {{ 'selected' }} @endif>{{__('Disapproval')}} </option>
+                    <option value="1" @if (old('registered_branch_decision') == "1") {{ 'selected' }} @endif>{{__('Approval')}}</option>
+                    <option value="0" @if (old('registered_branch_decision') == "0") {{ 'selected' }} @endif>{{__('Disapproval')}} </option>
                  </select>
-                 @error('approval')
+                 @error('registered_branch_decision')
                    <p class="help is-danger">{{ $message }}</p>
                  @enderror
                  <div class="form-group">
                     <label for="reasons">{{__('reasons :(If not approved)')}}</label>
-                    <textarea class="form-control" id="reasons" rows="3" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif></textarea>
+                    <textarea name="registered_branch_disapproval_reasons"class="form-control" id="reasons" rows="3" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif></textarea>
                 </div>
             </div>
 {{--قرار مجلس إدارة الفرع الراغب بالانتقال إليه --}}
@@ -134,17 +134,17 @@
             <p style="font-weight: bold;">{{__('The decision of the board of directors of the branch wishing to move to it: ')}}</p><hr><br>
             <div>
                 <label style="display:inline;width:70%;"class="form-label" for="approval">{{__('Approval')}}</label>
-                <select style="width:10%"class="input @error('approval')is-danger @enderror"name="approval"id="approval"class="form-select form-select-sm" aria-label=".form-select-sm example" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif>
+                <select style="width:10%"class="input @error('transferred_branch_decision')is-danger @enderror"name="transferred_branch_decision"id="transferred_branch_decision"class="form-select form-select-sm" aria-label=".form-select-sm example" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif>
                     <option></option>
-                    <option value="1" @if (old('approval') == "1") {{ 'selected' }} @endif>{{__('Approval')}}</option>
-                    <option value="0" @if (old('approval') == "0") {{ 'selected' }} @endif>{{__('Disapproval')}} </option>
+                    <option value="1" @if (old('transferred_branch_decision') == "1") {{ 'selected' }} @endif>{{__('Approval')}}</option>
+                    <option value="0" @if (old('transferred_branch_decision') == "0") {{ 'selected' }} @endif>{{__('Disapproval')}} </option>
                 </select>
-                 @error('approval')
+                 @error('transferred_branch_decision')
                    <p class="help is-danger">{{ $message }}</p>
                  @enderror
                  <div class="form-group">
                     <label for="reasons">{{__('reasons :(If not approved)')}}</label>
-                    <textarea class="form-control" id="reasons" rows="3" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif></textarea>
+                    <textarea name="transferred_branch_disapproval_reasons"class="form-control" id="reasons" rows="3" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif></textarea>
                 </div>
             </div>
 {{--  بيان أمين الصندوق--}}
