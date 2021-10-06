@@ -23,13 +23,13 @@ class CreateFullOrdersTable extends Migration
             $table->boolean('not_debtor')->nullable();//بريئ الذمة
             $table->float('money_debt')->nullable();//مبلغ الذمة
             $table->float('money_order')->nullable();// مبلغ الطلب أو مبلغ امين الصندوق
-            $table->date('date_order')->nullable();//تاريخ قبض امين الصندوق
-            $table->float('money_central')->nullable();//مبلغ امين الصندوق المركزية
-            $table->date('date_central')->nullable();//تاريخ قبض امين الصندوق المركزية
-            // $table->boolean('capture')->nullable();//تم القبض
-            // $table->boolean('receipt')->nullable();//تم الاستلام
-            // $table->date('Published_at')->nullable();//تاريخ الصدور
-            // $table->date('received_date')->nullable();//تاريخ الاستلام
+            // $table->date('date_order')->nullable();//تاريخ قبض امين الصندوق
+            // $table->float('money_central')->nullable();//مبلغ امين الصندوق المركزية
+            // $table->date('date_central')->nullable();//تاريخ قبض امين الصندوق المركزية
+            $table->boolean('capture')->nullable();//تم القبض
+            $table->boolean('receipt')->nullable();//تم الاستلام
+            $table->date('Published_at')->nullable();//تاريخ الصدور
+            $table->date('received_date')->nullable();//تاريخ الاستلام
             $table->string('country_before')->nullable();//المحافظة المنتقل منها
             $table->string('country_after')->nullable();//المحافظة المنتقل اليها
             $table->text('transportation_reasons')->nullable();//أسباب النقل
@@ -39,9 +39,14 @@ class CreateFullOrdersTable extends Migration
             $table->text('registered_branch_disapproval_reasons')->nullable();//اسباب عدم موافقة الفرع المسجل به
             $table->boolean('transferred_branch_decision')->nullable();//قرار الفرع المنتقل اليه
             $table->text('transferred_branch_disapproval_reasons')->nullable();//أسباب عدم موافقة الفرع المنتقل اليه
-            $table->text('Chairman_decision')->nullable();//قرار رئيس مجلس الادارة
+            $table->boolean('Chairman_decision')->nullable();//قرار رئيس مجلس الادارة
+            $table->text('Chairman_disapproval_reasons')->nullable();//اسباب عدم موافقة رئيس مجلس الادارة
             $table->biginteger('newmembership_number')->nullable();//رقم العضوية الجديد
             $table->text('replace_reasons')->nullable();//اسباب استبدال
+            $table->string('police_image')->nullable();//صورة ضبط الشرطة
+            $table->string('damaged_card_image')->nullable();//صورة البطاقة التالفة
+            $table->string('judgment_decision_image')->nullable();//صورة قرار المحكمة
+            $table->string('passport_image')->nullable();//صورة جواز السفر
             $table->string('fullname_arabic')->nullable();//الاسم الثلاثي عربي
             $table->string('fullname_english')->nullable();//الاسم الثلاثي انكليزي
             $table->string('personal_image')->nullable();//الصورة الشخصية
