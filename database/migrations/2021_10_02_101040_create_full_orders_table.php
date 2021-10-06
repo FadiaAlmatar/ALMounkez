@@ -35,7 +35,7 @@ class CreateFullOrdersTable extends Migration
             $table->string('registered_branch_disapproval_reasons')->nullable();//اسباب عدم موافقة الفرع المسجل به
             $table->boolean('transferred_branch_decision')->nullable();//قرار الفرع المنتقل اليه
             $table->string('transferred_branch_disapproval_reasons')->nullable();//أسباب عدم موافقة الفرع المنتقل اليه
-            $table->biginteger('newmembership_id')->nullable();//رقم العضوية الجديد
+            $table->biginteger('newmembership_number')->nullable();//رقم العضوية الجديد
             $table->string('replace_reasons')->nullable();//اسباب استبدال
             $table->string('fullname_arabic')->nullable();//الاسم الثلاثي عربي
             $table->string('fullname_english')->nullable();//الاسم الثلاثي انكليزي

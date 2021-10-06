@@ -17,11 +17,19 @@
         text-align: right;
         float:right;
     }
-    .form-check-input{
-        text-align: right;
+    #Lost,#Consists,#Modification,#personal,#Transfer,#error,.form-check-input{
         float:right;
-        right: 0;
     }
+    .form-check-label{
+        margin-right: 20px;
+    }
+    #Modification,#personal{
+        margin-right: 20px;
+    }
+    #labelmodification,#labelpersonal{
+        margin-right: 40px;
+    }
+
     </style>
     @endif
   </head>

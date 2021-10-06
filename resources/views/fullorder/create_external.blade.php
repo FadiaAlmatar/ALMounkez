@@ -45,7 +45,7 @@
         <br><p>{{__('Amount has been received ')}}<input style="width:150px;"type="text" class="input @error('money_order')is-danger @enderror"id="money_order" name="money_order"value="{{ old('money_order') }}"class="form-control" placeholder="{{__('Enter order money')}}" disabled/>{{__(' SYP')}}</p><br>
 {{-- قرار رئيس مجلس الإدارة --}}
         <hr><br>
-        <p style="font-weight: bold;">{{__("Chairman's decision")}}</p><hr><br>
+        <p style="font-weight: bold;">{{__("Chairman's decision: ")}}</p><hr><br>
         <textarea class="form-control" id="reasons" rows="3" disabled></textarea><hr><br><br>
 
         @endif
