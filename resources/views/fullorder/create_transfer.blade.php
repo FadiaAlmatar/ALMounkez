@@ -92,6 +92,8 @@
                 @enderror
             </div>
             <p>{{__('Request date: ')}}</p><hr><br>
+            </table> <button type="submit" class="btn btn-primary">{{__('Send')}}</button><br><br>
+
 {{-- بيان الدارة المالية --}}
 @if(Auth::User()->role == "user")
             <p style="font-weight: bold;">{{__('Financial Management Statement:')}}</p><hr>
