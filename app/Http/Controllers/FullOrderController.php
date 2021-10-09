@@ -88,7 +88,6 @@ class FullOrderController extends Controller
                     $path = $image->store('work_changes', 'public');
                     $fullorder->work_change = $path;
                 }
-                $fullorder->not_debtor = $request->debt;
                 $fullorder->registered_branch_decision             = $request->registered_branch_decision;
                 $fullorder->registered_branch_disapproval_reasons  = $request->registered_branch_disapproval_reasons;
                 $fullorder->transferred_branch_decision            = $request->transferred_branch_decision;
