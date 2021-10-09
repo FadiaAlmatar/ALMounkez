@@ -49,7 +49,7 @@
 <br><p>{{__('Amount has been received ')}}
     <input style="width:150px;"type="text" class="input @error('money_central')is-danger @enderror"id="money_central" name="money_central"value="{{ old('money_central') }}"class="form-control" placeholder="{{__('Enter order central')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif/>{{__(' SYP')}}</p><br>
 {{-- قرار رئيس مجلس الإدارة --}}
-< <hr><br>
+ <hr><br>
 <p style="font-weight: bold;">{{__("Chairman's decision: ")}}</p><hr><br>
 <div>
     <label style="display:inline;width:70%;"class="form-label" for="approval">{{__('Approval')}}</label>
