@@ -35,7 +35,7 @@
             <br><hr>
             <div class="form-group">
                 <label for="reasons">{{__('That is for the following reasons :')}}</label>
-                <textarea name="transportation_reasons"class="form-control" id="reasons" rows="3" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>{{$fullorder->transportation_reasons}}</textarea>
+                <textarea name="transportation_reasons"class="form-control" id="reasons" rows="3" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif readonly>{{$fullorder->transportation_reasons}}</textarea>
             </div>
             <p>{{__('Evidences attached')}}</p>
             <div class="mb-3" >

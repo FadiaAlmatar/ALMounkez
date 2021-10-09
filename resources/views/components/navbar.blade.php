@@ -23,6 +23,7 @@
                       {{__('create order')}}
                     </a>
                 </li>
+                @auth
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: orange">
                      {{ __('Orders') }}
@@ -39,6 +40,7 @@
                     @endif
                     </ul>
                  </li>
+                 @endauth
                  <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: orange">
                       {{ __('lang') }}

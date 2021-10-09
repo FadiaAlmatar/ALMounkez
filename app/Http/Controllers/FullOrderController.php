@@ -114,7 +114,7 @@ class FullOrderController extends Controller
                 $request->validate([
                 'FullName_English'              => 'required|min:3|regex:/^[A-Za-z_ ]*$/|not_regex:/[0-9]/',
                 'FullName_Arabic'               => 'required|min:3|not_regex:/[A-Za-z0-9]/',
-                'replace_reason'                =>  'required'
+                // 'replace_reason'                =>  'required'
                 ] );
                 $fullorder-> replace_reasons  = $request->replace_reason;
                 $fullorder->police_image      = $request->police_image;

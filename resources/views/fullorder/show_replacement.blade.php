@@ -11,7 +11,6 @@
                 <input class="form-check-input" type="checkbox" value="" id="Lost" name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
                 <label class="form-check-label" for="Lost">
                   {{__('Lost (police decision attached)')}}
-
                 <input class="form-control" type="file" accept="image/*"id="police_image" name="police_image" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
                     @error('police_image')
                     <p class="help is-danger">{{ $message }}</p>
@@ -75,16 +74,16 @@
         <table class="table table-bordered">
               <tr>
                 <th scope="col" style="width:30%">{{__('FullName/Arabic')}}</th>
-                <td ><input type="text" class="input @error('FullName_Arabic')is-danger @enderror"id="FullName/Arabic" name="FullName_Arabic"value="{{$fullorder->fullname_arabic}}"class="form-control" placeholder="{{__('Enter FullName/Arabic')}}" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif/></td>
+                <td ><input type="text" class="input @error('FullName_Arabic')is-danger @enderror"id="FullName/Arabic" name="FullName_Arabic"value="{{$fullorder->fullname_arabic}}"class="form-control" placeholder="{{__('Enter FullName/Arabic')}}" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif readonly/></td>
               </tr>
               <tr>
                 <th scope="col">{{__('FullName/English to be placed on the new card')}}</th>
-                <td ><input type="text" class="input @error('FullName_English')is-danger @enderror"id="FullName/English" name="FullName_English"value="{{$fullorder->fullname_english }}"class="form-control" placeholder="{{__('Enter FullName/English')}}" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif/></td>
+                <td ><input type="text" class="input @error('FullName_English')is-danger @enderror"id="FullName/English" name="FullName_English"value="{{$fullorder->fullname_english }}"class="form-control" placeholder="{{__('Enter FullName/English')}}" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif readonly/></td>
               </tr>
               <tr>
                 <th scope="col">{{__('Change personal image')}}</th>
                 <td> <div class="mb-3">
-                      <input class="form-control" type="file" accept="image/*"id="personal_image" name="personal_image" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
+                      <input class="form-control" type="file" accept="image/*"id="personal_image" name="personal_image" disabled>
                       @error('personal_image')
                           <p class="help is-danger">{{ $message }}</p>
                       @enderror
@@ -92,7 +91,7 @@
               </tr>
               <tr>
                 <th scope="col">{{__('The new membership number')}} <br>{{__('when transferring from one branch to another')}}</th>
-                <td ><input type="text" class="input @error('newMembershipNumber')is-danger @enderror"id="newMembershipNumber" name="newMembershipNumber"value="{{ $fullorder->newmembership_number }}"class="form-control" placeholder="{{__('Enter new Membership Number')}}" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif/></td>
+                <td ><input type="text" class="input @error('newMembershipNumber')is-danger @enderror"id="newMembershipNumber" name="newMembershipNumber"value="{{ $fullorder->newmembership_number }}"class="form-control" placeholder="{{__('Enter new Membership Number')}}" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif readonly/></td>
               </tr>
           </table>
 {{-- membership only --}}
