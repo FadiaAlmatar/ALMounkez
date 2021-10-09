@@ -15,9 +15,15 @@ class FullOrderController extends Controller
      */
     public function index()
     {
-
+    if(Auth::User()->role == "user"){
        $myorders = FullOrder::where('user_id', Auth::User()->id)->get();
        return view('fullorder.index',['myorders' => $myorders]);
+    }
+    else{
+        $orders = FullOrder::all();
+        return view('fullorder.index',['orders' => $orders]);
+
+    }
     }
 
     /**

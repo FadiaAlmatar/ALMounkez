@@ -9,6 +9,7 @@
       </tr>
     </thead>
     <tbody>
+    @if(Auth::User()->role == "user")
     @foreach ($myorders as $myorder)
       <tr>
         <th style="width:10%"scope="row"><a href="{{route('fullorders.show',$myorder)}}">{{$myorder->id}}</a></th>
@@ -17,6 +18,16 @@
         <td style="width:20%;text-align:center">{{$myorder->created_at}}</td>
       </tr>
     @endforeach
+    @else
+    @foreach ($orders as $order)
+      <tr>
+        <th style="width:10%"scope="row"><a href="{{route('fullorders.show',$myorder)}}">{{$order->id}}</a></th>
+        <td style="text-align:center"><a href="{{route('fullorders.show',$myorder)}}">{{$order->type}}</a></td>
+        <td style="text-align:center">{{$order->status}}</td>
+        <td style="width:20%;text-align:center">{{$order->created_at}}</td>
+      </tr>
+    @endforeach
+    @endif
     </tbody>
   </table>
 </x-layouts.app>
