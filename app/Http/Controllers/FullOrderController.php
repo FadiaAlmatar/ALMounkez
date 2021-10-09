@@ -77,12 +77,12 @@ class FullOrderController extends Controller
             }//transfer
             elseif($request->type == "transfer"){
                 $request->validate([
-                    'countryfrom'            => 'required',
-                    'tocountry'              => 'required',
+                    'from_country'            => 'required',
+                    'to_country'              => 'required',
                     'transportation_reasons' => 'required'
                     ] );
-                $fullorder->country_before         = $request->countryfrom;
-                $fullorder->country_after          = $request->tocountry;
+                $fullorder->country_before         = $request->from_country;
+                $fullorder->country_after          = $request->to_country;
                 $fullorder->transportation_reasons = $request->transportation_reasons;
                 $fullorder->home_change            =      $request->change_home;
                 if ($request->has('change_home')) {         //image home change

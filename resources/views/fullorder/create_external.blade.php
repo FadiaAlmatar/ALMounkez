@@ -6,7 +6,10 @@
             <input name="type" value="external" hidden>
             <strong style="font-size:13px;">{{__('(Implementation of the decision of the Board of Directors in its session No. /4/ held on the date 28/01/2016 containing the determination of the amount 1000 SYP of the value of a membership document)')}}</strong><br><br>
             <p>{{__('Gentlemen of the Financial and Accounting Professions Syndicate, please give me a membership document stating that I am a registered member of the Syndicate')}}<br><br>{{__('to submit it to')}}
-            <input style="width:150px;"type="text" class="input @error('side')is-danger @enderror"id="side" name="side"value="{{ old('side') }}"class="form-control" placeholder="{{__('Enter side name')}}" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif /></p><br>
+            <input style="width:150px;"type="text" class="input @error('side')is-danger @enderror"id="side" name="side"value="{{ old('side') }}"class="form-control" placeholder="{{__('Enter side name')}}" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif />
+            @error('side')
+            <p class="help is-danger">{{ $message }}</p>
+            @enderror</p><br>
 {{-- membership only --}}
             <table class="table table-bordered">
             <thead>
