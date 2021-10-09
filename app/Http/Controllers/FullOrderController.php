@@ -56,19 +56,19 @@ class FullOrderController extends Controller
             $fullorder->not_debtor    =  $request->debt;
             $fullorder->money_debt    = $request->money_debt;
             $fullorder->money_order   = $request->money_order;
+            //local
             if($request->type == "local"){
             $fullorder->side                         =   $request->side;
             $fullorder->Chairman_decision            = $request->Chairman_decision;
             $fullorder->Chairman_disapproval_reasons = $request->Chairman_disapproval_reasons;
-            $fullorder->status                       =  "under consideration";
-            }
+            }//external
             elseif($request->type == "external"){
                 $fullorder->money_central   =  $request->money_central ;
                 $fullorder->side                         =   $request->side;
                 $fullorder->Chairman_decision            = $request->Chairman_decision;
                 $fullorder->Chairman_disapproval_reasons = $request->Chairman_disapproval_reasons;
-                $fullorder->status                       =  "under consideration";
-            }
+
+            }//transfer
             elseif($request->type == "transfer"){
 
                 $fullorder->country_before  = $request->countryfrom;
@@ -91,7 +91,7 @@ class FullOrderController extends Controller
                 $fullorder->transferred_branch_decision            = $request->transferred_branch_decision;
                 $fullorder->transferred_branch_disapproval_reasons = $request->transferred_branch_disapproval_reasons;
                 $fullorder->newmembership_number                   = $request->newmembership_number;
-            }
+            }//replacement
             else{
                 $fullorder-> replace_reasons  = $request->replace_reason;
                 $fullorder->police_image      = $request->police_image;
@@ -138,6 +138,7 @@ class FullOrderController extends Controller
 
             }
             $fullorder->type          =   $request->type;
+            $fullorder->status        =  "under consideration";
             $fullorder->save();
             return redirect()->route('fullorders.show',$fullorder);
     }
