@@ -59,11 +59,18 @@ class FullOrderController extends Controller
             $fullorder->not_debtor    =  $request->debt;
             $fullorder->money_debt    = $request->money_debt;
             $fullorder->money_order   = $request->money_order;
-            if(($request->type == "local") || ($request->type == "external")){
+            if($request->type == "local"){
             $fullorder->side                         =   $request->side;
             $fullorder->Chairman_decision            = $request->Chairman_decision;
             $fullorder->Chairman_disapproval_reasons = $request->Chairman_disapproval_reasons;
             $fullorder->status                       =  "under consideration";
+            }
+            elseif($request->type == "external"){
+                $fullorder->money_central   =  $request->money_central ;
+                $fullorder->side                         =   $request->side;
+                $fullorder->Chairman_decision            = $request->Chairman_decision;
+                $fullorder->Chairman_disapproval_reasons = $request->Chairman_disapproval_reasons;
+                $fullorder->status                       =  "under consideration";
             }
             elseif($request->type == "transfer"){
                 $fullorder->country_before  = $request->countryfrom;

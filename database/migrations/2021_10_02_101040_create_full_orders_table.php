@@ -24,7 +24,7 @@ class CreateFullOrdersTable extends Migration
             $table->float('money_debt')->nullable();//مبلغ الذمة
             $table->float('money_order')->nullable();// مبلغ الطلب أو مبلغ امين الصندوق
             // $table->date('date_order')->nullable();//تاريخ قبض امين الصندوق
-            // $table->float('money_central')->nullable();//مبلغ امين الصندوق المركزية
+            $table->float('money_central')->nullable();//مبلغ امين الصندوق المركزية
             // $table->date('date_central')->nullable();//تاريخ قبض امين الصندوق المركزية
             $table->boolean('capture')->nullable();//تم القبض
             $table->boolean('receipt')->nullable();//تم الاستلام
