@@ -75,11 +75,11 @@
         <table class="table table-bordered">
               <tr>
                 <th scope="col" style="width:30%">{{__('FullName/Arabic')}}</th>
-                <td ><input type="text" class="input @error('FullName/Arabic')is-danger @enderror"id="FullName/Arabic" name="FullName/Arabic"value="{{ old('FullName/Arabic') }}"class="form-control" placeholder="{{__('Enter FullName/Arabic')}}" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif/></td>
+                <td ><input type="text" class="input @error('FullName_Arabic')is-danger @enderror"id="FullName/Arabic" name="FullName_Arabic"value="{{ old('FullName_Arabic') }}"class="form-control" placeholder="{{__('Enter FullName/Arabic')}}" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif/></td>
               </tr>
               <tr>
                 <th scope="col">{{__('FullName/English to be placed on the new card')}}</th>
-                <td ><input type="text" class="input @error('FullName/English')is-danger @enderror"id="FullName/English" name="FullName/English"value="{{ old('FullName/English') }}"class="form-control" placeholder="{{__('Enter FullName/English')}}" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif/></td>
+                <td ><input type="text" class="input @error('FullName_English')is-danger @enderror"id="FullName/English" name="FullName_English"value="{{ old('FullName_English') }}"class="form-control" placeholder="{{__('Enter FullName/English')}}" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif/></td>
               </tr>
               <tr>
                 <th scope="col">{{__('Change personal image')}}</th>

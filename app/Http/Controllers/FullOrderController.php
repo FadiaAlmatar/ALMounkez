@@ -53,28 +53,52 @@ class FullOrderController extends Controller
             'side'                           => 'required|min:3',
             ] );
             $fullorder = new FullOrder();
-            if(($request->type == "local") || ($request->type == "external")){
-            $fullorder->side          =   $request->side;
-            $fullorder->user_id       =   Auth::User()->id;
+            $fullorder->money_debt = $request->money_debt;
+            $fullorder->money_order = $request->money_order;
             $fullorder->branch_id     =   1;//Auth::User()->branch_id
             $fullorder->membership_id =   2222;//Auth::User()->membership_id
+            $fullorder->user_id       =   Auth::User()->id;
+            $fullorder->not_debtor   =  $request->debt;
+            if(($request->type == "local") || ($request->type == "external")){
+            $fullorder->side          =   $request->side;
             $fullorder->status        =  "under consideration";
             }
             elseif($request->type == "transfer"){
                 $fullorder->country_before  = $request->countryfrom;
                 $fullorder->country_after = $request->tocountry;
                 $fullorder->transportation_reasons = $request->transportation_reasons;
-                // $fullorder->home_change =;
-                // $fullorder->work_change =;
+                $fullorder->home_change    =      $request->change_home;
+                if ($request->has('change_home')) {         //image home change
+                    $image = $request->change_home;
+                    $path = $image->store('home_changes', 'public');
+                    $fullorder->home_change = $path;
+                }
+                $fullorder->work_change    =      $request->change_work;
+                if ($request->has('change_work')) {         //image work change
+                    $image = $request->change_work;
+                    $path = $image->store('work_changes', 'public');
+                    $fullorder->work_change = $path;
+                }
                 $fullorder->not_debtor = $request->debt;
-                $fullorder->registered_branch_decision = $request->registered_branch_decision;
-                $fullorder->registered_branch_disapproval_reasons = $request->registered_branch_disapproval_reasons;
-                $fullorder->transferred_branch_decision = $request->transferred_branch_decision;
+                $fullorder->registered_branch_decision             = $request->registered_branch_decision;
+                $fullorder->registered_branch_disapproval_reasons  = $request->registered_branch_disapproval_reasons;
+                $fullorder->transferred_branch_decision            = $request->transferred_branch_decision;
                 $fullorder->transferred_branch_disapproval_reasons = $request->transferred_branch_disapproval_reasons;
-                $fullorder->newmembership_number = $request->newmembership_number;
-
+                $fullorder->newmembership_number                   = $request->newmembership_number;
             }
             else{
+                $fullorder-> replace_reasons  = $request->replace_reason;
+                $fullorder->police_image      = $request->police_image;
+                $fullorder->damaged_card_image   =  $request-> damaged_card_image;
+                $fullorder->judgment_decision_image  =$request->judgment_decision_image;
+                $fullorder->passport_image       =  $request->passport_image;
+                $fullorder->fullname_arabic      =  $request->FullName_Arabic;
+                $fullorder->fullname_english     = $request->FullName_English;
+                $fullorder->personal_image       =  $request->personal_image;
+                $fullorder->personal_dentification_image  = $request->personal_identification_image;
+                $fullorder->newmembership_number =$request->newMembershipNumber;
+                $fullorder->Chairman_decision = $request->Chairman_decision;
+                $fullorder->Chairman_disapproval_reasons = $request->Chairman_disapproval_reasons;
 
             }
             $fullorder->type          =   $request->type;
