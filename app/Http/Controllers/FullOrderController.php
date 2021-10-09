@@ -16,7 +16,7 @@ class FullOrderController extends Controller
     public function index()
     {
 
-       $myorders = FullOrder::all();
+       $myorders = FullOrder::where('user_id', Auth::User()->id)->get();
        return view('fullorder.index',['myorders' => $myorders]);
     }
 
