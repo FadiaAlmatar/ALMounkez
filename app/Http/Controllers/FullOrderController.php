@@ -58,23 +58,33 @@ class FullOrderController extends Controller
             $fullorder->money_order   = $request->money_order;
             //local
             if($request->type == "local"){
-            $fullorder->side                         =   $request->side;
+                $request->validate([
+                    'side'              => 'required|min:3',
+                    ] );
+            $fullorder->side                         = $request->side;
             $fullorder->Chairman_decision            = $request->Chairman_decision;
             $fullorder->Chairman_disapproval_reasons = $request->Chairman_disapproval_reasons;
             }//external
             elseif($request->type == "external"){
-                $fullorder->money_central   =  $request->money_central ;
+                $request->validate([
+                    'side'              => 'required|min:3',
+                    ] );
+                $fullorder->money_central                =  $request->money_central ;
                 $fullorder->side                         =   $request->side;
                 $fullorder->Chairman_decision            = $request->Chairman_decision;
                 $fullorder->Chairman_disapproval_reasons = $request->Chairman_disapproval_reasons;
 
             }//transfer
             elseif($request->type == "transfer"){
-
-                $fullorder->country_before  = $request->countryfrom;
-                $fullorder->country_after   = $request->tocountry;
+                $request->validate([
+                    'countryfrom'            => 'required',
+                    'tocountry'              => 'required',
+                    'transportation_reasons' => 'required'
+                    ] );
+                $fullorder->country_before         = $request->countryfrom;
+                $fullorder->country_after          = $request->tocountry;
                 $fullorder->transportation_reasons = $request->transportation_reasons;
-                $fullorder->home_change    =      $request->change_home;
+                $fullorder->home_change            =      $request->change_home;
                 if ($request->has('change_home')) {         //image home change
                     $image = $request->change_home;
                     $path = $image->store('home_changes', 'public');
