@@ -53,19 +53,21 @@ class FullOrderController extends Controller
             'side'                           => 'required|min:3',
             ] );
             $fullorder = new FullOrder();
-            $fullorder->money_debt = $request->money_debt;
-            $fullorder->money_order = $request->money_order;
             $fullorder->branch_id     =   1;//Auth::User()->branch_id
             $fullorder->membership_id =   2222;//Auth::User()->membership_id
             $fullorder->user_id       =   Auth::User()->id;
-            $fullorder->not_debtor   =  $request->debt;
+            $fullorder->not_debtor    =  $request->debt;
+            $fullorder->money_debt    = $request->money_debt;
+            $fullorder->money_order   = $request->money_order;
             if(($request->type == "local") || ($request->type == "external")){
-            $fullorder->side          =   $request->side;
-            $fullorder->status        =  "under consideration";
+            $fullorder->side                         =   $request->side;
+            $fullorder->Chairman_decision            = $request->Chairman_decision;
+            $fullorder->Chairman_disapproval_reasons = $request->Chairman_disapproval_reasons;
+            $fullorder->status                       =  "under consideration";
             }
             elseif($request->type == "transfer"){
                 $fullorder->country_before  = $request->countryfrom;
-                $fullorder->country_after = $request->tocountry;
+                $fullorder->country_after   = $request->tocountry;
                 $fullorder->transportation_reasons = $request->transportation_reasons;
                 $fullorder->home_change    =      $request->change_home;
                 if ($request->has('change_home')) {         //image home change
