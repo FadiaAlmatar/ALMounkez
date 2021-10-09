@@ -17,7 +17,7 @@
         text-align: right;
         float:right;
     }
-    #Lost,#Consists,#Modification,#personal,#Transfer,#error,.form-check-input{
+    #Lost,#Consists,#Modification,#personal,#Transfer,#error,#financially_innocent,#financial_liability{
         float:right;
     }
     .form-check-label{

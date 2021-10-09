@@ -1,7 +1,7 @@
 <x-layouts.app>
     <h1 style="text-align: center;font-weight:bold;text-decoration:underline;margin-top:5px;">{{__('Membership transfer form from one branch to another')}}</h1><br>
     <div class="container"style="margin-top:7px;">
-        <form action="{{ route('fullorders.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('fullorders.store') }}" method="POST" enctype="multipart/form-data" >
             @csrf
         <input name="type" value="transfer" hidden>
         <p>{{__('Mr. Chairman of the Syndicate Branch Council in the province')}}
@@ -54,8 +54,8 @@
                 </select>
                 @error('countryfrom')
                     <p class="help is-danger">{{ $message }}</p>
-                @enderror
-                <br>{{__('To the syndicate branch in the country: ')}}
+                @enderror</p>
+                <br><p>{{__('To the syndicate branch in the country: ')}}
                 <select style="width:150px"class="input @error('tocountry')is-danger @enderror"name="tocountry" id="tocountry"class="form-select form-select-sm" aria-label=".form-select-sm example" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
                     <option></option>
                     <option  value="Damascus"      @if (old('tocountry') == "Damascus") {{ 'selected' }} @endif>       {{__('Damascus')}}      </option>
@@ -97,21 +97,20 @@
             </label>
             </div>
             <p>{{__('Request date: ')}}</p><hr><br>
-            </table> @if(Auth::User()->role == "user")<button type="submit" class="btn btn-primary">{{__('Send')}}</button><br><br>@endif
+             @if(Auth::User()->role == "user")<button type="submit" class="btn btn-primary">{{__('Send')}}</button><br><br>@endif
         </form>
 {{-- بيان الدارة المالية --}}
             <p style="font-weight: bold;">{{__('Financial Management Statement:')}}</p><hr>
             <p style="display:inline">{{__('The fellow')}} <span style="font-weight: bold">{{Auth::User()->name}}</span>{{__(' is affiliated with the Syndicate with a membership number ')}}{{Auth::User()->id}}<br>
                 {{__('And registered in the Syndicate in year')}}........</p><br>
-            <div class="form-check form-check-inline">
+            <div class="form-check">
                 <input class="form-check-input" type="radio" name="debt" id="financially_innocent" value="option1" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif>
                 <label for="financially_innocent" class="form-check-label" value="financially_innocent" @if (old('debt') == "financially_innocent") {{ 'selected' }} @endif>{{__('Financially innocent')}}</label>
             </div>
-            <div class="form-check form-check-inline">
+            <div class="form-check">
                 <input class="form-check-input" type="radio" name="debt" id="financial_liability" value="option2" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif>
                 <label for="financial_liability" class="form-check-label" value="financial_liability" @if (old('debt') == "financial_liability") {{ 'selected' }} @endif>{{__('It has a previous financial liability')}}</label>
                 {{__('equal ')}}<input style="width:150px;"type="text" class="input @error('money_debt')is-danger @enderror"id="money_debt" name="money_debt"value="{{ old('money_debt') }}"class="form-control" placeholder="{{__('Enter debt money')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif/>{{__(' SYP')}}<br>
-
             </div><br><br>
 {{-- قرار مجلس إدارة الفرع المسجل به --}}
             <hr><br>
@@ -157,8 +156,5 @@
             <input style="width:200px;"type="text" class="input @error('newmembership_number')is-danger @enderror"id="newmembership_number" name="newmembership_number"value="{{ old('newmembership_number') }}"class="form-control" placeholder="{{__('Enter new membership number')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif/></p><br>
             @if(Auth::User()->role == "admin")<button type="submit" class="btn btn-primary">{{__('Send')}}</button><br><br>@endif
     </div>
-
 </x-layouts.app>
-
-{{-- {{Auth::User()->name}} --}}
 

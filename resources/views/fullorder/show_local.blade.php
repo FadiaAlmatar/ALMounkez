@@ -27,11 +27,11 @@
     <p style="font-weight: bold;">{{__('Financial Management Statement:')}}</p><hr>
     <p style="display:inline">{{__('Mr.')}} <span style="font-weight: bold">{{Auth::User()->name}}</span>{{__(' is affiliated with the Syndicate with a membership number ')}}{{Auth::User()->id}}<br>
         {{__('We inform you that he is registered in the Syndicate in year ...... and : ')}}</p>&nbsp;
-    <div class="form-check form-check-inline">
+    <div class="form-check">
         <input class="form-check-input" type="radio" name="debt" id="financially_innocent" value="option1" disabled>
         <label for="financially_innocent" class="form-check-label" value="financially_innocent" @if (old('debt') == "financially_innocent") {{ 'selected' }} @endif>{{__('Financially innocent')}}</label>
       </div>
-      <div class="form-check form-check-inline">
+      <div class="form-check">
         <input class="form-check-input" type="radio" name="debt" id="financial_liability" value="option2" disabled>
         <label for="financial_liability" class="form-check-label" value="financial_liability" @if (old('debt') == "financial_liability") {{ 'selected' }} @endif>{{__('It has a previous financial liability')}}</label>
         {{__('equal ')}}<input style="width:150px;"type="text" class="input @error('money_debt')is-danger @enderror"id="money_debt" name="money_debt"value="{{ old('money_debt') }}"class="form-control" placeholder="{{__('Enter debt money')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif/>{{__(' SYP')}}<br>

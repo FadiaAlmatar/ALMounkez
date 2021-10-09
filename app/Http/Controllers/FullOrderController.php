@@ -49,9 +49,6 @@ class FullOrderController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'side'                           => 'required|min:3',
-            ] );
             $fullorder = new FullOrder();
             $fullorder->branch_id     =   1;//Auth::User()->branch_id
             $fullorder->membership_id =   2222;//Auth::User()->membership_id
@@ -73,6 +70,7 @@ class FullOrderController extends Controller
                 $fullorder->status                       =  "under consideration";
             }
             elseif($request->type == "transfer"){
+
                 $fullorder->country_before  = $request->countryfrom;
                 $fullorder->country_after   = $request->tocountry;
                 $fullorder->transportation_reasons = $request->transportation_reasons;
