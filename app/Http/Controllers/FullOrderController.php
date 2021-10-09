@@ -97,13 +97,43 @@ class FullOrderController extends Controller
             else{
                 $fullorder-> replace_reasons  = $request->replace_reason;
                 $fullorder->police_image      = $request->police_image;
-                $fullorder->damaged_card_image   =  $request-> damaged_card_image;
+                if ($request->has('police_image')) {         //image police_image
+                    $image = $request->police_image;
+                    $path = $image->store('police_images', 'public');
+                    $fullorder->police_image = $path;
+                }
+                $fullorder->damaged_card_image   =  $request->damaged_card_image;
+                if ($request->has('damaged_card_image')) {         //image damaged_card_image
+                    $image = $request->damaged_card_image;
+                    $path = $image->store('damaged_card_images', 'public');
+                    $fullorder->damaged_card_image = $path;
+                }
                 $fullorder->judgment_decision_image  =$request->judgment_decision_image;
+                if ($request->has('judgment_decision_image')) {         //image judgment_decision_images
+                    $image = $request->judgment_decision_image;
+                    $path = $image->store('judgment_decision_images', 'public');
+                    $fullorder->judgment_decision_image = $path;
+                }
                 $fullorder->passport_image       =  $request->passport_image;
+                if ($request->has('passport_image')) {         //image passport_image
+                    $image = $request->passport_image;
+                    $path = $image->store('passport_images', 'public');
+                    $fullorder->passport_image = $path;
+                }
                 $fullorder->fullname_arabic      =  $request->FullName_Arabic;
                 $fullorder->fullname_english     = $request->FullName_English;
                 $fullorder->personal_image       =  $request->personal_image;
+                if ($request->has('personal_image')) {         //image personal_image
+                    $image = $request->personal_image;
+                    $path = $image->store('personal_images', 'public');
+                    $fullorder->personal_image = $path;
+                }
                 $fullorder->personal_dentification_image  = $request->personal_identification_image;
+                if ($request->has('personal_identification_image')) {         //image personal_dentification_image
+                    $image = $request->personal_identification_image;
+                    $path = $image->store('personal_identification_images', 'public');
+                    $fullorder->personal_dentification_image = $path;
+                }
                 $fullorder->newmembership_number =$request->newMembershipNumber;
                 $fullorder->Chairman_decision = $request->Chairman_decision;
                 $fullorder->Chairman_disapproval_reasons = $request->Chairman_disapproval_reasons;
