@@ -15,7 +15,9 @@ class FullOrderController extends Controller
      */
     public function index()
     {
-        //
+
+       $myorders = FullOrder::all();
+       return view('fullorder.index',['myorders' => $myorders]);
     }
 
     /**
