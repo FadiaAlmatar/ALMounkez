@@ -205,7 +205,11 @@ return [
         'university.0'         =>'اسم الجامعة',
         'country.0'            =>'اسم البلد',
         'specialization.0'     =>'الاختصاص',
-        'graduationRate.0'     =>'معدل التخرج'
+        'graduationRate.0'     =>'معدل التخرج',
+        'FullName_English'     =>'الاسم الثلاثي انكليزي',
+        'FullName_Arabic'      =>'الاسم الثلاثي عربي',
+        'replace_reason'       =>'سبب البدل'
+
     ],
 
 

@@ -67,6 +67,9 @@
                     {{__('Card incoming error')}}<span>{{__('(caused by the member)')}}</span>
                 </label>
             </div>
+            @error('replace_reason')
+            <p class="help is-danger">{{ $message }}</p>
+            @enderror
         </p>
         {{-- التعديلات المطلوب وضعها على بطاقة العضوية الجديدة --}}
         <hr><br>
