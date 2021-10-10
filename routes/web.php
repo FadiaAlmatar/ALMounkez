@@ -63,6 +63,7 @@ Route::get('/fullorder/create_local', [FullOrderController::class, 'create_local
 Route::get('/fullorder/create_external', [FullOrderController::class, 'create_external'])->name('fullorders.create_external');
 Route::get('/fullorder/create_transfer', [FullOrderController::class, 'create_transfer'])->name('fullorders.create_transfer');
 Route::get('/fullorder/create_replacement', [FullOrderController::class, 'create_replacement'])->name('fullorders.create_replacement');
+Route::post('/fullorder/store_order/{id}', [FullOrderController::class, 'store_order'])->name('fullorders.store_order');
 
 Route::get('/dashboard', function () {
     return view('pages.home');

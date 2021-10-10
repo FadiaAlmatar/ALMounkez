@@ -15,7 +15,7 @@
         <th style="width:10%"scope="row"><a href="{{route('fullorders.show',$myorder)}}">{{$myorder->id}}</a></th>
         <td style="text-align:center"><a href="{{route('fullorders.show',$myorder)}}">{{$myorder->type}}</a></td>
         <td style="text-align:center">{{$myorder->status}}</td>
-        <td style="width:20%;text-align:center">{{$myorder->created_at}}</td>
+        <td style="width:20%;text-align:center">{{ date("Y-m-d h:i A", strtotime($myorder->created_at))}}</td>
       </tr>
     @endforeach
     @else
@@ -24,7 +24,7 @@
         <th style="width:10%"scope="row"><a href="{{route('fullorders.show',$order)}}">{{$order->id}}</a></th>
         <td style="text-align:center"><a href="{{route('fullorders.show',$order)}}">{{$order->type}}</a></td>
         <td style="text-align:center">{{$order->status}}</td>
-        <td style="width:20%;text-align:center">{{$order->created_at}}</td>
+        <td style="width:20%;text-align:center">{{ date("Y-m-d h:i A", strtotime($order->created_at))}}</td>
       </tr>
     @endforeach
     @endif

@@ -61,9 +61,9 @@ class FullOrderController extends Controller
             $fullorder->branch_id     =   1;//Auth::User()->branch_id
             $fullorder->membership_id =   2222;//Auth::User()->membership_id
             $fullorder->user_id       =   Auth::User()->id;
-            $fullorder->not_debtor    =  $request->debt;
-            $fullorder->money_debt    = $request->money_debt;
-            $fullorder->money_order   = $request->money_order;
+            // $fullorder->not_debtor    =   $request->debt;
+            // $fullorder->money_debt    =   $request->money_debt;
+            // $fullorder->money_order   =   $request->money_order;
             //local
             if($request->type == "local"){
                 $request->validate([
@@ -165,6 +165,20 @@ class FullOrderController extends Controller
             $fullorder->save();
             return redirect()->route('fullorders.show',$fullorder);
     }
+    public function store_order(Request $request,$id)
+    {
+        $fullorder = FullOrder::findOrFail($id);
+        $fullorder->not_debtor    =   $request->debt;
+        $fullorder->money_debt    =   $request->money_debt;
+        $fullorder->money_order   =   $request->money_order;
+        if($request->type == "local"){
+        $fullorder->Chairman_decision            = $request->Chairman_decision;
+        $fullorder->Chairman_disapproval_reasons = $request->Chairman_disapproval_reasons;
+        }
+        $fullorder->save();
+
+    }
+
 
     /**
      * Display the specified resource.
