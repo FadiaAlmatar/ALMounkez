@@ -168,6 +168,9 @@ class FullOrderController extends Controller
     public function store_order(Request $request,$id)
     {
         $fullorder = FullOrder::findOrFail($id);
+        $request->validate([
+            'status'              => 'required'
+            ] );
         $fullorder->not_debtor    =   $request->debt;
         $fullorder->money_debt    =   $request->money_debt;
         $fullorder->money_order   =   $request->money_order;
