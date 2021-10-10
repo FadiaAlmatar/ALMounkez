@@ -1,11 +1,12 @@
 <x-layouts.app>
-    <h1 style="text-align: center;font-weight:bold;text-decoration:underline;margin-top:5px;">{{__('Request a external membership document')}}</h1><br>
+    <br>
+    <h1 class="h1-fullorder">{{__('Request a external membership document')}}</h1><br>
     <div class="container"style="margin-top:7px;">
         <strong style="font-size:13px;">{{__('(Implementation of the decision of the Board of Directors in its session No. /4/ held on the date 28/01/2016 containing the determination of the amount 1000 SYP of the value of a membership document)')}}</strong><br><br>
         <p>{{__('Gentlemen of the Financial and Accounting Professions Syndicate, please give me a membership document stating that I am a registered member of the Syndicate')}}<br><br>{{__('to submit it to')}}
-        <input style="width:150px;"type="text" class="input @error('side')is-danger @enderror"id="side" name="side"value="{{ $fullorder->side }}"class="form-control" placeholder="enter side name" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif readonly/></p><br>
+        <input type="text" class="input @error('side')is-danger @enderror input-fullorder"id="side" name="side"value="{{ $fullorder->side }}"class="form-control" placeholder="enter side name" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif readonly/></p><br>
        {{-- membership only --}}
-        <table class="table table-bordered">
+        <table style="width:75%;"class="table table-bordered">
         <thead>
             <tr>
                 <th scope="col">{{__('User ID')}}</th>
@@ -15,13 +16,13 @@
         </thead>
         <tbody>
             <tr>
-                <td style="width:24%"><input type="text" class="input"id="" name=""value="{{ Auth::User()->id}}"class="form-control" placeholder="" readonly/></p></td>
-                <td style="width:24%"><input type="text" class="input"id="" name=""value="{{$fullorder->membership_id}}"class="form-control" placeholder="" readonly/></td>
-                <td style="width:24%"><input type="text" class="input"id="" name=""value="{{ date("Y-m-d h:i A", strtotime($fullorder->created_at))}}"class="form-control" placeholder="" readonly /></td>
+                <td style="width:24%"><input type="text" class="input input-fullorder"id="" name=""value="{{ Auth::User()->id}}"class="form-control" placeholder="" readonly/></p></td>
+                <td style="width:24%"><input type="text" class="input input-fullorder"id="" name=""value="{{$fullorder->membership_id}}"class="form-control" placeholder="" readonly/></td>
+                <td style="width:24%"><input type="text" class="input input-fullorder"id="" name=""value="{{ date("Y-m-d h:i A", strtotime($fullorder->created_at))}}"class="form-control" placeholder="" readonly /></td>
             </tr>
         </tbody>
         </table>
-        <p style="text-align:center;">{{__('Your request will be considered within a maximum period of two days. Please contact us')}}</p>
+        <p class="p-fullorder">{{__('Your request will be considered within a maximum period of two days. Please contact us')}}</p>
         <hr><br>
       {{--  بيان الدارة الماليةللفرع --}}
       <form action="{{ route('fullorders.store_order',$fullorder->id) }}" method="POST" >
@@ -46,20 +47,20 @@
       <div class="form-check">
           <input class="form-check-input" type="radio" name="debt" id="financial_liability" value="{{1}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif>
           <label for="financial_liability" class="form-check-label" value="financial_liability" @if (old('debt') == "financial_liability") {{ 'selected' }} @endif>{{__('It has a previous financial liability')}}</label>
-          {{__('equal ')}}<input style="width:150px;"type="text" class="input @error('money_debt')is-danger @enderror"id="money_debt" name="money_debt"value="{{ old('money_debt') }}"class="form-control" placeholder="{{__('Enter debt money')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif/>{{__(' SYP')}}<br>
+          {{__('equal ')}}<input type="text" class="input @error('money_debt')is-danger @enderror input-fullorder"id="money_debt" name="money_debt"value="{{ old('money_debt') }}"class="form-control" placeholder="{{__('Enter debt money')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif/>{{__(' SYP')}}<br>
       </div><br><br>
       <p>{{__('Mr.: The cashier in the branch, please receive an amount and its amount ')}}
-          <input style="width:150px;"type="text" class="input @error('money_order')is-danger @enderror"id="money_order" name="money_order"value="{{ old('money_order') }}"class="form-control" placeholder="{{__('Enter debt order')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif/>{{__('SYP')}}</p><br>
+          <input type="text" class="input @error('money_order')is-danger @enderror input-fullorder"id="money_order" name="money_order"value="{{ old('money_order') }}"class="form-control" placeholder="{{__('Enter debt order')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif/>{{__('SYP')}}</p><br>
 {{--  بيان أمين الصندوق الفرع--}}
         <hr><br>
         <p style="font-weight: bold;">{{__('Branch Treasurer Statement: ')}}<span style="font-size:13px">{{__('(Note: Only the unpaid subscription fee is received, but the document fee is paid to the central administration)')}}</span></p><hr>
         <br><p>{{__('Amount has been received ')}}
-            <input style="width:150px;"type="text" class="input @error('money_order')is-danger @enderror"id="money_order" name="money_order"value="{{ old('money_order') }}"class="form-control" placeholder="{{__('Enter order money')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif/>{{__(' SYP')}}</p><br>
+            <input type="text" class="input @error('money_order')is-danger @enderror input-fullorder"id="money_order" name="money_order"value="{{ old('money_order') }}"class="form-control" placeholder="{{__('Enter order money')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif/>{{__(' SYP')}}</p><br>
         {{-- بيان أمين الصندوق  /المركزية --}}
         <hr><br>
         <p style="font-weight: bold;">{{__('Treasurer Statement/central: ')}}<span style="font-size:13px">{{__('Only the document amount is received')}}</span></p><hr>
         <br><p>{{__('Amount has been received ')}}
-            <input style="width:150px;"type="text" class="input @error('money_central')is-danger @enderror"id="money_central" name="money_central"value="{{ old('money_central') }}"class="form-control" placeholder="{{__('Enter order central')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif/>{{__(' SYP')}}</p><br>
+            <input type="text" class="input @error('money_central')is-danger @enderror input-fullorder"id="money_central" name="money_central"value="{{ old('money_central') }}"class="form-control" placeholder="{{__('Enter order central')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif/>{{__(' SYP')}}</p><br>
         {{-- قرار رئيس مجلس الإدارة --}}
         <hr><br>
         <p style="font-weight: bold;">{{__("Chairman's decision: ")}}</p><hr><br>

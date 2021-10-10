@@ -101,12 +101,23 @@ color: blue;}
     font-size: 10px;float: right;
  }
 /* end chat style */
+
 /* start order style */
 #myTab,#Personal,#contact,#Qualifications,#pay{
     width:60%;margin:auto;margin-top:5px;
 }
 form .input,form .form-select{
     border-color: blue;
+}
+/* start fullorder style */
+.h1-fullorder{
+    text-align: center;font-weight:bold;text-decoration:underline;margin-top:5px;
+}
+.input-fullorder{
+    width:fit-content;text-align:center;
+}
+.p-fullorder{
+    text-align:center;font-size:13px;font-weight:bold;
 }
 
 
