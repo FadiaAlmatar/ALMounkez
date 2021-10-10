@@ -175,6 +175,25 @@ class FullOrderController extends Controller
         $fullorder->Chairman_decision            = $request->Chairman_decision;
         $fullorder->Chairman_disapproval_reasons = $request->Chairman_disapproval_reasons;
         }
+        elseif($request->type == "external"){
+            $fullorder->money_central                =  $request->money_central ;
+            $fullorder->Chairman_decision            = $request->Chairman_decision;
+            $fullorder->Chairman_disapproval_reasons = $request->Chairman_disapproval_reasons;
+
+            }//transfer
+            elseif($request->type == "transfer"){
+                $fullorder->registered_branch_decision             = $request->registered_branch_decision;
+                $fullorder->registered_branch_disapproval_reasons  = $request->registered_branch_disapproval_reasons;
+                $fullorder->transferred_branch_decision            = $request->transferred_branch_decision;
+                $fullorder->transferred_branch_disapproval_reasons = $request->transferred_branch_disapproval_reasons;
+                $fullorder->newmembership_number                   = $request->newmembership_number;
+            }//replacement
+            else{
+                $fullorder->newmembership_number         = $request->newMembershipNumber;
+                $fullorder->Chairman_decision            = $request->Chairman_decision;
+                $fullorder->Chairman_disapproval_reasons = $request->Chairman_disapproval_reasons;
+            }
+
         $fullorder->save();
 
     }
