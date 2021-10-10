@@ -29,7 +29,7 @@
             @csrf
             <input name="type" value="local" hidden>
             <p style="font-weight: bold;display:inline-block;width:40%">{{__('Financial Management Statement:')}}</p>
-            <div style="display:inline-block;float:right;width:15%;">
+            <div class="status">
             <select name="status"class="input @error('status')is-danger @enderror" class="form-select" aria-label="Default select example">
                 <option selected></option>
                 <option value="under consideration">    {{__('under consideration')}}    </option>

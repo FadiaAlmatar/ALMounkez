@@ -119,6 +119,9 @@ form .input,form .form-select{
 .p-fullorder{
     text-align:center;font-size:13px;font-weight:bold;
 }
+.status{
+   float:right;width:15%;
+}
 
 
 

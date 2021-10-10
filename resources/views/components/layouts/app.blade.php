@@ -29,6 +29,9 @@
     #labelmodification,#labelpersonal{
         margin-right: 40px;
     }
+    .status{
+        float:left;
+    }
 
     </style>
     @endif

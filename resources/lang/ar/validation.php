@@ -212,7 +212,8 @@ return [
         'side'                   =>'الجهة',
         'from_country'           =>'المحافظة',
         'to_country'             =>'المحافظة',
-        'transportation_reasons' =>'أسباب النقل'
+        'transportation_reasons' =>'أسباب النقل',
+        'status'                 =>'حالة الطلب'
 
 
     ],
