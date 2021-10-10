@@ -58,7 +58,19 @@
             @if(Auth::User()->role == "user")<button type="submit" class="btn btn-primary">{{__('Send')}}</button><br><br>@endif
         </form>
 {{-- بيان الدارة المالية --}}
-            <p style="font-weight: bold;">{{__('Financial Management Statement:')}}</p><hr>
+        <form action="{{ route('fullorders.store_order',$fullorder->id) }}" method="POST" >
+            @csrf
+            <input name="type" value="local" hidden>
+            <p style="font-weight: bold;display:inline-block;width:40%">{{__('Financial Management Statement:')}}</p>
+            <select name="status"style="display:inline-block;float:right;width:15%;"class="form-select" aria-label="Default select example">
+                <option selected>Order Status</option>
+                <option value="under consideration">    {{__('under consideration')}}    </option>
+                <option value="Payment required">       {{__('Payment required')}}       </option>
+                <option value="Please pick up">         {{__('Please pick up')}}         </option>
+                <option value="not confirmed">          {{__('not confirmed')}}          </option>
+                <option value="Need to complete papers">{{__('Need to complete papers')}}</option>
+            </select><br><br>
+            <hr>
             <p style="display:inline">{{__('The fellow')}} <span style="font-weight: bold">{{Auth::User()->name}}</span>{{__(' is affiliated with the Syndicate with a membership number ')}}{{Auth::User()->id}}<br>
                 {{__('And registered in the Syndicate in year')}}........</p><br>
             <div class="form-check">
@@ -114,6 +126,7 @@
         <hr><br><p style="font-weight: bold;">{{__('The new membership number in the event that both parties agree to transfer the affiliate')}}
             <input style="width:200px;"type="text" class="input @error('newmembership_number')is-danger @enderror"id="newmembership_number" name="newmembership_number"value="{{ old('newmembership_number') }}"class="form-control" placeholder="{{__('Enter new membership number')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif/></p><br>
             @if(Auth::User()->role == "admin")<button type="submit" class="btn btn-primary">{{__('Send')}}</button><br><br>@endif
+        </form>
     </div>
 
 </x-layouts.app>

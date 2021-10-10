@@ -70,17 +70,17 @@ class FullOrderController extends Controller
                     'side'              => 'required|min:3',
                     ] );
             $fullorder->side                         = $request->side;
-            $fullorder->Chairman_decision            = $request->Chairman_decision;
-            $fullorder->Chairman_disapproval_reasons = $request->Chairman_disapproval_reasons;
+            // $fullorder->Chairman_decision            = $request->Chairman_decision;
+            // $fullorder->Chairman_disapproval_reasons = $request->Chairman_disapproval_reasons;
             }//external
             elseif($request->type == "external"){
                 $request->validate([
                     'side'              => 'required|min:3',
                     ] );
-                $fullorder->money_central                =  $request->money_central ;
+                // $fullorder->money_central                =  $request->money_central ;
                 $fullorder->side                         =   $request->side;
-                $fullorder->Chairman_decision            = $request->Chairman_decision;
-                $fullorder->Chairman_disapproval_reasons = $request->Chairman_disapproval_reasons;
+                // $fullorder->Chairman_decision            = $request->Chairman_decision;
+                // $fullorder->Chairman_disapproval_reasons = $request->Chairman_disapproval_reasons;
 
             }//transfer
             elseif($request->type == "transfer"){
@@ -104,11 +104,11 @@ class FullOrderController extends Controller
                     $path = $image->store('work_changes', 'public');
                     $fullorder->work_change = $path;
                 }
-                $fullorder->registered_branch_decision             = $request->registered_branch_decision;
-                $fullorder->registered_branch_disapproval_reasons  = $request->registered_branch_disapproval_reasons;
-                $fullorder->transferred_branch_decision            = $request->transferred_branch_decision;
-                $fullorder->transferred_branch_disapproval_reasons = $request->transferred_branch_disapproval_reasons;
-                $fullorder->newmembership_number                   = $request->newmembership_number;
+                // $fullorder->registered_branch_decision             = $request->registered_branch_decision;
+                // $fullorder->registered_branch_disapproval_reasons  = $request->registered_branch_disapproval_reasons;
+                // $fullorder->transferred_branch_decision            = $request->transferred_branch_decision;
+                // $fullorder->transferred_branch_disapproval_reasons = $request->transferred_branch_disapproval_reasons;
+                // $fullorder->newmembership_number                   = $request->newmembership_number;
             }//replacement
             else{
                 $request->validate([
@@ -155,9 +155,9 @@ class FullOrderController extends Controller
                     $path = $image->store('personal_identification_images', 'public');
                     $fullorder->personal_dentification_image = $path;
                 }
-                $fullorder->newmembership_number         = $request->newMembershipNumber;
-                $fullorder->Chairman_decision            = $request->Chairman_decision;
-                $fullorder->Chairman_disapproval_reasons = $request->Chairman_disapproval_reasons;
+                // $fullorder->newmembership_number         = $request->newMembershipNumber;
+                // $fullorder->Chairman_decision            = $request->Chairman_decision;
+                // $fullorder->Chairman_disapproval_reasons = $request->Chairman_disapproval_reasons;
 
             }
             $fullorder->type          =   $request->type;
@@ -193,9 +193,8 @@ class FullOrderController extends Controller
                 $fullorder->Chairman_decision            = $request->Chairman_decision;
                 $fullorder->Chairman_disapproval_reasons = $request->Chairman_disapproval_reasons;
             }
-
-        $fullorder->save();
-
+            $fullorder->status = $request->status;
+            $fullorder->save();
     }
 
 

@@ -27,7 +27,16 @@
         <form action="{{ route('fullorders.store_order',$fullorder->id) }}" method="POST" >
             @csrf
             <input name="type" value="local" hidden>
-            <p style="font-weight: bold;">{{__('Financial Management Statement:')}}</p><hr>
+            <p style="font-weight: bold;display:inline-block;width:40%">{{__('Financial Management Statement:')}}</p>
+            <select name="status"style="display:inline-block;float:right;width:15%;"class="form-select" aria-label="Default select example">
+                <option selected>Order Status</option>
+                <option value="under consideration">    {{__('under consideration')}}    </option>
+                <option value="Payment required">       {{__('Payment required')}}       </option>
+                <option value="Please pick up">         {{__('Please pick up')}}         </option>
+                <option value="not confirmed">          {{__('not confirmed')}}          </option>
+                <option value="Need to complete papers">{{__('Need to complete papers')}}</option>
+            </select><br><br>
+            <hr>
             <p style="display:inline">{{__('Mr.')}} <span style="font-weight: bold">{{Auth::User()->name}}</span>{{__(' is affiliated with the Syndicate with a membership number ')}}{{Auth::User()->id}}<br>
                 {{__('We inform you that he is registered in the Syndicate in year ...... and : ')}}</p>&nbsp;
             <div class="form-check">

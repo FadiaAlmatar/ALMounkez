@@ -24,7 +24,19 @@
         <p style="text-align:center;">{{__('Your request will be considered within a maximum period of two days. Please contact us')}}</p>
         <hr><br>
       {{--  بيان الدارة الماليةللفرع --}}
-      <p style="font-weight: bold;">{{__('Branch financial management statement:')}}</p><hr>
+      <form action="{{ route('fullorders.store_order',$fullorder->id) }}" method="POST" >
+        @csrf
+        <input name="type" value="local" hidden>
+        <p style="font-weight: bold;display:inline-block;width:40%">{{__('Branch financial management statement:')}}</p>
+        <select name="status"style="display:inline-block;float:right;width:15%;"class="form-select" aria-label="Default select example">
+            <option selected>Order Status</option>
+            <option value="under consideration">    {{__('under consideration')}}    </option>
+            <option value="Payment required">       {{__('Payment required')}}       </option>
+            <option value="Please pick up">         {{__('Please pick up')}}         </option>
+            <option value="not confirmed">          {{__('not confirmed')}}          </option>
+            <option value="Need to complete papers">{{__('Need to complete papers')}}</option>
+        </select><br><br>
+        <hr>
       <p style="display:inline">{{__('Mr.')}} <span style="font-weight: bold">{{Auth::User()->name}}</span>{{__(' is affiliated with the Syndicate with a membership number ')}}{{Auth::User()->id}}<br>
           {{__('We inform you that he is registered in the Syndicate in year ...... and : ')}}</p>&nbsp;
       <div class="form-check">
@@ -39,33 +51,34 @@
       <p>{{__('Mr.: The cashier in the branch, please receive an amount and its amount ')}}
           <input style="width:150px;"type="text" class="input @error('money_order')is-danger @enderror"id="money_order" name="money_order"value="{{ old('money_order') }}"class="form-control" placeholder="{{__('Enter debt order')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif/>{{__('SYP')}}</p><br>
 {{--  بيان أمين الصندوق الفرع--}}
-<hr><br>
-<p style="font-weight: bold;">{{__('Branch Treasurer Statement: ')}}<span style="font-size:13px">{{__('(Note: Only the unpaid subscription fee is received, but the document fee is paid to the central administration)')}}</span></p><hr>
-<br><p>{{__('Amount has been received ')}}
-    <input style="width:150px;"type="text" class="input @error('money_order')is-danger @enderror"id="money_order" name="money_order"value="{{ old('money_order') }}"class="form-control" placeholder="{{__('Enter order money')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif/>{{__(' SYP')}}</p><br>
-{{-- بيان أمين الصندوق  /المركزية --}}
-<hr><br>
-<p style="font-weight: bold;">{{__('Treasurer Statement/central: ')}}<span style="font-size:13px">{{__('Only the document amount is received')}}</span></p><hr>
-<br><p>{{__('Amount has been received ')}}
-    <input style="width:150px;"type="text" class="input @error('money_central')is-danger @enderror"id="money_central" name="money_central"value="{{ old('money_central') }}"class="form-control" placeholder="{{__('Enter order central')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif/>{{__(' SYP')}}</p><br>
-{{-- قرار رئيس مجلس الإدارة --}}
- <hr><br>
-<p style="font-weight: bold;">{{__("Chairman's decision: ")}}</p><hr><br>
-<div>
-    <label style="display:inline;width:70%;"class="form-label" for="approval">{{__('Approval')}}</label>
-    <select style="width:10%"class="input @error('Chairman_decision')is-danger @enderror"name="Chairman_decision"id="Chairman_decision"class="form-select form-select-sm" aria-label=".form-select-sm example" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif>
-        <option></option>
-        <option value="1" @if (old('Chairman_decision') == "1") {{ 'selected' }} @endif>{{__('Approval')}}</option>
-        <option value="0" @if (old('Chairman_decision') == "0") {{ 'selected' }} @endif>{{__('Disapproval')}} </option>
-     </select>
-     @error('approval')
-       <p class="help is-danger">{{ $message }}</p>
-     @enderror
-     <div class="form-group">
-        <label for="reasons">{{__('reasons :(If not approved)')}}</label>
-        <textarea name="Chairman_disapproval_reasons"class="form-control" id="reasons" rows="2" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif></textarea><br>
+        <hr><br>
+        <p style="font-weight: bold;">{{__('Branch Treasurer Statement: ')}}<span style="font-size:13px">{{__('(Note: Only the unpaid subscription fee is received, but the document fee is paid to the central administration)')}}</span></p><hr>
+        <br><p>{{__('Amount has been received ')}}
+            <input style="width:150px;"type="text" class="input @error('money_order')is-danger @enderror"id="money_order" name="money_order"value="{{ old('money_order') }}"class="form-control" placeholder="{{__('Enter order money')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif/>{{__(' SYP')}}</p><br>
+        {{-- بيان أمين الصندوق  /المركزية --}}
+        <hr><br>
+        <p style="font-weight: bold;">{{__('Treasurer Statement/central: ')}}<span style="font-size:13px">{{__('Only the document amount is received')}}</span></p><hr>
+        <br><p>{{__('Amount has been received ')}}
+            <input style="width:150px;"type="text" class="input @error('money_central')is-danger @enderror"id="money_central" name="money_central"value="{{ old('money_central') }}"class="form-control" placeholder="{{__('Enter order central')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif/>{{__(' SYP')}}</p><br>
+        {{-- قرار رئيس مجلس الإدارة --}}
+        <hr><br>
+        <p style="font-weight: bold;">{{__("Chairman's decision: ")}}</p><hr><br>
+        <div>
+            <label style="display:inline;width:70%;"class="form-label" for="approval">{{__('Approval')}}</label>
+            <select style="width:10%"class="input @error('Chairman_decision')is-danger @enderror"name="Chairman_decision"id="Chairman_decision"class="form-select form-select-sm" aria-label=".form-select-sm example" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif>
+                <option></option>
+                <option value="1" @if (old('Chairman_decision') == "1") {{ 'selected' }} @endif>{{__('Approval')}}</option>
+                <option value="0" @if (old('Chairman_decision') == "0") {{ 'selected' }} @endif>{{__('Disapproval')}} </option>
+            </select>
+            @error('approval')
+            <p class="help is-danger">{{ $message }}</p>
+            @enderror
+            <div class="form-group">
+                <label for="reasons">{{__('reasons :(If not approved)')}}</label>
+                <textarea name="Chairman_disapproval_reasons"class="form-control" id="reasons" rows="2" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif></textarea><br>
     </div>
-</div>
-@if(Auth::User()->role == "admin")<button type="submit" class="btn btn-primary">{{__('Send')}}</button><br><br>@endif
+   </div>
+      @if(Auth::User()->role == "admin")<button type="submit" class="btn btn-primary">{{__('Send')}}</button><br><br>@endif
+      </form>
     </div>
 </x-layouts.app>
