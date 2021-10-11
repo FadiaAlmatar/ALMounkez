@@ -198,6 +198,7 @@ class FullOrderController extends Controller
             }
             $fullorder->status = $request->status;
             $fullorder->save();
+            return redirect()->route('fullorders.show',$fullorder);
     }
 
 
