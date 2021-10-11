@@ -70,13 +70,16 @@
                     <option></option>
                     <option value="1" @if (old('Chairman_decision') == "1") {{ 'selected' }} @endif>{{__('Approval')}}</option>
                     <option value="0" @if (old('Chairman_decision') == "0") {{ 'selected' }} @endif>{{__('Disapproval')}} </option>
+                    {{-- @if(Auth::User()->role == "admin")
+                    <option value="{{ $fullorder->Chairman_decision}}" @if (old('Chairman_decision') == "1") {{ 'selected' }} @endif>{{__('Approval')}}</option>
+                    @endif --}}
                 </select>
                 @error('Chairman_decision')
                 <p class="help is-danger">{{ $message }}</p>
                 @enderror
                 <div class="form-group">
                     <label for="reasons">{{__('reasons :(If not approved)')}}</label>
-                    <textarea name="Chairman_disapproval_reasons"class="form-control" id="reasons" rows="2" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif></textarea><br>
+                    <textarea name="Chairman_disapproval_reasons"class="form-control" id="reasons" rows="2" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif>@if(Auth::User()->role == "admin"){{ $fullorder->Chairman_disapproval_reasons }} @endif</textarea><br>
                 </div>
             </div>
                 @if(Auth::User()->role == "admin")<button type="submit" class="btn btn-primary">{{__('Send')}}</button><br><br>@endif
