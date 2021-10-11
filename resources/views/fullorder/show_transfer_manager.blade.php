@@ -117,11 +117,11 @@
                     @endif
             </div>
 {{--  بيان أمين الصندوق--}}
-        <hr>
-        <p style="font-weight: bold;">{{__('Treasurer statement: ')}}</p><br>
-        <p>{{__('Amount has been received ')}}<input type="text" class="input @error('money_order')is-danger @enderror input-fullorder"id="money_order" name="money_order"value="{{ old('money_order') }}"class="form-control" placeholder="{{__('Enter order money')}}" disabled/>{{__(' SYP')}} {{__('For a membership card fee')}}</p><br>
-        <hr><p style="font-weight: bold;">{{__('The new membership number in the event that both parties agree to transfer the affiliate')}}
-            <input type="text" class="input @error('newmembership_number')is-danger @enderror input-fullorder"id="newmembership_number" name="newmembership_number"value="{{ old('newmembership_number') }}"class="form-control" placeholder="{{__('Enter new membership number')}}" disabled/></p><br>
+            <hr>
+            <p style="font-weight: bold;">{{__('Treasurer statement: ')}}</p><br>
+            <p>{{__('Amount has been received ')}}<input type="text" class="input @error('money_order')is-danger @enderror input-fullorder"id="money_order" name="money_order"value="{{ $fullorder->money_order}}"class="form-control" placeholder="{{__('Enter order money')}}" disabled/>{{__(' SYP')}} {{__('For a membership card fee')}}</p><br>
+            <hr><p style="font-weight: bold;">{{__('The new membership number in the event that both parties agree to transfer the affiliate')}}
+                <input type="text" class="input @error('newmembership_number')is-danger @enderror input-fullorder"id="newmembership_number" name="newmembership_number"value="{{$fullorder->newmembership_number}}"class="form-control" placeholder="{{__('Enter new membership number')}}" disabled/></p><br>
     </div>
 
 </x-layouts.app>
