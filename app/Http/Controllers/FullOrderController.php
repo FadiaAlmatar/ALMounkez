@@ -210,7 +210,7 @@ class FullOrderController extends Controller
      */
     public function show(FullOrder $fullorder)
     {
-        if(Auth::User()->role == "user"){
+        if((Auth::User()->role == "user") || ($fullorder->status == "under consideration")){
             if($fullorder->type == "local")
                 return view('fullorder.show_local',['fullorder'=>$fullorder]);
             elseif($fullorder->type == "external")
@@ -222,7 +222,7 @@ class FullOrderController extends Controller
         }
         else{
             if($fullorder->type == "local")
-            return view('fullorder.show_local_manager',['fullorder'=>$fullorder]);
+                 return view('fullorder.show_local_manager',['fullorder'=>$fullorder]);
             elseif($fullorder->type == "external")
                 return view('fullorder.show_external_manager',['fullorder'=>$fullorder]);
             elseif($fullorder->type == "transfer")

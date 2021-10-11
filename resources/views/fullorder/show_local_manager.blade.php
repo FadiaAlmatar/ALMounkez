@@ -33,7 +33,7 @@
             <p style="display:inline">{{__('Mr.')}} <span style="font-weight: bold">{{Auth::User()->name}}</span>{{__(' is affiliated with the Syndicate with a membership number ')}}{{Auth::User()->id}}<br>
                 {{__('We inform you that he is registered in the Syndicate in year ...... and : ')}}</p>&nbsp;
             @if($fullorder->not_debtor == 0)
-            <div class="form-check"><br>
+            <div class="form-check">
                 {{-- <input class="form-check-input" type="radio" name="debt" id="financially_innocent" value="{{$fullorder->not_debtor}}" disabled> --}}
                 <label for="financially_innocent" class="form-check-label" value="financially_innocent" @if (old('debt') == "financially_innocent") {{ 'selected' }} @endif>{{__('Financially innocent')}}</label>
             </div>
@@ -56,11 +56,14 @@
             <div>
                 <label style="display:inline;width:70%;"class="form-label" for="approval">{{__('Approval')}}</label>
                 <select style="width:10%"class="input @error('Chairman_decision')is-danger @enderror"name="Chairman_decision"id="Chairman_decision"class="form-select form-select-sm" aria-label=".form-select-sm example"  disabled >
-                    <option value="{{ $fullorder->Chairman_decision}}" @if (old('Chairman_decision') == "1") {{ 'selected' }} @endif>{{__('Approval')}}</option>
-                </select>
+                    @if($fullorder->Chairman_decision == 1)
+                    <option value="{{ $fullorder->Chairman_decision}}">{{__('Approval')}}</option>
+                    @else
+                    <option value="{{ $fullorder->Chairman_decision}}">{{__('Disapproval')}}</option>
+                    @endif                </select>
                 <div class="form-group">
                     <label for="reasons">{{__('reasons :(If not approved)')}}</label>
-                    <textarea name="Chairman_disapproval_reasons"class="form-control" id="reasons" rows="2" disabled>@if(Auth::User()->role == "admin"){{ $fullorder->Chairman_disapproval_reasons }} @endif</textarea><br>
+                    <textarea name="Chairman_disapproval_reasons"class="form-control" id="reasons" rows="2" disabled>{{ $fullorder->Chairman_disapproval_reasons }}</textarea><br>
                 </div>
             </div>
     </div>
