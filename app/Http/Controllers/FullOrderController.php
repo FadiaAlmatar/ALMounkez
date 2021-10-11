@@ -116,7 +116,7 @@ class FullOrderController extends Controller
                 'FullName_Arabic'               => 'required|min:3|not_regex:/[A-Za-z0-9]/',
                 // 'replace_reason'                =>  'required'
                 ] );
-                $fullorder-> replace_reasons  = $request->replace_reason;
+                $fullorder->replace_reasons   = $request->replace_reason;
                 $fullorder->police_image      = $request->police_image;
                 if ($request->has('police_image')) {         //image police_image
                     $image = $request->police_image;
@@ -155,7 +155,7 @@ class FullOrderController extends Controller
                     $path = $image->store('personal_identification_images', 'public');
                     $fullorder->personal_dentification_image = $path;
                 }
-                // $fullorder->newmembership_number         = $request->newMembershipNumber;
+                $fullorder->newmembership_number         = $request->newMembershipNumber;
                 // $fullorder->Chairman_decision            = $request->Chairman_decision;
                 // $fullorder->Chairman_disapproval_reasons = $request->Chairman_disapproval_reasons;
 

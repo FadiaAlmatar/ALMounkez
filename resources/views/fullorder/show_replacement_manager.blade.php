@@ -7,9 +7,10 @@
         <form action="{{ route('fullorders.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <input name="type" value="replacement" hidden>
-        <p>{{__('Gentlemen of the Financial and Accounting Professions Syndicate, please give me a membership card instead: ')}}
+        <br><p>{{__('Gentlemen of the Financial and Accounting Professions Syndicate, please give me a membership card instead: ')}}
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="Lost" name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
+                @if($fullorder->replace_reasons == "lost")
+                <input class="form-check-input" type="checkbox" value="" id="Lost" name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif checked>
                 <label class="form-check-label" for="Lost">
                   {{__('Lost (police decision attached)')}}
                 <input class="form-control" type="file" accept="image/*"id="police_image" name="police_image" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
@@ -18,8 +19,9 @@
                     @enderror
                 </label>
             </div>
+            @elseif($fullorder->replace_reasons == "consists")
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="Consists" name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
+                <input class="form-check-input" type="checkbox" value="" id="Consists" name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif checked>
                 <label class="form-check-label" for="Consists">
                   {{__('Consists (damaged card attached) reason: ')}}
                   <input class="form-control" type="file" accept="image/*"id="damaged_card_image" name="damaged_card_image" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
@@ -55,18 +57,21 @@
                     </label>
                 </div>
             </div>
+            @elseif($fullorder->replace_reasons == "transfer")
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="Transfer" name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
+                <input class="form-check-input" type="checkbox" value="" id="Transfer" name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif checked>
                 <label class="form-check-label" for="Transfer">
                     {{__('Transfer from branch to branch')}}
                 </label>
             </div>
+            @else
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="error"name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
+                <input class="form-check-input" type="checkbox" value="" id="error"name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif checked>
                 <label class="form-check-label" for="error">
                     {{__('Card incoming error')}}<span>{{__('(caused by the member)')}}</span>
                 </label>
             </div>
+            @endif
         </p>
         {{-- التعديلات المطلوب وضعها على بطاقة العضوية الجديدة --}}
         <hr><br>
@@ -111,61 +116,57 @@
                 <td style="width:24%"><input type="text" class="input"id="" name=""value="{{ date("Y-m-d h:i A", strtotime($fullorder->created_at))}}"class="form-control" placeholder="" readonly /></td>
             </tr>
         </tbody>
-        </table> @if(Auth::User()->role == "user")<button type="submit" class="btn btn-primary">{{__('Send')}}</button><br>@endif
+        </table>
         </form>
         <p class="p-fullorder">{{__('Your request will be considered within a maximum period of two days. Please contact us')}}</p>
-        <hr><br>
+        <hr>
 {{-- manager only --}}
 {{--  بيان الدارة الماليةللفرع --}}
-    <input name="type" value="local" hidden>
+    <input name="type" value="replacement" hidden>
     <p style="font-weight: bold;display:inline-block;width:40%">{{__('Branch financial management statement:')}}</p>
     <div class="status">
-        <select name="status"class="input @error('status')is-danger @enderror" class="form-select" aria-label="Default select example">
-            <option selected></option>
-            <option value="under consideration">    {{__('under consideration')}}    </option>
-            <option value="Payment required">       {{__('Payment required')}}       </option>
-            <option value="Please pick up">         {{__('Please pick up')}}         </option>
-            <option value="not confirmed">          {{__('not confirmed')}}          </option>
-            <option value="Need to complete papers">{{__('Need to complete papers')}}</option>
-        </select>
-        </div>
+        <p style="color:red"value="{{$fullorder->status}}"> {{$fullorder->status}} </p>
+    </div>
        <br><br>
-        <hr style="width:75%">
     <p style="display:inline">{{__('Mr.')}} <span style="font-weight: bold">{{Auth::User()->name}}</span>{{__(' is affiliated with the Syndicate with a membership number ')}}{{Auth::User()->id}}<br>
         {{__('We inform you that he is registered in the Syndicate in year ...... and : ')}}</p>&nbsp;
-    <div class="form-check">
-        <input class="form-check-input" type="radio" name="debt" id="financially_innocent" value="{{0}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif>
-        <label for="financially_innocent" class="form-check-label" value="financially_innocent" @if (old('debt') == "financially_innocent") {{ 'selected' }} @endif>{{__('Financially innocent')}}</label>
-    </div>
-    <div class="form-check">
-        <input class="form-check-input" type="radio" name="debt" id="financial_liability" value="{{1}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif>
-        <label for="financial_liability" class="form-check-label" value="financial_liability" @if (old('debt') == "financial_liability") {{ 'selected' }} @endif>{{__('It has a previous financial liability')}}</label>
-        {{__('equal ')}}<input type="text" class="input @error('money_debt')is-danger @enderror input-fullorder"id="money_debt" name="money_debt"value="{{ old('money_debt') }}"class="form-control" placeholder="{{__('Enter debt money')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif/>{{__(' SYP')}}<br>
-    </div><br><br>
+        @if($fullorder->not_debtor == 0)
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="debt" id="financially_innocent" value="{{$fullorder->not_debtor}}" disabled checked>
+            <label for="financially_innocent" class="form-check-label" value="financially_innocent" @if (old('debt') == "financially_innocent") {{ 'selected' }} @endif>{{__('Financially innocent')}}</label>
+        </div>
+        @else
+        <div class="form-check"><br>
+            <input class="form-check-input" type="radio" name="debt" id="financial_liability" value="{{$fullorder->not_debtor}}" disabled checked>
+            <label for="financial_liability" class="form-check-label" value="financial_liability" @if (old('debt') == "financial_liability") {{ 'selected' }} @endif>{{__('It has a previous financial liability')}}</label>
+            {{__('equal ')}}
+            <input type="text" class="input input-fullorder"id="money_debt" name="money_debt" @if(Auth::User()->role == "admin") value="{{ $fullorder->money_debt}}" @endif class="form-control" placeholder="{{__('Enter debt money')}}" disabled />{{__(' SYP')}}<br>
+        </div>@endif<br>
     <p>{{__('Mr.: The cashier in the branch, please receive an amount and its amount ')}}
-        <input type="text" class="input @error('money_order')is-danger @enderror input-fullorder"id="money_order" name="money_order"value="{{ old('money_order') }}"class="form-control" placeholder="{{__('Enter debt order')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif/>{{__(' SYP')}}</p><br>
+        <input type="text" class="input @error('money_order')is-danger @enderror input-fullorder"id="money_order" name="money_order"value="{{ $fullorder->money_order}}"class="form-control" placeholder="{{__('Enter order money')}}" disabled/>{{__(' SYP')}}</p><br>
 {{--  بيان أمين الصندوق--}}
-            <hr><br>
-            <p style="font-weight: bold;">{{__('Treasurer statement: ')}}</p><hr>
+            <hr>
+            <p style="font-weight: bold;">{{__('Treasurer statement: ')}}</p>
             <br><p>{{__('Amount has been received ')}}
-                <input type="text" class="input @error('money_order')is-danger @enderror input-fullorder"id="money_order" name="money_order"value="{{ old('money_order') }}"class="form-control" placeholder="{{__('Enter order money')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif/>{{__(' SYP')}}</p><br>
+                <input type="text" class="input @error('money_order')is-danger @enderror input-fullorder"id="money_order" name="money_order"value="{{ $fullorder->money_order }}"class="form-control" placeholder="{{__('Enter order money')}}" disabled/>{{__(' SYP')}}</p><br>
 {{-- قرار رئيس مجلس الإدارة --}}
-            <hr><br>
-        <p style="font-weight: bold;">{{__("Chairman's decision: ")}}</p><hr><br>
+            <hr>
+        <p style="font-weight: bold;">{{__("Chairman's decision: ")}}</p><br>
         <div>
             <label style="display:inline;width:70%;"class="form-label" for="approval">{{__('Approval')}}</label>
-            <select style="width:10%"class="input @error('Chairman_decision')is-danger @enderror"name="Chairman_decision"id="Chairman_decision"class="form-select form-select-sm" aria-label=".form-select-sm example" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif>
-                <option></option>
-                <option value="1" @if (old('Chairman_decision') == "1") {{ 'selected' }} @endif>{{__('Approval')}}</option>
-                <option value="0" @if (old('Chairman_decision') == "0") {{ 'selected' }} @endif>{{__('Disapproval')}} </option>
+            <select style="width:10%"class="input @error('Chairman_decision')is-danger @enderror"name="Chairman_decision"id="Chairman_decision"class="form-select form-select-sm" aria-label=".form-select-sm example" disabled>
+                @if($fullorder->Chairman_decision == 1)
+                    <option value="{{ $fullorder->Chairman_decision}}">{{__('Approval')}}</option>
+                    @else
+                    <option value="{{ $fullorder->Chairman_decision}}">{{__('Disapproval')}}</option>
+                    @endif
              </select>
-             @error('approval')
-               <p class="help is-danger">{{ $message }}</p>
-             @enderror
+             @if($fullorder->Chairman_decision == 0)
              <div class="form-group">
                 <label for="reasons">{{__('reasons :(If not approved)')}}</label>
-                <textarea name="Chairman_disapproval_reasons"class="form-control" id="reasons" rows="2" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif></textarea><br>
+                <textarea name="Chairman_disapproval_reasons"class="form-control" id="reasons" rows="2" disabled>{{ $fullorder->Chairman_disapproval_reasons }}</textarea><br>
             </div>
-        </div>
+            @endif
+        </div><br>
     </div>
 </x-layouts.app>

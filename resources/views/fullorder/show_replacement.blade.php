@@ -7,9 +7,10 @@
         <form action="{{ route('fullorders.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <input name="type" value="replacement" hidden>
-        <p>{{__('Gentlemen of the Financial and Accounting Professions Syndicate, please give me a membership card instead: ')}}
+        <br><p>{{__('Gentlemen of the Financial and Accounting Professions Syndicate, please give me a membership card instead: ')}}
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="Lost" name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
+                @if($fullorder->replace_reasons == "lost")
+                <input class="form-check-input" type="checkbox" value="" id="Lost" name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif checked>
                 <label class="form-check-label" for="Lost">
                   {{__('Lost (police decision attached)')}}
                 <input class="form-control" type="file" accept="image/*"id="police_image" name="police_image" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
@@ -18,8 +19,9 @@
                     @enderror
                 </label>
             </div>
+            @elseif($fullorder->replace_reasons == "consists")
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="Consists" name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
+                <input class="form-check-input" type="checkbox" value="" id="Consists" name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif checked>
                 <label class="form-check-label" for="Consists">
                   {{__('Consists (damaged card attached) reason: ')}}
                   <input class="form-control" type="file" accept="image/*"id="damaged_card_image" name="damaged_card_image" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
@@ -55,18 +57,21 @@
                     </label>
                 </div>
             </div>
+            @elseif($fullorder->replace_reasons == "transfer")
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="Transfer" name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
+                <input class="form-check-input" type="checkbox" value="" id="Transfer" name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif checked>
                 <label class="form-check-label" for="Transfer">
                     {{__('Transfer from branch to branch')}}
                 </label>
             </div>
+            @else
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="error"name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
+                <input class="form-check-input" type="checkbox" value="" id="error"name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif checked>
                 <label class="form-check-label" for="error">
                     {{__('Card incoming error')}}<span>{{__('(caused by the member)')}}</span>
                 </label>
             </div>
+            @endif
         </p>
         {{-- التعديلات المطلوب وضعها على بطاقة العضوية الجديدة --}}
         <hr><br>
@@ -111,7 +116,7 @@
                 <td style="width:24%"><input type="text" class="input"id="" name=""value="{{ date("Y-m-d h:i A", strtotime($fullorder->created_at))}}"class="form-control" placeholder="" readonly /></td>
             </tr>
         </tbody>
-        </table> @if(Auth::User()->role == "user")<button type="submit" class="btn btn-primary">{{__('Send')}}</button><br>@endif
+        </table>
         </form>
         <p class="p-fullorder">{{__('Your request will be considered within a maximum period of two days. Please contact us')}}</p>
         <hr><br>
@@ -119,10 +124,10 @@
 {{--  بيان الدارة الماليةللفرع --}}
 <form action="{{ route('fullorders.store_order',$fullorder->id) }}" method="POST" >
     @csrf
-    <input name="type" value="local" hidden>
+    <input name="type" value="replacement" hidden>
     <p style="font-weight: bold;display:inline-block;width:40%">{{__('Branch financial management statement:')}}</p>
     <div class="status">
-        <select name="status"class="input @error('status')is-danger @enderror" class="form-select" aria-label="Default select example">
+        <select name="status"class="input @error('status')is-danger @enderror" class="form-select" aria-label="Default select example" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif>
             <option selected></option>
             <option value="under consideration">    {{__('under consideration')}}    </option>
             <option value="Payment required">       {{__('Payment required')}}       </option>
@@ -148,7 +153,7 @@
         {{__('equal ')}}<input type="text" class="input @error('money_debt')is-danger @enderror input-fullorder"id="money_debt" name="money_debt"value="{{ old('money_debt') }}"class="form-control" placeholder="{{__('Enter debt money')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif/>{{__(' SYP')}}<br>
     </div><br><br>
     <p>{{__('Mr.: The cashier in the branch, please receive an amount and its amount ')}}
-        <input type="text" class="input @error('money_order')is-danger @enderror input-fullorder"id="money_order" name="money_order"value="{{ old('money_order') }}"class="form-control" placeholder="{{__('Enter debt order')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif/>{{__(' SYP')}}</p><br>
+        <input type="text" class="input @error('money_order')is-danger @enderror input-fullorder"id="money_order" name="money_order"value="{{ old('money_order') }}"class="form-control" placeholder="{{__('Enter order money')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif/>{{__(' SYP')}}</p><br>
 {{--  بيان أمين الصندوق--}}
             <hr><br>
             <p style="font-weight: bold;">{{__('Treasurer statement: ')}}</p><hr>

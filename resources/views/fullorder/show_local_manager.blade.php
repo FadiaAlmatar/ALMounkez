@@ -22,7 +22,7 @@
         </tbody>
         </table>
         <p class="p-fullorder">{{__('Your request will be considered within a maximum period of two days. Please contact us')}}</p>
-        <hr><br>
+        <hr>
        {{-- بيان الدارة المالية --}}
             <input name="type" value="local" hidden>
             <p style="font-weight: bold;display:inline-block;width:40%">{{__('Financial Management Statement:')}}</p>
@@ -46,12 +46,12 @@
             </div>@endif<br>
             <p>{{__('Mr.: The cashier in the branch, please receive an amount and its amount ')}}<input type="text" class="input input-fullorder"id="money_order" name="money_order" @if(Auth::User()->role == "admin") value="{{ $fullorder->money_order}}" @endif class="form-control" placeholder="{{__('Enter order money')}}" disabled/>{{__(' SYP')}}</p><br>
     {{--  بيان أمين الصندوق--}}
-            <hr><br>
+            <hr>
             <p style="font-weight: bold;">{{__('Treasurer statement: ')}}</p><br>
             <p>{{__('Amount has been received ')}}
                 <input type="text" class="input input-fullorder"id="money_order" name="money_order" @if(Auth::User()->role == "admin") value="{{ $fullorder->money_order}}" @endif class="form-control" placeholder="{{__('Enter order money')}}" disabled/>{{__(' SYP')}}</p><br>
     {{-- قرار رئيس مجلس الإدارة --}}
-            <hr><br>
+            <hr>
             <p style="font-weight: bold;">{{__("Chairman's decision: ")}}</p><br>
             <div>
                 <label style="display:inline;width:70%;"class="form-label" for="approval">{{__('Approval')}}</label>
@@ -60,11 +60,14 @@
                     <option value="{{ $fullorder->Chairman_decision}}">{{__('Approval')}}</option>
                     @else
                     <option value="{{ $fullorder->Chairman_decision}}">{{__('Disapproval')}}</option>
-                    @endif                </select>
-                <div class="form-group">
-                    <label for="reasons">{{__('reasons :(If not approved)')}}</label>
-                    <textarea name="Chairman_disapproval_reasons"class="form-control" id="reasons" rows="2" disabled>{{ $fullorder->Chairman_disapproval_reasons }}</textarea><br>
-                </div>
+                    @endif
+                </select>
+                @if($fullorder->Chairman_decision == 0)
+             <div class="form-group">
+                <label for="reasons">{{__('reasons :(If not approved)')}}</label>
+                <textarea name="Chairman_disapproval_reasons"class="form-control" id="reasons" rows="2" disabled>{{ $fullorder->Chairman_disapproval_reasons }}</textarea><br>
+            </div>
+                 @endif
             </div>
     </div>
 </x-layouts.app>

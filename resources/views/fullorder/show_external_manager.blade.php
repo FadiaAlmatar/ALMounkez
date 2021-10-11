@@ -23,7 +23,7 @@
         </tbody>
         </table>
         <p class="p-fullorder">{{__('Your request will be considered within a maximum period of two days. Please contact us')}}</p>
-        <hr><br>
+        <hr>
       {{--  بيان الدارة الماليةللفرع --}}
         <input name="type" value="local" hidden>
         <p style="font-weight: bold;display:inline-block;width:40%">{{__('Branch financial management statement:')}}</p>
@@ -46,17 +46,17 @@
       <p>{{__('Mr.: The cashier in the branch, please receive an amount and its amount ')}}
           <input type="text" class="input input-fullorder"id="money_order" name="money_order" value="{{ $fullorder->money_order}}"class="form-control" placeholder="{{__('Enter order money')}}" disabled/>{{__('SYP')}}</p><br>
 {{--  بيان أمين الصندوق الفرع--}}
-        <hr><br>
+        <hr>
         <p style="font-weight: bold;">{{__('Branch Treasurer Statement: ')}}<span style="font-size:13px">{{__('(Note: Only the unpaid subscription fee is received, but the document fee is paid to the central administration)')}}</span></p>
         <br><p>{{__('Amount has been received ')}}
             <input type="text" class="input input-fullorder"id="money_order" name="money_order"value="{{ $fullorder->money_order}}"class="form-control" placeholder="{{__('Enter order money')}}" disabled/>{{__(' SYP')}}</p><br>
         {{-- بيان أمين الصندوق  /المركزية --}}
-        <hr><br>
+        <hr>
         <p style="font-weight: bold;">{{__('Treasurer Statement/central: ')}}<span style="font-size:13px">{{__('Only the document amount is received')}}</span></p>
         <br><p>{{__('Amount has been received ')}}
             <input type="text" class="input input-fullorder"id="money_central" name="money_central"value="{{ $fullorder->money_central}}"class="form-control" placeholder="{{__('Enter order central')}}" disabled/>{{__(' SYP')}}</p><br>
         {{-- قرار رئيس مجلس الإدارة --}}
-        <hr><br>
+        <hr>
         <p style="font-weight: bold;">{{__("Chairman's decision: ")}}</p><br>
         <div>
             <label style="display:inline;width:70%;"class="form-label" for="approval">{{__('Approval')}}</label>
@@ -67,10 +67,12 @@
                 <option value="{{ $fullorder->Chairman_decision}}">{{__('Disapproval')}}</option>
                 @endif
             </select>
-            <div class="form-group">
+            @if($fullorder->Chairman_decision == 0)
+             <div class="form-group">
                 <label for="reasons">{{__('reasons :(If not approved)')}}</label>
                 <textarea name="Chairman_disapproval_reasons"class="form-control" id="reasons" rows="2" disabled>{{ $fullorder->Chairman_disapproval_reasons }}</textarea><br>
-    </div>
+            </div>
+            @endif
    </div>
     </div>
 </x-layouts.app>
