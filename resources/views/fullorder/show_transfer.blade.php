@@ -12,7 +12,7 @@
             @error('countryfrom')
                 <p class="help is-danger">{{ $message }}</p>
             @enderror</p>
-            <br><hr><br>
+            <br>
             <div class="form-outline">
                 <label class="form-label" for="fullname">{{__('fullname* : ')}}</label>
                 <input type="text" class="input @error('fullname')is-danger @enderror input-fullorder" id="fullname" name="fullname" value="{{ old('fullname') }}"class="form-control" placeholder="{{__('Enter FullName')}}" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif/>
@@ -56,15 +56,14 @@
             </label>
             </div>
             <p>{{__('Request date: ')}} {{ date("Y-m-d h:i A", strtotime($fullorder->created_at))}}</p><hr><br>
-            @if(Auth::User()->role == "user")<button type="submit" class="btn btn-primary">{{__('Send')}}</button><br><br>@endif
         </form>
 {{-- بيان الدارة المالية --}}
         <form action="{{ route('fullorders.store_order',$fullorder->id) }}" method="POST" >
             @csrf
-            <input name="type" value="local" hidden>
+            <input name="type" value="transfer" hidden>
             <p style="font-weight: bold;display:inline-block;width:40%">{{__('Financial Management Statement:')}}</p>
             <div class="status">
-                <select name="status"class="input @error('status')is-danger @enderror" class="form-select" aria-label="Default select example">
+                <select name="status"class="input @error('status')is-danger @enderror" class="form-select" aria-label="Default select example" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif>
                     <option selected></option>
                     <option value="under consideration">    {{__('under consideration')}}    </option>
                     <option value="Payment required">       {{__('Payment required')}}       </option>
@@ -77,7 +76,6 @@
                 @enderror
                 </div>
                <br><br>
-                <hr style="width:75%">
             <p style="display:inline">{{__('The fellow')}} <span style="font-weight: bold">{{Auth::User()->name}}</span>{{__(' is affiliated with the Syndicate with a membership number ')}}{{Auth::User()->id}}<br>
                 {{__('And registered in the Syndicate in year')}}........</p><br>
             <div class="form-check">
@@ -91,8 +89,8 @@
 
             </div><br><br>
 {{-- قرار مجلس إدارة الفرع المسجل به --}}
-            <hr><br>
-            <p style="font-weight: bold;">{{__('Decision of the board of directors of the branch in which it is registered')}}</p><hr><br>
+            <hr>
+            <p style="font-weight: bold;">{{__('Decision of the board of directors of the branch in which it is registered')}}</p><br>
             <div>
                 <label style="display:inline;width:70%;"class="form-label" for="approval">{{__('Approval')}}</label>
                 <select style="width:10%"class="input @error('registered_branch_decision')is-danger @enderror"name="registered_branch_decision"id="registered_branch_decision"class="form-select form-select-sm" aria-label=".form-select-sm example" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif>
@@ -109,8 +107,8 @@
                 </div>
             </div>
 {{--قرار مجلس إدارة الفرع الراغب بالانتقال إليه --}}
-            <hr><br>
-            <p style="font-weight: bold;">{{__('The decision of the board of directors of the branch wishing to move to it: ')}}</p><hr><br>
+            <hr>
+            <p style="font-weight: bold;">{{__('The decision of the board of directors of the branch wishing to move to it: ')}}</p><br>
             <div>
                 <label style="display:inline;width:70%;"class="form-label" for="approval">{{__('Approval')}}</label>
                 <select style="width:10%"class="input @error('transferred_branch_decision')is-danger @enderror"name="transferred_branch_decision"id="transferred_branch_decision"class="form-select form-select-sm" aria-label=".form-select-sm example" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif>
@@ -127,10 +125,10 @@
                 </div>
             </div>
 {{--  بيان أمين الصندوق--}}
-        <hr><br>
-        <p style="font-weight: bold;">{{__('Treasurer statement: ')}}</p><hr><br>
+        <hr>
+        <p style="font-weight: bold;">{{__('Treasurer statement: ')}}</p><br>
         <p>{{__('Amount has been received ')}}<input type="text" class="input @error('money_order')is-danger @enderror input-fullorder"id="money_order" name="money_order"value="{{ old('money_order') }}"class="form-control" placeholder="{{__('Enter order money')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif/>{{__(' SYP')}} {{__('For a membership card fee')}}</p><br>
-        <hr><br><p style="font-weight: bold;">{{__('The new membership number in the event that both parties agree to transfer the affiliate')}}
+        <hr><p style="font-weight: bold;">{{__('The new membership number in the event that both parties agree to transfer the affiliate')}}
             <input type="text" class="input @error('newmembership_number')is-danger @enderror input-fullorder"id="newmembership_number" name="newmembership_number"value="{{ old('newmembership_number') }}"class="form-control" placeholder="{{__('Enter new membership number')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif/></p><br>
             @if(Auth::User()->role == "admin")<button type="submit" class="btn btn-primary">{{__('Send')}}</button><br><br>@endif
         </form>
