@@ -53,14 +53,14 @@
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="debt" id="financial_liability" value="{{1}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif>
                 <label for="financial_liability" class="form-check-label" value="financial_liability" @if (old('debt') == "financial_liability") {{ 'selected' }} @endif>{{__('It has a previous financial liability')}}</label>
-                {{__('equal ')}}<input type="text" class="input @error('money_debt')is-danger @enderror input-fullorder"id="money_debt" name="money_debt" @if(Auth::User()->role == "admin") value="{{ $fullorder->money_debt}}" @endif class="form-control" placeholder="{{__('Enter debt money')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif/>{{__(' SYP')}}<br>
+                {{__('equal ')}}<input type="text" class="input @error('money_debt')is-danger @enderror input-fullorder"id="money_debt" name="money_debt"  class="form-control" placeholder="{{__('Enter debt money')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif/>{{__(' SYP')}}<br>
             </div><br>
-            <p>{{__('Mr.: The cashier in the branch, please receive an amount and its amount ')}}<input type="text" class="input @error('money_order')is-danger @enderror input-fullorder"id="money_order" name="money_order" @if(Auth::User()->role == "admin") value="{{ $fullorder->money_order}}" @endif class="form-control" placeholder="{{__('Enter order money')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif/>{{__(' SYP')}}</p><br>
+            <p>{{__('Mr.: The cashier in the branch, please receive an amount and its amount ')}}<input type="text" class="input @error('money_order')is-danger @enderror input-fullorder"id="money_order" name="money_order"  class="form-control" placeholder="{{__('Enter order money')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif/>{{__(' SYP')}}</p><br>
     {{--  بيان أمين الصندوق--}}
             <hr><br>
             <p style="font-weight: bold;">{{__('Treasurer statement: ')}}</p><hr><br>
             <p>{{__('Amount has been received ')}}
-                <input type="text" class="input @error('money_order')is-danger @enderror input-fullorder"id="money_order" name="money_order" @if(Auth::User()->role == "admin") value="{{ $fullorder->money_order}}" @endif class="form-control" placeholder="{{__('Enter order money')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif />{{__(' SYP')}}</p><br><br>
+                <input type="text" class="input @error('money_order')is-danger @enderror input-fullorder"id="money_order" name="money_order" class="form-control" placeholder="{{__('Enter order money')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif />{{__(' SYP')}}</p><br><br>
     {{-- قرار رئيس مجلس الإدارة --}}
             <hr><br>
             <p style="font-weight: bold;">{{__("Chairman's decision: ")}}</p><br>
@@ -70,16 +70,13 @@
                     <option></option>
                     <option value="1" @if (old('Chairman_decision') == "1") {{ 'selected' }} @endif>{{__('Approval')}}</option>
                     <option value="0" @if (old('Chairman_decision') == "0") {{ 'selected' }} @endif>{{__('Disapproval')}} </option>
-                    {{-- @if(Auth::User()->role == "admin")
-                    <option value="{{ $fullorder->Chairman_decision}}" @if (old('Chairman_decision') == "1") {{ 'selected' }} @endif>{{__('Approval')}}</option>
-                    @endif --}}
                 </select>
                 @error('Chairman_decision')
                 <p class="help is-danger">{{ $message }}</p>
                 @enderror
                 <div class="form-group">
                     <label for="reasons">{{__('reasons :(If not approved)')}}</label>
-                    <textarea name="Chairman_disapproval_reasons"class="form-control" id="reasons" rows="2" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif>@if(Auth::User()->role == "admin"){{ $fullorder->Chairman_disapproval_reasons }} @endif</textarea><br>
+                    <textarea name="Chairman_disapproval_reasons"class="form-control" id="reasons" rows="2" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif></textarea><br>
                 </div>
             </div>
                 @if(Auth::User()->role == "admin")<button type="submit" class="btn btn-primary">{{__('Send')}}</button><br><br>@endif
