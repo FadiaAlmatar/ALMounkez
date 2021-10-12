@@ -268,4 +268,19 @@ class FullOrderController extends Controller
     {
         //
     }
+
+    public function printlocal(Request $request,$id)
+    {
+        // dd($id);
+        $order = FullOrder::findOrFail($id);
+        $html = view('fullorder.local-pdf',['order'=>$order])->render();
+
+        $pdf = new \Mpdf\Mpdf([
+            'mode' => 'utf-8', 'format' => 'A4','default_font' => 'fontawesome','margin_left' => 15,'margin_right' => 10,'margin_top' => 16,'margin_bottom' => 15,'margin_header' => 10, 'margin_footer' => 10 ]);
+        $pdf->AddPage("P");
+        $pdf->SetHTMLFooter('<p style="text-align: center">{PAGENO} of {nbpg}</p>');
+        $pdf->WriteHTML('.fa { font-family: fontawesome;}',1);
+        $pdf->WriteHTML($html);
+        return  $pdf->Output("order.pdf","D");
+        }
 }
