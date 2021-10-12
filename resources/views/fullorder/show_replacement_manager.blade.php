@@ -8,6 +8,7 @@
             @csrf
             <input name="type" value="replacement" hidden>
         <br><p>{{__('Gentlemen of the Financial and Accounting Professions Syndicate, please give me a membership card instead: ')}}
+            <button type="button" class="btn btn-danger" id="print">{{__('Print')}}</button>
             <div class="form-check">
                 @if($fullorder->replace_reasons == "lost")
                 <input class="form-check-input" type="checkbox" value="" id="Lost" name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif checked>
@@ -72,6 +73,7 @@
                 </label>
             </div>
             @endif
+
         </p>
         {{-- التعديلات المطلوب وضعها على بطاقة العضوية الجديدة --}}
         <hr><br>

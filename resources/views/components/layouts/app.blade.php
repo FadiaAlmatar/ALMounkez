@@ -32,6 +32,9 @@
     .status{
         float:left;
     }
+    #print{
+        float:left;
+    }
 
     </style>
     @endif

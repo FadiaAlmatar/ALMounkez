@@ -122,6 +122,9 @@ form .input,form .form-select{
 .status{
    float:right;width:15%;
 }
+.btn-danger{
+    float:right;
+}
 
 
 

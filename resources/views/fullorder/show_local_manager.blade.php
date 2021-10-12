@@ -1,12 +1,11 @@
 <x-layouts.app>
     <br>
-    <h1 class="h1-fullorder">{{__('Request a local membership document')}}</h1>
-    <i class="fa fa-file-pdf-o" style="font-size:48px;color:red"></i>
-    <i class="fas fa-file-pdf fa-2x" style="color:red"></i><br>
+    <h1 class="h1-fullorder">{{__('Request a local membership document')}}</h1><br>
     <div class="container"style="margin-top:7px;">
         <strong style="font-size:13px;">{{__('(Implementation of the decision of the Board of Directors in its session No. 41 held on the date 17/07/2016 containing the determination of the amount 200 SYP of the value of a membership document)')}}</strong><br><br>
         <p>{{__('Gentlemen of the Financial and Accounting Professions Syndicate, please give me a membership document stating that I am a registered member of the Syndicate')}}<br><br>{{__('to submit it to')}}
-        <input type="text" class="input input-fullorder"id="side" name="side"value="{{ $fullorder->side }}"class="form-control" placeholder="enter side name" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif readonly/></p><br>
+        <input type="text" class="input input-fullorder"id="side" name="side"value="{{ $fullorder->side }}"class="form-control" placeholder="enter side name" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif readonly/>
+        &nbsp;<button type="button" class="btn btn-danger" id="print">{{__('Print')}}</button></p><br>
         <table style="width:75%;"class="table table-bordered">
         <thead>
             <tr>
