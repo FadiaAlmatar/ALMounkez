@@ -2,8 +2,16 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        @if (app()->getLocale() == 'ar')
         <style>
-            body {
+            p,span{
+                text-align: right;
+                /* float:right; */
+            }
+            .status{
+               float:right;
+           }
+           body {
             font-family: 'XBRiyaz', sans-serif;
            }
            h1 {
@@ -29,14 +37,50 @@
             }
             .p-fullorder{
                 text-align: center;
-
             }
             .status{
                 color: red;
                 border:1px solid red;
-
             }
         </style>
+        @else
+        <style>
+           .status{
+               float:left;
+           }
+           body {
+            font-family: 'XBRiyaz', sans-serif;
+           }
+           h1 {
+            text-align: center;
+            text-decoration: underline;
+            font-size: 20px;
+            }
+            table{
+                width:75%;
+                border: 1px solid black;
+                border-collapse: collapse;
+                margin:auto;
+            }
+            td,th{
+                border: 1px solid black;
+                width:24%;
+            }
+            td{
+                text-align: center;
+            }
+            th,strong{
+                text-align: center;
+            }
+            .p-fullorder{
+                text-align: center;
+            }
+            .status{
+                color: red;
+                border:1px solid red;
+            }
+        </style>
+        @endif
     </head>
     <body>
         <br>
@@ -62,15 +106,15 @@
         </tbody>
         </table>
         <p class="p-fullorder">{{__('Your request will be considered within a maximum period of two days. Please contact us')}}</p>
-        <hr><p style="font-weight: bold;display:inline-block;width:40%">{{__('Financial Management Statement:')}}</p>
-        <p style="display:inline">{{__('Mr.')}}
-            <span style="font-weight: bold">{{Auth::User()->name}}</span>{{__(' is affiliated with the Syndicate with a membership number ')}}{{Auth::User()->id}}
+        <hr>
+        <p>{{__('Financial Management Statement:')}}</p>
+        <p>{{__('Mr.')}}<span>{{Auth::User()->name}}</span>{{__(' is affiliated with the Syndicate with a membership number ')}}{{Auth::User()->id}}
                 {{__('We inform you that he is registered in the Syndicate in year ...... and : ')}}
-        </p>&nbsp;
+        </p>
         @if($fullorder->not_debtor == 0)
-            {{__('Financially innocent')}}
+            <p>{{__('Financially innocent')}}</p>
         @else
-           {{__('It has a previous financial liability')}}{{__('equal ')}}{{ $fullorder->money_debt}} {{__(' SYP')}}
+           <p>{{__('It has a previous financial liability')}}{{__('equal ')}}{{ $fullorder->money_debt}} {{__(' SYP')}}</p>
         @endif
         <p>{{__('Mr.: The cashier in the branch, please receive an amount and its amount ')}}{{ $fullorder->money_order}}{{__(' SYP')}}</p>
         <hr><p style="font-weight: bold;">{{__('Treasurer statement: ')}}</p>
