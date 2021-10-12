@@ -35,7 +35,6 @@
     #print{
         float:left;
     }
-
     </style>
     @endif
   </head>

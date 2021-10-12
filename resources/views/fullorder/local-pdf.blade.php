@@ -1,11 +1,41 @@
-<x-layouts.app>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <style>
+            body {
+            font-family: 'XBRiyaz', sans-serif;
+           }
+           h1 {
+            /* border:1px solid #220044; */
+            text-align: center;
+            text-decoration: underline;
+            font-size: 20px;
+            }
+            table{
+                width:100%;
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+            td,th{
+                border: 1px solid black;
+                width:24%;
+            }
+            td{
+                text-align: center;
+            }
+            th{
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
     <br>
-    <h1 class="h1-fullorder">{{__('Request a local membership document')}}</h1><br>
+    <h1>{{__('Request a local membership document')}}</h1><br>
     <div class="container"style="margin-top:7px;">
         <strong style="font-size:13px;">{{__('(Implementation of the decision of the Board of Directors in its session No. 41 held on the date 17/07/2016 containing the determination of the amount 200 SYP of the value of a membership document)')}}</strong><br><br>
         <p>{{__('Gentlemen of the Financial and Accounting Professions Syndicate, please give me a membership document stating that I am a registered member of the Syndicate')}}<br><br>{{__('to submit it to')}}
-        <input type="text" class="input input-fullorder"id="side" name="side"value="{{ $fullorder->side }}"class="form-control" placeholder="enter side name" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif readonly/>
-        &nbsp;<button type="button" class="btn btn-danger" id="print">{{__('Print')}}</button></p><br>
+        <input type="text" class="input input-fullorder" value="{{ $fullorder->side }}" class="form-control" placeholder="enter side name" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif readonly/>
         <table style="width:75%;"class="table table-bordered">
         <thead>
             <tr>
@@ -16,16 +46,15 @@
         </thead>
         <tbody>
             <tr>
-                <td style="width:24%"><input type="text" class="input input-fullorder"id="" name=""value="{{ Auth::User()->id}}"class="form-control" placeholder="" readonly/></p></td>
-                <td style="width:24%"><input type="text" class="input input-fullorder"id="" name=""value="{{$fullorder->membership_id}}"class="form-control" placeholder="" readonly/></td>
-                <td style="width:24%"><input type="text" class="input input-fullorder"id="" name=""value="{{ date("Y-m-d h:i A", strtotime($fullorder->created_at))}}"class="form-control" placeholder="" readonly /></td>
+                <td style="width:24%"><input type="text" class="input input-fullorder" value="{{ Auth::User()->id}}" class="form-control" placeholder="" readonly/></p></td>
+                <td style="width:24%"><input type="text" class="input input-fullorder" value="{{$fullorder->membership_id}}" class="form-control" placeholder="" readonly/></td>
+                <td style="width:24%"><input type="text" class="input input-fullorder" value="{{ date("Y-m-d h:i A", strtotime($fullorder->created_at))}}" class="form-control" placeholder="" readonly /></td>
             </tr>
         </tbody>
         </table>
         <p class="p-fullorder">{{__('Your request will be considered within a maximum period of two days. Please contact us')}}</p>
         <hr>
        {{-- بيان الدارة المالية --}}
-            <input name="type" value="local" hidden>
             <p style="font-weight: bold;display:inline-block;width:40%">{{__('Financial Management Statement:')}}</p>
             <div class="status">
                 <p style="color:red"value="{{$fullorder->status}}"> {{$fullorder->status}} </p>
@@ -66,12 +95,15 @@
                 @if($fullorder->Chairman_decision == 0)
              <div class="form-group">
                 <label for="reasons">{{__('reasons :(If not approved)')}}</label>
-                <textarea name="Chairman_disapproval_reasons"class="form-control" id="reasons" rows="2" disabled>{{ $fullorder->Chairman_disapproval_reasons }}</textarea><br>
+                <textarea name="Chairman_disapproval_reasons" id="reasons" rows="2">
+                    {{ $fullorder->Chairman_disapproval_reasons }}
+                </textarea>
             </div>
                  @endif
             </div>
     </div>
-</x-layouts.app>
+    </body>
+</html>
 
 
 
