@@ -120,15 +120,15 @@
         <hr><p style="font-weight: bold;">{{__('Treasurer statement: ')}}</p>
         <p>{{__('Amount has been received ')}}{{ $fullorder->money_order}}{{__(' SYP')}}</p>
         <hr><p style="font-weight: bold;">{{__("Chairman's decision: ")}}</p>
-        <label style="display:inline;width:70%;"class="form-label" for="approval">{{__('Approval:')}}</label>
+        <p>{{__('Approval:')}}</p>
         @if($fullorder->Chairman_decision == 1)
-            {{__('Approval')}}
+            <span>{{__('Approval')}}</span>
         @else
-            {{__('Disapproval')}}
+            <p>{{__('Disapproval')}}</p>
         @endif
         <p>
         @if($fullorder->Chairman_decision == 0)
-            {{__('reasons :(If not approved)')}}&nbsp;{{ $fullorder->Chairman_disapproval_reasons }}
+            <p>{{__('reasons :(If not approved)')}}{{ $fullorder->Chairman_disapproval_reasons }}</p>
         @endif
         </p>
     </div>
