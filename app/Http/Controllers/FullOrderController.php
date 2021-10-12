@@ -281,6 +281,6 @@ class FullOrderController extends Controller
         $pdf->SetHTMLFooter('<p style="text-align: center">{PAGENO} of {nbpg}</p>');
         $pdf->WriteHTML('.fa { font-family: fontawesome;}',1);
         $pdf->WriteHTML($html);
-        return  $pdf->Output("order.pdf","D");
+        return  $pdf->Output("local.pdf","D");
         }
 }
