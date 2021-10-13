@@ -88,8 +88,8 @@
         <h1>{{__('Request for a replacement membership card')}}</h1>
         <p style="font-size:13px;">{{__('Based on decision of the Board of Directors in its session No. 36 held on the date 27/04/2016 containing the determination of the amount 1000 SYP of the value of a membership card:(Consists-Lost)')}}</p>
         <h1 style="text-align: center;font-weight:bold;background-color:rgb(199, 198, 198);text-decoration:none;">{{__('Filled out by the affiliate')}}</h1>
-        <p style="color:red"> {{$fullorder->status}} </p>
-        <p>{{__('Gentlemen of the Financial and Accounting Professions Syndicate, please give me a membership card instead: ')}}</p>
+        <p><span style="color:red"> {{__('Order Status: ')}}  {{$fullorder->status}} </span><br>
+        {{__('Gentlemen of the Financial and Accounting Professions Syndicate, please give me a membership card instead: ')}}</p>
                @if($fullorder->replace_reasons == "lost")
                <input  type="checkbox"  checked="checked">
                <span>{{__('Lost (police decision attached)')}}
