@@ -269,18 +269,23 @@ class FullOrderController extends Controller
         //
     }
 
-    public function printlocal(Request $request,$id)
+    public function print(Request $request,$id)
     {
-        // dd($id);
         $fullorder = FullOrder::findOrFail($id);
-        $html = view('fullorder.local-pdf',['fullorder'=>$fullorder])->render();
-
+        if($fullorder->type == "local")
+           $html = view('fullorder.local-pdf',['fullorder'=>$fullorder])->render();
+        elseif($fullorder->type == "external")
+            $html = view('fullorder.external-pdf',['fullorder'=>$fullorder])->render();
+        elseif($fullorder->type == "transfer")
+            $html = view('fullorder.transfer-pdf',['fullorder'=>$fullorder])->render();
+        else
+            $html = view('fullorder.replacement-pdf',['fullorder'=>$fullorder])->render();
         $pdf = new \Mpdf\Mpdf([
             'mode' => 'utf-8', 'format' => 'A4','default_font' => 'fontawesome','margin_left' => 15,'margin_right' => 10,'margin_top' => 16,'margin_bottom' => 15,'margin_header' => 10, 'margin_footer' => 10 ]);
         $pdf->AddPage("P");
         $pdf->SetHTMLFooter('<p style="text-align: center">{PAGENO} of {nbpg}</p>');
         $pdf->WriteHTML('.fa { font-family: fontawesome;}',1);
         $pdf->WriteHTML($html);
-        return  $pdf->Output("local.pdf","D");
+        return  $pdf->Output("order.pdf","D");
         }
 }
