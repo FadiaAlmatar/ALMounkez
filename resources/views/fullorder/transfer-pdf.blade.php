@@ -111,10 +111,9 @@
             <p>{{__('Request date: ')}} {{ date("Y-m-d h:i A", strtotime($fullorder->created_at))}}</p>
             <hr>
 {{-- بيان الدارة المالية --}}
-            <p style="font-weight: bold">{{__('Financial Management Statement:')}}</p>
-            <p style="display:inline">{{__('The fellow')}} <span style="font-weight: bold">{{Auth::User()->name}}</span>{{__(' is affiliated with the Syndicate with a membership number ')}}{{Auth::User()->id}}<br>
+            <p><span style="font-weight: bold;">{{__('Financial Management Statement:')}}</span><br>
+            {{__('The fellow')}} {{Auth::User()->name}}{{__(' is affiliated with the Syndicate with a membership number ')}}{{Auth::User()->id}}
                 {{__('And registered in the Syndicate in year')}}........</p>
-            <br>
             @if($fullorder->not_debtor == 0)
                 <span>{{__('Financially innocent')}}</span>
             @else
@@ -122,34 +121,36 @@
             @endif
 {{-- قرار مجلس إدارة الفرع المسجل به --}}
             <hr>
-            <p style="font-weight: bold;">{{__('Decision of the board of directors of the branch in which it is registered')}}</p>
-            <span>{{__('Approval:')}}</span>
+            <p><span style="font-weight: bold;">{{__('Decision of the board of directors of the branch in which it is registered')}}</span><br>
+            {{__('Approval:')}}
             @if($fullorder->registered_branch_decision == 1)
-                <span>{{__('Approval')}}</span>
+                {{__('Approval')}}
             @else
-                <span>{{__('Disapproval')}}</span>
+                {{__('Disapproval')}}
             @endif
+            </p>
             @if($fullorder->registered_branch_decision == 0)
             <p>{{__('reasons :(If not approved)')}}</p>
             <p>{{ $fullorder->registered_branch_disapproval_reasons }}</p>
             @endif
 {{--قرار مجلس إدارة الفرع الراغب بالانتقال إليه --}}
             <hr>
-            <p style="font-weight: bold;">{{__('The decision of the board of directors of the branch wishing to move to it: ')}}</p>
-            <span>{{__('Approval:')}}</span>
+            <p><span style="font-weight: bold;">{{__('The decision of the board of directors of the branch wishing to move to it: ')}}</span><br>
+            {{__('Approval:')}}
             @if($fullorder->Chairman_decision == 1)
-                <span>{{__('Approval')}}</span>
+                {{__('Approval')}}
             @else
-                <span>{{__('Disapproval')}}</span>
+                {{__('Disapproval')}}
             @endif
+            </p>
             @if($fullorder->transferred_branch_decision == 0)
                 <p for="reasons">{{__('reasons :(If not approved)')}}</p>
                 <p>{{ $fullorder->transferred_branch_disapproval_reasons }}</p>
             @endif
 {{--  بيان أمين الصندوق--}}
             <hr>
-            <p style="font-weight: bold;">{{__('Treasurer statement: ')}}</p>
-            <p>{{__('Amount has been received ')}}{{ $fullorder->money_order}}{{__(' SYP')}} {{__('For a membership card fee')}}</p>
+            <p><span style="font-weight: bold;">{{__('Treasurer statement: ')}}</span><br>
+            {{__('Amount has been received ')}}{{ $fullorder->money_order}}{{__(' SYP')}} {{__('For a membership card fee')}}</p>
             <hr>
             <p style="font-weight: bold;">{{__('The new membership number in the event that both parties agree to transfer the affiliate')}}
              {{$fullorder->newmembership_number}}</p>

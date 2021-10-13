@@ -108,8 +108,8 @@
         </table>
         <p class="p-fullorder">{{__('Your request will be considered within a maximum period of two days. Please contact us')}}</p>
         <hr>
-        <p style="font-weight: bold;">{{__('Financial Management Statement:')}}</p>
-        <p>{{__('Mr.')}}<span>{{Auth::User()->name}}</span>{{__(' is affiliated with the Syndicate with a membership number ')}}{{Auth::User()->id}}
+        <p><span style="font-weight: bold;">{{__('Financial Management Statement:')}}</span><br>
+        {{__('Mr.')}}{{Auth::User()->name}}{{__(' is affiliated with the Syndicate with a membership number ')}}{{Auth::User()->id}}
                 {{__('We inform you that he is registered in the Syndicate in year ...... and : ')}}
         </p>
         @if($fullorder->not_debtor == 0)
@@ -118,15 +118,17 @@
            <p>{{__('It has a previous financial liability')}}{{__('equal ')}}{{ $fullorder->money_debt}} {{__(' SYP')}}</p>
         @endif
         <p>{{__('Mr.: The cashier in the branch, please receive an amount and its amount ')}}{{ $fullorder->money_order}}{{__(' SYP')}}</p>
-        <hr><p style="font-weight: bold;">{{__('Treasurer statement: ')}}</p>
-        <p>{{__('Amount has been received ')}}{{ $fullorder->money_order}}{{__(' SYP')}}</p>
-        <hr><p style="font-weight: bold;">{{__("Chairman's decision")}}<span>{{__(':')}}</span></p>
-        <span>{{__('Approval:')}}</span>
+        <hr><p><span style="font-weight: bold;">{{__('Treasurer statement: ')}}</span><br>
+        {{__('Amount has been received ')}}{{ $fullorder->money_order}}{{__(' SYP')}}</p>
+        <hr>
+        <p><span style="font-weight: bold;">{{__("Chairman's decision")}}{{__(':')}}</span><br>
+        {{__('Approval:')}}
         @if($fullorder->Chairman_decision == 1)
-            <span>{{__('Approval')}}</span>
+            {{__('Approval')}}
         @else
-            <span>{{__('Disapproval')}}</span>
+            {{__('Disapproval')}}
         @endif
+        </p>
         @if($fullorder->Chairman_decision == 0)
             <p>{{__('reasons :(If not approved)')}}</p><p>{{ $fullorder->Chairman_disapproval_reasons }}</p>
         @endif
