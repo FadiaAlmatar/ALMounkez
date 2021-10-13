@@ -68,7 +68,7 @@ Route::get('/fullorder/create_external', [FullOrderController::class, 'create_ex
 Route::get('/fullorder/create_transfer', [FullOrderController::class, 'create_transfer'])->name('fullorders.create_transfer');
 Route::get('/fullorder/create_replacement', [FullOrderController::class, 'create_replacement'])->name('fullorders.create_replacement');
 Route::post('/fullorder/store_order/{id}', [FullOrderController::class, 'store_order'])->name('fullorders.store_order');
-Route::get('/print/{id}', [FullOrderController::class, 'printlocal'])->name('fullorders.printlocal');
+Route::get('/print/{id}', [FullOrderController::class, 'print'])->name('fullorders.print');
 
 Route::get('/dashboard', function () {
     return view('pages.home');
