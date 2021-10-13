@@ -13,6 +13,7 @@
            }
            body {
             font-family: 'XBRiyaz', sans-serif;
+            direction: rtl;
            }
            h1 {
             text-align: center;

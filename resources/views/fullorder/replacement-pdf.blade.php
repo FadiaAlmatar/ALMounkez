@@ -13,6 +13,7 @@
            }
            body {
             font-family: 'XBRiyaz', sans-serif;
+            direction: rtl;
            }
            h1 {
             text-align: center;
@@ -24,6 +25,7 @@
                 border: 1px solid black;
                 border-collapse: collapse;
                 margin:auto;
+                direction: rtl;
             }
             td,th{
                 border: 1px solid black;
@@ -83,73 +85,44 @@
         @endif
     </head>
     <body>
-
-    <h1 class="h1-fullorder">{{__('Request for a replacement membership card')}}</h1>
-    <div class="container"style="margin-top:7px;">
-        <strong style="font-size:13px;">{{__('Based on decision of the Board of Directors in its session No. 36 held on the date 27/04/2016 containing the determination of the amount 1000 SYP of the value of a membership card:(Consists-Lost)')}}</strong>
-        <hr><h1 style="text-align: center;font-weight:bold;background-color:rgb(199, 198, 198);">{{__('Filled out by the affiliate')}}</h1><hr>
-        <p style="color:red"value="{{$fullorder->status}}"> {{$fullorder->status}} </p>
-        <p>{{__('Gentlemen of the Financial and Accounting Professions Syndicate, please give me a membership card instead: ')}}
+        <h1>{{__('Request for a replacement membership card')}}</h1>
+        <p style="font-size:13px;">{{__('Based on decision of the Board of Directors in its session No. 36 held on the date 27/04/2016 containing the determination of the amount 1000 SYP of the value of a membership card:(Consists-Lost)')}}</p>
+        <h1 style="text-align: center;font-weight:bold;background-color:rgb(199, 198, 198);text-decoration:none;">{{__('Filled out by the affiliate')}}</h1>
+        <p style="color:red"> {{$fullorder->status}} </p>
+        <p>{{__('Gentlemen of the Financial and Accounting Professions Syndicate, please give me a membership card instead: ')}}</p>
                @if($fullorder->replace_reasons == "lost")
-               <label class="form-check-label" for="Lost">
-                  {{__('Lost (police decision attached)')}}
+               <input  type="checkbox"  checked="checked">
+               <span>{{__('Lost (police decision attached)')}}
                 <input class="form-control" type="file" accept="image/*"id="police_image" name="police_image" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
-
-                </label>
-            </div>
+               </span>
             @elseif($fullorder->replace_reasons == "consists")
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="Consists" name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif checked>
-                <label class="form-check-label" for="Consists">
-                  {{__('Consists (damaged card attached) reason: ')}}
+                   <input  type="checkbox"  checked="checked">
+                    <span>{{__('Consists (damaged card attached) reason: ')}}
                   <input class="form-control" type="file" accept="image/*"id="damaged_card_image" name="damaged_card_image" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
-                  @error('damaged_card_image')
-                  <p class="help is-danger">{{ $message }}</p>
-                  @enderror
-                </label>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="Modification" name="Consists" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
-                    <label id="labelmodification"class="form-check-label" for="Lost">
+                </span>
+                <input  type="checkbox"  checked="checked">                    <label id="labelmodification"class="form-check-label" for="Lost">
                       {{__('Modification of personal data')}}
                        <label for="formFile" class="form-label" style="font-size: 13px;">{{__('Judgment decision attached')}}</label>
                        <input class="form-control" type="file" accept="image/*"id="judgment_decision_image" name="judgment_decision_image" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
-
                         <label for="formFile" class="form-label"style="font-size: 13px;" >{{__('Passport image')}}</label>
                         <input class="form-control" type="file" accept="image/*"id="passport_image" name="passport_image" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
-
                         <label for="formFile" class="form-label"style="font-size: 13px;" >{{__('Personal identification image')}}</label>
                         <input class="form-control" type="file" accept="image/*"id="personal_identification_image" name="personal_identification_image" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
-
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="personal" name="Consists" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
+                    <input type="checkbox" value="" id="personal" name="Consists" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
                     <label id="labelpersonal"class="form-check-label" for="Consists">
                       {{__('personal image')}}
-                    </label>
                 </div>
             </div>
             @elseif($fullorder->replace_reasons == "transfer")
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="Transfer" name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif checked>
-                <label class="form-check-label" for="Transfer">
-                    {{__('Transfer from branch to branch')}}
-                </label>
-            </div>
+                <input  type="checkbox"  checked="checked">
+                <span>{{__('Transfer from branch to branch')}}</span>
             @else
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="error"name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif checked>
-                <label class="form-check-label" for="error">
-                    {{__('Card incoming error')}}<span>{{__('(caused by the member)')}}</span>
+                <input type="checkbox"  checked="checked">
+                <span>{{__('Card incoming error')}}{{__('(caused by the member)')}}</span>
                 </label>
-            </div>
             @endif
-
-        </p>
         {{-- التعديلات المطلوب وضعها على بطاقة العضوية الجديدة --}}
-        <hr>
         <p style="font-weight: bold;text-align: center;">{{__('Required modifications to be made on the new membership card')}}</p>
-        <hr>
         <table class="table table-bordered">
               <tr>
                 <th scope="col" style="width:30%">{{__('FullName/Arabic')}}</th>
@@ -161,15 +134,18 @@
               </tr>
               <tr>
                 <th scope="col">{{__('Change personal image')}}</th>
-                <td> <div class="mb-3">
+                <td>
+                    {{-- <div class="mb-3">
                       <input class="form-control" type="file" accept="image/*"id="personal_image" name="personal_image" disabled>
-                  </div></td>
+                  </div> --}}
+                </td>
               </tr>
               <tr>
                 <th scope="col">{{__('The new membership number')}} {{__('when transferring from one branch to another')}}</th>
                 <td>{{ $fullorder->newmembership_number }}</td>
               </tr>
           </table>
+          <br>
         <table class="table table-bordered">
         <thead>
             <tr>
@@ -186,14 +162,12 @@
             </tr>
         </tbody>
         </table>
-        </form>
-        <p>{{__('Your request will be considered within a maximum period of two days. Please contact us')}}</p>
+        <p class="p-fullorder">{{__('Your request will be considered within a maximum period of two days. Please contact us')}}</p>
         <hr>
 {{--  بيان الدارة الماليةللفرع --}}
     <p style="font-weight: bold;display:inline-block;width:40%">{{__('Branch financial management statement:')}}</p>
-
-    <p style="display:inline">{{__('Mr.')}} <span style="font-weight: bold">{{Auth::User()->name}}</span>{{__(' is affiliated with the Syndicate with a membership number ')}}{{Auth::User()->id}}
-        {{__('We inform you that he is registered in the Syndicate in year ...... and : ')}}</p>&nbsp;
+    <p>{{__('Mr.')}}{{Auth::User()->name}}{{__(' is affiliated with the Syndicate with a membership number ')}}{{Auth::User()->id}}
+        {{__('We inform you that he is registered in the Syndicate in year ...... and : ')}}</p>
         @if($fullorder->not_debtor == 0)
         <div class="form-check">
             <input class="form-check-input" type="radio" name="debt" id="financially_innocent" value="{{$fullorder->not_debtor}}" disabled checked>
@@ -213,7 +187,7 @@
             <p>{{__('Amount has been received ')}}{{ $fullorder->money_order }}{{__(' SYP')}}</p>
 {{-- قرار رئيس مجلس الإدارة --}}
             <hr>
-            <p style="font-weight: bold;">{{__("Chairman's decision: ")}}</p>
+            <p style="font-weight: bold;">{{__("Chairman's decision")}}{{__(':')}}</p>
             <p style="display:inline;width:70%;"class="form-label" for="approval">{{__('Approval')}}</p>
                 @if($fullorder->Chairman_decision == 1)
                     <span>{{__('Approval')}}</span>
