@@ -6,7 +6,7 @@
             @csrf
         <input name="type" value="transfer" hidden>
         <p>{{__('Mr. Chairman of the Syndicate Branch Council in the province')}}
-            <a href="{{route('fullorders.printlocal',$fullorder->id)}}" id="print"class="btn btn-danger btn-lg active" role="button" aria-pressed="true">{{__('Print')}}</a>
+            <a href="{{route('fullorders.print',$fullorder->id)}}" id="print"class="btn btn-danger btn-lg active" role="button" aria-pressed="true">{{__('Print')}}</a>
         </p><br>
             <select style="width:150px"class="input @error('countryfrom')is-danger @enderror"name="countryfrom" id="countryfrom"class="form-select form-select-sm" aria-label=".form-select-sm example" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
                 <option value="{{$fullorder->country_before}}" selected readonly>{{$fullorder->country_before}}</option>

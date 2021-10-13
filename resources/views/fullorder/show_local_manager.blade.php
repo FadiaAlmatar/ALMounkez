@@ -6,7 +6,7 @@
         <p>{{__('Gentlemen of the Financial and Accounting Professions Syndicate, please give me a membership document stating that I am a registered member of the Syndicate')}}<br><br>{{__('to submit it to')}}
         <input type="text" class="input input-fullorder"id="side" name="side"value="{{ $fullorder->side }}"class="form-control" placeholder="enter side name" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif readonly/>
         {{-- <button type="button" class="btn btn-danger" id="print">{{__('Print')}}</button> --}}
-        <a href="{{route('fullorders.printlocal',$fullorder->id)}}" id="print"class="btn btn-danger btn-lg active" role="button" aria-pressed="true">{{__('Print')}}</a>
+        <a href="{{route('fullorders.print',$fullorder->id)}}" id="print"class="btn btn-danger btn-lg active" role="button" aria-pressed="true">{{__('Print')}}</a>
         </p><br>
         <table style="width:75%;"class="table table-bordered">
         <thead>
