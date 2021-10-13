@@ -6,7 +6,7 @@
         <style>
             p,span{
                 text-align: right;
-                /* float:right; */
+                float:right;
             }
             .status{
                float:right;
@@ -107,7 +107,7 @@
         </table>
         <p class="p-fullorder">{{__('Your request will be considered within a maximum period of two days. Please contact us')}}</p>
         <hr>
-        <p>{{__('Financial Management Statement:')}}</p>
+        <p style="font-weight: bold;">{{__('Financial Management Statement:')}}</p>
         <p>{{__('Mr.')}}<span>{{Auth::User()->name}}</span>{{__(' is affiliated with the Syndicate with a membership number ')}}{{Auth::User()->id}}
                 {{__('We inform you that he is registered in the Syndicate in year ...... and : ')}}
         </p>
@@ -119,18 +119,16 @@
         <p>{{__('Mr.: The cashier in the branch, please receive an amount and its amount ')}}{{ $fullorder->money_order}}{{__(' SYP')}}</p>
         <hr><p style="font-weight: bold;">{{__('Treasurer statement: ')}}</p>
         <p>{{__('Amount has been received ')}}{{ $fullorder->money_order}}{{__(' SYP')}}</p>
-        <hr><p style="font-weight: bold;">{{__("Chairman's decision: ")}}</p>
-        <p>{{__('Approval:')}}</p>
+        <hr><p style="font-weight: bold;">{{__("Chairman's decision")}}<span>{{__(':')}}</span></p>
+        <span>{{__('Approval:')}}</span>
         @if($fullorder->Chairman_decision == 1)
             <span>{{__('Approval')}}</span>
         @else
-            <p>{{__('Disapproval')}}</p>
+            <span>{{__('Disapproval')}}</span>
         @endif
-        <p>
         @if($fullorder->Chairman_decision == 0)
-            <p>{{__('reasons :(If not approved)')}}{{ $fullorder->Chairman_disapproval_reasons }}</p>
+            <p>{{__('reasons :(If not approved)')}}</p><p>{{ $fullorder->Chairman_disapproval_reasons }}</p>
         @endif
-        </p>
     </div>
     </body>
 </html>

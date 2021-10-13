@@ -61,6 +61,7 @@ Route::get('/get-friends', [MessageController::class, 'getfriends'])->name('frie
 Route::get('/new-subscribes/{id}', [GroupController::class, 'addsubscribes'])->name('addsubscribes');
 //order function
 Route::get('/print/{id}', [OrderController::class, 'printorder'])->name('orders.printorder');
+// orders.printorder
 //fullorders functions
 Route::get('/fullorder/create_local', [FullOrderController::class, 'create_local'])->name('fullorders.create_local');
 Route::get('/fullorder/create_external', [FullOrderController::class, 'create_external'])->name('fullorders.create_external');

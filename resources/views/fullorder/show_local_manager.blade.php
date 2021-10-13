@@ -55,7 +55,7 @@
                 <input type="text" class="input input-fullorder"id="money_order" name="money_order" @if(Auth::User()->role == "admin") value="{{ $fullorder->money_order}}" @endif class="form-control" placeholder="{{__('Enter order money')}}" disabled/>{{__(' SYP')}}</p><br>
     {{-- قرار رئيس مجلس الإدارة --}}
             <hr>
-            <p style="font-weight: bold;">{{__("Chairman's decision: ")}}</p><br>
+            <p style="font-weight: bold;">{{__("Chairman's decision")}}{{__(':')}}</p><br>
             <div>
                 <label style="display:inline;width:70%;"class="form-label" for="approval">{{__('Approval')}}</label>
                 <select style="width:10%"class="input"name="Chairman_decision"id="Chairman_decision"class="form-select form-select-sm" aria-label=".form-select-sm example"  disabled >
