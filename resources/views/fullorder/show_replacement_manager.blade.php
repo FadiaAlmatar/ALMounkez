@@ -8,7 +8,8 @@
             @csrf
             <input name="type" value="replacement" hidden>
         <br><p>{{__('Gentlemen of the Financial and Accounting Professions Syndicate, please give me a membership card instead: ')}}
-            <button type="button" class="btn btn-danger" id="print">{{__('Print')}}</button>
+            <a href="{{route('fullorders.print',$fullorder->id)}}" id="print"class="btn btn-danger btn-md active" role="button" aria-pressed="true">PDF</a>
+        </p><br>
             <div class="form-check">
                 @if($fullorder->replace_reasons == "lost")
                 <input class="form-check-input" type="checkbox" value="" id="Lost" name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif checked>

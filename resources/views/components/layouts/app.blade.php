@@ -17,6 +17,9 @@
         text-align: right;
         float:right;
     }
+    option{
+        text-align: left;
+    }
     #Lost,#Consists,#Modification,#personal,#Transfer,#error,#financially_innocent,#financial_liability{
         float:right;
     }
