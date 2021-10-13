@@ -25,7 +25,7 @@
         </table>
         <p class="p-fullorder">{{__('Your request will be considered within a maximum period of two days. Please contact us')}}</p>
         <hr>
-      {{--  بيان الدارة الماليةللفرع --}}
+      {{--  بيان الادارة الماليةللفرع --}}
         <input name="type" value="local" hidden>
         <p style="font-weight: bold;display:inline-block;width:40%">{{__('Branch financial management statement:')}}</p>
         <div class="status">
@@ -60,7 +60,7 @@
             <input type="text" class="input input-fullorder"id="money_central" name="money_central"value="{{ $fullorder->money_central}}"class="form-control" placeholder="{{__('Enter order central')}}" disabled/>{{__(' SYP')}}</p><br>
         {{-- قرار رئيس مجلس الإدارة --}}
         <hr>
-        <p style="font-weight: bold;">{{__("Chairman's decision: ")}}</p><br>
+        <p style="font-weight: bold;">{{__("Chairman's decision")}}{{__(':')}}</p><br>
         <div>
             <label style="display:inline;width:70%;"class="form-label" for="approval">{{__('Approval')}}</label>
             <select style="width:10%"class="input"name="Chairman_decision"id="Chairman_decision"class="form-select form-select-sm" aria-label=".form-select-sm example"  disabled >
