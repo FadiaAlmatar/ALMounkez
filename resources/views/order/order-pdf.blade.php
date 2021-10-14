@@ -99,45 +99,71 @@
                 <td scope="row">{{$order->Health_status}}</td>
               </tr>
           </table>
+
+
+          <table class="table table-bordered">
+            <tr>
+                <th scope="col">{{__('fname/english*')}}{{__('fathername/english*')}}{{__('lname/english*')}}</th>
+                <td scope="row">{{ $order->english_firstname }}{{ $order->english_father_name }}{{ $order->english_lastname }}</td>
+              </tr>
+            <tr>
+              <th scope="col">{{__('name and nickname')}}</th>
+              <td scope="row">{{ $order->firstname }}{{ $order->lastname}}</td>
+              <th scope="col">{{__('father name*')}}</th>
+              <td scope="row">{{ $order->father_name }}</td>
+              <th scope="col">{{__('grandfather name*')}}</th>
+              <td scope="row">{{ $order->grandfather_name }}</td>
+            </tr>
+            <tr>
+              <th scope="col">{{__('mother name*')}}</th>
+              <td scope="row">{{ $order->mother_name }}</td>
+              <th scope="col">{{__('Gender')}}</th>
+              <td scope="row">>{{ $order->gender }}</td>
+              <th scope="col">{{__('Nationality')}}</th>
+              <td scope="row">{{$order->Nationality}}</td>
+            </tr>
+            <tr>
+              <th scope="col">{{__('Place of birth*')}}{{__('Date of birth*')}}</th>
+              <td scope="row">{{ $order->place_of_birth}}{{ $order->date_of_birth}}</td>
+              <th scope="col">{{__('National ID*')}}</th>
+              <td scope="row">{{ $order->national_id }}</td>
+              <th scope="col">{{__('Personal Identification Number*')}}</th>
+              <td scope="row">{{ $order->personal_identification_number }}</td>
+            </tr>
+            <tr>
+              <th scope="col">{{__('Public Record Number')}}</th>
+              <td scope="row">{{$order->public_record_number }}</td>
+              <th scope="col">{{__('Military')}}</th>
+              <td scope="row">{{$order->military}}</td>
+              <th scope="col">{{__('Civil Registry*')}}</th>
+              <td scope="row">{{$order->civil_registry_secretariat}}</td>
+            </tr>
+            <tr>
+              <th scope="col">{{__('Address*')}}</th>
+              <td scope="row">{{ $order->address }}</td>
+              <th scope="col"></th>
+              <td scope="row">{{__('work side')}}</td>
+              <th scope="col">{{ $order->side_work}}</th>
+              <td scope="row"></td>
+            </tr>
+        </table>
     <h5>{{__('contact information')}}</h5>
         <table class="table table-bordered">
             <tr>
-                <th scope="col">{{__('country you wish to join*')}}</th>
-                <td scope="row">{{$order->Affiliation_country}}</td>
-                <th scope="col">{{__('Address*')}}</th>
-                <td scope="row">{{ $order->address }}</td>
-            </tr>
-            <tr>
                 <th scope="col">{{__('House Phone')}}</th>
                 <td scope="row">{{$order->house_phone}}</td>
+                <th scope="col">{{__('Mobile')}}</th>
+                <td scope="row">{{ $order->mobile }}</td>
                 <th scope="col">{{__('Work Phone')}}</th>
                 <td scope="row">{{ $order->work_phone }}</td>
             </tr>
             <tr>
-                <th scope="col">{{__('Mobile')}}</th>
-                <td scope="row">{{ $order->mobile }}</td>
                 <th scope="col">{{__('E-mail')}}</th>
                 <td scope="row">{{ $order->email}}</td>
-            </tr>
-            <tr>
                 <th scope="col">{{__('Fax')}}</th>
                 <td scope="row">{{$order->fax }}</td>
-                <th scope="col">{{__('Site')}}</th>
-                <td scope="row">{{ $order->site }}</td>
-            </tr>
-            <tr>
-                <th scope="col">{{__('work at government')}}</th>
-                <td scope="row">@if ($order->work_in_government == 1){{__('Worker at government')}}
-                                @else {{__('not Worker at government')}}@endif</td>
-                <th scope="col">{{__('work side')}}</th>
-                <td scope="row">{{ $order->side_work}}</td>
-            </tr>
-            <tr>
-                <th scope="col">{{__('Insurance number')}}</th>
-                <td scope="row">{{ $order->insurance_number }}</td>
-                <th scope="col">{{__('Do you want to display your data on the site (contact information only) after approving the affiliation request?*')}}</th>
-                <td scope="row"> @if($order->displayData == 1){{__('Yes')}}
-                                 @else {{__('No')}}@endif</td>
+                <th scope="col"></th>
+                <td scope="row"></td>
             </tr>
         </table>
 
