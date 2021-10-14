@@ -14,7 +14,11 @@
       <tr>
         <th style="width:10%"scope="row"><a href="{{route('fullorders.show',$myorder)}}">{{$myorder->id}}</a></th>
         <td style="text-align:center"><a href="{{route('fullorders.show',$myorder)}}">{{$myorder->type}}</a></td>
+        @if($myorder->status == "Need to complete papers")
+        <td style="text-align:center;color:red;">{{$myorder->status}} <i class="fa fa-edit"></i></td>
+        @else
         <td style="text-align:center">{{$myorder->status}}</td>
+        @endif
         <td style="width:20%;text-align:center">{{ date("Y-m-d h:i A", strtotime($myorder->created_at))}}</td>
       </tr>
     @endforeach

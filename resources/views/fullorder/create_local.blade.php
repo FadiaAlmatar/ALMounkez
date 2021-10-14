@@ -1,8 +1,11 @@
 <x-layouts.app>
     <h1 style="text-align: center;font-weight:bold;text-decoration:underline;margin-top:5px;">{{__('Request a local membership document')}}</h1><br>
     <div class="container"style="margin-top:7px;">
-        <form action="{{ route('fullorders.store') }}" method="POST" >
+        <form action="{!! !empty($fullorder) ? route('fullorders.update', $fullorder) : route('fullorders.store') !!}" method="POST" >
             @csrf
+            @if (!empty($fullorder))
+                @method('PUT')
+            @endif
         <input name="type" value="local" hidden>
         <strong style="font-size:13px;">{{__('(Implementation of the decision of the Board of Directors in its session No. 41 held on the date 17/07/2016 containing the determination of the amount 200 SYP of the value of a membership document)')}}</strong><br><br>
         <p>{{__('Gentlemen of the Financial and Accounting Professions Syndicate, please give me a membership document stating that I am a registered member of the Syndicate')}}<br><br>{{__('to submit it to')}}
