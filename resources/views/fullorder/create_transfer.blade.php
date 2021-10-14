@@ -10,7 +10,7 @@
         <p>{{__('Mr. Chairman of the Syndicate Branch Council in the province')}}
             <select style="width:150px"class="input @error('from_country')is-danger @enderror"name="from_country" id="from_country"class="form-select form-select-sm" aria-label=".form-select-sm example" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
                 <option></option>
-                <option  value="Damascus"      @if (old('from_country') == "Damascus") {{ 'selected' }} @endif>       {{__('Damascus')}}      </option>
+                <option value="Damascus"       @if (old('from_country') == "Damascus") {{ 'selected' }} @endif>       {{__('Damascus')}}      </option>
                 <option value="Damascus Rural" @if (old('from_country') == "Damascus Rural") {{ 'selected' }} @endif> {{__('Damascus Rural')}}</option>
                 <option value="Suwayda"        @if (old('from_country') == "Suwayda") {{ 'selected' }} @endif>        {{__('Suwayda')}}       </option>
                 <option value="Daraa"          @if (old('from_country') == "Daraa") {{ 'selected' }} @endif>          {{__('Daraa')}}         </option>
