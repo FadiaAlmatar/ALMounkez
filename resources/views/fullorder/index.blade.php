@@ -15,7 +15,7 @@
         <th style="width:10%"scope="row"><a href="{{route('fullorders.show',$myorder)}}">{{$myorder->id}}</a></th>
         <td style="text-align:center"><a href="{{route('fullorders.show',$myorder)}}">{{$myorder->type}}</a></td>
         @if($myorder->status == "Need to complete papers")
-        <td style="text-align:center;color:red;">{{$myorder->status}} <i class="fa fa-edit"></i></td>
+        <td style="text-align:center;color:red;">{{$myorder->status}} <a href="{{route('fullorders.edit',$myorder)}}"><i class="fa fa-edit"></i></a></td>
         @else
         <td style="text-align:center">{{$myorder->status}}</td>
         @endif

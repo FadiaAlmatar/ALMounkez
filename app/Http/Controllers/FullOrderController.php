@@ -241,9 +241,17 @@ class FullOrderController extends Controller
      * @param  \App\Models\FullOrder  $fullOrder
      * @return \Illuminate\Http\Response
      */
-    public function edit(FullOrder $fullOrder)
+    public function edit(FullOrder $fullorder)
     {
-        //
+        dd("here");
+        if($fullorder->type == "local")
+                 return view('fullorder.create_local',['fullorder'=>$fullorder]);
+            elseif($fullorder->type == "external")
+                return view('fullorder.create_external',['fullorder'=>$fullorder]);
+            elseif($fullorder->type == "transfer")
+                return view('fullorder.create_transfer',['fullorder'=>$fullorder]);
+            else
+                return view('fullorder.create_replacement',['fullorder'=>$fullorder]);
     }
 
     /**
@@ -255,7 +263,7 @@ class FullOrderController extends Controller
      */
     public function update(Request $request, FullOrder $fullOrder)
     {
-        //
+        dd("here");
     }
 
     /**
