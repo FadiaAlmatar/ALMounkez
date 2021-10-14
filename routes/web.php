@@ -44,6 +44,7 @@ Route::get('/locale/en', function (){
 });
 //resource
 Route::resource('orders', OrderController::class);
+Route::get('/print/{id}', [OrderController::class, 'printorder'])->name('orders.printorder');
 Route::resource('posts', PostController::class);
 Route::resource('comments', CommentController::class);
 Route::resource('messages', MessageController::class);
@@ -60,7 +61,7 @@ Route::get('/printgroup/{id}', [MessageController::class, 'printgroup'])->name('
 Route::get('/get-friends', [MessageController::class, 'getfriends'])->name('friends');
 Route::get('/new-subscribes/{id}', [GroupController::class, 'addsubscribes'])->name('addsubscribes');
 //order function
-Route::get('/print/{id}', [OrderController::class, 'printorder'])->name('orders.printorder');
+
 // orders.printorder
 //fullorders functions
 Route::get('/fullorder/create_local', [FullOrderController::class, 'create_local'])->name('fullorders.create_local');

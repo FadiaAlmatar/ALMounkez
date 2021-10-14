@@ -2,6 +2,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        @if (app()->getLocale() == 'ar')
+        <style>
+           body {
+            font-family: 'XBRiyaz', sans-serif;
+            direction: rtl;
+           }
+           </style>
+           @else
         <style>
             body {
             font-family: 'XBRiyaz', sans-serif;
@@ -28,10 +36,11 @@
                 text-align: left;
             }
         </style>
+        @endif
     </head>
     <body>
         <h5>{{__('Personal data')}} </h5>
-        <table class="table table-bordered">
+        {{-- <table class="table table-bordered">
               <tr>
                 <th scope="col">{{__('name*')}}</th>
                 <td scope="row">{{ $order->firstname }}</td>
@@ -98,7 +107,7 @@
                 <th scope="col">{{__('Health Status')}}</th>
                 <td scope="row">{{$order->Health_status}}</td>
               </tr>
-          </table>
+          </table> --}}
 
 
           <table class="table table-bordered">
