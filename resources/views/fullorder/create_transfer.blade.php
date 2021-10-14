@@ -1,8 +1,11 @@
 <x-layouts.app>
     <h1 style="text-align: center;font-weight:bold;text-decoration:underline;margin-top:5px;">{{__('Membership transfer form from one branch to another')}}</h1><br>
     <div class="container"style="margin-top:7px;">
-        <form action="{{ route('fullorders.store') }}" method="POST" enctype="multipart/form-data" >
+        <form action="{!! !empty($fullorder) ? route('fullorders.update', $fullorder) : route('fullorders.store') !!}" method="POST" enctype="multipart/form-data">
             @csrf
+            @if (!empty($fullorder))
+                @method('PUT')
+            @endif
         <input name="type" value="transfer" hidden>
         <p>{{__('Mr. Chairman of the Syndicate Branch Council in the province')}}
             <select style="width:150px"class="input @error('from_country')is-danger @enderror"name="from_country" id="from_country"class="form-select form-select-sm" aria-label=".form-select-sm example" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
@@ -103,7 +106,11 @@
             </label>
             </div>
             <p>{{__('Request date: ')}}</p><hr><br>
-             @if(Auth::User()->role == "user")<button type="submit" class="btn btn-primary">{{__('Send')}}</button><br><br>@endif
+            @if (!empty($fullorder))
+               @if(Auth::User()->role == "user")<button type="submit" class="btn btn-primary">{{__('Edit')}}</button><br><br>@endif
+            @else
+               @if(Auth::User()->role == "user")<button type="submit" class="btn btn-primary">{{__('Create')}}</button><br><br>@endif
+            @endif
         </form>
 {{-- بيان الدارة المالية --}}
             <p style="font-weight: bold;">{{__('Financial Management Statement:')}}</p><hr>

@@ -243,7 +243,7 @@ class FullOrderController extends Controller
      */
     public function edit(FullOrder $fullorder)
     {
-        dd("here");
+        // dd("here");
         if($fullorder->type == "local")
                  return view('fullorder.create_local',['fullorder'=>$fullorder]);
             elseif($fullorder->type == "external")

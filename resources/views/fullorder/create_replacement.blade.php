@@ -3,8 +3,11 @@
     <div class="container"style="margin-top:7px;">
         <strong style="font-size:13px;">{{__('Based on decision of the Board of Directors in its session No. 36 held on the date 27/04/2016 containing the determination of the amount 1000 SYP of the value of a membership card:(Consists-Lost)')}}</strong><br><br>
         <hr><h1 style="text-align: center;font-weight:bold;">{{__('Filled out by the affiliate')}}</h1><hr>
-        <form action="{{ route('fullorders.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{!! !empty($fullorder) ? route('fullorders.update', $fullorder) : route('fullorders.store') !!}" method="POST" enctype="multipart/form-data">
             @csrf
+            @if (!empty($fullorder))
+                @method('PUT')
+            @endif
             <input name="type" value="replacement" hidden>
         <p>{{__('Gentlemen of the Financial and Accounting Professions Syndicate, please give me a membership card instead: ')}}
             <div class="form-check">
@@ -115,7 +118,12 @@
                 <th scope="col">{{__('Request Date')}}</th>
             </tr>
         </thead>
-        </table> @if(Auth::User()->role == "user")<button type="submit" class="btn btn-primary">{{__('Send')}}</button><br>@endif
+        </table>
+        @if (!empty($fullorder))
+             @if(Auth::User()->role == "user")<button type="submit" class="btn btn-primary">{{__('Edit')}}</button><br><br>@endif
+        @else
+             @if(Auth::User()->role == "user")<button type="submit" class="btn btn-primary">{{__('Create')}}</button><br><br>@endif
+        @endif
         </form>
         <p style="text-align:center;">{{__('Your request will be considered within a maximum period of two days. Please contact us')}}</p>
         <hr><br>

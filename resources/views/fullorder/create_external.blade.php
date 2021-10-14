@@ -1,12 +1,15 @@
 <x-layouts.app>
     <h1 style="text-align: center;font-weight:bold;text-decoration:underline;margin-top:5px;">{{__('Request an external membership document')}}</h1><br>
     <div class="container"style="margin-top:7px;">
-        <form action="{{ route('fullorders.store') }}" method="POST" >
+        <form action="{!! !empty($fullorder) ? route('fullorders.update', $fullorder) : route('fullorders.store') !!}" method="POST" >
             @csrf
+            @if (!empty($fullorder))
+                @method('PUT')
+            @endif
             <input name="type" value="external" hidden>
             <strong style="font-size:13px;">{{__('(Implementation of the decision of the Board of Directors in its session No. /4/ held on the date 28/01/2016 containing the determination of the amount 1000 SYP of the value of a membership document)')}}</strong><br><br>
             <p>{{__('Gentlemen of the Financial and Accounting Professions Syndicate, please give me a membership document stating that I am a registered member of the Syndicate')}}<br><br>{{__('to submit it to')}}
-            <input style="width:150px;"type="text" class="input @error('side')is-danger @enderror"id="side" name="side"value="{{ old('side') }}"class="form-control" placeholder="{{__('Enter side name')}}" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif />
+            <input style="width:150px;"type="text" class="input @error('side')is-danger @enderror"id="side" name="side" placeholder="@if(empty($fullorder)){{__('Enter side name')}}@endif"  class="form-control"  @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif value= "@if(!empty($fullorder)) {{$fullorder->side}} @else {{ old('side') }} @endif"/>
             @error('side')
             <p class="help is-danger">{{ $message }}</p>
             @enderror</p><br>
@@ -19,7 +22,12 @@
                     <th scope="col">{{__('Request Date')}}</th>
                 </tr>
             </thead>
-            </table> @if(Auth::User()->role == "user")<button type="submit" class="btn btn-primary">{{__('Send')}}</button><br><br>@endif
+            </table>
+            @if (!empty($fullorder))
+                @if(Auth::User()->role == "user")<button type="submit" class="btn btn-primary">{{__('Edit')}}</button><br><br>@endif
+            @else
+                @if(Auth::User()->role == "user")<button type="submit" class="btn btn-primary">{{__('Create')}}</button><br><br>@endif
+            @endif
         </form>
         <p style="text-align:center;">{{__('Your request will be studied and notified when it is completed')}}</p>
         <hr><br>
