@@ -55,7 +55,7 @@ class FullOrderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request)//user
     {
             $fullorder = new FullOrder();
             $fullorder->branch_id     =   1;//Auth::User()->branch_id
@@ -165,7 +165,7 @@ class FullOrderController extends Controller
             $fullorder->save();
             return redirect()->route('fullorders.show',$fullorder);
     }
-    public function store_order(Request $request,$id)
+    public function store_order(Request $request,$id)//manager
     {
         $fullorder = FullOrder::findOrFail($id);
         $request->validate([
@@ -261,9 +261,96 @@ class FullOrderController extends Controller
      * @param  \App\Models\FullOrder  $fullOrder
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, FullOrder $fullOrder)
+    public function update(Request $request, FullOrder $fullorder)
     {
-        dd("here");
+        $fullorder->branch_id     =   1;//Auth::User()->branch_id
+        $fullorder->membership_id =   2222;//Auth::User()->membership_id
+        $fullorder->user_id       =   Auth::User()->id;
+        //local
+        if($request->type == "local"){
+            $request->validate([
+                'side'              => 'required|min:3',
+                ] );
+        $fullorder->side                         = $request->side;
+        }//external
+        elseif($request->type == "external"){
+            $request->validate([
+                'side'              => 'required|min:3',
+                ] );
+            $fullorder->side                         =   $request->side;
+        }//transfer
+        elseif($request->type == "transfer"){
+            $request->validate([
+                'from_country'            => 'required',
+                'to_country'              => 'required',
+                'transportation_reasons' => 'required'
+                ] );
+            $fullorder->country_before         = $request->from_country;
+            $fullorder->country_after          = $request->to_country;
+            $fullorder->transportation_reasons = $request->transportation_reasons;
+            $fullorder->home_change            =      $request->change_home;
+            if ($request->has('change_home')) {         //image home change
+                $image = $request->change_home;
+                $path = $image->store('home_changes', 'public');
+                $fullorder->home_change = $path;
+            }
+            $fullorder->work_change    =      $request->change_work;
+            if ($request->has('change_work')) {         //image work change
+                $image = $request->change_work;
+                $path = $image->store('work_changes', 'public');
+                $fullorder->work_change = $path;
+            }
+        }//replacement
+        else{
+            $request->validate([
+            'FullName_English'              => 'required|min:3|regex:/^[A-Za-z_ ]*$/|not_regex:/[0-9]/',
+            'FullName_Arabic'               => 'required|min:3|not_regex:/[A-Za-z0-9]/',
+            ] );
+            $fullorder->replace_reasons   = $request->replace_reason;
+            $fullorder->police_image      = $request->police_image;
+            if ($request->has('police_image')) {         //image police_image
+                $image = $request->police_image;
+                $path = $image->store('police_images', 'public');
+                $fullorder->police_image = $path;
+            }
+            $fullorder->damaged_card_image   =  $request->damaged_card_image;
+            if ($request->has('damaged_card_image')) {         //image damaged_card_image
+                $image = $request->damaged_card_image;
+                $path = $image->store('damaged_card_images', 'public');
+                $fullorder->damaged_card_image = $path;
+            }
+            $fullorder->judgment_decision_image  =$request->judgment_decision_image;
+            if ($request->has('judgment_decision_image')) {         //image judgment_decision_images
+                $image = $request->judgment_decision_image;
+                $path = $image->store('judgment_decision_images', 'public');
+                $fullorder->judgment_decision_image = $path;
+            }
+            $fullorder->passport_image       =  $request->passport_image;
+            if ($request->has('passport_image')) {         //image passport_image
+                $image = $request->passport_image;
+                $path = $image->store('passport_images', 'public');
+                $fullorder->passport_image = $path;
+            }
+            $fullorder->fullname_arabic      =  $request->FullName_Arabic;
+            $fullorder->fullname_english     = $request->FullName_English;
+            $fullorder->personal_image       =  $request->personal_image;
+            if ($request->has('personal_image')) {         //image personal_image
+                $image = $request->personal_image;
+                $path = $image->store('personal_images', 'public');
+                $fullorder->personal_image = $path;
+            }
+            $fullorder->personal_dentification_image  = $request->personal_identification_image;
+            if ($request->has('personal_identification_image')) {         //image personal_dentification_image
+                $image = $request->personal_identification_image;
+                $path = $image->store('personal_identification_images', 'public');
+                $fullorder->personal_dentification_image = $path;
+            }
+            $fullorder->newmembership_number         = $request->newMembershipNumber;
+        }
+        $fullorder->type          =   $request->type;
+        $fullorder->status        =  "under consideration";
+        $fullorder->save();
+        return redirect()->route('fullorders.show',$fullorder);
     }
 
     /**
