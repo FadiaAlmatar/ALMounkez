@@ -147,12 +147,10 @@
                 <div class="col">
                   <div class="form-outline">
                     <label class="form-label" for="Payment method">{{__('Payment method')}}</label>
-                        <input class="input"type="text" name="specialization[0]" value="{{$order->pay_affiliation_fee}}" id="Specialization" placeholder="" readonly>
-
+                        {{$order->pay_affiliation_fee}}
                   </div>
                 </div>
               </div>
-
         </div>
         {{-- نهايةطريقة الدفع --}}
     </div>
