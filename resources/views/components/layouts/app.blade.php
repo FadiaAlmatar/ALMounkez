@@ -18,12 +18,16 @@
         }
     li{
         text-align: right;
-        float:right;
+        /* float:right; */
+    }
+    .ul-order li{
+        text-align: right;
+        list-style-position: inside;padding-right:15px;
     }
     option{
         text-align: center;
     }
-    #Lost,#Consists,#Modification,#personal,#Transfer,#error,#financially_innocent,#financial_liability{
+    #Lost,#Consists,#Modification,#personal,#Transfer,#error,#financially_innocent,#financial_liability,#printorder{
         float:right;
     }
     .form-check-label{

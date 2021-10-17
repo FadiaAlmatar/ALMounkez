@@ -109,6 +109,9 @@ color: blue;}
 form .input,form .form-select{
     border-color: blue;
 }
+.ul-order{
+    list-style-type:disc;list-style-position: inside;padding-left:15px;
+}
 /* start fullorder style */
 .h1-fullorder{
     text-align: center;font-weight:bold;text-decoration:underline;margin-top:5px;
