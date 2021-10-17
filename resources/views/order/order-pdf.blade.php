@@ -61,14 +61,14 @@
         {{-- <h5>{{__('Personal data')}} </h5> --}}
         <p>{{__('Please accept my affiliation with the Syndicate of Financial and Accounting Professions')}}
             {{__('I declare that all the information, data and attached documents required for affiliation that I have submitted are correct and on my responsibility, and I pledge to abide by the duties of the affiliated members specified in the bylaws of the union, and the relevant decisions and instructions.')}}</p>
-          <table class="table table-bordered">
-              <tr>
-                  <th scope="col" colspan="6" style="font-size: 20px;">{{__('Personal data')}}</th>
-              </tr>
+        <table class="table table-bordered">
+            <tr>
+                <th scope="col" colspan="6" style="font-size: 20px;">{{__('Personal data')}}</th>
+            </tr>
             <tr>
                 <th scope="col">{{__('FullName/English')}}</th>
                 <td scope="row" colspan="5">{{ $order->english_firstname }} {{ $order->english_father_name }} {{ $order->english_lastname }}</td>
-              </tr>
+            </tr>
             <tr>
               <th scope="col">{{__('Name and Nickname')}}</th>
               <td scope="row">{{ $order->firstname }} {{ $order->lastname}}</td>
@@ -107,10 +107,10 @@
               <td scope="row">{{__('work side')}}</td>
               <th scope="col" colspan="2">{{ $order->side_work}}</th>
             </tr>
-        </table>
+        {{-- </table> --}}
         {{-- <br> --}}
     {{-- <h5>{{__('contact information')}}</h5> --}}
-        <table class="table table-bordered">
+        {{-- <table class="table table-bordered"> --}}
             <tr>
                 <th scope="col" colspan="6" style="font-size: 20px;">{{__('contact information')}}</th>
             </tr>
@@ -128,96 +128,96 @@
                 <th scope="col">{{__('Fax')}}</th>
                 <td scope="row" colspan="3">{{$order->fax }}</td>
             </tr>
-        </table>
+        {{-- </table> --}}
 
-        </div>
+        {{-- </div> --}}
     {{-- <h5>{{__('Qualifications')}}</h5> --}}
-          <div class="tab-pane fade" id="Qualifications" role="tabpanel" aria-labelledby="Qualifications-tab">
-                    <div class="table-responsive">
-                        <table class="table" id="Qualification">
-                            <thead>
-                                <tr>
-                                    <th scope="col" colspan="6" style="font-size: 20px;">{{__('Qualifications')}}</th>
-                                </tr>
-                            <tr>
-                                <th scope="col">{{__('Qualification')}}</th>
-                                <th scope="col">{{__('University')}}</th>
-                                <th scope="col">{{__('Country')}}</th>
-                                <th scope="col">{{__('Graduation Year')}}</th>
-                                <td scope="col">{{__('Graduation Rate')}}</td>
-                                <th scope="col">{{__('Specialization')}}</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @for ($i = 0; $i < sizeof($order->qualifications); $i++)
-                            <tr class="cloning_row" id="0">
-                                <td scope="row">{{ $order->qualifications[$i]->qualification}}</td>
-                                <td scope="row">{{ $order->qualifications[$i]->university }}</td>
-                                <td scope="row">{{ $order->qualifications[$i]->country}}</td>
-                                <td scope="row">{{ $order->qualifications[$i]->graduation_year }}</td>
-                                <td scope="row">{{ $order->qualifications[$i]->graduation_rate }}</td>
-                                <td scope="row">{{ $order->qualifications[$i]->Specialization }}</td>
-                            </tr>
-                            @endfor
-                            <tr>
-                                <th scope="row" colspan="6" style="font-size: 20px;">{{__('Attached to the order')}}</th>
-                            </tr>
-                            <tr>
-                                <td scope="row" colspan="3">{{__('Document of no conviction')}}</td>
-                                <td scope="row" colspan="3">{{__('A certified copy of the university degree applied for affiliation with')}}</td>
-                            </tr>
-                            <tr>
-                                <td scope="row" colspan="6">{{__('ID photo A4 size + 3 personal photos')}}</td>
-                            </tr>
-                            <tr style="border: none;">
-                              <td scope="row" rowspan="2" colspan="4">{{__('the employee in charge')}}</td>
-                              <td scope="row" colspan="2">{{__('order presenter')}}</td>
-                            </tr>
-                            <tr style="border: none;">
-                              <td scope="row" colspan="2">{{__('Signature')}}</td>
-                            </tr>
-                            <tr style="border: none;">
-                                <th scope="col" style="font-size: 20px;"colspan="4">{{__('How to pay the affiliation fee')}}</th>
+          {{-- <div class="tab-pane fade" id="Qualifications" role="tabpanel" aria-labelledby="Qualifications-tab"> --}}
+                    {{-- <div class="table-responsive"> --}}
+                        {{-- <table class="table" id="Qualification"> --}}
+                            {{-- <thead> --}}
+            <tr>
+                <th scope="col" colspan="6" style="font-size: 20px;">{{__('Qualifications')}}</th>
+            </tr>
+            <tr>
+                <th scope="col">{{__('Qualification')}}</th>
+                <th scope="col">{{__('University')}}</th>
+                <th scope="col">{{__('Country')}}</th>
+                <th scope="col">{{__('Graduation Year')}}</th>
+                <td scope="col">{{__('Graduation Rate')}}</td>
+                <th scope="col">{{__('Specialization')}}</th>
+            </tr>
+                            {{-- </thead> --}}
+                            {{-- <tbody> --}}
+        @for ($i = 0; $i < sizeof($order->qualifications); $i++)
+            <tr class="cloning_row" id="0">
+                <td scope="row">{{ $order->qualifications[$i]->qualification}}</td>
+                <td scope="row">{{ $order->qualifications[$i]->university }}</td>
+                <td scope="row">{{ $order->qualifications[$i]->country}}</td>
+                <td scope="row">{{ $order->qualifications[$i]->graduation_year }}</td>
+                <td scope="row">{{ $order->qualifications[$i]->graduation_rate }}</td>
+                <td scope="row">{{ $order->qualifications[$i]->Specialization }}</td>
+            </tr>
+        @endfor
+            <tr>
+                <th scope="row" colspan="6" style="font-size: 20px;">{{__('Attached to the order')}}</th>
+            </tr>
+            <tr>
+                <td scope="row" colspan="3">{{__('Document of no conviction')}}</td>
+                <td scope="row" colspan="3">{{__('A certified copy of the university degree applied for affiliation with')}}</td>
+            </tr>
+            <tr>
+                <td scope="row" colspan="6">{{__('ID photo A4 size + 3 personal photos')}}</td>
+            </tr>
+            <tr style="border: none;">
+                <td scope="row" rowspan="2" colspan="4">{{__('the employee in charge')}}</td>
+                <td scope="row" colspan="2">{{__('order presenter')}}</td>
+            </tr>
+            <tr style="border: none;">
+                <td scope="row" colspan="2">{{__('Signature')}}</td>
+            </tr>
+            <tr style="border: none;">
+                <th scope="col" style="font-size: 20px;"colspan="4">{{__('How to pay the affiliation fee')}}</th>
                                 {{-- <td scope="row" colspan="5">{{$order->pay_affiliation_fee}}</td> --}}
-                                <td scope="row" colspan="2" >{{__('Managing Director:')}}</td>
-                            </tr>
-                            <tr style="border: none;">
-                                <td scope="row" colspan="6">{{__('Pay by receipt /bank notice No./         / date')}}</td>
-                            </tr>
-                            <tr style="border: none;">
-                                <td scope="row"  colspan="4" style="border: none;">{{__('cashier:')}}</td>
-                                <td scope="row"  colspan="2" style="border: none;">{{__('Signature')}}</td>
-                            </tr>
-                            <tr style="border: none;">
-                                <td scope="row" colspan="2" style="border: none;">{{__('Signature')}}</td>
-                                <td colspan="4" style="border: none;">{{__('The seal')}}</td>
-                            </tr>
-                            <tr style="border: none;">
-                                <td scope="row" colspan="6" ></td>
-                            </tr>
-                            <tr style="border: none;">
-                                <td scope="row" colspan="6" ></td>
-                            </tr>
-                            <tr>
-                                <th scope="row" colspan="6" style="font-size: 20px;">{{__('Board of directors decision')}}</th>
-                            </tr>
-                            <tr>
-                               <td scope="row" colspan="6">{{__('decision of the Board of Directors in its session No. /      / date   / / 20')}}</td>
-                            </tr>
-                            <tr>
-                               <td scope="row" colspan="2">{{__('Approval')}}</td>
-                               <td scope="row" colspan="4">{{__('Membership No')}}</td>
-                            </tr>
-                            <tr>
-                              <td scope="row" colspan="3">{{__('order is not approved')}}</td>
-                              <td scope="row" colspan="3">{{__('Reasons for disapproval')}}</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-        </div>
-
-    </div>
+                <td scope="row" colspan="2" >{{__('Managing Director:')}}</td>
+            </tr>
+            <tr style="border: none;">
+                <td scope="row" colspan="6">{{__('Pay by receipt /bank notice No./         / date')}}</td>
+            </tr>
+            <tr style="border: none;">
+                <td scope="row"  colspan="4" style="border: none;">{{__('cashier:')}}</td>
+                <td scope="row"  colspan="2" style="border: none;">{{__('Signature')}}</td>
+            </tr>
+            <tr style="border: none;">
+                <td scope="row" colspan="2" style="border: none;">{{__('Signature')}}</td>
+                <td colspan="4" style="border: none;">{{__('The seal')}}</td>
+            </tr>
+            <tr style="border: none;">
+                <td scope="row" colspan="6" ></td>
+            </tr>
+            <tr style="border: none;">
+                <td scope="row" colspan="6" ></td>
+            </tr>
+            <tr>
+                <th scope="row" colspan="6" style="font-size: 20px;">{{__('Board of directors decision')}}</th>
+            </tr>
+            <tr>
+                <td scope="row" colspan="6">{{__('decision of the Board of Directors in its session No. /      / date   / / 20')}}</td>
+            </tr>
+            <tr>
+                <td scope="row" colspan="2">{{__('Approval')}}</td>
+                <td scope="row" colspan="4">{{__('Membership No')}}</td>
+            </tr>
+            <tr>
+                <td scope="row" colspan="3">{{__('order is not approved')}}</td>
+                <td scope="row" colspan="3">{{__('Reasons for disapproval')}}</td>
+            </tr>
+            {{-- </tbody> --}}
+                        {{-- </table> --}}
+                    {{-- </div> --}}
+        {{-- </div> --}}
+    {{-- </div> --}}
+        </table>
     </body>
 </html>
 
