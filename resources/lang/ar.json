@@ -5,7 +5,6 @@
     "Add a new team member to your team, allowing them to collaborate with you.": "أضف عضوًا جديدًا إلى فريقك، مما يتيح لهم التعاون معك.",
     "Add additional security to your account using two factor authentication.": "أضف أمانًا إضافيًا إلى حسابك باستخدام المصادقة الثنائية.",
     "Add Team Member": "إضافة عضو للفريق",
-    "Add": "إضافة",
     "Added.": "تمت الإضافة.",
     "Administrator users can perform any action.": "المدراء بإمكانهم تنفيذ أي إجراء.",
     "Administrator": "المدير",
@@ -24,16 +23,13 @@
     "Before proceeding, please check your email for a verification link.": "قبل المتابعة، يرجى التحقق من بريدك الإلكتروني عن رابط التحقق.",
     "Browser Sessions": "جلسات المتصفح",
     "click here to request another": "انقر هنا لطلب آخر",
-    "Close": "إغلاق",
     "Code": "الرمز",
-    "Confirm Password": "تأكيد كلمة المرور",
     "Confirm": "تأكيد",
     "Create a new team to collaborate with others on projects.": "أنشئ فريقًا جديدًا للتعاون مع الآخرين في المشاريع.",
     "Create Account": "إنشاء حساب",
     "Create API Token": "إنشاء رمز API",
     "Create New Team": "إنشاء فريق جديد",
     "Create Team": "إنشاء فريق",
-    "Create": "إنشاء",
     "Created.": "تم الإنشاء.",
     "Current Password": "كلمة المرور الحالية",
     "Dashboard": "لوحة التحكم",
@@ -81,7 +77,6 @@
     "Manage API Tokens": "إدارة رموز API",
     "Manage Role": "إدارة الصلاحيات",
     "Manage Team": "إدارة الفريق",
-    "Name": "الاسم",
     "Nevermind": "إلغاء",
     "New Password": "كلمة مرور جديدة",
     "Not Found": "غير متوفر",
@@ -91,7 +86,6 @@
     "Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.": "بمجرد حذف حسابك، سيتم حذف جميع موارده وبياناته نهائياً. قبل حذف حسابك، يرجى تنزيل أي بيانات أو معلومات ترغب في الاحتفاظ بها.",
     "Page Expired": "الصفحة منتهية الصلاحية",
     "Pagination Navigation": "التنقل بين الصفحات",
-    "Password": "كلمة المرور",
     "Pending Team Invitations": "دعوات معلقة للإنضمام لفريق",
     "Permanently delete this team.": "احذف هذا الفريق بشكل دائم.",
     "Permanently delete your account.": "احذف حسابك بشكل دائم.",
@@ -192,7 +186,6 @@
     "Member ID": "رقم العضوية",
     "Birthday": "تاريخ الولادة",
     "City": "المدينة",
-    "Country": "الدولة",
     "About me": "لمحة عن العضو",
     "List In Experts": "ادراج ضمن الخبراء",
     "Looking for Jobs": "ادارج ضمن الباحثين عن عمل",
@@ -241,8 +234,6 @@
 ,"Call us": "اتصل بنا"
 ,"Common Questions": "الاسئلة الشائعة"
 ,"Address*":"العنوان*"
-,"Mobile": "الجوال"
-,"Fax": "الفاكس"
 ,"Telphone2": "الهاتف 2"
 ,"Telphone1": "الهاتف 1"
 ,"Photo Grallery":"معرض الصور"
@@ -284,8 +275,6 @@
 ,"Name":"الاسم"
 ,"name":"الاسم"
 ,"Nickname":"النسبة"
-,"nickname":"النسبة"
-,"E-mail":"البريد الالكتروني"
 ,"e-mail":"البريد الالكتروني"
 ,"Username is the name used to enter the site to submit the affiliation request,It must not contain spaces":"اسم المستخدم هو الاسم المستخدم للدخول إلى الموقع لتقديم طلب الانتساب,ويجب أن لايحتوي فراغات"
 ,"Username must be in English If the number of letters is between 3 and 20 letters":" يجب أن يكون اسم المستخدم باللغة الإنكليزية وأن يكون عدد الحروف بين 3و20 حرف"
@@ -500,7 +489,6 @@
 ,"Need to complete papers":"بحاجة لاستكمال أوراق"
 ,"Print":"طباعة"
 ,"Order Status: ":"حالة الطلب: "
-,"Approval":"موافقة"
 ,"Create":"إنشاء"
 ,"Edit":"تعديل"
 ,"FullName/English":"الاسم الثلاثي باللغة الانكليزية"
