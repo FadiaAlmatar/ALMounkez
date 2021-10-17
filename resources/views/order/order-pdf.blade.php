@@ -8,24 +8,25 @@
             font-family: 'XBRiyaz', sans-serif;
             direction: rtl;
             font-size: 20px;
+            height: 100%;
            }
            table{
                 width:100%;
+                min-height: 75%;
                 border: 1px solid black;
                 border-collapse: collapse;
-                height:75%;
                 direction: rtl;
-            }
+           }
             td,th{
                 border: 1px solid black;
-                height: 15%;
+                height:45px;
             }
             th{
                 text-align: right;
                 width:30%;
             }
             td{
-                width:20%;
+                width:15%;
             }
         </style>
            @else
@@ -42,13 +43,12 @@
             }
             table{
                 width:100%;
-                height:75%;
+                height:100%;
                 border: 1px solid black;
                 border-collapse: collapse;
             }
             td,th{
                 border: 1px solid black;
-                height: 15%;
             }
             td{
                 text-align: center;
@@ -60,8 +60,11 @@
         @endif
     </head>
     <body>
-        {{-- <h5>{{__('Personal data')}} </h5> --}}
-        <p style="font-size:13px">{{__('Please accept my affiliation with the Syndicate of Financial and Accounting Professions')}}<br>
+        <h3 style="text-align: center">{{__('Affiliation order')}}</h3>
+        <hr style="margin-top: 1px;margin-bottom:1px;">
+        <p style="font-size:13px;">{{__('Order No.:')}}
+        <br>{{__('Order Date:')}}<br>
+        {{__('Please accept my affiliation with the Syndicate of Financial and Accounting Professions')}}<br>
             {{__('I declare that all the information, data and attached documents required for affiliation that I have submitted are correct and on my responsibility, and I pledge to abide by the duties of the affiliated members specified in the bylaws of the union, and the relevant decisions and instructions.')}}</p>
         <table class="table table-bordered">
             <tr>
@@ -151,7 +154,9 @@
             </tr>
                             {{-- </thead> --}}
                             {{-- <tbody> --}}
-        @for ($i = 0; $i < sizeof($order->qualifications); $i++)
+        {{-- @if (!empty($order->qualifications)) --}}
+        {{-- @if (count($order->qualifications) > 0) --}}
+        @for($i = 0; $i < sizeof($order->qualifications); $i++)
             <tr class="cloning_row" id="0">
                 <td scope="row">{{ $order->qualifications[$i]->qualification}}</td>
                 <td scope="row">{{ $order->qualifications[$i]->university }}</td>
@@ -220,6 +225,9 @@
         {{-- </div> --}}
     {{-- </div> --}}
         </table>
+        <p style="font-size: 11px;width:49%;float:right;display:inline-block">{{__('Secret keeper')}}</p>
+        <p style="font-size: 11px;width:49%;float:leftdisplay:inline-block">{{__('Chairman of Board of Directors')}}</p>
+        </p>
     </body>
 </html>
 
