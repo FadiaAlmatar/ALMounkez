@@ -373,7 +373,9 @@
                   </div>
                 </div>
               </div>
-        <a href="{{route('orders.printorder',$order->id)}}"><i class="fas fa-file-pdf fa-2x" style="color:red"></i></a><br><br>
+        {{-- <a href="{{route('orders.printorder',$order->id)}}"><i class="fas fa-file-pdf fa-2x" style="color:red"></i></a><br><br> --}}
+        <a href="{{route('orders.printorder',$order->id)}}" id="print"class="btn btn-danger btn-md active" role="button" aria-pressed="true">PDF</a><br><br>
+
           <div style="background:#ccc9da;">
             <ul style="list-style-type:disc;list-style-position: inside;padding-left:15px">
               <br><li>{{__('Name field is required')}}</li>

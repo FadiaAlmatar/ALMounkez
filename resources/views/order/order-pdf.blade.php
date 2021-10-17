@@ -8,7 +8,7 @@
             font-family: 'XBRiyaz', sans-serif;
             direction: rtl;
            }
-           </style>
+        </style>
            @else
         <style>
             body {
@@ -113,7 +113,7 @@
           <table class="table table-bordered">
             <tr>
                 <th scope="col">{{__('fname/english*')}}{{__('fathername/english*')}}{{__('lname/english*')}}</th>
-                <td scope="row">{{ $order->english_firstname }}{{ $order->english_father_name }}{{ $order->english_lastname }}</td>
+                <td scope="row" colspan="5">{{ $order->english_firstname }}{{ $order->english_father_name }}{{ $order->english_lastname }}</td>
               </tr>
             <tr>
               <th scope="col">{{__('name and nickname')}}</th>
@@ -149,11 +149,9 @@
             </tr>
             <tr>
               <th scope="col">{{__('Address*')}}</th>
-              <td scope="row">{{ $order->address }}</td>
-              <th scope="col"></th>
+              <td scope="row" colspan="2">{{ $order->address }}</td>
               <td scope="row">{{__('work side')}}</td>
-              <th scope="col">{{ $order->side_work}}</th>
-              <td scope="row"></td>
+              <th scope="col" colspan="2">{{ $order->side_work}}</th>
             </tr>
         </table>
     <h5>{{__('contact information')}}</h5>
@@ -170,9 +168,7 @@
                 <th scope="col">{{__('E-mail')}}</th>
                 <td scope="row">{{ $order->email}}</td>
                 <th scope="col">{{__('Fax')}}</th>
-                <td scope="row">{{$order->fax }}</td>
-                <th scope="col"></th>
-                <td scope="row"></td>
+                <td scope="row" colspan="3">{{$order->fax }}</td>
             </tr>
         </table>
 

@@ -44,7 +44,7 @@ Route::get('/locale/en', function (){
 });
 //resource
 Route::resource('orders', OrderController::class);
-Route::get('/print/{id}', [OrderController::class, 'printorder'])->name('orders.printorder');
+Route::get('/printorder/{id}', [OrderController::class, 'printorder'])->name('orders.printorder');
 Route::resource('posts', PostController::class);
 Route::resource('comments', CommentController::class);
 Route::resource('messages', MessageController::class);
