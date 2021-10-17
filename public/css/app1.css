@@ -112,6 +112,9 @@ form .input,form .form-select{
 .ul-order{
     list-style-type:disc;list-style-position: inside;padding-left:15px;
 }
+#printorder{
+    float:left;
+}
 /* start fullorder style */
 .h1-fullorder{
     text-align: center;font-weight:bold;text-decoration:underline;margin-top:5px;
