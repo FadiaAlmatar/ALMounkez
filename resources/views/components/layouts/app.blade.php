@@ -13,12 +13,15 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     @if (app()->getLocale() == 'ar')
     <style>
+    body,select{
+            direction: rtl;
+        }
     li{
         text-align: right;
         float:right;
     }
     option{
-        text-align: left;
+        text-align: center;
     }
     #Lost,#Consists,#Modification,#personal,#Transfer,#error,#financially_innocent,#financial_liability{
         float:right;

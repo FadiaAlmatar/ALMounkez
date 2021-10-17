@@ -30,14 +30,29 @@
         <input name="type" value="external" hidden>
         <p style="font-weight: bold;display:inline-block;width:40%">{{__('Branch financial management statement:')}}</p>
         <div class="status">
+            @if (app()->getLocale() == 'ar')
+            <select name="status"class="input @error('status')is-danger @enderror" class="form-select" aria-label="Default select example" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif>
+                <option selected></option>
+                {{-- <option value="under consideration">    {{__('under consideration')}}    </option> --}}
+                <option value="مطلوب تسديد القيمة">
+                          {{__('مطلوب تسديد القيمة')}}</option>
+                <option value="يرجى الاستلام">
+                     {{__('يرجى الاستلام')}}</option>
+                <option value="لم تتم الموافقة">
+                    {{__('لم تتم الموافقة')}}</option>
+                <option value="بحاجة لاستكمال الأوراق">
+                     {{__('بحاجة لاستكمال الأوراق')}}</option>
+            </select>
+            @else
             <select name="status"class="input" class="form-select" aria-label="Default select example" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif>
                 <option selected></option>
-                <option value="under consideration">    {{__('under consideration')}}    </option>
+                {{-- <option value="under consideration">    {{__('under consideration')}}    </option> --}}
                 <option value="Payment required">       {{__('Payment required')}}       </option>
                 <option value="Please pick up">         {{__('Please pick up')}}         </option>
                 <option value="not confirmed">          {{__('not confirmed')}}          </option>
                 <option value="Need to complete papers">{{__('Need to complete papers')}}</option>
             </select>
+            @endif
             </div>
            <br><br>
       <p style="display:inline">{{__('Mr.')}} <span style="font-weight: bold">{{Auth::User()->name}}</span>{{__(' is affiliated with the Syndicate with a membership number ')}}{{Auth::User()->id}}<br>

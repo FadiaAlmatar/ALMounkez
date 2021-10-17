@@ -162,6 +162,9 @@ class FullOrderController extends Controller
             }
             $fullorder->type          =   $request->type;
             $fullorder->status        =  "under consideration";
+            if (app()->getLocale() == 'ar'){
+                $fullorder->status_ar        =  "قيد الدراسة";
+            }
             $fullorder->save();
             return redirect()->route('fullorders.show',$fullorder);
     }
@@ -349,6 +352,9 @@ class FullOrderController extends Controller
         }
         $fullorder->type          =   $request->type;
         $fullorder->status        =  "under consideration";
+        if (app()->getLocale() == 'ar'){
+            $fullorder->status_ar        =  "قيد الدراسة";
+        }
         $fullorder->save();
         return redirect()->route('fullorders.show',$fullorder);
     }
