@@ -16,6 +16,7 @@ class CreateFullOrdersTable extends Migration
         Schema::create('full_orders', function (Blueprint $table) {
             $table->id();//رقم الطلب
             $table->string('type')->nullable();//نوع الطلب
+            $table->string('type_ar')->nullable();
             $table->foreignId('branch_id');//رقم الفرع
             $table->string('side')->nullable();//الجهة التي سيقدم عليها
             $table->foreignId('user_id');//رقم مقدم الطلب
@@ -52,6 +53,7 @@ class CreateFullOrdersTable extends Migration
             $table->string('personal_image')->nullable();//الصورة الشخصية
             $table->string('personal_dentification_image')->nullable();//صورة عن الهوية الشخصية
             $table->string('status')->nullable();//حالة الطلب
+            $table->string('status_ar')->nullable();
             $table->timestamps();
         });
     }
