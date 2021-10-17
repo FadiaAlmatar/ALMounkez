@@ -7,6 +7,7 @@
            body {
             font-family: 'XBRiyaz', sans-serif;
             direction: rtl;
+            font-size: 20px;
            }
            table{
                 width:100%;
@@ -31,6 +32,7 @@
         <style>
             body {
             font-family: 'XBRiyaz', sans-serif;
+            font-size: 20px;
            }
            h5 {
             /* border:1px solid #220044; */
@@ -59,11 +61,11 @@
     </head>
     <body>
         {{-- <h5>{{__('Personal data')}} </h5> --}}
-        <p>{{__('Please accept my affiliation with the Syndicate of Financial and Accounting Professions')}}
+        <p style="font-size:13px">{{__('Please accept my affiliation with the Syndicate of Financial and Accounting Professions')}}<br>
             {{__('I declare that all the information, data and attached documents required for affiliation that I have submitted are correct and on my responsibility, and I pledge to abide by the duties of the affiliated members specified in the bylaws of the union, and the relevant decisions and instructions.')}}</p>
         <table class="table table-bordered">
             <tr>
-                <th scope="col" colspan="6" style="font-size: 20px;">{{__('Personal data')}}</th>
+                <th scope="col" colspan="6" style="font-size: 25px;">{{__('Personal data')}}</th>
             </tr>
             <tr>
                 <th scope="col">{{__('FullName/English')}}</th>
@@ -112,7 +114,7 @@
     {{-- <h5>{{__('contact information')}}</h5> --}}
         {{-- <table class="table table-bordered"> --}}
             <tr>
-                <th scope="col" colspan="6" style="font-size: 20px;">{{__('contact information')}}</th>
+                <th scope="col" colspan="6" style="font-size: 25px;">{{__('contact information')}}</th>
             </tr>
             <tr>
                 <th scope="col">{{__('House Phone')}}</th>
@@ -137,7 +139,7 @@
                         {{-- <table class="table" id="Qualification"> --}}
                             {{-- <thead> --}}
             <tr>
-                <th scope="col" colspan="6" style="font-size: 20px;">{{__('Qualifications')}}</th>
+                <th scope="col" colspan="6" style="font-size: 25px;">{{__('Qualifications')}}</th>
             </tr>
             <tr>
                 <th scope="col">{{__('Qualification')}}</th>
@@ -177,7 +179,7 @@
                 <td scope="row" colspan="2">{{__('Signature')}}</td>
             </tr>
             <tr style="border: none;">
-                <th scope="col" style="font-size: 20px;"colspan="4">{{__('How to pay the affiliation fee')}}</th>
+                <th scope="col" style="font-size: 25px;"colspan="4">{{__('How to pay the affiliation fee')}}</th>
                                 {{-- <td scope="row" colspan="5">{{$order->pay_affiliation_fee}}</td> --}}
                 <td scope="row" colspan="2" >{{__('Managing Director:')}}</td>
             </tr>
@@ -199,7 +201,7 @@
                 <td scope="row" colspan="6" ></td>
             </tr>
             <tr>
-                <th scope="row" colspan="6" style="font-size: 20px;">{{__('Board of directors decision')}}</th>
+                <th scope="row" colspan="6" style="font-size: 25px;">{{__('Board of directors decision')}}</th>
             </tr>
             <tr>
                 <td scope="row" colspan="6">{{__('decision of the Board of Directors in its session No. /      / date   / / 20')}}</td>
