@@ -15,7 +15,13 @@
             }
             td,th{
                 border: 1px solid black;
-                width:24%;
+            }
+            th{
+                text-align: right;
+                width:30%;
+            }
+            td{
+                width:20%;
             }
         </style>
            @else
@@ -48,8 +54,11 @@
         @endif
     </head>
     <body>
-        <h5>{{__('Personal data')}} </h5>
+        {{-- <h5>{{__('Personal data')}} </h5> --}}
           <table class="table table-bordered">
+              <tr>
+                  <th scope="col" colspan="6">{{__('Personal data')}}</th>
+              </tr>
             <tr>
                 <th scope="col">{{__('FullName/English')}}</th>
                 <td scope="row" colspan="5">{{ $order->english_firstname }}{{ $order->english_father_name }}{{ $order->english_lastname }}</td>
@@ -93,8 +102,12 @@
               <th scope="col" colspan="2">{{ $order->side_work}}</th>
             </tr>
         </table>
-    <h5>{{__('contact information')}}</h5>
+        {{-- <br> --}}
+    {{-- <h5>{{__('contact information')}}</h5> --}}
         <table class="table table-bordered">
+            <tr>
+                <th scope="col" colspan="6">{{__('contact information')}}</th>
+            </tr>
             <tr>
                 <th scope="col">{{__('House Phone')}}</th>
                 <td scope="row">{{$order->house_phone}}</td>
@@ -112,11 +125,14 @@
         </table>
 
         </div>
-    <h5>{{__('Qualifications')}}</h5>
+    {{-- <h5>{{__('Qualifications')}}</h5> --}}
           <div class="tab-pane fade" id="Qualifications" role="tabpanel" aria-labelledby="Qualifications-tab">
                     <div class="table-responsive">
                         <table class="table" id="Qualification">
                             <thead>
+                                <tr>
+                                    <th scope="col" colspan="6">{{__('Qualifications')}}</th>
+                                </tr>
                             <tr>
                                 <th scope="col">{{__('Qualification')}}</th>
                                 <th scope="col">{{__('University')}}</th>
@@ -137,12 +153,16 @@
                                 <td scope="row">{{ $order->qualifications[$i]->Specialization }}</td>
                             </tr>
                             @endfor
+                            <tr>
+                                <th scope="col">{{__('How to pay the affiliation fee')}}</th>
+                                <td scope="row" colspan="5">{{__('Payment method')}}</td>
+                            </tr>
                             </tbody>
                         </table>
                     </div>
         </div>
-        <h5>{{__('How to pay the affiliation fee')}}</h5>
-          <div id="pay" class="tab-pane fade"  role="tabpanel" aria-labelledby="pay-tab">
+        {{-- <h5>{{__('How to pay the affiliation fee')}}</h5> --}}
+          {{-- <div id="pay" class="tab-pane fade"  role="tabpanel" aria-labelledby="pay-tab">
             <div class="row mb-4">
                 <div class="col">
                   <div class="form-outline">
@@ -151,7 +171,7 @@
                   </div>
                 </div>
               </div>
-        </div>
+        </div> --}}
         {{-- نهايةطريقة الدفع --}}
     </div>
     </body>
