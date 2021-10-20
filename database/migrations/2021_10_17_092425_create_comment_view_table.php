@@ -15,7 +15,7 @@ class CreateCommentViewTable extends Migration
     public function up()
     {
         DB::statement("
-            CREATE VIEW view_comment_list AS
+            CREATE OR REPLACE VIEW view_comment_list AS
             (
             SELECT case WHEN replyto = 0 THEN id ELSE replyto end as code,
             id,replyto,approved,content,created_at,post_id,updated_at,user_id FROM comments
