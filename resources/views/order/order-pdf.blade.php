@@ -24,6 +24,7 @@
             th{
                 text-align: right;
                 width:30%;
+                font-size: 25px;
             }
             td{
                 width:15%;
@@ -33,7 +34,7 @@
         <style>
             body {
             font-family: 'XBRiyaz', sans-serif;
-            font-size: 20px;
+            font-size: 13px;
            }
            h5 {
             /* border:1px solid #220044; */
@@ -49,12 +50,14 @@
             }
             td,th{
                 border: 1px solid black;
+
             }
             td{
                 text-align: center;
             }
             th{
                 text-align: left;
+                font-size: 15px;
             }
         </style>
         @endif
@@ -68,7 +71,7 @@
             {{__('I declare that all the information, data and attached documents required for affiliation that I have submitted are correct and on my responsibility, and I pledge to abide by the duties of the affiliated members specified in the bylaws of the union, and the relevant decisions and instructions.')}}</p>
         <table class="table table-bordered">
             <tr>
-                <th scope="col" colspan="6" style="font-size: 25px;">{{__('Personal data')}}</th>
+                <th scope="col" colspan="6" >{{__('Personal data')}}</th>
             </tr>
             <tr>
                 <th scope="col">{{__('FullName/English')}}</th>
@@ -117,7 +120,7 @@
     {{-- <h5>{{__('contact information')}}</h5> --}}
         {{-- <table class="table table-bordered"> --}}
             <tr>
-                <th scope="col" colspan="6" style="font-size: 25px;">{{__('contact information')}}</th>
+                <th scope="col" colspan="6">{{__('contact information')}}</th>
             </tr>
             <tr>
                 <th scope="col">{{__('House Phone')}}</th>
@@ -133,16 +136,8 @@
                 <th scope="col">{{__('Fax')}}</th>
                 <td scope="row" colspan="3">{{$order->fax }}</td>
             </tr>
-        {{-- </table> --}}
-
-        {{-- </div> --}}
-    {{-- <h5>{{__('Qualifications')}}</h5> --}}
-          {{-- <div class="tab-pane fade" id="Qualifications" role="tabpanel" aria-labelledby="Qualifications-tab"> --}}
-                    {{-- <div class="table-responsive"> --}}
-                        {{-- <table class="table" id="Qualification"> --}}
-                            {{-- <thead> --}}
             <tr>
-                <th scope="col" colspan="6" style="font-size: 25px;">{{__('Qualifications')}}</th>
+                <th scope="col" colspan="6">{{__('Qualifications')}}</th>
             </tr>
             <tr>
                 <th scope="col">{{__('Qualification')}}</th>
@@ -152,10 +147,6 @@
                 <td scope="col">{{__('Graduation Rate')}}</td>
                 <th scope="col">{{__('Specialization')}}</th>
             </tr>
-                            {{-- </thead> --}}
-                            {{-- <tbody> --}}
-        {{-- @if (!empty($order->qualifications)) --}}
-        {{-- @if (count($order->qualifications) > 0) --}}
         @for($i = 0; $i < sizeof($order->qualifications); $i++)
             <tr class="cloning_row" id="0">
                 <td scope="row">{{ $order->qualifications[$i]->qualification}}</td>
@@ -167,7 +158,7 @@
             </tr>
         @endfor
             <tr>
-                <th scope="row" colspan="6" style="font-size: 20px;">{{__('Attached to the order')}}</th>
+                <th scope="row" colspan="6">{{__('Attached to the order')}}</th>
             </tr>
             <tr>
                 <td scope="row" colspan="3">{{__('Document of no conviction')}}</td>
@@ -184,8 +175,7 @@
                 <td scope="row" colspan="2">{{__('Signature')}}</td>
             </tr>
             <tr style="border: none;">
-                <th scope="col" style="font-size: 25px;"colspan="4">{{__('How to pay the affiliation fee')}}</th>
-                                {{-- <td scope="row" colspan="5">{{$order->pay_affiliation_fee}}</td> --}}
+                <th scope="col" colspan="4">{{__('How to pay the affiliation fee')}}</th>
                 <td scope="row" colspan="2" >{{__('Managing Director:')}}</td>
             </tr>
             <tr style="border: none;">
@@ -206,7 +196,7 @@
                 <td scope="row" colspan="6" ></td>
             </tr>
             <tr>
-                <th scope="row" colspan="6" style="font-size: 25px;">{{__('Board of directors decision')}}</th>
+                <th scope="row" colspan="6">{{__('Board of directors decision')}}</th>
             </tr>
             <tr>
                 <td scope="row" colspan="6">{{__('decision of the Board of Directors in its session No. /      / date   / / 20')}}</td>
@@ -219,11 +209,6 @@
                 <td scope="row" colspan="3">{{__('order is not approved')}}</td>
                 <td scope="row" colspan="3">{{__('Reasons for disapproval')}}</td>
             </tr>
-            {{-- </tbody> --}}
-                        {{-- </table> --}}
-                    {{-- </div> --}}
-        {{-- </div> --}}
-    {{-- </div> --}}
         </table>
         <p style="font-size: 11px;width:49%;float:right;display:inline-block">{{__('Secret keeper')}}</p>
         <p style="font-size: 11px;width:49%;float:leftdisplay:inline-block">{{__('Chairman of Board of Directors')}}</p>
