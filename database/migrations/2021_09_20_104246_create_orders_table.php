@@ -21,15 +21,12 @@ class CreateOrdersTable extends Migration
             $table->string('grandfather_name');//اسم الجد
             $table->string('mother_name');//اسم الام
             $table->string('gender')->nullable();//الجنس
-            $table->string('gender_ar')->nullable();//الجنس
             $table->string('english_firstname');//االاسم بالانكليزي
             $table->string('english_lastname');//النسبة بالانكليزي
             $table->string('english_father_name');//اسم الاب انكليزي
             $table->string('english_mother_name');//اسم الام انكليزي
             $table->string('Nationality')->nullable();//الجنسية
-            $table->string('Nationality_ar')->nullable();//الجنسية
             $table->string('Marital_status')->nullable();//الوضع العائلي
-            $table->string('Marital_status_ar')->nullable();//الوضع العائلي
             $table->string('place_of_birth');//مكان الولادة
             $table->date('date_of_birth');//تاريخ الولادة
             $table->bigInteger('national_id');// الرقم الوطني
@@ -38,12 +35,9 @@ class CreateOrdersTable extends Migration
             $table->date('Identity_grant_date');//تاريخ منح الهوية
             $table->string('constraint');//محل ورقم القيد
             $table->string('military')->nullable();//خدمة العلم
-            $table->string('military_ar')->nullable();//خدمة العلم
             $table->bigInteger('public_record_number')->nullable();//رقم السجل العام
             $table->string('Health_status')->nullable();//الوضع الصحي
-            $table->string('Health_status_ar')->nullable();//الوضع الصحي
             $table->string('Affiliation_country');//المحافظة التي يرغب النتساب بها
-            $table->string('Affiliation_country_ar');//المحافظة التي يرغب النتساب بها
             $table->string('address');//العنوان
             $table->string('house_phone')->nullable();//هاتف منزل
             $table->string('work_phone')->nullable();//هاتف مكتب
@@ -60,7 +54,6 @@ class CreateOrdersTable extends Migration
             $table->string('certification_image');//صورة الشهادة
             $table->string('no_conviction_image');//صورة لاحكم عليه
             $table->string('pay_affiliation_fee')->nullable();//طريقة سداد رسم الانتساب
-            $table->string('pay_affiliation_fee_ar')->nullable();//طريقة سداد رسم الانتساب
             $table->timestamps();
         });
     }

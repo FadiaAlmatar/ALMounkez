@@ -152,13 +152,13 @@ class OrderController extends Controller
 
         $order->pay_affiliation_fee = $request->payment;
         // if(app()->getLocale() == 'ar'){
-        $order->gender_ar                   =            $request->gender;
-        $order->Nationality_ar              =            $request->Nationality;
-        $order->Marital_status_ar           =            $request->martialStatus;
-        $order->military_ar                 =            $request->military;
-        $order->Health_status_ar            =            $request->healthStatus;
-        $order->Affiliation_country_ar      =            $request->countryJoin;
-        $order->pay_affiliation_fee_ar      =            $request->payment;
+        // $order->gender_ar                   =            $request->gender;
+        // $order->Nationality_ar              =            $request->Nationality;
+        // $order->Marital_status_ar           =            $request->martialStatus;
+        // $order->military_ar                 =            $request->military;
+        // $order->Health_status_ar            =            $request->healthStatus;
+        // $order->Affiliation_country_ar      =            $request->countryJoin;
+        // $order->pay_affiliation_fee_ar      =            $request->payment;
         // $order->gender =  $order->Nationality = $order->Marital_status = $order->military = $order->Health_status = $order->pay_affiliation_fee = null;
     // }
         // else{
