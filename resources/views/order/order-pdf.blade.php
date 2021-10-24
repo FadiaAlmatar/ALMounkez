@@ -211,8 +211,8 @@
                 <td scope="row" colspan="3">{{__('Reasons for disapproval')}}</td>
             </tr>
         </table>
-        <p style="font-size: 11px;width:49%;float:right;display:inline-block">{{__('Secret keeper')}}</p>
-        <p style="font-size: 11px;width:49%;float:leftdisplay:inline-block">{{__('Chairman of Board of Directors')}}</p>
+        <p style="font-size: 11px;width:50%;float:right;display:inline-block">{{__('Secret keeper')}}</p>
+        <p style="font-size: 11px;width:30%;">{{__('Chairman of Board of Directors')}}</p>
         </p>
     </body>
 </html>
