@@ -416,7 +416,7 @@
           {{-- e0c2c2; --}}
           <button type="submit" class="btn btn-primary">{{__('Send')}}</button>
       <div style="background:#ccc9da;margin-top:5px">
-       <ul style="list-style-type:disc;list-style-position: inside;padding-left:15px">
+       <ul class="ul-order">
           <br><li>{{__('Name field is required')}}</li>
           <li>{{__('Nickname field is required')}}</li>
           <li>{{__('Name/English field is required-Please write the name as it is in the passport, if any')}}</li>
@@ -549,10 +549,10 @@
               </div>
             </div>
           </div>
-    <button type="submit" class="btn btn-primary">{{__('Send')}}</button>
+    <button type="submit" class="btn btn-primary">{{__('Send')}}</button><br><br>
     {{-- <a href="{{route('orders.printorder')}}"><i class="fas fa-file-pdf fa-2x" style="color:red"></i></a><br><br> --}}
       <div style="background:#ccc9da;">
-        <ul style="list-style-type:disc;list-style-position: inside;padding-left:15px">
+        <ul class="ul-order">
           <br><li>{{__('Name field is required')}}</li>
           <li>{{__('Nickname field is required')}}</li>
           <li>{{__('Name/English field is required-Please write the name as it is in the passport, if any')}}</li>
