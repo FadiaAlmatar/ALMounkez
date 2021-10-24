@@ -20,6 +20,7 @@
             td,th{
                 border: 1px solid black;
                 height:45px;
+                padding-right: 5px;
             }
             th{
                 text-align: right;
@@ -34,10 +35,9 @@
         <style>
             body {
             font-family: 'XBRiyaz', sans-serif;
-            font-size: 13px;
+            font-size: 12px;
            }
            h5 {
-            /* border:1px solid #220044; */
             text-align: center;
             text-decoration: underline;
             font-size: 20px;
@@ -50,14 +50,15 @@
             }
             td,th{
                 border: 1px solid black;
-
+                height:25px;
             }
             td{
                 text-align: center;
             }
             th{
                 text-align: left;
-                font-size: 15px;
+                font-size: 13px;
+                padding-left: 5px;
             }
         </style>
         @endif
