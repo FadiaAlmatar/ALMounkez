@@ -74,19 +74,11 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="Gender">{{__('Gender')}}</label>
-                @if(app()->getLocale() == 'ar')
                 <select name="gender"id="Gender"class="form-select form-select-sm" aria-label=".form-select-sm example">
                     <option></option>
-                    <option value="{{__('Male')}}" @if (old('gender_ar') == "male") {{ 'selected' }} @endif>  {{__('Male')}}  </option>
-                    <option value="{{__('Female')}}" @if (old('gender_ar') == "female") {{ 'selected' }} @endif>{{__('Female')}}</option>
+                    <option value="male" @if (old('gender') == "male") {{ 'selected' }} @endif>  {{__('Male')}}  </option>
+                    <option value="female" @if (old('gender') == "female") {{ 'selected' }} @endif>{{__('Female')}}</option>
               </select>
-              @else
-              <select name="gender"id="Gender"class="form-select form-select-sm" aria-label=".form-select-sm example">
-                <option></option>
-                <option value="male" @if (old('gender') == "male") {{ 'selected' }} @endif>  {{__('Male')}}  </option>
-                <option value="female" @if (old('gender') == "female") {{ 'selected' }} @endif>{{__('Female')}}</option>
-             </select>
-             @endif
               </div>
             </div>
           </div>
