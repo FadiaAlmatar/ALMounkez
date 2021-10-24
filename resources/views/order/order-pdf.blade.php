@@ -113,8 +113,8 @@
             <tr>
               <th scope="col">{{__('Present Address')}}</th>
               <td scope="row" colspan="2">{{ $order->address }}</td>
-              <td scope="row">{{__('work side')}}</td>
-              <th scope="col" colspan="2">{{ $order->side_work}}</th>
+              <th scope="col">{{__('work side')}}</th>
+              <td scope="row" colspan="2">{{ $order->side_work}}</td>
             </tr>
         {{-- </table> --}}
         {{-- <br> --}}
@@ -211,8 +211,8 @@
                 <td scope="row" colspan="3">{{__('Reasons for disapproval')}}</td>
             </tr>
         </table>
-        <p style="font-size: 11px;width:50%;float:right;display:inline-block">{{__('Secret keeper')}}</p>
-        <p style="font-size: 11px;width:30%;">{{__('Chairman of Board of Directors')}}</p>
+        <p style="font-size: 11px;width:45%;float:right;display:inline-block">{{__('Secret keeper')}}</p>
+        <p style="font-size: 11px;width:45%;">{{__('Chairman of Board of Directors')}}</p>
         </p>
     </body>
 </html>

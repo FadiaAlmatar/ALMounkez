@@ -150,8 +150,8 @@ class OrderController extends Controller
             $order->no_conviction_image = $path;
         }
 
-        // $order->pay_affiliation_fee = $request->payment;
-        if(app()->getLocale() == 'ar'){
+        $order->pay_affiliation_fee = $request->payment;
+        // if(app()->getLocale() == 'ar'){
         $order->gender_ar                   =            $request->gender;
         $order->Nationality_ar              =            $request->Nationality;
         $order->Marital_status_ar           =            $request->martialStatus;
@@ -160,17 +160,10 @@ class OrderController extends Controller
         $order->Affiliation_country_ar      =            $request->countryJoin;
         $order->pay_affiliation_fee_ar      =            $request->payment;
         // $order->gender =  $order->Nationality = $order->Marital_status = $order->military = $order->Health_status = $order->pay_affiliation_fee = null;
-    }
-        else{
-            $order->gender                   =            $request->gender;
-            $order->Nationality              =            $request->Nationality;
-            $order->Marital_status           =            $request->martialStatus;
-            $order->military                 =            $request->military;
-            $order->Health_status            =            $request->healthStatus;
-            $order->Affiliation_country      =            $request->countryJoin;
-            $order->pay_affiliation_fee      =            $request->payment;
-
-        }
+    // }
+        // else{
+        //    $order->gender_ar =  $order->Nationality_ar = $order->Marital_status_ar = $order->military_ar = $order->Health_status_ar = $order->pay_affiliation_fee_ar = null;
+        // }
         $order->save();
         $qualification_list = [];
         for ($i = 0; $i < count($request->qualification); $i++) {

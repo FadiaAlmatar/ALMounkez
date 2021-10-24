@@ -102,7 +102,11 @@
                     <label class="form-label" for="Nationality">{{__('Nationality')}}</label>
                     {{-- <select name="Nationality"id="Nationality"class="form-select form-select-sm" aria-label=".form-select-sm example"> --}}
                         {{-- <option value="{{$order->Nationality}}" selected readonly>{{$order->Nationality}}</option> --}}
+                        @if(app()->getLocale() == 'ar')
+                        <input type="text" class="input" value="{{$order->Nationality_ar}}"class="form-control" readonly/>
+                        @else
                         <input type="text" class="input" value="{{$order->Nationality}}"class="form-control" readonly/>
+                        @endif
                       {{-- </select> --}}
                   </div>
                 </div>
@@ -111,7 +115,11 @@
                     <label class="form-label" for="Martial status">{{__('Martial status')}}</label>
                     {{-- <select name="martialStatus"id="Martial status"class="form-select form-select-sm" aria-label=".form-select-sm example"> --}}
                         {{-- <option value="{{$order->Marital_status}}" selected readonly>{{$order->Marital_status}}</option> --}}
+                        @if(app()->getLocale() == 'ar')
+                        <input type="text" class="input" value="{{$order->Marital_status_ar}}"class="form-control" readonly/>
+                        @else
                         <input type="text" class="input" value="{{$order->Marital_status}}"class="form-control" readonly/>
+                        @endif
                      {{-- </select> --}}
                   </div>
                 </div>
@@ -170,7 +178,11 @@
                 <label class="form-label" for="Military">{{__('Military')}}</label>
                 {{-- <select name="military"id="Military"class="form-select form-select-sm" aria-label=".form-select-sm example"> --}}
                     {{-- <option value="{{$order->military}}" selected readonly>{{$order->military}}</option> --}}
+                    @if(app()->getLocale() == 'ar')
+                    <input type="text" class="input" value="{{$order->military_ar}}"class="form-control" readonly/>
+                    @else
                     <input type="text" class="input" value="{{$order->military}}"class="form-control" readonly/>
+                    @endif
                  {{-- </select> --}}
               </div>
             </div>
@@ -187,7 +199,11 @@
                 <label class="form-label" for="Health Status">{{__('Health Status')}}</label>
                 {{-- <select name="healthStatus"id="Health Status"class="form-select form-select-sm" aria-label=".form-select-sm example"> --}}
                     {{-- <option value="{{$order->Health_status}}">{{$order->Health_status}}</option> --}}
+                    @if(app()->getLocale() == 'ar')
+                    <input type="text" class="input" value="{{$order->Health_status_ar}}"class="form-control" readonly/>
+                    @else
                     <input type="text" class="input" value="{{$order->Health_status}}"class="form-control" readonly/>
+                    @endif
                  {{-- </select> --}}
               </div>
             </div>
@@ -201,7 +217,11 @@
                   <div class="form-outline">
                     <label class="form-label" for="country you wish to join">{{__('country you wish to join*')}}</label>
                     {{-- <select class="input"name="countryJoin" id="country you wish to join"class="form-select form-select-sm" aria-label=".form-select-sm example"> --}}
+                        @if(app()->getLocale() == 'ar')
+                        <input type="text"class="input" value="{{$order->Affiliation_country_ar}}"class="form-control" readonly/>
+                        @else
                         <input type="text"class="input" value="{{$order->Affiliation_country}}"class="form-control" readonly/>
+                        @endif
                         {{-- <option value="{{$order->Affiliation_country}}" selected readonly>{{$order->Affiliation_country}}</option> --}}
                      {{-- </select> --}}
                   </div>
@@ -382,7 +402,11 @@
                   <div class="form-outline">
                     <label class="form-label" for="Payment method">{{__('Payment method')}}</label>
                     {{-- <select name="payment"id="Payment method"class="form-select form-select-sm" aria-label=".form-select-sm example"> --}}
+                        @if(app()->getLocale() == 'ar')
+                        <input type="text" class="input" value="{{$order->pay_affiliation_fee_ar}}"class="form-control" readonly/>
+                        @else
                         <input type="text" class="input" value="{{$order->pay_affiliation_fee}}"class="form-control" readonly/>
+                        @endif
                         {{-- <option value="{{$order->pay_affiliation_fee}}" selected readonly>{{$order->pay_affiliation_fee}}</option> --}}
                      {{-- </select> --}}
                   </div>
