@@ -57,9 +57,10 @@
                 <div class="col">
                   <div class="form-outline">
                     <label class="form-label" for="Gender">{{__('Gender')}}</label>
-                    <select name="gender"id="Gender"class="form-select form-select-sm" aria-label=".form-select-sm example" >
-                        <option value="{{ $order->gender }}" selected readonly>{{ $order->gender }}</option>
-                   </select>
+                    {{-- <select name="gender"id="Gender"class="form-select form-select-sm" aria-label=".form-select-sm example" > --}}
+                        {{-- <option value="{{ $order->gender }}" selected readonly>{{ $order->gender }}</option> --}}
+                        <input type="text" class="input" value="{{ $order->gender }}"class="form-control" readonly/>
+                   {{-- </select> --}}
                   </div>
                 </div>
               </div>
