@@ -451,7 +451,7 @@
                             <th>{{__('University')}}</th>
                             <th>{{__('Country')}}</th>
                             <th>{{__('Graduation Year')}}</th>
-                            <td>{{__('Graduation Rate')}}</td>
+                            <th>{{__('Graduation Rate')}}</th>
                             <th>{{__('Specialization')}}</th>
                         </tr>
                         </thead>

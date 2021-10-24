@@ -144,7 +144,7 @@
                 <th scope="col">{{__('University')}}</th>
                 <th scope="col">{{__('Country')}}</th>
                 <th scope="col">{{__('Graduation Year')}}</th>
-                <td scope="col">{{__('Graduation Rate')}}</td>
+                <th scope="col">{{__('Graduation Rate')}}</th>
                 <th scope="col">{{__('Specialization')}}</th>
             </tr>
         @for($i = 0; $i < sizeof($order->qualifications); $i++)
