@@ -45,25 +45,31 @@ class OrderController extends Controller
         'grandfathername'                => 'required|min:3|not_regex:/[0-9]/',
         'mothername'                     => 'required|min:3|not_regex:/[0-9]/',
         'gender'                         => 'nullable',
+        // 'gender_ar'                         => 'nullable',
         'fathernameenglish'              => 'required|min:3|regex:/^[A-Za-z_ ]*$/|not_regex:/[0-9]/',
         'mothernameenglish'              => 'required|min:3|regex:/^[A-Za-z_ ]*$/|not_regex:/[0-9]/',
         'Nationality'                    => 'nullable',
+        // 'Nationality_ar'                    => 'nullable',
         'placeBirth'                     => 'required',
         'dateBirth'                      => 'required|date|before:identityGrantDate',
         'nationalID'                     => 'required|numeric',
         'civilRegistry'                  => 'required',
         'martialStatus'                  => 'nullable',
+        // 'martialStatus_ar'                  => 'nullable',
         'personalIdentificationNumber'   => 'required|numeric',
         'identityGrantDate'              => 'required|date|after:dateBirth|before:tomorrow',
         'constraint'                     => 'required',
         'countryJoin'                    => 'required',
+        // 'countryJoin_ar'                    => 'required',
         'address'                        => 'required',
         'displayData'                    => 'required',
         'site'                           => 'url|nullable',
         'insurance'                      => 'numeric|nullable',
         'military'                       => 'nullable',
+        // 'military_ar'                       => 'nullable',
         'publicRecordNumber'             => 'nullable',
         'healthStatus'                   => 'nullable',
+        // 'healthStatus_ar'                   => 'nullable',
         'housePhone'                     => 'nullable|regex:/[0-9]/|not_regex:/[a-z]/|digits_between:7,10',
         'workPhone'                      => 'nullable|regex:/[0-9]/|not_regex:/[a-z]/|digits_between:7,10',
         'mobile'                         => 'nullable|regex:/(0)[0-9]/|not_regex:/[a-z]/|digits:10',//a leading 0 is required | not_regex: only numbers, not alphabet
@@ -82,6 +88,7 @@ class OrderController extends Controller
         'graduationRate.*'               => 'nullable|regex:/^[0-9.]/',
         'specialization.*'               => 'nullable|min:3|not_regex:/[0-9]/',
         'payment'                        => 'nullable',
+        // 'payment_ar'                        => 'nullable',
         ] );
         $order = new Order();
         $order->firstname                =            $request->name;
@@ -89,13 +96,13 @@ class OrderController extends Controller
         $order->father_name              =            $request->fathername;
         $order->grandfather_name         =            $request->grandfathername;
         $order->mother_name              =            $request->mothername;
-        $order->gender                   =            $request->gender;
+        // $order->gender                   =            $request->gender;
         $order->english_firstname        =            $request->fnameenglish;
         $order->english_lastname         =            $request->lnameenglish;
         $order->english_father_name      =            $request->fathernameenglish;
         $order->english_mother_name      =            $request->mothernameenglish;
-        $order->Nationality              =            $request->Nationality;
-        $order->Marital_status           =            $request->martialStatus;
+        // $order->Nationality              =            $request->Nationality;
+        // $order->Marital_status           =            $request->martialStatus;
         $order->place_of_birth           =            $request->placeBirth;
         $order->date_of_birth            =            $request->dateBirth;
         $order->national_id              =            $request->nationalID;
@@ -103,10 +110,10 @@ class OrderController extends Controller
         $order->personal_identification_number  =     $request->personalIdentificationNumber;
         $order->Identity_grant_date      =            $request->identityGrantDate;
         $order->constraint               =            $request->constraint;
-        $order->military                 =            $request->military;
+        // $order->military                 =            $request->military;
         $order->public_record_number     =            $request->publicRecordNumber;
-        $order->Health_status            =            $request->healthStatus;
-        $order->Affiliation_country      =            $request->countryJoin;
+        // $order->Health_status            =            $request->healthStatus;
+        // $order->Affiliation_country      =            $request->countryJoin;
         $order->address                  =            $request->address;
         $order->house_phone              =            $request->housePhone;
         $order->work_phone               =            $request->workPhone;
@@ -142,7 +149,25 @@ class OrderController extends Controller
             $path = $image->store('no_conviction-images', 'public');
             $order->no_conviction_image = $path;
         }
-        $order->pay_affiliation_fee = $request->payment;
+        // $order->pay_affiliation_fee = $request->payment;
+        if(app()->getLocale() == 'ar'){
+        $order->gender_ar                   =            $request->gender;
+        $order->Nationality_ar              =            $request->Nationality;
+        $order->Marital_status_ar           =            $request->martialStatus;
+        $order->military_ar                =            $request->military;
+        $order->Health_status_ar            =            $request->healthStatus;
+        $order->Affiliation_country_ar      =            $request->countryJoin;
+        $order->pay_affiliation_fee_ar      = $request->payment;}
+        else{
+            $order->gender                   =            $request->gender;
+            $order->Nationality              =            $request->Nationality;
+            $order->Marital_status           =            $request->martialStatus;
+            $order->military                 =            $request->military;
+            $order->Health_status            =            $request->healthStatus;
+            $order->Affiliation_country      =            $request->countryJoin;
+            $order->pay_affiliation_fee = $request->payment;
+
+        }
         $order->save();
         $qualification_list = [];
         for ($i = 0; $i < count($request->qualification); $i++) {

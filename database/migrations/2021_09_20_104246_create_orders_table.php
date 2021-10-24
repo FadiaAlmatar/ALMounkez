@@ -29,6 +29,7 @@ class CreateOrdersTable extends Migration
             $table->string('Nationality')->nullable();//الجنسية
             $table->string('Nationality_ar')->nullable();//الجنسية
             $table->string('Marital_status')->nullable();//الوضع العائلي
+            $table->string('Marital_status_ar')->nullable();//الوضع العائلي
             $table->string('place_of_birth');//مكان الولادة
             $table->date('date_of_birth');//تاريخ الولادة
             $table->bigInteger('national_id');// الرقم الوطني

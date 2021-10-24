@@ -59,7 +59,11 @@
                     <label class="form-label" for="Gender">{{__('Gender')}}</label>
                     {{-- <select name="gender"id="Gender"class="form-select form-select-sm" aria-label=".form-select-sm example" > --}}
                         {{-- <option value="{{ $order->gender }}" selected readonly>{{ $order->gender }}</option> --}}
+                        @if(app()->getLocale() == 'ar')
+                        <input type="text" class="input" value="{{ $order->gender_ar }}"class="form-control" readonly/>
+                        @else
                         <input type="text" class="input" value="{{ $order->gender }}"class="form-control" readonly/>
+                        @endif
                    {{-- </select> --}}
                   </div>
                 </div>
