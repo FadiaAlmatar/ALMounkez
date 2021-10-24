@@ -350,6 +350,7 @@
               <div class="form-outline">
                 <label class="form-label" for="work at government">{{__('work at government')}}</label>
                 <select name="workGovernment"id="work at government"class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    <option></option>
                     <option value="1"@if (old('workGovernment') == "1") {{ 'selected' }} @endif>{{__('Worker at government')}}    </option>
                     <option value="0"@if (old('workGovernment') == "0") {{ 'selected' }} @endif>{{__('not Worker at government')}}</option>
                  </select>
@@ -542,6 +543,7 @@
               <div class="form-outline">
                 <label class="form-label" for="Payment method">{{__('Payment method')}}</label>
                 <select name="payment"id="Payment method"class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    <option></option>
                     <option value="cash" @if (old('payment') == "cash") {{ 'selected' }} @endif>{{__('Cash to the Central Syndicate Fund in Damascus')}}</option>
                     <option value="real estate bank" @if (old('payment') == "real estate bank") {{ 'selected' }} @endif>{{__('Syndicate account with the real estate bank number 11011418 in all countries')}}</option>
                     <option value="Francbank" @if (old('payment') == "Francbank") {{ 'selected' }} @endif>{{__('Syndicate account with Francbank Bank number 0004204801 in Damascus,Aleppo,Tartous and Latakia')}}</option>

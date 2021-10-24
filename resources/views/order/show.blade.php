@@ -96,17 +96,19 @@
                 <div class="col">
                   <div class="form-outline">
                     <label class="form-label" for="Nationality">{{__('Nationality')}}</label>
-                    <select name="Nationality"id="Nationality"class="form-select form-select-sm" aria-label=".form-select-sm example">
-                        <option value="{{$order->Nationality}}" selected readonly>{{$order->Nationality}}</option>
-                      </select>
+                    {{-- <select name="Nationality"id="Nationality"class="form-select form-select-sm" aria-label=".form-select-sm example"> --}}
+                        {{-- <option value="{{$order->Nationality}}" selected readonly>{{$order->Nationality}}</option> --}}
+                        <input type="text" class="input" value="{{$order->Nationality}}"class="form-control" readonly/>
+                      {{-- </select> --}}
                   </div>
                 </div>
                 <div class="col">
                   <div class="form-outline">
                     <label class="form-label" for="Martial status">{{__('Martial status')}}</label>
-                    <select name="martialStatus"id="Martial status"class="form-select form-select-sm" aria-label=".form-select-sm example">
-                        <option value="{{$order->Marital_status}}" selected readonly>{{$order->Marital_status}}</option>
-                     </select>
+                    {{-- <select name="martialStatus"id="Martial status"class="form-select form-select-sm" aria-label=".form-select-sm example"> --}}
+                        {{-- <option value="{{$order->Marital_status}}" selected readonly>{{$order->Marital_status}}</option> --}}
+                        <input type="text" class="input" value="{{$order->Marital_status}}"class="form-control" readonly/>
+                     {{-- </select> --}}
                   </div>
                 </div>
               </div>
@@ -162,9 +164,10 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="Military">{{__('Military')}}</label>
-                <select name="military"id="Military"class="form-select form-select-sm" aria-label=".form-select-sm example">
-                    <option value="{{$order->military}}" selected readonly>{{$order->military}}</option>
-                 </select>
+                {{-- <select name="military"id="Military"class="form-select form-select-sm" aria-label=".form-select-sm example"> --}}
+                    {{-- <option value="{{$order->military}}" selected readonly>{{$order->military}}</option> --}}
+                    <input type="text" class="input" value="{{$order->military}}"class="form-control" readonly/>
+                 {{-- </select> --}}
               </div>
             </div>
           </div>
@@ -178,9 +181,10 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="Health Status">{{__('Health Status')}}</label>
-                <select name="healthStatus"id="Health Status"class="form-select form-select-sm" aria-label=".form-select-sm example">
-                    <option value="{{$order->Health_status}}">{{$order->Health_status}}</option>
-                 </select>
+                {{-- <select name="healthStatus"id="Health Status"class="form-select form-select-sm" aria-label=".form-select-sm example"> --}}
+                    {{-- <option value="{{$order->Health_status}}">{{$order->Health_status}}</option> --}}
+                    <input type="text" class="input" value="{{$order->Health_status}}"class="form-control" readonly/>
+                 {{-- </select> --}}
               </div>
             </div>
           </div>
@@ -192,9 +196,10 @@
                 <div class="col">
                   <div class="form-outline">
                     <label class="form-label" for="country you wish to join">{{__('country you wish to join*')}}</label>
-                    <select class="input"name="countryJoin" id="country you wish to join"class="form-select form-select-sm" aria-label=".form-select-sm example">
-                        <option value="{{$order->Affiliation_country}}" selected readonly>{{$order->Affiliation_country}}</option>
-                     </select>
+                    {{-- <select class="input"name="countryJoin" id="country you wish to join"class="form-select form-select-sm" aria-label=".form-select-sm example"> --}}
+                        <input type="text"class="input" value="{{$order->Affiliation_country}}"class="form-control" readonly/>
+                        {{-- <option value="{{$order->Affiliation_country}}" selected readonly>{{$order->Affiliation_country}}</option> --}}
+                     {{-- </select> --}}
                   </div>
                 </div>
             </div>
@@ -252,13 +257,15 @@
                 <div class="col">
                   <div class="form-outline">
                     <label class="form-label" for="work at government">{{__('work at government')}}</label>
-                    <select name="workGovernment"id="work at government"class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    {{-- <select name="workGovernment"id="work at government"class="form-select form-select-sm" aria-label=".form-select-sm example"> --}}
                         @if ($order->work_in_government == 1)
-                        <option value="{{$order->work_in_government}}" selected readonly>{{__('Worker at government')}} </option>
+                        {{-- <option value="{{$order->work_in_government}}" selected readonly>{{__('Worker at government')}} </option> --}}
+                        <input type="text"class="input" value="{{__('Worker at government')}}"class="form-control" readonly/>
                         @else
-                        <option value="{{$order->work_in_government}}" selected readonly>{{__('not Worker at government')}}</option>
+                        <input type="text" class="input" value="{{__('not Worker at government')}}"class="form-control" readonly/>
+                        {{-- <option value="{{$order->work_in_government}}" selected readonly>{{__('not Worker at government')}}</option> --}}
                         @endif
-                     </select>
+                     {{-- </select> --}}
                   </div>
                 </div>
                 <div class="col">
@@ -280,13 +287,15 @@
                 <div class="col">
                   <div class="form-outline">
                     <label style="display:inline;width:70%;"class="form-label" for="display your data">{{__('Do you want to display your data on the site (contact information only) after approving the affiliation request?*')}}</label>
-                    <select style="width:10%"class="input"name="displayData"id="display your data"class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    {{-- <select style="width:10%"class="input"name="displayData"id="display your data"class="form-select form-select-sm" aria-label=".form-select-sm example"> --}}
                         @if($order->displayData == 1)
-                        <option value="{{$order->displayData}}" selected readonly>{{__('Yes')}}</option>
+                        {{-- <option value="{{$order->displayData}}" selected readonly>{{__('Yes')}}</option> --}}
+                        <input type="text" style="width:10%"class="input" value="{{__('Yes')}}"class="form-control" readonly/>
                         @else
-                        <option value="{{$order->displayData}}" selected readonly>{{__('No')}}</option>
+                        {{-- <option value="{{$order->displayData}}" selected readonly>{{__('No')}}</option> --}}
+                        <input type="text" style="width:10%"class="input" value="{{__('No')}}"class="form-control" readonly/>
                         @endif
-                     </select>
+                     {{-- </select> --}}
                   </div>
                 </div>
               </div>
@@ -368,9 +377,10 @@
                 <div class="col">
                   <div class="form-outline">
                     <label class="form-label" for="Payment method">{{__('Payment method')}}</label>
-                    <select name="payment"id="Payment method"class="form-select form-select-sm" aria-label=".form-select-sm example">
-                        <option value="{{$order->pay_affiliation_fee}}" selected readonly>{{$order->pay_affiliation_fee}}</option>
-                     </select>
+                    {{-- <select name="payment"id="Payment method"class="form-select form-select-sm" aria-label=".form-select-sm example"> --}}
+                        <input type="text" class="input" value="{{$order->pay_affiliation_fee}}"class="form-control" readonly/>
+                        {{-- <option value="{{$order->pay_affiliation_fee}}" selected readonly>{{$order->pay_affiliation_fee}}</option> --}}
+                     {{-- </select> --}}
                   </div>
                 </div>
               </div>
