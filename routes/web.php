@@ -2,15 +2,16 @@
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PDFController;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
-use App\Http\Controllers\CommentController;
-use App\Http\Controllers\MessageController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\FullOrderController;
 
 // use DB;
@@ -81,4 +82,4 @@ Route::get('create-pdf-file', [PDFController::class, 'index']);
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
