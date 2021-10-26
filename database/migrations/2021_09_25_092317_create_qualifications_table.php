@@ -16,11 +16,11 @@ class CreateQualificationsTable extends Migration
         Schema::create('qualifications', function (Blueprint $table) {
             $table->id();
             $table->string('qualification')->nullable();//المؤهل
-            $table->string('university')->nullable();//الجامعه
-            $table->string('country')->nullable();//البلد
-            $table->integer('graduation_year')->nullable();//سنة التخرج
-            $table->float('graduation_rate')->nullable();//معدل التخرج
             $table->string('Specialization')->nullable();//التخصص
+            $table->string('side')->nullable();//الجهه
+            $table->string('country')->nullable();//البلد
+            $table->integer('year')->nullable();
+            $table->float('rate')->nullable();
             $table->foreignId('order_id');
             $table->timestamps();
         });

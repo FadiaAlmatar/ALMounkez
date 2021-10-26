@@ -142,20 +142,21 @@
             </tr>
             <tr>
                 <th scope="col">{{__('Qualification')}}</th>
-                <th scope="col">{{__('University')}}</th>
-                <th scope="col">{{__('Country')}}</th>
-                <th scope="col">{{__('Graduation Year')}}</th>
-                <th scope="col">{{__('Graduation Rate')}}</th>
                 <th scope="col">{{__('Specialization')}}</th>
+                <th scope="col">{{__('Side')}}</th>
+                <th scope="col">{{__('Country')}}</th>
+                <th scope="col">{{__('Year')}}</th>
+                <th scope="col">{{__('Rate')}}</th>
             </tr>
         @for($i = 0; $i < sizeof($order->qualifications); $i++)
             <tr class="cloning_row" id="0">
                 <td scope="row">{{ $order->qualifications[$i]->qualification}}</td>
-                <td scope="row">{{ $order->qualifications[$i]->university }}</td>
-                <td scope="row">{{ $order->qualifications[$i]->country}}</td>
-                <td scope="row">{{ $order->qualifications[$i]->graduation_year }}</td>
-                <td scope="row">{{ $order->qualifications[$i]->graduation_rate }}</td>
                 <td scope="row">{{ $order->qualifications[$i]->Specialization }}</td>
+                <td scope="row">{{ $order->qualifications[$i]->side }}</td>
+                <td scope="row">{{ $order->qualifications[$i]->country}}</td>
+                <td scope="row">{{ $order->qualifications[$i]->year }}</td>
+                <td scope="row">{{ $order->qualifications[$i]->rate }}</td>
+
             </tr>
         @endfor
             <tr>

@@ -477,11 +477,11 @@
                         <tr>
                             <th></th>
                             <th>{{__('Qualification')}}</th>
-                            <th>{{__('University')}}</th>
-                            <th>{{__('Country')}}</th>
-                            <th>{{__('Graduation Year')}}</th>
-                            <th>{{__('Graduation Rate')}}</th>
                             <th>{{__('Specialization')}}</th>
+                            <th>{{__('Side')}}</th>
+                            <th>{{__('Country')}}</th>
+                            <th>{{__('Year')}}</th>
+                            <th>{{__('Rate')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -495,15 +495,28 @@
                                         <option value="Master"{{ (collect(old('qualification'))->contains("Master")) ? 'selected':'' }}>          {{__('Master')}}     </option>
                                         <option value="Diploma"{{ (collect(old('qualification'))->contains("Diploma")) ? 'selected':'' }}>        {{__('Diploma')}}    </option>
                                         <option value="Certificate"{{ (collect(old('qualification'))->contains("Certificate")) ? 'selected':'' }}>{{__('Certificate')}}</option>
+                                        <option value="Language"{{ (collect(old('qualification'))->contains("Language")) ? 'selected':'' }}>            {{__('Language')}}      </option>
+                                        <option value="Soft skills"{{ (collect(old('qualification'))->contains("Soft skills")) ? 'selected':'' }}>            {{__('Soft skills')}}      </option>
+                                        <option value="Hard skills"{{ (collect(old('qualification'))->contains("Hard skills")) ? 'selected':'' }}>            {{__('Hard skills')}}      </option>
                                         <option value="Other"{{ (collect(old('qualification'))->contains("Other")) ? 'selected':'' }}>            {{__('Other')}}      </option>
                                     </select>
                                 </div>
                             </td>
                             <td>
+                                <div class="form-group">
+                                  <input class="input"type="text" name="specialization[0]"value="{{ old('specialization')[0] ?? "" }}"class="form-control" id="Specialization" placeholder="">
+                                    @if ($errors->has('specialization.0'))
+                                        @foreach($errors->get('specialization.0') as $error)
+                                        <p class="help is-danger">{{ $error }}</p>
+                                        @endforeach
+                                    @endif
+                                </div>
+                            </td>
+                            <td>
                               <div class="form-group">
-                              <input class="input"type="text" name="university[0]"value="{{ old('university')[0] ?? "" }}"class="form-control" id="University" placeholder="">
-                                @if ($errors->has('university.0'))
-                                    @foreach($errors->get('university.0') as $error)
+                              <input class="input"type="text" name="side[0]"value="{{ old('side')[0] ?? "" }}"class="form-control" id="Side" placeholder="">
+                                @if ($errors->has('side.0'))
+                                    @foreach($errors->get('side.0') as $error)
                                     {{-- @foreach($errors as $error) --}}
                                     <p class="help is-danger">{{ $error }}</p>
                                     {{-- @endforeach  --}}
@@ -523,9 +536,9 @@
                             </td>
                             <td>
                               <div class="form-group">
-                                <input class="input"name="graduationYear[0]"value="{{ old('graduationYear')[0] ?? "" }}" type="text" class="form-control" id="Graduation Year" placeholder="">
-                                @if ($errors->has('graduationYear.0'))
-                                    @foreach($errors->get('graduationYear.0') as $error)
+                                <input class="input"name="Year[0]"value="{{ old('Year')[0] ?? "" }}" type="text" class="form-control" id="Year" placeholder="">
+                                @if ($errors->has('Year.0'))
+                                    @foreach($errors->get('Year.0') as $error)
                                     <p class="help is-danger">{{ $error }}</p>
                                     @endforeach
                                 @endif
@@ -533,24 +546,15 @@
                             </td>
                             <td>
                               <div class="form-group">
-                                <input class="input"name="graduationRate[0]"value="{{ old('graduationRate')[0] ?? "" }}"type="text" class="form-control" id="Graduation Rate" placeholder="">
-                                @if ($errors->has('graduationRate.0'))
-                                    @foreach($errors->get('graduationRate.0') as $error)
+                                <input class="input"name="Rate[0]"value="{{ old('Rate')[0] ?? "" }}"type="text" class="form-control" id="Rate" placeholder="">
+                                @if ($errors->has('Rate.0'))
+                                    @foreach($errors->get('Rate.0') as $error)
                                     <p class="help is-danger">{{ $error }}</p>
                                     @endforeach
                                 @endif
                             </div>
                           </td>
-                          <td>
-                            <div class="form-group">
-                              <input class="input"type="text" name="specialization[0]"value="{{ old('specialization')[0] ?? "" }}"class="form-control" id="Specialization" placeholder="">
-                                @if ($errors->has('specialization.0'))
-                                    @foreach($errors->get('specialization.0') as $error)
-                                    <p class="help is-danger">{{ $error }}</p>
-                                    @endforeach
-                                @endif
-                            </div>
-                        </td>
+
                         </tr>
                         </tbody>
                         <tfoot>

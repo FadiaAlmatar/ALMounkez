@@ -82,10 +82,10 @@ class OrderController extends Controller
         'certification_image'            => 'required|file|image',
         'no_conviction_image'            => 'required|file|image',
         'qualification.*'                => 'nullable',
-        'university.0'                   => 'nullable|min:3|not_regex:/[0-9]/',
+        'side.0'                   => 'nullable|min:3|not_regex:/[0-9]/',
         'country.*'                      => 'nullable|min:3',
-        'graduationYear.*'               => 'nullable|digits:4',
-        'graduationRate.*'               => 'nullable|regex:/^[0-9.]/',
+        'Year.*'               => 'nullable|digits:4',
+        'Rate.*'               => 'nullable|regex:/^[0-9.]/',
         'specialization.*'               => 'nullable|min:3|not_regex:/[0-9]/',
         'payment'                        => 'nullable',
         // 'payment_ar'                        => 'nullable',
@@ -168,11 +168,12 @@ class OrderController extends Controller
         $qualification_list = [];
         for ($i = 0; $i < count($request->qualification); $i++) {
             $qualification_list[$i]['qualification'] = $request->qualification[$i];
-            $qualification_list[$i]['university'] = $request->university[$i];
-            $qualification_list[$i]['country'] = $request->country[$i];
-            $qualification_list[$i]['graduation_year'] = $request->graduationYear[$i];
-            $qualification_list[$i]['graduation_rate'] = $request->graduationRate[$i];
             $qualification_list[$i]['Specialization'] = $request->specialization[$i];
+            $qualification_list[$i]['side'] = $request->side[$i];
+            $qualification_list[$i]['country'] = $request->country[$i];
+            $qualification_list[$i]['year'] = $request->Year[$i];
+            $qualification_list[$i]['rate'] = $request->Rate[$i];
+
         }
          $order->qualifications()->createMany($qualification_list);
          return redirect()->route('orders.show',$order);
