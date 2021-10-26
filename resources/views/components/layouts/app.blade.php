@@ -92,11 +92,11 @@
             '<tr class="cloning_row" id="' + numberIncr + '">' +
             '<td><button type="button" class="btn btn-danger btn-sm delegated-btn"><i class="fa fa-minus"></i></button></td>' +
             '<td><select name="qualification[' + numberIncr + ']" class="form-select form-control"><option></option><option value="Doctorate">{{__('Doctorate')}}</option><option value="Master">{{__('Master')}}</option><option value="Diploma">{{__('Diploma')}}</option><option value="Certificate">{{__('Certificate')}}</option><option value="Other">{{__('Other')}}</option></select></td>' +
-            '<td><input class="input"type="text" name="university[' + numberIncr + ']" class="form-control"></td>' +
-            '<td><input class="input"type="text" name="country[' + numberIncr + ']" class="form-control"></td>' +
-            '<td><input class="input"type="text" name="graduationYear[' + numberIncr + ']" class=" form-control"></td>' +
-            '<td><input class="input"type="text" name="graduationRate['+ numberIncr + ']" class=" form-control"></td>' +
             '<td><input class="input"type="text" name="specialization['+ numberIncr + ']" class=" form-control"></td>' +
+            '<td><input class="input"type="text" name="side[' + numberIncr + ']" class="form-control"></td>' +
+            '<td><input class="input"type="text" name="country[' + numberIncr + ']" class="form-control"></td>' +
+            '<td><input class="input"type="text" name="Year[' + numberIncr + ']" class=" form-control"></td>' +
+            '<td><input class="input"type="text" name="Rate['+ numberIncr + ']" class=" form-control"></td>' +
             '</tr>'));
     });
 
