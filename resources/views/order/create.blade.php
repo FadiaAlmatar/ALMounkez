@@ -480,7 +480,7 @@
                             <th>{{__('Specialization')}}</th>
                             <th>{{__('Side')}}</th>
                             <th>{{__('Country')}}</th>
-                            <th>{{__('Year')}}</th>
+                            <th>{{__('Finish Year')}}</th>
                             <th>{{__('Rate')}}</th>
                         </tr>
                         </thead>
@@ -536,9 +536,9 @@
                             </td>
                             <td>
                               <div class="form-group">
-                                <input class="input"name="Year[0]"value="{{ old('Year')[0] ?? "" }}" type="text" class="form-control" id="Year" placeholder="">
-                                @if ($errors->has('Year.0'))
-                                    @foreach($errors->get('Year.0') as $error)
+                                <input class="input"name="finishYear[0]"value="{{ old('finishYear')[0] ?? "" }}" type="text" class="form-control" id="Year" placeholder="">
+                                @if ($errors->has('finishYear.0'))
+                                    @foreach($errors->get('finishYear.0') as $error)
                                     <p class="help is-danger">{{ $error }}</p>
                                     @endforeach
                                 @endif

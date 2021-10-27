@@ -201,7 +201,7 @@ return [
         'housePhone'             =>'هاتف المنزل',
         'workPhone'              =>'هاتف المكتب',
         'site'                   =>'الموقع الالكتروني',
-        'Year.0'       =>'العام',
+        'finishYear.0'       =>'العام',
         'side.0'           =>'اسم الجهة',
         'country.0'              =>'اسم البلد',
         'specialization.0'       =>'الاختصاص',

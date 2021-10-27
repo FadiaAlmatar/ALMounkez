@@ -171,7 +171,7 @@ class OrderController extends Controller
             $qualification_list[$i]['Specialization'] = $request->specialization[$i];
             $qualification_list[$i]['side'] = $request->side[$i];
             $qualification_list[$i]['country'] = $request->country[$i];
-            $qualification_list[$i]['year'] = $request->Year[$i];
+            $qualification_list[$i]['finishyear'] = $request->finishYear[$i];
             $qualification_list[$i]['rate'] = $request->Rate[$i];
 
         }

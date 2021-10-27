@@ -19,7 +19,7 @@ class CreateQualificationsTable extends Migration
             $table->string('Specialization')->nullable();//التخصص
             $table->string('side')->nullable();//الجهه
             $table->string('country')->nullable();//البلد
-            $table->integer('year')->nullable();
+            $table->integer('finishyear')->nullable();
             $table->float('rate')->nullable();
             $table->foreignId('order_id');
             $table->timestamps();

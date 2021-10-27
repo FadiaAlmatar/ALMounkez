@@ -145,7 +145,7 @@
                 <th scope="col">{{__('Specialization')}}</th>
                 <th scope="col">{{__('Side')}}</th>
                 <th scope="col">{{__('Country')}}</th>
-                <th scope="col">{{__('Year')}}</th>
+                <th scope="col">{{__('Finish Year')}}</th>
                 <th scope="col">{{__('Rate')}}</th>
             </tr>
         @for($i = 0; $i < sizeof($order->qualifications); $i++)
@@ -154,7 +154,7 @@
                 <td scope="row">{{ $order->qualifications[$i]->Specialization }}</td>
                 <td scope="row">{{ $order->qualifications[$i]->side }}</td>
                 <td scope="row">{{ $order->qualifications[$i]->country}}</td>
-                <td scope="row">{{ $order->qualifications[$i]->year }}</td>
+                <td scope="row">{{ $order->qualifications[$i]->finishyear }}</td>
                 <td scope="row">{{ $order->qualifications[$i]->rate }}</td>
 
             </tr>
