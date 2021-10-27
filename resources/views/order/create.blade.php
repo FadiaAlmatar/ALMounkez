@@ -416,21 +416,21 @@
           </div>
           <div class="mb-3" >
             <label for="formFile" class="form-label">{{__('Identity image*')}}</label>
-            <input class="form-control" type="file" accept="image/*" id="identity_image" name="identity_image">
+            <input class="form-control" type="file" accept="image/*" id="identity_image" name="identity_image" >
             @error('identity_image')
             <p class="help is-danger">{{ $message }}</p>
             @enderror
           </div>
           <div class="mb-3">
             <label for="formFile" class="form-label">{{__('Personal image*')}}</label>
-            <input class="form-control" type="file" accept="image/*"id="personal_image" name="personal_image">
+            <input class="form-control" type="file" accept="image/*"id="personal_image" name="personal_image" >
             @error('personal_image')
             <p class="help is-danger">{{ $message }}</p>
             @enderror
           </div>
           <div class="mb-3">
             <label for="formFile" class="form-label">{{__('Certification image*')}}</label>
-            <input class="form-control" type="file" accept="image/*"id="certification_image" name="certification_image">
+            <input class="form-control" type="file" accept="image/*"id="certification_image" name="certification_image" >
             @error('certification_image')
             <p class="help is-danger">{{ $message }}</p>
             @enderror
