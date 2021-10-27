@@ -1,8 +1,8 @@
 <x-layouts.app>
     <h1 style="text-align: center;font-weight:bold;text-decoration:underline;margin-top:5px;">{{__('Request for a replacement membership card')}}</h1><br>
     <div class="container"style="margin-top:7px;">
-        <strong style="font-size:13px;">{{__('Based on decision of the Board of Directors in its session No. 36 held on the date 27/04/2016 containing the determination of the amount 1000 SYP of the value of a membership card:(Consists-Lost)')}}</strong><br><br>
-        <hr><h1 style="text-align: center;font-weight:bold;">{{__('Filled out by the affiliate')}}</h1><hr>
+        <strong style="font-size:13px;">{{__('Based on decision of the Board of Directors in its session No. 36 held on the date 27/04/2016 containing the determination of the amount 1000 SYP of the value of a membership card:(Consists-Lost)')}}</strong><br>
+        <hr><h1 style="text-align: center;font-weight:bold;font-size:18px">{{__('Filled out by the affiliate')}}</h1><hr>
         <form action="{!! !empty($fullorder) ? route('fullorders.update', $fullorder) : route('fullorders.store') !!}" method="POST" enctype="multipart/form-data">
             @csrf
             @if (!empty($fullorder))
@@ -75,7 +75,7 @@
             @enderror --}}
         </p>
         {{-- التعديلات المطلوب وضعها على بطاقة العضوية الجديدة --}}
-        <hr><br>
+        <hr>
         <p style="font-weight: bold;text-align: center;">{{__('Required modifications to be made on the new membership card')}}</p>
         <hr>
         <table class="table table-bordered">
@@ -120,13 +120,13 @@
         </thead>
         </table>
         @if (!empty($fullorder))
-             @if(Auth::User()->role == "user")<button type="submit" class="btn btn-primary">{{__('Edit')}}</button><br><br>@endif
+             @if(Auth::User()->role == "user")<button type="submit" class="btn btn-primary">{{__('Edit')}}</button><br>@endif
         @else
-             @if(Auth::User()->role == "user")<button type="submit" class="btn btn-primary">{{__('Create')}}</button><br><br>@endif
+             @if(Auth::User()->role == "user")<button type="submit" class="btn btn-primary">{{__('Create')}}</button><br>@endif
         @endif
         </form>
-        <p style="text-align:center;">{{__('Your request will be considered within a maximum period of two days. Please contact us')}}</p>
-        <hr><br>
+        <p style="text-align:center;font-size:13px;font-weight:bold;">{{__('Your request will be considered within a maximum period of two days. Please contact us')}}</p>
+        <hr style="width:40%;margin:auto"><br>
 {{-- manager only --}}
 {{--  بيان الدارة الماليةللفرع --}}
     <p style="font-weight: bold;">{{__('Branch financial management statement:')}}</p><hr>
@@ -140,18 +140,17 @@
         <input class="form-check-input" type="radio" name="debt" id="financial_liability" value="option2" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif>
         <label for="financial_liability" class="form-check-label" value="financial_liability" @if (old('debt') == "financial_liability") {{ 'selected' }} @endif>{{__('It has a previous financial liability')}}</label>
         {{__('equal ')}}<input style="width:150px;"type="text" class="input @error('money_debt')is-danger @enderror"id="money_debt" name="money_debt"value="{{ old('money_debt') }}"class="form-control" placeholder="{{__('Enter debt money')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif/>{{__(' SYP')}}<br>
-    </div><br><br>
-
+    </div><br>
     <p>{{__('Mr.: The cashier in the branch, please receive an amount and its amount ')}}
-        <input style="width:150px;"type="text" class="input @error('money_order')is-danger @enderror"id="money_order" name="money_order"value="{{ old('money_order') }}"class="form-control" placeholder="{{__('Enter debt order')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif/>{{__(' SYP')}}</p><br>
+        <input style="width:150px;"type="text" class="input @error('money_order')is-danger @enderror"id="money_order" name="money_order"value="{{ old('money_order') }}"class="form-control" placeholder="{{__('Enter debt order')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif/>{{__(' SYP')}}</p>
 {{--  بيان أمين الصندوق--}}
-            <hr><br>
-            <p style="font-weight: bold;">{{__('Treasurer statement: ')}}</p><hr>
-            <br><p>{{__('Amount has been received ')}}
-                <input style="width:170px;"type="text" class="input @error('money_order')is-danger @enderror"id="money_order" name="money_order"value="{{ old('money_order') }}"class="form-control" placeholder="{{__('Enter order money')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif/>{{__(' SYP')}}</p><br>
+            <hr>
+            <p style="font-weight: bold;">{{__('Treasurer statement: ')}}</p>
+            <p>{{__('Amount has been received ')}}
+                <input style="width:170px;"type="text" class="input @error('money_order')is-danger @enderror"id="money_order" name="money_order"value="{{ old('money_order') }}"class="form-control" placeholder="{{__('Enter order money')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif/>{{__(' SYP')}}</p>
 {{-- قرار رئيس مجلس الإدارة --}}
-            <hr><br>
-        <p style="font-weight: bold;">{{__("Chairman's decision: ")}}</p><hr><br>
+            <hr>
+        <p style="font-weight: bold;">{{__("Chairman's decision: ")}}</p>
         <div>
             <label style="display:inline;width:70%;"class="form-label" for="approval">{{__('Approval')}}</label>
             <select style="width:10%"class="input @error('Chairman_decision')is-danger @enderror"name="Chairman_decision"id="Chairman_decision"class="form-select form-select-sm" aria-label=".form-select-sm example" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif>
