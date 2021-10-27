@@ -9,8 +9,10 @@
             <select style="width:150px"class="input @error('countryfrom')is-danger @enderror"name="countryfrom" id="countryfrom"class="form-select form-select-sm" aria-label=".form-select-sm example" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
                 <option value="{{$fullorder->country_before}}" selected readonly>{{$fullorder->country_before}}</option>
             </select>
-            <a href="{{route('fullorders.print',$fullorder->id)}}" id="print"class="btn btn-danger btn-md active" role="button" aria-pressed="true">PDF</a></p>
-           </p>
+            @if(Auth::User()->role == "admin")
+            <a href="{{route('fullorders.print',$fullorder->id)}}" id="print"class="btn btn-danger btn-md active" role="button" aria-pressed="true">PDF</a>
+           @endif</p>
+        </p>
             <div class="form-outline">
                 <label class="form-label" for="fullname">{{__('fullname* : ')}}</label>
                 <input type="text" class="input @error('fullname')is-danger @enderror input-fullorder" id="fullname" name="fullname" value="{{ old('fullname') }}"class="form-control" placeholder="{{__('Enter FullName')}}" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif/>
