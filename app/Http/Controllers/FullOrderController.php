@@ -213,7 +213,9 @@ class FullOrderController extends Controller
      */
     public function show(FullOrder $fullorder)
     {
-        if((Auth::User()->role == "user") || ($fullorder->status == "under consideration")){
+        if(Auth::User()->role == "user") {
+        // || ($fullorder->status == "under consideration")){
+            // dd("here");
             if($fullorder->type == "local")
                 return view('fullorder.show_local',['fullorder'=>$fullorder]);
             elseif($fullorder->type == "external")
@@ -224,14 +226,27 @@ class FullOrderController extends Controller
                 return view('fullorder.show_replacement',['fullorder'=>$fullorder]);
         }
         else{
+           if($fullorder->status == "under consideration"){
             if($fullorder->type == "local")
-                 return view('fullorder.show_local_manager',['fullorder'=>$fullorder]);
-            elseif($fullorder->type == "external")
-                return view('fullorder.show_external_manager',['fullorder'=>$fullorder]);
-            elseif($fullorder->type == "transfer")
-                return view('fullorder.show_transfer_manager',['fullorder'=>$fullorder]);
-            else
-                return view('fullorder.show_replacement_manager',['fullorder'=>$fullorder]);
+            return view('fullorder.show_local',['fullorder'=>$fullorder]);
+         elseif($fullorder->type == "external")
+            return view('fullorder.show_external',['fullorder'=>$fullorder]);
+         elseif($fullorder->type == "transfer")
+            return view('fullorder.show_transfer',['fullorder'=>$fullorder]);
+         else
+            return view('fullorder.show_replacement',['fullorder'=>$fullorder]);
+
+           }
+           else{
+            if($fullorder->type == "local")
+            return view('fullorder.show_local_manager',['fullorder'=>$fullorder]);
+          elseif($fullorder->type == "external")
+              return view('fullorder.show_external_manager',['fullorder'=>$fullorder]);
+          elseif($fullorder->type == "transfer")
+           return view('fullorder.show_transfer_manager',['fullorder'=>$fullorder]);
+          else
+           return view('fullorder.show_replacement_manager',['fullorder'=>$fullorder]);
+           }
 
         }
 

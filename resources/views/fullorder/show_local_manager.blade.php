@@ -6,7 +6,7 @@
         <p>{{__('Gentlemen of the Financial and Accounting Professions Syndicate, please give me a membership document stating that I am a registered member of the Syndicate')}}<br><br>{{__('to submit it to')}}
         <input type="text" class="input input-fullorder"id="side" name="side"value="{{ $fullorder->side }}"class="form-control" placeholder="enter side name" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif readonly/>
         {{-- <button type="button" class="btn btn-danger" id="print">{{__('Print')}}</button> --}}
-        <a href="{{route('fullorders.print',$fullorder->id)}}" id="print"class="btn btn-danger btn-md active" role="button" aria-pressed="true">PDF</a>        </p><br>
+        <a href="{{route('fullorders.print',$fullorder->id)}}" id="print"class="btn btn-danger btn-md active" role="button" aria-pressed="true">PDF</a></p>
         <table style="width:75%;"class="table table-bordered">
         <thead>
             <tr>
@@ -23,15 +23,15 @@
             </tr>
         </tbody>
         </table>
-        <p class="p-fullorder">{{__('Your request will be considered within a maximum period of two days. Please contact us')}}</p>
-        <hr>
+        <p style="text-align:center;font-size:13px;font-weight:bold;">{{__('Your request will be considered within a maximum period of two days. Please contact us')}}</p>
+        <hr style="width:50%;margin:auto">
        {{-- بيان الدارة المالية --}}
             <input name="type" value="local" hidden>
-            <p style="font-weight: bold;display:inline-block;width:40%">{{__('Financial Management Statement:')}}</p>
-            <div class="status">
-                <p style="color:red"value="{{$fullorder->status}}"> {{$fullorder->status}} </p>
+            <p style="font-weight: bold;display:inline-block;width:20%">{{__('Financial Management Statement:')}}</p>
+            <div class="status" style="width:30%;">
+                <p style="color:red"value="{{$fullorder->status}}">{{__('Order Status')}}: {{$fullorder->status}} </p>
             </div>
-           <br><br>
+           <br>
             <p style="display:inline">{{__('Mr.')}} <span style="font-weight: bold">{{Auth::User()->name}}</span>{{__(' is affiliated with the Syndicate with a membership number ')}}{{Auth::User()->id}}<br>
                 {{__('We inform you that he is registered in the Syndicate in year ...... and : ')}}</p>&nbsp;
             @if($fullorder->not_debtor == 0)
@@ -46,15 +46,15 @@
                 {{__('equal ')}}
                 <input type="text" class="input input-fullorder"id="money_debt" name="money_debt" @if(Auth::User()->role == "admin") value="{{ $fullorder->money_debt}}" @endif class="form-control" placeholder="{{__('Enter debt money')}}" disabled />{{__(' SYP')}}<br>
             </div>@endif<br>
-            <p>{{__('Mr.: The cashier in the branch, please receive an amount and its amount ')}}<input type="text" class="input input-fullorder"id="money_order" name="money_order" @if(Auth::User()->role == "admin") value="{{ $fullorder->money_order}}" @endif class="form-control" placeholder="{{__('Enter order money')}}" disabled/>{{__(' SYP')}}</p><br>
+            <p>{{__('Mr.: The cashier in the branch, please receive an amount and its amount ')}}<input type="text" class="input input-fullorder"id="money_order" name="money_order" @if(Auth::User()->role == "admin") value="{{ $fullorder->money_order}}" @endif class="form-control" placeholder="{{__('Enter order money')}}" disabled/>{{__(' SYP')}}</p>
     {{--  بيان أمين الصندوق--}}
             <hr>
-            <p style="font-weight: bold;">{{__('Treasurer statement: ')}}</p><br>
+            <p style="font-weight: bold;">{{__('Treasurer statement: ')}}</p>
             <p>{{__('Amount has been received ')}}
-                <input type="text" class="input input-fullorder"id="money_order" name="money_order" @if(Auth::User()->role == "admin") value="{{ $fullorder->money_order}}" @endif class="form-control" placeholder="{{__('Enter order money')}}" disabled/>{{__(' SYP')}}</p><br>
+                <input type="text" class="input input-fullorder"id="money_order" name="money_order" @if(Auth::User()->role == "admin") value="{{ $fullorder->money_order}}" @endif class="form-control" placeholder="{{__('Enter order money')}}" disabled/>{{__(' SYP')}}</p>
     {{-- قرار رئيس مجلس الإدارة --}}
             <hr>
-            <p style="font-weight: bold;">{{__("Chairman's decision")}}{{__(':')}}</p><br>
+            <p style="font-weight: bold;">{{__("Chairman's decision")}}{{__(':')}}</p>
             <div>
                 <label style="display:inline;width:70%;"class="form-label" for="approval">{{__('Approval')}}</label>
                 <select style="width:10%"class="input"name="Chairman_decision"id="Chairman_decision"class="form-select form-select-sm" aria-label=".form-select-sm example"  disabled >
@@ -70,6 +70,7 @@
                 <textarea name="Chairman_disapproval_reasons"class="form-control" id="reasons" rows="2" disabled>{{ $fullorder->Chairman_disapproval_reasons }}</textarea><br>
             </div>
                  @endif
+                 <br><br>
             </div>
     </div>
 </x-layouts.app>

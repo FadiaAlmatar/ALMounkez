@@ -22,8 +22,8 @@
             </tr>
         </tbody>
         </table>
-        <p class="p-fullorder">{{__('Your request will be considered within a maximum period of two days. Please contact us')}}</p>
-        <hr>
+        <p style="text-align:center;font-size:13px;font-weight:bold;">{{__('Your request will be considered within a maximum period of two days. Please contact us')}}</p>
+        <hr style="width:50%;margin:auto">
       {{--  بيان الادارة الماليةللفرع --}}
       <form action="{{ route('fullorders.store_order',$fullorder->id) }}" method="POST" >
         @csrf
