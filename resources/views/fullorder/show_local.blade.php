@@ -22,19 +22,20 @@
             </tr>
         </tbody>
         </table>
-        <p class="p-fullorder">{{__('Your request will be considered within a maximum period of two days. Please contact us')}}</p>
-        <hr><br>
+        <p style="text-align:center;font-size:13px;font-weight:bold;">{{__('Your request will be considered within a maximum period of two days. Please contact us')}}</p>
+        <hr style="width:50%;margin:auto"><br>
        {{-- بيان الدارة المالية --}}
         <form action="{{ route('fullorders.store_order',$fullorder->id) }}" method="POST" >
             @csrf
             <input name="type" value="local" hidden>
             <p style="font-weight: bold;display:inline-block;width:40%">{{__('Financial Management Statement:')}}</p>
             <div class="status">
-            @if (app()->getLocale() == 'ar')
+            {{-- @if (app()->getLocale() == 'ar')
+            <label>{{__('order status')}}</label>
             <select name="status"class="input @error('status')is-danger @enderror" class="form-select" aria-label="Default select example" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif>
                 <option selected></option>
                 {{-- <option value="under consideration">    {{__('under consideration')}}    </option> --}}
-                <option value="مطلوب تسديد القيمة">
+                {{-- <option value="مطلوب تسديد القيمة">
                           {{__('مطلوب تسديد القيمة')}}</option>
                 <option value="يرجى الاستلام">
                      {{__('يرجى الاستلام')}}</option>
@@ -42,24 +43,26 @@
                     {{__('لم تتم الموافقة')}}</option>
                 <option value="بحاجة لاستكمال الأوراق">
                      {{__('بحاجة لاستكمال الأوراق')}}</option>
+                     <option value="منتهي"></option>
             </select>
-            @else
+            @else --}}
+            <label>{{__('order status')}}</label>
             <select name="status"class="input @error('status')is-danger @enderror" class="form-select" aria-label="Default select example" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif>
                 <option selected></option>
                 {{-- <option value="under consideration">    {{__('under consideration')}}    </option> --}}
-                <option value="Payment required">       {{__('Payment required')}}       </option>
-                <option value="Please pick up">         {{__('Please pick up')}}         </option>
-                <option value="not confirmed">          {{__('not confirmed')}}          </option>
-                <option value="Need to complete papers">{{__('Need to complete papers')}}</option>
-                <option value="Finished">               {{__('Finished')}}               </option>
+                <option @if(app()->getLocale() == 'ar') value="{{__('Payment required')}}" @else value="Payment required" @endif>{{__('Payment required')}} </option>
+                <option @if(app()->getLocale() == 'ar') value="{{__('Please pick up')}}" @else value="Please pick up" @endif>    {{__('Please pick up')}}   </option>
+                <option @if(app()->getLocale() == 'ar') value="{{__('not confirmed')}}" @else value="not confirmed" @endif>      {{__('not confirmed')}}    </option>
+                <option @if(app()->getLocale() == 'ar') value="{{__('Need to complete papers')}}" @else value="Need to complete papers" @endif>{{__('Need to complete papers')}}</option>
+                <option @if(app()->getLocale() == 'ar') value="{{__('Finished')}}" @else value="Finished" @endif>               {{__('Finished')}}</option>
             </select>
-            @endif
+            {{-- @endif --}}
             @error('status')
              <p class="help is-danger">{{ $message }}</p>
             @enderror
             </div>
-           <br><br>
-            <hr style="width:75%">
+           <br>
+            {{-- <hr style="width:75%"> --}}
             <p style="display:inline">{{__('Mr.')}} <span style="font-weight: bold">{{Auth::User()->name}}</span>{{__(' is affiliated with the Syndicate with a membership number ')}}{{Auth::User()->id}}<br>
                 {{__('We inform you that he is registered in the Syndicate in year ...... and : ')}}</p>&nbsp;
             <div class="form-check">
@@ -71,15 +74,15 @@
                 <label for="financial_liability" class="form-check-label" value="financial_liability" @if (old('debt') == "financial_liability") {{ 'selected' }} @endif>{{__('It has a previous financial liability')}}</label>
                 {{__('equal ')}}<input type="text" class="input @error('money_debt')is-danger @enderror input-fullorder"id="money_debt" name="money_debt"  class="form-control" placeholder="{{__('Enter debt money')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif/>{{__(' SYP')}}<br>
             </div><br>
-            <p>{{__('Mr.: The cashier in the branch, please receive an amount and its amount ')}}<input type="text" class="input @error('money_order')is-danger @enderror input-fullorder"id="money_order" name="money_order"  class="form-control" placeholder="{{__('Enter order money')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif/>{{__(' SYP')}}</p><br>
+            <p>{{__('Mr.: The cashier in the branch, please receive an amount and its amount ')}}<input type="text" class="input @error('money_order')is-danger @enderror input-fullorder"id="money_order" name="money_order"  class="form-control" placeholder="{{__('Enter order money')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif/>{{__(' SYP')}}</p>
     {{--  بيان أمين الصندوق--}}
-            <hr><br>
-            <p style="font-weight: bold;">{{__('Treasurer statement: ')}}</p><hr><br>
+            <hr>
+            <p style="font-weight: bold;">{{__('Treasurer statement: ')}}</p>
             <p>{{__('Amount has been received ')}}
-                <input type="text" class="input @error('money_order')is-danger @enderror input-fullorder"id="money_order" name="money_order" class="form-control" placeholder="{{__('Enter order money')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif />{{__(' SYP')}}</p><br><br>
+                <input type="text" class="input @error('money_order')is-danger @enderror input-fullorder"id="money_order" name="money_order" class="form-control" placeholder="{{__('Enter order money')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif />{{__(' SYP')}}</p>
     {{-- قرار رئيس مجلس الإدارة --}}
-            <hr><br>
-            <p style="font-weight: bold;">{{__("Chairman's decision: ")}}</p><br>
+            <hr>
+            <p style="font-weight: bold;">{{__("Chairman's decision: ")}}</p>
             <div>
                 <label style="display:inline;width:70%;"class="form-label" for="approval">{{__('Approval')}}</label>
                 <select style="width:10%"class="input @error('Chairman_decision')is-danger @enderror"name="Chairman_decision"id="Chairman_decision"class="form-select form-select-sm" aria-label=".form-select-sm example" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif>
