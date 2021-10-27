@@ -84,6 +84,7 @@
                     <option value="Please pick up">         {{__('Please pick up')}}         </option>
                     <option value="not confirmed">          {{__('not confirmed')}}          </option>
                     <option value="Need to complete papers">{{__('Need to complete papers')}}</option>
+                    <option value="Finished">               {{__('Finished')}}               </option>
                 </select>
                 @endif
                 @error('status')
