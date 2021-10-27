@@ -31,10 +31,10 @@
             <hr>
             <div class="form-outline">
                 <label class="form-label" for="fullname">{{__('fullname* : ')}}</label>
-                <input style="width:150px"type="text" class="input @error('fullname')is-danger @enderror" id="fullname" name="fullname" value="{{ old('fullname') }}"class="form-control" placeholder="{{__('Enter FullName')}}" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif/>
-                @error('fullname')
+                <input style="width:150px"type="text" class="input @error('fullname')is-danger @enderror" id="fullname" name="fullname" value="{{ $users->order->firstname }}"class="form-control" placeholder="{{__('Enter FullName')}}" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif/>
+                {{-- @error('fullname')
                   <p class="help is-danger">{{ $message }}</p>
-                @enderror
+                @enderror --}}
             </div>
             <hr>
             <p>{{__('I kindly request you to transfer my membership from your branch of the Syndicate branch in the country: ')}}

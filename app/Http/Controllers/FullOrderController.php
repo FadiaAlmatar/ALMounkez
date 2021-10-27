@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\FullOrder;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
 
 class FullOrderController extends Controller
@@ -42,6 +43,7 @@ class FullOrderController extends Controller
     }
     public function create_transfer()
     {
+        // $users = User::where('id', $user_id);
         return view('fullorder.create_transfer');
     }
     public function create_replacement()
