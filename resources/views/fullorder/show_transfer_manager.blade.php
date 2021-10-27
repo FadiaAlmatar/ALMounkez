@@ -70,7 +70,7 @@
                     <input class="form-check-input" type="radio" name="debt" id="financial_liability" value="{{$fullorder->not_debtor}}" disabled checked>
                     <label for="financial_liability" class="form-check-label" value="financial_liability" @if (old('debt') == "financial_liability") {{ 'selected' }} @endif>{{__('It has a previous financial liability')}}</label>
                     {{__('equal ')}}
-                    <input type="text" class="input input-fullorder"id="money_debt" name="money_debt" @if(Auth::User()->role == "admin") value="{{ $fullorder->money_debt}}" @endif class="form-control" placeholder="{{__('Enter debt money')}}" disabled />{{__(' SYP')}}<br>
+                    <input type="text" class="input input-fullorder"id="money_debt" name="money_debt"  value="{{ $fullorder->money_debt}}"  class="form-control" placeholder="{{__('Enter debt money')}}" disabled />{{__(' SYP')}}<br>
                 </div>@endif
 {{-- قرار مجلس إدارة الفرع المسجل به --}}
             <hr>

@@ -46,14 +46,14 @@
                 <input class="form-check-input" type="radio" name="debt" id="financial_liability" value="{{$fullorder->not_debtor}}" disabled checked>
                 <label for="financial_liability" class="form-check-label" value="financial_liability" @if (old('debt') == "financial_liability") {{ 'selected' }} @endif>{{__('It has a previous financial liability')}}</label>
                 {{__('equal ')}}
-                <input type="text" class="input input-fullorder"id="money_debt" name="money_debt" @if(Auth::User()->role == "admin") value="{{ $fullorder->money_debt}}" @endif class="form-control" placeholder="{{__('Enter debt money')}}" disabled />{{__(' SYP')}}<br>
+                <input type="text" class="input input-fullorder"id="money_debt" name="money_debt"  value="{{ $fullorder->money_debt}}"  class="form-control" placeholder="{{__('Enter debt money')}}" disabled />{{__(' SYP')}}<br>
             </div>@endif<br>
-            <p>{{__('Mr.: The cashier in the branch, please receive an amount and its amount ')}}<input type="text" class="input input-fullorder"id="money_order" name="money_order" @if(Auth::User()->role == "admin") value="{{ $fullorder->money_order}}" @endif class="form-control" placeholder="{{__('Enter order money')}}" disabled/>{{__(' SYP')}}</p>
+            <p>{{__('Mr.: The cashier in the branch, please receive an amount and its amount ')}}<input type="text" class="input input-fullorder"id="money_order" name="money_order"  value="{{ $fullorder->money_order}}"  class="form-control" placeholder="{{__('Enter order money')}}" disabled/>{{__(' SYP')}}</p>
     {{--  بيان أمين الصندوق--}}
             <hr>
             <p style="font-weight: bold;">{{__('Treasurer statement: ')}}</p>
             <p>{{__('Amount has been received ')}}
-                <input type="text" class="input input-fullorder"id="money_order" name="money_order" @if(Auth::User()->role == "admin") value="{{ $fullorder->money_order}}" @endif class="form-control" placeholder="{{__('Enter order money')}}" disabled/>{{__(' SYP')}}</p>
+                <input type="text" class="input input-fullorder"id="money_order" name="money_order"  value="{{ $fullorder->money_order}}"  class="form-control" placeholder="{{__('Enter order money')}}" disabled/>{{__(' SYP')}}</p>
     {{-- قرار رئيس مجلس الإدارة --}}
             <hr>
             <p style="font-weight: bold;">{{__("Chairman's decision")}}{{__(':')}}</p>
