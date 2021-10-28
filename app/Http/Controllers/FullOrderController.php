@@ -6,6 +6,7 @@ use App\Models\FullOrder;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 
 class FullOrderController extends Controller
 {
@@ -119,6 +120,15 @@ class FullOrderController extends Controller
                 // 'replace_reason'                =>  'required'
                 ] );
                 $fullorder->replace_reasons   = $request->replace_reason;
+                // $input = $request->all();
+                // $input['replace_reasons'] = $request->input('replace_reason');
+                // FullOrder::create($input);
+                // $reasons = $request->input('replace_reason');
+                // foreach($reasons as $reason){
+                //     $fullorder->replace_reasons   = $reason;
+                // }
+                // $fullorder->replace_reasons=$request->merge(array('replace_reason' => $request->has('replace_reason') ? true : false));
+
                 $fullorder->police_image      = $request->police_image;
                 if ($request->has('police_image')) {         //image police_image
                     $image = $request->police_image;
@@ -275,7 +285,6 @@ class FullOrderController extends Controller
      */
     public function edit(FullOrder $fullorder)
     {
-        // dd("here");
         if($fullorder->type == "local")
                  return view('fullorder.create_local',['fullorder'=>$fullorder]);
             elseif($fullorder->type == "external")

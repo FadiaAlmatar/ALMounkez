@@ -9,6 +9,9 @@
         <input name="type" value="transfer" hidden>
         <p>{{__('Mr. Chairman of the Syndicate Branch Council in the province')}}
             <select style="width:150px"class="input @error('from_country')is-danger @enderror"name="from_country" id="from_country"class="form-select form-select-sm" aria-label=".form-select-sm example" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
+                    @if (!empty($fullorder) && old('from_country', $fullorder->country_before))
+                        <option value="{{ $fullorder->country_before }}" selected> {{ $fullorder->country_before }}</option>
+                    @endif
                 <option></option>
                 <option value="Damascus"       @if (old('from_country') == "Damascus") {{ 'selected' }} @endif>       {{__('Damascus')}}      </option>
                 <option value="Damascus Rural" @if (old('from_country') == "Damascus Rural") {{ 'selected' }} @endif> {{__('Damascus Rural')}}</option>
@@ -31,7 +34,7 @@
             <hr>
             <div class="form-outline">
                 <label class="form-label" for="fullname">{{__('fullname* : ')}}</label>
-                <input style="width:150px"type="text" class="input @error('fullname')is-danger @enderror" id="fullname" name="fullname" value="{{ $users->order->firstname }}"class="form-control" placeholder="{{__('Enter FullName')}}" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif/>
+                <input style="width:150px"type="text" class="input @error('fullname')is-danger @enderror" id="fullname" name="fullname" value=""class="form-control" placeholder="{{__('Enter FullName')}}" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif/>
                 {{-- @error('fullname')
                   <p class="help is-danger">{{ $message }}</p>
                 @enderror --}}
@@ -39,6 +42,9 @@
             <hr>
             <p>{{__('I kindly request you to transfer my membership from your branch of the Syndicate branch in the country: ')}}
                 <select style="width:150px"class="input @error('from_country')is-danger @enderror"name="from_country" id="from_country"class="form-select form-select-sm" aria-label=".form-select-sm example" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
+                    @if (!empty($fullorder) && old('from_country', $fullorder->country_before))
+                       <option value="{{ $fullorder->country_before }}" selected> {{ $fullorder->country_before }}</option>
+                    @endif
                     <option></option>
                     <option  value="Damascus"      @if (old('from_country') == "Damascus") {{ 'selected' }} @endif>       {{__('Damascus')}}      </option>
                     <option value="Damascus Rural" @if (old('from_country') == "Damascus Rural") {{ 'selected' }} @endif> {{__('Damascus Rural')}}</option>
@@ -60,6 +66,9 @@
                 @enderror</p>
                 <p>{{__('To the syndicate branch in the country: ')}}
                 <select style="width:150px"class="input @error('to_country')is-danger @enderror"name="to_country" id="to_country"class="form-select form-select-sm" aria-label=".form-select-sm example" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
+                    @if (!empty($fullorder) && old('to_country', $fullorder->country_after))
+                      <option value="{{ $fullorder->country_after }}" selected> {{ $fullorder->country_after }}</option>
+                    @endif
                     <option></option>
                     <option value="Damascus"      @if (old('to_country') == "Damascus") {{ 'selected' }} @endif>       {{__('Damascus')}}      </option>
                     <option value="Damascus Rural" @if (old('to_country') == "Damascus Rural") {{ 'selected' }} @endif> {{__('Damascus Rural')}}</option>
@@ -83,7 +92,7 @@
             <hr>
             <div class="form-group">
                 <label for="reasons">{{__('That is for the following reasons :')}}</label>
-                <textarea name="transportation_reasons"class="form-control" id="reasons" rows="3" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif></textarea>
+                <textarea name="transportation_reasons"class="form-control" id="reasons" rows="3" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>@if(!empty($fullorder)) {{$fullorder->transportation_reasons}} @else {{old('transportation_reasons')}}@endif</textarea>
                 @error('transportation_reasons')
                 <p class="help is-danger">{{ $message }}</p>
                 @enderror

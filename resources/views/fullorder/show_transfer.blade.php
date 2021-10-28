@@ -119,7 +119,7 @@
                  @enderror
                  <div class="form-group">
                     <label for="reasons">{{__('reasons :(If not approved)')}}</label>
-                    <textarea name="registered_branch_disapproval_reasons"class="form-control" id="reasons" rows="3" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif></textarea>
+                    <textarea name="registered_branch_disapproval_reasons"class="form-control" id="reasons" rows="3" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif>{{ old('registered_branch_disapproval_reasons')}}</textarea>
                 </div>
             </div>
 {{--قرار مجلس إدارة الفرع الراغب بالانتقال إليه --}}
@@ -137,7 +137,7 @@
                  @enderror
                  <div class="form-group">
                     <label for="reasons">{{__('reasons :(If not approved)')}}</label>
-                    <textarea name="transferred_branch_disapproval_reasons"class="form-control" id="reasons" rows="3" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif></textarea>
+                    <textarea name="transferred_branch_disapproval_reasons"  class="form-control" id="reasons" rows="3" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif>{{ old('transferred_branch_disapproval_reasons')}}</textarea>
                 </div>
             </div>
 {{--  بيان أمين الصندوق--}}
