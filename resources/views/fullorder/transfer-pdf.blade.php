@@ -91,7 +91,7 @@
         <p class="status"> {{__('Order Status: ')}} {{$fullorder->status}}</p>
         <br><span style="direction: rtl">{{__('Mr. Chairman of the Syndicate Branch Council in the province')}}</span>
         <span>{{$fullorder->country_before}}</span>
-        <p>{{__('fullname* : ')}}{{ old('fullname') }}</p>
+        <p>{{__('fullname* : ')}}{{$fullorder->fullname}}</p>
         <p>{{__('I kindly request you to transfer my membership from your branch of the Syndicate branch in the country: ')}}{{$fullorder->country_before}}</p>
         <p>{{__('To the syndicate branch in the country: ')}}{{$fullorder->country_after}}</p>
         <hr>

@@ -14,7 +14,7 @@
             @enderror</p>
             <div class="form-outline">
                 <label class="form-label" for="fullname">{{__('fullname* : ')}}</label>
-                <input type="text" class="input @error('fullname')is-danger @enderror input-fullorder" id="fullname" name="fullname" value="{{ old('fullname') }}"class="form-control" placeholder="{{__('Enter FullName')}}" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif/>
+                <input type="text" class="input @error('fullname')is-danger @enderror input-fullorder" id="fullname" name="fullname" value="{{$fullorder->fullname}}"class="form-control" placeholder="{{__('Enter FullName')}}" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif/>
                 @error('fullname')
                   <p class="help is-danger">{{ $message }}</p>
                 @enderror

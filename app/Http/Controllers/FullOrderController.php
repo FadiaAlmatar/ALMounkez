@@ -95,6 +95,7 @@ class FullOrderController extends Controller
                     'transportation_reasons' => 'required'
                     ] );
                 $fullorder->country_before         = $request->from_country;
+                $fullorder->fullname               = $request->fullname;
                 $fullorder->country_after          = $request->to_country;
                 $fullorder->transportation_reasons = $request->transportation_reasons;
                 $fullorder->home_change            =      $request->change_home;

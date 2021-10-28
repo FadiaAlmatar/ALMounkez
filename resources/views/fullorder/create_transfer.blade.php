@@ -34,7 +34,7 @@
             <hr>
             <div class="form-outline">
                 <label class="form-label" for="fullname">{{__('fullname* : ')}}</label>
-                <input style="width:150px"type="text" class="input @error('fullname')is-danger @enderror" id="fullname" name="fullname" value="{{Auth::User()->order->firstname}}{{Auth::User()->order->lastname}}"class="form-control" placeholder="{{__('Enter FullName')}}" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif/>
+                <input style="width:150px"type="text" class="input" id="fullname" name="fullname" value="{{Auth::User()->order->firstname}}{{Auth::User()->order->lastname}}"class="form-control"  @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif/>
                 {{-- @error('fullname')
                   <p class="help is-danger">{{ $message }}</p>
                 @enderror --}}

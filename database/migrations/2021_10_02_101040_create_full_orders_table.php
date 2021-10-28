@@ -17,6 +17,7 @@ class CreateFullOrdersTable extends Migration
             $table->id();//رقم الطلب
             $table->string('type')->nullable();//نوع الطلب
             $table->string('type_ar')->nullable();
+            $table->string('fullname')->nullable();
             $table->foreignId('branch_id');//رقم الفرع
             $table->string('side')->nullable();//الجهة التي سيقدم عليها
             $table->foreignId('user_id');//رقم مقدم الطلب
