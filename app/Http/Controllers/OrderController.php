@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
-use App\Models\Qualification;
 use Illuminate\Http\Request;
+use App\Models\Qualification;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -126,6 +127,7 @@ class OrderController extends Controller
         $order->insurance_number         =            $request->insurance;
         $order->displayData              =            $request->displayData;
         $order->identity_image           =            $request->identity_image;
+        $order->user_id                  =             Auth()->User()->id;
         if ($request->has('identity_image')) {         //image
             $image = $request->identity_image;
             $path = $image->store('identity-images', 'public');

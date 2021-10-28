@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 
+
 class FullOrderController extends Controller
 {
     /**
@@ -44,7 +45,8 @@ class FullOrderController extends Controller
     }
     public function create_transfer()
     {
-        // $users = User::where('id', $user_id);
+        // $user = User::where('id', Auth::User()->id);
+        // dd($user);
         return view('fullorder.create_transfer');
     }
     public function create_replacement()

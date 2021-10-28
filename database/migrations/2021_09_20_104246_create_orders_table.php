@@ -54,6 +54,7 @@ class CreateOrdersTable extends Migration
             $table->string('certification_image');//صورة الشهادة
             $table->string('no_conviction_image');//صورة لاحكم عليه
             $table->string('pay_affiliation_fee')->nullable();//طريقة سداد رسم الانتساب
+            $table->foreignId('user_id');
             $table->timestamps();
         });
     }
