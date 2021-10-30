@@ -9,7 +9,7 @@
         <input name="type" value="local" hidden>
         <strong style="font-size:13px;">{{__('(Implementation of the decision of the Board of Directors in its session No. 41 held on the date 17/07/2016 containing the determination of the amount 200 SYP of the value of a membership document)')}}</strong><br><br>
         <p>{{__('Gentlemen of the Financial and Accounting Professions Syndicate, please give me a membership document stating that I am a registered member of the Syndicate')}}<br><br>{{__('to submit it to')}}
-        <input style="width:150px;"type="text" class="input @error('side')is-danger @enderror"id="side" name="side" value= "@if(!empty($fullorder)) {{$fullorder->side}} @else {{ old('side') }} @endif" class="form-control" placeholder="{{__('Enter side name')}}" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif/>
+        <input style="width:150px;"type="text" class="input @error('side')is-danger @enderror"id="side" name="side" value= "@if(!empty($fullorder)) {{$fullorder->side}} @else {{ old('side') }} @endif" class="form-control" placeholder="{{__('Enter side name')}}" />
         @error('side')
         <p class="help is-danger">{{ $message }}</p>
         @enderror</p><br>
@@ -24,9 +24,9 @@
         </thead>
         </table>
         @if (!empty($fullorder))
-            @if(Auth::User()->role == "user")<button type="submit" class="btn btn-primary">{{__('Edit')}}</button><br>@endif
+            <button type="submit" class="btn btn-primary">{{__('Edit')}}</button><br>
         @else
-            @if(Auth::User()->role == "user")<button type="submit" class="btn btn-primary">{{__('Create')}}</button><br>@endif
+            <button type="submit" class="btn btn-primary">{{__('Create')}}</button><br>
         @endif
         </form>
         <p style="text-align:center;font-size:13px;font-weight:bold;">{{__('Your request will be considered within a maximum period of two days. Please contact us')}}</p>

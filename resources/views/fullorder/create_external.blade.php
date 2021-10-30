@@ -9,7 +9,7 @@
             <input name="type" value="external" hidden>
             <strong style="font-size:13px;">{{__('(Implementation of the decision of the Board of Directors in its session No. /4/ held on the date 28/01/2016 containing the determination of the amount 1000 SYP of the value of a membership document)')}}</strong><br><br>
             <p>{{__('Gentlemen of the Financial and Accounting Professions Syndicate, please give me a membership document stating that I am a registered member of the Syndicate')}}<br><br>{{__('to submit it to')}}
-            <input style="width:150px;"type="text" class="input @error('side')is-danger @enderror"id="side" name="side" placeholder="@if(empty($fullorder)){{__('Enter side name')}}@endif"  class="form-control"  @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif value= "@if(!empty($fullorder)) {{$fullorder->side}} @else {{ old('side') }} @endif"/>
+            <input style="width:150px;"type="text" class="input @error('side')is-danger @enderror"id="side" name="side" placeholder="@if(empty($fullorder)){{__('Enter side name')}}@endif"  class="form-control"   value= "@if(!empty($fullorder)) {{$fullorder->side}} @else {{ old('side') }} @endif"/>
             @error('side')
             <p class="help is-danger">{{ $message }}</p>
             @enderror</p><br>
@@ -24,9 +24,9 @@
             </thead>
             </table>
             @if (!empty($fullorder))
-                @if(Auth::User()->role == "user")<button type="submit" class="btn btn-primary">{{__('Edit')}}</button><br>@endif
+                <button type="submit" class="btn btn-primary">{{__('Edit')}}</button><br>
             @else
-                @if(Auth::User()->role == "user")<button type="submit" class="btn btn-primary">{{__('Create')}}</button><br>@endif
+                <button type="submit" class="btn btn-primary">{{__('Create')}}</button><br>
             @endif
         </form>
         <p style="text-align:center;font-size:13px;font-weight:bold;">{{__('Your request will be studied and notified when it is completed')}}</p>
