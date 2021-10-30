@@ -113,7 +113,7 @@
 {{-- بيان الدارة المالية --}}
             <p><span style="font-weight: bold;">{{__('Financial Management Statement:')}}</span><br>
             {{__('The fellow')}} {{Auth::User()->name}}{{__(' is affiliated with the Syndicate with a membership number ')}}{{Auth::User()->id}}
-            {{__('And registered in the Syndicate in year 20')}}{{Auth::User()->order->created_at->format('y')}}</p>
+            {{__('And registered in the Syndicate in year 20')}}{{$fullorder->user->order->created_at->format('y')}}p>
 
             @if($fullorder->not_debtor == 0)
                 <span>{{__('Financially innocent')}}</span>
