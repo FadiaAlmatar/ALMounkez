@@ -66,27 +66,19 @@ class FullOrderController extends Controller
             $fullorder->branch_id     =   1;//Auth::User()->branch_id
             $fullorder->membership_id =   2222;//Auth::User()->membership_id
             $fullorder->user_id       =   Auth::User()->id;
-            // $fullorder->not_debtor    =   $request->debt;
-            // $fullorder->money_debt    =   $request->money_debt;
-            // $fullorder->money_order   =   $request->money_order;
+            $fullorder->fullname      =   Auth::User()->name;
             //local
             if($request->type == "local"){
                 $request->validate([
                     'side'              => 'required|min:3',
                     ] );
             $fullorder->side                         = $request->side;
-            // $fullorder->Chairman_decision            = $request->Chairman_decision;
-            // $fullorder->Chairman_disapproval_reasons = $request->Chairman_disapproval_reasons;
             }//external
             elseif($request->type == "external"){
                 $request->validate([
                     'side'              => 'required|min:3',
                     ] );
-                // $fullorder->money_central                =  $request->money_central ;
                 $fullorder->side                         =   $request->side;
-                // $fullorder->Chairman_decision            = $request->Chairman_decision;
-                // $fullorder->Chairman_disapproval_reasons = $request->Chairman_disapproval_reasons;
-
             }//transfer
             elseif($request->type == "transfer"){
                 $request->validate([
@@ -98,7 +90,7 @@ class FullOrderController extends Controller
                 $fullorder->fullname               = $request->fullname;
                 $fullorder->country_after          = $request->to_country;
                 $fullorder->transportation_reasons = $request->transportation_reasons;
-                $fullorder->home_change            =      $request->change_home;
+                $fullorder->home_change            = $request->change_home;
                 if ($request->has('change_home')) {         //image home change
                     $image = $request->change_home;
                     $path = $image->store('home_changes', 'public');
@@ -110,28 +102,13 @@ class FullOrderController extends Controller
                     $path = $image->store('work_changes', 'public');
                     $fullorder->work_change = $path;
                 }
-                // $fullorder->registered_branch_decision             = $request->registered_branch_decision;
-                // $fullorder->registered_branch_disapproval_reasons  = $request->registered_branch_disapproval_reasons;
-                // $fullorder->transferred_branch_decision            = $request->transferred_branch_decision;
-                // $fullorder->transferred_branch_disapproval_reasons = $request->transferred_branch_disapproval_reasons;
-                // $fullorder->newmembership_number                   = $request->newmembership_number;
             }//replacement
             else{
                 $request->validate([
                 'FullName_English'              => 'required|min:3|regex:/^[A-Za-z_ ]*$/|not_regex:/[0-9]/',
                 'FullName_Arabic'               => 'required|min:3|not_regex:/[A-Za-z0-9]/',
-                // 'replace_reason'                =>  'required'
                 ] );
                 $fullorder->replace_reasons   = $request->replace_reason;
-                // $input = $request->all();
-                // $input['replace_reasons'] = $request->input('replace_reason');
-                // FullOrder::create($input);
-                // $reasons = $request->input('replace_reason');
-                // foreach($reasons as $reason){
-                //     $fullorder->replace_reasons   = $reason;
-                // }
-                // $fullorder->replace_reasons=$request->merge(array('replace_reason' => $request->has('replace_reason') ? true : false));
-
                 $fullorder->police_image      = $request->police_image;
                 if ($request->has('police_image')) {         //image police_image
                     $image = $request->police_image;
@@ -171,9 +148,6 @@ class FullOrderController extends Controller
                     $fullorder->personal_dentification_image = $path;
                 }
                 $fullorder->newmembership_number         = $request->newMembershipNumber;
-                // $fullorder->Chairman_decision            = $request->Chairman_decision;
-                // $fullorder->Chairman_disapproval_reasons = $request->Chairman_disapproval_reasons;
-
             }
             $fullorder->type          =   $request->type;
             $fullorder->status        =  "under consideration";

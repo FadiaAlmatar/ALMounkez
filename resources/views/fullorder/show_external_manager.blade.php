@@ -34,7 +34,7 @@
             <p style="color:red"value="{{$fullorder->status}}">{{__('Order Status')}}: {{$fullorder->status}} </p>
         </div>
            <br>
-      <p style="display:inline">{{__('Mr.')}} <span style="font-weight: bold">{{Auth::User()->name}}</span>{{__(' is affiliated with the Syndicate with a membership number ')}}{{Auth::User()->id}}<br>
+      <p style="display:inline">{{__('Mr.')}} <span style="font-weight: bold">{{$fullorder->fullname}}</span>{{__(' is affiliated with the Syndicate with a membership number ')}}{{Auth::User()->id}}<br>
         {{__('We inform you that he is registered in the Syndicate in year 20')}}{{Auth::User()->order->created_at->format('y')}} {{__('and : ')}}</p>&nbsp;
         @if($fullorder->not_debtor == 0)
             <div class="form-check">
