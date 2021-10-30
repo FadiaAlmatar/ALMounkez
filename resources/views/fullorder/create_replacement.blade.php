@@ -11,10 +11,10 @@
             <input name="type" value="replacement" hidden>
         <p>{{__('Gentlemen of the Financial and Accounting Professions Syndicate, please give me a membership card instead: ')}}
             <div class="form-check">
-                {{-- @if (!empty($fullorder) && old('replace_reason', $fullorder->replace_reasons))
-                  <input value="{{ $fullorder->replace_reasons }}" selected {{ $fullorder->replace_reasons }}>
-                @endif --}}
-                <input {{isset($fullorder)&& old('replace_reason', $fullorder->replace_reasons) ? 'checked' : ''}} class="form-check-input" type="checkbox" value="lost" id="Lost" name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
+                @if (!empty($fullorder) && old('replace_reason', $fullorder->replace_reasons))
+                  <input value="{{ $fullorder->replace_reasons }}" checked {{ $fullorder->replace_reasons }}>
+                @endif
+                <input class="form-check-input" type="radio" value="lost" id="Lost" name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
                 <label class="form-check-label" for="Lost">
                   {{__('Lost (police decision attached)')}}
 
@@ -25,17 +25,17 @@
                 </label>
             </div>
             <div class="form-check">
-                <input {{isset($fullorder)&& old('replace_reason', $fullorder->replace_reasons) ? 'checked' : ''}} class="form-check-input" type="checkbox" value="consists" id="Consists" name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
+                <input  class="form-check-input" type="radio" value="consists" id="Consists" name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif disabled>
                 <label class="form-check-label" for="Consists">
-                  {{__('Consists (damaged card attached) reason: ')}}
-                  <input class="form-control" type="file" accept="image/*"id="damaged_card_image" name="damaged_card_image" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
+                  {{__('Consists (damaged card attached) reason: ')}}</label>
+                  <input class="form-control" style="width:25%"type="file" accept="image/*"id="damaged_card_image" name="damaged_card_image" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
                   @error('damaged_card_image')
                   <p class="help is-danger">{{ $message }}</p>
                   @enderror
-                </label>
+            </div>
             <div class="form-check">
-                <input {{isset($fullorder)&& old('replace_reason', $fullorder->replace_reasons) ? 'checked' : ''}} class="form-check-input" type="checkbox" value="" id="Modification" name="Consists" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
-                <label id="labelmodification"class="form-check-label" for="Lost">
+                <input  class="form-check-input" type="radio" value="Modification" id="Modification" name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
+                <label id="labelmodification"class="form-check-label" for="Modification">
                     {{__('Modification of personal data')}}<br>
                        <label for="formFile" class="form-label" style="font-size: 13px;">{{__('Judgment decision attached')}}</label>
                        <input class="form-control" type="file" accept="image/*"id="judgment_decision_image" name="judgment_decision_image" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
@@ -55,20 +55,20 @@
                     </label>
                 </div>
                 <div class="form-check">
-                    <input {{isset($fullorder)&& old('replace_reason', $fullorder->replace_reasons) ? 'checked' : ''}} class="form-check-input" type="checkbox" value="" id="personal" name="Consists" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
-                    <label id="labelpersonal"class="form-check-label" for="Consists">
+                    <input  class="form-check-input" type="radio" value="personal" id="personal" name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
+                    <label id="labelpersonal"class="form-check-label" for="personal">
                       {{__('personal image')}}<br>
                     </label>
                 </div>
-            </div>
+            {{-- </div> --}}
             <div class="form-check">
-                <input {{isset($fullorder)&& old('replace_reason', $fullorder->replace_reasons) ? 'checked' : ''}}class="form-check-input" type="checkbox" value="transfer" id="Transfer" name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
+                <input class="form-check-input" type="radio" value="transfer" id="Transfer" name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
                 <label class="form-check-label" for="Transfer">
                     {{__('Transfer from branch to branch')}}
                 </label>
             </div>
             <div class="form-check">
-                <input {{isset($fullorder)&& old('replace_reason', $fullorder->replace_reasons) ? 'checked' : ''}}class="form-check-input" type="checkbox" value="error" id="error" name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
+                <input class="form-check-input" type="radio" value="error" id="error" name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
                 <label class="form-check-label" for="error">
                     {{__('Card incoming error')}}<span>{{__('(caused by the member)')}}</span>
                 </label>
