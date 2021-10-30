@@ -14,61 +14,61 @@
                 @if (!empty($fullorder) && old('replace_reason', $fullorder->replace_reasons))
                   <input value="{{ $fullorder->replace_reasons }}" checked {{ $fullorder->replace_reasons }}>
                 @endif
-                <input class="form-check-input" type="radio" value="lost" id="Lost" name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
+                <input class="form-check-input" type="radio" value="lost" id="Lost" name="replace_reason" >
                 <label class="form-check-label" for="Lost">
                   {{__('Lost (police decision attached)')}}
 
-                <input class="form-control" type="file" accept="image/*"id="police_image" name="police_image" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
+                <input class="form-control" type="file" accept="image/*"id="police_image" name="police_image">
                     @error('police_image')
                     <p class="help is-danger">{{ $message }}</p>
                     @enderror
                 </label>
             </div>
             <div class="form-check">
-                <input  class="form-check-input" type="radio" value="consists" id="Consists" name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif disabled>
+                <input  class="form-check-input" type="radio" value="consists" id="Consists" name="replace_reason"  disabled>
                 <label class="form-check-label" for="Consists">
                   {{__('Consists (damaged card attached) reason: ')}}</label>
-                  <input class="form-control" style="width:25%"type="file" accept="image/*"id="damaged_card_image" name="damaged_card_image" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
+                  <input class="form-control" style="width:25%"type="file" accept="image/*"id="damaged_card_image" name="damaged_card_image" >
                   @error('damaged_card_image')
                   <p class="help is-danger">{{ $message }}</p>
                   @enderror
             </div>
             <div class="form-check">
-                <input  class="form-check-input" type="radio" value="Modification" id="Modification" name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
+                <input  class="form-check-input" type="radio" value="Modification" id="Modification" name="replace_reason" >
                 <label id="labelmodification"class="form-check-label" for="Modification">
                     {{__('Modification of personal data')}}<br>
                        <label for="formFile" class="form-label" style="font-size: 13px;">{{__('Judgment decision attached')}}</label>
-                       <input class="form-control" type="file" accept="image/*"id="judgment_decision_image" name="judgment_decision_image" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
+                       <input class="form-control" type="file" accept="image/*"id="judgment_decision_image" name="judgment_decision_image" >
                        @error('judgment_decision_image')
                             <p class="help is-danger">{{ $message }}</p>
                         @enderror
                         <label for="formFile" class="form-label"style="font-size: 13px;" >{{__('Passport image')}}</label>
-                        <input class="form-control" type="file" accept="image/*"id="passport_image" name="passport_image" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
+                        <input class="form-control" type="file" accept="image/*"id="passport_image" name="passport_image" >
                         @error('passport_image')
                             <p class="help is-danger">{{ $message }}</p>
                         @enderror
                         <label for="formFile" class="form-label"style="font-size: 13px;" >{{__('Personal identification image')}}</label>
-                        <input class="form-control" type="file" accept="image/*"id="personal_identification_image" name="personal_identification_image" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
+                        <input class="form-control" type="file" accept="image/*"id="personal_identification_image" name="personal_identification_image" >
                         @error('personal_identification_image')
                             <p class="help is-danger">{{ $message }}</p>
                         @enderror
                     </label>
                 </div>
                 <div class="form-check">
-                    <input  class="form-check-input" type="radio" value="personal" id="personal" name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
+                    <input  class="form-check-input" type="radio" value="personal" id="personal" name="replace_reason" >
                     <label id="labelpersonal"class="form-check-label" for="personal">
                       {{__('personal image')}}<br>
                     </label>
                 </div>
             {{-- </div> --}}
             <div class="form-check">
-                <input class="form-check-input" type="radio" value="transfer" id="Transfer" name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
+                <input class="form-check-input" type="radio" value="transfer" id="Transfer" name="replace_reason" @>
                 <label class="form-check-label" for="Transfer">
                     {{__('Transfer from branch to branch')}}
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" value="error" id="error" name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
+                <input class="form-check-input" type="radio" value="error" id="error" name="replace_reason" >
                 <label class="form-check-label" for="error">
                     {{__('Card incoming error')}}<span>{{__('(caused by the member)')}}</span>
                 </label>
@@ -84,7 +84,7 @@
         <table class="table table-bordered">
               <tr>
                 <th scope="col" style="width:30%">{{__('FullName/Arabic')}}</th>
-                <td ><input type="text" class="input @error('FullName_Arabic')is-danger @enderror"id="FullName/Arabic" name="FullName_Arabic"value= "@if(!empty($fullorder)) {{$fullorder->FullName_Arabic}} @else {{ old('FullName_Arabic') }} @endif"class="form-control" placeholder="{{__('Enter FullName/Arabic')}}" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif/>
+                <td ><input type="text" class="input @error('FullName_Arabic')is-danger @enderror"id="FullName/Arabic" name="FullName_Arabic"value= "@if(!empty($fullorder)) {{$fullorder->FullName_Arabic}} @else {{ old('FullName_Arabic') }} @endif"class="form-control" placeholder="{{__('Enter FullName/Arabic')}}" />
                     @error('FullName_Arabic')
                     <p class="help is-danger">{{ $message }}</p>
                     @enderror
@@ -92,7 +92,7 @@
               </tr>
               <tr>
                 <th scope="col">{{__('FullName/English to be placed on the new card')}}</th>
-                <td ><input type="text" class="input @error('FullName_English')is-danger @enderror"id="FullName/English" name="FullName_English"value= "@if(!empty($fullorder)) {{$fullorder->FullName_English}} @else {{ old('FullName_English') }} @endif"class="form-control" placeholder="{{__('Enter FullName/English')}}" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif/>
+                <td ><input type="text" class="input @error('FullName_English')is-danger @enderror"id="FullName/English" name="FullName_English"value= "@if(!empty($fullorder)) {{$fullorder->FullName_English}} @else {{ old('FullName_English') }} @endif"class="form-control" placeholder="{{__('Enter FullName/English')}}" />
                 @error('FullName_English')
                 <p class="help is-danger">{{ $message }}</p>
                 @enderror
@@ -101,7 +101,7 @@
               <tr>
                 <th scope="col">{{__('Change personal image')}}</th>
                 <td> <div class="mb-3">
-                      <input class="form-control" type="file" accept="image/*"id="personal_image" name="personal_image" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
+                      <input class="form-control" type="file" accept="image/*"id="personal_image" name="personal_image" >
                       @error('personal_image')
                           <p class="help is-danger">{{ $message }}</p>
                       @enderror
@@ -109,7 +109,7 @@
               </tr>
               <tr>
                 <th scope="col">{{__('The new membership number')}} <br>{{__('when transferring from one branch to another')}}</th>
-                <td ><input type="text" class="input @error('newMembershipNumber')is-danger @enderror"id="newMembershipNumber" name="newMembershipNumber" value="@if (!empty($fullorder)) {{ $fullorder->newmembership_number }} @else {{ old('newMembershipNumber') }} @endif" class="form-control" placeholder="{{__('Enter new Membership Number')}}" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif/></td>
+                <td ><input type="text" class="input @error('newMembershipNumber')is-danger @enderror"id="newMembershipNumber" name="newMembershipNumber" value="@if (!empty($fullorder)) {{ $fullorder->newmembership_number }} @else {{ old('newMembershipNumber') }} @endif" class="form-control" placeholder="{{__('Enter new Membership Number')}}" /></td>
               </tr>
           </table>
 {{-- membership only --}}
@@ -123,9 +123,9 @@
         </thead>
         </table>
         @if (!empty($fullorder))
-             @if(Auth::User()->role == "user")<button type="submit" class="btn btn-primary">{{__('Edit')}}</button><br>@endif
+             <button type="submit" class="btn btn-primary">{{__('Edit')}}</button><br>
         @else
-             @if(Auth::User()->role == "user")<button type="submit" class="btn btn-primary">{{__('Create')}}</button><br>@endif
+             <button type="submit" class="btn btn-primary">{{__('Create')}}</button><br>
         @endif
         </form>
         <p style="text-align:center;font-size:13px;font-weight:bold;">{{__('Your request will be considered within a maximum period of two days. Please contact us')}}</p>
@@ -169,6 +169,6 @@
                 <textarea name="Chairman_disapproval_reasons"class="form-control" id="reasons" rows="2" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif></textarea><br>
             </div>
         </div>
-        @if(Auth::User()->role == "admin")<button type="submit" class="btn btn-primary">{{__('Send')}}</button><br><br>@endif
+        {{-- @if(Auth::User()->role == "admin")<button type="submit" class="btn btn-primary">{{__('Send')}}</button><br><br>@endif --}}
     </div>
 </x-layouts.app>

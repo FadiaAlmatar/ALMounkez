@@ -8,7 +8,7 @@
             @endif
         <input name="type" value="transfer" hidden>
         <p>{{__('Mr. Chairman of the Syndicate Branch Council in the province')}}
-            <select style="width:150px"class="input @error('from_country')is-danger @enderror"name="from_country" id="from_country"class="form-select form-select-sm" aria-label=".form-select-sm example" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
+            <select style="width:150px"class="input @error('from_country')is-danger @enderror"name="from_country" id="from_country"class="form-select form-select-sm" aria-label=".form-select-sm example" >
                     @if (!empty($fullorder) && old('from_country', $fullorder->country_before))
                         <option value="{{ $fullorder->country_before }}" selected> {{ $fullorder->country_before }}</option>
                     @endif
@@ -34,14 +34,14 @@
             <hr>
             <div class="form-outline">
                 <label class="form-label" for="fullname">{{__('fullname* : ')}}</label>
-                <input style="width:200px"type="text" class="input" id="fullname" name="fullname" value="{{Auth::User()->order->firstname}} {{Auth::User()->order->lastname}}"class="form-control"  @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif/>
+                <input style="width:200px"type="text" class="input" id="fullname" name="fullname" value="{{Auth::User()->order->firstname}} {{Auth::User()->order->lastname}}"class="form-control"  disabled/>
                 {{-- @error('fullname')
                   <p class="help is-danger">{{ $message }}</p>
                 @enderror --}}
             </div>
             <hr>
             <p>{{__('I kindly request you to transfer my membership from your branch of the Syndicate branch in the country: ')}}
-                <select style="width:150px"class="input @error('from_country')is-danger @enderror"name="from_country" id="from_country"class="form-select form-select-sm" aria-label=".form-select-sm example" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
+                <select style="width:150px"class="input @error('from_country')is-danger @enderror"name="from_country" id="from_country"class="form-select form-select-sm" aria-label=".form-select-sm example" >
                     @if (!empty($fullorder) && old('from_country', $fullorder->country_before))
                        <option value="{{ $fullorder->country_before }}" selected> {{ $fullorder->country_before }}</option>
                     @endif
@@ -65,7 +65,7 @@
                     <p class="help is-danger">{{ $message }}</p>
                 @enderror</p>
                 <p>{{__('To the syndicate branch in the country: ')}}
-                <select style="width:150px"class="input @error('to_country')is-danger @enderror"name="to_country" id="to_country"class="form-select form-select-sm" aria-label=".form-select-sm example" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
+                <select style="width:150px"class="input @error('to_country')is-danger @enderror"name="to_country" id="to_country"class="form-select form-select-sm" aria-label=".form-select-sm example" >
                     @if (!empty($fullorder) && old('to_country', $fullorder->country_after))
                       <option value="{{ $fullorder->country_after }}" selected> {{ $fullorder->country_after }}</option>
                     @endif
@@ -92,7 +92,7 @@
             <hr>
             <div class="form-group">
                 <label for="reasons">{{__('That is for the following reasons :')}}</label>
-                <textarea name="transportation_reasons"class="form-control" id="reasons" rows="3" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>@if(!empty($fullorder)) {{$fullorder->transportation_reasons}} @else {{old('transportation_reasons')}}@endif</textarea>
+                <textarea name="transportation_reasons"class="form-control" id="reasons" rows="3" >@if(!empty($fullorder)) {{$fullorder->transportation_reasons}} @else {{old('transportation_reasons')}}@endif</textarea>
                 @error('transportation_reasons')
                 <p class="help is-danger">{{ $message }}</p>
                 @enderror
@@ -100,7 +100,7 @@
             <p>{{__('Evidences attached')}}</p>
             <div class="mb-3" >
                 <label for="formFile" class="form-label" style="font-size: 13px;">{{__('change home image')}}
-                <input class="form-control" type="file" accept="image/*" id="change_home" name="change_home" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
+                <input class="form-control" type="file" accept="image/*" id="change_home" name="change_home" >
                 @error('change_home')
                 <p class="help is-danger">{{ $message }}</p>
                 @enderror
@@ -108,7 +108,7 @@
             </div>
             <div class="mb-3">
                 <label for="formFile" class="form-label" style="font-size: 13px;">{{__('change work image')}}
-                <input class="form-control" type="file" accept="image/*"id="change_work" name="change_work" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
+                <input class="form-control" type="file" accept="image/*"id="change_work" name="change_work" >
                 @error('change_work')
                 <p class="help is-danger">{{ $message }}</p>
                 @enderror
@@ -116,9 +116,9 @@
             </div>
             <p>{{__('Request date: ')}}</p>
             @if (!empty($fullorder))
-               @if(Auth::User()->role == "user")<button type="submit" class="btn btn-primary">{{__('Edit')}}</button><br>@endif
+               <button type="submit" class="btn btn-primary">{{__('Edit')}}</button><br>
             @else
-               @if(Auth::User()->role == "user")<button type="submit" class="btn btn-primary">{{__('Create')}}</button><br>@endif
+               <button type="submit" class="btn btn-primary">{{__('Create')}}</button><br>
             @endif
         </form>
 {{-- بيان الدارة المالية --}}
@@ -176,7 +176,7 @@
         <p>{{__('Amount has been received ')}}<input style="width:170px;"type="text" class="input @error('money_order')is-danger @enderror"id="money_order" name="money_order"value="{{ old('money_order') }}"class="form-control" placeholder="{{__('Enter order money')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif/>{{__(' SYP')}} {{__('For a membership card fee')}}</p>
         <hr><p style="font-weight: bold;">{{__('The new membership number in the event that both parties agree to transfer the affiliate')}}
             <input style="width:200px;"type="text" class="input @error('newmembership_number')is-danger @enderror"id="newmembership_number" name="newmembership_number"value="{{ old('newmembership_number') }}"class="form-control" placeholder="{{__('Enter new membership number')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif/></p><br>
-            @if(Auth::User()->role == "admin")<button type="submit" class="btn btn-primary">{{__('Send')}}</button><br><br>@endif
+            {{-- @if(Auth::User()->role == "admin")<button type="submit" class="btn btn-primary">{{__('Send')}}</button><br><br>@endif --}}
     </div>
 </x-layouts.app>
 
