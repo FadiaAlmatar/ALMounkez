@@ -12,9 +12,10 @@
         <p>{{__('Gentlemen of the Financial and Accounting Professions Syndicate, please give me a membership card instead: ')}}
             <div class="form-check">
                 @if (!empty($fullorder) && old('replace_reason', $fullorder->replace_reasons))
-                  <input value="{{ $fullorder->replace_reasons }}" checked {{ $fullorder->replace_reasons }}>
+                  <input value="{{ $fullorder->replace_reasons }}" checked>
                 @endif
-                <input class="form-check-input" type="radio" value="lost" id="Lost" name="replace_reason" >
+                {{-- value="{{ $type->id }}" {{ old('contact-type') !== null && old('contact-type') == $type->id ? 'checked' : '' }}> --}}
+                <input class="form-check-input" type="radio" value="lost" {{ old('replace_reason') !== null && old('replace_reason') == "lost" ? 'checked' : '' }} id="Lost" name="replace_reason" >
                 <label class="form-check-label" for="Lost">
                   {{__('Lost (police decision attached)')}}
 
@@ -25,7 +26,7 @@
                 </label>
             </div>
             <div class="form-check">
-                <input  class="form-check-input" type="radio" value="consists" id="Consists" name="replace_reason"  disabled>
+                <input  class="form-check-input" type="radio" value="consists" {{ old('replace_reason') !== null && old('replace_reason') == "consists" ? 'checked' : '' }} id="Consists" name="replace_reason"  disabled>
                 <label class="form-check-label" for="Consists">
                   {{__('Consists (damaged card attached) reason: ')}}</label>
                   <input class="form-control" style="width:25%"type="file" accept="image/*"id="damaged_card_image" name="damaged_card_image" >
@@ -34,7 +35,7 @@
                   @enderror
             </div>
             <div class="form-check">
-                <input  class="form-check-input" type="radio" value="Modification" id="Modification" name="replace_reason" >
+                <input  class="form-check-input" type="radio"  value="Modification" {{ old('replace_reason') !== null && old('replace_reason') == "Modification" ? 'checked' : '' }} id="Modification" name="replace_reason" >
                 <label id="labelmodification"class="form-check-label" for="Modification">
                     {{__('Modification of personal data')}}<br>
                        <label for="formFile" class="form-label" style="font-size: 13px;">{{__('Judgment decision attached')}}</label>
@@ -55,20 +56,20 @@
                     </label>
                 </div>
                 <div class="form-check">
-                    <input  class="form-check-input" type="radio" value="personal" id="personal" name="replace_reason" >
+                    <input  class="form-check-input" type="radio"  value="personal" {{ old('replace_reason') !== null && old('replace_reason') == "personal" ? 'checked' : '' }} id="personal" name="replace_reason" >
                     <label id="labelpersonal"class="form-check-label" for="personal">
                       {{__('personal image')}}<br>
                     </label>
                 </div>
             {{-- </div> --}}
             <div class="form-check">
-                <input class="form-check-input" type="radio" value="transfer" id="Transfer" name="replace_reason" @>
+                <input class="form-check-input" type="radio"  value="transfer" {{ old('replace_reason') !== null && old('replace_reason') == "transfer" ? 'checked' : '' }} id="Transfer" name="replace_reason" @>
                 <label class="form-check-label" for="Transfer">
                     {{__('Transfer from branch to branch')}}
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" value="error" id="error" name="replace_reason" >
+                <input class="form-check-input" type="radio"  value="error" {{ old('replace_reason') !== null && old('replace_reason') == "error" ? 'checked' : '' }} id="error" name="replace_reason" >
                 <label class="form-check-label" for="error">
                     {{__('Card incoming error')}}<span>{{__('(caused by the member)')}}</span>
                 </label>
