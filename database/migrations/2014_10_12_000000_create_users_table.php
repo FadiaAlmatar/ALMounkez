@@ -20,6 +20,8 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->foreignId('group_id')->default(0);
+            // $table->foreignId('membership_id');
+            // $table->foreignId('branch_id');
             $table->string('role')->default("user");
             $table->rememberToken();
             $table->timestamps();

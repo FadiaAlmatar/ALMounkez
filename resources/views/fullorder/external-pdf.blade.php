@@ -110,7 +110,7 @@
         <hr>
         <p><span style="font-weight: bold;">{{__('Branch financial management statement:')}}</span><br>
         {{__('Mr.')}}{{$fullorder->fullname}}{{__(' is affiliated with the Syndicate with a membership number ')}}{{Auth::User()->id}}
-        {{__('We inform you that he is registered in the Syndicate in year 20')}}{{Auth::User()->order->created_at->format('y')}} {{__('and : ')}}</p>&nbsp;
+        {{__('We inform you that he is registered in the Syndicate in year 20')}}{{$fullorder->user->order->created_at->format('y')}} {{__('and : ')}}</p>&nbsp;
 
         </p>
         @if($fullorder->not_debtor == 0)
