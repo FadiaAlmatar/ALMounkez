@@ -32,7 +32,7 @@ use App\Http\Controllers\FullOrderController;
 //     return view('welcome');
 // });
 
-Route::get('/', [HomeController::class, 'home'])->name('home');
+Route::get('/', [HomeController::class, 'home'])->name('homee');
 Route::get('/locale/ar', function (){
     Session::put('locale', 'ar');
     App::setLocale('ar');
