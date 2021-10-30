@@ -32,7 +32,7 @@ use App\Http\Controllers\FullOrderController;
 //     return view('welcome');
 // });
 
-Route::get('/', [HomeController::class, 'home'])->name('homee');
+Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/locale/ar', function (){
     Session::put('locale', 'ar');
     App::setLocale('ar');
@@ -82,4 +82,4 @@ Route::get('create-pdf-file', [PDFController::class, 'index']);
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+// Route::get('/home', [HomeController::class, 'index'])->name('home');

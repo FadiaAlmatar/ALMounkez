@@ -1,5 +1,5 @@
 {{-- @extends('layouts.master') --}}
-<x-layouts.master />
+{{-- <x-layouts.master /> --}}
 
 {{-- @section('content')
 <div class="container">
