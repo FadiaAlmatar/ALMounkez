@@ -32,7 +32,7 @@
         <p style="text-align:center;font-size:13px;font-weight:bold;">{{__('Your request will be considered within a maximum period of two days. Please contact us')}}</p>
         <hr style="width:50%;margin:auto"><br>
 {{-- admin only --}}
-{{-- بيان الدارة المالية --}}
+{{-- بيان الادارة المالية --}}
         <p style="font-weight: bold;">{{__('Financial Management Statement:')}}</p><hr>
         <p style="display:inline">{{__('Mr.')}} <span style="font-weight: bold">{{Auth::User()->name}}</span>{{__(' is affiliated with the Syndicate with a membership number ')}}{{Auth::User()->id}}<br>
             {{__('We inform you that he is registered in the Syndicate in year 20')}}{{Auth::User()->order->created_at->format('y')}} {{__('and : ')}}</p>&nbsp;

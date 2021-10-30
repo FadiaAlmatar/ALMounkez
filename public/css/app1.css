@@ -120,7 +120,9 @@ form .input,form .form-select{
     text-align: center;font-weight:bold;text-decoration:underline;margin-top:5px;
 }
 .input-fullorder{
-    width:fit-content;text-align:center;
+    width:-moz-fit-content;
+    width: fit-content;
+    text-align:center;
 }
 .p-fullorder{
     text-align:center;font-size:13px;font-weight:bold;

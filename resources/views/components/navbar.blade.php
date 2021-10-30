@@ -29,11 +29,13 @@
                      {{ __('Orders') }}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    @if(Auth::User()->role == "user")
                      <li><a class="dropdown-item" href="{{route('fullorders.create_local')}}" style="color: orange">{{ __('Request a local membership document') }}</a></li>
                      <li><a class="dropdown-item" href="{{route('fullorders.create_external')}}" style="color: orange">{{ __('Request an external membership document') }}</a></li>
                      <li><a class="dropdown-item" href="{{route('fullorders.create_transfer')}}" style="color: orange">{{ __('Membership transfer form from one branch to another') }}</a></li>
                      <li><a class="dropdown-item" href="{{route('fullorders.create_replacement')}}" style="color: orange">{{ __('Request for a replacement membership card') }}</a></li>
-                    @if(Auth::User()->role == "user")
+                    @endif
+                     @if(Auth::User()->role == "user")
                         <li><a class="dropdown-item" href="{{route('fullorders.index')}}" style="color: orange">{{ __('My Orders') }}</a></li>
                     @else
                         <li><a class="dropdown-item" href="{{route('fullorders.index')}}" style="color: orange">{{ __('all Orders') }}</a></li>
