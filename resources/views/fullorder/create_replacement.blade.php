@@ -11,19 +11,28 @@
             <input name="type" value="replacement" hidden>
         <p>{{__('Gentlemen of the Financial and Accounting Professions Syndicate, please give me a membership card instead: ')}}
             <div class="form-check">
-                @if (!empty($fullorder) && old('replace_reason', $fullorder->replace_reasons))
+                {{-- @if (!empty($fullorder) && old('replace_reason', $fullorder->replace_reasons))
                   <input value="{{ $fullorder->replace_reasons }}" checked>
-                @endif
-                {{-- value="{{ $type->id }}" {{ old('contact-type') !== null && old('contact-type') == $type->id ? 'checked' : '' }}> --}}
+                @endif --}}
+                @if (!empty($fullorder) && ( $fullorder->replace_reasons == "lost"))
+                <input class="form-check-input" type="radio" value="{{ $fullorder->replace_reasons }}" checked>
+                <label class="form-check-label" for="Lost">
+                    {{__('Lost (police decision attached)')}}
+                  <input class="form-control" type="file" accept="image/*"id="police_image" name="police_image">
+                      @error('police_image')
+                      <p class="help is-danger">{{ $message }}</p>
+                      @enderror
+                  </label>
+                @else
                 <input class="form-check-input" type="radio" value="lost" {{ old('replace_reason') !== null && old('replace_reason') == "lost" ? 'checked' : '' }} id="Lost" name="replace_reason" >
                 <label class="form-check-label" for="Lost">
                   {{__('Lost (police decision attached)')}}
-
                 <input class="form-control" type="file" accept="image/*"id="police_image" name="police_image">
                     @error('police_image')
                     <p class="help is-danger">{{ $message }}</p>
                     @enderror
                 </label>
+                @endif
             </div>
             <div class="form-check">
                 <input  class="form-check-input" type="radio" value="consists" {{ old('replace_reason') !== null && old('replace_reason') == "consists" ? 'checked' : '' }} id="Consists" name="replace_reason"  disabled>
@@ -35,6 +44,27 @@
                   @enderror
             </div>
             <div class="form-check">
+                @if (!empty($fullorder) && ($fullorder->replace_reasons == "Modification"))
+                <input class="form-check-input" type="radio" value="{{ $fullorder->replace_reasons }}" checked>
+                <label id="labelmodification"class="form-check-label" for="Modification">
+                    {{__('Modification of personal data')}}<br>
+                       <label for="formFile" class="form-label" style="font-size: 13px;">{{__('Judgment decision attached')}}</label>
+                       <input class="form-control" type="file" accept="image/*"id="judgment_decision_image" name="judgment_decision_image" >
+                       @error('judgment_decision_image')
+                            <p class="help is-danger">{{ $message }}</p>
+                        @enderror
+                        <label for="formFile" class="form-label"style="font-size: 13px;" >{{__('Passport image')}}</label>
+                        <input class="form-control" type="file" accept="image/*"id="passport_image" name="passport_image" >
+                        @error('passport_image')
+                            <p class="help is-danger">{{ $message }}</p>
+                        @enderror
+                        <label for="formFile" class="form-label"style="font-size: 13px;" >{{__('Personal identification image')}}</label>
+                        <input class="form-control" type="file" accept="image/*"id="personal_identification_image" name="personal_identification_image" >
+                        @error('personal_identification_image')
+                            <p class="help is-danger">{{ $message }}</p>
+                        @enderror
+                    </label>
+                    @else
                 <input  class="form-check-input" type="radio"  value="Modification" {{ old('replace_reason') !== null && old('replace_reason') == "Modification" ? 'checked' : '' }} id="Modification" name="replace_reason" >
                 <label id="labelmodification"class="form-check-label" for="Modification">
                     {{__('Modification of personal data')}}<br>
@@ -54,25 +84,47 @@
                             <p class="help is-danger">{{ $message }}</p>
                         @enderror
                     </label>
+                    @endif
                 </div>
                 <div class="form-check">
+                    @if (!empty($fullorder) && ($fullorder->replace_reasons == "personal"))
+                    <input class="form-check-input" type="radio" value="{{ $fullorder->replace_reasons }}" checked>
+                    <label id="labelpersonal"class="form-check-label" for="personal">
+                        {{__('personal image')}}<br>
+                      </label>
+                    @else
                     <input  class="form-check-input" type="radio"  value="personal" {{ old('replace_reason') !== null && old('replace_reason') == "personal" ? 'checked' : '' }} id="personal" name="replace_reason" >
                     <label id="labelpersonal"class="form-check-label" for="personal">
                       {{__('personal image')}}<br>
                     </label>
+                    @endif
                 </div>
             {{-- </div> --}}
             <div class="form-check">
+                @if (!empty($fullorder) && ($fullorder->replace_reasons == "Transfer"))
+                <input class="form-check-input" type="radio" value="{{ $fullorder->replace_reasons }}" checked>
+                <label class="form-check-label" for="Transfer">
+                    {{__('Transfer from branch to branch')}}
+                </label>
+                @else
                 <input class="form-check-input" type="radio"  value="transfer" {{ old('replace_reason') !== null && old('replace_reason') == "transfer" ? 'checked' : '' }} id="Transfer" name="replace_reason" @>
                 <label class="form-check-label" for="Transfer">
                     {{__('Transfer from branch to branch')}}
                 </label>
+                @endif
             </div>
             <div class="form-check">
+                @if (!empty($fullorder) && ($fullorder->replace_reasons == "error"))
+                <input class="form-check-input" type="radio" value="{{ $fullorder->replace_reasons }}" checked>
+                <label class="form-check-label" for="error">
+                    {{__('Card incoming error')}}<span>{{__('(caused by the member)')}}</span>
+                </label>
+                 @else
                 <input class="form-check-input" type="radio"  value="error" {{ old('replace_reason') !== null && old('replace_reason') == "error" ? 'checked' : '' }} id="error" name="replace_reason" >
                 <label class="form-check-label" for="error">
                     {{__('Card incoming error')}}<span>{{__('(caused by the member)')}}</span>
                 </label>
+                @endif
             </div>
             {{-- @error('replace_reason')
             <p class="help is-danger">{{ $message }}</p>
@@ -85,7 +137,7 @@
         <table class="table table-bordered">
               <tr>
                 <th scope="col" style="width:30%">{{__('FullName/Arabic')}}</th>
-                <td ><input type="text" class="input @error('FullName_Arabic')is-danger @enderror"id="FullName/Arabic" name="FullName_Arabic"value= "@if(!empty($fullorder)) {{$fullorder->FullName_Arabic}} @else {{ old('FullName_Arabic') }} @endif"class="form-control" placeholder="{{__('Enter FullName/Arabic')}}" />
+                <td ><input type="text" class="input @error('FullName_Arabic')is-danger @enderror"id="FullName/Arabic" name="FullName_Arabic" value= "@if(!empty($fullorder)) {{$fullorder->fullname_arabic}} @else {{ old('FullName_Arabic') }} @endif"class="form-control" placeholder="{{__('Enter FullName/Arabic')}}" />
                     @error('FullName_Arabic')
                     <p class="help is-danger">{{ $message }}</p>
                     @enderror
@@ -93,7 +145,7 @@
               </tr>
               <tr>
                 <th scope="col">{{__('FullName/English to be placed on the new card')}}</th>
-                <td ><input type="text" class="input @error('FullName_English')is-danger @enderror"id="FullName/English" name="FullName_English"value= "@if(!empty($fullorder)) {{$fullorder->FullName_English}} @else {{ old('FullName_English') }} @endif"class="form-control" placeholder="{{__('Enter FullName/English')}}" />
+                <td ><input type="text" class="input @error('FullName_English')is-danger @enderror"id="FullName/English" name="FullName_English" value= "@if(!empty($fullorder)) {{$fullorder->fullname_english}} @else {{ old('FullName_English') }} @endif" class="form-control" placeholder="{{__('Enter FullName/English')}}" />
                 @error('FullName_English')
                 <p class="help is-danger">{{ $message }}</p>
                 @enderror
@@ -110,7 +162,7 @@
               </tr>
               <tr>
                 <th scope="col">{{__('The new membership number')}} <br>{{__('when transferring from one branch to another')}}</th>
-                <td ><input type="text" class="input @error('newMembershipNumber')is-danger @enderror"id="newMembershipNumber" name="newMembershipNumber" value="@if (!empty($fullorder)) {{ $fullorder->newmembership_number }} @else {{ old('newMembershipNumber') }} @endif" class="form-control" placeholder="{{__('Enter new Membership Number')}}" /></td>
+                <td ><input type="text" class="input @error('newMembershipNumber')is-danger @enderror" id="newMembershipNumber" name="newMembershipNumber" value="@if(!empty($fullorder)) {{$fullorder->newmembership_number}} @else {{ old('newMembershipNumber') }} @endif" class="form-control" placeholder="{{__('Enter new Membership Number')}}" /></td>
               </tr>
           </table>
 {{-- membership only --}}
