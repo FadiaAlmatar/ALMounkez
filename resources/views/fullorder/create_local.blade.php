@@ -35,7 +35,7 @@
 {{-- بيان الدارة المالية --}}
         <p style="font-weight: bold;">{{__('Financial Management Statement:')}}</p><hr>
         <p style="display:inline">{{__('Mr.')}} <span style="font-weight: bold">{{Auth::User()->name}}</span>{{__(' is affiliated with the Syndicate with a membership number ')}}{{Auth::User()->id}}<br>
-            {{__('We inform you that he is registered in the Syndicate in year ...... and : ')}}</p>&nbsp;
+            {{__('We inform you that he is registered in the Syndicate in year 20')}}{{Auth::User()->order->created_at->format('y')}} {{__('and : ')}}</p>&nbsp;
         <div class="form-check">
             <input class="form-check-input" type="radio" name="debt" id="financially_innocent" value="option1" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif>
             <label for="financially_innocent" class="form-check-label" value="financially_innocent" @if (old('debt') == "financially_innocent") {{ 'selected' }} @endif>{{__('Financially innocent')}}</label>
