@@ -121,7 +121,7 @@
                <button type="submit" class="btn btn-primary">{{__('Create')}}</button><br>
             @endif
         </form>
-{{-- بيان الدارة المالية --}}
+{{-- بيان الادارة المالية --}}
             <hr><p style="font-weight: bold;">{{__('Financial Management Statement:')}}</p><hr>
             <p style="display:inline">{{__('The fellow')}} <span style="font-weight: bold">{{Auth::User()->name}}</span>{{__(' is affiliated with the Syndicate with a membership number ')}}{{Auth::User()->id}}<br>
                 {{__('And registered in the Syndicate in year 20')}}{{Auth::User()->order->created_at->format('y')}}</p><br>

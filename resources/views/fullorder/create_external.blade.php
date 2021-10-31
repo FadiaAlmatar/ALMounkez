@@ -78,5 +78,3 @@
         {{-- @if(Auth::User()->role == "admin")<button type="submit" class="btn btn-primary">{{__('Send')}}</button><br><br>@endif --}}
     </div>
 </x-layouts.app>
-
-{{-- {{Auth::User()->name}} --}}
