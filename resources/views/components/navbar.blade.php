@@ -22,6 +22,11 @@
                     <a class="nav-link active" aria-current="page"   href="{{route('orders.create')}}"  style="color: #eb640a">
                       {{__('create order')}}
                     </a>
+                    {{-- @if(Auth::User()->id == $order->user_id)
+                    <a class="nav-link active" aria-current="page"   href="{{route('orders.create')}}"  style="color: #eb640a">
+                        {{__('update order')}}
+                    </a>
+                    @endif --}}
                 </li>
                 @auth
                 <li class="nav-item dropdown">
