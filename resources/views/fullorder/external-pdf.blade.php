@@ -106,13 +106,11 @@
             </tr>
         </tbody>
         </table>
-        <p class="p-fullorder">{{__('Your request will be considered within a maximum period of two days. Please contact us')}}</p>
+        <p style="text-align:center;font-size:11px;font-weight:bold;">{{__('Your request will be considered within a maximum period of two days. Please contact us')}}</p>
         <hr>
         <p><span style="font-weight: bold;">{{__('Branch financial management statement:')}}</span><br>
         {{__('Mr.')}}{{$fullorder->fullname}}{{__(' is affiliated with the Syndicate with a membership number ')}}{{Auth::User()->id}}
-        {{__('We inform you that he is registered in the Syndicate in year 20')}}{{$fullorder->user->order->created_at->format('y')}} {{__('and : ')}}</p>&nbsp;
-
-        </p>
+        {{__('We inform you that he is registered in the Syndicate in year 20')}}{{$fullorder->user->order->created_at->format('y')}} {{__('and : ')}}</p>
         @if($fullorder->not_debtor == 0)
             <p>{{__('Financially innocent')}}</p>
         @else
@@ -123,15 +121,15 @@
         {{__('Amount has been received ')}}{{ $fullorder->money_order}}{{__(' SYP')}}</p>
         <hr><p><span style="font-weight: bold;">{{__('Treasurer Statement/central: ')}}</span><br>
             {{__('Amount has been received ')}}{{ $fullorder->money_central}}{{__(' SYP')}}</p>
-        <hr><p><span style="font-weight: bold;">{{__("Chairman's decision")}}{{__(':')}}</span><br>
-        {{__('Approval:')}}
+        <hr><p><span style="font-weight: bold;">{{__("Chairman's decision")}}{{__(':')}}</span>
+        {{-- {{__('Approval:')}} --}}
         @if($fullorder->Chairman_decision == 1)
             {{__('Approval')}}
         @else
             {{__('Disapproval')}}
         @endif</p>
         @if($fullorder->Chairman_decision == 0)
-            <p>{{__('reasons :(If not approved)')}}</p><p>{{ $fullorder->Chairman_disapproval_reasons }}</p>
+            <p>{{__('reasons :(If not approved)')}}<br>{{ $fullorder->Chairman_disapproval_reasons }}</p>
         @endif
     </div>
     </body>

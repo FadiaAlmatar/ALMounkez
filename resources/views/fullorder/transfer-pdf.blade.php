@@ -89,31 +89,20 @@
         <br>
         <h1>{{__('Membership transfer form from one branch to another')}}</h1>
         <p class="status"> {{__('Order Status: ')}} {{$fullorder->status}}</p>
-        <br><span style="direction: rtl">{{__('Mr. Chairman of the Syndicate Branch Council in the province')}}</span>
+        <span style="direction: rtl">{{__('Mr. Chairman of the Syndicate Branch Council in the province')}}</span>
         <span>{{$fullorder->country_before}}</span>
-        <p>{{__('fullname* : ')}}{{$fullorder->fullname}}</p>
-        <p>{{__('I kindly request you to transfer my membership from your branch of the Syndicate branch in the country: ')}}{{$fullorder->country_before}}</p>
-        <p>{{__('To the syndicate branch in the country: ')}}{{$fullorder->country_after}}</p>
+        <p style="text-transform: capitalize;">{{__('fullname : ')}}<span style="text-transform: capitalize;">{{$fullorder->fullname}}</span></p>
+        <p>{{__('I kindly request you to transfer my membership from your branch of the Syndicate branch in the country: ')}}{{$fullorder->country_before}}
+        <br>{{__('To the syndicate branch in the country: ')}}{{$fullorder->country_after}}</p>
         <hr>
         <p>{{__('That is for the following reasons :')}}</p>
         <p>{{$fullorder->transportation_reasons}}</p>
-            {{-- <p>{{__('Evidences attached')}}</p>
-            <div class="mb-3" >
-                <label for="formFile" class="form-label" style="font-size: 13px;">{{__('change home image')}}
-                <input class="form-control" type="file" accept="image/*" id="change_home" name="change_home" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
-            </label>
-            </div>
-            <div class="mb-3">
-                <label for="formFile" class="form-label" style="font-size: 13px;">{{__('change work image')}}
-                <input class="form-control" type="file" accept="image/*"id="change_work" name="change_work" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
-            </label>
-            </div> --}}
             <p>{{__('Request date: ')}} {{ date("Y-m-d h:i A", strtotime($fullorder->created_at))}}</p>
             <hr>
-{{-- بيان الدارة المالية --}}
+{{-- بيان الادارة المالية --}}
             <p><span style="font-weight: bold;">{{__('Financial Management Statement:')}}</span><br>
             {{__('The fellow')}} {{Auth::User()->name}}{{__(' is affiliated with the Syndicate with a membership number ')}}{{Auth::User()->id}}
-            {{__('And registered in the Syndicate in year 20')}}{{$fullorder->user->order->created_at->format('y')}}p>
+            {{__('And registered in the Syndicate in year 20')}}{{$fullorder->user->order->created_at->format('y')}}</p>
 
             @if($fullorder->not_debtor == 0)
                 <span>{{__('Financially innocent')}}</span>
@@ -123,7 +112,7 @@
 {{-- قرار مجلس إدارة الفرع المسجل به --}}
             <hr>
             <p><span style="font-weight: bold;">{{__('Decision of the board of directors of the branch in which it is registered')}}</span><br>
-            {{__('Approval:')}}
+            {{-- {{__('Approval:')}} --}}
             @if($fullorder->registered_branch_decision == 1)
                 {{__('Approval')}}
             @else
@@ -137,7 +126,7 @@
 {{--قرار مجلس إدارة الفرع الراغب بالانتقال إليه --}}
             <hr>
             <p><span style="font-weight: bold;">{{__('The decision of the board of directors of the branch wishing to move to it: ')}}</span><br>
-            {{__('Approval:')}}
+            {{-- {{__('Approval:')}} --}}
             @if($fullorder->Chairman_decision == 1)
                 {{__('Approval')}}
             @else
@@ -145,8 +134,7 @@
             @endif
             </p>
             @if($fullorder->transferred_branch_decision == 0)
-                <p for="reasons">{{__('reasons :(If not approved)')}}</p>
-                <p>{{ $fullorder->transferred_branch_disapproval_reasons }}</p>
+                <p for="reasons">{{__('reasons :(If not approved)')}}<br>{{ $fullorder->transferred_branch_disapproval_reasons }}</p>
             @endif
 {{--  بيان أمين الصندوق--}}
             <hr>
