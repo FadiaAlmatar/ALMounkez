@@ -472,7 +472,12 @@
             @enderror
           </div>
           {{-- e0c2c2; --}}
-          <button type="submit" class="btn btn-primary">{{__('Send')}}</button>
+          {{-- <button type="submit" class="btn btn-primary">{{__('Send')}}</button> --}}
+          @if (!empty($order))
+          <button type="submit" class="btn btn-primary">{{__('Edit')}}</button><br>
+          @else
+          <button type="submit" class="btn btn-primary">{{__('Send')}}</button><br>
+          @endif
       <div style="background:#ccc9da;margin-top:5px">
        <ul class="ul-order">
           <br><li>{{__('Name field is required')}}</li>
@@ -621,7 +626,12 @@
               </div>
             </div>
           </div>
-    <button type="submit" class="btn btn-primary">{{__('Send')}}</button><br><br>
+    {{-- <button type="submit" class="btn btn-primary">{{__('Send')}}</button><br><br> --}}
+            @if (!empty($order))
+            <button type="submit" class="btn btn-primary">{{__('Edit')}}</button><br>
+            @else
+            <button type="submit" class="btn btn-primary">{{__('Send')}}</button><br>
+            @endif
     {{-- <a href="{{route('orders.printorder')}}"><i class="fas fa-file-pdf fa-2x" style="color:red"></i></a><br><br> --}}
       <div style="background:#ccc9da;">
         <ul class="ul-order">
