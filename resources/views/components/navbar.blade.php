@@ -48,8 +48,8 @@
                       {{ __('lang') }}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <li><a class="dropdown-item" href="/locale/ar" style="color: orange">{{ __('Ar') }}</a></li>
-                      <li><a class="dropdown-item" href="/locale/en" style="color: orange">{{ __('En') }}</a></li>
+                      <li><a class="dropdown-item" href="{{asset('/locale/ar')}}" style="color: orange">{{ __('Ar') }}</a></li>
+                      <li><a class="dropdown-item" href="{{asset('/locale/en')}}" style="color: orange">{{ __('En') }}</a></li>
                     </ul>
                  </li>
                   <li class="nav-item dropdown">

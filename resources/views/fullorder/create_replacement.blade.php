@@ -11,20 +11,7 @@
             <input name="type" value="replacement" hidden>
         <p>{{__('Gentlemen of the Financial and Accounting Professions Syndicate, please give me a membership card instead: ')}}
             <div class="form-check">
-                {{-- @if (!empty($fullorder) && old('replace_reason', $fullorder->replace_reasons))
-                  <input value="{{ $fullorder->replace_reasons }}" checked>
-                @endif --}}
-                @if (!empty($fullorder) && ( $fullorder->replace_reasons == "lost"))
-                <input class="form-check-input" type="radio" value="{{ $fullorder->replace_reasons }}" checked>
-                <label class="form-check-label" for="Lost">
-                    {{__('Lost (police decision attached)')}}
-                  <input class="form-control" type="file" accept="image/*"id="police_image" name="police_image">
-                      @error('police_image')
-                      <p class="help is-danger">{{ $message }}</p>
-                      @enderror
-                  </label>
-                @else
-                <input class="form-check-input" type="radio" value="lost" {{ old('replace_reason') !== null && old('replace_reason') == "lost" ? 'checked' : '' }} id="Lost" name="replace_reason" >
+                <input class="form-check-input" type="radio" value="lost" {{ old('replace_reason') !== null && old('replace_reason') == "lost" ? 'checked' : '' }}  @if (!empty($fullorder) && ( $fullorder->replace_reasons == "lost")) checked @endif id="Lost" name="replace_reason" >
                 <label class="form-check-label" for="Lost">
                   {{__('Lost (police decision attached)')}}
                 <input class="form-control" type="file" accept="image/*"id="police_image" name="police_image">
@@ -32,7 +19,6 @@
                     <p class="help is-danger">{{ $message }}</p>
                     @enderror
                 </label>
-                @endif
             </div>
             <div class="form-check">
                 <input  class="form-check-input" type="radio" value="consists" {{ old('replace_reason') !== null && old('replace_reason') == "consists" ? 'checked' : '' }} id="Consists" name="replace_reason"  disabled>
@@ -44,8 +30,7 @@
                   @enderror
             </div>
             <div class="form-check">
-                @if (!empty($fullorder) && ($fullorder->replace_reasons == "Modification"))
-                <input class="form-check-input" type="radio" value="{{ $fullorder->replace_reasons }}" checked>
+                <input  class="form-check-input" type="radio"  value="Modification" {{ old('replace_reason') !== null && old('replace_reason') == "Modification" ? 'checked' : '' }} @if (!empty($fullorder) && ( $fullorder->replace_reasons == "Modification")) checked @endif id="Modification" name="replace_reason" >
                 <label id="labelmodification"class="form-check-label" for="Modification">
                     {{__('Modification of personal data')}}<br>
                        <label for="formFile" class="form-label" style="font-size: 13px;">{{__('Judgment decision attached')}}</label>
@@ -64,67 +49,24 @@
                             <p class="help is-danger">{{ $message }}</p>
                         @enderror
                     </label>
-                    @else
-                <input  class="form-check-input" type="radio"  value="Modification" {{ old('replace_reason') !== null && old('replace_reason') == "Modification" ? 'checked' : '' }} id="Modification" name="replace_reason" >
-                <label id="labelmodification"class="form-check-label" for="Modification">
-                    {{__('Modification of personal data')}}<br>
-                       <label for="formFile" class="form-label" style="font-size: 13px;">{{__('Judgment decision attached')}}</label>
-                       <input class="form-control" type="file" accept="image/*"id="judgment_decision_image" name="judgment_decision_image" >
-                       @error('judgment_decision_image')
-                            <p class="help is-danger">{{ $message }}</p>
-                        @enderror
-                        <label for="formFile" class="form-label"style="font-size: 13px;" >{{__('Passport image')}}</label>
-                        <input class="form-control" type="file" accept="image/*"id="passport_image" name="passport_image" >
-                        @error('passport_image')
-                            <p class="help is-danger">{{ $message }}</p>
-                        @enderror
-                        <label for="formFile" class="form-label"style="font-size: 13px;" >{{__('Personal identification image')}}</label>
-                        <input class="form-control" type="file" accept="image/*"id="personal_identification_image" name="personal_identification_image" >
-                        @error('personal_identification_image')
-                            <p class="help is-danger">{{ $message }}</p>
-                        @enderror
-                    </label>
-                    @endif
                 </div>
                 <div class="form-check">
-                    @if (!empty($fullorder) && ($fullorder->replace_reasons == "personal"))
-                    <input class="form-check-input" type="radio" value="{{ $fullorder->replace_reasons }}" checked>
-                    <label id="labelpersonal"class="form-check-label" for="personal">
-                        {{__('personal image')}}<br>
-                      </label>
-                    @else
-                    <input  class="form-check-input" type="radio"  value="personal" {{ old('replace_reason') !== null && old('replace_reason') == "personal" ? 'checked' : '' }} id="personal" name="replace_reason" >
+                    <input  class="form-check-input" type="radio"  value="personal" {{ old('replace_reason') !== null && old('replace_reason') == "personal" ? 'checked' : '' }} @if (!empty($fullorder) && ( $fullorder->replace_reasons == "personal")) checked @endif id="personal" name="replace_reason" >
                     <label id="labelpersonal"class="form-check-label" for="personal">
                       {{__('personal image')}}<br>
                     </label>
-                    @endif
                 </div>
-            {{-- </div> --}}
             <div class="form-check">
-                @if (!empty($fullorder) && ($fullorder->replace_reasons == "Transfer"))
-                <input class="form-check-input" type="radio" value="{{ $fullorder->replace_reasons }}" checked>
+                <input class="form-check-input" type="radio"  value="transfer" {{ old('replace_reason') !== null && old('replace_reason') == "transfer" ? 'checked' : '' }} @if (!empty($fullorder) && ( $fullorder->replace_reasons == "transfer")) checked @endif id="Transfer" name="replace_reason" @>
                 <label class="form-check-label" for="Transfer">
                     {{__('Transfer from branch to branch')}}
                 </label>
-                @else
-                <input class="form-check-input" type="radio"  value="transfer" {{ old('replace_reason') !== null && old('replace_reason') == "transfer" ? 'checked' : '' }} id="Transfer" name="replace_reason" @>
-                <label class="form-check-label" for="Transfer">
-                    {{__('Transfer from branch to branch')}}
-                </label>
-                @endif
             </div>
             <div class="form-check">
-                @if (!empty($fullorder) && ($fullorder->replace_reasons == "error"))
-                <input class="form-check-input" type="radio" value="{{ $fullorder->replace_reasons }}" checked>
+                <input class="form-check-input" type="radio"  value="error" {{ old('replace_reason') !== null && old('replace_reason') == "error" ? 'checked' : '' }} @if (!empty($fullorder) && ( $fullorder->replace_reasons == "error")) checked @endif id="error" name="replace_reason" >
                 <label class="form-check-label" for="error">
                     {{__('Card incoming error')}}<span>{{__('(caused by the member)')}}</span>
                 </label>
-                 @else
-                <input class="form-check-input" type="radio"  value="error" {{ old('replace_reason') !== null && old('replace_reason') == "error" ? 'checked' : '' }} id="error" name="replace_reason" >
-                <label class="form-check-label" for="error">
-                    {{__('Card incoming error')}}<span>{{__('(caused by the member)')}}</span>
-                </label>
-                @endif
             </div>
             {{-- @error('replace_reason')
             <p class="help is-danger">{{ $message }}</p>
