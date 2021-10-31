@@ -401,8 +401,12 @@
               <div class="form-outline">
                 <label class="form-label" for="work at government">{{__('work at government')}}</label>
                 <select name="workGovernment"id="work at government"class="form-select form-select-sm" aria-label=".form-select-sm example">
-                    @if (!empty($order) && old('workGovernment', $order->work_in_government))
-                     <option value="{{ $order->work_in_government }}" selected> {{ $order->work_in_government }}</option>
+                    @if (!empty($order))
+                      @if($order->work_in_government == 1)
+                     <option value="{{ $order->work_in_government }}" selected>{{__('Worker at government')}}</option>
+                     @else
+                     <option value="{{ $order->work_in_government }}" selected>{{__('not Worker at government')}}</option>
+                     @endif
                     @endif
                     <option></option>
                     <option value="1"@if (old('workGovernment') == "1") {{ 'selected' }} @endif>{{__('Worker at government')}}    </option>
@@ -430,8 +434,12 @@
               <div class="form-outline">
                 <label style="display:inline;width:70%;"class="form-label" for="display your data">{{__('Do you want to display your data on the site (contact information only) after approving the affiliation request?*')}}</label>
                 <select style="width:10%"class="input @error('displayData')is-danger @enderror"name="displayData"id="display your data"class="form-select form-select-sm" aria-label=".form-select-sm example">
-                    @if (!empty($order) && old('displayData', $order->displayData))
-                      <option value="{{ $order->displayData }}" selected> {{ $order->displayData }}</option>
+                    @if (!empty($order))
+                      @if($order->displayData == 1)
+                      <option value="{{ $order->displayData }}" selected>{{__('Yes')}}</option>
+                      @else
+                      <option value="{{ $order->displayData }}" selected>{{__('No')}}</option>
+                      @endif
                     @endif
                     <option></option>
                     <option value="1" @if (old('displayData') == "1") {{ 'selected' }} @endif>{{__('Yes')}}</option>
@@ -524,21 +532,25 @@
                             <td>
                                 <div class="form-group">
                                     <select name="qualification[0]" id="Qualification" class="form-select  form-control">
+                                        @if (!empty($order) && old('qualification[0]', $order->qualifications[0]->qualification))
+                                        <option value="{{ $order->qualifications[0]->qualification }}" selected>{{__($order->qualifications[0]->qualification)}}</option>
+                                        @endif
                                         <option></option>
                                         <option value="Doctorate"{{ (collect(old('qualification'))->contains("Doctorate")) ? 'selected':'' }}>    {{__('Doctorate')}}  </option>
                                         <option value="Master"{{ (collect(old('qualification'))->contains("Master")) ? 'selected':'' }}>          {{__('Master')}}     </option>
                                         <option value="Diploma"{{ (collect(old('qualification'))->contains("Diploma")) ? 'selected':'' }}>        {{__('Diploma')}}    </option>
                                         <option value="Certificate"{{ (collect(old('qualification'))->contains("Certificate")) ? 'selected':'' }}>{{__('Certificate')}}</option>
-                                        <option value="Language"{{ (collect(old('qualification'))->contains("Language")) ? 'selected':'' }}>            {{__('Language')}}      </option>
-                                        <option value="Soft skills"{{ (collect(old('qualification'))->contains("Soft skills")) ? 'selected':'' }}>            {{__('Soft skills')}}      </option>
-                                        <option value="Hard skills"{{ (collect(old('qualification'))->contains("Hard skills")) ? 'selected':'' }}>            {{__('Hard skills')}}      </option>
+                                        <option value="Language"{{ (collect(old('qualification'))->contains("Language")) ? 'selected':'' }}>      {{__('Language')}}   </option>
+                                        <option value="Soft skills"{{ (collect(old('qualification'))->contains("Soft skills")) ? 'selected':'' }}>{{__('Soft skills')}}</option>
+                                        <option value="Hard skills"{{ (collect(old('qualification'))->contains("Hard skills")) ? 'selected':'' }}>{{__('Hard skills')}}</option>
                                         <option value="Other"{{ (collect(old('qualification'))->contains("Other")) ? 'selected':'' }}>            {{__('Other')}}      </option>
                                     </select>
                                 </div>
                             </td>
                             <td>
                                 <div class="form-group">
-                                  <input class="input"type="text" name="specialization[0]"value="{{ old('specialization')[0] ?? "" }}"class="form-control" id="Specialization" placeholder="">
+                                    {{-- value="{{ old('specialization')[0] ?? "" }}" --}}
+                                  <input class="input"type="text" name="specialization[0]" value= "@if(!empty($order)) {{$order->qualifications[0]->Specialization}} @else {{ old('specialization')[0] ?? ""}} @endif" class="form-control" id="Specialization" placeholder="">
                                     @if ($errors->has('specialization.0'))
                                         @foreach($errors->get('specialization.0') as $error)
                                         <p class="help is-danger">{{ $error }}</p>
@@ -548,7 +560,8 @@
                             </td>
                             <td>
                               <div class="form-group">
-                              <input class="input"type="text" name="side[0]"value="{{ old('side')[0] ?? "" }}"class="form-control" id="Side" placeholder="">
+                                {{-- value="{{ old('side')[0] ?? "" }}" --}}
+                              <input class="input"type="text" name="side[0]" value= "@if(!empty($order)) {{$order->qualifications[0]->side}} @else {{ old('side')[0] ?? ""}} @endif" class="form-control" id="Side" placeholder="">
                                 @if ($errors->has('side.0'))
                                     @foreach($errors->get('side.0') as $error)
                                     {{-- @foreach($errors as $error) --}}
@@ -560,7 +573,8 @@
                             </td>
                             <td>
                               <div class="form-group">
-                                <input class="input"type="text" name="country[0]"value="{{ old('country')[0] ?? "" }}"class="form-control" id="Country" placeholder="">
+                                {{-- value="{{ old('country')[0] ?? "" }}" --}}
+                                <input class="input"type="text" name="country[0]"value= "@if(!empty($order)) {{$order->qualifications[0]->country}} @else {{ old('country')[0] ?? ""}} @endif" class="form-control" id="Country" placeholder="">
                                 @if ($errors->has('country.0'))
                                     @foreach($errors->get('country.0') as $error)
                                     <p class="help is-danger">{{ $error }}</p>
@@ -570,7 +584,7 @@
                             </td>
                             <td>
                               <div class="form-group">
-                                <input class="input"name="finishYear[0]"value="{{ old('finishYear')[0] ?? "" }}" type="text" class="form-control" id="Year" placeholder="">
+                                <input class="input" name="finishYear[0]" value= "@if(!empty($order)) {{$order->qualifications[0]->finishyear}} @else {{ old('finishYear')[0] ?? ""}} @endif" type="text" class="form-control" id="Year" placeholder="">
                                 @if ($errors->has('finishYear.0'))
                                     @foreach($errors->get('finishYear.0') as $error)
                                     <p class="help is-danger">{{ $error }}</p>
@@ -580,7 +594,7 @@
                             </td>
                             <td>
                               <div class="form-group">
-                                <input class="input"name="Rate[0]"value="{{ old('Rate')[0] ?? "" }}" type="text" class="form-control" id="Rate" placeholder="">
+                                <input class="input" name="Rate[0]" value= "@if(!empty($order)) {{$order->qualifications[0]->rate}} @else {{ old('Rate')[0] ?? ""}} @endif"type="text" class="form-control" id="Rate" placeholder="">
                                 @if ($errors->has('Rate.0'))
                                     @foreach($errors->get('Rate.0') as $error)
                                     <p class="help is-danger">{{ $error }}</p>
@@ -610,7 +624,13 @@
                 <label class="form-label" for="Payment method">{{__('Payment method')}}</label>
                 <select name="payment"id="Payment method"class="form-select form-select-sm" aria-label=".form-select-sm example">
                     @if (!empty($order) && old('payment', $order->pay_affiliation_fee))
-                      <option value="{{ $order->pay_affiliation_fee }}" selected> {{ $order->pay_affiliation_fee }}</option>
+                    @if($order->pay_affiliation_fee == "cash")
+                       <option value="{{ $order->pay_affiliation_fee }}" selected>{{__('Cash to the Central Syndicate Fund in Damascus')}}</option>
+                    @elseif($order->pay_affiliation_fee == "real estate bank")
+                       <option value="{{ $order->pay_affiliation_fee }}" selected>{{__('Syndicate account with the real estate bank number 11011418 in all countries')}}</option>
+                    @else
+                       <option value="{{ $order->pay_affiliation_fee }}" selected>{{__('Syndicate account with Francbank Bank number 0004204801 in Damascus,Aleppo,Tartous and Latakia')}}</option>
+                    @endif
                     @endif
                     <option></option>
                     @if(app()->getLocale() == 'ar')

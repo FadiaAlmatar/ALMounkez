@@ -405,10 +405,18 @@
                         {{-- @if(app()->getLocale() == 'ar')
                         <input type="text" class="input" value="{{$order->pay_affiliation_fee_ar}}"class="form-control" readonly/>
                         @else --}}
-                        <input type="text" class="input" value="{{$order->pay_affiliation_fee}}"class="form-control" readonly/>
+                        {{-- <input type="text" class="input" value="{{$order->pay_affiliation_fee}}"class="form-control" readonly/> --}}
                         {{-- @endif --}}
                         {{-- <option value="{{$order->pay_affiliation_fee}}" selected readonly>{{$order->pay_affiliation_fee}}</option> --}}
                      {{-- </select> --}}
+                     @if($order->pay_affiliation_fee == "cash")
+                     <input type="text" class="input" value="{{__('Cash to the Central Syndicate Fund in Damascus')}}" class="form-control" readonly/>
+                  @elseif($order->pay_affiliation_fee == "real estate bank")
+                  <input type="text" class="input" value="{{__('Syndicate account with the real estate bank number 11011418 in all countries')}}" class="form-control" readonly/>
+                  @else
+                  <input type="text" class="input" value="{{__('Syndicate account with Francbank Bank number 0004204801 in Damascus,Aleppo,Tartous and Latakia')}}" class="form-control" readonly/>
+                  @endif
+
                   </div>
                 </div>
               </div>
