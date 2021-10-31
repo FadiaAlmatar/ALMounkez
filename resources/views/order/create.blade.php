@@ -80,6 +80,9 @@
               <div class="form-outline">
                 <label class="form-label" for="Gender">{{__('Gender')}}</label>
                 <select name="gender"id="Gender"class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    @if (!empty($order) && old('gender', $order->gender))
+                        <option value="{{ $order->gender }}" selected> {{ $order->gender }}</option>
+                    @endif
                     <option></option>
                     @if(app()->getLocale() == 'ar')
                     <option value="{{__('Male')}}" @if (old('gender') == "male") {{ 'selected' }} @endif>  {{__('Male')}}  </option>
@@ -137,6 +140,9 @@
               <div class="form-outline">
                 <label class="form-label" for="Nationality">{{__('Nationality')}}</label>
                 <select name="Nationality"id="Nationality"class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    @if (!empty($order) && old('Nationality', $order->Nationality))
+                         <option value="{{ $order->Nationality }}" selected> {{ $order->Nationality }}</option>
+                    @endif
                     <option></option>
                     @if(app()->getLocale() == 'ar')
                     <option value="{{__('Syrian')}}" @if (old('Nationality') == "Syrian") {{ 'selected' }} @endif>{{__('Syrian')}}</option>
@@ -152,6 +158,9 @@
               <div class="form-outline">
                 <label class="form-label" for="Martial status">{{__('Martial status')}}</label>
                 <select name="martialStatus"id="Martial status"class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    @if (!empty($order) && old('martialStatus', $order->martialStatus))
+                         <option value="{{ $order->martialStatus }}" selected> {{ $order->martialStatus }}</option>
+                    @endif
                     <option></option>
                     @if(app()->getLocale() == 'en')
                     <option value="Unmarried" @if (old('martialStatus') == "Unmarried") {{ 'selected' }} @endif>{{__('Unmarried')}}</option>
@@ -242,6 +251,9 @@
           <div class="form-outline">
             <label class="form-label" for="Military">{{__('Military')}}</label>
             <select name="military"id="Military"class="form-select form-select-sm" aria-label=".form-select-sm example">
+                @if (!empty($order) && old('military', $order->military))
+                         <option value="{{ $order->military }}" selected> {{ $order->military }}</option>
+                    @endif
                 <option></option>
                 @if(app()->getLocale() == 'ar')
                 <option value="{{__('Finished')}}" @if (old('military') == "Finished") {{ 'selected' }} @endif>{{__('Finished')}}</option>
@@ -267,6 +279,9 @@
           <div class="form-outline">
             <label class="form-label" for="Health Status">{{__('Health Status')}}</label>
             <select name="healthStatus"id="Health Status"class="form-select form-select-sm" aria-label=".form-select-sm example">
+                @if (!empty($order) && old('healthStatus', $order->healthStatus))
+                         <option value="{{ $order->healthStatus }}" selected> {{ $order->healthStatus }}</option>
+                    @endif
                 <option></option>
                 @if(app()->getLocale() == 'ar')
                 <option value="{{__('Good')}}" @if (old('healthStatus') == "Good") {{ 'selected' }} @endif>{{__('Good')}}</option>
@@ -288,6 +303,9 @@
               <div class="form-outline">
                 <label class="form-label" for="country you wish to join">{{__('country you wish to join*')}}</label>
                 <select class="input @error('countryJoin')is-danger @enderror"name="countryJoin" id="country you wish to join"class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    @if (!empty($order) && old('countryJoin', $order->countryJoin))
+                      <option value="{{ $order->countryJoin }}" selected> {{ $order->countryJoin }}</option>
+                    @endif
                     <option></option>
                     <option @if(app()->getLocale() == 'ar') value="{{__('Damascus')}}" @else value="Damascus" @endif    @if (old('countryJoin') == "Damascus") {{ 'selected' }} @endif>       {{__('Damascus')}}      </option>
                     <option @if(app()->getLocale() == 'ar') value="{{__('Damascus Rural')}}" @else value="Damascus Rural" @endif @if (old('countryJoin') == "Damascus Rural") {{ 'selected' }} @endif> {{__('Damascus Rural')}}</option>
@@ -383,6 +401,9 @@
               <div class="form-outline">
                 <label class="form-label" for="work at government">{{__('work at government')}}</label>
                 <select name="workGovernment"id="work at government"class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    @if (!empty($order) && old('workGovernment', $order->workGovernment))
+                     <option value="{{ $order->workGovernment }}" selected> {{ $order->workGovernment }}</option>
+                    @endif
                     <option></option>
                     <option value="1"@if (old('workGovernment') == "1") {{ 'selected' }} @endif>{{__('Worker at government')}}    </option>
                     <option value="0"@if (old('workGovernment') == "0") {{ 'selected' }} @endif>{{__('not Worker at government')}}</option>
@@ -409,6 +430,9 @@
               <div class="form-outline">
                 <label style="display:inline;width:70%;"class="form-label" for="display your data">{{__('Do you want to display your data on the site (contact information only) after approving the affiliation request?*')}}</label>
                 <select style="width:10%"class="input @error('displayData')is-danger @enderror"name="displayData"id="display your data"class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    @if (!empty($order) && old('displayData', $order->displayData))
+                      <option value="{{ $order->displayData }}" selected> {{ $order->displayData }}</option>
+                    @endif
                     <option></option>
                     <option value="1" @if (old('displayData') == "1") {{ 'selected' }} @endif>{{__('Yes')}}</option>
                     <option value="0" @if (old('displayData') == "0") {{ 'selected' }} @endif>{{__('No')}} </option>
@@ -580,6 +604,9 @@
               <div class="form-outline">
                 <label class="form-label" for="Payment method">{{__('Payment method')}}</label>
                 <select name="payment"id="Payment method"class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    @if (!empty($order) && old('payment', $order->payment))
+                      <option value="{{ $order->payment }}" selected> {{ $order->payment }}</option>
+                    @endif
                     <option></option>
                     @if(app()->getLocale() == 'ar')
                     <option value="{{__('Cash to the Central Syndicate Fund in Damascus')}}" @if (old('payment') == "cash") {{ 'selected' }} @endif>{{__('Cash to the Central Syndicate Fund in Damascus')}}</option>
