@@ -4,8 +4,8 @@
     <div class="container"style="margin-top:7px;">
         <strong style="font-size:13px;">{{__('Based on decision of the Board of Directors in its session No. 36 held on the date 27/04/2016 containing the determination of the amount 1000 SYP of the value of a membership card:(Consists-Lost)')}}</strong>
         <br><br><h1 style="text-align: center;font-weight:bold;background-color:rgb(199, 198, 198);font-size:18px;">{{__('Filled out by the affiliate')}}</h1>
-        <form action="{{ route('fullorders.store') }}" method="POST" enctype="multipart/form-data">
-            @csrf
+        {{-- <form action="{{ route('fullorders.store') }}" method="POST" enctype="multipart/form-data">
+            @csrf --}}
             <input name="type" value="replacement" hidden>
         <p>{{__('Gentlemen of the Financial and Accounting Professions Syndicate, please give me a membership card instead: ')}}
             <div class="form-check">
@@ -120,7 +120,7 @@
             </tr>
         </tbody>
         </table>
-        </form>
+        {{-- </form> --}}
         <p style="text-align:center;font-size:13px;font-weight:bold;">{{__('Your request will be considered within a maximum period of two days. Please contact us')}}</p>
         <hr style="width:40%;margin:auto">
 {{-- manager only --}}
@@ -130,37 +130,20 @@
     <input name="type" value="replacement" hidden>
     <p style="font-weight: bold;display:inline-block;width:40%">{{__('Branch financial management statement:')}}</p>
     <div class="status">
-        {{-- @if (app()->getLocale() == 'ar')
-        <select name="status"class="input @error('status')is-danger @enderror" class="form-select" aria-label="Default select example" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif>
-            <option selected></option>
-            {{-- <option value="under consideration">    {{__('under consideration')}}    </option> --}}
-            {{-- <option value="مطلوب تسديد القيمة">
-                      {{__('مطلوب تسديد القيمة')}}</option>
-            <option value="يرجى الاستلام">
-                 {{__('يرجى الاستلام')}}</option>
-            <option value="لم تتم الموافقة">
-                {{__('لم تتم الموافقة')}}</option>
-            <option value="بحاجة لاستكمال الأوراق">
-                 {{__('بحاجة لاستكمال الأوراق')}}</option>
-        </select>
-        @else --}}
         <label>{{__('order status')}}</label>
         <select name="status"class="input @error('status')is-danger @enderror" class="form-select" aria-label="Default select example" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif>
             <option selected></option>
-            {{-- <option value="under consideration">    {{__('under consideration')}}    </option> --}}
             <option @if(app()->getLocale() == 'ar') value="{{__('Payment required')}}" @else value="Payment required" @endif>{{__('Payment required')}} </option>
             <option @if(app()->getLocale() == 'ar') value="{{__('Please pick up')}}" @else value="Please pick up" @endif>    {{__('Please pick up')}}   </option>
             <option @if(app()->getLocale() == 'ar') value="{{__('not confirmed')}}" @else value="not confirmed" @endif>      {{__('not confirmed')}}    </option>
             <option @if(app()->getLocale() == 'ar') value="{{__('Need to complete papers')}}" @else value="Need to complete papers" @endif>{{__('Need to complete papers')}}</option>
             <option @if(app()->getLocale() == 'ar') value="{{__('Finished')}}" @else value="Finished" @endif>               {{__('Finished')}}</option>
     </select>
-        {{-- @endif --}}
         @error('status')
          <p class="help is-danger">{{ $message }}</p>
         @enderror
         </div>
        <br>
-        {{-- <hr style="width:75%"> --}}
     <p style="display:inline">{{__('Mr.')}} <span style="font-weight: bold">{{$fullorder->fullname}}</span>{{__(' is affiliated with the Syndicate with a membership number ')}}{{Auth::User()->id}}<br>
         {{__('We inform you that he is registered in the Syndicate in year 20')}}{{$fullorder->user->order->created_at->format('y')}} {{__('and : ')}}</p>&nbsp;
 
