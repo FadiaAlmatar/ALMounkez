@@ -14,7 +14,7 @@
             @enderror</p>
             <div class="form-outline">
                 <label class="form-label" for="fullname">{{__('fullname* : ')}}</label>
-                <input type="text" class="input @error('fullname')is-danger @enderror input-fullorder" id="fullname" name="fullname" value="{{$fullorder->fullname}}"class="form-control" placeholder="{{__('Enter FullName')}}" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif/>
+                <input type="text" class="input @error('fullname')is-danger @enderror input-fullorder" id="fullname" name="fullname" value="{{$fullorder->fullname}}"class="form-control" placeholder="{{__('Enter FullName')}}" disabled />
                 @error('fullname')
                   <p class="help is-danger">{{ $message }}</p>
                 @enderror
@@ -62,31 +62,15 @@
             <input name="type" value="transfer" hidden>
             <p style="font-weight: bold;display:inline-block;width:40%">{{__('Financial Management Statement:')}}</p>
             <div class="status">
-                {{-- @if (app()->getLocale() == 'ar')
-                <select name="status"class="input @error('status')is-danger @enderror" class="form-select" aria-label="Default select example" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif>
-                    <option selected></option>
-                    {{-- <option value="under consideration">    {{__('under consideration')}}    </option> --}}
-                    {{-- <option value="مطلوب تسديد القيمة">
-                              {{__('مطلوب تسديد القيمة')}}</option>
-                    <option value="يرجى الاستلام">
-                         {{__('يرجى الاستلام')}}</option>
-                    <option value="لم تتم الموافقة">
-                        {{__('لم تتم الموافقة')}}</option>
-                    <option value="بحاجة لاستكمال الأوراق">
-                         {{__('بحاجة لاستكمال الأوراق')}}</option>
-                </select>
-                @else --}}
                 <label>{{__('order status')}}</label>
                 <select name="status"class="input @error('status')is-danger @enderror" class="form-select" aria-label="Default select example" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif>
                     <option selected></option>
-                    {{-- <option value="under consideration">    {{__('under consideration')}}    </option> --}}
                     <option @if(app()->getLocale() == 'ar') value="{{__('Payment required')}}" @else value="Payment required" @endif>{{__('Payment required')}} </option>
                     <option @if(app()->getLocale() == 'ar') value="{{__('Please pick up')}}" @else value="Please pick up" @endif>    {{__('Please pick up')}}   </option>
                     <option @if(app()->getLocale() == 'ar') value="{{__('not confirmed')}}" @else value="not confirmed" @endif>      {{__('not confirmed')}}    </option>
                     <option @if(app()->getLocale() == 'ar') value="{{__('Need to complete papers')}}" @else value="Need to complete papers" @endif>{{__('Need to complete papers')}}</option>
                     <option @if(app()->getLocale() == 'ar') value="{{__('Finished')}}" @else value="Finished" @endif>               {{__('Finished')}}</option>
                     </select>
-                {{-- @endif --}}
                 @error('status')
                  <p class="help is-danger">{{ $message }}</p>
                 @enderror

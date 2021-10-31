@@ -66,7 +66,8 @@ class FullOrderController extends Controller
             $fullorder->branch_id     =   1;//Auth::User()->branch_id
             $fullorder->membership_id =   2222;//Auth::User()->membership_id
             $fullorder->user_id       =   Auth::User()->id;
-            $fullorder->fullname      =   Auth::User()->name;
+            $fullorder->fullname      =   $request->fullname;//Auth::User()->name;
+            // dd($request->fullname);
             //local
             if($request->type == "local"){
                 $request->validate([
@@ -87,7 +88,7 @@ class FullOrderController extends Controller
                     'transportation_reasons' => 'required'
                     ] );
                 $fullorder->country_before         = $request->from_country;
-                $fullorder->fullname               = $request->fullname;
+                // $fullorder->fullname               = $request->fullname;
                 $fullorder->country_after          = $request->to_country;
                 $fullorder->transportation_reasons = $request->transportation_reasons;
                 $fullorder->home_change            = $request->change_home;
@@ -203,17 +204,15 @@ class FullOrderController extends Controller
     public function show(FullOrder $fullorder)
     {
         if(Auth::User()->role == "user") {
-        // || ($fullorder->status == "under consideration")){
-            // dd("here");
             if($fullorder->status <> "under consideration"){
-                if($fullorder->type == "local")
+            if($fullorder->type == "local")
                 return view('fullorder.show_local_manager',['fullorder'=>$fullorder]);
-              elseif($fullorder->type == "external")
-                  return view('fullorder.show_external_manager',['fullorder'=>$fullorder]);
-              elseif($fullorder->type == "transfer")
-               return view('fullorder.show_transfer_manager',['fullorder'=>$fullorder]);
-              else
-               return view('fullorder.show_replacement_manager',['fullorder'=>$fullorder]);
+            elseif($fullorder->type == "external")
+                return view('fullorder.show_external_manager',['fullorder'=>$fullorder]);
+            elseif($fullorder->type == "transfer")
+                return view('fullorder.show_transfer_manager',['fullorder'=>$fullorder]);
+            else
+                return view('fullorder.show_replacement_manager',['fullorder'=>$fullorder]);
                }
             else{
             if($fullorder->type == "local")
@@ -236,7 +235,6 @@ class FullOrderController extends Controller
             return view('fullorder.show_transfer',['fullorder'=>$fullorder]);
          else
             return view('fullorder.show_replacement',['fullorder'=>$fullorder]);
-
            }
            else{
             if($fullorder->type == "local")
@@ -248,11 +246,8 @@ class FullOrderController extends Controller
           else
            return view('fullorder.show_replacement_manager',['fullorder'=>$fullorder]);
            }
-
         }
-
     }
-
 
     /**
      * Show the form for editing the specified resource.

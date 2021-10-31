@@ -7,6 +7,7 @@
                 @method('PUT')
             @endif
         <input name="type" value="transfer" hidden>
+        <input name="fullname" value="{{Auth::User()->order->firstname}} {{Auth::User()->order->lastname}}" hidden/>
         <p>{{__('Mr. Chairman of the Syndicate Branch Council in the province')}}
             <select style="width:150px"class="input @error('from_country')is-danger @enderror"name="from_country" id="from_country"class="form-select form-select-sm" aria-label=".form-select-sm example" >
                     @if (!empty($fullorder) && old('from_country', $fullorder->country_before))
@@ -34,7 +35,7 @@
             <hr>
             <div class="form-outline">
                 <label class="form-label" for="fullname">{{__('fullname* : ')}}</label>
-                <input style="width:200px"type="text" class="input" id="fullname" name="fullname" value="{{Auth::User()->order->firstname}} {{Auth::User()->order->lastname}}"class="form-control"  disabled/>
+                <input style="width:200px;text-align:center"type="text" class="input" id="fullname" name="fullname" value="{{Auth::User()->order->firstname}} {{Auth::User()->order->lastname}}" class="form-control"  disabled/>
                 {{-- @error('fullname')
                   <p class="help is-danger">{{ $message }}</p>
                 @enderror --}}
