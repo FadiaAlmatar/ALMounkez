@@ -16,8 +16,13 @@
     </ul>
 {{-- end tabs --}}
 {{-- start big form --}}
-    <form action="{{ route('orders.store') }}" method="POST" enctype="multipart/form-data">
-        @csrf
+<form action="{!! !empty($order) ? route('orders.update', $order) :  route('orders.store')  !!}" method="POST" enctype="multipart/form-data" >
+    @csrf
+    @if (!empty($order))
+        @method('PUT')
+    @endif
+    {{-- <form action="{{ route('orders.store') }}" method="POST" enctype="multipart/form-data">
+        @csrf --}}
         <div class="tab-content" id="nav-tabContent" style="margin-bottom:5px;">
 {{-- البيانات الشخصية --}}
       <div id="Personal"  class="tab-pane fade show active" role="tabpanel" aria-labelledby="Personal-tab">
@@ -25,7 +30,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="name">{{__('name*')}}</label>
-                <input type="text" class="input @error('name')is-danger @enderror" id="name" name="name" value="{{ old('name') }}"class="form-control" />
+                <input type="text" class="input @error('name')is-danger @enderror" id="name" name="name" value= "@if(!empty($order)) {{$order->name}} @else {{ old('name') }} @endif" class="form-control" />
                 @error('name')
                   <p class="help is-danger">{{ $message }}</p>
                 @enderror
@@ -34,7 +39,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="nickname">{{__('nickname*')}}</label>
-                <input type="text" class="input @error('nickname')is-danger @enderror" id="nickname" name="nickname"value="{{ old('nickname') }}"class="form-control" />
+                <input type="text" class="input @error('nickname')is-danger @enderror" id="nickname" name="nickname" value= "@if(!empty($order)) {{$order->nickname}} @else {{ old('nickname') }} @endif" class="form-control" />
                 @error('nickname')
                   <p class="help is-danger">{{ $message }}</p>
                 @enderror
@@ -45,7 +50,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="fathername">{{__('father name*')}}</label>
-                <input type="text" class="input @error('fathername')is-danger @enderror" id="fathername" name="fathername"value="{{ old('fathername') }}"class="form-control" />
+                <input type="text" class="input @error('fathername')is-danger @enderror" id="fathername" name="fathername"value= "@if(!empty($order)) {{$order->fathername}} @else {{ old('fathername') }} @endif" class="form-control" />
                 @error('fathername')
                 <p class="help is-danger">{{ $message }}</p>
               @enderror
@@ -54,7 +59,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="grandfather name">{{__('grandfather name*')}}</label>
-                <input type="text" class="input @error('grandfathername')is-danger @enderror" id="grandfather name" name="grandfathername"value="{{ old('grandfathername') }}"class="form-control" />
+                <input type="text" class="input @error('grandfathername')is-danger @enderror" id="grandfather name" name="grandfathername" value= "@if(!empty($order)) {{$order->grandfathername}} @else {{ old('grandfathername') }} @endif" class="form-control" />
                 @error('grandfathername')
                 <p class="help is-danger">{{ $message }}</p>
               @enderror
@@ -65,7 +70,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="mother name">{{__('mother name*')}}</label>
-                <input type="text" class="input @error('mothername')is-danger @enderror" id="mother name" name="mothername"value="{{ old('mothername') }}"class="form-control" />
+                <input type="text" class="input @error('mothername')is-danger @enderror" id="mother name" name="mothername"value= "@if(!empty($order)) {{$order->mothername}} @else {{ old('mothername') }} @endif"class="form-control" />
                 @error('mothername')
                 <p class="help is-danger">{{ $message }}</p>
               @enderror
@@ -91,7 +96,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="fname/english">{{__('fname/english*')}}</label>
-                <input type="text" class="input @error('fnameenglish')is-danger @enderror"id="fname/english" name="fnameenglish"value="{{ old('fnameenglish') }}"class="form-control" />
+                <input type="text" class="input @error('fnameenglish')is-danger @enderror"id="fname/english" name="fnameenglish" value= "@if(!empty($order)) {{$order->fnameenglish}} @else {{ old('fnameenglish') }} @endif" class="form-control" />
                 @error('fnameenglish')
                 <p class="help is-danger">{{ $message }}</p>
                @enderror
@@ -100,7 +105,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="lname/english">{{__('lname/english*')}}</label>
-                <input type="text" class="input @error('lnameenglish')is-danger @enderror" id="lname/english" name="lnameenglish"value="{{ old('lnameenglish') }}"class="form-control" />
+                <input type="text" class="input @error('lnameenglish')is-danger @enderror" id="lname/english" name="lnameenglish"value= "@if(!empty($order)) {{$order->lnameenglish}} @else {{ old('lnameenglish') }} @endif"class="form-control" />
                 @error('lnameenglish')
                 <p class="help is-danger">{{ $message }}</p>
                @enderror
@@ -111,7 +116,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="fathername/english">{{__('fathername/english*')}}</label>
-                <input type="text" class="input @error('fathernameenglish')is-danger @enderror"id="fathername/english" name="fathernameenglish"value="{{ old('fathernameenglish') }}"class="form-control" />
+                <input type="text" class="input @error('fathernameenglish')is-danger @enderror"id="fathername/english" name="fathernameenglish" value= "@if(!empty($order)) {{$order->fathernameenglish}} @else {{ old('fathernameenglish') }} @endif" class="form-control" />
                 @error('fathernameenglish')
                 <p class="help is-danger">{{ $message }}</p>
                @enderror
@@ -120,7 +125,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="mothername/english">{{__('mothername/english*')}}</label>
-                <input type="text" class="input @error('mothernameenglish')is-danger @enderror"id="mothername/english" name="mothernameenglish"value="{{ old('mothernameenglish') }}"class="form-control" />
+                <input type="text" class="input @error('mothernameenglish')is-danger @enderror"id="mothername/english" name="mothernameenglish"value= "@if(!empty($order)) {{$order->mothernameenglish}} @else {{ old('mothernameenglish') }} @endif"class="form-control" />
                 @error('mothernameenglish')
                 <p class="help is-danger">{{ $message }}</p>
                @enderror
@@ -167,7 +172,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="Place of birth">{{__('Place of birth*')}}</label>
-                <input type="text" class="input @error('placeBirth')is-danger @enderror"name="placeBirth"value="{{ old('placeBirth') }}"id="Place of birth" class="form-control" />
+                <input type="text" class="input @error('placeBirth')is-danger @enderror"name="placeBirth" value= "@if(!empty($order)) {{$order->placeBirth}} @else {{ old('placeBirth') }} @endif" id="Place of birth" class="form-control" />
                 @error('placeBirth')
                 <p class="help is-danger">{{ $message }}</p>
                @enderror
@@ -187,7 +192,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="National ID">{{__('National ID*')}}</label>
-                <input type="text" class="input @error('nationalID')is-danger @enderror"name="nationalID"value="{{ old('nationalID') }}"id="National ID" class="form-control" />
+                <input type="text" class="input @error('nationalID')is-danger @enderror"name="nationalID" value= "@if(!empty($order)) {{$order->nationalID}} @else {{ old('nationalID') }} @endif" id="National ID" class="form-control" />
                 @error('nationalID')
                   <p class="help is-danger">{{ $message }}</p>
                 @enderror
@@ -196,7 +201,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="Civil Registry">{{__('Civil Registry*')}}</label>
-                <input type="text" class="input @error('civilRegistry')is-danger @enderror"name="civilRegistry" value="{{ old('civilRegistry') }}"id="Civil Registry" class="form-control" />
+                <input type="text" class="input @error('civilRegistry')is-danger @enderror"name="civilRegistry"  value= "@if(!empty($order)) {{$order->civilRegistry}} @else {{ old('civilRegistry') }} @endif"  id="Civil Registry" class="form-control" />
                 @error('civilRegistry')
                 <p class="help is-danger">{{ $message }}</p>
                @enderror
@@ -207,7 +212,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="Personal Identification Number">{{__('Personal Identification Number*')}}</label>
-                <input type="text" class="input @error('personalIdentificationNumber')is-danger @enderror"name="personalIdentificationNumber"value="{{ old('personalIdentificationNumber') }}"id="Personal Identification Number" class="form-control" />
+                <input type="text" class="input @error('personalIdentificationNumber')is-danger @enderror"name="personalIdentificationNumber" value= "@if(!empty($order)) {{$order->personalIdentificationNumber}} @else {{ old('personalIdentificationNumber') }} @endif" id="Personal Identification Number" class="form-control" />
                 @error('personalIdentificationNumber')
                 <p class="help is-danger">{{ $message }}</p>
                @enderror
@@ -227,7 +232,7 @@
         <div class="col">
           <div class="form-outline">
             <label class="form-label" for="Constraint">{{__('Constraint*')}}</label>
-            <input type="text" class="input @error('constraint')is-danger @enderror"name="constraint"value="{{ old('constraint') }}"id="Constraint" class="form-control" />
+            <input type="text" class="input @error('constraint')is-danger @enderror"name="constraint" value= "@if(!empty($order)) {{$order->constraint}} @else {{ old('constraint') }} @endif" id="Constraint" class="form-control" />
             @error('constraint')
             <p class="help is-danger">{{ $message }}</p>
            @enderror
@@ -255,7 +260,7 @@
         <div class="col">
           <div class="form-outline">
             <label class="form-label" for="Public Record Number">{{__('Public Record Number')}}</label>
-            <input type="text" class="input"name="publicRecordNumber"value="{{ old('publicRecordNumber') }}"id="Public Record Number" class="form-control" />
+            <input type="text" class="input"name="publicRecordNumber" value= "@if(!empty($order)) {{$order->publicRecordNumber}} @else {{ old('publicRecordNumber') }} @endif" id="Public Record Number" class="form-control" />
           </div>
         </div>
         <div class="col">
@@ -309,7 +314,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="Address">{{__('Address*')}}</label>
-                <input class="input @error('address')is-danger @enderror"type="text" name="address"value="{{ old('address') }}"id="Address" class="form-control" />
+                <input class="input @error('address')is-danger @enderror"type="text" name="address" value= "@if(!empty($order)) {{$order->address}} @else {{ old('address') }} @endif"id="Address" class="form-control" />
                 @error('address')
                    <p class="help is-danger">{{ $message }}</p>
                 @enderror
@@ -320,7 +325,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="House Phone">{{__('House Phone')}}</label>
-                <input type="text" class="input"name="housePhone"value="{{ old('housePhone') }}"id="House Phone" class="form-control" />
+                <input type="text" class="input"name="housePhone" value= "@if(!empty($order)) {{$order->housePhone}} @else {{ old('housePhone') }} @endif" id="House Phone" class="form-control" />
                 @error('housePhone')
                  <p class="help is-danger">{{ $message }}</p>
                 @enderror
@@ -329,7 +334,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="Work Phone">{{__('Work Phone')}}</label>
-                <input type="text" class="input"name="workPhone"value="{{ old('workPhone') }}"id="Work Phone" class="form-control" />
+                <input type="text" class="input"name="workPhone" value= "@if(!empty($order)) {{$order->workPhone}} @else {{ old('workPhone') }} @endif" id="Work Phone" class="form-control" />
                 @error('workPhone')
                  <p class="help is-danger">{{ $message }}</p>
                 @enderror
@@ -340,7 +345,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="Mobile">{{__('Mobile')}}</label>
-                <input type="text" class="input"name="mobile"value="{{ old('mobile') }}"id="Mobile" class="form-control" />
+                <input type="text" class="input"name="mobile" value= "@if(!empty($order)) {{$order->mobile}} @else {{ old('mobile') }} @endif"id="Mobile" class="form-control" />
                 @error('mobile')
                  <p class="help is-danger">{{ $message }}</p>
                 @enderror
@@ -349,7 +354,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="E-mail">{{__('E-mail')}}</label>
-                <input type="email" class="input"name="email"value="{{ old('email') }}"id="E-mail" class="form-control" />
+                <input type="email" class="input"name="email" value= "@if(!empty($order)) {{$order->email}} @else {{ old('email') }} @endif" id="E-mail" class="form-control" />
                 @error('email')
                  <p class="help is-danger">{{ $message }}</p>
                 @enderror
@@ -360,13 +365,13 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="Fax">{{__('Fax')}}</label>
-                <input type="text" class="input"name="fax"value="{{ old('fax') }}"id="Fax" class="form-control" />
+                <input type="text" class="input"name="fax" value= "@if(!empty($order)) {{$order->fax}} @else {{ old('fax') }} @endif" id="Fax" class="form-control" />
               </div>
             </div>
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="Site">{{__('Site')}}</label>
-                <input type="text" class="input"name="site"value="{{ old('site') }}"id="Site" class="form-control" />
+                <input type="text" class="input"name="site" value= "@if(!empty($order)) {{$order->site}} @else {{ old('site') }} @endif" id="Site" class="form-control" />
                 @error('site')
                 <p class="help is-danger">{{ $message }}</p>
                @enderror
@@ -387,7 +392,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="work side">{{__('work side')}}</label>
-                <input type="text"class="input" name="workSide"value="{{ old('workSide') }}"id="work side" class="form-control" />
+                <input type="text"class="input" name="workSide"value= "@if(!empty($order)) {{$order->workSide}} @else {{ old('workSide') }} @endif" id="work side" class="form-control" />
               </div>
             </div>
           </div>
@@ -395,7 +400,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="Insurance number">{{__('Insurance number')}}</label>
-                <input type="text" class="input"name="insurance"value="{{ old('insurance') }}"id="Insurance number" class="form-control" />
+                <input type="text" class="input"name="insurance" value= "@if(!empty($order)) {{$order->insurance}} @else {{ old('insurance') }} @endif" id="Insurance number" class="form-control" />
               </div>
             </div>
           </div>
@@ -546,7 +551,7 @@
                             </td>
                             <td>
                               <div class="form-group">
-                                <input class="input"name="Rate[0]"value="{{ old('Rate')[0] ?? "" }}"type="text" class="form-control" id="Rate" placeholder="">
+                                <input class="input"name="Rate[0]"value="{{ old('Rate')[0] ?? "" }}" type="text" class="form-control" id="Rate" placeholder="">
                                 @if ($errors->has('Rate.0'))
                                     @foreach($errors->get('Rate.0') as $error)
                                     <p class="help is-danger">{{ $error }}</p>
