@@ -181,6 +181,7 @@ class FullOrderController extends Controller
                 $fullorder->registered_branch_decision             = $request->registered_branch_decision;
                 $fullorder->registered_branch_disapproval_reasons  = $request->registered_branch_disapproval_reasons;
                 $fullorder->transferred_branch_decision            = $request->transferred_branch_decision;
+                // dd($request->transferred_branch_decision);
                 $fullorder->transferred_branch_disapproval_reasons = $request->transferred_branch_disapproval_reasons;
                 $fullorder->newmembership_number                   = $request->newmembership_number;
             }//replacement

@@ -97,7 +97,7 @@
             <div>
                 <label style="display:inline;width:70%;"class="form-label" for="approval">{{__('Approval')}}</label>
                 <select style="width:10%"class="input @error('transferred_branch_decision')is-danger @enderror"name="transferred_branch_decision"id="transferred_branch_decision"class="form-select form-select-sm" aria-label=".form-select-sm example" disabled>
-                    @if($fullorder->Chairman_decision == 1)
+                    @if($fullorder->transferred_branch_decision == 1)
                     <option value="{{ $fullorder->transferred_branch_decision}}">{{__('Approval')}}</option>
                     @else
                     <option value="{{ $fullorder->transferred_branch_decision}}">{{__('Disapproval')}}</option>
