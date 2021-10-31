@@ -26,7 +26,12 @@ class OrderController extends Controller
      */
     public function create()
     {
-      return view('order.create');
+        if(Auth::User()->order <> null){
+            $order = Order::where('user_id',Auth::User()->id)->first();
+            return view('order.create',['order'=> $order]);
+        }
+        else
+         return view('order.create');
     }
 
     /**
@@ -214,7 +219,7 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
-        //
+
     }
 
     /**

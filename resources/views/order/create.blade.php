@@ -30,7 +30,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="name">{{__('name*')}}</label>
-                <input type="text" class="input @error('name')is-danger @enderror" id="name" name="name" value= "@if(!empty($order)) {{$order->name}} @else {{ old('name') }} @endif" class="form-control" />
+                <input type="text" class="input @error('name')is-danger @enderror" id="name" name="name" value="@if(!empty($order)) {{$order->firstname}} @else {{ old('name') }} @endif" class="form-control" />
                 @error('name')
                   <p class="help is-danger">{{ $message }}</p>
                 @enderror
@@ -39,7 +39,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="nickname">{{__('nickname*')}}</label>
-                <input type="text" class="input @error('nickname')is-danger @enderror" id="nickname" name="nickname" value= "@if(!empty($order)) {{$order->nickname}} @else {{ old('nickname') }} @endif" class="form-control" />
+                <input type="text" class="input @error('nickname')is-danger @enderror" id="nickname" name="nickname" value= "@if(!empty($order)) {{$order->lastname}} @else {{ old('nickname') }} @endif" class="form-control" />
                 @error('nickname')
                   <p class="help is-danger">{{ $message }}</p>
                 @enderror
@@ -50,7 +50,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="fathername">{{__('father name*')}}</label>
-                <input type="text" class="input @error('fathername')is-danger @enderror" id="fathername" name="fathername"value= "@if(!empty($order)) {{$order->fathername}} @else {{ old('fathername') }} @endif" class="form-control" />
+                <input type="text" class="input @error('fathername')is-danger @enderror" id="fathername" name="fathername"value= "@if(!empty($order)) {{$order->father_name}} @else {{ old('fathername') }} @endif" class="form-control" />
                 @error('fathername')
                 <p class="help is-danger">{{ $message }}</p>
               @enderror
@@ -59,7 +59,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="grandfather name">{{__('grandfather name*')}}</label>
-                <input type="text" class="input @error('grandfathername')is-danger @enderror" id="grandfather name" name="grandfathername" value= "@if(!empty($order)) {{$order->grandfathername}} @else {{ old('grandfathername') }} @endif" class="form-control" />
+                <input type="text" class="input @error('grandfathername')is-danger @enderror" id="grandfather name" name="grandfathername" value= "@if(!empty($order)) {{$order->grandfather_name}} @else {{ old('grandfathername') }} @endif" class="form-control" />
                 @error('grandfathername')
                 <p class="help is-danger">{{ $message }}</p>
               @enderror
@@ -70,7 +70,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="mother name">{{__('mother name*')}}</label>
-                <input type="text" class="input @error('mothername')is-danger @enderror" id="mother name" name="mothername"value= "@if(!empty($order)) {{$order->mothername}} @else {{ old('mothername') }} @endif"class="form-control" />
+                <input type="text" class="input @error('mothername')is-danger @enderror" id="mother name" name="mothername"value= "@if(!empty($order)) {{$order->mother_name}} @else {{ old('mothername') }} @endif"class="form-control" />
                 @error('mothername')
                 <p class="help is-danger">{{ $message }}</p>
               @enderror
@@ -99,7 +99,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="fname/english">{{__('fname/english*')}}</label>
-                <input type="text" class="input @error('fnameenglish')is-danger @enderror"id="fname/english" name="fnameenglish" value= "@if(!empty($order)) {{$order->fnameenglish}} @else {{ old('fnameenglish') }} @endif" class="form-control" />
+                <input type="text" class="input @error('fnameenglish')is-danger @enderror"id="fname/english" name="fnameenglish" value= "@if(!empty($order)) {{$order->english_firstname}} @else {{ old('fnameenglish') }} @endif" class="form-control" />
                 @error('fnameenglish')
                 <p class="help is-danger">{{ $message }}</p>
                @enderror
@@ -108,7 +108,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="lname/english">{{__('lname/english*')}}</label>
-                <input type="text" class="input @error('lnameenglish')is-danger @enderror" id="lname/english" name="lnameenglish"value= "@if(!empty($order)) {{$order->lnameenglish}} @else {{ old('lnameenglish') }} @endif"class="form-control" />
+                <input type="text" class="input @error('lnameenglish')is-danger @enderror" id="lname/english" name="lnameenglish"value= "@if(!empty($order)) {{$order->english_lastname}} @else {{ old('lnameenglish') }} @endif"class="form-control" />
                 @error('lnameenglish')
                 <p class="help is-danger">{{ $message }}</p>
                @enderror
@@ -119,7 +119,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="fathername/english">{{__('fathername/english*')}}</label>
-                <input type="text" class="input @error('fathernameenglish')is-danger @enderror"id="fathername/english" name="fathernameenglish" value= "@if(!empty($order)) {{$order->fathernameenglish}} @else {{ old('fathernameenglish') }} @endif" class="form-control" />
+                <input type="text" class="input @error('fathernameenglish')is-danger @enderror"id="fathername/english" name="fathernameenglish" value= "@if(!empty($order)) {{$order->english_father_name}} @else {{ old('fathernameenglish') }} @endif" class="form-control" />
                 @error('fathernameenglish')
                 <p class="help is-danger">{{ $message }}</p>
                @enderror
@@ -128,7 +128,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="mothername/english">{{__('mothername/english*')}}</label>
-                <input type="text" class="input @error('mothernameenglish')is-danger @enderror"id="mothername/english" name="mothernameenglish"value= "@if(!empty($order)) {{$order->mothernameenglish}} @else {{ old('mothernameenglish') }} @endif"class="form-control" />
+                <input type="text" class="input @error('mothernameenglish')is-danger @enderror"id="mothername/english" name="mothernameenglish"value= "@if(!empty($order)) {{$order->english_mother_name}} @else {{ old('mothernameenglish') }} @endif"class="form-control" />
                 @error('mothernameenglish')
                 <p class="help is-danger">{{ $message }}</p>
                @enderror
@@ -141,7 +141,7 @@
                 <label class="form-label" for="Nationality">{{__('Nationality')}}</label>
                 <select name="Nationality"id="Nationality"class="form-select form-select-sm" aria-label=".form-select-sm example">
                     @if (!empty($order) && old('Nationality', $order->Nationality))
-                         <option value="{{ $order->Nationality }}" selected> {{ $order->Nationality }}</option>
+                         <option value="{{ $order->Nationality}}" selected> {{ $order->Nationality }}</option>
                     @endif
                     <option></option>
                     @if(app()->getLocale() == 'ar')
@@ -158,8 +158,8 @@
               <div class="form-outline">
                 <label class="form-label" for="Martial status">{{__('Martial status')}}</label>
                 <select name="martialStatus"id="Martial status"class="form-select form-select-sm" aria-label=".form-select-sm example">
-                    @if (!empty($order) && old('martialStatus', $order->martialStatus))
-                         <option value="{{ $order->martialStatus }}" selected> {{ $order->martialStatus }}</option>
+                    @if (!empty($order) && old('martialStatus', $order->Marital_status))
+                         <option value="{{ $order->Marital_status }}" selected> {{ $order->Marital_status }}</option>
                     @endif
                     <option></option>
                     @if(app()->getLocale() == 'en')
@@ -181,7 +181,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="Place of birth">{{__('Place of birth*')}}</label>
-                <input type="text" class="input @error('placeBirth')is-danger @enderror"name="placeBirth" value= "@if(!empty($order)) {{$order->placeBirth}} @else {{ old('placeBirth') }} @endif" id="Place of birth" class="form-control" />
+                <input type="text" class="input @error('placeBirth')is-danger @enderror"name="placeBirth" value= "@if(!empty($order)) {{$order->place_of_birth}} @else {{ old('placeBirth') }} @endif" id="Place of birth" class="form-control" />
                 @error('placeBirth')
                 <p class="help is-danger">{{ $message }}</p>
                @enderror
@@ -201,7 +201,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="National ID">{{__('National ID*')}}</label>
-                <input type="text" class="input @error('nationalID')is-danger @enderror"name="nationalID" value= "@if(!empty($order)) {{$order->nationalID}} @else {{ old('nationalID') }} @endif" id="National ID" class="form-control" />
+                <input type="text" class="input @error('nationalID')is-danger @enderror"name="nationalID" value= "@if(!empty($order)) {{$order->national_id}} @else {{ old('nationalID') }} @endif" id="National ID" class="form-control" />
                 @error('nationalID')
                   <p class="help is-danger">{{ $message }}</p>
                 @enderror
@@ -210,7 +210,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="Civil Registry">{{__('Civil Registry*')}}</label>
-                <input type="text" class="input @error('civilRegistry')is-danger @enderror"name="civilRegistry"  value= "@if(!empty($order)) {{$order->civilRegistry}} @else {{ old('civilRegistry') }} @endif"  id="Civil Registry" class="form-control" />
+                <input type="text" class="input @error('civilRegistry')is-danger @enderror"name="civilRegistry"  value= "@if(!empty($order)) {{$order->civil_registry_secretariat}} @else {{ old('civilRegistry') }} @endif"  id="Civil Registry" class="form-control" />
                 @error('civilRegistry')
                 <p class="help is-danger">{{ $message }}</p>
                @enderror
@@ -221,7 +221,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="Personal Identification Number">{{__('Personal Identification Number*')}}</label>
-                <input type="text" class="input @error('personalIdentificationNumber')is-danger @enderror"name="personalIdentificationNumber" value= "@if(!empty($order)) {{$order->personalIdentificationNumber}} @else {{ old('personalIdentificationNumber') }} @endif" id="Personal Identification Number" class="form-control" />
+                <input type="text" class="input @error('personalIdentificationNumber')is-danger @enderror"name="personalIdentificationNumber" value= "@if(!empty($order)) {{$order->personal_identification_number}} @else {{ old('personalIdentificationNumber') }} @endif" id="Personal Identification Number" class="form-control" />
                 @error('personalIdentificationNumber')
                 <p class="help is-danger">{{ $message }}</p>
                @enderror
@@ -272,15 +272,15 @@
         <div class="col">
           <div class="form-outline">
             <label class="form-label" for="Public Record Number">{{__('Public Record Number')}}</label>
-            <input type="text" class="input"name="publicRecordNumber" value= "@if(!empty($order)) {{$order->publicRecordNumber}} @else {{ old('publicRecordNumber') }} @endif" id="Public Record Number" class="form-control" />
+            <input type="text" class="input"name="publicRecordNumber" value= "@if(!empty($order)) {{$order->public_record_number}} @else {{ old('publicRecordNumber') }} @endif" id="Public Record Number" class="form-control" />
           </div>
         </div>
         <div class="col">
           <div class="form-outline">
             <label class="form-label" for="Health Status">{{__('Health Status')}}</label>
             <select name="healthStatus"id="Health Status"class="form-select form-select-sm" aria-label=".form-select-sm example">
-                @if (!empty($order) && old('healthStatus', $order->healthStatus))
-                         <option value="{{ $order->healthStatus }}" selected> {{ $order->healthStatus }}</option>
+                @if (!empty($order) && old('healthStatus', $order->Health_status))
+                         <option value="{{ $order->Health_status }}" selected> {{ $order->Health_status }}</option>
                     @endif
                 <option></option>
                 @if(app()->getLocale() == 'ar')
@@ -303,8 +303,8 @@
               <div class="form-outline">
                 <label class="form-label" for="country you wish to join">{{__('country you wish to join*')}}</label>
                 <select class="input @error('countryJoin')is-danger @enderror"name="countryJoin" id="country you wish to join"class="form-select form-select-sm" aria-label=".form-select-sm example">
-                    @if (!empty($order) && old('countryJoin', $order->countryJoin))
-                      <option value="{{ $order->countryJoin }}" selected> {{ $order->countryJoin }}</option>
+                    @if (!empty($order) && old('countryJoin', $order->Affiliation_country))
+                      <option value="{{ $order->Affiliation_country }}" selected> {{ $order->Affiliation_country}}</option>
                     @endif
                     <option></option>
                     <option @if(app()->getLocale() == 'ar') value="{{__('Damascus')}}" @else value="Damascus" @endif    @if (old('countryJoin') == "Damascus") {{ 'selected' }} @endif>       {{__('Damascus')}}      </option>
@@ -343,7 +343,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="House Phone">{{__('House Phone')}}</label>
-                <input type="text" class="input"name="housePhone" value= "@if(!empty($order)) {{$order->housePhone}} @else {{ old('housePhone') }} @endif" id="House Phone" class="form-control" />
+                <input type="text" class="input"name="housePhone" value= "@if(!empty($order)) {{$order->house_phone}} @else {{ old('housePhone') }} @endif" id="House Phone" class="form-control" />
                 @error('housePhone')
                  <p class="help is-danger">{{ $message }}</p>
                 @enderror
@@ -352,7 +352,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="Work Phone">{{__('Work Phone')}}</label>
-                <input type="text" class="input"name="workPhone" value= "@if(!empty($order)) {{$order->workPhone}} @else {{ old('workPhone') }} @endif" id="Work Phone" class="form-control" />
+                <input type="text" class="input"name="workPhone" value= "@if(!empty($order)) {{$order->work_phone}} @else {{ old('workPhone') }} @endif" id="Work Phone" class="form-control" />
                 @error('workPhone')
                  <p class="help is-danger">{{ $message }}</p>
                 @enderror
@@ -401,8 +401,8 @@
               <div class="form-outline">
                 <label class="form-label" for="work at government">{{__('work at government')}}</label>
                 <select name="workGovernment"id="work at government"class="form-select form-select-sm" aria-label=".form-select-sm example">
-                    @if (!empty($order) && old('workGovernment', $order->workGovernment))
-                     <option value="{{ $order->workGovernment }}" selected> {{ $order->workGovernment }}</option>
+                    @if (!empty($order) && old('workGovernment', $order->work_in_government))
+                     <option value="{{ $order->work_in_government }}" selected> {{ $order->work_in_government }}</option>
                     @endif
                     <option></option>
                     <option value="1"@if (old('workGovernment') == "1") {{ 'selected' }} @endif>{{__('Worker at government')}}    </option>
@@ -413,7 +413,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="work side">{{__('work side')}}</label>
-                <input type="text"class="input" name="workSide"value= "@if(!empty($order)) {{$order->workSide}} @else {{ old('workSide') }} @endif" id="work side" class="form-control" />
+                <input type="text"class="input" name="workSide"value= "@if(!empty($order)) {{$order->side_work}} @else {{ old('workSide') }} @endif" id="work side" class="form-control" />
               </div>
             </div>
           </div>
@@ -421,7 +421,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="Insurance number">{{__('Insurance number')}}</label>
-                <input type="text" class="input"name="insurance" value= "@if(!empty($order)) {{$order->insurance}} @else {{ old('insurance') }} @endif" id="Insurance number" class="form-control" />
+                <input type="text" class="input"name="insurance" value= "@if(!empty($order)) {{$order->insurance_number}} @else {{ old('insurance') }} @endif" id="Insurance number" class="form-control" />
               </div>
             </div>
           </div>
@@ -604,8 +604,8 @@
               <div class="form-outline">
                 <label class="form-label" for="Payment method">{{__('Payment method')}}</label>
                 <select name="payment"id="Payment method"class="form-select form-select-sm" aria-label=".form-select-sm example">
-                    @if (!empty($order) && old('payment', $order->payment))
-                      <option value="{{ $order->payment }}" selected> {{ $order->payment }}</option>
+                    @if (!empty($order) && old('payment', $order->pay_affiliation_fee))
+                      <option value="{{ $order->pay_affiliation_fee }}" selected> {{ $order->pay_affiliation_fee }}</option>
                     @endif
                     <option></option>
                     @if(app()->getLocale() == 'ar')

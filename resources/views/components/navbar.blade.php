@@ -20,7 +20,7 @@
                  </li> @endauth
                  <li class="nav-item">
                     <a class="nav-link active" aria-current="page"   href="{{route('orders.create')}}"  style="color: #eb640a">
-                      {{__('create order')}}
+                      {{__('Order')}}
                     </a>
                     {{-- @if(Auth::User()->id == $order->user_id)
                     <a class="nav-link active" aria-current="page"   href="{{route('orders.create')}}"  style="color: #eb640a">
