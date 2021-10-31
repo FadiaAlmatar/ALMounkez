@@ -88,9 +88,9 @@ class OrderController extends Controller
         'certification_image'            => 'required|file|image',
         'no_conviction_image'            => 'required|file|image',
         'qualification.*'                => 'nullable',
-        'side.0'                   => 'nullable|min:3|not_regex:/[0-9]/',
+        'side.*'                   => 'nullable|min:3|not_regex:/[0-9]/',
         'country.*'                      => 'nullable|min:3',
-        'Year.*'               => 'nullable|digits:4',
+        'finishYear.*'               => 'nullable|digits:4',
         'Rate.*'               => 'nullable|regex:/^[0-9.]/',
         'specialization.*'               => 'nullable|min:3|not_regex:/[0-9]/',
         'payment'                        => 'nullable',
@@ -177,12 +177,9 @@ class OrderController extends Controller
             $qualification_list[$i]['qualification'] = $request->qualification[$i];
             $qualification_list[$i]['Specialization'] = $request->specialization[$i];
             $qualification_list[$i]['side'] = $request->side[$i];
-            // dd($request->side[$i]);
             $qualification_list[$i]['country'] = $request->country[$i];
             $qualification_list[$i]['finishyear'] = $request->finishYear[$i];
-            // dd($request->finishYear[$i]);
             $qualification_list[$i]['rate'] = $request->Rate[$i];
-
         }
          $order->qualifications()->createMany($qualification_list);
          return redirect()->route('orders.show',$order);
