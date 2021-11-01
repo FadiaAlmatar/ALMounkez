@@ -57,14 +57,7 @@
                 <div class="col">
                   <div class="form-outline">
                     <label class="form-label" for="Gender">{{__('Gender')}}</label>
-                    {{-- <select name="gender"id="Gender"class="form-select form-select-sm" aria-label=".form-select-sm example" > --}}
-                        {{-- <option value="{{ $order->gender }}" selected readonly>{{ $order->gender }}</option> --}}
-                        {{-- @if(app()->getLocale() == 'ar')
-                        <input type="text" class="input" value="{{ $order->gender_ar }}"class="form-control" readonly/>
-                        @else --}}
-                        <input type="text" class="input" value="{{ $order->gender }}"class="form-control" readonly/>
-                        {{-- @endif --}}
-                   {{-- </select> --}}
+                        <input type="text" class="input" value="{{__($order->gender)}}" class="form-control" readonly/>
                   </div>
                 </div>
               </div>
@@ -100,27 +93,13 @@
                 <div class="col">
                   <div class="form-outline">
                     <label class="form-label" for="Nationality">{{__('Nationality')}}</label>
-                    {{-- <select name="Nationality"id="Nationality"class="form-select form-select-sm" aria-label=".form-select-sm example"> --}}
-                        {{-- <option value="{{$order->Nationality}}" selected readonly>{{$order->Nationality}}</option> --}}
-                        {{-- @if(app()->getLocale() == 'ar')
-                        <input type="text" class="input" value="{{$order->Nationality_ar}}"class="form-control" readonly/>
-                        @else --}}
-                        <input type="text" class="input" value="{{$order->Nationality}}"class="form-control" readonly/>
-                        {{-- @endif --}}
-                      {{-- </select> --}}
+                        <input type="text" class="input" value="{{__($order->Nationality)}}"class="form-control" readonly/>
                   </div>
                 </div>
                 <div class="col">
                   <div class="form-outline">
                     <label class="form-label" for="Martial status">{{__('Martial status')}}</label>
-                    {{-- <select name="martialStatus"id="Martial status"class="form-select form-select-sm" aria-label=".form-select-sm example"> --}}
-                        {{-- <option value="{{$order->Marital_status}}" selected readonly>{{$order->Marital_status}}</option> --}}
-                        {{-- @if(app()->getLocale() == 'ar')
-                        <input type="text" class="input" value="{{$order->Marital_status_ar}}"class="form-control" readonly/>
-                        @else --}}
-                        <input type="text" class="input" value="{{$order->Marital_status}}"class="form-control" readonly/>
-                        {{-- @endif --}}
-                     {{-- </select> --}}
+                        <input type="text" class="input" value="{{__($order->Marital_status)}}"class="form-control" readonly/>
                   </div>
                 </div>
               </div>
@@ -176,14 +155,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="Military">{{__('Military')}}</label>
-                {{-- <select name="military"id="Military"class="form-select form-select-sm" aria-label=".form-select-sm example"> --}}
-                    {{-- <option value="{{$order->military}}" selected readonly>{{$order->military}}</option> --}}
-                    {{-- @if(app()->getLocale() == 'ar')
-                    <input type="text" class="input" value="{{$order->military_ar}}"class="form-control" readonly/>
-                    @else --}}
-                    <input type="text" class="input" value="{{$order->military}}"class="form-control" readonly/>
-                    {{-- @endif --}}
-                 {{-- </select> --}}
+                    <input type="text" class="input" value="{{__($order->military)}}"class="form-control" readonly/>
               </div>
             </div>
           </div>
@@ -197,14 +169,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="Health Status">{{__('Health Status')}}</label>
-                {{-- <select name="healthStatus"id="Health Status"class="form-select form-select-sm" aria-label=".form-select-sm example"> --}}
-                    {{-- <option value="{{$order->Health_status}}">{{$order->Health_status}}</option> --}}
-                    {{-- @if(app()->getLocale() == 'ar')
-                    <input type="text" class="input" value="{{$order->Health_status_ar}}"class="form-control" readonly/>
-                    @else --}}
-                    <input type="text" class="input" value="{{$order->Health_status}}"class="form-control" readonly/>
-                    {{-- @endif --}}
-                 {{-- </select> --}}
+                    <input type="text" class="input" value="{{__($order->Health_status)}}"class="form-control" readonly/>
               </div>
             </div>
           </div>
@@ -216,14 +181,7 @@
                 <div class="col">
                   <div class="form-outline">
                     <label class="form-label" for="country you wish to join">{{__('country you wish to join*')}}</label>
-                    {{-- <select class="input"name="countryJoin" id="country you wish to join"class="form-select form-select-sm" aria-label=".form-select-sm example"> --}}
-                        {{-- @if(app()->getLocale() == 'ar')
-                        <input type="text"class="input" value="{{$order->Affiliation_country_ar}}"class="form-control" readonly/>
-                        @else --}}
-                        <input type="text"class="input" value="{{$order->Affiliation_country}}"class="form-control" readonly/>
-                        {{-- @endif --}}
-                        {{-- <option value="{{$order->Affiliation_country}}" selected readonly>{{$order->Affiliation_country}}</option> --}}
-                     {{-- </select> --}}
+                        <input type="text"class="input" value="{{__($order->Affiliation_country)}}"class="form-control" readonly/>
                   </div>
                 </div>
             </div>
@@ -281,15 +239,11 @@
                 <div class="col">
                   <div class="form-outline">
                     <label class="form-label" for="work at government">{{__('work at government')}}</label>
-                    {{-- <select name="workGovernment"id="work at government"class="form-select form-select-sm" aria-label=".form-select-sm example"> --}}
                         @if ($order->work_in_government == 1)
-                        {{-- <option value="{{$order->work_in_government}}" selected readonly>{{__('Worker at government')}} </option> --}}
                         <input type="text"class="input" value="{{__('Worker at government')}}"class="form-control" readonly/>
                         @else
                         <input type="text" class="input" value="{{__('not Worker at government')}}"class="form-control" readonly/>
-                        {{-- <option value="{{$order->work_in_government}}" selected readonly>{{__('not Worker at government')}}</option> --}}
                         @endif
-                     {{-- </select> --}}
                   </div>
                 </div>
                 <div class="col">
@@ -311,15 +265,11 @@
                 <div class="col">
                   <div class="form-outline">
                     <label style="display:inline;width:70%;"class="form-label" for="display your data">{{__('Do you want to display your data on the site (contact information only) after approving the affiliation request?*')}}</label>
-                    {{-- <select style="width:10%"class="input"name="displayData"id="display your data"class="form-select form-select-sm" aria-label=".form-select-sm example"> --}}
                         @if($order->displayData == 1)
-                        {{-- <option value="{{$order->displayData}}" selected readonly>{{__('Yes')}}</option> --}}
                         <input type="text" style="width:10%"class="input" value="{{__('Yes')}}"class="form-control" readonly/>
                         @else
-                        {{-- <option value="{{$order->displayData}}" selected readonly>{{__('No')}}</option> --}}
                         <input type="text" style="width:10%"class="input" value="{{__('No')}}"class="form-control" readonly/>
                         @endif
-                     {{-- </select> --}}
                   </div>
                 </div>
               </div>
@@ -401,14 +351,6 @@
                 <div class="col">
                   <div class="form-outline">
                     <label class="form-label" for="Payment method">{{__('Payment method')}}</label>
-                    {{-- <select name="payment"id="Payment method"class="form-select form-select-sm" aria-label=".form-select-sm example"> --}}
-                        {{-- @if(app()->getLocale() == 'ar')
-                        <input type="text" class="input" value="{{$order->pay_affiliation_fee_ar}}"class="form-control" readonly/>
-                        @else --}}
-                        {{-- <input type="text" class="input" value="{{$order->pay_affiliation_fee}}"class="form-control" readonly/> --}}
-                        {{-- @endif --}}
-                        {{-- <option value="{{$order->pay_affiliation_fee}}" selected readonly>{{$order->pay_affiliation_fee}}</option> --}}
-                     {{-- </select> --}}
                      @if($order->pay_affiliation_fee == "cash")
                      <input type="text" class="input" value="{{__('Cash to the Central Syndicate Fund in Damascus')}}" class="form-control" readonly/>
                   @elseif($order->pay_affiliation_fee == "real estate bank")
@@ -420,9 +362,7 @@
                   </div>
                 </div>
               </div>
-        {{-- <a href="{{route('orders.printorder',$order->id)}}"><i class="fas fa-file-pdf fa-2x" style="color:red"></i></a><br><br> --}}
         <a href="{{route('orders.printorder',$order->id)}}" id="printorder"class="btn btn-danger btn-md active" role="button" aria-pressed="true">PDF</a><br><br>
-
           <div style="background:#ccc9da;">
             <ul class="ul-order">
               <br><li>{{__('Name field is required')}}</li>
