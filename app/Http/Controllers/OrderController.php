@@ -158,20 +158,9 @@ class OrderController extends Controller
         }
 
         $order->pay_affiliation_fee = $request->payment;
-        // if(app()->getLocale() == 'ar'){
-        // $order->gender_ar                   =            $request->gender;
-        // $order->Nationality_ar              =            $request->Nationality;
-        // $order->Marital_status_ar           =            $request->martialStatus;
-        // $order->military_ar                 =            $request->military;
-        // $order->Health_status_ar            =            $request->healthStatus;
-        // $order->Affiliation_country_ar      =            $request->countryJoin;
-        // $order->pay_affiliation_fee_ar      =            $request->payment;
-        // $order->gender =  $order->Nationality = $order->Marital_status = $order->military = $order->Health_status = $order->pay_affiliation_fee = null;
-    // }
-        // else{
-        //    $order->gender_ar =  $order->Nationality_ar = $order->Marital_status_ar = $order->military_ar = $order->Health_status_ar = $order->pay_affiliation_fee_ar = null;
-        // }
         $order->save();
+        // dd($request->all());
+        if($request->qualification[0] <> null){
         $qualification_list = [];
         for ($i = 0; $i < count($request->qualification); $i++) {
             $qualification_list[$i]['qualification'] = $request->qualification[$i];
@@ -182,15 +171,14 @@ class OrderController extends Controller
             $qualification_list[$i]['rate'] = $request->Rate[$i];
         }
          $order->qualifications()->createMany($qualification_list);
+    }
          return redirect()->route('orders.show',$order);
     }
 
     public function printorder(Request $request,$id)
     {
-        // dd($id);
         $order = Order::findOrFail($id);
         $html = view('order.order-pdf',['order'=>$order])->render();
-
         $pdf = new \Mpdf\Mpdf([
             'mode' => 'utf-8', 'format' => 'A4','default_font' => 'fontawesome','margin_left' => 15,'margin_right' => 10,'margin_top' => 16,'margin_bottom' => 15,'margin_header' => 10, 'margin_footer' => 10 ]);
         $pdf->AddPage("P");

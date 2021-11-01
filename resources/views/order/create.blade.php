@@ -171,7 +171,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="Date of birth">{{__('Date of birth*')}}</label>
-                <input type="date" class="input @error('dateBirth')is-danger @enderror"name="dateBirth"value="{{ old('dateBirth') }}"id="Date of birth" class="form-control" />
+                <input type="date" class="input @error('dateBirth')is-danger @enderror"name="dateBirth" value="@if(!empty($order)) {{$order->date_of_birth}} @else{{ old('dateBirth') }}@endif" id="Date of birth" class="form-control" />
                 @error('dateBirth')
                 <p class="help is-danger">{{ $message }}</p>
                @enderror
@@ -211,7 +211,7 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="Identity Grant Date">{{__('Identity Grant Date*')}}</label>
-                <input type="date" class="input @error('identityGrantDate')is-danger @enderror"name="identityGrantDate"value="{{ old('identityGrantDate') }}"id="Identity Grant Date" class="form-control" />
+                <input type="date" class="input @error('identityGrantDate')is-danger @enderror"name="identityGrantDate"value="@if(!empty($order)) {{$order->Identity_grant_date}} @else{{ old('identityGrantDate') }}@endif"id="Identity Grant Date" class="form-control" />
                 @error('identityGrantDate')
                 <p class="help is-danger">{{ $message }}</p>
                @enderror
@@ -504,14 +504,14 @@
                                         <option value="{{ $order->qualifications[0]->qualification }}" selected>{{__($order->qualifications[0]->qualification)}}</option>
                                         @endif
                                         <option></option>
-                                        <option value="Doctorate"{{ (collect(old('qualification'))->contains("Doctorate")) ? 'selected':'' }}>    {{__('Doctorate')}}  </option>
-                                        <option value="Master"{{ (collect(old('qualification'))->contains("Master")) ? 'selected':'' }}>          {{__('Master')}}     </option>
-                                        <option value="Diploma"{{ (collect(old('qualification'))->contains("Diploma")) ? 'selected':'' }}>        {{__('Diploma')}}    </option>
-                                        <option value="Certificate"{{ (collect(old('qualification'))->contains("Certificate")) ? 'selected':'' }}>{{__('Certificate')}}</option>
-                                        <option value="Language"{{ (collect(old('qualification'))->contains("Language")) ? 'selected':'' }}>      {{__('Language')}}   </option>
-                                        <option value="Soft skills"{{ (collect(old('qualification'))->contains("Soft skills")) ? 'selected':'' }}>{{__('Soft skills')}}</option>
-                                        <option value="Hard skills"{{ (collect(old('qualification'))->contains("Hard skills")) ? 'selected':'' }}>{{__('Hard skills')}}</option>
-                                        <option value="Other"{{ (collect(old('qualification'))->contains("Other")) ? 'selected':'' }}>            {{__('Other')}}      </option>
+                                        <option value="Doctorate"{{ (collect(old('qualification')[0] ?? "")->contains("Doctorate")) ? 'selected':'' }}>    {{__('Doctorate')}}  </option>
+                                        <option value="Master"{{ (collect(old('qualification')[0] ?? "")->contains("Master")) ? 'selected':'' }}>          {{__('Master')}}     </option>
+                                        <option value="Diploma"{{ (collect(old('qualification')[0] ?? "")->contains("Diploma")) ? 'selected':'' }}>        {{__('Diploma')}}    </option>
+                                        <option value="Certificate"{{ (collect(old('qualification')[0] ?? "")->contains("Certificate")) ? 'selected':'' }}>{{__('Certificate')}}</option>
+                                        <option value="Language"{{ (collect(old('qualification')[0] ?? "")->contains("Language")) ? 'selected':'' }}>      {{__('Language')}}   </option>
+                                        <option value="Soft skills"{{ (collect(old('qualification')[0] ?? "")->contains("Soft skills")) ? 'selected':'' }}>{{__('Soft skills')}}</option>
+                                        <option value="Hard skills"{{ (collect(old('qualification')[0] ?? "")->contains("Hard skills")) ? 'selected':'' }}>{{__('Hard skills')}}</option>
+                                        <option value="Other"{{ (collect(old('qualification')[0] ?? "")->contains("Other")) ? 'selected':'' }}>            {{__('Other')}}      </option>
                                     </select>
                                 </div>
                             </td>
@@ -579,7 +579,7 @@
                             <td>
                                 {{-- <input class="input"type="text" name="qualification[0]"value="{{ $order->qualifications[$i]->qualification}}"class="form-control" id="Qualification" placeholder="" > --}}
                                 <select name="qualification[0]" id="Qualification" class="form-select  form-control">
-                                    @if (!empty($order) && old('qualification[0]', $order->qualifications[0]->qualification))
+                                    @if (!empty($order) && old('qualification[0]', $order->qualifications[$i]->qualification))
                                     <option value="{{ $order->qualifications[$i]->qualification}}" selected>{{ $order->qualifications[$i]->qualification}}</option>
                                     @endif
                                     <option></option>
