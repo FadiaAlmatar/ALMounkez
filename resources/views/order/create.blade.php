@@ -550,7 +550,8 @@
                             <td>
                                 <div class="form-group">
                                     {{-- value="{{ old('specialization')[0] ?? "" }}" --}}
-                                  <input class="input"type="text" name="specialization[0]" value= "@if(!empty($order)) {{$order->qualifications[0]->Specialization}} @else {{ old('specialization')[0] ?? ""}} @endif" class="form-control" id="Specialization" placeholder="">
+
+                                  <input class="input"type="text" name="specialization[0]" value= "@if(!empty($order)) {{$order->qualifications[0]->Specialization}} @else {{ old('specialization')[0] ?? ""}} @endif"  class="form-control" id="Specialization" placeholder="">
                                     @if ($errors->has('specialization.0'))
                                         @foreach($errors->get('specialization.0') as $error)
                                         <p class="help is-danger">{{ $error }}</p>
@@ -574,7 +575,8 @@
                             <td>
                               <div class="form-group">
                                 {{-- value="{{ old('country')[0] ?? "" }}" --}}
-                                <input class="input"type="text" name="country[0]"value= "@if(!empty($order)) {{$order->qualifications[0]->country}} @else {{ old('country')[0] ?? ""}} @endif" class="form-control" id="Country" placeholder="">
+
+                                <input class="input"type="text" name="country[0]" value= "@if(!empty($order)) {{$order->qualifications[0]->country}} @else {{ old('country')[0] ?? ""}} @endif" class="form-control" id="Country" placeholder="">
                                 @if ($errors->has('country.0'))
                                     @foreach($errors->get('country.0') as $error)
                                     <p class="help is-danger">{{ $error }}</p>
@@ -583,8 +585,9 @@
                             </div>
                             </td>
                             <td>
+
                               <div class="form-group">
-                                <input class="input" name="finishYear[0]" value= "@if(!empty($order)) {{$order->qualifications[0]->finishyear}} @else {{ old('finishYear')[0] ?? ""}} @endif" type="text" class="form-control" id="Year" placeholder="">
+                                <input class="input" name="finishYear[0]"  type="text" value= "@if(!empty($order)) {{$order->qualifications[0]->finishyear}} @else {{ old('finishYear')[0] ?? ""}} @endif" class="form-control" id="Year" placeholder="">
                                 @if ($errors->has('finishYear.0'))
                                     @foreach($errors->get('finishYear.0') as $error)
                                     <p class="help is-danger">{{ $error }}</p>
@@ -594,7 +597,8 @@
                             </td>
                             <td>
                               <div class="form-group">
-                                <input class="input" name="Rate[0]" value= "@if(!empty($order)) {{$order->qualifications[0]->rate}} @else {{ old('Rate')[0] ?? ""}} @endif"type="text" class="form-control" id="Rate" placeholder="">
+
+                                <input class="input" name="Rate[0]" type="text" value= "@if(!empty($order)) {{$order->qualifications[0]->rate}} @else {{ old('Rate')[0] ?? ""}} @endif" class="form-control" id="Rate" placeholder="">
                                 @if ($errors->has('Rate.0'))
                                     @foreach($errors->get('Rate.0') as $error)
                                     <p class="help is-danger">{{ $error }}</p>
@@ -604,6 +608,34 @@
                           </td>
 
                         </tr>
+                        @if (!empty($order))
+                        @for ($i = 1; $i < sizeof($order->qualifications); $i++)
+                        <tr class="cloning_row" id="0">
+                            <td><button type="button" class="btn btn-danger btn-sm delegated-btn"><i class="fa fa-minus"></i></button></td>
+                            <td>
+                                {{-- <input class="input"type="text" name="qualification[0]"value="{{ $order->qualifications[$i]->qualification}}"class="form-control" id="Qualification" placeholder="" > --}}
+                                <select name="qualification[0]" id="Qualification" class="form-select  form-control">
+                                    @if (!empty($order) && old('qualification[0]', $order->qualifications[0]->qualification))
+                                    <option value="{{ $order->qualifications[$i]->qualification}}" selected>{{ $order->qualifications[$i]->qualification}}</option>
+                                    @endif
+                                    <option></option>
+                                    <option value="Doctorate"{{ (collect(old('qualification'))->contains("Doctorate")) ? 'selected':'' }}>    {{__('Doctorate')}}  </option>
+                                    <option value="Master"{{ (collect(old('qualification'))->contains("Master")) ? 'selected':'' }}>          {{__('Master')}}     </option>
+                                    <option value="Diploma"{{ (collect(old('qualification'))->contains("Diploma")) ? 'selected':'' }}>        {{__('Diploma')}}    </option>
+                                    <option value="Certificate"{{ (collect(old('qualification'))->contains("Certificate")) ? 'selected':'' }}>{{__('Certificate')}}</option>
+                                    <option value="Language"{{ (collect(old('qualification'))->contains("Language")) ? 'selected':'' }}>      {{__('Language')}}   </option>
+                                    <option value="Soft skills"{{ (collect(old('qualification'))->contains("Soft skills")) ? 'selected':'' }}>{{__('Soft skills')}}</option>
+                                    <option value="Hard skills"{{ (collect(old('qualification'))->contains("Hard skills")) ? 'selected':'' }}>{{__('Hard skills')}}</option>
+                                    <option value="Other"{{ (collect(old('qualification'))->contains("Other")) ? 'selected':'' }}>            {{__('Other')}}      </option>
+                                </select></td>
+                            <td><input class="input"type="text" name="specialization[0]"value="{{ $order->qualifications[$i]->Specialization }}"class="form-control" id="Specialization" placeholder="" ></td>
+                            <td><input class="input"type="text" name="side[0]"value="{{ $order->qualifications[$i]->side }}"class="form-control" id="Side" placeholder="" ></td>
+                            <td><input class="input"type="text" name="country[0]"value="{{ $order->qualifications[$i]->country}}"class="form-control" id="Country" placeholder="" ></td>
+                            <td><input class="input"name="Year[0]"value="{{ $order->qualifications[$i]->finishyear }}" type="text" class="form-control" id="Year" placeholder=""></td>
+                            <td><input class="input"name="Rate[0]"value="{{ $order->qualifications[$i]->rate }}"type="text" class="form-control" id="Rate" placeholder="" ></td>
+                        </tr>
+                    @endfor
+                    @endif
                         </tbody>
                         <tfoot>
                         <tr>
