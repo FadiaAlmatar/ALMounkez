@@ -480,7 +480,6 @@
 {{-- نهاية معلومات الاتصال --}}
 {{-- المؤهلات العلمية --}}
       <div class="tab-pane fade" id="Qualifications" role="tabpanel" aria-labelledby="Qualifications-tab">
-          {{-- <button id="btnShow"class="btn btn-primary" onclick="newqualification()"><i class="fas fa-plus" aria-hidden="true"></i> {{__('Add qualification')}}</button> --}}
                 <div class="table-responsive">
                     <table class="table" id="Qualification">
                         <thead>
@@ -499,11 +498,11 @@
                             <td> </td>
                             <td>
                                 <div class="form-group">
-                                    <select name="qualification[0]" id="Qualification" class="form-select  form-control">
-                                        @if (!empty($order) && old('qualification[0]', $order->qualifications[0]->qualification))
+                                     <select name="qualification[0]" id="Qualification" class="form-select  form-control">
+                                        @if (!empty($order) && old('qualification[0]', $order->qualifications[0]->qualification) )
                                         <option value="{{ $order->qualifications[0]->qualification }}" selected>{{__($order->qualifications[0]->qualification)}}</option>
                                         @endif
-                                        <option></option>
+                                         <option></option>
                                         <option value="Doctorate"{{ (collect(old('qualification')[0] ?? "")->contains("Doctorate")) ? 'selected':'' }}>    {{__('Doctorate')}}  </option>
                                         <option value="Master"{{ (collect(old('qualification')[0] ?? "")->contains("Master")) ? 'selected':'' }}>          {{__('Master')}}     </option>
                                         <option value="Diploma"{{ (collect(old('qualification')[0] ?? "")->contains("Diploma")) ? 'selected':'' }}>        {{__('Diploma')}}    </option>
@@ -529,7 +528,7 @@
                             <td>
                               <div class="form-group">
                                 {{-- value="{{ old('side')[0] ?? "" }}" --}}
-                              <input class="input"type="text" name="side[0]" value= "@if(!empty($order)) {{$order->qualifications[0]->side}} @else {{ old('side')[0] ?? ""}} @endif" class="form-control" id="Side" placeholder="">
+                              <input class="input"type="text" name="side[0]" value= "@if(!empty($order))   {{$order->qualifications[0]->side}} @else {{ old('side')[0] ?? ""}} @endif" class="form-control" id="Side" placeholder="">
                                 @if ($errors->has('side.0'))
                                     @foreach($errors->get('side.0') as $error)
                                     {{-- @foreach($errors as $error) --}}
@@ -562,7 +561,7 @@
                             </td>
                             <td>
                               <div class="form-group">
-                                <input class="input" name="Rate[0]" type="text" value= "@if(!empty($order)) {{$order->qualifications[0]->rate}} @else {{ old('Rate')[0] ?? ""}} @endif" class="form-control" id="Rate" placeholder="">
+                                <input class="input" name="Rate[0]" type="text" value= "@if(!empty($order))  {{$order->qualifications[0]->rate}} @else {{ old('Rate')[0] ?? ""}} @endif" class="form-control" id="Rate" placeholder="">
                                 @if ($errors->has('Rate.0'))
                                     @foreach($errors->get('Rate.0') as $error)
                                     <p class="help is-danger">{{ $error }}</p>

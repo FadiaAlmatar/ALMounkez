@@ -322,7 +322,7 @@
                                 <th></th>
                                 <th>{{__('Qualification')}}</th>
                                 <th>{{__('Specialization')}}</th>
-                                <th>{{__('University')}}</th>
+                                <th>{{__('Side')}}</th>
                                 <th>{{__('Country')}}</th>
                                 <th>{{__('Finish Year')}}</th>
                                 <th>{{__('Rate')}}</th>
@@ -336,7 +336,7 @@
                                     <td><input class="input"type="text" name="specialization[0]"value="{{ $order->qualifications[$i]->Specialization }}"class="form-control" id="Specialization" placeholder="" readonly></td>
                                     <td><input class="input"type="text" name="side[0]"value="{{ $order->qualifications[$i]->side }}"class="form-control" id="Side" placeholder="" readonly></td>
                                     <td><input class="input"type="text" name="country[0]"value="{{ $order->qualifications[$i]->country}}"class="form-control" id="Country" placeholder="" readonly></td>
-                                    <td><input class="input"name="Year[0]"value="{{ $order->qualifications[$i]->finishyear }}" type="text" class="form-control" id="Year" placeholder="" readonly></td>
+                                    <td><input class="input"name="finishYear[0]"value="{{ $order->qualifications[$i]->finishyear }}" type="text" class="form-control" id="Year" placeholder="" readonly></td>
                                     <td><input class="input"name="Rate[0]"value="{{ $order->qualifications[$i]->rate }}"type="text" class="form-control" id="Rate" placeholder="" readonly></td>
                                 </tr>
                             @endfor

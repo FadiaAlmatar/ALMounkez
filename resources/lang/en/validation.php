@@ -153,11 +153,11 @@ return [
     */
 
     'attributes' => [
-        'university.0'       => 'university',
+        'side.0'       => 'side',
         'graduationYear.0'   =>'graduationYear',
         'country.0'          =>'country',
         'specialization.0'   =>'specialization',
-        'graduationRate.0'   =>'graduationRate'
+        'Rate.0'   =>'Rate'
     ],
 
 ];
