@@ -574,29 +574,29 @@
                         </tr>
                         @if (!empty($order))
                         @for ($i = 1; $i < sizeof($order->qualifications); $i++)
-                        <tr class="cloning_row" id="0">
+                        <tr class="cloning_row" id="{{$i}}">
                             <td><button type="button" class="btn btn-danger btn-sm delegated-btn"><i class="fa fa-minus"></i></button></td>
                             <td>
                                 {{-- <input class="input"type="text" name="qualification[0]"value="{{ $order->qualifications[$i]->qualification}}"class="form-control" id="Qualification" placeholder="" > --}}
-                                <select name="qualification[0]" id="Qualification" class="form-select  form-control">
-                                    @if (!empty($order) && old('qualification[0]', $order->qualifications[$i]->qualification))
+                                <select name="qualification[{{$i}}]" id="Qualification" class="form-select  form-control">
+                                    @if(old('qualification[{{$i}}]', $order->qualifications[$i]->qualification))
                                     <option value="{{ $order->qualifications[$i]->qualification}}" selected>{{ $order->qualifications[$i]->qualification}}</option>
                                     @endif
                                     <option></option>
-                                    <option value="Doctorate"{{ (collect(old('qualification'))->contains("Doctorate")) ? 'selected':'' }}>    {{__('Doctorate')}}  </option>
-                                    <option value="Master"{{ (collect(old('qualification'))->contains("Master")) ? 'selected':'' }}>          {{__('Master')}}     </option>
-                                    <option value="Diploma"{{ (collect(old('qualification'))->contains("Diploma")) ? 'selected':'' }}>        {{__('Diploma')}}    </option>
-                                    <option value="Certificate"{{ (collect(old('qualification'))->contains("Certificate")) ? 'selected':'' }}>{{__('Certificate')}}</option>
-                                    <option value="Language"{{ (collect(old('qualification'))->contains("Language")) ? 'selected':'' }}>      {{__('Language')}}   </option>
-                                    <option value="Soft skills"{{ (collect(old('qualification'))->contains("Soft skills")) ? 'selected':'' }}>{{__('Soft skills')}}</option>
-                                    <option value="Hard skills"{{ (collect(old('qualification'))->contains("Hard skills")) ? 'selected':'' }}>{{__('Hard skills')}}</option>
-                                    <option value="Other"{{ (collect(old('qualification'))->contains("Other")) ? 'selected':'' }}>            {{__('Other')}}      </option>
-                                </select></td>
-                            <td><input class="input"type="text" name="specialization[0]"value="{{ $order->qualifications[$i]->Specialization }}"class="form-control" id="Specialization" placeholder="" ></td>
-                            <td><input class="input"type="text" name="side[0]"value="{{ $order->qualifications[$i]->side }}"class="form-control" id="Side" placeholder="" ></td>
-                            <td><input class="input"type="text" name="country[0]"value="{{ $order->qualifications[$i]->country}}"class="form-control" id="Country" placeholder="" ></td>
-                            <td><input class="input"name="Year[0]"value="{{ $order->qualifications[$i]->finishyear }}" type="text" class="form-control" id="Year" placeholder=""></td>
-                            <td><input class="input"name="Rate[0]"value="{{ $order->qualifications[$i]->rate }}"type="text" class="form-control" id="Rate" placeholder="" ></td>
+                                    <option value="Doctorate"{{ (collect(old('qualification')[$i] ?? "")->contains("Doctorate")) ? 'selected':'' }}>    {{__('Doctorate')}}  </option>
+                                    <option value="Master"{{ (collect(old('qualification')[$i] ?? "")->contains("Master")) ? 'selected':'' }}>          {{__('Master')}}     </option>
+                                    <option value="Diploma"{{ (collect(old('qualification')[$i] ?? "")->contains("Diploma")) ? 'selected':'' }}>        {{__('Diploma')}}    </option>
+                                    <option value="Certificate"{{ (collect(old('qualification')[$i] ?? "")->contains("Certificate")) ? 'selected':'' }}>{{__('Certificate')}}</option>
+                                    <option value="Language"{{ (collect(old('qualification')[$i] ?? "")->contains("Language")) ? 'selected':'' }}>      {{__('Language')}}   </option>
+                                    <option value="Soft skills"{{ (collect(old('qualification')[$i] ?? "")->contains("Soft skills")) ? 'selected':'' }}>{{__('Soft skills')}}</option>
+                                    <option value="Hard skills"{{ (collect(old('qualification')[$i] ?? "")->contains("Hard skills")) ? 'selected':'' }}>{{__('Hard skills')}}</option>
+                                    <option value="Other"{{ (collect(old('qualification')[$i] ?? "")->contains("Other")) ? 'selected':'' }}>            {{__('Other')}}      </option>
+                            </select></td>
+                            <td><input class="input"type="text" name="specialization[{{$i}}]"value="{{ $order->qualifications[$i]->Specialization }}"class="form-control" id="Specialization" placeholder="" ></td>
+                            <td><input class="input"type="text" name="side[{{$i}}]"value="{{ $order->qualifications[$i]->side }}"class="form-control" id="Side" placeholder="" ></td>
+                            <td><input class="input"type="text" name="country[{{$i}}]"value="{{ $order->qualifications[$i]->country}}"class="form-control" id="Country" placeholder="" ></td>
+                            <td><input class="input"name="finishYear[{{$i}}]"value="{{ $order->qualifications[$i]->finishyear }}" type="text" class="form-control" id="Year" placeholder=""></td>
+                            <td><input class="input"name="Rate[{{$i}}]"value="{{ $order->qualifications[$i]->rate }}"type="text" class="form-control" id="Rate" placeholder="" ></td>
                         </tr>
                     @endfor
                     @endif

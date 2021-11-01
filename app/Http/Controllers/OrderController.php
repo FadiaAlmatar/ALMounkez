@@ -27,8 +27,9 @@ class OrderController extends Controller
     public function create()
     {
         if(Auth::User()->order <> null){
+
             $order = Order::where('user_id',Auth::User()->id)->first();
-            return view('order.create',['order'=> $order]);
+             return redirect(route('orders.edit', $order));
         }
         else
          return view('order.create');
@@ -206,6 +207,7 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
+        return view('order.create',['order'=> $order]);
 
     }
 
@@ -326,18 +328,23 @@ class OrderController extends Controller
             }
 
             $order->pay_affiliation_fee = $request->payment;
-            $order->save();
-            $qualification_list = [];
-            for ($i = 0; $i < count($request->qualification); $i++) {
-                $qualification_list[$i]['qualification'] = $request->qualification[$i];
-                $qualification_list[$i]['Specialization'] = $request->specialization[$i];
-                $qualification_list[$i]['side'] = $request->side[$i];
-                $qualification_list[$i]['country'] = $request->country[$i];
-                $qualification_list[$i]['finishyear'] = $request->finishYear[$i];
-                $qualification_list[$i]['rate'] = $request->Rate[$i];
-            }
-             $order->qualifications()->createMany($qualification_list);
-             return redirect()->route('orders.show',$order);
+        $order->save();
+        $order->qualifications()->delete();
+        // dd($request->all());
+        if($request->qualification[0] <> null){
+        $qualification_list = [];
+        for ($i = 0; $i < count($request->qualification); $i++) {
+            $qualification_list[$i]['qualification'] = $request->qualification[$i];
+            $qualification_list[$i]['Specialization'] = $request->specialization[$i];
+            $qualification_list[$i]['side'] = $request->side[$i];
+            $qualification_list[$i]['country'] = $request->country[$i];
+            $qualification_list[$i]['finishyear'] = $request->finishYear[$i];
+            $qualification_list[$i]['rate'] = $request->Rate[$i];
+        }
+        //  $order->qualifications()->updateMany($qualification_list);
+        $order->qualifications()->createMany($qualification_list);
+    }
+         return redirect()->route('orders.show',$order);
     }
 
     /**
