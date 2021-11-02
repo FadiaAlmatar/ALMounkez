@@ -52,31 +52,25 @@ class OrderController extends Controller
         'grandfathername'                => 'required|min:3|not_regex:/[0-9]/',
         'mothername'                     => 'required|min:3|not_regex:/[0-9]/',
         'gender'                         => 'nullable',
-        // 'gender_ar'                         => 'nullable',
         'fathernameenglish'              => 'required|min:3|regex:/^[A-Za-z_ ]*$/|not_regex:/[0-9]/',
         'mothernameenglish'              => 'required|min:3|regex:/^[A-Za-z_ ]*$/|not_regex:/[0-9]/',
         'Nationality'                    => 'nullable',
-        // 'Nationality_ar'                    => 'nullable',
         'placeBirth'                     => 'required',
         'dateBirth'                      => 'required|date|before:identityGrantDate',
         'nationalID'                     => 'required|numeric',
         'civilRegistry'                  => 'required',
         'martialStatus'                  => 'nullable',
-        // 'martialStatus_ar'                  => 'nullable',
         'personalIdentificationNumber'   => 'required|numeric',
         'identityGrantDate'              => 'required|date|after:dateBirth|before:tomorrow',
         'constraint'                     => 'required',
         'countryJoin'                    => 'required',
-        // 'countryJoin_ar'                    => 'required',
         'address'                        => 'required',
         'displayData'                    => 'required',
         'site'                           => 'url|nullable',
         'insurance'                      => 'numeric|nullable',
         'military'                       => 'nullable',
-        // 'military_ar'                       => 'nullable',
         'publicRecordNumber'             => 'nullable',
         'healthStatus'                   => 'nullable',
-        // 'healthStatus_ar'                   => 'nullable',
         'housePhone'                     => 'nullable|regex:/[0-9]/|not_regex:/[a-z]/|digits_between:7,10',
         'workPhone'                      => 'nullable|regex:/[0-9]/|not_regex:/[a-z]/|digits_between:7,10',
         'mobile'                         => 'nullable|regex:/(0)[0-9]/|not_regex:/[a-z]/|digits:10',//a leading 0 is required | not_regex: only numbers, not alphabet
@@ -95,7 +89,6 @@ class OrderController extends Controller
         'Rate.*'               => 'nullable|regex:/^[0-9.]/',
         'specialization.*'               => 'nullable|min:3|not_regex:/[0-9]/',
         'payment'                        => 'nullable',
-        // 'payment_ar'                        => 'nullable',
         ] );
         $order = new Order();
         $order->firstname                =            $request->name;
@@ -160,10 +153,10 @@ class OrderController extends Controller
 
         $order->pay_affiliation_fee = $request->payment;
         $order->save();
-        // dd($request->all());
-        if($request->qualification[0] <> null){
+        // if($request->qualification[0] <> null){
         $qualification_list = [];
         for ($i = 0; $i < count($request->qualification); $i++) {
+            if($request->qualification[$i] <> null){
             $qualification_list[$i]['qualification'] = $request->qualification[$i];
             $qualification_list[$i]['Specialization'] = $request->specialization[$i];
             $qualification_list[$i]['side'] = $request->side[$i];
@@ -171,8 +164,9 @@ class OrderController extends Controller
             $qualification_list[$i]['finishyear'] = $request->finishYear[$i];
             $qualification_list[$i]['rate'] = $request->Rate[$i];
         }
-         $order->qualifications()->createMany($qualification_list);
     }
+         $order->qualifications()->createMany($qualification_list);
+    // }
          return redirect()->route('orders.show',$order);
     }
 
