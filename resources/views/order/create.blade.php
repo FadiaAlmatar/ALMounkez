@@ -499,7 +499,8 @@
                             <td>
                                 <div class="form-group">
                                      <select name="qualification[0]" id="Qualification" class="form-select  form-control">
-                                        @if (!empty($order) && old('qualification[0]', $order->qualifications[0]->qualification) )
+                                       @if(!empty($order) && ($order->qualifications()->exists()))
+                                        {{-- @if (!empty($order) && old('qualification[0]', $order->qualifications[0]->qualification) ) --}}
                                         <option value="{{ $order->qualifications[0]->qualification }}" selected>{{__($order->qualifications[0]->qualification)}}</option>
                                         @endif
                                          <option></option>
@@ -517,7 +518,7 @@
                             <td>
                                 <div class="form-group">
                                     {{-- value="{{ old('specialization')[0] ?? "" }}" --}}
-                                  <input class="input"type="text" name="specialization[0]" value= "@if(!empty($order)) {{$order->qualifications[0]->Specialization}} @else {{ old('specialization')[0] ?? ""}} @endif"  class="form-control" id="Specialization" placeholder="">
+                                  <input class="input"type="text" name="specialization[0]" value= "@if(!empty($order) && ($order->qualifications()->exists())) {{$order->qualifications[0]->Specialization}} @else {{ old('specialization')[0] ?? ""}} @endif"  class="form-control" id="Specialization" placeholder="">
                                     @if ($errors->has('specialization.0'))
                                         @foreach($errors->get('specialization.0') as $error)
                                         <p class="help is-danger">{{ $error }}</p>
@@ -528,7 +529,7 @@
                             <td>
                               <div class="form-group">
                                 {{-- value="{{ old('side')[0] ?? "" }}" --}}
-                              <input class="input"type="text" name="side[0]" value= "@if(!empty($order))   {{$order->qualifications[0]->side}} @else {{ old('side')[0] ?? ""}} @endif" class="form-control" id="Side" placeholder="">
+                              <input class="input"type="text" name="side[0]" value= "@if(!empty($order) && ($order->qualifications()->exists()))   {{$order->qualifications[0]->side}} @else {{ old('side')[0] ?? ""}} @endif" class="form-control" id="Side" placeholder="">
                                 @if ($errors->has('side.0'))
                                     @foreach($errors->get('side.0') as $error)
                                     {{-- @foreach($errors as $error) --}}
@@ -541,7 +542,7 @@
                             <td>
                               <div class="form-group">
                                 {{-- value="{{ old('country')[0] ?? "" }}" --}}
-                                <input class="input"type="text" name="country[0]" value= "@if(!empty($order)) {{$order->qualifications[0]->country}} @else {{ old('country')[0] ?? ""}} @endif" class="form-control" id="Country" placeholder="">
+                                <input class="input"type="text" name="country[0]" value= "@if(!empty($order) && ($order->qualifications()->exists())){{$order->qualifications[0]->country}} @else {{ old('country')[0] ?? ""}} @endif" class="form-control" id="Country" placeholder="">
                                 @if ($errors->has('country.0'))
                                     @foreach($errors->get('country.0') as $error)
                                     <p class="help is-danger">{{ $error }}</p>
@@ -551,7 +552,7 @@
                             </td>
                             <td>
                               <div class="form-group">
-                                <input class="input" name="finishYear[0]"  type="text" value= "@if(!empty($order)) {{$order->qualifications[0]->finishyear}} @else {{ old('finishYear')[0] ?? ""}} @endif" class="form-control" id="Year" placeholder="">
+                                <input class="input" name="finishYear[0]"  type="text" value= "@if(!empty($order) && ($order->qualifications()->exists())) {{$order->qualifications[0]->finishyear}} @else {{ old('finishYear')[0] ?? ""}} @endif" class="form-control" id="Year" placeholder="">
                                 @if ($errors->has('finishYear.0'))
                                     @foreach($errors->get('finishYear.0') as $error)
                                     <p class="help is-danger">{{ $error }}</p>
@@ -561,7 +562,7 @@
                             </td>
                             <td>
                               <div class="form-group">
-                                <input class="input" name="Rate[0]" type="text" value= "@if(!empty($order))  {{$order->qualifications[0]->rate}} @else {{ old('Rate')[0] ?? ""}} @endif" class="form-control" id="Rate" placeholder="">
+                                <input class="input" name="Rate[0]" type="text" value= "@if(!empty($order) && ($order->qualifications()->exists()))  {{$order->qualifications[0]->rate}} @else {{ old('Rate')[0] ?? ""}} @endif" class="form-control" id="Rate" placeholder="">
                                 @if ($errors->has('Rate.0'))
                                     @foreach($errors->get('Rate.0') as $error)
                                     <p class="help is-danger">{{ $error }}</p>
