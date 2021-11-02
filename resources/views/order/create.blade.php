@@ -171,7 +171,14 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="Date of birth">{{__('Date of birth*')}}</label>
-                <input type="date" class="input @error('dateBirth')is-danger @enderror"name="dateBirth" value="@if(!empty($order)) {{$order->date_of_birth}} @else{{ old('dateBirth') }}@endif" id="Date of birth" class="form-control" />
+                {{-- {{ date('Y-m-d',strtotime($order->date_of_birth)) }} --}}
+                {{-- {{\Carbon\Carbon::parse($order->date_of_birth)->format('m/d/y')}} --}}
+                 <?php
+                        // $order->date_of_birth = date('Y-m-d H:i:s');
+                        // $date =  Carbon::createFromFormat('Y-m-d H:i:s', $order->date_of_birth)->format('m-d-Y H:i:s');
+                 // $date = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $order->date_of_birth)->format('mm/dd/yyyy');
+                ?>
+                <input type="date" class="input @error('dateBirth')is-danger @enderror"name="dateBirth" value="@if(!empty($order)) {{$order->date_of_birth}}  @else {{ old('dateBirth') }} @endif" id="Date of birth" class="form-control" />
                 @error('dateBirth')
                 <p class="help is-danger">{{ $message }}</p>
                @enderror
@@ -277,8 +284,10 @@
                       <option value="{{ $order->Affiliation_country }}" selected> {{ $order->Affiliation_country}}</option>
                     @endif
                     <option></option>
-                    <option  value="Damascus"    @if (old('countryJoin') == "Damascus") {{ 'selected' }} @endif>       {{__('Damascus')}}      </option>
-                    <option  value="Damascus Rural"  @if (old('countryJoin') == "Damascus Rural") {{ 'selected' }} @endif> {{__('Damascus Rural')}}</option>
+                    @foreach (Config::get('constant.countries') as $country)
+                    <option  value={{$country}}  @if (old('countryJoin') == $country) {{ 'selected' }} @endif>{{__($country)}}</option>
+                    @endforeach
+                    {{-- <option  value="Damascus Rural"  @if (old('countryJoin') == "Damascus Rural") {{ 'selected' }} @endif> {{__('Damascus Rural')}}</option>
                     <option  value="Suwayda"        @if (old('countryJoin') == "Suwayda") {{ 'selected' }} @endif>        {{__('Suwayda')}}       </option>
                     <option  value="Daraa"         @if (old('countryJoin') == "Daraa") {{ 'selected' }} @endif>          {{__('Daraa')}}         </option>
                     <option  value="Quneitra"      @if (old('countryJoin') == "Quneitra") {{ 'selected' }} @endif>       {{__('Quneitra')}}      </option>
@@ -290,7 +299,7 @@
                     <option value="Aleppo"         @if (old('countryJoin') == "Aleppo") {{ 'selected' }} @endif>         {{__('Aleppo')}}        </option>
                     <option  value="Al-Rakka"       @if (old('countryJoin') == "Al-Rakka") {{ 'selected' }} @endif>       {{__('Al-Rakka')}}      </option>
                     <option  value="Deer Al Zour"   @if (old('countryJoin') == "Deer Al Zour") {{ 'selected' }} @endif>   {{__('Deer Al Zour')}}  </option>
-                    <option  value="Al-Hasakah"     @if (old('countryJoin') == "Al-Hasakah") {{ 'selected' }} @endif>     {{__('Al-Hasakah')}}    </option>
+                    <option  value="Al-Hasakah"     @if (old('countryJoin') == "Al-Hasakah") {{ 'selected' }} @endif>     {{__('Al-Hasakah')}}    </option> --}}
                  </select>
                 @error('countryJoin')
                     <p class="help is-danger">{{ $message }}</p>

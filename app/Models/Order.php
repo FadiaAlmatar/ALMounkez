@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     use HasFactory;
+    // protected $casts = [
+    //     'date_of_birth' => 'datetime:Y-m-d',
+    // ];
 
     public function user()
     {

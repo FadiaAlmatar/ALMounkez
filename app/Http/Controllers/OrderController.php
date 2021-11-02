@@ -233,7 +233,7 @@ class OrderController extends Controller
             'mothernameenglish'              => 'required|min:3|regex:/^[A-Za-z_ ]*$/|not_regex:/[0-9]/',
             'Nationality'                    => 'nullable',
             'placeBirth'                     => 'required',
-            'dateBirth'                      => 'required|date|before:identityGrantDate',
+            'dateBirth'                      => 'required|before:identityGrantDate|date',
             'nationalID'                     => 'required|numeric',
             'civilRegistry'                  => 'required',
             'martialStatus'                  => 'nullable',
