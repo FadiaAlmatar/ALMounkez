@@ -127,16 +127,18 @@ class OrderController extends Controller
         $order->displayData              =            $request->displayData;
         $order->identity_image           =            $request->identity_image;
         $order->user_id                  =             Auth()->User()->id;
+
         if ($request->has('identity_image')) {         //image
             $image = $request->identity_image;
             $path = $image->store('identity-images', 'public');
-            $order->identity_image = $path;
+            $order->identity_image =$path;
         }
+        // dd($request->identity_image,$path);
         $order->personal_image = $request->personal_image;
         if ($request->has('personal_image')) {          //image
             $image = $request->personal_image;
             $path = $image->store('personal-images', 'public');
-            $order->personal_image = $path;
+            $order->personal_image = $path ;
         }
         $order->certification_image = $request->certification_image;
         if ($request->has('certification_image')) {     //image

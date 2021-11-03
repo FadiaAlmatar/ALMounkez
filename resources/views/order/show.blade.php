@@ -274,20 +274,20 @@
                 </div>
               </div>
               <div class="mb-3" >
-                <label for="formFile" class="form-label">{{__('Identity image*')}}</label>
-                <input class="form-control" type="file" accept="image/*" id="identity_image" name="identity_image">
+                <label for="formFile" class="form-label">{{__('Identity image')}}</label>
+                <img src ="{{asset("storage/$order->identity_image")}}">
               </div>
               <div class="mb-3">
-                <label for="formFile" class="form-label">{{__('Personal image*')}}</label>
-                <input class="form-control" type="file" accept="image/*"id="personal_image" name="personal_image">
+                 <label for="formFile" class="form-label">{{__('Personal image')}}</label>
+                <img src ="{{asset("storage/$order->personal_image")}}">
               </div>
               <div class="mb-3">
-                <label for="formFile" class="form-label">{{__('Certification image*')}}</label>
-                <input class="form-control" type="file" accept="image/*"id="certification_image" name="certification_image">
+                <label for="formFile" class="form-label">{{__('Certification image')}}</label>
+                <img src ="{{asset("storage/$order->certification_image")}}">
               </div>
               <div class="mb-3">
-                <label for="formFile" class="form-label">{{__('No Conviction image*')}}</label>
-                <input class="form-control" type="file" accept="image/*"id="formFile" name="no_conviction_image">
+                <label for="formFile" class="form-label">{{__('No Conviction image')}}</label>
+                <img src ="{{asset("storage/$order->no_conviction_image")}}">
               </div>
           <div style="background:#ccc9da;margin-top:5px">
            <ul style="list-style-type:disc;list-style-position: inside;padding-left:15px">
