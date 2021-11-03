@@ -131,26 +131,38 @@ class OrderController extends Controller
         if ($request->has('identity_image')) {         //image
             $image = $request->identity_image;
             $path = $image->store('identity-images', 'public');
-            $order->identity_image =$path;
+            // $order->identity_image =$path;
+            $filename = pathinfo($path, PATHINFO_FILENAME);
+            $extension = pathinfo($path, PATHINFO_EXTENSION);
+            $order->identity_image = $filename . '.' . $extension;
         }
         // dd($request->identity_image,$path);
         $order->personal_image = $request->personal_image;
         if ($request->has('personal_image')) {          //image
             $image = $request->personal_image;
             $path = $image->store('personal-images', 'public');
-            $order->personal_image = $path ;
+            // $order->personal_image = $path ;
+            $filename = pathinfo($path, PATHINFO_FILENAME);
+            $extension = pathinfo($path, PATHINFO_EXTENSION);
+            $order->personal_image = $filename . '.' . $extension;
         }
         $order->certification_image = $request->certification_image;
         if ($request->has('certification_image')) {     //image
             $image = $request->certification_image;
             $path = $image->store('certification-images', 'public');
-            $order->certification_image = $path;
+            // $order->certification_image = $path;
+            $filename = pathinfo($path, PATHINFO_FILENAME);
+            $extension = pathinfo($path, PATHINFO_EXTENSION);
+            $order->certification_image = $filename . '.' . $extension;
         }
         $order->no_conviction_image= $request->no_conviction_image;
         if ($request->has('no_conviction_image')) {      //image
             $image = $request->no_conviction_image;
             $path = $image->store('no_conviction-images', 'public');
-            $order->no_conviction_image = $path;
+            // $order->no_conviction_image = $path;
+            $filename = pathinfo($path, PATHINFO_FILENAME);
+            $extension = pathinfo($path, PATHINFO_EXTENSION);
+            $order->no_conviction_image = $filename . '.' . $extension;
         }
         $order->pay_affiliation_fee = $request->payment;
         // dd($request);
