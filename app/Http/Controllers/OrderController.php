@@ -82,12 +82,12 @@ class OrderController extends Controller
         'personal_image'                 => 'required|file|image',
         'certification_image'            => 'required|file|image',
         'no_conviction_image'            => 'required|file|image',
-        'qualification.*'                => 'nullable',
-        'side.*'                   => 'nullable|min:3|not_regex:/[0-9]/',
-        'country.*'                      => 'nullable|min:3',
-        'finishYear.*'               => 'nullable|digits:4',
-        'Rate.*'               => 'nullable|regex:/^[0-9.]/',
-        'specialization.*'               => 'nullable|min:3|not_regex:/[0-9]/',
+        // 'qualification.*'                => 'nullable',
+        // 'side.*'                   => 'nullable|min:3|not_regex:/[0-9]/',
+        // 'country.*'                      => 'nullable|min:3',
+        // 'finishYear.*'               => 'nullable|digits:4',
+        // 'Rate.*'               => 'nullable|regex:/^[0-9.]/',
+        // 'specialization.*'               => 'nullable|min:3|not_regex:/[0-9]/',
         'payment'                        => 'nullable',
         ] );
         $order = new Order();
@@ -150,9 +150,10 @@ class OrderController extends Controller
             $path = $image->store('no_conviction-images', 'public');
             $order->no_conviction_image = $path;
         }
-
         $order->pay_affiliation_fee = $request->payment;
         $order->save();
+        // dd($request);
+        // dd($request->qualification);
         // if($request->qualification[0] <> null){
         $qualification_list = [];
         for ($i = 0; $i < count($request->qualification); $i++) {
@@ -253,12 +254,12 @@ class OrderController extends Controller
             'personal_image'                 => 'required|file|image',
             'certification_image'            => 'required|file|image',
             'no_conviction_image'            => 'required|file|image',
-            'qualification.*'                => 'nullable',
-            'side.0'                   => 'nullable|min:3|not_regex:/[0-9]/',
-            'country.*'                      => 'nullable|min:3',
-            'Year.*'               => 'nullable|digits:4',
-            'Rate.*'               => 'nullable|regex:/^[0-9.]/',
-            'specialization.*'               => 'nullable|min:3|not_regex:/[0-9]/',
+            // 'qualification.*'                => 'nullable',
+            // 'side.*'                   => 'nullable|min:3|not_regex:/[0-9]/',
+            // 'country.*'                      => 'nullable|min:3',
+            // 'Year.*'               => 'nullable|digits:4',
+            // 'Rate.*'               => 'nullable|regex:/^[0-9.]/',
+            // 'specialization.*'               => 'nullable|min:3|not_regex:/[0-9]/',
             'payment'                        => 'nullable',
             ] );
             $order->firstname                =            $request->name;
@@ -324,10 +325,9 @@ class OrderController extends Controller
             $order->pay_affiliation_fee = $request->payment;
         $order->save();
         $order->qualifications()->delete();
-        // dd($request->all());
-        if($request->qualification[0] <> null){
         $qualification_list = [];
         for ($i = 0; $i < count($request->qualification); $i++) {
+            if($request->qualification[$i] <> null){
             $qualification_list[$i]['qualification'] = $request->qualification[$i];
             $qualification_list[$i]['Specialization'] = $request->specialization[$i];
             $qualification_list[$i]['side'] = $request->side[$i];
@@ -335,9 +335,8 @@ class OrderController extends Controller
             $qualification_list[$i]['finishyear'] = $request->finishYear[$i];
             $qualification_list[$i]['rate'] = $request->Rate[$i];
         }
-        //  $order->qualifications()->updateMany($qualification_list);
-        $order->qualifications()->createMany($qualification_list);
     }
+        $order->qualifications()->createMany($qualification_list);
          return redirect()->route('orders.show',$order);
     }
 
