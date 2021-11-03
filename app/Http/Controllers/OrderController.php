@@ -151,21 +151,30 @@ class OrderController extends Controller
             $order->no_conviction_image = $path;
         }
         $order->pay_affiliation_fee = $request->payment;
-        $order->save();
         // dd($request);
+        $order->save();
         // dd($request->qualification);
         // if($request->qualification[0] <> null){
-        $qualification_list = [];
-        for ($i = 0; $i < count($request->qualification); $i++) {
-            if($request->qualification[$i] <> null){
-            $qualification_list[$i]['qualification'] = $request->qualification[$i];
-            $qualification_list[$i]['Specialization'] = $request->specialization[$i];
-            $qualification_list[$i]['side'] = $request->side[$i];
-            $qualification_list[$i]['country'] = $request->country[$i];
-            $qualification_list[$i]['finishyear'] = $request->finishYear[$i];
-            $qualification_list[$i]['rate'] = $request->Rate[$i];
+            $qualification_list = [];
+            for ($i = 0; $i < count($request->qualification); $i++) {
+                if($request->qualification[$i] <> null){
+                $qualification_list[$i]['qualification'] = $request->qualification[$i];
+                $qualification_list[$i]['Specialization'] = $request->specialization[$i];
+                $qualification_list[$i]['side'] = $request->side[$i];
+                $qualification_list[$i]['country'] = $request->country[$i];
+                $qualification_list[$i]['finishyear'] = $request->finishYear[$i];
+                $qualification_list[$i]['rate'] = $request->Rate[$i];}
+                else{
+                  if (($request->specialization[$i] <> null) || ($request->side[$i] <> null) || ($request->country[$i] <> null)|| ($request->finishYear[$i] <> null)|| ($request->Rate[$i] <> null)){
+                        $qualification_list[$i]['qualification'] = 'Other';
+                        $qualification_list[$i]['Specialization'] = $request->specialization[$i];
+                        $qualification_list[$i]['side'] = $request->side[$i];
+                        $qualification_list[$i]['country'] = $request->country[$i];
+                        $qualification_list[$i]['finishyear'] = $request->finishYear[$i];
+                        $qualification_list[$i]['rate'] = $request->Rate[$i];
+                  }
+                }
         }
-    }
          $order->qualifications()->createMany($qualification_list);
     // }
          return redirect()->route('orders.show',$order);
@@ -333,8 +342,17 @@ class OrderController extends Controller
             $qualification_list[$i]['side'] = $request->side[$i];
             $qualification_list[$i]['country'] = $request->country[$i];
             $qualification_list[$i]['finishyear'] = $request->finishYear[$i];
-            $qualification_list[$i]['rate'] = $request->Rate[$i];
-        }
+            $qualification_list[$i]['rate'] = $request->Rate[$i];}
+            else{
+              if (($request->specialization[$i] <> null) || ($request->side[$i] <> null) || ($request->country[$i] <> null)|| ($request->finishYear[$i] <> null)|| ($request->Rate[$i] <> null)){
+                    $qualification_list[$i]['qualification'] = 'Other';
+                    $qualification_list[$i]['Specialization'] = $request->specialization[$i];
+                    $qualification_list[$i]['side'] = $request->side[$i];
+                    $qualification_list[$i]['country'] = $request->country[$i];
+                    $qualification_list[$i]['finishyear'] = $request->finishYear[$i];
+                    $qualification_list[$i]['rate'] = $request->Rate[$i];
+              }
+            }
     }
         $order->qualifications()->createMany($qualification_list);
          return redirect()->route('orders.show',$order);
