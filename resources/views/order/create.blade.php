@@ -287,19 +287,6 @@
                     @foreach (Config::get('constant.countries') as $country)
                     <option  value={{$country}}  @if (old('countryJoin') == $country) {{ 'selected' }} @endif>{{__($country)}}</option>
                     @endforeach
-                    {{-- <option  value="Damascus Rural"  @if (old('countryJoin') == "Damascus Rural") {{ 'selected' }} @endif> {{__('Damascus Rural')}}</option>
-                    <option  value="Suwayda"        @if (old('countryJoin') == "Suwayda") {{ 'selected' }} @endif>        {{__('Suwayda')}}       </option>
-                    <option  value="Daraa"         @if (old('countryJoin') == "Daraa") {{ 'selected' }} @endif>          {{__('Daraa')}}         </option>
-                    <option  value="Quneitra"      @if (old('countryJoin') == "Quneitra") {{ 'selected' }} @endif>       {{__('Quneitra')}}      </option>
-                    <option  value="Homs"          @if (old('countryJoin') == "Homs") {{ 'selected' }} @endif>           {{__('Homs')}}          </option>
-                    <option  value="Hama"         @if (old('countryJoin') == "Hama") {{ 'selected' }} @endif>           {{__('Hama')}}          </option>
-                    <option  value="Latakia"       @if (old('countryJoin') == "Latakia") {{ 'selected' }} @endif>        {{__('Latakia')}}       </option>
-                    <option  value="Tartous"       @if (old('countryJoin') == "Tartous") {{ 'selected' }} @endif>        {{__('Tartous')}}       </option>
-                    <option  value="Idlib"         @if (old('countryJoin') == "Idlib") {{ 'selected' }} @endif>          {{__('Idlib')}}         </option>
-                    <option value="Aleppo"         @if (old('countryJoin') == "Aleppo") {{ 'selected' }} @endif>         {{__('Aleppo')}}        </option>
-                    <option  value="Al-Rakka"       @if (old('countryJoin') == "Al-Rakka") {{ 'selected' }} @endif>       {{__('Al-Rakka')}}      </option>
-                    <option  value="Deer Al Zour"   @if (old('countryJoin') == "Deer Al Zour") {{ 'selected' }} @endif>   {{__('Deer Al Zour')}}  </option>
-                    <option  value="Al-Hasakah"     @if (old('countryJoin') == "Al-Hasakah") {{ 'selected' }} @endif>     {{__('Al-Hasakah')}}    </option> --}}
                  </select>
                 @error('countryJoin')
                     <p class="help is-danger">{{ $message }}</p>
@@ -430,6 +417,7 @@
               </div>
             </div>
           </div>
+          @if(empty($order))
           <div class="mb-3" >
             <label for="formFile" class="form-label">{{__('Identity image*')}}</label>
             <input class="form-control" type="file" accept="image/*" id="identity_image" name="identity_image" >
@@ -437,6 +425,14 @@
             <p class="help is-danger">{{ $message }}</p>
             @enderror
           </div>
+          @else
+          <div class="mb-3" >
+            <label for="formFile" class="form-label">{{__('Identity image')}}</label>
+            <a target="_blank" href="{{asset("storage/identity-images/$order->identity_image")}}">Click here to show identify image</a>
+            <input class="form-control" type="file" accept="image/*" id="identity_image" name="identity_image" >
+          </div>
+          @endif
+          @if(empty($order))
           <div class="mb-3">
             <label for="formFile" class="form-label">{{__('Personal image*')}}</label>
             <input class="form-control" type="file" accept="image/*"id="personal_image" name="personal_image" >
@@ -444,6 +440,13 @@
             <p class="help is-danger">{{ $message }}</p>
             @enderror
           </div>
+          @else
+          <div class="mb-3">
+            <label for="formFile" class="form-label">{{__('Personal image*')}}</label>
+            <a target="_blank" href="{{asset("storage/personal-images/$order->personal_image")}}">Click here to show personal image</a>
+            <input class="form-control" type="file" accept="image/*"id="personal_image" name="personal_image" >
+          </div>@endif
+          @if(empty($order))
           <div class="mb-3">
             <label for="formFile" class="form-label">{{__('Certification image*')}}</label>
             <input class="form-control" type="file" accept="image/*"id="certification_image" name="certification_image" >
@@ -451,6 +454,14 @@
             <p class="help is-danger">{{ $message }}</p>
             @enderror
           </div>
+          @else
+          <div class="mb-3">
+            <label for="formFile" class="form-label">{{__('Certification image*')}}</label>
+            <a target="_blank" href="{{asset("storage/certification-images/$order->certification_image")}}">Click here to show certification image</a>
+            <input class="form-control" type="file" accept="image/*"id="certification_image" name="certification_image" >
+          </div>
+          @endif
+          @if(empty($order))
           <div class="mb-3">
             <label for="formFile" class="form-label">{{__('No Conviction image*')}}</label>
             <input class="form-control" type="file" accept="image/*"id="formFile" name="no_conviction_image">
@@ -458,6 +469,13 @@
             <p class="help is-danger">{{ $message }}</p>
             @enderror
           </div>
+          @else
+          <div class="mb-3">
+            <label for="formFile" class="form-label">{{__('No Conviction image*')}}</label>
+            <a target="_blank" href="{{asset("storage/no_conviction-images/$order->no_conviction_image")}}">Click here to show certification image</a>
+            <input class="form-control" type="file" accept="image/*"id="formFile" name="no_conviction_image">
+          </div>
+          @endif
           @if (!empty($order))
           <button type="submit" class="btn btn-primary">{{__('Edit')}}</button><br>
           @else
@@ -494,12 +512,12 @@
                         <thead>
                         <tr>
                             <th></th>
-                            <th>{{__('Qualification')}}</th>
-                            <th>{{__('Specialization')}}</th>
-                            <th>{{__('Side')}}</th>
-                            <th>{{__('Country')}}</th>
-                            <th>{{__('Finish Year')}}</th>
-                            <th>{{__('Rate')}}</th>
+                            <th style="width: 15%">{{__('Qualification')}}</th>
+                            <th style="width: 20%">{{__('Specialization')}}</th>
+                            <th style="width: 20%">{{__('Side')}}</th>
+                            <th style="width: 17%">{{__('Country')}}</th>
+                            <th style="width: 13%">{{__('Finish Year')}}</th>
+                            <th style="width: 15%">{{__('Rate')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -561,12 +579,21 @@
                             </td>
                             <td>
                               <div class="form-group">
-                                <input class="input" name="finishYear[0]"  type="text" value= "@if(!empty($order) && ($order->qualifications()->exists())) {{$order->qualifications[0]->finishyear}} @else {{ old('finishYear')[0] ?? ""}} @endif" class="form-control" id="Year" placeholder="">
+                                <input class="input" name="finishYear[0]"  type="number" min="1921" max="{{\Carbon\Carbon::now()->format('Y')}}" value= "@if(!empty($order) && ($order->qualifications()->exists())) {{$order->qualifications[0]->finishyear}} @else {{ old('finishYear')[0] ?? ""}} @endif" class="form-control" id="Year" placeholder="">
                                 @if ($errors->has('finishYear.0'))
                                     @foreach($errors->get('finishYear.0') as $error)
                                     <p class="help is-danger">{{ $error }}</p>
                                     @endforeach
                                 @endif
+                                {{-- <select name="finishYear[0]" id="Year"class="form-control" style="border-color:blue;width:100% ">
+                                    @if(!empty($order) && ($order->qualifications()->exists()))
+                                        <option value="{{ $order->qualifications[0]->finishyear }}" selected>{{$order->qualifications[0]->finishyear}}</option>
+                                    @endif
+                                    <option></option>
+                                    @for($i = 1921;$i<=\Carbon\Carbon::now()->format('Y');$i++ )
+                                    <option value="{{$i}}" {{ (collect(old('finishYear')[0] ?? "")->contains($i)) ? 'selected':'' }} >{{$i}}</option>
+                                    @endfor
+                                </select> --}}
                             </div>
                             </td>
                             <td>
@@ -604,7 +631,16 @@
                             <td><input class="input"type="text" name="specialization[{{$i}}]"value="{{ $order->qualifications[$i]->Specialization }}"class="form-control" id="Specialization" placeholder="" ></td>
                             <td><input class="input"type="text" name="side[{{$i}}]"value="{{ $order->qualifications[$i]->side }}"class="form-control" id="Side" placeholder="" ></td>
                             <td><input class="input"type="text" name="country[{{$i}}]"value="{{ $order->qualifications[$i]->country}}"class="form-control" id="Country" placeholder="" ></td>
-                            <td><input class="input"name="finishYear[{{$i}}]"value="{{ $order->qualifications[$i]->finishyear }}" type="text" class="form-control" id="Year" placeholder=""></td>
+                            <td><input class="input"name="finishYear[{{$i}}]"value="{{ $order->qualifications[$i]->finishyear }}" type="number" min="1921" max="{{\Carbon\Carbon::now()->format('Y')}}" class="form-control" id="Year" placeholder=""></td>
+                            {{-- <td><select name="finishYear[{{$i}}]" id="Year"class="form-control" style="border-color:blue;width:100% "> --}}
+                                {{-- @if(old('finishYear[{{$i}}]', $order->qualifications[$i]->finishyear))
+                                    <option value="{{ $order->qualifications[$i]->finishyear}}" selected>{{$order->qualifications[$i]->finishyear}}</option>
+                                    @endif
+                                <option></option> --}}
+                                {{-- @for($i = 1921;$i<=\Carbon\Carbon::now()->format('Y');$i++ )
+                                <option value="{{$i}}" {{ (collect(old('finishYear')[$i] ?? "")->contains($i)) ? 'selected':'' }} >{{$i}}</option>
+                                @endfor --}}
+                            {{-- </select></td> --}}
                             <td><input class="input"name="Rate[{{$i}}]"value="{{ $order->qualifications[$i]->rate }}"type="text" class="form-control" id="Rate" placeholder="" ></td>
                         </tr>
                     @endfor
