@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use Illuminate\Http\File;
 use Illuminate\Http\Request;
 use App\Models\Qualification;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class OrderController extends Controller
 {
@@ -319,32 +321,43 @@ class OrderController extends Controller
             $order->side_work                =            $request->workSide;
             $order->insurance_number         =            $request->insurance;
             $order->displayData              =            $request->displayData;
-            $order->identity_image           =            $request->identity_image;
             $order->user_id                  =             Auth()->User()->id;
-            if ($request->has('identity_image')) {         //image
+            if ($request->has('identity_image')) {
+                $image_path = "identity-images/".$order->identity_image;  // prev image path
+                Storage::disk('public')->delete($image_path);
                 $image = $request->identity_image;
                 $path = $image->store('identity-images', 'public');
-                $order->identity_image = $path;
+                $filename = pathinfo($path, PATHINFO_FILENAME);
+                $extension = pathinfo($path, PATHINFO_EXTENSION);
+                $order->identity_image = $filename . '.' . $extension;
             }
-            $order->personal_image = $request->personal_image;
-            if ($request->has('personal_image')) {          //image
+            if ($request->has('personal_image')) {
+                $image_path = "personal-images/".$order->identity_image;  // prev image path
+                Storage::disk('public')->delete($image_path);         //image
                 $image = $request->personal_image;
                 $path = $image->store('personal-images', 'public');
-                $order->personal_image = $path;
+                $filename = pathinfo($path, PATHINFO_FILENAME);
+                $extension = pathinfo($path, PATHINFO_EXTENSION);
+                $order->personal_image = $filename . '.' . $extension;
             }
-            $order->certification_image = $request->certification_image;
-            if ($request->has('certification_image')) {     //image
+            if ($request->has('certification_image')) {
+                $image_path = "certification-images/".$order->identity_image;  // prev image path
+                Storage::disk('public')->delete($image_path);  //image
                 $image = $request->certification_image;
                 $path = $image->store('certification-images', 'public');
-                $order->certification_image = $path;
+                $filename = pathinfo($path, PATHINFO_FILENAME);
+                $extension = pathinfo($path, PATHINFO_EXTENSION);
+                $order->certification_image = $filename . '.' . $extension;
             }
-            $order->no_conviction_image= $request->no_conviction_image;
-            if ($request->has('no_conviction_image')) {      //image
+            if ($request->has('no_conviction_image')) {
+                $image_path = "no_conviction-images".$order->identity_image;  // prev image path
+                Storage::disk('public')->delete($image_path);     //image
                 $image = $request->no_conviction_image;
                 $path = $image->store('no_conviction-images', 'public');
-                $order->no_conviction_image = $path;
+                $filename = pathinfo($path, PATHINFO_FILENAME);
+                $extension = pathinfo($path, PATHINFO_EXTENSION);
+                $order->no_conviction_image = $filename . '.' . $extension;
             }
-
             $order->pay_affiliation_fee = $request->payment;
         $order->save();
         $order->qualifications()->delete();

@@ -442,7 +442,7 @@
           </div>
           @else
           <div class="mb-3">
-            <label for="formFile" class="form-label">{{__('Personal image*')}}</label>
+            <label for="formFile" class="form-label">{{__('Personal image')}}</label>
             <a target="_blank" href="{{asset("storage/personal-images/$order->personal_image")}}">Click here to show personal image</a>
             <input class="form-control" type="file" accept="image/*"id="personal_image" name="personal_image" >
           </div>@endif
@@ -456,9 +456,9 @@
           </div>
           @else
           <div class="mb-3">
-            <label for="formFile" class="form-label">{{__('Certification image*')}}</label>
+            <label for="formFile" class="form-label">{{__('Certification image')}}</label>
             <a target="_blank" href="{{asset("storage/certification-images/$order->certification_image")}}">Click here to show certification image</a>
-            <input class="form-control" type="file" accept="image/*"id="certification_image" name="certification_image" >
+            <input class="form-control" type="file" accept="image/*"id="certification_image" name="certification_image"  >
           </div>
           @endif
           @if(empty($order))
@@ -471,8 +471,8 @@
           </div>
           @else
           <div class="mb-3">
-            <label for="formFile" class="form-label">{{__('No Conviction image*')}}</label>
-            <a target="_blank" href="{{asset("storage/no_conviction-images/$order->no_conviction_image")}}">Click here to show certification image</a>
+            <label for="formFile" class="form-label">{{__('No Conviction image')}}</label>
+            <a target="_blank" href="{{asset("storage/no_conviction-images/$order->no_conviction_image")}}">Click here to show no conviction image</a>
             <input class="form-control" type="file" accept="image/*"id="formFile" name="no_conviction_image">
           </div>
           @endif
