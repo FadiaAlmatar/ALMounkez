@@ -332,7 +332,7 @@ class OrderController extends Controller
                 $order->identity_image = $filename . '.' . $extension;
             }
             if ($request->has('personal_image')) {
-                $image_path = "personal-images/".$order->identity_image;  // prev image path
+                $image_path = "personal-images/".$order->personal_image;  // prev image path
                 Storage::disk('public')->delete($image_path);         //image
                 $image = $request->personal_image;
                 $path = $image->store('personal-images', 'public');
@@ -341,7 +341,7 @@ class OrderController extends Controller
                 $order->personal_image = $filename . '.' . $extension;
             }
             if ($request->has('certification_image')) {
-                $image_path = "certification-images/".$order->identity_image;  // prev image path
+                $image_path = "certification-images/".$order->certification_image;  // prev image path
                 Storage::disk('public')->delete($image_path);  //image
                 $image = $request->certification_image;
                 $path = $image->store('certification-images', 'public');
@@ -350,7 +350,7 @@ class OrderController extends Controller
                 $order->certification_image = $filename . '.' . $extension;
             }
             if ($request->has('no_conviction_image')) {
-                $image_path = "no_conviction-images".$order->identity_image;  // prev image path
+                $image_path = "no_conviction-images/".$order->no_conviction_image;  // prev image path
                 Storage::disk('public')->delete($image_path);     //image
                 $image = $request->no_conviction_image;
                 $path = $image->store('no_conviction-images', 'public');
