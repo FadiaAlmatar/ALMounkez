@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Storage;
 
 
 class FullOrderController extends Controller
@@ -95,13 +96,17 @@ class FullOrderController extends Controller
                 if ($request->has('change_home')) {         //image home change
                     $image = $request->change_home;
                     $path = $image->store('home_changes', 'public');
-                    $fullorder->home_change = $path;
+                    $filename = pathinfo($path, PATHINFO_FILENAME);
+                    $extension = pathinfo($path, PATHINFO_EXTENSION);
+                    $fullorder->home_change = $filename . '.' . $extension;
                 }
                 $fullorder->work_change    =      $request->change_work;
                 if ($request->has('change_work')) {         //image work change
                     $image = $request->change_work;
                     $path = $image->store('work_changes', 'public');
-                    $fullorder->work_change = $path;
+                    $filename = pathinfo($path, PATHINFO_FILENAME);
+                    $extension = pathinfo($path, PATHINFO_EXTENSION);
+                    $fullorder->work_change = $filename . '.' . $extension;
                 }
             }//replacement
             else{
@@ -114,25 +119,33 @@ class FullOrderController extends Controller
                 if ($request->has('police_image')) {         //image police_image
                     $image = $request->police_image;
                     $path = $image->store('police_images', 'public');
-                    $fullorder->police_image = $path;
+                    $filename = pathinfo($path, PATHINFO_FILENAME);
+                    $extension = pathinfo($path, PATHINFO_EXTENSION);
+                    $fullorder->police_image = $filename . '.' . $extension;
                 }
                 $fullorder->damaged_card_image   =  $request->damaged_card_image;
                 if ($request->has('damaged_card_image')) {         //image damaged_card_image
                     $image = $request->damaged_card_image;
                     $path = $image->store('damaged_card_images', 'public');
-                    $fullorder->damaged_card_image = $path;
+                    $filename = pathinfo($path, PATHINFO_FILENAME);
+                    $extension = pathinfo($path, PATHINFO_EXTENSION);
+                    $fullorder->damaged_card_image = $filename . '.' . $extension;
                 }
                 $fullorder->judgment_decision_image  =$request->judgment_decision_image;
                 if ($request->has('judgment_decision_image')) {         //image judgment_decision_images
                     $image = $request->judgment_decision_image;
                     $path = $image->store('judgment_decision_images', 'public');
-                    $fullorder->judgment_decision_image = $path;
+                    $filename = pathinfo($path, PATHINFO_FILENAME);
+                    $extension = pathinfo($path, PATHINFO_EXTENSION);
+                    $fullorder->judgment_decision_image = $filename . '.' . $extension;
                 }
                 $fullorder->passport_image       =  $request->passport_image;
                 if ($request->has('passport_image')) {         //image passport_image
                     $image = $request->passport_image;
                     $path = $image->store('passport_images', 'public');
-                    $fullorder->passport_image = $path;
+                    $filename = pathinfo($path, PATHINFO_FILENAME);
+                    $extension = pathinfo($path, PATHINFO_EXTENSION);
+                    $fullorder->passport_image = $filename . '.' . $extension;
                 }
                 $fullorder->fullname_arabic      =  $request->FullName_Arabic;
                 $fullorder->fullname_english     = $request->FullName_English;
@@ -140,13 +153,17 @@ class FullOrderController extends Controller
                 if ($request->has('personal_image')) {         //image personal_image
                     $image = $request->personal_image;
                     $path = $image->store('personal_images', 'public');
-                    $fullorder->personal_image = $path;
+                    $filename = pathinfo($path, PATHINFO_FILENAME);
+                    $extension = pathinfo($path, PATHINFO_EXTENSION);
+                    $fullorder->personal_image = $filename . '.' . $extension;
                 }
                 $fullorder->personal_dentification_image  = $request->personal_identification_image;
                 if ($request->has('personal_identification_image')) {         //image personal_dentification_image
                     $image = $request->personal_identification_image;
                     $path = $image->store('personal_identification_images', 'public');
-                    $fullorder->personal_dentification_image = $path;
+                    $filename = pathinfo($path, PATHINFO_FILENAME);
+                    $extension = pathinfo($path, PATHINFO_EXTENSION);
+                    $fullorder->personal_dentification_image = $filename . '.' . $extension;
                 }
                 $fullorder->newmembership_number         = $request->newMembershipNumber;
             }
@@ -302,17 +319,19 @@ class FullOrderController extends Controller
             $fullorder->country_before         = $request->from_country;
             $fullorder->country_after          = $request->to_country;
             $fullorder->transportation_reasons = $request->transportation_reasons;
-            $fullorder->home_change            =      $request->change_home;
             if ($request->has('change_home')) {         //image home change
                 $image = $request->change_home;
                 $path = $image->store('home_changes', 'public');
-                $fullorder->home_change = $path;
+                $filename = pathinfo($path, PATHINFO_FILENAME);
+                $extension = pathinfo($path, PATHINFO_EXTENSION);
+                $fullorder->home_change = $filename . '.' . $extension;
             }
-            $fullorder->work_change    =      $request->change_work;
             if ($request->has('change_work')) {         //image work change
                 $image = $request->change_work;
                 $path = $image->store('work_changes', 'public');
-                $fullorder->work_change = $path;
+                $filename = pathinfo($path, PATHINFO_FILENAME);
+                $extension = pathinfo($path, PATHINFO_EXTENSION);
+                $fullorder->work_change = $filename . '.' . $extension;
             }
         }//replacement
         else{
@@ -321,51 +340,69 @@ class FullOrderController extends Controller
             'FullName_Arabic'               => 'required|min:3|not_regex:/[A-Za-z0-9]/',
             ] );
             $fullorder->replace_reasons   = $request->replace_reason;
-            $fullorder->police_image      = $request->police_image;
             if ($request->has('police_image')) {         //image police_image
+                $image_path = "police_images/".$fullorder->police_image;  // prev image path
+                Storage::disk('public')->delete($image_path);
                 $image = $request->police_image;
                 $path = $image->store('police_images', 'public');
-                $fullorder->police_image = $path;
+                $filename = pathinfo($path, PATHINFO_FILENAME);
+                $extension = pathinfo($path, PATHINFO_EXTENSION);
+                $fullorder->police_image  = $filename . '.' . $extension;
             }
-            $fullorder->damaged_card_image   =  $request->damaged_card_image;
             if ($request->has('damaged_card_image')) {         //image damaged_card_image
+                $image_path = "damaged_card_images/".$fullorder->damaged_card_image;  // prev image path
+                Storage::disk('public')->delete($image_path);
                 $image = $request->damaged_card_image;
                 $path = $image->store('damaged_card_images', 'public');
-                $fullorder->damaged_card_image = $path;
+                $filename = pathinfo($path, PATHINFO_FILENAME);
+                $extension = pathinfo($path, PATHINFO_EXTENSION);
+                $fullorder->damaged_card_image  = $filename . '.' . $extension;
             }
-            $fullorder->judgment_decision_image  =$request->judgment_decision_image;
             if ($request->has('judgment_decision_image')) {         //image judgment_decision_images
+                $image_path = "judgment_decision_images/".$fullorder->judgment_decision_image;  // prev image path
+                Storage::disk('public')->delete($image_path);
                 $image = $request->judgment_decision_image;
                 $path = $image->store('judgment_decision_images', 'public');
-                $fullorder->judgment_decision_image = $path;
+                $filename = pathinfo($path, PATHINFO_FILENAME);
+                $extension = pathinfo($path, PATHINFO_EXTENSION);
+                $fullorder->judgment_decision_image  = $filename . '.' . $extension;
             }
-            $fullorder->passport_image       =  $request->passport_image;
             if ($request->has('passport_image')) {         //image passport_image
+                $image_path = "passport_images/".$fullorder->passport_image;  // prev image path
+                Storage::disk('public')->delete($image_path);
                 $image = $request->passport_image;
                 $path = $image->store('passport_images', 'public');
-                $fullorder->passport_image = $path;
+                $filename = pathinfo($path, PATHINFO_FILENAME);
+                $extension = pathinfo($path, PATHINFO_EXTENSION);
+                $fullorder->passport_image  = $filename . '.' . $extension;
             }
             $fullorder->fullname_arabic      =  $request->FullName_Arabic;
             $fullorder->fullname_english     = $request->FullName_English;
-            $fullorder->personal_image       =  $request->personal_image;
             if ($request->has('personal_image')) {         //image personal_image
+                $image_path = "personal_images/".$fullorder->personal_image ;  // prev image path
+                Storage::disk('public')->delete($image_path);
                 $image = $request->personal_image;
                 $path = $image->store('personal_images', 'public');
-                $fullorder->personal_image = $path;
+                $filename = pathinfo($path, PATHINFO_FILENAME);
+                $extension = pathinfo($path, PATHINFO_EXTENSION);
+                $fullorder->personal_image   = $filename . '.' . $extension;
             }
-            $fullorder->personal_dentification_image  = $request->personal_identification_image;
             if ($request->has('personal_identification_image')) {         //image personal_dentification_image
+                $image_path = "personal_identification_images/".$fullorder->personal_dentification_image;  // prev image path
+                Storage::disk('public')->delete($image_path);
                 $image = $request->personal_identification_image;
                 $path = $image->store('personal_identification_images', 'public');
-                $fullorder->personal_dentification_image = $path;
+                $filename = pathinfo($path, PATHINFO_FILENAME);
+                $extension = pathinfo($path, PATHINFO_EXTENSION);
+                $fullorder->personal_dentification_image  = $filename . '.' . $extension;
             }
             $fullorder->newmembership_number         = $request->newMembershipNumber;
         }
         $fullorder->type          =   $request->type;
         $fullorder->status        =  "under consideration";
-        if (app()->getLocale() == 'ar'){
-            $fullorder->status_ar        =  "قيد الدراسة";
-        }
+        // if (app()->getLocale() == 'ar'){
+        //     $fullorder->status_ar        =  "قيد الدراسة";
+        // }
         $fullorder->save();
         return redirect()->route('fullorders.show',$fullorder);
     }
