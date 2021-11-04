@@ -79,7 +79,11 @@
         let trCount = $('#Qualification').find('tr.cloning_row:last').length;
         let numberIncr = trCount > 0 ? parseInt($('#Qualification').find('tr.cloning_row:last').attr('id')) + 1 : 0;
         let i = 1921;
-
+        var arr = [];
+        var today = new Date();
+        for (i = 1921; i<=today.getFullYear(); i++){
+            arr.push(i)
+            }
         $('#Qualification').find('tbody').append($('' +
             '<tr class="cloning_row" id="' + numberIncr + '">' +
             '<td><button type="button" class="btn btn-danger btn-sm delegated-btn"><i class="fa fa-minus"></i></button></td>' +
@@ -87,8 +91,8 @@
             '<td><input class="input"type="text" name="specialization['+ numberIncr + ']" class=" form-control"></td>' +
             '<td><input class="input"type="text" name="side[' + numberIncr + ']" class="form-control"></td>' +
             '<td><input class="input"type="text" name="country[' + numberIncr + ']" class="form-control"></td>' +
-            '<td><input class="input"type="text" name="finishYear[' + numberIncr + ']" class=" form-control"></td>' +
-            // '<td><select name="finishYear[' + numberIncr + ']" class="form-select form-control"><option></option>' + for($i = 1921;$i<=\Carbon\Carbon::now()->format('Y');$i++) + '<option value=" ">'+ $i +'</option></select></td>' +
+            // '<td><input class="input"type="text" name="finishYear[' + numberIncr + ']" class=" form-control"></td>' +
+            '<td><select name="finishYear[' + numberIncr + ']" class="form-select form-control"><option></option>'+ $.each(arr, function(index, value){ +'<option>'+ value +'</option>'+ }); +'</select></td>' +
             '<td><input class="input"type="text" name="Rate['+ numberIncr + ']" class=" form-control"></td>' +
             '</tr>'));
     });
