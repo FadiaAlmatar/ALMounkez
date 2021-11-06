@@ -60,6 +60,10 @@
                 font-size: 13px;
                 padding-left: 5px;
             }
+            img{
+                width: 100%;
+                height: 1000px;
+            }
         </style>
         @endif
     </head>
@@ -215,7 +219,13 @@
         <p style="font-size: 11px;width:45%;float:right;display:inline-block">{{__('Secret keeper')}}</p>
         <p style="font-size: 11px;width:45%;">{{__('Chairman of Board of Directors')}}</p>
         </p>
+
+        <img src ="{{asset("storage/identity-images/$order->identity_image")}}">
+        <img src ="{{asset("storage/personal-images/$order->personal_image")}}">
+        <img src ="{{asset("storage/certification-images/$order->certification_image")}}">
+        <img src ="{{asset("storage/no_conviction-images/$order->no_conviction_image")}}">
     </body>
+
 </html>
 
 

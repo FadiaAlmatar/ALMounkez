@@ -206,6 +206,13 @@ class OrderController extends Controller
         $pdf->SetHTMLFooter('<p style="text-align: center">{PAGENO}</p>');
         $pdf->WriteHTML('.fa { font-family: fontawesome;}',1);
         $pdf->WriteHTML($html);
+        // $pdf->showImageErrors = true.
+        // $html = '<img src=asset("storage/identity-images/$order->identity_image") />';
+    //    $pdf->WriteHTML($html);
+        // $pdf->Image(asset("storage/identity-images/$order->identity_image"), 0, 0, 210, 297, 'jpg', '', true, false);
+        // $pdf->Image(asset("storage/personal-images/$order->personal_image"), 0, 0, 210, 297, 'jpg', '', true, false);
+        // $pdf->Image(asset("storage/certification-images/$order->certification_image"), 0, 0, 210, 297, 'jpg', '', true, false);
+        // $pdf->Image(asset("storage/no_conviction-images/$order->no_conviction_image"), 0, 0, 210, 297, 'jpg', '', true, false);
         return  $pdf->Output("order.pdf","D");
         }
     /**
