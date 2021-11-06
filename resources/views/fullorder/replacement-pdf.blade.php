@@ -44,6 +44,10 @@
                 color: red;
                 border:1px solid red;
             }
+            img{
+                width: 100%;
+                height: 1000px;
+            }
         </style>
         @else
         <style>
@@ -80,6 +84,10 @@
             .status{
                 color: red;
                 border:1px solid red;
+            }
+            img{
+                width: 100%;
+                height: 1000px;
             }
         </style>
         @endif

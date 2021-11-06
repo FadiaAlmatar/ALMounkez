@@ -30,6 +30,10 @@
             td{
                 width:15%;
             }
+            img{
+                width: 100%;
+                height: 1000px;
+            }
         </style>
            @else
         <style>

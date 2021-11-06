@@ -44,6 +44,10 @@
                 /* border:1px solid red; */
                 width: fit-content;
             }
+            img{
+                width: 100%;
+                height: 1000px;
+            }
         </style>
         @else
         <style>
@@ -81,6 +85,10 @@
                 color: red;
                 /* border:1px solid red; */
                 width: fit-content;
+            }
+            img{
+                width: 100%;
+                height: 1000px;
             }
         </style>
         @endif
