@@ -11,6 +11,7 @@ class Order extends Model
     // protected $casts = [
     //     'date_of_birth' => 'datetime:Y-m-d',
     // ];
+    protected $dates=['date_of_birth','Identity_grant_date'];
 
     public function user()
     {

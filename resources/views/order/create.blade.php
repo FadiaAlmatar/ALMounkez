@@ -178,7 +178,7 @@
                         // $date =  Carbon::createFromFormat('Y-m-d H:i:s', $order->date_of_birth)->format('m-d-Y H:i:s');
                  // $date = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $order->date_of_birth)->format('mm/dd/yyyy');
                 ?>
-                <input type="date" class="input @error('dateBirth')is-danger @enderror"name="dateBirth" value="@if(!empty($order)) {{$order->date_of_birth}}  @else {{ old('dateBirth') }} @endif" id="Date of birth" class="form-control" />
+                <input type="date" class="input @error('dateBirth')is-danger @enderror"name="dateBirth" value=@if(!empty($order)) "{{$order->date_of_birth->format('Y-m-d')}}"  @else "{{ old('dateBirth') }}" @endif id="Date of birth" class="form-control" />
                 @error('dateBirth')
                 <p class="help is-danger">{{ $message }}</p>
                @enderror
@@ -218,7 +218,8 @@
             <div class="col">
               <div class="form-outline">
                 <label class="form-label" for="Identity Grant Date">{{__('Identity Grant Date*')}}</label>
-                <input type="date" class="input @error('identityGrantDate')is-danger @enderror"name="identityGrantDate"value="@if(!empty($order)) {{$order->Identity_grant_date}} @else{{ old('identityGrantDate') }}@endif"id="Identity Grant Date" class="form-control" />
+                <input type="date" class="input @error('identityGrantDate')is-danger @enderror"name="identityGrantDate"value=@if(!empty($order)) "{{$order->Identity_grant_date->format('Y-m-d')}}"  @else "{{old('identityGrantDate')}}" @endif id="Identity Grant Date" class="form-control" />
+                {{-- <input type="date" class="input @error('dateBirth')is-danger @enderror"name="dateBirth" value=@if(!empty($order)) "{{$order->date_of_birth->format('Y-m-d')}}"  @else "{{ old('dateBirth') }}" @endif id="Date of birth" class="form-control" /> --}}
                 @error('identityGrantDate')
                 <p class="help is-danger">{{ $message }}</p>
                @enderror
@@ -579,13 +580,14 @@
                             </td>
                             <td>
                               <div class="form-group">
-                                {{-- <input class="input" name="finishYear[0]"  type="number" min="1921" max="{{\Carbon\Carbon::now()->format('Y')}}" value= "@if(!empty($order) && ($order->qualifications()->exists())){{$order->qualifications[0]->finishyear}}  @else {{ old('finishYear')[0] ?? ""}} @endif" class="form-control" id="Year" placeholder="">
+                                {{-- min="1921" max="{{\Carbon\Carbon::now()->format('Y')}}" --}}
+                                <input class="input" name="finishYear[0]"  type="text"  value= "@if(!empty($order) && ($order->qualifications()->exists())){{$order->qualifications[0]->finishyear}}  @else {{ old('finishYear')[0] ?? ""}} @endif" class="form-control" id="Year" placeholder="">
                                 @if ($errors->has('finishYear.0'))
                                     @foreach($errors->get('finishYear.0') as $error)
                                     <p class="help is-danger">{{ $error }}</p>
                                     @endforeach
-                                @endif --}}
-                                <select name="finishYear[0]" id="Year"class="form-control" style="border-color:blue;width:100% ">
+                                @endif
+                                {{-- <select name="finishYear[0]" id="Year"class="form-control" style="border-color:blue;width:100% ">
                                     @if(!empty($order) && ($order->qualifications()->exists()))
                                         <option value="{{ $order->qualifications[0]->finishyear }}" selected>{{$order->qualifications[0]->finishyear}}</option>
                                     @endif
@@ -593,7 +595,7 @@
                                     @for($i = 1921;$i<=\Carbon\Carbon::now()->format('Y');$i++ )
                                     <option value="{{$i}}" {{ (collect(old('finishYear')[0] ?? "")->contains($i)) ? 'selected':'' }} >{{$i}}</option>
                                     @endfor
-                                </select>
+                                </select> --}}
                             </div>
                             </td>
                             <td>
@@ -638,7 +640,7 @@
                                     @endif
                                 <option></option>
                                  @for($i = 1921;$i<=\Carbon\Carbon::now()->format('Y');$i++ )
-                                <option value="{{$i}}" {{ (collect(old('finishYear')[$i] ?? "")->contains($i)) ? 'selected':'' }} >{{$i}}</option>
+                                <option id="try" value="{{$i}}" {{ (collect(old('finishYear')[$i] ?? "")->contains($i)) ? 'selected':'' }} >{{$i}}</option>
                                 @endfor
                              </select></td>
                             <td><input class="input"name="Rate[{{$i}}]"value="{{ $order->qualifications[$i]->rate }}"type="text" class="form-control" id="Rate" placeholder="" ></td>
