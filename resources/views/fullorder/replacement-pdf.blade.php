@@ -199,5 +199,11 @@
                     <p>{{__('reasons :(If not approved)')}}<br>{{ $fullorder->Chairman_disapproval_reasons }}</p>
                 @endif
     </div>
+    <img src ="{{asset("storage/police_images/$order->police_image")}}">
+    <img src ="{{asset("storage/damaged_card_images/$order->damaged_card_image")}}">
+    <img src ="{{asset("storage/judgment_decision_images/$order->judgment_decision_image")}}">
+    <img src ="{{asset("storage/passport_images/$order->passport_image")}}">
+    <img src ="{{asset("storage/personal_dentification_images/$order->personal_dentification_image")}}">
+    <img src ="{{asset("storage/personal_images/$order->personal_image")}}">
     </body>
 </html>

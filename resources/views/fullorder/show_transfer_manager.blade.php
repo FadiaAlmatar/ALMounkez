@@ -32,23 +32,17 @@
                 <label for="reasons">{{__('That is for the following reasons :')}}</label>
                 <textarea name="transportation_reasons"class="form-control" id="reasons" rows="3" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif readonly>{{$fullorder->transportation_reasons}}</textarea>
             </div>
-            {{-- <p>{{__('Evidences attached')}}</p>
+            {{-- {{-- <p>{{__('Evidences attached')}}</p> --}}
             <div class="mb-3" >
                 <label for="formFile" class="form-label" style="font-size: 13px;">{{__('change home image')}}
-                <input class="form-control" type="file" accept="image/*" id="change_home" name="change_home" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
-                @error('change_home')
-                <p class="help is-danger">{{ $message }}</p>
-                @enderror
-            </label>
+                <a target="_blank" href="{{asset("storage/home_changes/$fullorder->home_change")}}">{{__('Click here to show home change image')}}</a>
+                </label>
             </div>
             <div class="mb-3">
                 <label for="formFile" class="form-label" style="font-size: 13px;">{{__('change work image')}}
-                <input class="form-control" type="file" accept="image/*"id="change_work" name="change_work" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
-                @error('change_work')
-                <p class="help is-danger">{{ $message }}</p>
-                @enderror
-            </label>
-            </div> --}}
+                <a target="_blank" href="{{asset("storage/work_changes/$fullorder->work_change")}}">{{__('Click here to show work change image')}}</a>
+                </label>
+            </div>
             <p>{{__('Request date: ')}} {{ date("Y-m-d h:i A", strtotime($fullorder->created_at))}}</p><hr>
         </form>
 {{-- بيان الدارة المالية --}}

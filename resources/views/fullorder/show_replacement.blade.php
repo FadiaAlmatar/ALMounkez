@@ -13,10 +13,8 @@
                 <input class="form-check-input" type="radio" value="Lost" id="Lost" name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif checked>
                 <label class="form-check-label" for="Lost">
                   {{__('Lost (police decision attached)')}}
-                {{-- <input class="form-control" type="file" accept="image/*"id="police_image" name="police_image" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
-                    @error('police_image')
-                    <p class="help is-danger">{{ $message }}</p>
-                    @enderror --}}
+                {{-- <img src ="{{asset("storage/police_images/$order->police_image")}}"> --}}
+                <a target="_blank" href="{{asset("storage/police_images/$fullorder->police_image")}}">{{__('Click here to show police image')}}</a>
                 </label>
             </div>
             @elseif($fullorder->replace_reasons == "consists")
@@ -24,10 +22,8 @@
                 <input class="form-check-input" type="radio" value="" id="Consists" name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif checked>
                 <label class="form-check-label" for="Consists">
                   {{__('Consists (damaged card attached) reason: ')}}
-                  {{-- <input class="form-control" type="file" accept="image/*"id="damaged_card_image" name="damaged_card_image" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
-                  @error('damaged_card_image')
-                  <p class="help is-danger">{{ $message }}</p>
-                  @enderror --}}
+                  {{-- <img src ="{{asset("storage/damaged_card_images/$order->damaged_card_image")}}"> --}}
+                  <a target="_blank" href="{{asset("storage/damaged_card_images/$fullorder->damaged_card_image")}}">{{__('Click here to show damaged card image')}}</a>
                 </label>
             </div>
             @elseif($fullorder->replace_reasons == "Modification")
@@ -35,21 +31,18 @@
                     <input class="form-check-input" type="radio" value="Modification" id="Modification" name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif checked>
                     <label id="labelmodification"class="form-check-label" for="Modification">
                       {{__('Modification of personal data')}}<br>
-                       {{-- <label for="formFile" class="form-label" style="font-size: 13px;">{{__('Judgment decision attached')}}</label> --}}
-                       {{-- <input class="form-control" type="file" accept="image/*"id="judgment_decision_image" name="judgment_decision_image" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
-                       @error('judgment_decision_image')
-                            <p class="help is-danger">{{ $message }}</p>
-                        @enderror --}}
-                        {{-- <label for="formFile" class="form-label"style="font-size: 13px;" >{{__('Passport image')}}</label> --}}
-                        {{-- <input class="form-control" type="file" accept="image/*"id="passport_image" name="passport_image" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
-                        @error('passport_image')
-                            <p class="help is-danger">{{ $message }}</p>
-                        @enderror --}}
-                        {{-- <label for="formFile" class="form-label"style="font-size: 13px;" >{{__('Personal identification image')}}</label> --}}
-                        {{-- <input class="form-control" type="file" accept="image/*"id="personal_identification_image" name="personal_identification_image" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
-                        @error('personal_identification_image')
-                            <p class="help is-danger">{{ $message }}</p>
-                        @enderror --}}
+                       <label for="formFile" class="form-label" style="font-size: 13px;">{{__('Judgment decision attached')}}</label>
+                       {{-- <img src ="{{asset("storage/judgment_decision_images/$order->judgment_decision_image")}}"> --}}
+                       <a target="_blank" href="{{asset("storage/judgment_decision_images/$fullorder->judgment_decision_image")}}">{{__('Click here to show judgment decision image')}}</a>
+
+                        <label for="formFile" class="form-label"style="font-size: 13px;" >{{__('Passport image')}}</label>
+                        {{-- <img src ="{{asset("storage/passport_images/$order->passport_image")}}"> --}}
+                        <a target="_blank" href="{{asset("storage/passport_images/$fullorder->passport_image")}}">{{__('Click here to show passport image')}}</a>
+
+                        <label for="formFile" class="form-label"style="font-size: 13px;" >{{__('Personal identification image')}}</label>
+                        {{-- <img src ="{{asset("storage/personal_dentification_images/$order->personal_dentification_image")}}"> --}}
+                        <a target="_blank" href="{{asset("storage/personal_dentification_images/$fullorder->personal_dentification_image")}}">{{__('Click here to show personal dentification image')}}</a>
+
                     </label>
                 </div>
                 @elseif($fullorder->replace_reasons == "personal")
@@ -58,6 +51,9 @@
                     <label id="labelpersonal"class="form-check-label" for="personal">
                       {{__('personal image')}}<br>
                     </label>
+                    {{-- <img src ="{{asset("storage/personal_images/$order->personal_image")}}"> --}}
+                    <a target="_blank" href="{{asset("storage/personal_images/$fullorder->personal_image")}}">{{__('Click here to show personal image')}}</a>
+
                 </div>
             {{-- </div> --}}
             @elseif($fullorder->replace_reasons == "transfer")
