@@ -29,6 +29,7 @@
                   <p class="help is-danger">{{ $message }}</p>
                   @enderror
             </div>
+            <div style="margin-left:20px;"  @if (app()->getLocale() == 'ar') style="margin-right:20px;" @endif>
             <div class="form-check">
                 <input  class="form-check-input" type="radio"  value="Modification" {{ old('replace_reason') !== null && old('replace_reason') == "Modification" ? 'checked' : '' }} @if (!empty($fullorder) && ( $fullorder->replace_reasons == "Modification")) checked @endif id="Modification" name="replace_reason" >
                 <label id="labelmodification"class="form-check-label" for="Modification">
@@ -56,6 +57,7 @@
                       {{__('personal image')}}<br>
                     </label>
                 </div>
+            </div>
             <div class="form-check">
                 <input class="form-check-input" type="radio"  value="transfer" {{ old('replace_reason') !== null && old('replace_reason') == "transfer" ? 'checked' : '' }} @if (!empty($fullorder) && ( $fullorder->replace_reasons == "transfer")) checked @endif id="Transfer" name="replace_reason" @>
                 <label class="form-check-label" for="Transfer">

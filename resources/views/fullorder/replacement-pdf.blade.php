@@ -207,11 +207,23 @@
                     <p>{{__('reasons :(If not approved)')}}<br>{{ $fullorder->Chairman_disapproval_reasons }}</p>
                 @endif
     </div>
-    <img src ="{{asset("storage/police_images/$order->police_image")}}">
-    <img src ="{{asset("storage/damaged_card_images/$order->damaged_card_image")}}">
-    <img src ="{{asset("storage/judgment_decision_images/$order->judgment_decision_image")}}">
-    <img src ="{{asset("storage/passport_images/$order->passport_image")}}">
-    <img src ="{{asset("storage/personal_dentification_images/$order->personal_dentification_image")}}">
-    <img src ="{{asset("storage/personal_images/$order->personal_image")}}">
+    @if($fullorder->police_image <> null)
+    <img src ="{{asset("storage/police_images/$fullorder->police_image")}}">
+    @endif
+    @if($fullorder->damaged_card_image <> null)
+    <img src ="{{asset("storage/damaged_card_images/$fullorder->damaged_card_image")}}">
+    @endif
+    @if($fullorder->judgment_decision_image <> null)
+    <img src ="{{asset("storage/judgment_decision_images/$fullorder->judgment_decision_image")}}">
+    @endif
+    @if($fullorder->passport_image <> null)
+    <img src ="{{asset("storage/passport_images/$fullorder->passport_image")}}">
+    @endif
+    @if($fullorder->personal_dentification_image <> null)
+    <img src ="{{asset("storage/personal_dentification_images/$fullorder->personal_dentification_image")}}">
+    @endif
+    @if($fullorder->personal_image <> null)
+    <img src ="{{asset("storage/personal_images/$fullorder->personal_image")}}">
+    @endif
     </body>
 </html>

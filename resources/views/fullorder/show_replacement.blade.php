@@ -13,47 +13,70 @@
                 <input class="form-check-input" type="radio" value="Lost" id="Lost" name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif checked>
                 <label class="form-check-label" for="Lost">
                   {{__('Lost (police decision attached)')}}
-                {{-- <img src ="{{asset("storage/police_images/$order->police_image")}}"> --}}
+                @if ($fullorder->police_image <> null)
                 <a target="_blank" href="{{asset("storage/police_images/$fullorder->police_image")}}">{{__('Click here to show police image')}}</a>
-                </label>
+                @endif
+            </label>
             </div>
-            @elseif($fullorder->replace_reasons == "consists")
+            {{-- @elseif($fullorder->replace_reasons == "consists") --}}
+            {{-- @elseif($fullorder->replace_reasons == "Modification" || $fullorder->replace_reasons == "personal" ) --}}
+            {{-- <div class="form-check">
+                {{-- <input class="form-check-input" type="radio" value="" id="Consists" name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif checked> --}}
+                {{-- <label class="form-check-label" for="Consists">
+                  {{__('Consists (damaged card attached) reason: ')}}
+                  @if ($fullorder->damaged_card_image <> null)
+                  <a target="_blank" href="{{asset("storage/damaged_card_images/$fullorder->damaged_card_image")}}">{{__('Click here to show damaged card image')}}</a>
+                  @endif
+                </label>
+            </div> --}}
+            @elseif($fullorder->replace_reasons == "Modification")
             <div class="form-check">
-                <input class="form-check-input" type="radio" value="" id="Consists" name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif checked>
+                {{-- <input class="form-check-input" type="radio" value="" id="Consists" name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif checked> --}}
                 <label class="form-check-label" for="Consists">
                   {{__('Consists (damaged card attached) reason: ')}}
-                  {{-- <img src ="{{asset("storage/damaged_card_images/$order->damaged_card_image")}}"> --}}
+                  @if ($fullorder->damaged_card_image <> null)
                   <a target="_blank" href="{{asset("storage/damaged_card_images/$fullorder->damaged_card_image")}}">{{__('Click here to show damaged card image')}}</a>
+                  @endif
                 </label>
             </div>
-            @elseif($fullorder->replace_reasons == "Modification")
+            <div style="margin-left:20px;"  @if (app()->getLocale() == 'ar') style="margin-right:20px;" @endif>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" value="Modification" id="Modification" name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif checked>
                     <label id="labelmodification"class="form-check-label" for="Modification">
-                      {{__('Modification of personal data')}}<br>
+                      {{__('Modification of personal data')}}</label><br>
+                      @if ($fullorder->judgment_decision_image <> null)
                        <label for="formFile" class="form-label" style="font-size: 13px;">{{__('Judgment decision attached')}}</label>
-                       {{-- <img src ="{{asset("storage/judgment_decision_images/$order->judgment_decision_image")}}"> --}}
-                       <a target="_blank" href="{{asset("storage/judgment_decision_images/$fullorder->judgment_decision_image")}}">{{__('Click here to show judgment decision image')}}</a>
-
+                       <a target="_blank" href="{{asset("storage/judgment_decision_images/$fullorder->judgment_decision_image")}}">{{__('Click here to show judgment decision image')}}</a><br>
+                        @endif
+                        @if ($fullorder->passport_image <> null)
                         <label for="formFile" class="form-label"style="font-size: 13px;" >{{__('Passport image')}}</label>
-                        {{-- <img src ="{{asset("storage/passport_images/$order->passport_image")}}"> --}}
-                        <a target="_blank" href="{{asset("storage/passport_images/$fullorder->passport_image")}}">{{__('Click here to show passport image')}}</a>
-
+                        <a target="_blank" href="{{asset("storage/passport_images/$fullorder->passport_image")}}">{{__('Click here to show passport image')}}</a><br>
+                        @endif
+                        @if ($fullorder->personal_dentification_image <> null)
                         <label for="formFile" class="form-label"style="font-size: 13px;" >{{__('Personal identification image')}}</label>
-                        {{-- <img src ="{{asset("storage/personal_dentification_images/$order->personal_dentification_image")}}"> --}}
                         <a target="_blank" href="{{asset("storage/personal_dentification_images/$fullorder->personal_dentification_image")}}">{{__('Click here to show personal dentification image')}}</a>
-
-                    </label>
-                </div>
+                        @endif
+                    {{-- </label> --}}
+                </div></div>
                 @elseif($fullorder->replace_reasons == "personal")
                 <div class="form-check">
+                    {{-- <input class="form-check-input" type="radio" value="" id="Consists" name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif checked> --}}
+                    <label class="form-check-label" for="Consists">
+                      {{__('Consists (damaged card attached) reason: ')}}
+                      @if ($fullorder->damaged_card_image <> null)
+                      <a target="_blank" href="{{asset("storage/damaged_card_images/$fullorder->damaged_card_image")}}">{{__('Click here to show damaged card image')}}</a>
+                      @endif
+                    </label>
+                </div>
+
+                <div class="form-check" style="margin-left:20px;"  @if (app()->getLocale() == 'ar') style="margin-right:20px;" @endif>
                     <input class="form-check-input" type="radio" value="personal" id="personal" name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif checked>
                     <label id="labelpersonal"class="form-check-label" for="personal">
                       {{__('personal image')}}<br>
                     </label>
-                    {{-- <img src ="{{asset("storage/personal_images/$order->personal_image")}}"> --}}
+                    @if ($fullorder->personal_image <> null)
                     <a target="_blank" href="{{asset("storage/personal_images/$fullorder->personal_image")}}">{{__('Click here to show personal image')}}</a>
-
+                    @endif
                 </div>
             {{-- </div> --}}
             @elseif($fullorder->replace_reasons == "transfer")
@@ -88,10 +111,10 @@
               <tr>
                 <th scope="col">{{__('Change personal image')}}</th>
                 <td> <div class="mb-3">
-                      <input class="form-control" type="file" accept="image/*"id="personal_image" name="personal_image" disabled>
-                      @error('personal_image')
-                          <p class="help is-danger">{{ $message }}</p>
-                      @enderror
+                      {{-- <input class="form-control" type="file" accept="image/*"id="personal_image" name="personal_image" disabled> --}}
+                      @if ($fullorder->personal_image <> null)
+                    <a target="_blank" href="{{asset("storage/personal_images/$fullorder->personal_image")}}">{{__('Click here to show personal image')}}</a>
+                    @endif
                   </div></td>
               </tr>
               <tr>
@@ -129,11 +152,11 @@
         <label>{{__('order status')}}</label>
         <select name="status"class="input @error('status')is-danger @enderror" class="form-select" aria-label="Default select example" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif>
             <option selected></option>
-            <option  value="{{__('Payment required')}}" @else value="Payment required" @endif>{{__('Payment required')}} </option>
-            <option  value="{{__('Please pick up')}}" @else value="Please pick up" @endif>    {{__('Please pick up')}}   </option>
-            <option  value="{{__('not confirmed')}}" @else value="not confirmed" @endif>      {{__('not confirmed')}}    </option>
-            <option  value="{{__('Need to complete papers')}}" @else value="Need to complete papers" @endif>{{__('Need to complete papers')}}</option>
-            <option  value="{{__('Finished')}}" @else value="Finished" @endif>               {{__('Finished')}}</option>
+            <option  value="{{__('Payment required')}}" >{{__('Payment required')}} </option>
+            <option  value="{{__('Please pick up')}}" >    {{__('Please pick up')}}   </option>
+            <option  value="{{__('not confirmed')}}" >      {{__('not confirmed')}}    </option>
+            <option  value="{{__('Need to complete papers')}}" >{{__('Need to complete papers')}}</option>
+            <option  value="{{__('Finished')}}" >               {{__('Finished')}}</option>
     </select>
         @error('status')
          <p class="help is-danger">{{ $message }}</p>

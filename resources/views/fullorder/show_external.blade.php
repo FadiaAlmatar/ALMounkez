@@ -48,11 +48,11 @@
             <select name="status"class="input" class="form-select" aria-label="Default select example" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif>
                 <option selected></option>
                 {{-- <option value="under consideration">    {{__('under consideration')}}    </option> --}}
-                <option  value="{{__('Payment required')}}" @else value="Payment required" @endif>{{__('Payment required')}} </option>
-                <option  value="{{__('Please pick up')}}" @else value="Please pick up" @endif>    {{__('Please pick up')}}   </option>
-                <option  value="{{__('not confirmed')}}" @else value="not confirmed" @endif>      {{__('not confirmed')}}    </option>
-                <option  value="{{__('Need to complete papers')}}" @else value="Need to complete papers" @endif>{{__('Need to complete papers')}}</option>
-                <option  value="{{__('Finished')}}" @else value="Finished" @endif>               {{__('Finished')}}</option>
+                <option  value="{{__('Payment required')}}">{{__('Payment required')}} </option>
+                <option  value="{{__('Please pick up')}}">    {{__('Please pick up')}}   </option>
+                <option  value="{{__('not confirmed')}}">      {{__('not confirmed')}}    </option>
+                <option  value="{{__('Need to complete papers')}}">{{__('Need to complete papers')}}</option>
+                <option  value="{{__('Finished')}}">               {{__('Finished')}}</option>
             </select>
             {{-- @endif --}}
             </div>
