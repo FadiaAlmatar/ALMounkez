@@ -32,7 +32,7 @@
             }
             img{
                 width: 100%;
-                height: 1000px;
+                height: 280mm;
             }
         </style>
            @else
@@ -66,7 +66,7 @@
             }
             img{
                 width: 100%;
-                height: 1000px;
+                height: 280mm;
             }
         </style>
         @endif

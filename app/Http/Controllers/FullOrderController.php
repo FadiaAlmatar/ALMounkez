@@ -157,13 +157,13 @@ class FullOrderController extends Controller
                     $extension = pathinfo($path, PATHINFO_EXTENSION);
                     $fullorder->personal_image = $filename . '.' . $extension;
                 }
-                $fullorder->personal_dentification_image  = $request->personal_identification_image;
+                $fullorder->personal_identification_image  = $request->personal_identification_image;
                 if ($request->has('personal_identification_image')) {         //image personal_dentification_image
                     $image = $request->personal_identification_image;
                     $path = $image->store('personal_identification_images', 'public');
                     $filename = pathinfo($path, PATHINFO_FILENAME);
                     $extension = pathinfo($path, PATHINFO_EXTENSION);
-                    $fullorder->personal_dentification_image = $filename . '.' . $extension;
+                    $fullorder->personal_identification_image = $filename . '.' . $extension;
                 }
                 $fullorder->newmembership_number         = $request->newMembershipNumber;
             }

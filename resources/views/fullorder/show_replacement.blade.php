@@ -52,9 +52,9 @@
                         <label for="formFile" class="form-label"style="font-size: 13px;" >{{__('Passport image')}}</label>
                         <a target="_blank" href="{{asset("storage/passport_images/$fullorder->passport_image")}}">{{__('Click here to show passport image')}}</a><br>
                         @endif
-                        @if ($fullorder->personal_dentification_image <> null)
+                        @if ($fullorder->personal_identification_image <> null)
                         <label for="formFile" class="form-label"style="font-size: 13px;" >{{__('Personal identification image')}}</label>
-                        <a target="_blank" href="{{asset("storage/personal_dentification_images/$fullorder->personal_dentification_image")}}">{{__('Click here to show personal dentification image')}}</a>
+                        <a target="_blank" href="{{asset("storage/personal_identification_images/$fullorder->personal_identification_image")}}">{{__('Click here to show personal identification image')}}</a>
                         @endif
                     {{-- </label> --}}
                 </div></div>

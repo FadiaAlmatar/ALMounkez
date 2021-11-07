@@ -21,17 +21,6 @@
                     @endif
                 </label>
                 </div>
-                {{-- @elseif($fullorder->replace_reasons == "consists") --}}
-                {{-- @elseif($fullorder->replace_reasons == "Modification" || $fullorder->replace_reasons == "personal" ) --}}
-                {{-- <div class="form-check">
-                    {{-- <input class="form-check-input" type="radio" value="" id="Consists" name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif checked> --}}
-                    {{-- <label class="form-check-label" for="Consists">
-                      {{__('Consists (damaged card attached) reason: ')}}
-                      @if ($fullorder->damaged_card_image <> null)
-                      <a target="_blank" href="{{asset("storage/damaged_card_images/$fullorder->damaged_card_image")}}">{{__('Click here to show damaged card image')}}</a>
-                      @endif
-                    </label>
-                </div> --}}
                 @elseif($fullorder->replace_reasons == "Modification")
                 <div class="form-check">
                     {{-- <input class="form-check-input" type="radio" value="" id="Consists" name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif checked> --}}
@@ -57,10 +46,10 @@
 
                             <a target="_blank" href="{{asset("storage/passport_images/$fullorder->passport_image")}}">{{__('Click here to show passport image')}}</a><br>
                             @endif
-                            @if ($fullorder->personal_dentification_image <> null)
+                            @if ($fullorder->personal_identification_image <> null)
                             <label for="formFile" class="form-label"style="font-size: 13px;" >{{__('Personal identification image')}}</label>
 
-                            <a target="_blank" href="{{asset("storage/personal_dentification_images/$fullorder->personal_dentification_image")}}">{{__('Click here to show personal dentification image')}}</a>
+                            <a target="_blank" href="{{asset("storage/personal_identification_images/$fullorder->personal_identification_image")}}">{{__('Click here to show personal identification image')}}</a>
                             @endif
                         {{-- </label> --}}
                     </div></div>

@@ -98,36 +98,22 @@
         <h1 style="font-size:13px;text-align: center;font-weight:bold;background-color:rgb(199, 198, 198);text-decoration:none;">{{__('Filled out by the affiliate')}}</h1>
         <p><span style="color:red"> {{__('Order Status: ')}}  {{$fullorder->status}} </span><br>
         {{__('Gentlemen of the Financial and Accounting Professions Syndicate, please give me a membership card instead: ')}}</p>
-               @if($fullorder->replace_reasons == "lost")
-               {{-- <input  type="checkbox"  checked="checked"> --}}
-               <span>{{__('Lost (police decision attached)')}}
-                <input class="form-control" type="file" accept="image/*"id="police_image" name="police_image" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
-               </span>
-            @elseif($fullorder->replace_reasons == "consists")
-                   {{-- <input  type="checkbox"  checked="checked"> --}}
-                    <span>{{__('Consists (damaged card attached) reason: ')}}
-                  <input class="form-control" type="file" accept="image/*"id="damaged_card_image" name="damaged_card_image" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
-                </span>
-                <input  type="radio"  checked="checked">                    <label id="labelmodification"class="form-check-label" for="Lost">
-                      {{__('Modification of personal data')}}
-                       <label for="formFile" class="form-label" style="font-size: 13px;">{{__('Judgment decision attached')}}</label>
-                       <input class="form-control" type="file" accept="image/*"id="judgment_decision_image" name="judgment_decision_image" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
-                        <label for="formFile" class="form-label"style="font-size: 13px;" >{{__('Passport image')}}</label>
-                        <input class="form-control" type="file" accept="image/*"id="passport_image" name="passport_image" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
-                        <label for="formFile" class="form-label"style="font-size: 13px;" >{{__('Personal identification image')}}</label>
-                        <input class="form-control" type="file" accept="image/*"id="personal_identification_image" name="personal_identification_image" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
-                    <input type="radio" value="" id="personal" name="Consists" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
-                    <label id="labelpersonal"class="form-check-label" for="Consists">
-                      {{__('personal image')}}
-                </div>
-            </div>
+            @if($fullorder->replace_reasons == "lost")
+                <span>{{__('Lost (police decision attached)')}} </span>
+            @elseif($fullorder->replace_reasons == "Modification")
+                <span>{{__('Consists (damaged card attached) reason: ')}}</span><br>
+                <label id="labelmodification"class="form-check-label" for="Lost">
+                      {{__('Modification of personal data')}}</label><br>
+                @if($fullorder->judgment_decision_image <> null)<label for="formFile" class="form-label" style="font-size: 13px;">{{__('Judgment decision attached')}}</label>@endif
+                @if($fullorder->passport_image <> null)<label for="formFile" class="form-label"style="font-size: 13px;" >{{__('Passport image')}}</label>@endif
+                @if($fullorder->personal_identification_image <> null)<label for="formFile" class="form-label"style="font-size: 13px;" >{{__('Personal identification image')}}</label>@endif
+            @elseif($fullorder->replace_reasons == "personal")
+                <span>{{__('Consists (damaged card attached) reason: ')}}</span><br>
+                <label id="labelpersonal"class="form-check-label" for="Consists">{{__('personal image')}}</label>
             @elseif($fullorder->replace_reasons == "transfer")
-                <input  type="radio"  checked="checked">
                 <span>{{__('Transfer from branch to branch')}}</span>
             @else
-                <input type="radio"  checked="checked">
                 <span>{{__('Card incoming error')}}{{__('(caused by the member)')}}</span>
-                </label>
             @endif
         {{-- التعديلات المطلوب وضعها على بطاقة العضوية الجديدة --}}
         <p style="font-weight: bold;text-align: center;">{{__('Required modifications to be made on the new membership card')}}</p>
@@ -142,11 +128,6 @@
               </tr>
               <tr>
                 <th scope="col">{{__('Change personal image')}}</th>
-                <td>
-                    {{-- <div class="mb-3">
-                      <input class="form-control" type="file" accept="image/*"id="personal_image" name="personal_image" disabled>
-                  </div> --}}
-                </td>
               </tr>
               <tr>
                 <th scope="col">{{__('The new membership number')}} {{__('when transferring from one branch to another')}}</th>
@@ -220,7 +201,7 @@
     <img src ="{{asset("storage/passport_images/$fullorder->passport_image")}}">
     @endif
     @if($fullorder->personal_dentification_image <> null)
-    <img src ="{{asset("storage/personal_dentification_images/$fullorder->personal_dentification_image")}}">
+    <img src ="{{asset("storage/personal_identification_images/$fullorder->personal_identification_image")}}">
     @endif
     @if($fullorder->personal_image <> null)
     <img src ="{{asset("storage/personal_images/$fullorder->personal_image")}}">
