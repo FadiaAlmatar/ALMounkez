@@ -153,23 +153,32 @@
             </tr>
         </tbody>
         </table>
-        <p class="p-fullorder">{{__('Your request will be considered within a maximum period of two days. Please contact us')}}</p>
+        <p style="text-align:center;font-size:11px;font-weight:bold;">{{__('Your request will be considered within a maximum period of two days. Please contact us')}}</p>
         <hr>
 {{--  بيان الدارة الماليةللفرع --}}
     <p><span style="font-weight: bold">{{__('Branch financial management statement:')}}</span><br>
     {{__('Mr.')}}{{$fullorder->fullname}}{{__(' is affiliated with the Syndicate with a membership number ')}}{{Auth::User()->id}}
     {{__('We inform you that he is registered in the Syndicate in year 20')}}{{$fullorder->user->order->created_at->format('y')}} {{__('and : ')}}</p>
-        @if($fullorder->not_debtor == 0)
+    {{-- @if($fullorder->not_debtor <> null ) --}}
+    @if($fullorder->not_debtor == 0)
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="debt" id="financially_innocent" value="{{$fullorder->not_debtor}}" disabled checked>
+            {{-- <input class="form-check-input" type="radio" name="debt" id="financially_innocent" value="{{$fullorder->not_debtor}}" disabled checked> --}}
             <label for="financially_innocent" class="form-check-label" value="financially_innocent" @if (old('debt') == "financially_innocent") {{ 'selected' }} @endif>{{__('Financially innocent')}}</label>
         </div>
         @else
-            <input class="form-check-input" type="radio" name="debt" id="financial_liability" value="{{$fullorder->not_debtor}}" disabled checked>
+            {{-- <input class="form-check-input" type="radio" name="debt" id="financial_liability" value="{{$fullorder->not_debtor}}" disabled checked> --}}
             <label for="financial_liability" class="form-check-label" value="financial_liability" @if (old('debt') == "financial_liability") {{ 'selected' }} @endif>{{__('It has a previous financial liability')}}</label>
             {{__('equal ')}}
              {{ $fullorder->money_debt}}{{__(' SYP')}}
         </div>@endif
+        @if($fullorder->money_debt <> null && $fullorder->not_debtor == null )
+        {{-- @if($fullorder->money_debt <> null) --}}
+        {{-- <input class="form-check-input" type="radio" name="debt" id="financial_liability" value="{{$fullorder->not_debtor}}" disabled checked> --}}
+        <label for="financial_liability" class="form-check-label" value="financial_liability" @if (old('debt') == "financial_liability") {{ 'selected' }} @endif>{{__('It has a previous financial liability')}}</label>
+        {{__('equal ')}}
+         {{ $fullorder->money_debt}}{{__(' SYP')}}
+        {{-- @endif --}}
+      @endif
     <p>{{__('Mr.: The cashier in the branch, please receive an amount and its amount ')}}
        {{ $fullorder->money_order}}{{__(' SYP')}}</p>
 {{--  بيان أمين الصندوق--}}

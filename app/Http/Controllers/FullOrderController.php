@@ -167,11 +167,13 @@ class FullOrderController extends Controller
                 }
                 $fullorder->newmembership_number         = $request->newMembershipNumber;
             }
+            $fullorder->newmembership_number         = $request->newMembershipNumber;
+            // dd($request->newMembershipNumber);
             $fullorder->type          =   $request->type;
             $fullorder->status        =  "under consideration";
-            if (app()->getLocale() == 'ar'){
-                $fullorder->status_ar        =  "قيد الدراسة";
-            }
+            // if (app()->getLocale() == 'ar'){
+            //     $fullorder->status_ar        =  "قيد الدراسة";
+            // }
             $fullorder->save();
             return redirect()->route('fullorders.show',$fullorder);
     }
@@ -203,9 +205,13 @@ class FullOrderController extends Controller
                 $fullorder->newmembership_number                   = $request->newmembership_number;
             }//replacement
             else{
-                $fullorder->newmembership_number         = $request->newMembershipNumber;
+
                 $fullorder->Chairman_decision            = $request->Chairman_decision;
                 $fullorder->Chairman_disapproval_reasons = $request->Chairman_disapproval_reasons;
+               if($request->debt == null && $request->money_debt <> null){
+                $fullorder->not_debtor = 1;
+               }
+
             }
             $fullorder->status = $request->status;
             $fullorder->save();

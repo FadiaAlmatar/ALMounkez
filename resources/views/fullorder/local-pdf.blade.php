@@ -106,7 +106,7 @@
             </tr>
         </tbody>
         </table>
-        <p style="text-align:center;font-size:11px;font-weight:bold;">{{__('Your request will be considered within a maximum period of two days. Please contact us')}}</p>
+        <p style="text-align:center;font-size:11px;font-weight:bold;">{{>{{__('Your request will be considered within a maximum period of two days. Please contact us')}}</p>
         <hr>
         <p><span style="font-weight: bold;">{{__('Financial Management Statement:')}}</span><br>
         {{__('Mr.')}}{{$fullorder->fullname}}{{__(' is affiliated with the Syndicate with a membership number ')}}{{Auth::User()->id}}
