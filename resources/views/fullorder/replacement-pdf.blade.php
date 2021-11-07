@@ -200,7 +200,7 @@
     @if($fullorder->passport_image <> null)
     <img src ="{{asset("storage/passport_images/$fullorder->passport_image")}}">
     @endif
-    @if($fullorder->personal_dentification_image <> null)
+    @if($fullorder->personal_identification_image <> null)
     <img src ="{{asset("storage/personal_identification_images/$fullorder->personal_identification_image")}}">
     @endif
     @if($fullorder->personal_image <> null)

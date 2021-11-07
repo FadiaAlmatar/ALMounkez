@@ -148,6 +148,7 @@
        <br>
     <p style="display:inline">{{__('Mr.')}} <span style="font-weight: bold">{{$fullorder->fullname}}</span>{{__(' is affiliated with the Syndicate with a membership number ')}}{{Auth::User()->id}}<br>
         {{__('We inform you that he is registered in the Syndicate in year 20')}}{{$fullorder->user->order->created_at->format('y')}} {{__('and : ')}}</p>&nbsp;
+        @if($fullorder->not_debtor <> null )
         @if($fullorder->not_debtor == 0)
         <div class="form-check">
             <input class="form-check-input" type="radio" name="debt" id="financially_innocent" value="{{$fullorder->not_debtor}}" disabled checked>
@@ -160,6 +161,7 @@
             {{__('equal ')}}
             <input type="text" class="input input-fullorder"id="money_debt" name="money_debt"  value="{{ $fullorder->money_debt}}"  class="form-control" placeholder="{{__('Enter debt money')}}" disabled />{{__(' SYP')}}<br>
         </div>@endif<br>
+        @endif
     <p>{{__('Mr.: The cashier in the branch, please receive an amount and its amount ')}}
         <input type="text" class="input @error('money_order')is-danger @enderror input-fullorder"id="money_order" name="money_order"value="{{ $fullorder->money_order}}"class="form-control" placeholder="{{__('Enter order money')}}" disabled/>{{__(' SYP')}}</p>
 {{--  بيان أمين الصندوق--}}
