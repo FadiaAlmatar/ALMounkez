@@ -32,17 +32,23 @@
                 <label for="reasons">{{__('That is for the following reasons :')}}</label>
                 <textarea name="transportation_reasons"class="form-control" id="reasons" rows="3" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif readonly>{{$fullorder->transportation_reasons}}</textarea>
             </div>
-            {{-- {{-- <p>{{__('Evidences attached')}}</p> --}}
+            @if($fullorder->home_change <> null || $fullorder->home_change <> null)
+             <p>{{__('Evidences attached')}}</p>
+             @if($fullorder->home_change <> null)
             <div class="mb-3" >
                 <label for="formFile" class="form-label" style="font-size: 13px;">{{__('change home image')}}
                 <a target="_blank" href="{{asset("storage/home_changes/$fullorder->home_change")}}">{{__('Click here to show home change image')}}</a>
                 </label>
             </div>
+            @endif
+            @if($fullorder->work_change <> null)
             <div class="mb-3">
                 <label for="formFile" class="form-label" style="font-size: 13px;">{{__('change work image')}}
                 <a target="_blank" href="{{asset("storage/work_changes/$fullorder->work_change")}}">{{__('Click here to show work change image')}}</a>
                 </label>
             </div>
+            @endif
+            @endif
             <p>{{__('Request date: ')}} {{ date("Y-m-d h:i A", strtotime($fullorder->created_at))}}</p><hr>
         </form>
 {{-- بيان الدارة المالية --}}
@@ -52,8 +58,9 @@
                     <p style="color:red;"value="{{$fullorder->status}}">{{__('Order Status')}}: {{$fullorder->status}} </p>
                 </div>
                <br>
+               {{-- {{Auth::User()->order->created_at->format('y')}} --}}
             <p style="display:inline">{{__('The fellow')}} <span style="font-weight: bold">{{$fullorder->fullname}}</span>{{__(' is affiliated with the Syndicate with a membership number ')}}{{Auth::User()->id}}<br>
-                {{__('And registered in the Syndicate in year 20')}}{{Auth::User()->order->created_at->format('y')}}</p><br>
+                {{__('And registered in the Syndicate in year 20')}}{{$fullorder->user->order->created_at->format('y')}}</p><br>
                 @if($fullorder->not_debtor == 0)
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="debt" id="financially_innocent" value="{{$fullorder->not_debtor}}" disabled checked>

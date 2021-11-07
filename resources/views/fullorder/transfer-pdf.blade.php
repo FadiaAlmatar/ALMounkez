@@ -151,8 +151,9 @@
             <hr>
             <p style="font-weight: bold;">{{__('The new membership number in the event that both parties agree to transfer the affiliate')}}
              {{$fullorder->newmembership_number}}</p>
-
+            @if($fullorder->home_change)
              <img src ="{{asset("storage/home_changes/$fullorder->home_change")}}">
+             @endif
              <img src ="{{asset("storage/work_changes/$fullorder->work_change")}}">
     </body>
 </html>

@@ -129,11 +129,11 @@
         <label>{{__('order status')}}</label>
         <select name="status"class="input @error('status')is-danger @enderror" class="form-select" aria-label="Default select example" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif>
             <option selected></option>
-            <option @if(app()->getLocale() == 'ar') value="{{__('Payment required')}}" @else value="Payment required" @endif>{{__('Payment required')}} </option>
-            <option @if(app()->getLocale() == 'ar') value="{{__('Please pick up')}}" @else value="Please pick up" @endif>    {{__('Please pick up')}}   </option>
-            <option @if(app()->getLocale() == 'ar') value="{{__('not confirmed')}}" @else value="not confirmed" @endif>      {{__('not confirmed')}}    </option>
-            <option @if(app()->getLocale() == 'ar') value="{{__('Need to complete papers')}}" @else value="Need to complete papers" @endif>{{__('Need to complete papers')}}</option>
-            <option @if(app()->getLocale() == 'ar') value="{{__('Finished')}}" @else value="Finished" @endif>               {{__('Finished')}}</option>
+            <option  value="{{__('Payment required')}}" @else value="Payment required" @endif>{{__('Payment required')}} </option>
+            <option  value="{{__('Please pick up')}}" @else value="Please pick up" @endif>    {{__('Please pick up')}}   </option>
+            <option  value="{{__('not confirmed')}}" @else value="not confirmed" @endif>      {{__('not confirmed')}}    </option>
+            <option  value="{{__('Need to complete papers')}}" @else value="Need to complete papers" @endif>{{__('Need to complete papers')}}</option>
+            <option  value="{{__('Finished')}}" @else value="Finished" @endif>               {{__('Finished')}}</option>
     </select>
         @error('status')
          <p class="help is-danger">{{ $message }}</p>

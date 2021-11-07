@@ -37,17 +37,23 @@
                 <label for="reasons">{{__('That is for the following reasons :')}}</label>
                 <textarea name="transportation_reasons"class="form-control" id="reasons" rows="3" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif readonly>{{$fullorder->transportation_reasons}}</textarea>
             </div>
-            {{-- {{-- <p>{{__('Evidences attached')}}</p> --}}
+            @if($fullorder->home_change <> null || $fullorder->home_change <> null)
+             <p>{{__('Evidences attached')}}</p>
+             @if($fullorder->home_change <> null)
             <div class="mb-3" >
                 <label for="formFile" class="form-label" style="font-size: 13px;">{{__('change home image')}}
                 <a target="_blank" href="{{asset("storage/home_changes/$fullorder->home_change")}}">{{__('Click here to show home change image')}}</a>
                 </label>
             </div>
+            @endif
+            @if($fullorder->work_change <> null)
             <div class="mb-3">
                 <label for="formFile" class="form-label" style="font-size: 13px;">{{__('change work image')}}
                 <a target="_blank" href="{{asset("storage/work_changes/$fullorder->work_change")}}">{{__('Click here to show work change image')}}</a>
                 </label>
             </div>
+            @endif
+            @endif
             <p>{{__('Request date: ')}} {{ date("Y-m-d h:i A", strtotime($fullorder->created_at))}}</p><hr>
         {{-- </form> --}}
 {{-- بيان الدارة المالية --}}
@@ -59,11 +65,11 @@
                 <label>{{__('order status')}}</label>
                 <select name="status"class="input @error('status')is-danger @enderror" class="form-select" aria-label="Default select example" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif>
                     <option selected></option>
-                    <option @if(app()->getLocale() == 'ar') value="{{__('Payment required')}}" @else value="Payment required" @endif>{{__('Payment required')}} </option>
-                    <option @if(app()->getLocale() == 'ar') value="{{__('Please pick up')}}" @else value="Please pick up" @endif>    {{__('Please pick up')}}   </option>
-                    <option @if(app()->getLocale() == 'ar') value="{{__('not confirmed')}}" @else value="not confirmed" @endif>      {{__('not confirmed')}}    </option>
-                    <option @if(app()->getLocale() == 'ar') value="{{__('Need to complete papers')}}" @else value="Need to complete papers" @endif>{{__('Need to complete papers')}}</option>
-                    <option @if(app()->getLocale() == 'ar') value="{{__('Finished')}}" @else value="Finished" @endif>               {{__('Finished')}}</option>
+                    <option value="{{__('Payment required')}}" @else value="Payment required" @endif>{{__('Payment required')}} </option>
+                    <option  value="{{__('Please pick up')}}" @else value="Please pick up" @endif>    {{__('Please pick up')}}   </option>
+                    <option  value="{{__('not confirmed')}}" @else value="not confirmed" @endif>      {{__('not confirmed')}}    </option>
+                    <option  value="{{__('Need to complete papers')}}" @else value="Need to complete papers" @endif>{{__('Need to complete papers')}}</option>
+                    <option  value="{{__('Finished')}}" @else value="Finished" @endif>               {{__('Finished')}}</option>
                     </select>
                 @error('status')
                  <p class="help is-danger">{{ $message }}</p>
