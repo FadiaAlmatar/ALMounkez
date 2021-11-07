@@ -45,8 +45,9 @@
                 width: fit-content;
             }
             img{
-                width: 100%;
-                height: 1000px;
+                width: 210mm;
+                height: 297mm;
+                margin: 0;
             }
         </style>
         @else
@@ -87,8 +88,9 @@
                 width: fit-content;
             }
             img{
-                width: 100%;
-                height: 1000px;
+                width: 210mm;
+                height: 297mm;
+                margin: 0;
             }
         </style>
         @endif
@@ -152,10 +154,16 @@
             <p style="font-weight: bold;">{{__('The new membership number in the event that both parties agree to transfer the affiliate')}}
              {{$fullorder->newmembership_number}}</p>
             @if($fullorder->home_change <> null)
-             <img src ="{{asset("storage/home_changes/$fullorder->home_change")}}">
+            <pagebreak>
+            <div style="position: absolute; left:0; right: 0; top: 0; bottom: 0;">
+                <img src ="{{asset("storage/home_changes/$fullorder->home_change")}}">
+            </div>
              @endif
              @if($fullorder->work_change <> null)
-             <img src ="{{asset("storage/work_changes/$fullorder->work_change")}}">
+             <pagebreak>
+            <div style="position: absolute; left:0; right: 0; top: 0; bottom: 0;">
+                <img src ="{{asset("storage/work_changes/$fullorder->work_change")}}">
+            </div>
              @endif
     </body>
 </html>

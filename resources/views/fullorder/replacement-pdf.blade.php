@@ -45,8 +45,9 @@
                 border:1px solid red;
             }
             img{
-                width: 100%;
-                height: 1000px;
+                width: 210mm;
+                height: 297mm;
+                margin: 0;
             }
         </style>
         @else
@@ -86,8 +87,9 @@
                 border:1px solid red;
             }
             img{
-                width: 100%;
-                height: 1000px;
+                width: 210mm;
+                height: 297mm;
+                margin: 0;
             }
         </style>
         @endif
@@ -189,22 +191,40 @@
                 @endif
     </div>
     @if($fullorder->police_image <> null)
-    <img src ="{{asset("storage/police_images/$fullorder->police_image")}}">
+    <pagebreak>
+        <div style="position: absolute; left:0; right: 0; top: 0; bottom: 0;">
+           <img src ="{{asset("storage/police_images/$fullorder->police_image")}}">
+        </div>
     @endif
     @if($fullorder->damaged_card_image <> null)
-    <img src ="{{asset("storage/damaged_card_images/$fullorder->damaged_card_image")}}">
+    <pagebreak>
+        <div style="position: absolute; left:0; right: 0; top: 0; bottom: 0;">
+            <img src ="{{asset("storage/damaged_card_images/$fullorder->damaged_card_image")}}">
+        </div>
     @endif
     @if($fullorder->judgment_decision_image <> null)
-    <img src ="{{asset("storage/judgment_decision_images/$fullorder->judgment_decision_image")}}">
+    <pagebreak>
+        <div style="position: absolute; left:0; right: 0; top: 0; bottom: 0;">
+            <img src ="{{asset("storage/judgment_decision_images/$fullorder->judgment_decision_image")}}">
+        </div>
     @endif
     @if($fullorder->passport_image <> null)
-    <img src ="{{asset("storage/passport_images/$fullorder->passport_image")}}">
+    <pagebreak>
+        <div style="position: absolute; left:0; right: 0; top: 0; bottom: 0;">
+           <img src ="{{asset("storage/passport_images/$fullorder->passport_image")}}">
+        </div>
     @endif
     @if($fullorder->personal_identification_image <> null)
-    <img src ="{{asset("storage/personal_identification_images/$fullorder->personal_identification_image")}}">
+    <pagebreak>
+        <div style="position: absolute; left:0; right: 0; top: 0; bottom: 0;">
+           <img src ="{{asset("storage/personal_identification_images/$fullorder->personal_identification_image")}}">
+        </div>
     @endif
     @if($fullorder->personal_image <> null)
-    <img src ="{{asset("storage/personal_images/$fullorder->personal_image")}}">
+    <pagebreak>
+        <div style="position: absolute; left:0; right: 0; top: 0; bottom: 0;">
+          <img src ="{{asset("storage/personal_images/$fullorder->personal_image")}}">
+        </div>
     @endif
     </body>
 </html>

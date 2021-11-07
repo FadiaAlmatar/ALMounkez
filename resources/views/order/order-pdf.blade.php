@@ -31,8 +31,10 @@
                 width:15%;
             }
             img{
-                width: 100%;
-                height: 280mm;
+                width: 210mm;
+                height: 297mm;
+                margin: 0;
+                /* page-break-before:always; */
             }
         </style>
            @else
@@ -65,8 +67,10 @@
                 padding-left: 5px;
             }
             img{
-                width: 100%;
-                height: 280mm;
+                width: 210mm;
+                height: 297mm;
+                margin: 0;
+                /* page-break-before:always; */
             }
         </style>
         @endif
@@ -223,11 +227,23 @@
         <p style="font-size: 11px;width:45%;float:right;display:inline-block">{{__('Secret keeper')}}</p>
         <p style="font-size: 11px;width:45%;">{{__('Chairman of Board of Directors')}}</p>
         </p>
+        <pagebreak>
+        <div style="position: absolute; left:0; right: 0; top: 0; bottom: 0;">
+           <img src ="{{asset("storage/identity-images/$order->identity_image")}}">
+        </div>
+        <pagebreak>
+        <div style="position: absolute; left:0; right: 0; top: 0; bottom: 0;">
+           <img src ="{{asset("storage/personal-images/$order->personal_image")}}">
+        </div>
+        <pagebreak>
+        <div style="position: absolute; left:0; right: 0; top: 0; bottom: 0;">
+           <img src ="{{asset("storage/certification-images/$order->certification_image")}}">
+        </div>
+        <pagebreak>
+        <div style="position: absolute; left:0; right: 0; top: 0; bottom: 0;">
+           <img src ="{{asset("storage/no_conviction-images/$order->no_conviction_image")}}">
+        </div>
 
-        <img src ="{{asset("storage/identity-images/$order->identity_image")}}">
-        <img src ="{{asset("storage/personal-images/$order->personal_image")}}">
-        <img src ="{{asset("storage/certification-images/$order->certification_image")}}">
-        <img src ="{{asset("storage/no_conviction-images/$order->no_conviction_image")}}">
     </body>
 
 </html>
