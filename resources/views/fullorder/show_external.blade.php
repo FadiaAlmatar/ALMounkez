@@ -1,6 +1,6 @@
 <x-layouts.app>
     <br>
-    <h1 class="h1-fullorder">{{__('Request a external membership document')}}</h1><br>
+    <h1 class="h1-fullorder">{{__('Request an external membership document')}}</h1><br>
     <div class="container"style="margin-top:7px;">
         <strong style="font-size:13px;">{{__('(Implementation of the decision of the Board of Directors in its session No. /4/ held on the date 28/01/2016 containing the determination of the amount 1000 SYP of the value of a membership document)')}}</strong><br><br>
         <p>{{__('Gentlemen of the Financial and Accounting Professions Syndicate, please give me a membership document stating that I am a registered member of the Syndicate')}}<br><br>{{__('to submit it to')}}
@@ -80,7 +80,7 @@
         <hr>
         <p style="font-weight: bold;">{{__('Treasurer Statement/central: ')}}<span style="font-size:13px">{{__('Only the document amount is received')}}</span></p>
         <p>{{__('Amount has been received ')}}
-            <input type="text" class="input input-fullorder"id="money_central" name="money_central"value="{{ old('money_central') }}"class="form-control" placeholder="{{__('Enter order central')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif/>{{__(' SYP')}}</p>
+            <input type="text" class="input input-fullorder"id="money_central" name="money_central"value="{{ old('money_central') }}"class="form-control" placeholder="{{__('Enter order money')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif/>{{__(' SYP')}}</p>
         {{-- قرار رئيس مجلس الإدارة --}}
         <hr>
         <p style="font-weight: bold;">{{__("Chairman's decision: ")}}</p>

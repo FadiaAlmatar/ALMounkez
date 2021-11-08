@@ -7,7 +7,7 @@
         <input name="type" value="transfer" hidden>
         <p>{{__('Mr. Chairman of the Syndicate Branch Council in the province')}}
             <select style="width:150px"class="input @error('countryfrom')is-danger @enderror"name="countryfrom" id="countryfrom"class="form-select form-select-sm" aria-label=".form-select-sm example" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
-                <option value="{{$fullorder->country_before}}" selected readonly>{{$fullorder->country_before}}</option>
+                <option value="{{__($fullorder->country_before)}}" selected readonly>{{__($fullorder->country_before)}}</option>
             </select>
             @error('countryfrom')
                 <p class="help is-danger">{{ $message }}</p>
@@ -22,14 +22,14 @@
             <hr>
             <p>{{__('I kindly request you to transfer my membership from your branch of the Syndicate branch in the country: ')}}
                 <select style="width:150px"class="input @error('countryfrom')is-danger @enderror"name="countryfrom" id="countryfrom"class="form-select form-select-sm" aria-label=".form-select-sm example" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
-                    <option value="{{$fullorder->country_before}}" selected readonly>{{$fullorder->country_before}}</option>
+                    <option value="{{$fullorder->country_before}}" selected readonly>{{__($fullorder->country_before)}}</option>
                 </select>
                 @error('countryfrom')
                     <p class="help is-danger">{{ $message }}</p>
                 @enderror
                 <br>{{__('To the syndicate branch in the country: ')}}
                 <select style="width:150px"class="input @error('tocountry')is-danger @enderror"name="tocountry" id="tocountry"class="form-select form-select-sm" aria-label=".form-select-sm example" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
-                    <option value="{{$fullorder->country_after}}" selected readonly>{{$fullorder->country_after}}</option>
+                    <option value="{{$fullorder->country_after}}" selected readonly>{{__($fullorder->country_after)}}</option>
                 </select>
             </p>
             <hr>

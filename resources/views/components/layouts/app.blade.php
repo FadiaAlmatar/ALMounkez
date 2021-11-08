@@ -74,7 +74,6 @@
         }
 
         $(document).ready(function(){
-            // localStorage["check"] = 1;
         $(document).on('click', '.btn_add', function () {
         let trCount = $('#Qualification').find('tr.cloning_row:last').length;
         let numberIncr = trCount > 0 ? parseInt($('#Qualification').find('tr.cloning_row:last').attr('id')) + 1 : 0;
