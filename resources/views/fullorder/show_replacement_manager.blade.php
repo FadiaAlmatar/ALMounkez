@@ -163,14 +163,14 @@
         </div><br>
         @endif
         {{-- @else --}}
-          @if($fullorder->money_debt <> null && $fullorder->not_debtor == null )
+          {{-- @if($fullorder->money_debt <> null && $fullorder->not_debtor == null )
           <div class="form-check"><br>
             <input class="form-check-input" type="radio" name="debt" id="financial_liability" value="{{$fullorder->not_debtor}}" disabled checked>
             <label for="financial_liability" class="form-check-label" value="financial_liability" @if (old('debt') == "financial_liability") {{ 'selected' }} @endif>{{__('It has a previous financial liability')}}</label>
             {{__('equal ')}}
             <input type="text" class="input input-fullorder"id="money_debt" name="money_debt"  value="{{ $fullorder->money_debt}}"  class="form-control" placeholder="{{__('Enter debt money')}}" disabled />{{__(' SYP')}}<br>
         </div><br>
-          @endif
+          @endif --}}
         {{-- @endif --}}
     <p>{{__('Mr.: The cashier in the branch, please receive an amount and its amount ')}}
         <input type="text" class="input @error('money_order')is-danger @enderror input-fullorder"id="money_order" name="money_order"value="{{ $fullorder->money_order}}"class="form-control" placeholder="{{__('Enter order money')}}" disabled/>{{__(' SYP')}}</p>
