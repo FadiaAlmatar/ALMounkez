@@ -66,7 +66,7 @@
                 <select name="status"class="input @error('status')is-danger @enderror" class="form-select" aria-label="Default select example" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif>
                     <option selected></option>
                     @foreach (Config::get('constant.statuses') as $status)
-                    <option  value={{$status}}  @if (old('status') == $status) {{ 'selected' }} @endif>{{__($status)}}</option>
+                    <option  value="{{$status}}" @if (old('status') == $status) {{ 'selected' }} @endif>{{__($status)}}</option>
                     @endforeach
                 </select>
                 @error('status')

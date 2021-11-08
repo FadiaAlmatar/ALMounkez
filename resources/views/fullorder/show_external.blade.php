@@ -54,7 +54,7 @@
                 <option  value="Need to complete papers" @if (old('status') == "Need to complete papers") {{ 'selected' }} @endif>{{__('Need to complete papers')}}</option>
                 <option  value="Finished" @if (old('status') == "Finished") {{ 'selected' }} @endif>               {{__('Finished')}}</option> --}}
                 @foreach (Config::get('constant.statuses') as $status)
-                <option  value={{$status}}  @if (old('status') == $status) {{ 'selected' }} @endif>{{__($status)}}</option>
+                <option  value="{{$status}}"  @if (old('status') == $status) {{ 'selected' }} @endif>{{__($status)}}</option>
                 @endforeach
             </select>
             {{-- @endif --}}
