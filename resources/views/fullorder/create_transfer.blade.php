@@ -15,22 +15,8 @@
                     @endif
                 <option></option>
                 @foreach (Config::get('constant.countries') as $country)
-                <option  value={{$country}}  @if (old('from_country') == $country) {{ 'selected' }} @endif>{{__($country)}}</option>
+                <option  value="{{$country}}"  @if (old('from_country') == $country) {{ 'selected' }} @endif>{{__($country)}}</option>
                 @endforeach
-                {{-- <option value="Damascus"       @if (old('from_country') == "Damascus") {{ 'selected' }} @endif>       {{__('Damascus')}}      </option>
-                <option value="Damascus Rural" @if (old('from_country') == "Damascus Rural") {{ 'selected' }} @endif> {{__('Damascus Rural')}}</option>
-                <option value="Suwayda"        @if (old('from_country') == "Suwayda") {{ 'selected' }} @endif>        {{__('Suwayda')}}       </option>
-                <option value="Daraa"          @if (old('from_country') == "Daraa") {{ 'selected' }} @endif>          {{__('Daraa')}}         </option>
-                <option value="Quneitra"       @if (old('from_country') == "Quneitra") {{ 'selected' }} @endif>       {{__('Quneitra')}}      </option>
-                <option value="Homs"           @if (old('from_country') == "Homs") {{ 'selected' }} @endif>           {{__('Homs')}}          </option>
-                <option value="Hama"           @if (old('from_country') == "Hama") {{ 'selected' }} @endif>           {{__('Hama')}}          </option>
-                <option value="Latakia"        @if (old('from_country') == "Latakia") {{ 'selected' }} @endif>        {{__('Latakia')}}       </option>
-                <option value="Tartous"        @if (old('from_country') == "Tartous") {{ 'selected' }} @endif>        {{__('Tartous')}}       </option>
-                <option value="Idlib"          @if (old('from_country') == "Idlib") {{ 'selected' }} @endif>          {{__('Idlib')}}         </option>
-                <option value="Aleppo"         @if (old('from_country') == "Aleppo") {{ 'selected' }} @endif>         {{__('Aleppo')}}        </option>
-                <option value="Al-Rakka"       @if (old('from_country') == "Al-Rakka") {{ 'selected' }} @endif>       {{__('Al-Rakka')}}      </option>
-                <option value="Deer Al Zour"   @if (old('from_country') == "Deer Al Zour") {{ 'selected' }} @endif>   {{__('Deer Al Zour')}}  </option>
-                <option value="Al-Hasakah"     @if (old('from_country') == "Al-Hasakah") {{ 'selected' }} @endif>     {{__('Al-Hasakah')}}    </option> --}}
              </select>
             @error('from_country')
                 <p class="help is-danger">{{ $message }}</p>
@@ -51,22 +37,8 @@
                     @endif
                     <option></option>
                     @foreach (Config::get('constant.countries') as $country)
-                    <option  value={{$country}}  @if (old('from_country') == $country) {{ 'selected' }} @endif>{{__($country)}}</option>
+                    <option  value="{{$country}}"  @if (old('from_country') == $country) {{ 'selected' }} @endif>{{__($country)}}</option>
                     @endforeach
-                    {{-- <option  value="Damascus"      @if (old('from_country') == "Damascus") {{ 'selected' }} @endif>       {{__('Damascus')}}      </option>
-                    <option value="Damascus Rural" @if (old('from_country') == "Damascus Rural") {{ 'selected' }} @endif> {{__('Damascus Rural')}}</option>
-                    <option value="Suwayda"        @if (old('from_country') == "Suwayda") {{ 'selected' }} @endif>        {{__('Suwayda')}}       </option>
-                    <option value="Daraa"          @if (old('from_country') == "Daraa") {{ 'selected' }} @endif>          {{__('Daraa')}}         </option>
-                    <option value="Quneitra"       @if (old('from_country') == "Quneitra") {{ 'selected' }} @endif>       {{__('Quneitra')}}      </option>
-                    <option value="Homs"           @if (old('from_country') == "Homs") {{ 'selected' }} @endif>           {{__('Homs')}}          </option>
-                    <option value="Hama"           @if (old('from_country') == "Hama") {{ 'selected' }} @endif>           {{__('Hama')}}          </option>
-                    <option value="Latakia"        @if (old('from_country') == "Latakia") {{ 'selected' }} @endif>        {{__('Latakia')}}       </option>
-                    <option value="Tartous"        @if (old('from_country') == "Tartous") {{ 'selected' }} @endif>        {{__('Tartous')}}       </option>
-                    <option value="Idlib"          @if (old('from_country') == "Idlib") {{ 'selected' }} @endif>          {{__('Idlib')}}         </option>
-                    <option value="Aleppo"         @if (old('from_country') == "Aleppo") {{ 'selected' }} @endif>         {{__('Aleppo')}}        </option>
-                    <option value="Al-Rakka"       @if (old('from_country') == "Al-Rakka") {{ 'selected' }} @endif>       {{__('Al-Rakka')}}      </option>
-                    <option value="Deer Al Zour"   @if (old('from_country') == "Deer Al Zour") {{ 'selected' }} @endif>   {{__('Deer Al Zour')}}  </option>
-                    <option value="Al-Hasakah"     @if (old('from_country') == "Al-Hasakah") {{ 'selected' }} @endif>     {{__('Al-Hasakah')}}    </option> --}}
                 </select>
                 @error('from_country')
                     <p class="help is-danger">{{ $message }}</p>
@@ -78,22 +50,8 @@
                     @endif
                     <option></option>
                     @foreach (Config::get('constant.countries') as $country)
-                    <option  value={{$country}}  @if (old('to_country') == $country) {{ 'selected' }} @endif>{{__($country)}}</option>
+                    <option  value="{{$country}}"  @if (old('to_country') == $country) {{ 'selected' }} @endif>{{__($country)}}</option>
                     @endforeach
-                    {{-- <option value="Damascus"      @if (old('to_country') == "Damascus") {{ 'selected' }} @endif>       {{__('Damascus')}}      </option>
-                    <option value="Damascus Rural" @if (old('to_country') == "Damascus Rural") {{ 'selected' }} @endif> {{__('Damascus Rural')}}</option>
-                    <option value="Suwayda"        @if (old('to_country') == "Suwayda") {{ 'selected' }} @endif>        {{__('Suwayda')}}       </option>
-                    <option value="Daraa"          @if (old('to_country') == "Daraa") {{ 'selected' }} @endif>          {{__('Daraa')}}         </option>
-                    <option value="Quneitra"       @if (old('to_country') == "Quneitra") {{ 'selected' }} @endif>       {{__('Quneitra')}}      </option>
-                    <option value="Homs"           @if (old('to_country') == "Homs") {{ 'selected' }} @endif>           {{__('Homs')}}          </option>
-                    <option value="Hama"           @if (old('to_country') == "Hama") {{ 'selected' }} @endif>           {{__('Hama')}}          </option>
-                    <option value="Latakia"        @if (old('to_country') == "Latakia") {{ 'selected' }} @endif>        {{__('Latakia')}}       </option>
-                    <option value="Tartous"        @if (old('to_country') == "Tartous") {{ 'selected' }} @endif>        {{__('Tartous')}}       </option>
-                    <option value="Idlib"          @if (old('to_country') == "Idlib") {{ 'selected' }} @endif>          {{__('Idlib')}}         </option>
-                    <option value="Aleppo"         @if (old('to_country') == "Aleppo") {{ 'selected' }} @endif>         {{__('Aleppo')}}        </option>
-                    <option value="Al-Rakka"       @if (old('to_country') == "Al-Rakka") {{ 'selected' }} @endif>       {{__('Al-Rakka')}}      </option>
-                    <option value="Deer Al Zour"   @if (old('to_country') == "Deer Al Zour") {{ 'selected' }} @endif>   {{__('Deer Al Zour')}}  </option>
-                    <option value="Al-Hasakah"     @if (old('to_country') == "Al-Hasakah") {{ 'selected' }} @endif>     {{__('Al-Hasakah')}}    </option> --}}
                 </select>
                 @error('to_country')
                 <p class="help is-danger">{{ $message }}</p>
