@@ -65,12 +65,10 @@
                 <label>{{__('order status')}}</label>
                 <select name="status"class="input @error('status')is-danger @enderror" class="form-select" aria-label="Default select example" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif>
                     <option selected></option>
-                    <option value="{{__('Payment required')}}" >{{__('Payment required')}} </option>
-                    <option  value="{{__('Please pick up')}}">    {{__('Please pick up')}}   </option>
-                    <option  value="{{__('not confirmed')}}">      {{__('not confirmed')}}    </option>
-                    <option  value="{{__('Need to complete papers')}}" >{{__('Need to complete papers')}}</option>
-                    <option  value="{{__('Finished')}}">               {{__('Finished')}}</option>
-                    </select>
+                    @foreach (Config::get('constant.status') as $status)
+                    <option  value={{$status}}  @if (old('status') == $status) {{ 'selected' }} @endif>{{__($status)}}</option>
+                    @endforeach
+                </select>
                 @error('status')
                  <p class="help is-danger">{{ $message }}</p>
                 @enderror

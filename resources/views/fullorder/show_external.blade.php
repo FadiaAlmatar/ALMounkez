@@ -48,11 +48,14 @@
             <select name="status"class="input" class="form-select" aria-label="Default select example" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif>
                 <option selected></option>
                 {{-- <option value="under consideration">    {{__('under consideration')}}    </option> --}}
-                <option  value="{{__('Payment required')}}">{{__('Payment required')}} </option>
-                <option  value="{{__('Please pick up')}}">    {{__('Please pick up')}}   </option>
-                <option  value="{{__('not confirmed')}}">      {{__('not confirmed')}}    </option>
-                <option  value="{{__('Need to complete papers')}}">{{__('Need to complete papers')}}</option>
-                <option  value="{{__('Finished')}}">               {{__('Finished')}}</option>
+                {{-- <option  value="Payment required" @if (old('status') == "Payment required") {{ 'selected' }} @endif>{{__('Payment required')}} </option>
+                <option  value="Please pick up" @if (old('status') == "Please pick up") {{ 'selected' }} @endif>    {{__('Please pick up')}}   </option>
+                <option  value="not confirmed" @if (old('status') == "not confirmed") {{ 'selected' }} @endif>      {{__('not confirmed')}}    </option>
+                <option  value="Need to complete papers" @if (old('status') == "Need to complete papers") {{ 'selected' }} @endif>{{__('Need to complete papers')}}</option>
+                <option  value="Finished" @if (old('status') == "Finished") {{ 'selected' }} @endif>               {{__('Finished')}}</option> --}}
+                @foreach (Config::get('constant.status') as $status)
+                <option  value={{$status}}  @if (old('status') == $status) {{ 'selected' }} @endif>{{__($status)}}</option>
+                @endforeach
             </select>
             {{-- @endif --}}
             </div>
