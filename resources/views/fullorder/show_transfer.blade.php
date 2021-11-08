@@ -87,8 +87,10 @@
                 <input class="form-check-input" type="radio" name="debt" id="financial_liability" value="{{1}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif>
                 <label for="financial_liability" class="form-check-label" value="financial_liability" @if (old('debt') == "financial_liability") {{ 'selected' }} @endif>{{__('It has a previous financial liability')}}</label>
                 {{__('equal ')}}<input type="text" class="input @error('money_debt')is-danger @enderror input-fullorder"id="money_debt" name="money_debt"value="{{ old('money_debt') }}"class="form-control" placeholder="{{__('Enter debt money')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif/>{{__(' SYP')}}<br>
-
             </div>
+            @error('debt')
+            <p class="help is-danger">{{ $message }}</p>
+            @enderror</p><br>
 {{-- قرار مجلس إدارة الفرع المسجل به --}}
             <hr>
             <p style="font-weight: bold;">{{__('Decision of the board of directors of the branch in which it is registered')}}</p>

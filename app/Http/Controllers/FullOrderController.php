@@ -181,7 +181,8 @@ class FullOrderController extends Controller
     {
         $fullorder = FullOrder::findOrFail($id);
         $request->validate([
-            'status'              => 'required'
+            'status'              => 'required',
+            'debt'               =>'required'
             ] );
         $fullorder->not_debtor    =   $request->debt;
         $fullorder->money_debt    =   $request->money_debt;
