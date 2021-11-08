@@ -14,20 +14,36 @@
                 <input class="form-check-input" type="radio" value="lost" {{ old('replace_reason') !== null && old('replace_reason') == "lost" ? 'checked' : '' }}  @if (!empty($fullorder) && ( $fullorder->replace_reasons == "lost")) checked @endif id="Lost" name="replace_reason" >
                 <label class="form-check-label" for="Lost">
                   {{__('Lost (police decision attached)')}}
+                  @if(empty($fullorder))
                 <input class="form-control" type="file" accept="image/*"id="police_image" name="police_image">
                     @error('police_image')
                     <p class="help is-danger">{{ $message }}</p>
                     @enderror
+                    @else
+                    <input class="form-control" type="file" accept="image/*"id="police_image" name="police_image">
+                    @if($fullorder->police_image <> null)<a target="_blank" href="{{asset("storage/police_images/$fullorder->police_image")}}">{{__('Click here to show police image')}}</a>@endif
+                    @error('police_image')
+                    <p class="help is-danger">{{ $message }}</p>
+                    @enderror
+                    @endif
                 </label>
             </div>
             <div class="form-check">
                 <input  class="form-check-input" type="radio" value="consists" {{ old('replace_reason') !== null && old('replace_reason') == "consists" ? 'checked' : '' }} id="Consists" name="replace_reason"  disabled>
                 <label class="form-check-label" for="Consists">
                   {{__('Consists (damaged card attached) reason: ')}}</label>
+                  @if(empty($fullorder))
                   <input class="form-control" style="width:25%"type="file" accept="image/*"id="damaged_card_image" name="damaged_card_image" >
                   @error('damaged_card_image')
                   <p class="help is-danger">{{ $message }}</p>
                   @enderror
+                  @else
+                  <input class="form-control" style="width:25%"type="file" accept="image/*"id="damaged_card_image" name="damaged_card_image" >
+                  @if($fullorder->damaged_card_image <> null)<a target="_blank" href="{{asset("storage/damaged_card_images/$fullorder->damaged_card_image")}}">{{__('Click here to show damaged card image')}}</a>@endif
+                  @error('damaged_card_image')
+                  <p class="help is-danger">{{ $message }}</p>
+                  @enderror
+                  @endif
             </div>
             <div style="margin-left:20px;"  @if (app()->getLocale() == 'ar') style="margin-right:20px;" @endif>
             <div class="form-check">
@@ -70,9 +86,9 @@
                     {{__('Card incoming error')}}<span>{{__('(caused by the member)')}}</span>
                 </label>
             </div>
-            {{-- @error('replace_reason')
+            @error('replace_reason')
             <p class="help is-danger">{{ $message }}</p>
-            @enderror --}}
+            @enderror
         </p>
         {{-- التعديلات المطلوب وضعها على بطاقة العضوية الجديدة --}}
         <hr>
