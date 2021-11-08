@@ -143,7 +143,7 @@
     <input name="type" value="replacement" hidden>
     <p style="font-weight: bold;display:inline-block;width:40%">{{__('Branch financial management statement:')}}</p>
     <div class="status" style="width:30%;">
-        <p style="color:red"value="{{$fullorder->status}}">{{__('Order Status')}}: {{$fullorder->status}} </p>
+        <p style="color:red"value="{{$fullorder->status}}">{{__('Order Status')}}: {{__($fullorder->status)}} </p>
     </div>
        <br>
     <p style="display:inline">{{__('Mr.')}} <span style="font-weight: bold">{{$fullorder->fullname}}</span>{{__(' is affiliated with the Syndicate with a membership number ')}}{{Auth::User()->id}}<br>

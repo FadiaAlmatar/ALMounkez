@@ -55,7 +55,7 @@
             <input name="type" value="transfer" hidden>
             <p style="font-weight: bold;display:inline-block;width:20%;">{{__('Financial Management Statement:')}}</p>
                 <div class="status" style="width:30%;">
-                    <p style="color:red;"value="{{$fullorder->status}}">{{__('Order Status')}}: {{$fullorder->status}} </p>
+                    <p style="color:red;"value="{{$fullorder->status}}">{{__('Order Status')}}: {{__($fullorder->status)}} </p>
                 </div>
                <br>
                {{-- {{Auth::User()->order->created_at->format('y')}} --}}
