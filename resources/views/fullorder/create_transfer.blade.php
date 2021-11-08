@@ -66,6 +66,7 @@
                 @enderror
             </div>
             <p>{{__('Evidences attached')}}</p>
+            @if(empty($fullorder))
             <div class="mb-3" >
                 <label for="formFile" class="form-label" style="font-size: 13px;">{{__('change home image')}}
                 <input class="form-control" type="file" accept="image/*" id="change_home" name="change_home" >
@@ -74,6 +75,17 @@
                 @enderror
             </label>
             </div>
+            @else
+            <div class="mb-3">
+            <label for="formFile" class="form-label" style="font-size: 13px;">{{__('change home image')}}
+                <input class="form-control" type="file" accept="image/*" id="change_home" name="change_home" >
+                @if($fullorder->home_change <> null)<a target="_blank" href="{{asset("storage/home_changes/$fullorder->home_change")}}">{{__('Click here to show home change image')}}</a>@endif
+                @error('change_home')
+                <p class="help is-danger">{{ $message }}</p>
+                @enderror
+            </label></div>
+            @endif
+            @if(empty($fullorder))
             <div class="mb-3">
                 <label for="formFile" class="form-label" style="font-size: 13px;">{{__('change work image')}}
                 <input class="form-control" type="file" accept="image/*"id="change_work" name="change_work" >
@@ -82,6 +94,17 @@
                 @enderror
             </label>
             </div>
+            @else
+            <div class="mb-3">
+            <label for="formFile" class="form-label" style="font-size: 13px;">{{__('change work image')}}
+                <input class="form-control" type="file" accept="image/*" id="change_work" name="change_work" >
+                @if($fullorder->work_change <> null)<a target="_blank" href="{{asset("storage/work_changes/$fullorder->work_change")}}">{{__('Click here to show work change image')}}</a>@endif
+                @error('change_work')
+                <p class="help is-danger">{{ $message }}</p>
+                @enderror
+            </label>
+            </div>
+            @endif
             <p>{{__('Request date: ')}}</p>
             @if (!empty($fullorder))
                <button type="submit" class="btn btn-primary">{{__('Edit')}}</button><br>
