@@ -31,7 +31,7 @@
             </div>
             <hr>
             <p>{{__('I kindly request you to transfer my membership from your branch of the Syndicate branch in the country: ')}}
-                <select style="width:150px"class="input @error('from_country')is-danger @enderror"name="from_country" id="from_country"class="form-select form-select-sm" aria-label=".form-select-sm example" >
+                {{-- <select style="width:150px"class="input @error('from_country')is-danger @enderror"name="from_country" id="from_country"class="form-select form-select-sm" aria-label=".form-select-sm example" >
                     @if (!empty($fullorder) && old('from_country', $fullorder->country_before))
                        <option value="{{ $fullorder->country_before }}" selected> {{ $fullorder->country_before }}</option>
                     @endif
@@ -42,7 +42,7 @@
                 </select>
                 @error('from_country')
                     <p class="help is-danger">{{ $message }}</p>
-                @enderror</p>
+                @enderror</p> --}}
                 <p>{{__('To the syndicate branch in the country: ')}}
                 <select style="width:150px"class="input @error('to_country')is-danger @enderror"name="to_country" id="to_country"class="form-select form-select-sm" aria-label=".form-select-sm example" >
                     @if (!empty($fullorder) && old('to_country', $fullorder->country_after))
