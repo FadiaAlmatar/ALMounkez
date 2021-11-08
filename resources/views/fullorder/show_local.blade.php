@@ -30,39 +30,20 @@
             <input name="type" value="local" hidden>
             <p style="font-weight: bold;display:inline-block;width:40%">{{__('Financial Management Statement:')}}</p>
             <div class="status">
-            {{-- @if (app()->getLocale() == 'ar')
             <label>{{__('order status')}}</label>
             <select name="status"class="input @error('status')is-danger @enderror" class="form-select" aria-label="Default select example" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif>
                 <option selected></option>
-                {{-- <option value="under consideration">    {{__('under consideration')}}    </option> --}}
-                {{-- <option value="مطلوب تسديد القيمة">
-                          {{__('مطلوب تسديد القيمة')}}</option>
-                <option value="يرجى الاستلام">
-                     {{__('يرجى الاستلام')}}</option>
-                <option value="لم تتم الموافقة">
-                    {{__('لم تتم الموافقة')}}</option>
-                <option value="بحاجة لاستكمال الأوراق">
-                     {{__('بحاجة لاستكمال الأوراق')}}</option>
-                     <option value="منتهي"></option>
-            </select>
-            @else --}}
-            <label>{{__('order status')}}</label>
-            <select name="status"class="input @error('status')is-danger @enderror" class="form-select" aria-label="Default select example" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif>
-                <option selected></option>
-                {{-- <option value="under consideration">    {{__('under consideration')}}    </option> --}}
                 <option  value="{{__('Payment required')}}">{{__('Payment required')}} </option>
                 <option  value="{{__('Please pick up')}}">    {{__('Please pick up')}}   </option>
                 <option  value="{{__('not confirmed')}}">      {{__('not confirmed')}}    </option>
                 <option  value="{{__('Need to complete papers')}}">{{__('Need to complete papers')}}</option>
                 <option  value="{{__('Finished')}}">               {{__('Finished')}}</option>
             </select>
-            {{-- @endif --}}
             @error('status')
              <p class="help is-danger">{{ $message }}</p>
             @enderror
             </div>
            <br>
-            {{-- <hr style="width:75%"> --}}
             <p style="display:inline">{{__('Mr.')}} <span style="font-weight: bold">{{$fullorder->fullname}}</span>{{__(' is affiliated with the Syndicate with a membership number ')}}{{Auth::User()->id}}<br>
                 {{__('We inform you that he is registered in the Syndicate in year 20')}}{{$fullorder->user->order->created_at->format('y')}} {{__('and : ')}}</p>&nbsp;
 
@@ -73,17 +54,17 @@
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="debt" id="financial_liability" value="{{1}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif>
                 <label for="financial_liability" class="form-check-label" value="financial_liability" @if (old('debt') == "financial_liability") {{ 'selected' }} @endif>{{__('It has a previous financial liability')}}</label>
-                {{__('equal ')}}<input type="text" class="input @error('money_debt')is-danger @enderror input-fullorder"id="money_debt" name="money_debt"  class="form-control" placeholder="{{__('Enter debt money')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif/>{{__(' SYP')}}<br>
+                {{__('equal ')}}<input type="text" class="input @error('money_debt')is-danger @enderror input-fullorder"id="money_debt" name="money_debt"  value="{{old('money_debt')}}" class="form-control" placeholder="{{__('Enter debt money')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif/>{{__(' SYP')}}<br>
             </div><br>
             @error('debt')
             <p class="help is-danger">{{ $message }}</p>
             @enderror</p><br>
-            <p>{{__('Mr.: The cashier in the branch, please receive an amount and its amount ')}}<input type="text" class="input @error('money_order')is-danger @enderror input-fullorder"id="money_order" name="money_order"  class="form-control" placeholder="{{__('Enter order money')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif/>{{__(' SYP')}}</p>
+            <p>{{__('Mr.: The cashier in the branch, please receive an amount and its amount ')}}<input type="text" class="input @error('money_order')is-danger @enderror input-fullorder"id="money_order" name="money_order" value="{{old('money_order')}}" class="form-control" placeholder="{{__('Enter order money')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif/>{{__(' SYP')}}</p>
     {{--  بيان أمين الصندوق--}}
             <hr>
             <p style="font-weight: bold;">{{__('Treasurer statement: ')}}</p>
             <p>{{__('Amount has been received ')}}
-                <input type="text" class="input @error('money_order')is-danger @enderror input-fullorder"id="money_order" name="money_order" class="form-control" placeholder="{{__('Enter order money')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif />{{__(' SYP')}}</p>
+                <input type="text" class="input @error('money_order')is-danger @enderror input-fullorder"id="money_order" name="money_order" value="{{old('money_order')}}"class="form-control" placeholder="{{__('Enter order money')}}" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif />{{__(' SYP')}}</p>
     {{-- قرار رئيس مجلس الإدارة --}}
             <hr>
             <p style="font-weight: bold;">{{__("Chairman's decision: ")}}</p>

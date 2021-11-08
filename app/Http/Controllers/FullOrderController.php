@@ -196,24 +196,23 @@ class FullOrderController extends Controller
             $fullorder->Chairman_decision            = $request->Chairman_decision;
             $fullorder->Chairman_disapproval_reasons = $request->Chairman_disapproval_reasons;
 
-            }//transfer
-            elseif($request->type == "transfer"){
+        }//transfer
+        elseif($request->type == "transfer"){
                 $fullorder->registered_branch_decision             = $request->registered_branch_decision;
                 $fullorder->registered_branch_disapproval_reasons  = $request->registered_branch_disapproval_reasons;
                 $fullorder->transferred_branch_decision            = $request->transferred_branch_decision;
                 // dd($request->transferred_branch_decision);
                 $fullorder->transferred_branch_disapproval_reasons = $request->transferred_branch_disapproval_reasons;
                 $fullorder->newmembership_number                   = $request->newmembership_number;
-            }//replacement
-            else{
+        }//replacement
+        else{
 
                 $fullorder->Chairman_decision            = $request->Chairman_decision;
                 $fullorder->Chairman_disapproval_reasons = $request->Chairman_disapproval_reasons;
-            //    if($request->debt == null && $request->money_debt <> null){
-            //     $fullorder->not_debtor = 1;
-            //    }
-
             }
+            if($request->money_debt <> null){
+                $fullorder->not_debtor = 1;
+               }
             $fullorder->status = $request->status;
             $fullorder->save();
             return redirect()->route('fullorders.show',$fullorder);
