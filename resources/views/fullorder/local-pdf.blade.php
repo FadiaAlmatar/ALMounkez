@@ -85,7 +85,12 @@
         @endif
     </head>
     <body>
-        <br>
+       <div>
+        {{__('Syndicate of Financial and Accounting Professions')}}<br>
+        {{__('In the Syrian Arab Republic')}}<br><br>
+        <span>{{__('branch:')}}</span><br>
+        <span>{{__('order number:')}}</span>
+        </div>
         <h1>{{__('Request a local membership document')}}</h1>
         {{-- <div style="border:1px solid black; height:100%"> --}}
         {{-- <span class="status"> {{__('Order Status: ')}} {{$fullorder->status}} </span><br> --}}
@@ -142,8 +147,8 @@
             </tr>
         </table>
         </div>
-        <hr style="margin-bottom:0;margin-top:0">
-        <hr style="margin-bottom:0;margin-top:0">
+        <hr style="margin-top:0">
+            <hr style="margin-bottom:0;margin-top:0">
         <span style="font-weight: bold;margin-top:0">{{__('Treasurer statement: ')}}</span>
         <hr style="margin-bottom:0;margin-top:0">
         <br>
@@ -171,7 +176,7 @@
          </table>
         </div>
 
-        <hr style="margin-bottom:0;margin-top:0">
+        <hr style="margin-top:0">
         <hr style="margin-bottom:0;margin-top:0">
             <span style="font-weight: bold;margin-bottom:0;">{{__("Chairman's decision")}}{{__(':')}}</span>
             <hr style="margin-bottom:0;margin-top:0">
