@@ -120,7 +120,8 @@
         <p style="text-align:center;font-size:11px;font-weight:bold;margin-top:0;margin-bottom:0">{{__('Your request will be considered within a maximum period of two days. Please contact us')}}</p>
         <hr style="margin-bottom:0;margin-top:0">
         <hr style="margin-bottom:0;">
-        <span style="font-weight: bold;margin-top:0">{{__('Branch financial management statement:')}}</span>  <hr style="margin-bottom:0;margin-top:0">
+        <span style="font-weight: bold;margin-top:0">{{__('Branch financial management statement:')}}</span>
+         <hr style="margin-bottom:0;margin-top:0">
         <br>
         {{__('Mr.')}}{{$fullorder->fullname}}{{__(' is affiliated with the Syndicate with a membership number ')}}{{Auth::User()->id}}
         {{__('We inform you that he is registered in the Syndicate in year 20')}}{{$fullorder->user->order->created_at->format('y')}} {{__('and : ')}}
@@ -157,11 +158,11 @@
                 <tr style="border:none;">
                     <td style="border:none;"></td>
                     <td style="border:none;"></td>
-                    <td style="border:none;">{{__('Name and signature of the treasurer')}}</td>
+                    <th style="border:none;">{{__('Name and signature of the treasurer')}}</th>
                     <td style="border:none;"></td>
                 </tr>
                 <tr style="border:none;">
-                   <td style="border:none;">{{__('the seal')}}</td>
+                   <th style="border:none;">{{__('the seal')}}</th>
                    <td style="border:none;"></td>
                    <td style="border:none;"></td>
                    <td style="border:none;"></td>
@@ -169,7 +170,7 @@
                 <tr style="border:none;">
                    <td style="border:none;"></td>
                    <td style="border:none;"></td>
-                   <td style="border:none;">{{__('date:    /      /201  ')}}</td>
+                   <th style="border:none;">{{__('date:    /      /201  ')}}</th>
                    <td style="border:none;"></td>
                 </tr>
             </table>
@@ -230,7 +231,7 @@
             </table>
             </div>
             <hr style="margin-bottom:0;">
-            <p style="font-weight:bold;">{{__('Confirmation of the Affiliate Member of Receipt of the Membership Document:')}}</p>
+            <p style="font-weight:bold;margin-bottom:0">{{__('Confirmation of the Affiliate Member of Receipt of the Membership Document:')}}</p>
             <table class="table table-bordered;border:none;">
                 {{-- <thead> --}}
                     <tr>

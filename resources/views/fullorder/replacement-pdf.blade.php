@@ -21,7 +21,7 @@
             font-size: 20px;
             }
             table{
-                width:75%;
+                width:100%;
                 border: 1px solid black;
                 border-collapse: collapse;
                 margin:auto;
@@ -30,11 +30,10 @@
             td,th{
                 border: 1px solid black;
                 width:24%;
+                text-align:right;
+                padding-right: 5px;
             }
-            td{
-                text-align: center;
-            }
-            th,strong{
+            strong{
                 text-align: center;
             }
             .p-fullorder{
@@ -64,7 +63,7 @@
             font-size: 20px;
             }
             table{
-                width:75%;
+                width:100%;
                 border: 1px solid black;
                 border-collapse: collapse;
                 margin:auto;
@@ -72,11 +71,10 @@
             td,th{
                 border: 1px solid black;
                 width:24%;
+                text-align:left;
+                padding-left: 5px;
             }
-            td{
-                text-align: center;
-            }
-            th,strong{
+            strong{
                 text-align: center;
             }
             .p-fullorder{
@@ -95,10 +93,18 @@
         @endif
     </head>
     <body>
+        <div>
+            {{__('Syndicate of Financial and Accounting Professions')}}<br>
+            {{__('In the Syrian Arab Republic')}}<br>
+            <span>{{__('branch:')}}</span><br>
+            <span>{{__('order number:')}}</span><br>
+            <span>{{__('order date:')}}</span>
+        </div>
         <h1>{{__('Request for a replacement membership card')}}</h1>
         <p style="font-size:11px;font-weight:bold;">{{__('Based on decision of the Board of Directors in its session No. 36 held on the date 27/04/2016 containing the determination of the amount 1000 SYP of the value of a membership card:(Consists-Lost)')}}</p>
         <h1 style="font-size:13px;text-align: center;font-weight:bold;background-color:rgb(199, 198, 198);text-decoration:none;">{{__('Filled out by the affiliate')}}</h1>
-        <p><span style="color:red"> {{__('Order Status: ')}}  {{$fullorder->status}} </span><br>
+        <p>
+            {{-- <span style="color:red"> {{__('Order Status: ')}}  {{$fullorder->status}} </span><br> --}}
         {{__('Gentlemen of the Financial and Accounting Professions Syndicate, please give me a membership card instead: ')}}</p>
             @if($fullorder->replace_reasons == "lost")
                 <span>{{__('Lost (police decision attached)')}} </span>
@@ -121,7 +127,7 @@
         <p style="font-weight: bold;text-align: center;">{{__('Required modifications to be made on the new membership card')}}</p>
         <table class="table table-bordered">
               <tr>
-                <th scope="col" style="width:30%">{{__('FullName/Arabic')}}</th>
+                <th scope="col" style="width:30%;">{{__('FullName/Arabic')}}</th>
                 <td>{{$fullorder->fullname_arabic}}</td>
               </tr>
               <tr>
@@ -136,68 +142,101 @@
                 <td>{{ $fullorder->newmembership_number }}</td>
               </tr>
           </table>
-          <br>
         <table class="table table-bordered">
-        <thead>
+            <tbody>
             <tr>
-                <th scope="col">{{__('User ID')}}</th>
+                <th scope="col">{{__('User')}}</th>
+                <td>{{ Auth::User()->id}}</td>
                 <th scope="col" >{{__('Membership ID')}}</th>
-                <th scope="col">{{__('Request Date')}}</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td style="width:24%">{{ Auth::User()->id}}</td>
-                <td style="width:24%">{{$fullorder->membership_id}}</td>
-                <td style="width:24%">{{ date("Y-m-d h:i A", strtotime($fullorder->created_at))}}</td>
+                <td>{{$fullorder->membership_id}}</td>
             </tr>
         </tbody>
         </table>
-        <p style="text-align:center;font-size:11px;font-weight:bold;">{{__('Your request will be considered within a maximum period of two days. Please contact us')}}</p>
-        <hr>
 {{--  بيان الدارة الماليةللفرع --}}
-    <p><span style="font-weight: bold">{{__('Branch financial management statement:')}}</span><br>
+    <span style="font-weight: bold;margin-top:0">{{__('Branch financial management statement:')}}</span><hr style="margin-bottom:0;margin-top:0"><br><br>
     {{__('Mr.')}}{{$fullorder->fullname}}{{__(' is affiliated with the Syndicate with a membership number ')}}{{Auth::User()->id}}
-    {{__('We inform you that he is registered in the Syndicate in year 20')}}{{$fullorder->user->order->created_at->format('y')}} {{__('and : ')}}</p>
-    {{-- @if($fullorder->not_debtor <> null ) --}}
+    {{__('We inform you that he is registered in the Syndicate in year 20')}}{{$fullorder->user->order->created_at->format('y')}} {{__('and : ')}}
     @if($fullorder->not_debtor == 0)
         <div class="form-check">
-            {{-- <input class="form-check-input" type="radio" name="debt" id="financially_innocent" value="{{$fullorder->not_debtor}}" disabled checked> --}}
             <label for="financially_innocent" class="form-check-label" value="financially_innocent" @if (old('debt') == "financially_innocent") {{ 'selected' }} @endif>{{__('Financially innocent')}}</label>
         </div>
         @else
-            {{-- <input class="form-check-input" type="radio" name="debt" id="financial_liability" value="{{$fullorder->not_debtor}}" disabled checked> --}}
             <label for="financial_liability" class="form-check-label" value="financial_liability" @if (old('debt') == "financial_liability") {{ 'selected' }} @endif>{{__('It has a previous financial liability')}}</label>
             {{__('equal ')}}
              {{ $fullorder->money_debt}}{{__(' SYP')}}
         </div>@endif
         @if($fullorder->money_debt <> null && $fullorder->not_debtor == null )
-        {{-- @if($fullorder->money_debt <> null) --}}
-        {{-- <input class="form-check-input" type="radio" name="debt" id="financial_liability" value="{{$fullorder->not_debtor}}" disabled checked> --}}
         <label for="financial_liability" class="form-check-label" value="financial_liability" @if (old('debt') == "financial_liability") {{ 'selected' }} @endif>{{__('It has a previous financial liability')}}</label>
         {{__('equal ')}}
          {{ $fullorder->money_debt}}{{__(' SYP')}}
-        {{-- @endif --}}
       @endif
     <p>{{__('Mr.: The cashier in the branch, please receive an amount and its amount ')}}
        {{ $fullorder->money_order}}{{__(' SYP')}}</p>
-{{--  بيان أمين الصندوق--}}
-            <hr>
-            <p><span style="font-weight: bold;">{{__('Treasurer statement: ')}}</span><br>
-            {{__('Amount has been received ')}}{{ $fullorder->money_order }}{{__(' SYP')}}</p>
-{{-- قرار رئيس مجلس الإدارة --}}
-            <hr>
-            <p><span style="font-weight: bold;">{{__("Chairman's decision")}}{{__(':')}}</span>
-            {{-- {{__('Approval')}} --}}
+       <div>
+        <table style="width:60%;margin-right:0;border:none;"  @if (app()->getLocale() == 'ar') style="width:60%;margin-left:0;border:none;" @endif>
+            <tr style="border:none;">
+                <th style="border:none;">{{__('Name and signature of the treasurer')}}</th>
+                <td style="border:none;"></td>
+            </tr>
+        </table>
+        </div><br>
+        <hr style="margin-top:0;margin-bottom:0">
+            <span style="font-weight: bold;margin-top:0">{{__('Treasurer statement: ')}}</span><hr style="margin-bottom:0;margin-top:0">
+            {{__('Amount has been received ')}}{{ $fullorder->money_order }}{{__(' SYP')}}
+            <div>
+                <table style="width:100%;border:none;" @if (app()->getLocale() == 'ar') style="width:100%;border:none;" @endif>
+                    <tr style="border:none;">
+                        <th style="border:none;width:15%">{{__('date:    /      /201  ')}}</th>
+                        <td style="border:none;;width:2%"></td>
+                        <th style="border:none;;width:15%">{{__('the seal')}}</th>
+                        <td style="border:none;width:10%"></td>
+                        <th style="border:none;width:30%">{{__('Name and signature of the treasurer')}}</th>
+                        <td style="border:none;width:20%"></td>
+                    </tr>
+                </table>
+               </div>
+               <hr style="margin-top:0;margin-bottom:0">
+            <span style="font-weight: bold;margin-top:0">{{__("Chairman's decision")}}{{__(':')}}</span>
+                <hr style="margin-bottom:0;margin-top:0">
                 @if($fullorder->Chairman_decision == 1)
                     {{__('Approval')}}
                     @else
                     {{__('Disapproval')}}
                 @endif
-            </p>
+
                 @if($fullorder->Chairman_decision == 0)
                     <p>{{__('reasons :(If not approved)')}}<br>{{ $fullorder->Chairman_disapproval_reasons }}</p>
                 @endif
+                <div>
+                    <table style="width:100%;border:none;" @if (app()->getLocale() == 'ar') style="width:100%;border:none;" @endif>
+                        <tr style="border:none;">
+                            <th style="border:none;">{{__('date:    /      /201  ')}}</th>
+                            <td style="border:none;"></td>
+                            <th style="border:none;">{{__('signature')}}</th>
+                            <td style="border:none;"></td>
+                        </tr>
+                    </table>
+                   </div>
+                   <hr style="margin-top:0">
+                <p style="font-weight:bold;text-align:center;margin-bottom:0">{{__('Confirmation of the Affiliate Member of Receipt of the Membership card:')}}</p>
+                <table class="table table-bordered;border:none;">
+                        <tr>
+                            <th scope="col">{{__('Card issue date')}}</th>
+                            <td style="width:24%"></td>
+                            <th scope="col">{{__('issuance of the document date:')}}</th>
+                            <td style="width:24%"></td>
+                        </tr>
+                    <tbody>
+                        <tr>
+                            <th scope="col" >{{__("Employee name(received from him)")}}</th>
+                            <td style="width:24%"></td>
+                            <th scope="col" >{{__("Affiliate's signature:")}}</th>
+                            <td style="width:24%"></td>
+                        </tr>
+                    </tbody>
+                    </table>
+                <p style="text-align: center;font-size:11px">{{__('The original is kept in a register of the membership cards replacement at the branch sequentially for each year after receiving it from the central administration, attached to the new membership card')}}</p>
+
     </div>
     @if($fullorder->police_image <> null)
     <pagebreak>

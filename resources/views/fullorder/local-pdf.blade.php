@@ -202,7 +202,7 @@
             </table>
             </div>
         <hr style="margin-bottom:0;">
-        <p style="font-weight:bold;">{{__('Confirmation of the Affiliate Member of Receipt of the Membership Document:')}}</p>
+        <p style="font-weight:bold;margin-bottom:0">{{__('Confirmation of the Affiliate Member of Receipt of the Membership Document:')}}</p>
         <table class="table table-bordered;border:none;">
             {{-- <thead> --}}
                 <tr>
