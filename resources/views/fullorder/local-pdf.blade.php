@@ -87,7 +87,7 @@
     <body>
        <div>
         {{__('Syndicate of Financial and Accounting Professions')}}<br>
-        {{__('In the Syrian Arab Republic')}}<br><br>
+        {{__('In the Syrian Arab Republic')}}<br>
         <span>{{__('branch:')}}</span><br>
         <span>{{__('order number:')}}</span>
         </div>
@@ -101,10 +101,8 @@
         <thead>
             <tr>
                 <th scope="col">{{__('User ID')}}</th>
-
                 <td style="width:24%">{{ Auth::User()->id}}</td>
                 <th scope="col">{{__('Request Date')}}</th>
-                {{-- <th scope="col">{{__('Request Date')}}</th> --}}
                 <td style="width:24%">{{ date("Y-m-d h:i A", strtotime($fullorder->created_at))}}</td>
             </tr>
         </thead>
@@ -158,11 +156,11 @@
              <tr style="border:none;">
                  <td style="border:none;"></td>
                  <td style="border:none;"></td>
-                 <td style="border:none;">{{__('Name and signature of the treasurer')}}</td>
+                 <th style="border:none;">{{__('Name and signature of the treasurer')}}</th>
                  <td style="border:none;"></td>
              </tr>
              <tr style="border:none;">
-                <td style="border:none;">{{__('the seal')}}</td>
+                <th style="border:none;">{{__('the seal')}}</th>
                 <td style="border:none;"></td>
                 <td style="border:none;"></td>
                 <td style="border:none;"></td>
@@ -170,7 +168,7 @@
              <tr style="border:none;">
                 <td style="border:none;"></td>
                 <td style="border:none;"></td>
-                <td style="border:none;">{{__('date:    /      /201  ')}}</td>
+                <th style="border:none;">{{__('date:    /      /201  ')}}</th>
                 <td style="border:none;"></td>
              </tr>
          </table>

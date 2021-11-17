@@ -87,7 +87,7 @@
     <body>
         <div>
             {{__('Syndicate of Financial and Accounting Professions')}}<br>
-            {{__('In the Syrian Arab Republic')}}<br><br>
+            {{__('In the Syrian Arab Republic')}}<br>
             <span>{{__('branch:')}}</span><br>
             <span>{{__('order number:')}}</span>
             </div>

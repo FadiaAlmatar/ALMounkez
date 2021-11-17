@@ -29,11 +29,10 @@
             td,th{
                 border: 1px solid black;
                 width:24%;
+                text-align:right;
             }
-            td{
-                text-align: center;
-            }
-            th,strong{
+
+            strong{
                 text-align: center;
             }
             .p-fullorder{
@@ -72,11 +71,10 @@
             td,th{
                 border: 1px solid black;
                 width:24%;
+                text-align:left;
             }
-            td{
-                text-align: center;
-            }
-            th,strong{
+
+            strong{
                 text-align: center;
             }
             .p-fullorder{
@@ -96,9 +94,14 @@
         @endif
     </head>
     <body>
-        <br>
+        <div>
+            {{__('Syndicate of Financial and Accounting Professions')}}<br>
+            {{__('In the Syrian Arab Republic')}}<br>
+            <span>{{__('branch:')}}</span><br>
+            <span>{{__('order number:')}}</span>
+        </div>
         <h1>{{__('Membership transfer form from one branch to another')}}</h1>
-        <p class="status"> {{__('Order Status: ')}} {{$fullorder->status}}</p>
+        {{-- <p class="status"> {{__('Order Status: ')}} {{$fullorder->status}}</p> --}}
         <span style="direction: rtl">{{__('Mr. Chairman of the Syndicate Branch Council in the province')}}</span>
         <span>{{$fullorder->country_before}}</span>
         <p style="text-transform: capitalize;">{{__('fullname : ')}}<span style="text-transform: capitalize;">{{$fullorder->fullname}}</span></p>
@@ -119,33 +122,69 @@
             @else
                 <span>{{__('It has a previous financial liability')}}{{__('equal ')}}{{ $fullorder->money_debt}}{{__(' SYP')}}</span>
             @endif
+            <div>
+                <table style="width:60%;margin-right:0;border:none;" @if (app()->getLocale() == 'ar') style="width:60%;margin-left:0;border:none;" @endif>
+                    <tr style="border:none;">
+                        <th style="border:none;">{{__('date:    /      /201  ')}}</th>
+                        <td style="border:none;"></td>
+                    </tr>
+                    <tr style="border:none;">
+                       <th style="border:none;">{{__("Accountant's name and signature")}}</th>
+                       <td style="border:none;"></td>
+                    </tr>
+                </table>
+               </div>
 {{-- قرار مجلس إدارة الفرع المسجل به --}}
-            <hr>
-            <p><span style="font-weight: bold;">{{__('Decision of the board of directors of the branch in which it is registered')}}</span><br>
+<hr style="margin-bottom:0;margin-top:0">
+            <span style="font-weight: bold;">{{__('Decision of the board of directors of the branch in which it is registered')}}</span><br>
             {{-- {{__('Approval:')}} --}}
             @if($fullorder->registered_branch_decision == 1)
                 {{__('Approval')}}
             @else
                 {{__('Disapproval')}}
             @endif
-            </p>
+
             @if($fullorder->registered_branch_decision == 0)
             <p>{{__('reasons :(If not approved)')}}</p>
             <p>{{ $fullorder->registered_branch_disapproval_reasons }}</p>
             @endif
+            <div>
+                <table style="width:60%;margin-right:0;border:none;" @if (app()->getLocale() == 'ar') style="width:60%;margin-left:0;border:none;" @endif>
+                    <tr style="border:none;">
+                        <th style="border:none;">{{__('date:    /      /201  ')}}</th>
+                        <td style="border:none;"></td>
+                    </tr>
+                    <tr style="border:none;">
+                       <th style="border:none;">{{__("signature of branch board Chairman")}}</th>
+                       <td style="border:none;"></td>
+                    </tr>
+                </table>
+               </div>
 {{--قرار مجلس إدارة الفرع الراغب بالانتقال إليه --}}
             <hr>
-            <p><span style="font-weight: bold;">{{__('The decision of the board of directors of the branch wishing to move to it: ')}}</span><br>
+            <span style="font-weight: bold;">{{__('The decision of the board of directors of the branch wishing to move to it: ')}}</span><br>
             {{-- {{__('Approval:')}} --}}
             @if($fullorder->Chairman_decision == 1)
                 {{__('Approval')}}
             @else
                 {{__('Disapproval')}}
             @endif
-            </p>
+
             @if($fullorder->transferred_branch_decision == 0)
                 <p for="reasons">{{__('reasons :(If not approved)')}}<br>{{ $fullorder->transferred_branch_disapproval_reasons }}</p>
             @endif
+            <div>
+                <table style="width:60%;margin-right:0;border:none;" @if (app()->getLocale() == 'ar') style="width:60%;margin-left:0;border:none;" @endif>
+                    <tr style="border:none;">
+                        <th style="border:none;">{{__('date:    /      /201  ')}}</th>
+                        <td style="border:none;"></td>
+                    </tr>
+                    <tr style="border:none;">
+                       <th style="border:none;">{{__("signature of branch board Chairman")}}</th>
+                       <td style="border:none;"></td>
+                    </tr>
+                </table>
+               </div>
 {{--  بيان أمين الصندوق--}}
             <hr>
             <p><span style="font-weight: bold;">{{__('Treasurer statement: ')}}</span><br>
