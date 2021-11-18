@@ -569,5 +569,8 @@
 ,"Employee name(received from him)":"اسم الموظف(المسلم)"
 ,"Affiliate's signature:":"توقيع المنتسب"
 ,"The original is kept in a register of the membership cards replacement at the branch sequentially for each year after receiving it from the central administration, attached to the new membership card":"تحفظ الأصل في سجل بدل بطاقات العضوية لدى الفرع  بشكل متسلسل لكل عام بعد استلامها من الإدارة المركزية مرفقة ببطاقة العضوية الجديدة"
-
+,"date:":"التاريخ"
+,"(Only the document amount is received)":"(يتم قبض مبلغ الوثيقة فقط)"
+,"(Note: Only the unpaid subscription fee is received, but the document fee is paid to the central administration)":"(ملاحظة: يتم قبض مبلغ رسوم الاشتراك غير المسددة فقط أما رسم الوثيقة يسدد في الإدارة المركزية)"
+,"User":"مقدم الطلب"
 }
