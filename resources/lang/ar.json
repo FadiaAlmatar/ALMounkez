@@ -573,4 +573,9 @@
 ,"(Only the document amount is received)":"(يتم قبض مبلغ الوثيقة فقط)"
 ,"(Note: Only the unpaid subscription fee is received, but the document fee is paid to the central administration)":"(ملاحظة: يتم قبض مبلغ رسوم الاشتراك غير المسددة فقط أما رسم الوثيقة يسدد في الإدارة المركزية)"
 ,"User":"مقدم الطلب"
+,"(A copy is kept in the branch to which it is transferred and a copy is sent to the central administration and a copy to the branch it is transferred from)":"(تحفظ نسخة في الفرع المنتقل إليه وترسل نسخة إلى الإدارة المركزية ونسخة إلى الفرع المنتقل منه)"
+,"(Attached are the supporting documents. Change: place of residence - place of work)":"(مرفق الثبوتيات تغيير : مكان الإقامة - مكان العمل)"
+,"Name and Signature:":"الاسم والتوقيع:"
+,"User:":"مقدم الطلب:"
+
 }

@@ -4,7 +4,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         @if (app()->getLocale() == 'ar')
         <style>
-            p,.span{
+            p,span{
                 text-align: right;
                 float:right;
             }
@@ -14,14 +14,15 @@
            body {
             font-family: 'XBRiyaz', sans-serif;
             direction: rtl;
+            font-size: 12px;
            }
            h1 {
             text-align: center;
             text-decoration: underline;
-            font-size: 20px;
+            font-size: 18px;
             }
             table{
-                width:75%;
+                width:100%;
                 border: 1px solid black;
                 border-collapse: collapse;
                 margin:auto;
@@ -29,19 +30,13 @@
             td,th{
                 border: 1px solid black;
                 width:24%;
-                text-align:right;
+                text-align: left;
+                font-size: 11px;
+                padding-right:5px;
             }
 
             strong{
                 text-align: center;
-            }
-            .p-fullorder{
-                text-align: center;
-            }
-            .status{
-                color: red;
-                /* border:1px solid red; */
-                width: fit-content;
             }
             img{
                 width: 210mm;
@@ -51,19 +46,17 @@
         </style>
         @else
         <style>
-           .status{
-               float:left;
-           }
            body {
             font-family: 'XBRiyaz', sans-serif;
+            font-size: 12px;
            }
            h1 {
             text-align: center;
             text-decoration: underline;
-            font-size: 20px;
+            font-size: 18px;
             }
             table{
-                width:75%;
+                width:100%;
                 border: 1px solid black;
                 border-collapse: collapse;
                 margin:auto;
@@ -71,19 +64,12 @@
             td,th{
                 border: 1px solid black;
                 width:24%;
-                text-align:left;
+                font-size: 11px;
+                text-align: left;
+                padding-left:5px;
             }
-
             strong{
                 text-align: center;
-            }
-            .p-fullorder{
-                text-align: center;
-            }
-            .status{
-                color: red;
-                /* border:1px solid red; */
-                width: fit-content;
             }
             img{
                 width: 210mm;
@@ -103,19 +89,35 @@
         <h1>{{__('Membership transfer form from one branch to another')}}</h1>
         {{-- <p class="status"> {{__('Order Status: ')}} {{$fullorder->status}}</p> --}}
         <span style="direction: rtl">{{__('Mr. Chairman of the Syndicate Branch Council in the province')}}</span>
-        <span>{{$fullorder->country_before}}</span>
-        <p style="text-transform: capitalize;">{{__('fullname : ')}}<span style="text-transform: capitalize;">{{$fullorder->fullname}}</span></p>
-        <p>{{__('I kindly request you to transfer my membership from your branch of the Syndicate branch in the country: ')}}{{$fullorder->country_before}}
-        <br>{{__('To the syndicate branch in the country: ')}}{{$fullorder->country_after}}</p>
-        <hr>
-        <p>{{__('That is for the following reasons :')}}</p>
-        <p>{{$fullorder->transportation_reasons}}</p>
-            <p>{{__('Request date: ')}} {{ date("Y-m-d h:i A", strtotime($fullorder->created_at))}}</p>
-            <hr>
+        <span>{{$fullorder->country_before}}</span><br>
+        <span>{{__('User:')}}</span><br>
+        <span style="text-transform: capitalize;">{{__('fullname : ')}}<span style="text-transform: capitalize;">{{$fullorder->fullname}}</span>
+        <hr style="margin-bottom:0;margin-top:0">
+        <span style="margin-top:0">{{__('I kindly request you to transfer my membership from your branch of the Syndicate branch in the country: ')}}{{$fullorder->country_before}}
+        <br>{{__('To the syndicate branch in the country: ')}}{{$fullorder->country_after}}</span>
+        <hr style="margin-bottom:0;margin-top:0">
+        <span>{{__('That is for the following reasons :')}}</span>
+        <span>{{$fullorder->transportation_reasons}}</span><br>
+        <span>{{__('(Attached are the supporting documents. Change: place of residence - place of work)')}}</span><br>
+        {{-- <span>{{__('Request date: ')}} {{ date("Y-m-d h:i A", strtotime($fullorder->created_at))}}</span> --}}
+        <div>
+            <table style="width:100%;border:none;" @if (app()->getLocale() == 'ar') style="width:100%;border:none;" @endif>
+                <tr style="border:none;">
+                    <th style="border:none;width:20%">{{__('Request date: ')}}</th>
+                    <td style="border:none;;width:2%">{{ date("Y-m-d h:i A", strtotime($fullorder->created_at))}}</td>
+                    <th style="border:none;;width:15%"></th>
+                    <td style="border:none;width:10%"></td>
+                    <th style="border:none;width:30%">{{__('Name and Signature:')}}</th>
+                    <td style="border:none;width:20%"></td>
+                </tr>
+            </table>
+           </div>
+        <hr style="margin-bottom:0;margin-top:4px">
 {{-- بيان الادارة المالية --}}
-            <p><span style="font-weight: bold;">{{__('Financial Management Statement:')}}</span><br>
-            {{__('The fellow')}} {{Auth::User()->name}}{{__(' is affiliated with the Syndicate with a membership number ')}}{{Auth::User()->id}}
-            {{__('And registered in the Syndicate in year 20')}}{{$fullorder->user->order->created_at->format('y')}}</p>
+            <span style="font-weight: bold;margin-top:0">{{__('Financial Management Statement:')}}</span>
+            <hr style="margin-bottom:0;margin-top:0">
+            {{__('The fellow')}} {{Auth::User()->name}}{{__(' is affiliated with the Syndicate with a membership number ')}}{{Auth::User()->id}}<br>
+            {{__('And registered in the Syndicate in year 20')}}{{$fullorder->user->order->created_at->format('y')}}<br>
 
             @if($fullorder->not_debtor == 0)
                 <span>{{__('Financially innocent')}}</span>
@@ -125,7 +127,7 @@
             <div>
                 <table style="width:60%;margin-right:0;border:none;" @if (app()->getLocale() == 'ar') style="width:60%;margin-left:0;border:none;" @endif>
                     <tr style="border:none;">
-                        <th style="border:none;">{{__('date:    /      /201  ')}}</th>
+                        <th style="border:none;"><pre>{{__(' date:')}}   /    / 201</pre></th>
                         <td style="border:none;"></td>
                     </tr>
                     <tr style="border:none;">
@@ -133,10 +135,11 @@
                        <td style="border:none;"></td>
                     </tr>
                 </table>
-               </div>
+               </div><br>
 {{-- قرار مجلس إدارة الفرع المسجل به --}}
-<hr style="margin-bottom:0;margin-top:0">
-            <span style="font-weight: bold;">{{__('Decision of the board of directors of the branch in which it is registered')}}</span><br>
+            <hr style="margin-bottom:0;margin-top:0">
+            <span style="font-weight: bold;margin-top:0">{{__('Decision of the board of directors of the branch in which it is registered')}}</span>
+            <hr style="margin-bottom:0;margin-top:0">
             {{-- {{__('Approval:')}} --}}
             @if($fullorder->registered_branch_decision == 1)
                 {{__('Approval')}}
@@ -151,7 +154,7 @@
             <div>
                 <table style="width:60%;margin-right:0;border:none;" @if (app()->getLocale() == 'ar') style="width:60%;margin-left:0;border:none;" @endif>
                     <tr style="border:none;">
-                        <th style="border:none;">{{__('date:    /      /201  ')}}</th>
+                        <th style="border:none;"><pre>{{__(' date:')}}   /    / 201</pre></th>
                         <td style="border:none;"></td>
                     </tr>
                     <tr style="border:none;">
@@ -159,10 +162,11 @@
                        <td style="border:none;"></td>
                     </tr>
                 </table>
-               </div>
+               </div><br>
 {{--قرار مجلس إدارة الفرع الراغب بالانتقال إليه --}}
-            <hr>
-            <span style="font-weight: bold;">{{__('The decision of the board of directors of the branch wishing to move to it: ')}}</span><br>
+<hr style="margin-bottom:0;margin-top:0">
+            <span style="font-weight: bold;margin-top:0">{{__('The decision of the board of directors of the branch wishing to move to it: ')}}</span>
+            <hr style="margin-bottom:0;margin-top:0">
             {{-- {{__('Approval:')}} --}}
             @if($fullorder->Chairman_decision == 1)
                 {{__('Approval')}}
@@ -176,7 +180,7 @@
             <div>
                 <table style="width:60%;margin-right:0;border:none;" @if (app()->getLocale() == 'ar') style="width:60%;margin-left:0;border:none;" @endif>
                     <tr style="border:none;">
-                        <th style="border:none;">{{__('date:    /      /201  ')}}</th>
+                        <th style="border:none;"><pre>{{__(' date:')}}   /    / 201</pre></th>
                         <td style="border:none;"></td>
                     </tr>
                     <tr style="border:none;">
@@ -184,15 +188,30 @@
                        <td style="border:none;"></td>
                     </tr>
                 </table>
-               </div>
+               </div><br>
 {{--  بيان أمين الصندوق--}}
-            <hr>
-            <p><span style="font-weight: bold;">{{__('Treasurer statement: ')}}</span><br>
-            {{__('Amount has been received ')}}{{ $fullorder->money_order}}{{__(' SYP')}} {{__('For a membership card fee')}}</p>
-            <hr>
-            <p style="font-weight: bold;">{{__('The new membership number in the event that both parties agree to transfer the affiliate')}}
+            <hr style="margin-bottom:0;margin-top:0">
+            <span style="font-weight: bold;margin-top:0">{{__('Treasurer statement: ')}}</span>
+            <hr style="margin-bottom:0;margin-top:0">
+            <pre>{{__('Amount has been received ')}}{{$fullorder->money_order}}{{__('SYP')}}{{__('(Just ')}}{{$fullorder->money_order}}{{__(' Nothing else)')}}{{__('Receipt No')}}/         /{{__(' date:')}}  /   / 201 {{__('For a membership card fee')}}</pre>
+            <div>
+                <table style="width:100%;border:none;" @if (app()->getLocale() == 'ar') style="width:100%;border:none;" @endif>
+                    <tr style="border:none;">
+                        <th style="border:none;width:20%"><pre>{{__(' date:')}}   /    / 201</pre></th>
+                        <td style="border:none;;width:2%"></td>
+                        <th style="border:none;;width:15%">{{__('the seal')}}</th>
+                        <td style="border:none;width:10%"></td>
+                        <th style="border:none;width:30%">{{__('Name and signature of the treasurer')}}</th>
+                        <td style="border:none;width:20%"></td>
+                    </tr>
+                </table>
+               </div><br>
+               <hr style="margin-bottom:0;margin-top:0">
+            <p style="font-weight: bold;margin-top:0">{{__('The new membership number in the event that both parties agree to transfer the affiliate')}}
              {{$fullorder->newmembership_number}}</p>
-            @if($fullorder->home_change <> null)
+             <p style="text-align: center;font-weight:bold;margin-top:0;font-size: 9px;">{{__('(A copy is kept in the branch to which it is transferred and a copy is sent to the central administration and a copy to the branch it is transferred from)')}}</p>
+
+             @if($fullorder->home_change <> null)
             <pagebreak>
             <div style="position: absolute; left:0; right: 0; top: 0; bottom: 0;">
                 <img src ="{{asset("storage/home_changes/$fullorder->home_change")}}">
