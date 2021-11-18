@@ -160,7 +160,7 @@
     <br>{{__('In addition to the membership card replacement fee, the amount of 1000 SP')}}
     </p>
        <div>
-        <table style="width:60%;margin-right:0;border:none;"  @if (app()->getLocale() == 'ar') style="width:60%;margin-left:0;border:none;" @endif>
+        <table  @if (app()->getLocale() == 'ar') style="width:60%;margin-left:0;border:none;"@else style="width:60%;margin-right:0;border:none;"  @endif>
             <tr style="border:none;">
                 <th style="border:none;">{{__('Name and signature of the treasurer')}}</th>
                 <td style="border:none;"></td>
@@ -171,7 +171,7 @@
             <span style="font-weight: bold;margin-top:0">{{__('Treasurer statement: ')}}</span><hr style="margin-bottom:0;margin-top:0">
             <pre>{{__('Amount has been received ')}}{{$fullorder->money_order}}{{__('SYP')}}{{__('(Just ')}}{{$fullorder->money_order}}{{__(' Nothing else)')}}{{__('Receipt No')}}/         /{{__(' date:')}}  /   / 201</pre><br>
             <div>
-                <table style="width:100%;border:none;" @if (app()->getLocale() == 'ar') style="width:100%;border:none;" @endif>
+                <table  style="width:100%;border:none;">
                     <tr style="border:none;">
                         <th style="border:none;width:20%"><pre>{{__(' date:')}}   /    / 201</pre></th>
                         <td style="border:none;;width:2%"></td>
@@ -195,7 +195,7 @@
                     <p>{{__('reasons :(If not approved)')}}<br>{{ $fullorder->Chairman_disapproval_reasons }}</p>
                 @endif
                 <div>
-                    <table style="width:100%;border:none;" @if (app()->getLocale() == 'ar') style="width:100%;border:none;" @endif>
+                    <table style="width:100%;border:none;">
                         <tr style="border:none;">
                             <th style="border:none;"><pre>{{__(' date:')}}   /    / 201</pre></th>
                             <td style="border:none;"></td>
@@ -215,7 +215,7 @@
                         </tr>
                     <tbody>
                         <tr>
-                            <th scope="col" >{{__("Employee name(received from him)")}}</th>
+                            <th scope="col" >{{__('Employee name(received from him)')}}</th>
                             <td style="width:24%"></td>
                             <th scope="col" >{{__("Affiliate's signature:")}}</th>
                             <td style="width:24%"></td>

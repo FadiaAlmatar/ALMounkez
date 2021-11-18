@@ -116,7 +116,7 @@
         @endif
         <p>{{__('Mr.: The cashier in the branch, please receive an amount and its amount ')}}{{ $fullorder->money_order}}{{__(' SYP')}}</p>
         <div>
-        <table style="width:60%;margin-right:0;border:none;"  @if (app()->getLocale() == 'ar') style="width:60%;margin-left:0;border:none;" @endif>
+        <table   @if (app()->getLocale() == 'ar') style="width:60%;margin-left:0;border:none;" @else style="width:60%;margin-right:0;border:none;"@endif>
             <tr style="border:none;">
                 <th style="border:none;">{{__('Name and signature of the treasurer')}}</th>
                 <td style="border:none;"></td>
@@ -139,7 +139,7 @@
         {{-- {{__('Amount has been received ')}}{{ $fullorder->money_order}}{{__(' SYP')}}{{__(' (Just ')}}{{ $fullorder->money_order}}{{__(' Nothing else)')}}<pre>{{__(' Receipt No')}} /         /{{__(' date:')}}   /   / 201</pre> --}}
         <pre>{{__('Amount has been received ')}}{{$fullorder->money_order}}{{__('SYP')}}{{__('(Just ')}}{{$fullorder->money_order}}{{__(' Nothing else)')}}{{__('Receipt No')}}/         /{{__(' date:')}}  /   / 201</pre>
         <div>
-         <table style="width:67%;margin-right:0;border:none;" @if (app()->getLocale() == 'ar') style="width:67%;margin-left:0;border:none;" @endif>
+         <table  @if (app()->getLocale() == 'ar') style="width:67%;margin-left:0;border:none;" @else style="width:67%;margin-right:0;border:none;" @endif>
              <tr style="border:none;">
                  <td style="border:none;"></td>
                  <td style="border:none;"></td>
@@ -176,7 +176,7 @@
         @endif
         <br>
         <div>
-            <table style="width:20%;margin-right:0;border:none"  @if (app()->getLocale() == 'ar') style="width:20%;margin-left:0;border:none;" @endif>
+            <table  @if (app()->getLocale() == 'ar') style="width:20%;margin-left:0;border:none;" @else style="width:20%;margin-right:0;border:none"  @endif>
                 <tr style="border:none;">
                     <th style="border:none;">{{__('signature:')}}</th>
                 </tr>

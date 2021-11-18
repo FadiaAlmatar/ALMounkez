@@ -101,7 +101,7 @@
         <span>{{__('(Attached are the supporting documents. Change: place of residence - place of work)')}}</span><br>
         {{-- <span>{{__('Request date: ')}} {{ date("Y-m-d h:i A", strtotime($fullorder->created_at))}}</span> --}}
         <div>
-            <table style="width:100%;border:none;" @if (app()->getLocale() == 'ar') style="width:100%;border:none;" @endif>
+            <table style="width:100%;border:none;">
                 <tr style="border:none;">
                     <th style="border:none;width:20%">{{__('Request date: ')}}</th>
                     <td style="border:none;;width:2%">{{ date("Y-m-d h:i A", strtotime($fullorder->created_at))}}</td>
@@ -125,7 +125,7 @@
                 <span>{{__('It has a previous financial liability')}}{{__('equal ')}}{{ $fullorder->money_debt}}{{__(' SYP')}}</span>
             @endif
             <div>
-                <table style="width:60%;margin-right:0;border:none;" @if (app()->getLocale() == 'ar') style="width:60%;margin-left:0;border:none;" @endif>
+                <table @if (app()->getLocale() == 'ar') style="width:60%;margin-left:0;border:none;"@else style="width:60%;margin-right:0;border:none;"  @endif>
                     <tr style="border:none;">
                         <th style="border:none;"><pre>{{__(' date:')}}   /    / 201</pre></th>
                         <td style="border:none;"></td>
@@ -152,13 +152,13 @@
             <p>{{ $fullorder->registered_branch_disapproval_reasons }}</p>
             @endif
             <div>
-                <table style="width:60%;margin-right:0;border:none;" @if (app()->getLocale() == 'ar') style="width:60%;margin-left:0;border:none;" @endif>
+                <table  @if (app()->getLocale() == 'ar') style="width:60%;margin-left:0;border:none;"@else style="width:60%;margin-right:0;border:none;" @endif>
                     <tr style="border:none;">
                         <th style="border:none;"><pre>{{__(' date:')}}   /    / 201</pre></th>
                         <td style="border:none;"></td>
                     </tr>
                     <tr style="border:none;">
-                       <th style="border:none;">{{__("signature of branch board Chairman")}}</th>
+                       <th style="border:none;">{{__('signature of branch board Chairman')}}</th>
                        <td style="border:none;"></td>
                     </tr>
                 </table>
@@ -178,13 +178,13 @@
                 <p for="reasons">{{__('reasons :(If not approved)')}}<br>{{ $fullorder->transferred_branch_disapproval_reasons }}</p>
             @endif
             <div>
-                <table style="width:60%;margin-right:0;border:none;" @if (app()->getLocale() == 'ar') style="width:60%;margin-left:0;border:none;" @endif>
+                <table  @if (app()->getLocale() == 'ar') style="width:60%;margin-left:0;border:none;" @else style="width:60%;margin-right:0;border:none;"@endif>
                     <tr style="border:none;">
                         <th style="border:none;"><pre>{{__(' date:')}}   /    / 201</pre></th>
                         <td style="border:none;"></td>
                     </tr>
                     <tr style="border:none;">
-                       <th style="border:none;">{{__("signature of branch board Chairman")}}</th>
+                       <th style="border:none;">{{__('signature of branch board Chairman')}}</th>
                        <td style="border:none;"></td>
                     </tr>
                 </table>
@@ -195,7 +195,7 @@
             <hr style="margin-bottom:0;margin-top:0">
             <pre>{{__('Amount has been received ')}}{{$fullorder->money_order}}{{__('SYP')}}{{__('(Just ')}}{{$fullorder->money_order}}{{__(' Nothing else)')}}{{__('Receipt No')}}/         /{{__(' date:')}}  /   / 201 {{__('For a membership card fee')}}</pre>
             <div>
-                <table style="width:100%;border:none;" @if (app()->getLocale() == 'ar') style="width:100%;border:none;" @endif>
+                <table style="width:100%;border:none;">
                     <tr style="border:none;">
                         <th style="border:none;width:20%"><pre>{{__(' date:')}}   /    / 201</pre></th>
                         <td style="border:none;;width:2%"></td>
