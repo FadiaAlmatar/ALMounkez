@@ -14,34 +14,29 @@
            body {
             font-family: 'XBRiyaz', sans-serif;
             direction: rtl;
+            font-size: 12px;
            }
            h1 {
             text-align: center;
             text-decoration: underline;
-            font-size: 20px;
+            font-size: 18px;
             }
             table{
                 width:100%;
                 border: 1px solid black;
                 border-collapse: collapse;
                 margin:auto;
-                direction: rtl;
             }
             td,th{
                 border: 1px solid black;
                 width:24%;
-                text-align:right;
-                padding-right: 5px;
+                text-align: left;
+                font-size: 11px;
+                padding-right:5px;
             }
+
             strong{
                 text-align: center;
-            }
-            .p-fullorder{
-                text-align: center;
-            }
-            .status{
-                color: red;
-                border:1px solid red;
             }
             img{
                 width: 210mm;
@@ -51,16 +46,14 @@
         </style>
         @else
         <style>
-           .status{
-               float:left;
-           }
            body {
             font-family: 'XBRiyaz', sans-serif;
+            font-size: 12px;
            }
            h1 {
             text-align: center;
             text-decoration: underline;
-            font-size: 20px;
+            font-size: 18px;
             }
             table{
                 width:100%;
@@ -71,18 +64,12 @@
             td,th{
                 border: 1px solid black;
                 width:24%;
-                text-align:left;
-                padding-left: 5px;
+                font-size: 11px;
+                text-align: left;
+                padding-left:5px;
             }
             strong{
                 text-align: center;
-            }
-            .p-fullorder{
-                text-align: center;
-            }
-            .status{
-                color: red;
-                border:1px solid red;
             }
             img{
                 width: 210mm;
@@ -97,11 +84,11 @@
             {{__('Syndicate of Financial and Accounting Professions')}}<br>
             {{__('In the Syrian Arab Republic')}}<br>
             <span>{{__('branch:')}}</span><br>
-            <span>{{__('order number:')}}</span><br>
-            <span>{{__('order date:')}}</span>
+            <span>{{__('order No:')}}</span><br>
+            <span>{{__('order date:')}}&nbsp;&nbsp;&nbsp; / &nbsp;&nbsp;/ 20</span>
         </div>
         <h1>{{__('Request for a replacement membership card')}}</h1>
-        <p style="font-size:11px;font-weight:bold;">{{__('Based on decision of the Board of Directors in its session No. 36 held on the date 27/04/2016 containing the determination of the amount 1000 SYP of the value of a membership card:(Consists-Lost)')}}</p>
+        <p style="font-size:11px;font-weight:bold;text-align:center">{{__('Based on decision of the Board of Directors in its session No. 36 held on the date 27/04/2016 containing the determination of the amount 1000 SYP of the value of a membership card:(Consists-Lost)')}}</p>
         <h1 style="font-size:13px;text-align: center;font-weight:bold;background-color:rgb(199, 198, 198);text-decoration:none;">{{__('Filled out by the affiliate')}}</h1>
         <p>
             {{-- <span style="color:red"> {{__('Order Status: ')}}  {{$fullorder->status}} </span><br> --}}
@@ -123,8 +110,9 @@
             @else
                 <span>{{__('Card incoming error')}}{{__('(caused by the member)')}}</span>
             @endif
+            <hr style="margin-top:0;margin-bottom:0">
         {{-- التعديلات المطلوب وضعها على بطاقة العضوية الجديدة --}}
-        <p style="font-weight: bold;text-align: center;">{{__('Required modifications to be made on the new membership card')}}</p>
+        <p style="font-weight: bold;text-align: center;margin-bottom:0;margin-top:0">{{__('Required modifications to be made on the new membership card')}}</p>
         <table class="table table-bordered">
               <tr>
                 <th scope="col" style="width:30%;">{{__('FullName/Arabic')}}</th>
@@ -153,25 +141,24 @@
         </tbody>
         </table>
 {{--  بيان الدارة الماليةللفرع --}}
-    <span style="font-weight: bold;margin-top:0">{{__('Branch financial management statement:')}}</span><hr style="margin-bottom:0;margin-top:0"><br><br>
+    <span style="font-weight: bold;margin-top:0">{{__('Branch financial management statement:')}}</span><hr style="margin-bottom:0;margin-top:0">
     {{__('Mr.')}}{{$fullorder->fullname}}{{__(' is affiliated with the Syndicate with a membership number ')}}{{Auth::User()->id}}
-    {{__('We inform you that he is registered in the Syndicate in year 20')}}{{$fullorder->user->order->created_at->format('y')}} {{__('and : ')}}
+    {{__('We inform you that he is registered in the Syndicate in year 20')}}{{$fullorder->user->order->created_at->format('y')}}<br> {{__('and : ')}}
     @if($fullorder->not_debtor == 0)
-        <div class="form-check">
-            <label for="financially_innocent" class="form-check-label" value="financially_innocent" @if (old('debt') == "financially_innocent") {{ 'selected' }} @endif>{{__('Financially innocent')}}</label>
-        </div>
+           {{__('Financially innocent')}}
         @else
-            <label for="financial_liability" class="form-check-label" value="financial_liability" @if (old('debt') == "financial_liability") {{ 'selected' }} @endif>{{__('It has a previous financial liability')}}</label>
+       {{__('It has a previous financial liability')}}
             {{__('equal ')}}
              {{ $fullorder->money_debt}}{{__(' SYP')}}
-        </div>@endif
+        @endif
         @if($fullorder->money_debt <> null && $fullorder->not_debtor == null )
         <label for="financial_liability" class="form-check-label" value="financial_liability" @if (old('debt') == "financial_liability") {{ 'selected' }} @endif>{{__('It has a previous financial liability')}}</label>
         {{__('equal ')}}
          {{ $fullorder->money_debt}}{{__(' SYP')}}
       @endif
-    <p>{{__('Mr.: The cashier in the branch, please receive an amount and its amount ')}}
-       {{ $fullorder->money_order}}{{__(' SYP')}}</p>
+    <p>{{__('Mr.: The cashier in the branch, please receive an amount and its amount ')}}{{ $fullorder->money_order}}{{__(' SYP')}}
+    <br>{{__('In addition to the membership card replacement fee, the amount of 1000 SP')}}
+    </p>
        <div>
         <table style="width:60%;margin-right:0;border:none;"  @if (app()->getLocale() == 'ar') style="width:60%;margin-left:0;border:none;" @endif>
             <tr style="border:none;">
@@ -182,11 +169,11 @@
         </div><br>
         <hr style="margin-top:0;margin-bottom:0">
             <span style="font-weight: bold;margin-top:0">{{__('Treasurer statement: ')}}</span><hr style="margin-bottom:0;margin-top:0">
-            {{__('Amount has been received ')}}{{ $fullorder->money_order }}{{__(' SYP')}}
+            <pre>{{__('Amount has been received ')}}{{$fullorder->money_order}}{{__('SYP')}}{{__('(Just ')}}{{$fullorder->money_order}}{{__(' Nothing else)')}}{{__('Receipt No')}}/         /{{__(' date:')}}  /   / 201</pre><br>
             <div>
                 <table style="width:100%;border:none;" @if (app()->getLocale() == 'ar') style="width:100%;border:none;" @endif>
                     <tr style="border:none;">
-                        <th style="border:none;width:15%">{{__('date:    /      /201  ')}}</th>
+                        <th style="border:none;width:20%"><pre>{{__(' date:')}}   /    / 201</pre></th>
                         <td style="border:none;;width:2%"></td>
                         <th style="border:none;;width:15%">{{__('the seal')}}</th>
                         <td style="border:none;width:10%"></td>
@@ -195,7 +182,7 @@
                     </tr>
                 </table>
                </div>
-               <hr style="margin-top:0;margin-bottom:0">
+               <hr style="margin-top:3;margin-bottom:0">
             <span style="font-weight: bold;margin-top:0">{{__("Chairman's decision")}}{{__(':')}}</span>
                 <hr style="margin-bottom:0;margin-top:0">
                 @if($fullorder->Chairman_decision == 1)
@@ -210,15 +197,15 @@
                 <div>
                     <table style="width:100%;border:none;" @if (app()->getLocale() == 'ar') style="width:100%;border:none;" @endif>
                         <tr style="border:none;">
-                            <th style="border:none;">{{__('date:    /      /201  ')}}</th>
+                            <th style="border:none;"><pre>{{__(' date:')}}   /    / 201</pre></th>
                             <td style="border:none;"></td>
                             <th style="border:none;">{{__('signature')}}</th>
                             <td style="border:none;"></td>
                         </tr>
                     </table>
                    </div>
-                   <hr style="margin-top:0">
-                <p style="font-weight:bold;text-align:center;margin-bottom:0">{{__('Confirmation of the Affiliate Member of Receipt of the Membership card:')}}</p>
+                   <hr style="margin-bottom:0">
+                <p style="font-weight:bold;margin-bottom:0;font-size: 11px;margin-top:0;text-align:center">{{__('Confirmation of the Affiliate Member of Receipt of the Membership card:')}}</p>
                 <table class="table table-bordered;border:none;">
                         <tr>
                             <th scope="col">{{__('Card issue date')}}</th>
@@ -235,7 +222,7 @@
                         </tr>
                     </tbody>
                     </table>
-                <p style="text-align: center;font-size:11px">{{__('The original is kept in a register of the membership cards replacement at the branch sequentially for each year after receiving it from the central administration, attached to the new membership card')}}</p>
+                <p style="text-align: center;font-weight:bold;margin-top:0;font-size: 11px;">{{__('The original is kept in a register of the membership cards replacement at the branch sequentially for each year after receiving it from the central administration, attached to the new membership card')}}</p>
 
     </div>
     @if($fullorder->police_image <> null)
