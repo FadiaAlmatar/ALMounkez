@@ -1,4 +1,5 @@
-<x-layouts.app>
+<x-app-layout>
+
     <div class="container" style="margin-top: 5px">
 {{-- start section friends list with unread messages --}}
 <div class="friends-section" style="overflow:auto;height:600px;">
@@ -92,6 +93,7 @@
 </div>
 </div>
 </div>
-</x-layouts.app>
+</x-app-layout>
+
 
 

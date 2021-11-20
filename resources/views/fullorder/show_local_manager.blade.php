@@ -1,4 +1,4 @@
-<x-layouts.app>
+<x-app-layout>
     <br>
     <h1 class="h1-fullorder">{{__('Request a local membership document')}}</h1><br>
     <div class="container"style="margin-top:7px;">
@@ -74,7 +74,7 @@
                  <br><br>
             </div>
     </div>
-</x-layouts.app>
+</x-app-layout>
 
 
 

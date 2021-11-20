@@ -1,4 +1,5 @@
-<x-layouts.app>
+{{-- <x-layouts.app> --}}
+    <x-app-layout>
     <h1 style="text-align: center;font-weight:bold;text-decoration:underline;margin-top:5px;">{{__('Request an external membership document')}}</h1><br>
     <div class="container"style="margin-top:7px;">
         <form action="{!! !empty($fullorder) ? route('fullorders.update', $fullorder) : route('fullorders.store') !!}" method="POST" >
@@ -76,4 +77,4 @@
             </div>
         </div>
     </div>
-</x-layouts.app>
+</x-app-layout>

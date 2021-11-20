@@ -1,4 +1,5 @@
-<x-layouts.app>
+{{-- <x-layouts.app> --}}
+    <x-app-layout>
     <div class="container" style="margin-top: 5px">
 {{-- start section friends list with unread messages --}}
         <div class="friends-section" style="overflow:auto;height:600px;">
@@ -190,25 +191,7 @@
         </div>
 {{-- end section chat --}}
         </div>
-</x-layouts.app>
+</x-app-layout>
 
 
 
-{{-- onclick="return confirm('Are you sure?')" --}}
-
-
-{{-- <a class="btn btn-primary" style="margin-bottom:13px" href="{{route('messages.print', $friend_id)}}">Download PDF</a> --}}
-
- {{-- @foreach ($suggestedfriends  as $suggestedfriend )
-             <a href="{{route('messages.chat', $user->id)}}" >{{$user->name}}</a><br>
-             <a class="friend-name" href="{{route('messages.chat', $friend->user_id)}}">{{ App\Models\User::where(['id' => $friend->user_id])->pluck('name')->first() }}</a><br>
-         @endforeach --}}
-
-
-             {{-- @foreach ($groups as $group)
-                 @if($group_id == $group->id) --}}
-             {{-- @endif @endforeach --}}
-             {{-- @if (($myfriend == false) && (Auth::User()->id <> $user->id))
-             <option value="{{ $user->id }}">{{$user->name}}</option>
-             @endif --}}
-             {{-- @endforeach --}}

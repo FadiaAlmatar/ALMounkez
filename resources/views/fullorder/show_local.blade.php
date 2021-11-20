@@ -1,4 +1,4 @@
-<x-layouts.app>
+<x-app-layout>
     <br>
     <h1 class="h1-fullorder">{{__('Request a local membership document')}}</h1><br>
     <div class="container"style="margin-top:7px;">
@@ -84,7 +84,7 @@
                 @if(Auth::User()->role == "admin")<button type="submit" class="btn btn-primary">{{__('Send')}}</button><br><br>@endif
         </form>
     </div>
-</x-layouts.app>
+</x-app-layout>
 
 
 

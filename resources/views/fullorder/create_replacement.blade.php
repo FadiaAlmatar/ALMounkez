@@ -1,4 +1,4 @@
-<x-layouts.app>
+<x-app-layout>
     <h1 style="text-align: center;font-weight:bold;text-decoration:underline;margin-top:5px;">{{__('Request for a replacement membership card')}}</h1><br>
     <div class="container"style="margin-top:7px;">
         <strong style="font-size:13px;">{{__('Based on decision of the Board of Directors in its session No. 36 held on the date 27/04/2016 containing the determination of the amount 1000 SYP of the value of a membership card:(Consists-Lost)')}}</strong><br>
@@ -183,4 +183,4 @@
             </div>
         </div>
     </div>
-</x-layouts.app>
+</x-app-layout>

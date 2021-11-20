@@ -1,4 +1,4 @@
-<x-layouts.app>
+<x-app-layout>
     <br>
     <h1 class="h1-fullorder">{{__('Membership transfer form from one branch to another')}}</h1><br>
     <div class="container"style="margin-top:7px;">
@@ -119,6 +119,6 @@
                 <input type="text" class="input @error('newmembership_number')is-danger @enderror input-fullorder"id="newmembership_number" name="newmembership_number"value="{{$fullorder->newmembership_number}}"class="form-control" placeholder="{{__('Enter new membership number')}}" disabled/></p>
     </div>
 
-</x-layouts.app>
+</x-app-layout>
 
 
