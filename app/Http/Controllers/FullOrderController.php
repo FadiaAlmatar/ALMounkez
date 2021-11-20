@@ -46,8 +46,6 @@ class FullOrderController extends Controller
     }
     public function create_transfer()
     {
-        // $user = User::where('id', Auth::User()->id);
-        // dd($user);
         return view('fullorder.create_transfer');
     }
     public function create_replacement()
@@ -68,7 +66,6 @@ class FullOrderController extends Controller
             $fullorder->membership_id =   2222;//Auth::User()->membership_id
             $fullorder->user_id       =   Auth::User()->id;
             $fullorder->fullname      =   $request->fullname;//Auth::User()->name;
-            // dd($request->fullname);
             //local
             if($request->type == "local"){
                 $request->validate([
@@ -89,7 +86,6 @@ class FullOrderController extends Controller
                     'transportation_reasons' => 'required'
                     ] );
                 $fullorder->country_before         = $request->from_country;
-                // $fullorder->fullname               = $request->fullname;
                 $fullorder->country_after          = $request->to_country;
                 $fullorder->transportation_reasons = $request->transportation_reasons;
                 $fullorder->home_change            = $request->change_home;
@@ -169,12 +165,8 @@ class FullOrderController extends Controller
                 $fullorder->newmembership_number         = $request->newMembershipNumber;
             }
             $fullorder->newmembership_number         = $request->newMembershipNumber;
-            // dd($request->newMembershipNumber);
             $fullorder->type          =   $request->type;
             $fullorder->status        =  "under consideration";
-            // if (app()->getLocale() == 'ar'){
-            //     $fullorder->status_ar        =  "قيد الدراسة";
-            // }
             $fullorder->save();
             return redirect()->route('fullorders.show',$fullorder);
     }
@@ -202,7 +194,6 @@ class FullOrderController extends Controller
                 $fullorder->registered_branch_decision             = $request->registered_branch_decision;
                 $fullorder->registered_branch_disapproval_reasons  = $request->registered_branch_disapproval_reasons;
                 $fullorder->transferred_branch_decision            = $request->transferred_branch_decision;
-                // dd($request->transferred_branch_decision);
                 $fullorder->transferred_branch_disapproval_reasons = $request->transferred_branch_disapproval_reasons;
                 $fullorder->newmembership_number                   = $request->newmembership_number;
         }//replacement
@@ -407,9 +398,6 @@ class FullOrderController extends Controller
         }
         $fullorder->type          =   $request->type;
         $fullorder->status        =  "under consideration";
-        // if (app()->getLocale() == 'ar'){
-        //     $fullorder->status_ar        =  "قيد الدراسة";
-        // }
         $fullorder->save();
         return redirect()->route('fullorders.show',$fullorder);
     }
@@ -438,13 +426,10 @@ class FullOrderController extends Controller
             $html = view('fullorder.replacement-pdf',['fullorder'=>$fullorder])->render();
         $pdf = new \Mpdf\Mpdf([
             'mode' => 'utf-8', 'format' => 'A4','default_font' => 'fontawesome','margin_left' => 15,'margin_right' => 10,'margin_top' => 16,'margin_bottom' => 15,'margin_header' => 10, 'margin_footer' => 10 ]);
-            // $pdf->tabSpaces = 1;
         $pdf->AddPage("P");
-        $pdf->SetHTMLFooter('<p style="text-align: center">{PAGENO} of {nbpg}</p>');
+        $pdf->SetHTMLFooter('<p style="text-align: center">{PAGENO}</p>');
         $pdf->WriteHTML('.fa { font-family: fontawesome;}',1);
         $pdf->WriteHTML($html);
-        // $pdf->WriteHTML(''.$html.'</pre>');
-
         return  $pdf->Output("order.pdf","D");
         }
 }

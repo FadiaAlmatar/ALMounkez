@@ -155,20 +155,6 @@ class MessageController extends Controller
         $users = User::all();
         $group = Group::findOrFail($id);
         $group_name = Group::find($group->id);
-        // $suggestedfriends = [];
-        // $myfriend = false;
-        // foreach ($users as $user){
-        //     $myfriend = false;
-        //     foreach ($friends as $friend){
-        //         if($user->id == $friend->user_id){
-        //             $myfriend = true;
-        //             break;
-        //         }
-        //     }
-        //     if(($myfriend == false) && (Auth::User()->id <> $user->id)){
-        //       array_push($suggestedfriends,$user->id);
-        //     }
-        // }
         return view('message.show',['group'=>$group,'group_owner'=>$group->group_owner,'group_name'=>$group_name->group_name,'friend_name'=>"",'group_id'=> $group->id ,'user_id'=> Auth::User()->id,'friend_id'=> 0,'messages'=>$messages,'groups'=>$groups,'count_unread_messages'=>$count_unread_messages,'unread_messages' => $unread_messages,'friends'=> $friends,'users'=>$users]);
     }
     /**
@@ -202,23 +188,14 @@ class MessageController extends Controller
      */
     public function destroy($id)
     {
-        // dd($id);
         $friend = User::findOrFail($id);
-        // $friend->messages()->delete();
-        // dd("here");
-        // $friend->delete();
         $messages = DB::table('messages')->where([
             ['friend_id', $friend->id],
             ['user_id', Auth::User()->id],
         ])->orwhere([
             ['friend_id', Auth::User()->id],
             ['user_id', $friend->id],])->orderBy('created_at','DESC')->get();
-        // // $message = Message::find($id);
-        // foreach($messages as $message){
-        //   $message->delete();
-        // }
         $messages->delete();
-        // return redirect()->route('tags.index');
     }
 
 }

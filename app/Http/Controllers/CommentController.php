@@ -56,8 +56,6 @@ class CommentController extends Controller
         $comment->save();
         $post = Post::find($request->post_id);
         $commentlist = DB::table('view_comment_list')->orderby('code')->orderby('id')->get();
-        // return view('post.show',['post' => $post,'commentlist' => $commentlist]);
-        // $date_diff= Carbon::now()->diffInDays($comment->created_at);
          return redirect()->route('posts.show',$post);
     }
 

@@ -22,11 +22,6 @@
                     <a class="nav-link active" aria-current="page"   href="{{route('orders.create')}}"  style="color: #eb640a">
                       {{__('Order')}}
                     </a>
-                    {{-- @if(Auth::User()->id == $order->user_id)
-                    <a class="nav-link active" aria-current="page"   href="{{route('orders.create')}}"  style="color: #eb640a">
-                        {{__('update order')}}
-                    </a>
-                    @endif --}}
                 </li>
                 @auth
                 <li class="nav-item dropdown">
@@ -80,51 +75,5 @@
               </div>
             </div>
 </nav>
-          {{-- <li class="nav-item ">
-            <a class="nav-link active" aria-current="page" href="/" style="color: #eb640a">Home</a>
-          </li> --}}
-          {{-- <li class="nav-item ">
-            <a class="nav-link active" aria-current="page" href="{{route('messages.create')}}" style="color: #eb640a">Chat</a>
-          </li> --}}
 
-          {{-- <li class="nav-item ">
-            <a class="nav-link active" aria-current="page" href="{{route('comments.index')}}" style="color: #eb640a">comments</a>
-          </li> --}}
-
-            {{-- <li class="nav-item">
-                <a class="nav-link active" href="{{ route('locale.toggle', App::getLocale() == 'ar' ? 'en': 'ar') }}" style="color:#eb640a">{{ App::getLocale() == 'ar' ? 'EN' : 'AR' }}</a>
-            </li> --}}
-
-
-
-          {{-- <li class="nav-item"> --}}
-            {{-- <a class="nav-link active" href="{{route('home')}}" style="color: #eb640a">Posts</a> --}}
-          {{-- </li> --}}
-          {{-- @guest
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #eb640a">
-              Account
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-              <li><a class="dropdown-item" href="{{route('login')}}"style="color: #eb640a">Log in</a></li>
-              <li><a class="dropdown-item" href="{{route('register')}}" style="color: #eb640a">Sign in</a></li> --}}
-              {{-- @endguest
-              @auth --}}
-              {{-- <li><a class="dropdown-item" href="{{route('logout')}}" style="color: #eb640a">Log out</a></li> --}}
-
-              {{-- <div class="navbar-item">
-                Hi {{ Auth::user()->name }}!!
-              </div> --}}
-            {{-- </ul> --}}
-            {{-- </li> --}}
-
-
-            {{-- @endguest --}}
-              {{-- @auth
-              <li><form action="{{ route('logout') }}" method="post">
-                @csrf
-                <input type="submit" class="button is-dark" style="color: #eb640a;background:none;align:center" value="Logout">
-              </form></li>
-              @endauth --}}
 

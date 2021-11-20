@@ -133,17 +133,14 @@ class OrderController extends Controller
         if ($request->has('identity_image')) {         //image
             $image = $request->identity_image;
             $path = $image->store('identity-images', 'public');
-            // $order->identity_image =$path;
             $filename = pathinfo($path, PATHINFO_FILENAME);
             $extension = pathinfo($path, PATHINFO_EXTENSION);
             $order->identity_image = $filename . '.' . $extension;
         }
-        // dd($request->identity_image,$path);
         $order->personal_image = $request->personal_image;
         if ($request->has('personal_image')) {          //image
             $image = $request->personal_image;
             $path = $image->store('personal-images', 'public');
-            // $order->personal_image = $path ;
             $filename = pathinfo($path, PATHINFO_FILENAME);
             $extension = pathinfo($path, PATHINFO_EXTENSION);
             $order->personal_image = $filename . '.' . $extension;
@@ -152,7 +149,6 @@ class OrderController extends Controller
         if ($request->has('certification_image')) {     //image
             $image = $request->certification_image;
             $path = $image->store('certification-images', 'public');
-            // $order->certification_image = $path;
             $filename = pathinfo($path, PATHINFO_FILENAME);
             $extension = pathinfo($path, PATHINFO_EXTENSION);
             $order->certification_image = $filename . '.' . $extension;
@@ -161,16 +157,12 @@ class OrderController extends Controller
         if ($request->has('no_conviction_image')) {      //image
             $image = $request->no_conviction_image;
             $path = $image->store('no_conviction-images', 'public');
-            // $order->no_conviction_image = $path;
             $filename = pathinfo($path, PATHINFO_FILENAME);
             $extension = pathinfo($path, PATHINFO_EXTENSION);
             $order->no_conviction_image = $filename . '.' . $extension;
         }
         $order->pay_affiliation_fee = $request->payment;
-        // dd($request);
         $order->save();
-        // dd($request->qualification);
-        // if($request->qualification[0] <> null){
             $qualification_list = [];
             for ($i = 0; $i < count($request->qualification); $i++) {
                 if($request->qualification[$i] <> null){
@@ -206,13 +198,6 @@ class OrderController extends Controller
         $pdf->SetHTMLFooter('<p style="text-align: center">{PAGENO}</p>');
         $pdf->WriteHTML('.fa { font-family: fontawesome;}',1);
         $pdf->WriteHTML($html);
-        // $pdf->showImageErrors = true.
-        // $html = '<img src=asset("storage/identity-images/$order->identity_image") />';
-    //    $pdf->WriteHTML($html);
-        // $pdf->Image(asset("storage/identity-images/$order->identity_image"), 0, 0, 210, 297, 'jpg', '', true, false);
-        // $pdf->Image(asset("storage/personal-images/$order->personal_image"), 0, 0, 210, 297, 'jpg', '', true, false);
-        // $pdf->Image(asset("storage/certification-images/$order->certification_image"), 0, 0, 210, 297, 'jpg', '', true, false);
-        // $pdf->Image(asset("storage/no_conviction-images/$order->no_conviction_image"), 0, 0, 210, 297, 'jpg', '', true, false);
         return  $pdf->Output("order.pdf","D");
         }
     /**
@@ -286,13 +271,7 @@ class OrderController extends Controller
             'personal_image'                 => 'file|image',
             'certification_image'            => 'file|image',
             'no_conviction_image'            => 'file|image',
-            // 'qualification.*'                => 'nullable',
-            // 'side.*'                   => 'nullable|min:3|not_regex:/[0-9]/',
-            // 'country.*'                      => 'nullable|min:3',
             'finishYear.*'               => 'nullable|digits:4',
-            // 'qualifications.finishYear.*'               => 'nullable|digits:4',
-            // 'Rate.*'               => 'nullable|regex:/^[0-9.]/',
-            // 'specialization.*'               => 'nullable|min:3|not_regex:/[0-9]/',
             'payment'                        => 'nullable',
             ] );
             $order->firstname                =            $request->name;
@@ -406,12 +385,3 @@ class OrderController extends Controller
 }
 
 
-   // $qualification = new Qualification();
-        // $qualification->order_id = $order->id;
-        // $qualification->qualification = $request->qualification;
-        // $qualification->university = $request->university;
-        // $qualification->country = $request->country;
-        // $qualification->graduation_year = $request->graduationYear;
-        // $qualification->graduation_rate = $request->graduationRate;
-        // $qualification->Specialization = $request->specialization;
-        // $qualification->save();
