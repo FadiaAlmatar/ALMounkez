@@ -2,21 +2,65 @@
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
-            <div class="flex">
+            {{-- <div class="flex">
                 <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center">
-                    {{-- <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
-                    </a> --}}
-                </div>
-
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('home')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
-            </div>
+            </div> --}}
+            {{-- <ul class="navbar-nav"> --}}
+                {{-- <li class="nav-item"> --}}
+                     <a class="nav-link active" aria-current="page" href="{{route('posts.index')}}" >{{__('posts')}}</a>
+                    {{-- </li> --}}
+                {{-- <li class="nav-item dropdown"> --}}
+                    <a class="nav-link active" aria-current="page" href="{{route('posts.create')}}" >{{__('Create post')}}</a>
+                {{-- </li> --}}
+                <a class="nav-link active" aria-current="page"   href="{{route('messages.create')}}" >{{__('chat')}}</a>
+                <a class="nav-link active" aria-current="page"   href="{{route('orders.create')}}" > {{__('Order')}}</a>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                     {{ __('Orders') }}
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                     <li><a class="dropdown-item" href="{{route('fullorders.create_local')}}" >{{ __('Request a local membership document') }}</a></li>
+                     <li><a class="dropdown-item" href="{{route('fullorders.create_external')}}" >{{ __('Request an external membership document') }}</a></li>
+                     <li><a class="dropdown-item" href="{{route('fullorders.create_transfer')}}" >{{ __('Membership transfer form from one branch to another') }}</a></li>
+                     <li><a class="dropdown-item" href="{{route('fullorders.create_replacement')}}" >{{ __('Request for a replacement membership card') }}</a></li>
+                     @if(Auth::User()->role == "user")
+                        <li><a class="dropdown-item" href="{{route('fullorders.index')}}" >{{ __('My Orders') }}</a></li>
+                    @else
+                        <li><a class="dropdown-item" href="{{route('fullorders.index')}}" >{{ __('all Orders') }}</a></li>
+                    @endif
+                    </ul>
+                 </li>
+
+                 <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      {{__('lang')}}
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <li><a class="dropdown-item" href="{{asset('/locale/ar')}}">{{ __('Ar') }}</a></li>
+                      <li><a class="dropdown-item" href="{{asset('/locale/en')}}">{{ __('En') }}</a></li>
+                  </li>
+                 </ul>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                     {{ __('account') }}
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                     @guest<li><a class="dropdown-item" href="{{ asset('login') }}" style="color: blue">{{ __('Login') }}</a></li>
+                     <li><a class="dropdown-item" href="{{ asset('register') }}" style="color: blue">{{ __('register') }}</a></li>@endguest
+                     @auth
+                     <li><a class="nav-link"><form action="logout" method="post">
+                       @csrf
+                       <input type="submit" style="background-color: white;" value="{{ __('Log Out') }}">
+                     </form>
+                    </a></li>@endauth
+                   </ul>
+                 </li>
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
@@ -25,11 +69,11 @@
                         <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
                             <div>{{ Auth::user()->name }}</div>
 
-                            {{-- <div class="ml-1"> --}}
-                                {{-- <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <div class="ml-1">
+                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                </svg> --}}
-                            {{-- </div> --}}
+                                </svg>
+                            </div>
                         </button>
                     </x-slot>
 

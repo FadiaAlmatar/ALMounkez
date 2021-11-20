@@ -1,4 +1,5 @@
-<x-layouts.app>
+{{-- <x-layouts.app> --}}
+    <x-app-layout>
     {{-- start tabs --}}
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" >
@@ -389,7 +390,8 @@
         </div>
         {{-- نهايةطريقة الدفع --}}
     </div>
-    </x-layouts.app>
+    {{-- </x-layouts.app> --}}
+</x-app-layout>
 
 
 

@@ -1,4 +1,5 @@
-<x-layouts.app>
+{{-- <x-layouts.app> --}}
+<x-app-layout>
 <form action="{{ route('posts.store') }}" method="POST" class="form" >
     @csrf
     <div class="field">
@@ -15,4 +16,5 @@
           </div><br>
       </div>
 </form>
-</x-layouts.app>
+{{-- </x-layouts.app> --}}
+</x-app-layout>

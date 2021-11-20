@@ -34,7 +34,6 @@
                 width: 210mm;
                 height: 297mm;
                 margin: 0;
-                /* page-break-before:always; */
             }
         </style>
            @else
@@ -70,7 +69,6 @@
                 width: 210mm;
                 height: 297mm;
                 margin: 0;
-                /* page-break-before:always; */
             }
         </style>
         @endif

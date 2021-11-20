@@ -1,4 +1,5 @@
-<x-layouts.app>
+{{-- <x-layouts.app> --}}
+    <x-app-layout>
     <div class="container" style="height: 100%;margin:auto;margin-top:20px" >
         @foreach ($posts as $post )
         <a href="{{route('posts.show',$post)}}" style="text-decoration: none">
@@ -19,4 +20,5 @@
         </a>
         @endforeach
     </div>
-</x-layouts.app>
+{{-- </x-layouts.app> --}}
+</x-app-layout>

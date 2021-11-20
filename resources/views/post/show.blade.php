@@ -1,4 +1,4 @@
-<x-layouts.app>
+<x-app-layout>
 {{--start show post --}}
         <div class="post-show">
             <div class="card-content">
@@ -53,12 +53,6 @@
                   @endforeach
         </div>
 {{-- end show comments with replies --}}
-</x-layouts>
+    </x-app-layout>
 
-{{-- <textarea style="width:50%"class=" @error('content')is-danger @enderror" name="content" placeholder="Comment here...">{{ old('content') }}</textarea><br> --}}
-{{-- <button class="button is-dark" style="color: #eb640a;align:center" >Comment</button> --}}
-{{-- <textarea style="border-radius:15px;background: rgb(236, 235, 235)"class=" @error('content')is-danger @enderror" name="content" placeholder="Reply here...">{{ old('content') }}</textarea> --}}
-{{-- <button class="button is-dark" style="color: #eb640a;align:center">Reply</button> --}}
-{{-- <div id="replybutton" class="btn4 like"><span class="btn reply" id="replyb">Reply</span> </div> --}}
-{{-- <input type="text"  id="reply" class="form-control pull-right"  placeholder="Write a reply..." style="display:none;"/> --}}
 

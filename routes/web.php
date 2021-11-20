@@ -1,17 +1,14 @@
 <?php
-
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PDFController;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
-use App\Http\Controllers\GroupController;
-use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\GroupController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\FullOrderController;
 
 // use DB;
@@ -28,11 +25,11 @@ use App\Http\Controllers\FullOrderController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
-Route::get('/', [HomeController::class, 'home'])->name('homee');
+// Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/locale/ar', function (){
     Session::put('locale', 'ar');
     App::setLocale('ar');
@@ -73,13 +70,11 @@ Route::post('/fullorder/store_order/{id}', [FullOrderController::class, 'store_o
 Route::get('/print/{id}', [FullOrderController::class, 'print'])->name('fullorders.print');
 
 Route::get('/dashboard', function () {
-    return view('pages.home');
+    // return view('pages.home');
+    return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
 
 Route::get('create-pdf-file', [PDFController::class, 'index']);
-
-Auth::routes();
-
-// Route::get('/home', [HomeController::class, 'index'])->name('home');
+?>
