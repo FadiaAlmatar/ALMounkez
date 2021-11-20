@@ -78,8 +78,6 @@
         <span>{{__('order No:')}}</span>
         </div>
         <h1>{{__('Request a local membership document')}}</h1>
-        {{-- <table style="border:1px solid black; height:100%"> --}}
-        {{-- <span class="status"> {{__('Order Status: ')}} {{$fullorder->status}} </span><br> --}}
         <strong style="font-size:11px;">{{__('(Implementation of the decision of the Board of Directors in its session No. 41 held on the date 17/07/2016 containing the determination of the amount 200 SYP of the value of a membership document)')}}</strong><br>
         <p>{{__('Gentlemen of the Financial and Accounting Professions Syndicate, please give me a membership document stating that I am a registered member of the Syndicate')}}<br>{{__('to submit it to')}}
         {{ $fullorder->side }}</p>
@@ -143,19 +141,16 @@
                  <td style="border:none;"></td>
                  <td style="border:none;"></td>
                  <th style="border:none;">{{__('Name and signature of the treasurer')}}</th>
-                 {{-- <td style="border:none;"></td> --}}
              </tr>
              <tr style="border:none;">
                 <th style="border:none;">{{__('the seal')}}</th>
                 <td style="border:none;"></td>
                 <td style="border:none;"></td>
-                {{-- <td style="border:none;"></td> --}}
              </tr>
              <tr style="border:none;">
                 <td style="border:none;"></td>
                 <td style="border:none;"></td>
                 <th style="border:none;"><pre>{{__(' date:')}}   /    / 201</pre></th>
-                {{-- <td style="border:none;"></td> --}}
              </tr>
          </table>
         </div>

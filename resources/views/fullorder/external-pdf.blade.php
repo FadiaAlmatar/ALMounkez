@@ -71,14 +71,11 @@
         @endif
     </head>
     <body>
-        {{-- <div> --}}
             {{__('Syndicate of Financial and Accounting Professions')}}<br>
             {{__('In the Syrian Arab Republic')}}<br>
             <span>{{__('branch:')}}</span><br>
             <span>{{__('order No:')}}</span>
-            {{-- </div> --}}
         <h1>{{__('Request an external membership document')}}</h1>
-        {{-- <span class="status"> {{__('Order Status: ')}} {{$fullorder->status}} </span><br> --}}
         <strong style="font-size:11px;">
             {{__('(Implementation of the decision of the Board of Directors in its session No. /4/ held on the date 28/01/2016 containing the determination of the amount 1000 SYP of the value of a membership document)')}}</strong><br>
         <p>{{__('Gentlemen of the Financial and Accounting Professions Syndicate, please give me a membership document stating that I am a registered member of the Syndicate')}}<br>{{__('to submit it to')}}
@@ -105,8 +102,6 @@
         <hr style="margin-bottom:0;margin-top:0">
         <hr style="margin-bottom:0;">
         <span style="font-weight: bold;margin-top:0">{{__('Branch financial management statement:')}}</span>
-         {{-- <hr style="margin-bottom:0;margin-top:0"> --}}
-        {{-- <br> --}}
         {{__('Mr.')}}{{$fullorder->fullname}}{{__(' is affiliated with the Syndicate with a membership number ')}}{{Auth::User()->id}}<br>
         {{__('We inform you that he is registered in the Syndicate in year 20')}}{{$fullorder->user->order->created_at->format('y')}} {{__('and : ')}}
         @if($fullorder->not_debtor == 0)
@@ -143,19 +138,16 @@
                     <td style="border:none;"></td>
                     <td style="border:none;"></td>
                     <th style="border:none;">{{__('Name and signature of the treasurer')}}</th>
-                    {{-- <td style="border:none;"></td> --}}
                 </tr>
                 <tr style="border:none;">
                    <th style="border:none;">{{__('the seal')}}</th>
                    <td style="border:none;"></td>
                    <td style="border:none;"></td>
-                   {{-- <td style="border:none;"></td> --}}
                 </tr>
                 <tr style="border:none;">
                    <td style="border:none;"></td>
                    <td style="border:none;"></td>
                    <th style="border:none;"><pre>{{__(' date:')}}   /    / 201</pre></th>
-                   {{-- <td style="border:none;"></td> --}}
                 </tr>
             </table>
            </div>
@@ -164,7 +156,6 @@
          <hr style="margin-bottom:0;margin-top:0"><span style="font-weight: bold;margin-top:0">{{__('Treasurer Statement/central: ')}}<span style="font-size: 10px">{{__('(Only the document amount is received)')}}</span></span>
             <hr style="margin-bottom:0;margin-top:0">
             <br>
-            {{-- {{__('Amount has been received ')}}{{ $fullorder->money_central}}{{__(' SYP')}}{{__(' (Just ')}}{{ $fullorder->money_central}}{{__(' Nothing else)')}}<pre>{{__(' Receipt No')}} /         /{{__(' date:')}}   /   / 201</pre> --}}
             <pre>{{__('Amount has been received ')}}{{$fullorder->money_centra}}{{__('SYP')}}{{__('(Just ')}}{{$fullorder->money_centra}}{{__(' Nothing else)')}}{{__('Receipt No')}}/         /{{__(' date:')}}  /   / 201</pre>
 
             <span>{{__('(note:The application is brought by hand for follow-up to the central administration by the concerned party after keeping a copy of the application at the branch)')}}</span>
@@ -174,19 +165,16 @@
                         <td style="border:none;"></td>
                         <td style="border:none;"></td>
                         <th style="border:none;">{{__('Name and signature of the treasurer')}}</th>
-                        {{-- <td style="border:none;"></td> --}}
                     </tr>
                     <tr style="border:none;">
                        <th style="border:none;">{{__('the seal')}}</th>
                        <td style="border:none;"></td>
                        <td style="border:none;"></td>
-                       {{-- <td style="border:none;"></td> --}}
                     </tr>
                     <tr style="border:none;">
                        <td style="border:none;"></td>
                        <td style="border:none;"></td>
                        <th style="border:none;"><pre>{{__(' date:')}}   /    / 201</pre></th>
-                       {{-- <td style="border:none;"></td> --}}
                     </tr>
                 </table>
                </div>

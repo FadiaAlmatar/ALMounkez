@@ -4,8 +4,6 @@
     <div class="container"style="margin-top:7px;">
         <strong style="font-size:13px;">{{__('Based on decision of the Board of Directors in its session No. 36 held on the date 27/04/2016 containing the determination of the amount 1000 SYP of the value of a membership card:(Consists-Lost)')}}</strong>
         <br><br><h1 style="text-align: center;font-weight:bold;background-color:rgb(199, 198, 198);font-size:18px;">{{__('Filled out by the affiliate')}}</h1>
-        {{-- <form action="{{ route('fullorders.store') }}" method="POST" enctype="multipart/form-data">
-            @csrf --}}
             <input name="type" value="replacement" hidden>
         <p>{{__('Gentlemen of the Financial and Accounting Professions Syndicate, please give me a membership card instead: ')}}
             <div class="form-check">
@@ -18,20 +16,8 @@
                 @endif
             </label>
             </div>
-            {{-- @elseif($fullorder->replace_reasons == "consists") --}}
-            {{-- @elseif($fullorder->replace_reasons == "Modification" || $fullorder->replace_reasons == "personal" ) --}}
-            {{-- <div class="form-check">
-                {{-- <input class="form-check-input" type="radio" value="" id="Consists" name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif checked> --}}
-                {{-- <label class="form-check-label" for="Consists">
-                  {{__('Consists (damaged card attached) reason: ')}}
-                  @if ($fullorder->damaged_card_image <> null)
-                  <a target="_blank" href="{{asset("storage/damaged_card_images/$fullorder->damaged_card_image")}}">{{__('Click here to show damaged card image')}}</a>
-                  @endif
-                </label>
-            </div> --}}
             @elseif($fullorder->replace_reasons == "Modification")
             <div class="form-check">
-                {{-- <input class="form-check-input" type="radio" value="" id="Consists" name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif checked> --}}
                 <label class="form-check-label" for="Consists">
                   {{__('Consists (damaged card attached) reason: ')}}
                   @if ($fullorder->damaged_card_image <> null)
@@ -56,11 +42,9 @@
                         <label for="formFile" class="form-label"style="font-size: 13px;" >{{__('Personal identification image')}}</label>
                         <a target="_blank" href="{{asset("storage/personal_identification_images/$fullorder->personal_identification_image")}}">{{__('Click here to show personal identification image')}}</a>
                         @endif
-                    {{-- </label> --}}
                 </div></div>
                 @elseif($fullorder->replace_reasons == "personal")
                 <div class="form-check">
-                    {{-- <input class="form-check-input" type="radio" value="" id="Consists" name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif checked> --}}
                     <label class="form-check-label" for="Consists">
                       {{__('Consists (damaged card attached) reason: ')}}
                       @if ($fullorder->damaged_card_image <> null)
@@ -78,7 +62,6 @@
                     <a target="_blank" href="{{asset("storage/personal_images/$fullorder->personal_image")}}">{{__('Click here to show personal image')}}</a>
                     @endif
                 </div>
-            {{-- </div> --}}
             @elseif($fullorder->replace_reasons == "transfer")
             <div class="form-check">
                 <input class="form-check-input" type="radio" value="Transfer" id="Transfer" name="replace_reason" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif checked>
@@ -111,7 +94,6 @@
               <tr>
                 <th scope="col">{{__('Change personal image')}}</th>
                 <td> <div class="mb-3">
-                      {{-- <input class="form-control" type="file" accept="image/*"id="personal_image" name="personal_image" disabled> --}}
                       @if ($fullorder->personal_image <> null)
                     <a target="_blank" href="{{asset("storage/personal_images/$fullorder->personal_image")}}">{{__('Click here to show personal image')}}</a>
                     @endif
@@ -139,7 +121,6 @@
             </tr>
         </tbody>
         </table>
-        {{-- </form> --}}
         <p style="text-align:center;font-size:13px;font-weight:bold;">{{__('Your request will be considered within a maximum period of two days. Please contact us')}}</p>
         <hr style="width:40%;margin:auto">
 {{-- manager only --}}

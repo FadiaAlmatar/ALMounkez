@@ -87,7 +87,6 @@
             <span>{{__('order number:')}}</span>
         </div>
         <h1>{{__('Membership transfer form from one branch to another')}}</h1>
-        {{-- <p class="status"> {{__('Order Status: ')}} {{$fullorder->status}}</p> --}}
         <span style="direction: rtl">{{__('Mr. Chairman of the Syndicate Branch Council in the province')}}</span>
         <span>{{__($fullorder->country_before)}}</span><br>
         <span>{{__('User:')}}</span><br>
@@ -99,7 +98,6 @@
         <span>{{__('That is for the following reasons :')}}</span>
         <span>{{$fullorder->transportation_reasons}}</span><br>
         <span>{{__('(Attached are the supporting documents. Change: place of residence - place of work)')}}</span><br>
-        {{-- <span>{{__('Request date: ')}} {{ date("Y-m-d h:i A", strtotime($fullorder->created_at))}}</span> --}}
         <div>
             <table style="width:100%;border:none;">
                 <tr style="border:none;">
@@ -140,7 +138,6 @@
             <hr style="margin-bottom:0;margin-top:0">
             <span style="font-weight: bold;margin-top:0">{{__('Decision of the board of directors of the branch in which it is registered')}}</span>
             <hr style="margin-bottom:0;margin-top:0">
-            {{-- {{__('Approval:')}} --}}
             @if($fullorder->registered_branch_decision == 1)
                 {{__('Approval')}}
             @else
@@ -167,7 +164,6 @@
 <hr style="margin-bottom:0;margin-top:0">
             <span style="font-weight: bold;margin-top:0">{{__('The decision of the board of directors of the branch wishing to move to it: ')}}</span>
             <hr style="margin-bottom:0;margin-top:0">
-            {{-- {{__('Approval:')}} --}}
             @if($fullorder->Chairman_decision == 1)
                 {{__('Approval')}}
             @else
@@ -198,11 +194,8 @@
                 <table style="width:100%;border:none;">
                     <tr style="border:none;">
                         <th style="border:none;width:20%"><pre>{{__(' date:')}}   /    / 201</pre></th>
-                        {{-- <td style="border:none;;width:2%"></td> --}}
                         <th style="border:none;;width:15%">{{__('the seal')}}</th>
-                        {{-- <td style="border:none;width:10%"></td> --}}
                         <th style="border:none;width:30%">{{__('Name and signature of the responsible employee')}}</th>
-                        {{-- <td style="border:none;width:20%"></td> --}}
                     </tr>
                 </table>
                </div><br>

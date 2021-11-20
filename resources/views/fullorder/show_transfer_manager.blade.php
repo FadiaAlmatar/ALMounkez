@@ -58,7 +58,6 @@
                     <p style="color:red;" value="{{$fullorder->status}}">{{__('Order Status')}}: {{__($fullorder->status)}} </p>
                 </div>
                <br>
-               {{-- {{Auth::User()->order->created_at->format('y')}} --}}
             <p style="display:inline">{{__('The fellow')}} <span style="font-weight: bold">{{$fullorder->fullname}}</span>{{__(' is affiliated with the Syndicate with a membership number ')}}{{Auth::User()->id}}<br>
                 {{__('And registered in the Syndicate in year 20')}}{{$fullorder->user->order->created_at->format('y')}}</p><br>
                 @if($fullorder->not_debtor == 0 )
@@ -74,15 +73,6 @@
                     <input type="text" class="input input-fullorder"id="money_debt" name="money_debt"  value="{{ $fullorder->money_debt}}"  class="form-control" placeholder="{{__('Enter debt money')}}" disabled />{{__(' SYP')}}<br>
                 </div><br>
                 @endif
-                {{-- @else --}}
-                  {{-- @if($fullorder->money_debt <> null && $fullorder->not_debtor == null )
-                  <div class="form-check"><br>
-                    <input class="form-check-input" type="radio" name="debt" id="financial_liability" value="{{$fullorder->not_debtor}}" disabled checked>
-                    <label for="financial_liability" class="form-check-label" value="financial_liability" @if (old('debt') == "financial_liability") {{ 'selected' }} @endif>{{__('It has a previous financial liability')}}</label>
-                    {{__('equal ')}}
-                    <input type="text" class="input input-fullorder"id="money_debt" name="money_debt"  value="{{ $fullorder->money_debt}}"  class="form-control" placeholder="{{__('Enter debt money')}}" disabled />{{__(' SYP')}}<br>
-                </div><br>
-                  @endif --}}
 {{-- قرار مجلس إدارة الفرع المسجل به --}}
             <hr>
             <p style="font-weight: bold;">{{__('Decision of the board of directors of the branch in which it is registered')}}</p>
@@ -131,5 +121,4 @@
 
 </x-layouts.app>
 
-{{-- {{Auth::User()->name}} --}}
 

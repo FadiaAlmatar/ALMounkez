@@ -91,7 +91,6 @@
         <p style="font-size:11px;font-weight:bold;text-align:center">{{__('Based on decision of the Board of Directors in its session No. 36 held on the date 27/04/2016 containing the determination of the amount 1000 SYP of the value of a membership card:(Consists-Lost)')}}</p>
         <h1 style="font-size:13px;text-align: center;font-weight:bold;background-color:rgb(199, 198, 198);text-decoration:none;">{{__('Filled out by the affiliate')}}</h1>
         <p>
-            {{-- <span style="color:red"> {{__('Order Status: ')}}  {{$fullorder->status}} </span><br> --}}
         {{__('Gentlemen of the Financial and Accounting Professions Syndicate, please give me a membership card instead: ')}}</p>
             @if($fullorder->replace_reasons == "lost")
                 <span>{{__('Lost (police decision attached)')}} </span>
@@ -111,7 +110,6 @@
                 <span>{{__('Card incoming error')}}{{__('(caused by the member)')}}</span>
             @endif
             <hr style="margin-top:0;margin-bottom:0">
-        {{-- التعديلات المطلوب وضعها على بطاقة العضوية الجديدة --}}
         <p style="font-weight: bold;text-align: center;margin-bottom:0;margin-top:0">{{__('Required modifications to be made on the new membership card')}}</p>
         <table class="table table-bordered">
               <tr>
@@ -174,11 +172,8 @@
                 <table  style="width:100%;border:none;">
                     <tr style="border:none;">
                         <th style="border:none;width:20%"><pre>{{__(' date:')}}   /    / 201</pre></th>
-                        {{-- <td style="border:none;;width:2%"></td> --}}
                         <th style="border:none;;width:15%">{{__('the seal')}}</th>
-                        {{-- <td style="border:none;width:10%"></td> --}}
                         <th style="border:none;width:30%">{{__('Name and signature of the responsible employee')}}</th>
-                        {{-- <td style="border:none;width:20%"></td> --}}
                     </tr>
                 </table>
                </div>

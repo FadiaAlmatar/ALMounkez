@@ -2,8 +2,6 @@
     <br>
     <h1 class="h1-fullorder">{{__('Membership transfer form from one branch to another')}}</h1><br>
     <div class="container"style="margin-top:7px;">
-        {{-- <form action="{{ route('fullorders.store') }}" method="POST" enctype="multipart/form-data">
-            @csrf --}}
         <input name="type" value="transfer" hidden>
         <p>{{__('Mr. Chairman of the Syndicate Branch Council in the province')}}
             <select style="width:150px"class="input @error('countryfrom')is-danger @enderror"name="countryfrom" id="countryfrom"class="form-select form-select-sm" aria-label=".form-select-sm example" @if(Auth::User()->role == "admin"){{ 'disabled' }} @endif>
@@ -55,7 +53,6 @@
             @endif
             @endif
             <p>{{__('Request date: ')}} {{ date("Y-m-d h:i A", strtotime($fullorder->created_at))}}</p><hr>
-        {{-- </form> --}}
 {{-- بيان الدارة المالية --}}
         <form action="{{ route('fullorders.store_order',$fullorder->id) }}" method="POST" >
             @csrf

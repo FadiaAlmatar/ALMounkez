@@ -30,34 +30,14 @@
         <input name="type" value="external" hidden>
         <p style="font-weight: bold;display:inline-block;width:40%">{{__('Branch financial management statement:')}}</p>
         <div class="status">
-            {{-- @if (app()->getLocale() == 'ar')
-            <select name="status"class="input @error('status')is-danger @enderror" class="form-select" aria-label="Default select example" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif>
-                <option selected></option>
-                {{-- <option value="under consideration">    {{__('under consideration')}}    </option> --}}
-                {{-- <option value="مطلوب تسديد القيمة">
-                          {{__('مطلوب تسديد القيمة')}}</option>
-                <option value="يرجى الاستلام">
-                     {{__('يرجى الاستلام')}}</option>
-                <option value="لم تتم الموافقة">
-                    {{__('لم تتم الموافقة')}}</option>
-                <option value="بحاجة لاستكمال الأوراق">
-                     {{__('بحاجة لاستكمال الأوراق')}}</option>
-            </select>
-            @else --}}
+
             <label>{{__('order status')}}</label>
             <select name="status"class="input" class="form-select" aria-label="Default select example" @if(Auth::User()->role == "user"){{ 'disabled' }} @endif>
                 <option selected></option>
-                {{-- <option value="under consideration">    {{__('under consideration')}}    </option> --}}
-                {{-- <option  value="Payment required" @if (old('status') == "Payment required") {{ 'selected' }} @endif>{{__('Payment required')}} </option>
-                <option  value="Please pick up" @if (old('status') == "Please pick up") {{ 'selected' }} @endif>    {{__('Please pick up')}}   </option>
-                <option  value="not confirmed" @if (old('status') == "not confirmed") {{ 'selected' }} @endif>      {{__('not confirmed')}}    </option>
-                <option  value="Need to complete papers" @if (old('status') == "Need to complete papers") {{ 'selected' }} @endif>{{__('Need to complete papers')}}</option>
-                <option  value="Finished" @if (old('status') == "Finished") {{ 'selected' }} @endif>               {{__('Finished')}}</option> --}}
                 @foreach (Config::get('constant.statuses') as $status)
                 <option  value="{{$status}}"  @if (old('status') == $status) {{ 'selected' }} @endif>{{__($status)}}</option>
                 @endforeach
             </select>
-            {{-- @endif --}}
             </div>
            <br>
       <p style="display:inline">{{__('Mr.')}} <span style="font-weight: bold">{{$fullorder->fullname}}</span>{{__(' is affiliated with the Syndicate with a membership number ')}}{{Auth::User()->id}}<br>

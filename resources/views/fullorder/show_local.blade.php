@@ -72,9 +72,6 @@
                     <option></option>
                     <option value="1" @if (old('Chairman_decision') == "1") {{ 'selected' }} @endif>{{__('Approval')}}</option>
                     <option value="0" @if (old('Chairman_decision') == "0") {{ 'selected' }} @endif>{{__('Disapproval')}} </option>
-                    {{-- @if(Auth::User()->role == "admin")
-                    <option value="{{ $fullorder->Chairman_decision}}" @if (old('Chairman_decision') == "1") {{ 'selected' }} @endif>{{__('Approval')}}</option>
-                    @endif --}}
                 </select>
                 @error('Chairman_decision')
                 <p class="help is-danger">{{ $message }}</p>
