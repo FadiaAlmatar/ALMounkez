@@ -30,7 +30,7 @@
             td,th{
                 border: 1px solid black;
                 width:24%;
-                text-align: left;
+                text-align: right;
                 font-size: 11px;
                 padding-right:5px;
             }
@@ -89,12 +89,12 @@
         <h1>{{__('Membership transfer form from one branch to another')}}</h1>
         {{-- <p class="status"> {{__('Order Status: ')}} {{$fullorder->status}}</p> --}}
         <span style="direction: rtl">{{__('Mr. Chairman of the Syndicate Branch Council in the province')}}</span>
-        <span>{{$fullorder->country_before}}</span><br>
+        <span>{{__($fullorder->country_before)}}</span><br>
         <span>{{__('User:')}}</span><br>
         <span style="text-transform: capitalize;">{{__('fullname : ')}}<span style="text-transform: capitalize;">{{$fullorder->fullname}}</span>
         <hr style="margin-bottom:0;margin-top:0">
-        <span style="margin-top:0">{{__('I kindly request you to transfer my membership from your branch of the Syndicate branch in the country: ')}}{{$fullorder->country_before}}
-        <br>{{__('To the syndicate branch in the country: ')}}{{$fullorder->country_after}}</span>
+        <span style="margin-top:0">{{__('I kindly request you to transfer my membership from your branch of the Syndicate branch in the country: ')}}{{__($fullorder->country_before)}}
+        <br>{{__('To the syndicate branch in the country: ')}}{{__($fullorder->country_after)}}</span>
         <hr style="margin-bottom:0;margin-top:0">
         <span>{{__('That is for the following reasons :')}}</span>
         <span>{{$fullorder->transportation_reasons}}</span><br>
@@ -117,7 +117,7 @@
             <span style="font-weight: bold;margin-top:0">{{__('Financial Management Statement:')}}</span>
             <hr style="margin-bottom:0;margin-top:0">
             {{__('The fellow')}} {{Auth::User()->name}}{{__(' is affiliated with the Syndicate with a membership number ')}}{{Auth::User()->id}}<br>
-            {{__('And registered in the Syndicate in year 20')}}{{$fullorder->user->order->created_at->format('y')}}<br>
+            {{__('And registered in the Syndicate in year ')}}20{{$fullorder->user->order->created_at->format('y')}}<br>
 
             @if($fullorder->not_debtor == 0)
                 <span>{{__('Financially innocent')}}</span>
@@ -198,11 +198,11 @@
                 <table style="width:100%;border:none;">
                     <tr style="border:none;">
                         <th style="border:none;width:20%"><pre>{{__(' date:')}}   /    / 201</pre></th>
-                        <td style="border:none;;width:2%"></td>
+                        {{-- <td style="border:none;;width:2%"></td> --}}
                         <th style="border:none;;width:15%">{{__('the seal')}}</th>
-                        <td style="border:none;width:10%"></td>
+                        {{-- <td style="border:none;width:10%"></td> --}}
                         <th style="border:none;width:30%">{{__('Name and signature of the treasurer')}}</th>
-                        <td style="border:none;width:20%"></td>
+                        {{-- <td style="border:none;width:20%"></td> --}}
                     </tr>
                 </table>
                </div><br>
