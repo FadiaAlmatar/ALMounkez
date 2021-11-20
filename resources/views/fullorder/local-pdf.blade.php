@@ -30,7 +30,7 @@
             td,th{
                 border: 1px solid black;
                 width:24%;
-                text-align: left;
+                text-align: right;
                 font-size: 11px;
                 padding-right:5px;
             }
@@ -136,7 +136,6 @@
         <span style="font-weight: bold;margin-top:0">{{__('Treasurer statement: ')}}</span>
         <hr style="margin-bottom:0;margin-top:0">
         <br>
-        {{-- {{__('Amount has been received ')}}{{ $fullorder->money_order}}{{__(' SYP')}}{{__(' (Just ')}}{{ $fullorder->money_order}}{{__(' Nothing else)')}}<pre>{{__(' Receipt No')}} /         /{{__(' date:')}}   /   / 201</pre> --}}
         <pre>{{__('Amount has been received ')}}{{$fullorder->money_order}}{{__('SYP')}}{{__('(Just ')}}{{$fullorder->money_order}}{{__(' Nothing else)')}}{{__('Receipt No')}}/         /{{__(' date:')}}  /   / 201</pre>
         <div>
          <table  @if (app()->getLocale() == 'ar') style="width:67%;margin-left:0;border:none;" @else style="width:67%;margin-right:0;border:none;" @endif>
@@ -144,19 +143,19 @@
                  <td style="border:none;"></td>
                  <td style="border:none;"></td>
                  <th style="border:none;">{{__('Name and signature of the treasurer')}}</th>
-                 <td style="border:none;"></td>
+                 {{-- <td style="border:none;"></td> --}}
              </tr>
              <tr style="border:none;">
                 <th style="border:none;">{{__('the seal')}}</th>
                 <td style="border:none;"></td>
                 <td style="border:none;"></td>
-                <td style="border:none;"></td>
+                {{-- <td style="border:none;"></td> --}}
              </tr>
              <tr style="border:none;">
                 <td style="border:none;"></td>
                 <td style="border:none;"></td>
                 <th style="border:none;"><pre>{{__(' date:')}}   /    / 201</pre></th>
-                <td style="border:none;"></td>
+                {{-- <td style="border:none;"></td> --}}
              </tr>
          </table>
         </div>
@@ -176,7 +175,7 @@
         @endif
         <br>
         <div>
-            <table  @if (app()->getLocale() == 'ar') style="width:20%;margin-left:0;border:none;" @else style="width:20%;margin-right:0;border:none"  @endif>
+            <table  @if (app()->getLocale() == 'ar') style="width:25%;margin-left:0;border:none;" @else style="width:20%;margin-right:0;border:none"  @endif>
                 <tr style="border:none;">
                     <th style="border:none;">{{__('signature:')}}</th>
                 </tr>
