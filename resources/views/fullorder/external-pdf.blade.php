@@ -30,7 +30,7 @@
             td,th{
                 border: 1px solid black;
                 width:24%;
-                text-align: left;
+                text-align: right;
                 font-size: 11px;
                 padding-right:5px;
             }
@@ -77,7 +77,7 @@
             <span>{{__('branch:')}}</span><br>
             <span>{{__('order No:')}}</span>
             {{-- </div> --}}
-        <h1>{{__('Request a external membership document')}}</h1>
+        <h1>{{__('Request an external membership document')}}</h1>
         {{-- <span class="status"> {{__('Order Status: ')}} {{$fullorder->status}} </span><br> --}}
         <strong style="font-size:11px;">
             {{__('(Implementation of the decision of the Board of Directors in its session No. /4/ held on the date 28/01/2016 containing the determination of the amount 1000 SYP of the value of a membership document)')}}</strong><br>
@@ -112,7 +112,7 @@
         @if($fullorder->not_debtor == 0)
             {{__('Financially innocent')}}
         @else
-           {{__('It has a previous financial liability')}}{{__('equal ')}}{{ $fullorder->money_debt}} {{__(' SYP')}}
+           {{__('It has a previous financial liability')}}{{__('equal ')}}{{ $fullorder->money_debt}} {{__('SYP')}}
         @endif
         <p>{{__('Mr.: The cashier in the branch, please receive an amount and its amount ')}}{{ $fullorder->money_order}}{{__(' SYP')}}</p>
         <div>
@@ -133,9 +133,9 @@
             </div>
             <hr style="margin-top:0">
             <hr style="margin-bottom:0;margin-top:0">
-         <span style="font-weight: bold;margin-top:0">{{__('Branch Treasurer Statement:')}}<span style="font-size: 10px">{{__('(Note: Only the unpaid subscription fee is received, but the document fee is paid to the central administration)')}}</span></span>
+         <span style="font-weight: bold;margin-top:0">{{__('Branch Treasurer Statement: ')}}<span style="font-size: 10px">{{__('(Note: Only the unpaid subscription fee is received, but the document fee is paid to the central administration)')}}</span></span>
          <hr style="margin-bottom:0;margin-top:0">
-        <pre>{{__('Amount has been received ')}}{{$fullorder->money_order}}{{__('SYP')}}{{__('(Just ')}}{{$fullorder->money_order}}{{__(' Nothing else)')}}{{__('Receipt No')}}/         /{{__(' date:')}}  /   / 201</pre>
+        <pre>{{__('Amount has been received ')}}{{$fullorder->money_order}}{{__(' SYP')}}{{__('(Just ')}}{{$fullorder->money_order}}{{__(' Nothing else)')}}{{__('Receipt No')}}/         /{{__(' date:')}}  /   / 201</pre>
         <span>{{__('(note:The application is brought by hand for follow-up to the central administration by the concerned party after keeping a copy of the application at the branch)')}}</span>
         <div>
             <table @if (app()->getLocale() == 'ar') style="width:67%;margin-left:0;border:none;"@else  style="width:67%;margin-right:0;border:none;" @endif>
@@ -143,25 +143,25 @@
                     <td style="border:none;"></td>
                     <td style="border:none;"></td>
                     <th style="border:none;">{{__('Name and signature of the treasurer')}}</th>
-                    <td style="border:none;"></td>
+                    {{-- <td style="border:none;"></td> --}}
                 </tr>
                 <tr style="border:none;">
                    <th style="border:none;">{{__('the seal')}}</th>
                    <td style="border:none;"></td>
                    <td style="border:none;"></td>
-                   <td style="border:none;"></td>
+                   {{-- <td style="border:none;"></td> --}}
                 </tr>
                 <tr style="border:none;">
                    <td style="border:none;"></td>
                    <td style="border:none;"></td>
                    <th style="border:none;"><pre>{{__(' date:')}}   /    / 201</pre></th>
-                   <td style="border:none;"></td>
+                   {{-- <td style="border:none;"></td> --}}
                 </tr>
             </table>
            </div>
            <hr style="margin-top:0">
            <hr style="margin-bottom:0;margin-top:0">
-         <hr style="margin-bottom:0;margin-top:0"><span style="font-weight: bold;margin-top:0">{{__('Treasurer Statement/central:')}}<span style="font-size: 10px">{{__('(Only the document amount is received)')}}</span></span>
+         <hr style="margin-bottom:0;margin-top:0"><span style="font-weight: bold;margin-top:0">{{__('Treasurer Statement/central: ')}}<span style="font-size: 10px">{{__('(Only the document amount is received)')}}</span></span>
             <hr style="margin-bottom:0;margin-top:0">
             <br>
             {{-- {{__('Amount has been received ')}}{{ $fullorder->money_central}}{{__(' SYP')}}{{__(' (Just ')}}{{ $fullorder->money_central}}{{__(' Nothing else)')}}<pre>{{__(' Receipt No')}} /         /{{__(' date:')}}   /   / 201</pre> --}}
@@ -174,19 +174,19 @@
                         <td style="border:none;"></td>
                         <td style="border:none;"></td>
                         <th style="border:none;">{{__('Name and signature of the treasurer')}}</th>
-                        <td style="border:none;"></td>
+                        {{-- <td style="border:none;"></td> --}}
                     </tr>
                     <tr style="border:none;">
                        <th style="border:none;">{{__('the seal')}}</th>
                        <td style="border:none;"></td>
                        <td style="border:none;"></td>
-                       <td style="border:none;"></td>
+                       {{-- <td style="border:none;"></td> --}}
                     </tr>
                     <tr style="border:none;">
                        <td style="border:none;"></td>
                        <td style="border:none;"></td>
                        <th style="border:none;"><pre>{{__(' date:')}}   /    / 201</pre></th>
-                       <td style="border:none;"></td>
+                       {{-- <td style="border:none;"></td> --}}
                     </tr>
                 </table>
                </div>
@@ -205,7 +205,7 @@
                @endif
                <br>
                <div>
-                   <table   @if (app()->getLocale() == 'ar') style="width:20%;margin-left:0;border:none;"@else style="width:20%;margin-right:0;border:none" @endif>
+                   <table   @if (app()->getLocale() == 'ar') style="width:25%;margin-left:0;border:none;"@else style="width:20%;margin-right:0;border:none" @endif>
                        <tr style="border:none;">
                            <th style="border:none;">{{__('signature:')}}</th>
                        </tr>

@@ -136,7 +136,7 @@
         <span style="font-weight: bold;margin-top:0">{{__('Treasurer statement: ')}}</span>
         <hr style="margin-bottom:0;margin-top:0">
         <br>
-        <pre>{{__('Amount has been received ')}}{{$fullorder->money_order}}{{__('SYP')}}{{__('(Just ')}}{{$fullorder->money_order}}{{__(' Nothing else)')}}{{__('Receipt No')}}/         /{{__(' date:')}}  /   / 201</pre>
+        <pre>{{__('Amount has been received ')}}{{$fullorder->money_order}}{{__(' SYP')}}{{__('(Just ')}}{{$fullorder->money_order}}{{__(' Nothing else)')}}{{__('Receipt No')}}/         /{{__(' date:')}}  /   / 201</pre>
         <div>
          <table  @if (app()->getLocale() == 'ar') style="width:67%;margin-left:0;border:none;" @else style="width:67%;margin-right:0;border:none;" @endif>
              <tr style="border:none;">
