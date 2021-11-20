@@ -30,7 +30,7 @@
             td,th{
                 border: 1px solid black;
                 width:24%;
-                text-align: left;
+                text-align: right;
                 font-size: 11px;
                 padding-right:5px;
             }
@@ -156,13 +156,13 @@
         {{__('equal ')}}
          {{ $fullorder->money_debt}}{{__(' SYP')}}
       @endif
-    <p>{{__('Mr.: The cashier in the branch, please receive an amount and its amount ')}}{{ $fullorder->money_order}}{{__(' SYP')}}
+    <p>{{__('Mr.: The branch treasurer, please collect the amount due from him ')}}{{ $fullorder->money_order}}{{__(' SYP')}}
     <br>{{__('In addition to the membership card replacement fee, the amount of 1000 SP')}}
     </p>
        <div>
         <table  @if (app()->getLocale() == 'ar') style="width:60%;margin-left:0;border:none;"@else style="width:60%;margin-right:0;border:none;"  @endif>
             <tr style="border:none;">
-                <th style="border:none;">{{__('Name and signature of the treasurer')}}</th>
+                <th style="border:none;">{{__('Name and signature of the responsible employee')}}</th>
                 <td style="border:none;"></td>
             </tr>
         </table>
@@ -174,11 +174,11 @@
                 <table  style="width:100%;border:none;">
                     <tr style="border:none;">
                         <th style="border:none;width:20%"><pre>{{__(' date:')}}   /    / 201</pre></th>
-                        <td style="border:none;;width:2%"></td>
+                        {{-- <td style="border:none;;width:2%"></td> --}}
                         <th style="border:none;;width:15%">{{__('the seal')}}</th>
-                        <td style="border:none;width:10%"></td>
-                        <th style="border:none;width:30%">{{__('Name and signature of the treasurer')}}</th>
-                        <td style="border:none;width:20%"></td>
+                        {{-- <td style="border:none;width:10%"></td> --}}
+                        <th style="border:none;width:30%">{{__('Name and signature of the responsible employee')}}</th>
+                        {{-- <td style="border:none;width:20%"></td> --}}
                     </tr>
                 </table>
                </div>
@@ -199,7 +199,7 @@
                         <tr style="border:none;">
                             <th style="border:none;"><pre>{{__(' date:')}}   /    / 201</pre></th>
                             <td style="border:none;"></td>
-                            <th style="border:none;">{{__('signature')}}</th>
+                            <th style="border:none;">{{__('Signature')}}</th>
                             <td style="border:none;"></td>
                         </tr>
                     </table>

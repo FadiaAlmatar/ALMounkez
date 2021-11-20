@@ -118,7 +118,7 @@
         <div>
             <table  @if (app()->getLocale() == 'ar') style="width:60%;margin-left:0;border:none;"@else style="width:60%;margin-right:0;border:none;"  @endif>
                 <tr style="border:none;">
-                    <th style="border:none;">{{__('Name and signature of the treasurer')}}</th>
+                    <th style="border:none;">{{__('Name and signature of the responsible employee')}}</th>
                     <td style="border:none;"></td>
                 </tr>
                 <tr style="border:none;">

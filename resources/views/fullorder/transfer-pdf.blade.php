@@ -201,14 +201,15 @@
                         {{-- <td style="border:none;;width:2%"></td> --}}
                         <th style="border:none;;width:15%">{{__('the seal')}}</th>
                         {{-- <td style="border:none;width:10%"></td> --}}
-                        <th style="border:none;width:30%">{{__('Name and signature of the treasurer')}}</th>
+                        <th style="border:none;width:30%">{{__('Name and signature of the responsible employee')}}</th>
                         {{-- <td style="border:none;width:20%"></td> --}}
                     </tr>
                 </table>
                </div><br>
                <hr style="margin-bottom:0;margin-top:0">
-            <p style="font-weight: bold;margin-top:0">{{__('The new membership number in the event that both parties agree to transfer the affiliate')}}
+            <p style="font-weight: bold;margin-top:0;margin-bottom:0">{{__('The new membership number in the event that both parties agree to transfer the affiliate')}}
              {{$fullorder->newmembership_number}}</p>
+             <hr style="margin-bottom:0;margin-top:0">
              <p style="text-align: center;font-weight:bold;margin-top:0;font-size: 9px;">{{__('(A copy is kept in the branch to which it is transferred and a copy is sent to the central administration and a copy to the branch it is transferred from)')}}</p>
 
              @if($fullorder->home_change <> null)
