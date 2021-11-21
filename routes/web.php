@@ -1,4 +1,6 @@
 <?php
+
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PDFController;
@@ -71,10 +73,9 @@ Route::get('/print/{id}', [FullOrderController::class, 'print'])->name('fullorde
 
 Route::get('/dashboard', function () {
     // return view('pages.home');
-    return view('dashboard');
+       return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
 
 Route::get('create-pdf-file', [PDFController::class, 'index']);
-?>
