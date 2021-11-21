@@ -11,8 +11,8 @@
                     </x-nav-link>
                 </div>
             </div>
-                <a class="nav-link active" aria-current="page" href="{{route('posts.index')}}" >{{__('posts')}}</a>
-                <a class="nav-link active" aria-current="page" href="{{route('posts.create')}}" >{{__('Create post')}}</a>
+                {{-- <a class="nav-link active" aria-current="page" href="{{route('posts.index')}}" >{{__('posts')}}</a> --}}
+                <a style="color:blue"class="nav-link active" aria-current="page" href="{{route('posts.create')}}" >{{__('Create post')}}</a>
                 <a class="nav-link active" aria-current="page"   href="{{route('messages.create')}}" >{{__('chat')}}</a>
                 <a class="nav-link active" aria-current="page"   href="{{route('orders.create')}}" > {{__('Order')}}</a>
                 <div class="dropdown">
