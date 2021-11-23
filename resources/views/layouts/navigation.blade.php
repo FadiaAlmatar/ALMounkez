@@ -3,18 +3,27 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
-                <!-- Logo -->
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
-            </div>
-                {{-- <a class="nav-link active" aria-current="page" href="{{route('posts.index')}}" >{{__('posts')}}</a> --}}
-                <a style="color:blue"class="nav-link active" aria-current="page" href="{{route('posts.create')}}" >{{__('Create post')}}</a>
-                <a class="nav-link active" aria-current="page"   href="{{route('messages.create')}}" >{{__('chat')}}</a>
-                <a class="nav-link active" aria-current="page"   href="{{route('orders.create')}}" > {{__('Order')}}</a>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('posts.create')">
+                        {{__('Create post')}}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('messages.create')">
+                        {{__('chat')}}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('orders.create')">
+                        {{__('Order')}}
+                    </x-nav-link>
+                </div>
                 <div class="dropdown">
                     <button style="background:white"type="button" class="btn  dropdown-toggle" data-toggle="dropdown">
                         {{ __('Orders') }}
@@ -40,8 +49,7 @@
                         <a class="dropdown-item" href="{{asset('/locale/en')}}">{{ __('En') }}</a>
                     </div>
                 </div>
-
-                <div class="dropdown">
+                {{-- <div class="dropdown">
                     <button style="background:white"type="button" class="btn  dropdown-toggle" data-toggle="dropdown">
                         {{ __('account') }}
                     </button>
@@ -55,7 +63,8 @@
                      </form>
                     </a>@endauth
                     </div>
-                </div>
+                </div> --}}
+            </div>
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
@@ -71,12 +80,10 @@
                             </div>
                         </button>
                     </x-slot>
-
                     <x-slot name="content">
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
@@ -129,3 +136,10 @@
         </div>
     </div>
 </nav>
+
+
+
+  {{-- <a class="nav-link active" aria-current="page" href="{{route('posts.index')}}" >{{__('posts')}}</a> --}}
+                {{-- <a style="color:blue"class="nav-link active" aria-current="page" href="{{route('posts.create')}}" >{{__('Create post')}}</a> --}}
+                {{-- <a class="nav-link active" aria-current="page"   href="{{route('messages.create')}}" >{{__('chat')}}</a> --}}
+                {{-- <a class="nav-link active" aria-current="page"   href="{{route('orders.create')}}" > {{__('Order')}}</a> --}}

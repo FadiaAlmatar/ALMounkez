@@ -15,6 +15,21 @@
             <a class="nav-link" id="pay-tab" data-bs-toggle="tab" data-bs-target="#pay" type="button" role="tab" aria-controls="pay" aria-selected="false">{{__('How to pay the affiliation fee')}}</a>
         </li>
     </ul>
+
+    {{-- <ul class="nav nav-tabs" id="myTab">
+        <li class="nav-item">
+          <a class="nav-link active" href="#Personal">{{__('Personal data')}}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact">{{__('contact information')}}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#Qualifications">{{__('Qualifications')}}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#pay">{{__('How to pay the affiliation fee')}}</a>
+        </li>
+      </ul> --}}
 {{-- end tabs --}}
 {{-- start big form --}}
 <form action="{!! !empty($order) ? route('orders.update', $order) :  route('orders.store')  !!}" method="POST" enctype="multipart/form-data" >
